@@ -81,7 +81,7 @@ SPEC_MIN_ITEMS = 7  # SPEC says 7-11; 5 and 6 are tolerated but flagged
 TITLE_MAX_CHARS = 80
 PULSE_PROSE_TARGET = 1100  # dek + why_it_matters across all items
 FOUNDATIONS_PROSE_TARGET = 1100  # member tier only: tldr + section body_md
-PROSE_TOLERANCE = 0.35  # +/- 35% before we complain
+PROSE_TOLERANCE = 0.25  # SPEC: "within roughly +/-25%"
 DEEPER_MD_RANGE = (80, 200)  # words
 SECTION_BODY_RANGE = (100, 180)  # words
 DEK_SIMILARITY_LIMIT = 0.72  # difflib ratio above this == restatement
@@ -298,6 +298,10 @@ def looks_primary(url) -> bool:
     # filing, a licensing document, or an agency dataset is the document itself.
     if host.endswith(".gov") or host.endswith(".mil"):
         return True
+    # University and academic-institute hosts: preprints, lab pages, course notes
+    # and technical reports live here, and Foundations leans on them heavily.
+    if host.endswith(".edu") or host.endswith(".ac.uk") or host.endswith(".edu.tw"):
+        return True
     return _host_matches(host, PRIMARY_SOURCE_HINTS)
 
 
@@ -470,6 +474,17 @@ def _warn_no_primary_source(rep: Report, sources: list, where: str) -> None:
     if not urls:
         return
     if any(looks_primary(u) for u in urls):
+        # SPEC: sources[0] is the strongest primary document, not the first thing
+        # found. post_discord.py links sources[0] and nothing else, so a misordered
+        # list sends the club to a press release instead of the filing.
+        if not looks_primary(urls[0]):
+            primary = next(u for u in urls if looks_primary(u))
+            rep.warn(
+                f"{where}[0]",
+                "the first source is not the primary document, but "
+                f"{host_of(primary)} in the same list is. Discord links only "
+                "sources[0] — reorder so the primary document leads.",
+            )
         return
 
     hosts = sorted({host_of(u) for u in urls if host_of(u)})

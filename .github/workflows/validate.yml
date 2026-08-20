@@ -53,7 +53,10 @@ jobs:
             exit 0
           fi
           echo "Validating ${#briefs[@]} edition(s)."
-          python3 scripts/validate_brief.py "${briefs[@]}"
+          # --strict here on purpose: the daily job validates strictly before it
+          # commits, so a PR that only passes non-strict would be green here and
+          # then block tomorrow's publish. One contract, both places.
+          python3 scripts/validate_brief.py --strict "${briefs[@]}"
 
       - name: Check briefs/index.json is in sync
         run: |

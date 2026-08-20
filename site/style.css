@@ -23,6 +23,7 @@
   --brand-ink:     #7a0019;
   --brand-tint:    #7a001910;
   --gold:          #9c7517;
+  --gold-ink:      #7a5a0f;   /* AA-passing gold for small uppercase text */
   --gold-tint:     #9c751718;
   --focus:         #1f5f86;
 
@@ -69,6 +70,8 @@
     --brand-ink:     #e79aa7;
     --brand-tint:    #e79aa716;
     --gold:          #d8b45c;
+  --gold-ink:      #e2c377;
+    --gold-ink:      #e2c377;
     --gold-tint:     #d8b45c1c;
     --focus:         #7cb8dd;
 
@@ -297,7 +300,11 @@ main { padding: 0 var(--gutter) 4rem; }
   border-left: 4px solid var(--band, var(--rule-strong));
 }
 a.cake__band:hover { background: var(--band-tint, var(--bg-sunken)); color: var(--band, var(--ink)); }
-.cake__band--empty { color: var(--ink-3); opacity: .48; border-left-color: var(--rule-strong); cursor: default; }
+/* Dimmed, but still legible: this label is what tells you a layer is empty today,
+   so it has to clear AA. --ink-3 at opacity .48 blended to 1.93:1; at .78, 3.23:1.
+   Dropping the opacity entirely and letting --ink-3 carry the dimming gives 4.88:1
+   (6.4:1 dark) while still reading as clearly quieter than an active band. */
+.cake__band--empty { color: var(--ink-3); border-left-color: var(--rule-strong); cursor: default; }
 .cake__name { font-weight: 600; letter-spacing: .02em; flex: 1 1 auto; }
 .cake__count {
   font-variant-numeric: tabular-nums; font-size: .78rem; color: var(--ink-3);
@@ -313,7 +320,9 @@ a.cake__band .cake__count { color: var(--band); font-weight: 600; }
 .half__kicker {
   margin: 0 0 .25rem;
   font-family: var(--sans); font-size: .68rem; font-weight: 600;
-  letter-spacing: .16em; text-transform: uppercase; color: var(--gold);
+  /* --gold on the page background measured 4.05:1 — under AA for text this small.
+     --gold-ink is the same hue darkened enough to pass. */
+  letter-spacing: .16em; text-transform: uppercase; color: var(--gold-ink, var(--gold));
 }
 .half__title {
   font-size: clamp(1.6rem, 6vw, 2.1rem); letter-spacing: -.015em;

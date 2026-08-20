@@ -594,9 +594,10 @@
       return hay.indexOf(q) !== -1;
     });
 
+    var plural = all.length === 1 ? 'edition' : 'editions';
     $('archive-count').textContent = q
-      ? matches.length + ' of ' + all.length + ' editions match. Filtering headlines, topics and layers from the index — item text only exists inside a loaded edition.'
-      : all.length + ' editions. Filter matches headlines, foundations topics and layers from the index — item text only exists inside a loaded edition.';
+      ? matches.length + ' of ' + all.length + ' ' + plural + ' ' + (matches.length === 1 ? 'matches' : 'match') + '. Filtering headlines, topics and layers from the index — item text only exists inside a loaded edition.'
+      : all.length + ' ' + plural + '. Filter matches headlines, foundations topics and layers from the index — item text only exists inside a loaded edition.';
 
     if (!matches.length) {
       host.appendChild(el('li', 'archive__empty', q ? 'Nothing matches “' + q + '”.' : 'No editions in the index yet.'));

@@ -339,7 +339,14 @@
 
   function renderItem(item, layerSlug) {
     var art = el('article', 'item');
-    art.id = item.id || '';
+    // Namespaced on purpose. `id` comes from the brief JSON, which an agent
+    // writes, and the validator only requires kebab-case — so a legitimate-looking
+    // id like "archive" or "pulse" would collide with this page's own element ids
+    // and win, because the edition renders above them in document order.
+    // $('archive') would then return an item article and the Archive panel would
+    // stop opening. Prefixing keeps the brief's namespace and the app's apart.
+    // The bare id stays the public anchor in the URL; targetElement() maps it back.
+    art.id = item.id ? 'item-' + item.id : '';
     art.style.setProperty('--layer-c', 'var(--' + layerSlug + ')');
     art.style.setProperty('--layer-t', 'var(--' + layerSlug + '-tint)');
 
@@ -704,9 +711,11 @@
     if (target === 'foundations') return $('foundations');
     if (LAYER_BY_SLUG[target]) return $('layer-' + target);
     if (/^layer-/.test(target) && LAYER_BY_SLUG[target.slice(6)]) return $(target);
-    // Anything else: an item id or a foundations section id.
+    // Anything else: an item id or a foundations section id. Item articles are
+    // rendered with an `item-` prefix (see renderItem), so try that first and fall
+    // back to the raw id for foundations sections. Old links keep working.
     if (/^[A-Za-z0-9_-]+$/.test(target)) {
-      var node = $(target);
+      var node = $('item-' + target) || $(target);
       if (node && document.getElementById('edition').contains(node)) return node;
     }
     return null;

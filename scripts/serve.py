@@ -55,6 +55,14 @@ class ComposedHandler(SimpleHTTPRequestHandler):
             path = urllib.parse.unquote(path)
         path = posixpath.normpath(path)
 
+        # A percent-encoded NUL (%00) survives unquote and then makes
+        # os.path.realpath() raise ValueError below, which escapes translate_path,
+        # kills the worker thread, and drops the connection with no response at
+        # all. Reject it — along with the other C0 control bytes, none of which
+        # belong in a path — and let the normal 404 path handle it.
+        if any(ch in path for ch in ("\x00",)) or any(ord(ch) < 32 for ch in path):
+            return os.path.join(os.path.realpath(self.site_dir), "__forbidden__")
+
         parts = [p for p in path.split("/") if p and p not in (".", "..")]
 
         if parts and parts[0] == "briefs":

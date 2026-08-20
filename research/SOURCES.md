@@ -191,6 +191,23 @@ comes from.
 | Full-text search (UI) | `https://www.sec.gov/edgar/search/` ⚠️ | Searches the text of filings since 2001. |
 | Full-text search (API) | `https://efts.sec.gov/LATEST/search-index?q=…&forms=…&startdt=…&enddt=…` ✅ | Returns JSON. Requires a descriptive `User-Agent` with a contact address. This is the workhorse. |
 | Company browse | `https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=…&type=10-Q` ✅ | Per-company filing history. |
+| Submissions JSON | `https://data.sec.gov/submissions/CIK{cik}.json` ✅ | Every filing a company has made, structured. |
+| **XBRL company concept** | `https://data.sec.gov/api/xbrl/companyconcept/CIK{cik}/us-gaap/{tag}.json` ✅ | **Structured financials, free, no key.** The right way to pull capex. |
+
+**Use the XBRL API for capex, not the IR pages.** It is keyless, structured, and immune
+to the Cloudflare blocking that hits half the investor-relations sites. Verified
+2026-08-20 with `PaymentsToAcquirePropertyPlantAndEquipment`: Microsoft (CIK 0000789019)
+$115.9B FY26; Alphabet (0001652044) $80.6B; Meta (0001326801) $49.1B; Oracle
+(0001341439) $55.7B FY26; CoreWeave (0001769628) $14.1B.
+
+⚠️ **The tag is not consistent across filers, and the failure is silent.** Amazon
+(0001018724) and Nvidia (0001045810) report capex under
+**`PaymentsToAcquireProductiveAssets`** instead. Querying the wrong tag does not error —
+it returns a stale figure that looks valid. Amazon silently returned a **2017** number.
+So: **try both tags, and always check the period end date on the value you use.** These
+figures are cash-flow capex and **exclude finance leases**, which are increasingly
+material for Microsoft, Meta, and Oracle — a datacenter item resting on capex alone can
+understate real commitment badly.
 
 **How to search it well.** Search for *phrases that only appear in filings*, not for
 company names: `"purchase commitments"`, `"wafer supply agreement"`, `"capacity
@@ -423,7 +440,7 @@ are 404s, so use the exact paths.
 | **MISO** | `https://www.misoenergy.org/planning/transmission-planning/` ✅ (MTEP) · **queue `https://www.misoenergy.org/planning/generator-interconnection/GI_Queue/`** ✅ | Minnesota's RTO — **the club's own grid**, which makes it the right first stop for any energy item with a local angle. Dashboards and maps, plus the DPP cycle documents. |
 | **ERCOT** | planning `https://www.ercot.com/gridinfo/planning` ✅ · **large load `https://www.ercot.com/services/rq/large-load-integration`** ✅ · resource adequacy `/gridinfo/resource` ✅ (GIS report, CDR, MORA) | The most permissive large-load interconnection regime in the US, and therefore where the most aggressive datacenter siting happens. ⚠️ **ERCOT publishes the large-load *process* but no public MW-by-project queue report** — do not cite an "ERCOT large load queue" number without finding the actual document. |
 | CAISO / SPP / ISO-NE / NYISO | `https://www.caiso.com/generation-transmission/generation/generator-interconnection` ✅ · `https://www.spp.org/engineering/generator-interconnection/` ✅ · `https://www.iso-ne.com/system-planning/interconnection-service/interconnection-request-queue` ✅ (PDF + XLSX) · `https://www.nyiso.com/interconnections` ✅ (XLSX) | The other queues. Several publish the queue as a spreadsheet, which is a primary dataset you can actually check a claim against. |
-| LBNL "Queued Up" | `https://emp.lbl.gov/queues` ❗ **403 to every method attempted** · try `https://eta-publications.lbl.gov/` ✅ instead | The standard annual synthesis of every US interconnection queue, and the source most journalists are actually quoting. **Could not be verified on 2026-08-20** — confirm the current edition before citing it. |
+| LBNL "Queued Up" | `https://emp.lbl.gov/queues` ❗ 403 to every method · **mirror ✅ `https://eta-publications.lbl.gov/publications/queued-characteristics-power-plants`** (append `-0`, `-1` for the 2021/2022/2023 editions) | The standard annual synthesis of every US interconnection queue, and what most journalists are quoting. The mirror carries **free PDF and XLSX** data files. ⚠️ The mirror stops at 2023 — the 2024/2025 editions live only behind the blocked canonical page, so confirm the edition year before citing. Useful framing from the abstract: only **~24%** of 2000–2015 queue projects were ever built, and median wait rose from ~1.9 to ~3.5 years, so a queue megawatt is not a delivered megawatt. |
 | **NRC** | **ADAMS `https://adams-search.nrc.gov/`** ✅ (**the old `adams.nrc.gov` is NXDOMAIN**) · `nrc.gov` itself is 403 to every method ⚠️ | Reactor and SMR licensing dockets. **The gap between "announced an SMR partnership" and "submitted a construction permit application" is enormous, and ADAMS is how you tell which one happened.** ADAMS is an SPA, so plan on a browser. |
 | **DOE** | `https://www.energy.gov/` ✅ · **Office of Electricity `https://www.energy.gov/oe/office-electricity`** ✅ (**`energy.gov/gdo/*` is a 404 — the Grid Deployment Office is gone**) · **Office of Energy Dominance Financing `https://www.energy.gov/EDF`** ✅ (**the former Loan Programs Office**) · RSS `https://www.energy.gov/rss/energygov/2193718` ✅ | Grid grants, transmission, and the best source for GW-scale nuclear and grid debt financing. Bias: heavy current-administration framing — separate the announcement from the appropriation. |
 | **IEA** | *Electricity 2026* `https://www.iea.org/reports/electricity-2026` ✅ (Feb 2026) · ***Key Questions on Energy and AI* `https://www.iea.org/reports/key-questions-on-energy-and-ai`** ✅ (Apr 2026) · *Energy and AI* `/reports/energy-and-ai` ✅ (2025) | Global electricity and datacenter-demand analysis, free under CC BY. **The single most-cited and most-misquoted set of datacenter demand numbers in circulation** — the ranges are wide and are routinely repeated without their error bars. If you cite one, cite the range. |
@@ -651,7 +668,11 @@ Electricity) · DOE Loan Programs Office (→ Office of Energy Dominance Financi
 Doomberg on Substack (→ `newsletter.doomberg.com`) · Semafor Net Zero (→ `/vertical/energy`)
 · `oracle.com` `/financials/quarterly-reports/` · Arista `/Financials/Quarterly-Results/` ·
 `investors.coherent.com`, `investors.asteralabs.com`, `investors.celestica.com` and several
-other `investors.*` subdomains (NXDOMAIN) · `lola.loudoun.gov` (NXDOMAIN).
+other `investors.*` subdomains (NXDOMAIN) · `lola.loudoun.gov` (NXDOMAIN) — **but the
+Loudoun County land-application portal itself is live at `https://www.loudoun.gov/lola` ✅**,
+which is the one worth having: Loudoun is Data Center Alley, and its permit filings are
+where a buildout shows up before it is announced. Maricopa and Prince William Accela
+paths tried on 2026-08-20 all 404.
 
 ### Feeds that lie
 

@@ -1,0 +1,72 @@
+# Posts each published edition to the club Discord.
+#
+# This keys off the daily brief workflow rather than off a push, so it only fires
+# once the brief has been written, validated, and committed. If you rename the
+# daily workflow, update the `workflows:` list below to match its `name:`.
+name: Post to Discord
+
+on:
+  workflow_run:
+    workflows: ["Daily brief"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Edition to post (YYYY-MM-DD). Blank posts the latest."
+        required: false
+        type: string
+      dry_run:
+        description: "Print the payloads without posting"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: discord-post
+  cancel-in-progress: false
+
+jobs:
+  post:
+    # For workflow_run, only post when the daily job actually succeeded.
+    # Manual runs skip this check.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      # The `secrets` context is not available in a job- or step-level `if:`, but it
+      # is available in job-level `env:` — so hoist it here and branch on the env var.
+      # https://docs.github.com/en/actions/reference/workflows-and-actions/contexts
+      DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+
+    steps:
+      - name: Check out the published briefs
+        uses: actions/checkout@v4
+        with:
+          # workflow_run events run against the default branch's workflow file but
+          # default to the SHA that triggered the upstream run, which predates the
+          # brief commit. Take the branch head so today's edition is present.
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Report missing webhook
+        if: env.DISCORD_WEBHOOK_URL == ''
+        run: |
+          echo "::notice::DISCORD_WEBHOOK_URL is not configured, so nothing was posted."
+          echo "Set it under Settings → Secrets and variables → Actions to enable"
+          echo "Discord delivery. See docs/DISCORD.md."
+
+      - name: Post the edition
+        if: env.DISCORD_WEBHOOK_URL != ''
+        run: |
+          args=()
+          if [ -n "${{ inputs.date }}" ]; then
+            args+=(--date "${{ inputs.date }}")
+          fi
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            args+=(--dry-run)
+          fi
+          python3 scripts/post_discord.py "${args[@]}"

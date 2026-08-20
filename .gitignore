@@ -1,0 +1,30 @@
+# ---------------------------------------------------------------------------
+# ai-stack-brief
+#
+# This repo has no build step and no dependencies. Almost nothing should ever
+# be ignored — if a file matters to the site or the content, it is committed.
+# ---------------------------------------------------------------------------
+
+# The composed deploy tree. Built by pages.yml and by the local compose check;
+# never committed. GitHub Pages rebuilds it from site/ + briefs/ every deploy.
+_site/
+
+# Written atomically by scripts/build_index.py; only exists if a write failed.
+briefs/index.json.tmp
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Editors and OS junk
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# Local agent scratch. Nothing under here is part of the contract.
+.claude/settings.local.json

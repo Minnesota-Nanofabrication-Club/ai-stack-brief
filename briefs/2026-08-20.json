@@ -1,0 +1,509 @@
+{
+  "date": "2026-08-20",
+  "generated_at": "2026-08-20T07:22:26Z",
+  "window": "2026-08-13..2026-08-20",
+  "headline": "The week's biggest numbers shrank on inspection: Applied Materials says cleanroom floor space, not capital, now gates chip capacity, and Nvidia's $105 billion for Ohio turns out to be a lease guaranty rather than financing.",
+  "pulse": {
+    "read_time_min": 5,
+    "layers": [
+      {
+        "layer": "energy",
+        "items": [
+          {
+            "id": "energy-pa-eo-2026-05-data-centers",
+            "title": "Pennsylvania puts data centers over 25 MW at the back of the permit line",
+            "dek": "Pennsylvania will not begin reviewing a large data center's environmental permits until the developer signs a binding agreement with the state to cover its own grid costs, meet water limits, and clear local zoning. Gov. Josh Shapiro's Aug. 18 order covers any site drawing more than 25 megawatts at peak.",
+            "why_it_matters": "Permitting, not silicon, is turning into the long pole of the AI buildout, and the state that hosts a big slice of PJM just moved data centers from the front of its fast-track queue to the back. It also told utilities to shed data-center load before any other customer in an emergency unless the site has contracted firm capacity for its whole demand, which reprices the common strategy of breaking ground first and sorting out power later.",
+            "deeper_md": "EO 2026-05 took effect immediately Aug. 18, 2026; the trigger is peak demand above 25 MW. Sign DEP's template Consent Order and Agreement and you get rolling review, but permits issue only after you show consistency with the local comprehensive plan and hold every municipal zoning approval. Refuse, and DEP starts no review until local approvals and water authorizations are in hand, and you lose the PAyback and Permit Decision Guarantee clocks. All data centers lose Permit Fast Track eligibility. The findings cite PJM's 2025 Load Forecast of 74 GW of summer peak growth through 2045, and the Market Monitor's tally that data centers drove $29.4 billion — 46% — of capacity charges across PJM's last four Base Residual Auctions. Section 3 directs the PUC to make utilities curtail data centers before any other customer in emergencies unless the site secured incremental capacity for its full load, and bars tagging them critical load. From July 1, 2027, operators report monthly energy by source, average MWh per hour at peak, and total and maximum-day water with source and cooling share; NDAs with state agencies are banned. The EO creates no private right of action; enforcement runs through the consent orders themselves.",
+            "fab_angle": "A modern fab is exactly the profile this order targets — well over 25 MW, with large water withdrawals — and a curtail-first rule would be brutal for one, since a fab cannot ride out a load shed without scrapping every wafer in process. The order covers data centers only, but its disclosure template (peak MWh per hour, maximum-day water demand, source, cooling share) is the same dataset any large fab siting case now turns on, and the NDA ban means those numbers become public record rather than negotiated in private.",
+            "confidence": "confirmed",
+            "sources": [
+              {
+                "title": "Executive Order 2026-05 — Protecting Pennsylvania Consumers from Data Center Impacts",
+                "url": "http://www.pa.gov/content/dam/copapwp-pagov/en/governor/documents/eo2026_05_protecting%20pennsylvania%20consumers%20from%20data%20center%20impacts_final_executed.pdf",
+                "publisher": "Commonwealth of Pennsylvania, Governor's Office",
+                "date": "2026-08-18"
+              },
+              {
+                "title": "Governor Shapiro Signs Executive Order on Data Center Development in PA",
+                "url": "https://www.pa.gov/governor/newsroom/2026-press-releases/governor-shapiro-signs-executive-order-on-data-center-developmen",
+                "publisher": "Pennsylvania Governor's Office",
+                "date": "2026-08-18"
+              },
+              {
+                "title": "Pennsylvania dangles permitting carrot for data centers that bring their own power",
+                "url": "https://www.utilitydive.com/news/pennsylvania-executive-order-data-centers/828261/",
+                "publisher": "Utility Dive",
+                "date": "2026-08-19"
+              }
+            ]
+          },
+          {
+            "id": "energy-georgia-power-openai-3-2-gw-contract",
+            "title": "Georgia regulators buy 12 more days on OpenAI's 3.2 GW power contract",
+            "dek": "Georgia Power wants regulators to approve a 25-year contract supplying about 3,200 megawatts — roughly a fifth of the utility's entire system peak — to a single OpenAI data center. When commission staff signaled they would object, the utility handed them 12 extra days rather than let the review clock run out.",
+            "why_it_matters": "A special contract is the instrument that decides whether one enormous customer pays its own way or quietly leans on everyone else's bill, and the terms that determine that — minimum take, collateral, what happens if the customer walks — were filed entirely under seal. Whether Georgia forces those terms into daylight sets the template for the queue of gigawatt-scale deals behind this one.",
+            "deeper_md": "Georgia Power announced the deal July 22: about 3,200 MW for OpenAI's Project Camellia in Effingham County, 25-year term, OpenAI paying full infrastructure and service costs, plus up to 1,000 MW of flexible demand response — roughly 31% of site peak — which the utility says lets it build less generation. Southern Alliance for Clean Energy puts the site at 1,400 acres and $20 billion, phasing in 2028-2032 against a system peak near 16 GW. PSC staff had 30 days from filing, expiring Aug. 14; Georgia Power granted 12 more, to Aug. 26, after staff director Tom Bond signaled an objection. Commissioner Peter Hubbard's worry is load diversity: nothing backfills \"three cities' of Atlanta worth of power customers\" if it ends early. NRDC, Sierra Club and SACE note the agreement is redacted in its entirety as trade secret, and want load commitments, ramp schedule, exit provisions, collateral and infrastructure costs unsealed. SACE reads it as requiring only two years of minimum bills on early termination, and notes that adding 3.2 GW cuts residential customers' share of plant costs from roughly 50% to 42% while the cost base grows, since new plants run about twice the cost of old ones.",
+            "fab_angle": "The 1,000 MW demand-response pledge is the sharpest line between an AI campus and a fab as grid customers. Training load can be throttled or time-shifted for hours; a fab's furnaces, pumps, abatement and cleanroom air handling cannot, so a fab buys firm capacity at full price and has no flexibility to trade back to the utility. Expect large-load tariffs written around curtailable compute to price fabs worse per megawatt than the data centers they supply.",
+            "confidence": "confirmed",
+            "sources": [
+              {
+                "title": "Georgia Power to Serve OpenAI Project in Effingham County",
+                "url": "https://www.georgiapower.com/news-hub/press-releases/georgia-power-to-serve-openai-project-in-effingham-county.html",
+                "publisher": "Georgia Power",
+                "date": "2026-07-22"
+              },
+              {
+                "title": "Georgia Power cedes more time for state regulators to review OpenAI contract",
+                "url": "https://www.gpb.org/news/2026/08/14/georgia-power-cedes-more-time-for-state-regulators-review-openai-contract-for-huge",
+                "publisher": "Georgia Public Broadcasting",
+                "date": "2026-08-14"
+              },
+              {
+                "title": "Will the new OpenAI data center raise Georgia Power bills?",
+                "url": "https://cleanenergy.org/news/will-the-new-openai-data-center-raise-georgia-power-bills/",
+                "publisher": "Southern Alliance for Clean Energy",
+                "date": "2026-08-17"
+              },
+              {
+                "title": "Transparency, Accountability Needed In OpenAI Contract With Georgia Power",
+                "url": "https://cleantechnica.com/2026/08/13/transparency-accountability-needed-in-open-ai-contract-with-georgia-power/",
+                "publisher": "CleanTechnica",
+                "date": "2026-08-13"
+              },
+              {
+                "title": "Georgia PSC Extends Review of Hyperscale Data Center Contract",
+                "url": "https://www.rtoinsider.com/139454-georgia-psc-extends-review-hyperscale-data-center-contract/",
+                "publisher": "RTO Insider",
+                "date": "2026-08-17"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-amat-cleanroom-constraint",
+            "title": "Applied Materials says cleanroom space, not cash, now gates chip capacity",
+            "dek": "The world's largest chipmaking-equipment company reported record quarterly revenue of $9.12 billion on August 13 and said its customers' limit on adding capacity is no longer money for tools but the square footage of cleanroom — the filtered, vibration-isolated space where wafers are processed — they can physically bring online.",
+            "why_it_matters": "If floor area is the scarce input, then the pacing item for AI chip supply moves from fab budgets to concrete, HVAC and utility hookups, and tool vendors start competing on wafers processed per square foot rather than only on process capability. Applied is already selling that as a product feature and charging for it: Semiconductor Systems gross margin hit 55.4%.",
+            "deeper_md": "Q3 FY2026 (quarter ended July 26): revenue $9.115B, +25% YoY; Semiconductor Systems $7.0B, +27%; non-GAAP gross margin 50.4%, operating margin 34%, non-GAAP EPS $3.50. DRAM — which Applied counts together with HBM packaging — grew 52% YoY. Q4 guidance is $10.25B ±$500M. Management's framing: leading-edge foundry-logic, DRAM and advanced packaging together make up roughly **80% of wafer-fab-equipment growth** in 2026 and 2027; packaging revenue should grow **>70%** in CY2026, process diagnostics and control **>50%**, services **>20%**. The floor-space thesis shows up in hardware — a new DRAM epitaxy system that uses 20% less cleanroom area, plus Opta Quad CMP that trims total thickness variation in real time for hybrid bonding, Nokota VMax 2 electroplating with field shaping for TSV fill and microbumps, Avila 2 PECVD depositing stress-balanced dielectric around TSVs for 12- and 16-high HBM, and VeritySEM 7AP eBeam CD metrology claiming sub-10 nm sensitivity on warped, heterogeneous packages. Caveat: the 80%, 70% and 50% figures are Applied's own forward-looking estimates in prepared remarks, not audited results.",
+            "fab_angle": "Two things a cleanroom operator can take from this. First, tool footprint is becoming a specification, not an afterthought — output per square foot is the metric being optimized, which is exactly the arithmetic a shared university bay lives under. Second, the packaging tool list is a map of where process control is hardest right now: hybrid bonding needs total-thickness-variation control tight enough that CMP has to close the loop in situ, and CD metrology on a warped, mixed-material package is hard enough that Applied is pushing eBeam into a job optical tools used to own.",
+            "confidence": "confirmed",
+            "sources": [
+              {
+                "title": "Q3 Fiscal 2026 Earnings Call — Prepared Remarks (PDF)",
+                "url": "https://ir.appliedmaterials.com/static-files/e9985149-77c2-4cf3-aaad-a579178cbfe4",
+                "publisher": "Applied Materials",
+                "date": "2026-08-13"
+              },
+              {
+                "title": "Form 8-K, Exhibit 99.1: Applied Materials Announces Third Quarter 2026 Results",
+                "url": "https://www.sec.gov/Archives/edgar/data/6951/000162828026056699/exhibit991q32026earningsre.htm",
+                "publisher": "U.S. Securities and Exchange Commission / Applied Materials",
+                "date": "2026-08-13"
+              }
+            ]
+          },
+          {
+            "id": "chips-purdue-m3d-ald-oxide",
+            "title": "Purdue stacks three tiers of ALD oxide transistors on one 200 mm wafer",
+            "dek": "A Purdue-led group built three vertically stacked layers of transistors on a single 200 mm silicon wafer using atomic layer deposition — a technique that grows films roughly one atomic layer per cycle — at about 225 °C, cool enough to be done on top of finished copper wiring instead of alongside it.",
+            "why_it_matters": "Monolithic 3D has mostly been single-device demos; this is a yield-and-uniformity dataset at wafer scale, which is the argument foundries actually respond to. If transistors can be added in the back-end wiring stack, you buy density without a new lithography generation and without bonding two wafers together — but only for devices that tolerate 5 µm channels and n-type-only logic.",
+            "deeper_md": "The stack: Tier 1 ferroelectric HfZrO₂ FETs, Tier 2 enhancement-mode InOₓ FETs, Tier 3 depletion-mode InOₓ FETs, separated by 17 nm isolation dielectric — over 100,000 devices across 52 dies. Best single-tier numbers: subthreshold swing 70 mV/dec, on/off ratio above ten decades, average field-effect mobility 91.6 cm²V⁻¹s⁻¹ after a 300 °C oxygen anneal. The sharpest process result is that threshold-voltage spread tracks film thickness: σV_th = 0.04 V at 1.8 nm InOₓ versus 0.18 V at 3.5 nm, attributed to across-wafer thickness fluctuation. Tier 2 averaged V_th 0.09 V (σ 0.11 V), µ 63.5; Tier 3 averaged V_th −1.18 V (σ 0.07 V), µ 82.0; Tier 1 memory window 2.18 V (σ 0.24 V). Caveats worth stating plainly: channel length is 5 µm, mobility is well under silicon's, there is no p-type oxide device so the cross-tier inverter is a zero-V_gs-load ratioed NMOS stage (23 V/V gain at V_DD = 3 V, with static current), and the four-tier computing-in-memory accelerator claiming 1.4–2.9× speedup is simulation from a custom PDK. arXiv preprint, not yet peer reviewed.",
+            "fab_angle": "The BEOL thermal budget is the whole constraint — everything has to stay under ~400 °C or the copper and low-k below it degrade, which is why ALD InOₓ at ~225 °C is interesting and why epitaxial III-V or Ge channels are not. The uniformity result is the transferable lesson: at 1.8 nm the transistor's threshold voltage is essentially a readout of your deposition thickness map, so ellipsometry uniformity across the wafer becomes an electrical spec, not a film spec.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "200 mm Wafer-Scale Monolithic 3D Integration of Atomic Layer-Deposited Oxide Semiconductors (arXiv:2608.09508, submitted 10 Aug 2026)",
+                "url": "https://arxiv.org/abs/2608.09508",
+                "publisher": "arXiv (Purdue University et al.)",
+                "date": "2026-08-10"
+              },
+              {
+                "title": "Chip Industry Week In Review (research roundup flagging the Purdue M3D result)",
+                "url": "https://semiengineering.com/chip-industry-week-in-review-151/",
+                "publisher": "Semiconductor Engineering",
+                "date": "2026-08-14"
+              }
+            ]
+          },
+          {
+            "id": "chips-lam-experiment-capacity",
+            "title": "Lam bets $3B that experiment throughput limits process development",
+            "dek": "Lam Research said on August 13 it will spend more than $3 billion over five years enlarging its worldwide network of research labs, raising the number of process experiments it can run — currently more than a million a year — by over 50%.",
+            "why_it_matters": "This is a claim about where the bottleneck sits: not whether an etcher or deposition chamber can be built to do something, but how many design-of-experiment splits fit between a customer's pathfinding start and its ramp date. A day after the lab announcement Lam also agreed to put its virtual-fabrication software into Northeast universities, which changes who can practice process integration without owning a cleanroom.",
+            "deeper_md": "Scale check against a primary filing: Lam's FY2026 R&D expense (fiscal year ended 28 June 2026, Form 10-K filed 7 Aug 2026) was $2.376B, up from $2.096B in FY2025 — so roughly $600M/year of added lab infrastructure sits on top of a ~$2.4B/year R&D run rate. The network is described as three tiers: foundational labs for chemistries, materials and mechatronics that Lam says compress weeks of experimental work into days; process-development labs where engineering, product and manufacturing teams share the same tools; and technology centers sited near customers for qualification. The headline efficiency claim — process development shortened *up to* 2.5× in recent customer engagements — is unverified and unbounded, and \"one million experiments annually\" is never defined (wafers? splits? chamber-hours?), so treat both as marketing units. The separate 12 August agreement with NY Creates deploys SEMulator3D, a physics-based virtual process model of etch, deposition and lithography, to roughly 3,500 students over five years across the National Network for Microelectronics Education Northeast node.",
+            "fab_angle": "The honest version of the university deal is that physical wafers, tool time and materials are the reason most schools cannot teach process integration, and a virtual flow removes that cost while removing the failure modes too — you learn layer ordering, selectivity and topography interactions, not contamination, drift or a misloaded cassette. Still, the underlying arithmetic is the one a club cleanroom lives by: with a single etcher, the schedule is set by experiments per week, not by what any one experiment can resolve. NY Creates operates the Albany NanoTech 300 mm complex, so the curriculum is worth watching even from Minnesota.",
+            "confidence": "confirmed",
+            "sources": [
+              {
+                "title": "Lam Research Announces Plans to Invest More than $3B to Expand Global Lab Network, Increase Innovation Velocity in the AI Era",
+                "url": "https://newsroom.lamresearch.com/2026-08-13-Lam-Research-Announces-Plans-to-Invest-More-than-3B-to-Expand-Global-Lab-Network,-Increase-Innovation-Velocity-in-the-AI-Era",
+                "publisher": "Lam Research",
+                "date": "2026-08-13"
+              },
+              {
+                "title": "Lam Research and NY Creates Team Up to Enable Training of University Students for the Semiconductor Workforce",
+                "url": "https://newsroom.lamresearch.com/2026-08-12-Lam-Research-and-NY-Creates-Team-Up-to-Enable-Training-of-University-Students-for-the-Semiconductor-Workforce",
+                "publisher": "Lam Research / NY Creates",
+                "date": "2026-08-12"
+              },
+              {
+                "title": "Lam Research R&D expense, XBRL company concept (as reported in FY2026 Form 10-K, filed 2026-08-07)",
+                "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000707549/us-gaap/ResearchAndDevelopmentExpense.json",
+                "publisher": "U.S. Securities and Exchange Commission",
+                "date": "2026-08-07"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "infrastructure",
+        "items": [
+          {
+            "id": "infra-meta-100k-gpu-fabric",
+            "title": "Meta publishes the network stack behind a 129,000-GPU training cluster",
+            "dek": "At the SIGCOMM networking conference in Denver on August 19, Meta detailed the Ethernet fabric and communication software that make roughly 129,000 H100 GPUs spread across five datacenter buildings behave as one training job, using RoCE (RDMA over Converged Ethernet, which lets one machine write directly into another machine's memory without going through its CPU).",
+            "why_it_matters": "Once a cluster outgrows a single building, the network stops being plumbing and becomes the thing you design around: Meta had to rebuild job startup, memory accounting and flow control just to keep the GPUs fed. It is the most detailed public account yet of the problems the announced million-GPU sites will hit, and it says the fixes are software and topology, not more bandwidth.",
+            "deeper_md": "The cluster is one region, five buildings, ~129K H100s on Grand Teton hosts (8 GPUs per node, 8 RDMA NICs, 1:1 GPU-to-NIC at 400 Gbps). A multi-stage Clos runs rack switches to zone switches to a fully meshed aggregation layer; an AI Zone is up to 288 racks x 16 GPUs (~4K GPUs), a building ~32K. Cross-zone oversubscription was cut from 1:7 to 1:2.8. Latency scales 1x in-rack, 7x cross-rack, 15x cross-zone, 30x cross-building, so one congestion-control setting cannot serve all paths. Their CCLX library cuts startup 11x (eager process-group creation, O(N) topology discovery) and halves communication memory; stock libraries burned ~10 GB of HBM, 12.5% of an 80 GB H100. Dynamic Queue Pair Load Balancing sizes segments and queue-pair count to each path's bandwidth-delay product (64 KB segments, 2 QPs in-rack, 4 cross-rack, 64 cross-datacenter), giving ~72-90% lower peak switch buffering and +13% bus bandwidth on 8 MB AllGather. Notably they rejected DCQCN as untunable. Caveat: Meta says full-cluster production A/B tests are financially impossible, so most gains are benchmark-measured, and their CPU emulation (96K ranks on 12K servers) models control plane only.",
+            "fab_angle": "Two hard links to silicon. First, HBM is the budget everything competes for: a communication library that idles 10 GB of an 80 GB stack is directly trading network buffers against model parameters, which is why per-package memory capacity gates cluster design as much as FLOPS. Second, the 1:1 GPU-to-NIC ratio at 400 Gbps means every accelerator ships with its own high-SerDes network die; at the next rate that link budget is what pushes optics from a pluggable module toward the package.",
+            "confidence": "confirmed",
+            "sources": [
+              {
+                "title": "Connecting 100K+ GPUs: Building the Communication Stack for Large-Scale LLM Training",
+                "url": "http://minlanyu.seas.harvard.edu/writeup/sigcomm26.pdf",
+                "publisher": "Meta / ACM SIGCOMM '26",
+                "date": "2026-08-19"
+              },
+              {
+                "title": "ACM SIGCOMM 2026 program overview (Experience Session 1: AI Datacenter Networks & Communication)",
+                "url": "https://conferences.sigcomm.org/sigcomm/2026/program/overview/",
+                "publisher": "ACM SIGCOMM",
+                "date": "2026-08-12"
+              },
+              {
+                "title": "Collective Communication for 100k+ GPUs (preprint)",
+                "url": "https://arxiv.org/abs/2510.20171",
+                "publisher": "arXiv",
+                "date": "2025-10-23"
+              }
+            ]
+          },
+          {
+            "id": "infra-nvidia-residual-value-guaranty-ports",
+            "title": "Nvidia's $105B Ohio commitment is a lease guaranty, not a loan",
+            "dek": "Nvidia's SEC filing on August 17 shows that the widely reported \"$105 billion of financing\" for an OpenAI datacenter campus in Pike County, Ohio is actually a residual value guaranty: Nvidia promises to cover the shortfall if OpenAI stops paying rent and the buildings have to be re-let or sold.",
+            "why_it_matters": "This is how the buildout is being paid for: lenders who would not underwrite OpenAI directly will underwrite Nvidia's balance sheet, so Nvidia's credit standing, not the tenant's, sets the cost of capital for gigawatts of AI capacity. The exposure is contingent and off-balance-sheet, which means the headline number tells you almost nothing about how much cash actually moves or when.",
+            "deeper_md": "The Form 8-K (items 1.01, 2.03, 7.01) covers leases for ~4.25 GW of IT load at the PORTS Technology Campus, with an option Nvidia may exercise at its sole discretion for ~3.8 GW more. Aggregate payment obligation is capped cumulatively at $105B — about $24.7B per IT-gigawatt of guaranteed lease value, spread over 20-year leases. Each guaranty takes effect only when its lease commences and lessor SB Energy meets ready-for-service conditions, expected from 2028. A trigger event is OpenAI insolvency or non-payment; Nvidia then pays the gap between the guaranteed minimum lease value and what a replacement lease or sale recovers, and may assume the lease, force a re-let, start a sale, terminate, or defer for a year while paying project costs. The guaranty dies early if OpenAI achieves a satisfactory credit rating, and OpenAI indemnifies Nvidia for anything paid. Caveats: the agreement text stays private until the 10-Q for the quarter ended July 26, 2026, and the scope shrank — CNBC reported talks of a $250B backstop for 10 GW, the WSJ reported a cut to under $120B. Critics read the structure, alongside the $500B+ financing platforms Nvidia announced with six asset managers on August 10, as circular financing.",
+            "confidence": "confirmed",
+            "sources": [
+              {
+                "title": "NVIDIA Corporation Form 8-K, August 17, 2026 (Residual Value Guaranties, PORTS Technology Campus)",
+                "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000069/nvda-20260817.htm",
+                "publisher": "U.S. Securities and Exchange Commission / EDGAR",
+                "date": "2026-08-17"
+              },
+              {
+                "title": "NVIDIA Guarantees SB Energy's PORTS-Pike Technology Campus in Ohio to Exclusively Host NVIDIA AI Compute",
+                "url": "https://nvidianews.nvidia.com/news/nvidia-guarantees-sb-energy-s-ports-pike-technology-campus-in-ohio-to-exclusively-host-nvidia-ai-compute",
+                "publisher": "NVIDIA Newsroom",
+                "date": "2026-08-17"
+              },
+              {
+                "title": "Nvidia backing $105 billion in financing for OpenAI data center in Ohio",
+                "url": "https://www.cnbc.com/2026/08/17/nvidia-financing-open-ai-data-center-ohio.html",
+                "publisher": "CNBC",
+                "date": "2026-08-17"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-statem-harness-scaling",
+            "title": "The scaffolding, not the model, moved Terminal-Bench 2.1",
+            "dek": "A paper posted August 15 reports 95.3% on Terminal-Bench 2.1 — a benchmark where an AI agent must actually finish jobs in a Linux terminal — by rewriting the wrapper program that manages the model's memory and checks its steps, while leaving the model's weights completely untouched.",
+            "why_it_matters": "If a wrapper can move a score by ten-plus points, a leaderboard number describes a model-plus-harness pair, not a model, and cross-lab comparisons are meaningless unless the harness is held fixed. The same trick reportedly cut the cost of a top run from $574.68 to about $15, which says capability is currently being left on the table by software, not silicon.",
+            "deeper_md": "StateM (arXiv 2608.15089, Qin, Lu, Wang and Wang) is an \"agent-native runtime\": execution is organized into explicit phases with durable state, phase-local context, transition gates that must pass a checklist/command/predicate/LLM review before the agent advances, and versioned \"runbooks\" it can recover into after a failure. Reported results on the 89-task benchmark, 445 trials: GPT-5.5 xhigh 83.1% → 92.1%; GPT-5.6 Sol xhigh 95.28% raw (424/445); DeepSeek-V4-Flash 82.7% → 88.1%, with about $38 of profile adaptation. Runbooks transfer between model versions unmodified. Read this skeptically: the 95.28% is the authors' own pre-adjudication public submission, and StateM does not appear on the official tbench.ai leaderboard, whose verified top entry is 83.8% (Claude Code + Fable 5). Artificial Analysis, running the standard Terminus 2 harness in an e2b sandbox at pass@1 over three repeats, puts GPT-5.6 Sol at 89.5%. The authors are explicit that these are system-level results, not claims about a new base model, and they released source snapshots, trial trajectories and SHA-256 checksums under Apache 2.0 so the claim is at least checkable.",
+            "confidence": "confirmed",
+            "sources": [
+              {
+                "title": "StateM: Reaching 95.3% Raw Accuracy, or a $15 Frontier Run, on Terminal-Bench 2.1 via Harness Scaling",
+                "url": "https://arxiv.org/abs/2608.15089",
+                "publisher": "arXiv",
+                "date": "2026-08-15"
+              },
+              {
+                "title": "henryqin1997/statem — code, reproduction kit and policy-v9 artifacts",
+                "url": "https://github.com/henryqin1997/statem",
+                "publisher": "GitHub",
+                "date": "2026-08-18"
+              },
+              {
+                "title": "Terminal-Bench 2.1 leaderboard",
+                "url": "https://www.tbench.ai/leaderboard/terminal-bench/2.1",
+                "publisher": "Terminal-Bench",
+                "date": "2026-08-20"
+              },
+              {
+                "title": "Terminal-Bench v2.1 benchmark methodology and scores",
+                "url": "https://artificialanalysis.ai/evaluations/terminalbench-v2-1",
+                "publisher": "Artificial Analysis",
+                "date": "2026-08-20"
+              }
+            ]
+          },
+          {
+            "id": "models-qwen38-27b-hybrid-attention",
+            "title": "Qwen ships a 27B open model that is mostly linear attention",
+            "dek": "Alibaba released Qwen3.8-27B under Apache 2.0 on August 14: three out of every four of its 64 layers use gated DeltaNet linear attention, which carries a fixed-size running summary of the conversation instead of storing a key-value entry for every past token, so most of the model's per-user memory stops growing as the context gets longer.",
+            "why_it_matters": "The key-value cache is what decides how many simultaneous users fit on one accelerator at long context, so an architecture that freezes the cache in 48 of 64 layers changes the economics of long-context serving more than any leaderboard delta would. It also shipped with open weights, so the memory claim is something anyone with a GPU can go measure rather than take on faith.",
+            "deeper_md": "The Hugging Face card gives the layout precisely: 27.78B dense parameters, hidden dimension 5,120, FFN intermediate 17,408, and 64 layers arranged as 16 repeats of `3 x (Gated DeltaNet -> FFN) -> 1 x (Gated Attention -> FFN)`. The DeltaNet blocks use 48 linear-attention value heads and 16 QK heads at 128 dim; the full-attention blocks use 24 query and 4 KV heads at 256 dim with 64-dim rotary embeddings. It is a native vision-language model (images and hour-scale video), trained with multi-token prediction over multiple steps, native 262,144-token context, extensible toward ~1M with YaRN. Vendor-reported evals: SWE-bench Pro 61.7, GPQA Diamond 89.2, OSWorld-Verified 84.3, OmniDocBench 91.1 — all run by Alibaba, on benchmarks old enough that contamination cannot be ruled out. Two caveats worth carrying: independent testing found badly degraded output in low-resource languages (Telugu, Malayalam, Balochi, Khmer, Sindhi), and the widely repeated \"runs in 24 GB\" line refers to quantized short-context use — one hands-on test measured just over 74 GB with vLLM and KV cache enabled on an 80 GB A100.",
+            "fab_angle": "Hybrid linear attention is the clearest current example of an architecture change that redirects hardware demand. A conventional 27B model's KV cache grows linearly with context, so long-context inference is bound by HBM capacity and bandwidth; replacing it with a constant-size recurrent state in 48 of 64 layers pushes the bottleneck back toward compute and toward the state-update path, and leaves the remaining 16 full-attention layers as the memory hot spot. Whether next-generation inference parts need another HBM stack or more on-die SRAM depends on which of these layouts the field standardizes on, and open weights under Apache 2.0 mean the profiling can be done outside the labs.",
+            "confidence": "confirmed",
+            "sources": [
+              {
+                "title": "Qwen/Qwen3.8-27B model card",
+                "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+                "publisher": "Hugging Face",
+                "date": "2026-08-14"
+              },
+              {
+                "title": "Qwen3.8-27B Explained: Hybrid Attention, 262K Context, New Benchmarks",
+                "url": "https://www.mindstudio.ai/blog/qwen3-8-27b-architecture-benchmarks",
+                "publisher": "MindStudio",
+                "date": "2026-08-15"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "applications",
+        "items": [
+          {
+            "id": "applications-ai-placers-wrong-objective",
+            "title": "AI chip placers were optimizing a number that doesn't predict the chip",
+            "dek": "Software that decides where blocks go on a chip has long been trained to minimize estimated wire length, and an ICCAD 2026 paper posted this week shows that number barely predicts whether the finished chip meets its speed target — so the authors retrained the objective on data taken after routing instead.",
+            "why_it_matters": "The headline results of the AI-placement literature were scored on a proxy, and when a benchmark runs the full flow all the way to a routed chip the ranking flips against the AI tools. The fix here is about where the training labels come from, not about a cleverer network — the more transferable lesson for anyone pointing ML at a multi-stage design or process flow.",
+            "deeper_md": "ChiPBench previously ran AI placers through a complete RTL-to-layout flow and found that dominating the intermediate metric did not produce good final PPA. PPAPlace (Ruogu Chen and Jie Han, arXiv 13 Aug, accepted at ICCAD 2026) reports near-zero correlation between half-perimeter wirelength (HPWL) and post-route worst/total negative slack (WNS/TNS), and says all six AI placers ChiPBench evaluated degraded PPA versus a hierarchical baseline. A label-fidelity study over ten circuits at four flow stages found post-global-routing is the cheapest stage whose labels rank placements faithfully. Their surrogate is a dual-stream network — graph attention over the netlist plus spatial convolution over the placement grid — trained on ~5,000 post-global-route-labeled placements, with gradients flowing back to cell coordinates. Used inside DREAMPlace's loop (CoOpt) or as projected-gradient macro refinement (Refine), it improves average WNS 22% and TNS 51% on five held-out ChiPBench circuits with no per-circuit retraining, holding power and routability. Caveats: five test circuits, an open-source flow (DREAMPlace + OpenROAD), author-reported, no silicon.",
+            "fab_angle": "The reusable part for a club running an open-source flow is the labeling pipeline, not the model: they release code plus a 5,000-placement labeled dataset built on OpenROAD and ChiPBench, and the claim is that stopping at global route — rather than full detailed route — gets you labels faithful enough to train on at a fraction of the runtime. That trade, cheap-but-faithful supervision from a late-enough flow stage, is exactly the question you face building any ML model on top of a fab or design flow where the ground truth is expensive.",
+            "confidence": "confirmed",
+            "sources": [
+              {
+                "title": "PPAPlace: Differentiable Cross-Stage Objectives for Chip Placement Optimization",
+                "url": "https://arxiv.org/abs/2608.13790",
+                "publisher": "arXiv (accepted, ICCAD 2026)",
+                "date": "2026-08-13"
+              },
+              {
+                "title": "ValleyC/PPAPlace — official implementation, training scripts and labeled placement dataset",
+                "url": "https://github.com/ValleyC/PPAPlace",
+                "publisher": "GitHub",
+                "date": "2026"
+              },
+              {
+                "title": "Benchmarking End-To-End Performance of AI-Based Chip Placement Algorithms (ChiPBench)",
+                "url": "https://arxiv.org/abs/2407.15026",
+                "publisher": "arXiv",
+                "date": "2024-12-06"
+              }
+            ]
+          },
+          {
+            "id": "applications-analog-eda-simulation-budget",
+            "title": "Analog design automation takes aim at the SPICE bill, not the model",
+            "dek": "Three papers posted the same day go after analog chip design — the hand-crafted circuits like amplifiers and voltage references that never got automated the way digital logic did — by cutting how many slow SPICE circuit simulations each design iteration costs, rather than by building a smarter model.",
+            "why_it_matters": "Simulator time, not algorithm quality, is what has kept analog automation out of reach for anyone without a compute cluster. If a usable amplifier takes tens of simulations instead of thousands, the tooling fits on one workstation and an open PDK, which changes who can attempt custom analog at all.",
+            "deeper_md": "AaLLM (Habib, Hart, Fayazi) does topology generation and sizing end-to-end with a Designer/Critic/Evaluator agent triad plus retrieval over papers and textbooks; it reports 3-4.5x fewer SPICE calls than prior multi-agent LLM pipelines, a 40x wall-clock reduction, and generated topologies reaching up to 3x higher figure of merit than known designs. An ICLAD 2026 paper (Liu, Wei, Gao, Pan) targets post-layout parameter tuning with an act-observe-reflect loop over compact structured layout representations, claiming better post-layout performance than both the generator's default heuristics and Bayesian optimization at tens rather than hundreds-to-thousands of simulations. TTARO (Amin, Dutta, Franzon) drops the LLM entirely and instead adapts the circuit embedding during the search, jointly fitting a nonlinear feature map and a Gaussian-process surrogate after every evaluation: 15.2% lower regret AUC than plain GP-BO and 20.7% lower than deep kernel learning across 40 settings, up to 46.7% in the best case. All three are author-reported, on self-chosen baselines, with no shared benchmark and no fabricated silicon.",
+            "fab_angle": "Analog is the part of full-stack codesign you cannot get from a synthesis script — bandgap references, sense amplifiers, PLLs and drive electronics all still get sized by hand. These methods are simulator-agnostic wrappers around a SPICE call, so in principle they run against ngspice or Xyce on an open PDK. The honest read is that they are demonstrated on textbook-scale blocks, and the deciding question for anyone trying them is whether the reported simulation-count savings survive on a circuit whose corners actually matter.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "AaLLM: End-to-End Analog Circuit Design Framework from Topology Generation to Sizing",
+                "url": "https://arxiv.org/abs/2608.13472",
+                "publisher": "arXiv",
+                "date": "2026-08-13"
+              },
+              {
+                "title": "Simulation-Aware In-Context Policy Improvement for LLM-Aided Analog Layout Refinement",
+                "url": "https://arxiv.org/abs/2608.13767",
+                "publisher": "arXiv (Proc. ICLAD 2026)",
+                "date": "2026-08-13"
+              },
+              {
+                "title": "Finding the Needle in a Haystack: Test-Time Analog Circuit Representation Adaptation for Bayesian Optimization",
+                "url": "https://arxiv.org/abs/2608.12687",
+                "publisher": "arXiv",
+                "date": "2026-08-13"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "Chemical mechanical planarization",
+    "slug": "cmp",
+    "subtitle": "How you make a wafer flat enough to print on, by deliberately abrading it with a slurry of particles.",
+    "tldr": "Every layer you add to a chip makes its surface bumpier, and a lithography lens can only hold a razor-thin slice of height in focus at once. CMP fixes this by pressing the wafer face-down onto a spinning polyurethane pad flooded with a slurry of chemicals and hard nanoparticles: the chemistry weakens the top of the surface, and the mechanics rub away only the parts sticking up. It is the reason chips have a dozen stacked wiring levels instead of three, and it is now the gating step for bonding whole wafers together.",
+    "sections": [
+      {
+        "heading": "Why flatness is the whole game",
+        "body_md": "A projection lithography tool does not focus onto a plane. It focuses into a thin slab, and Rayleigh's criterion says how thin: **DOF ≈ k₂·λ/NA²**, where λ is the wavelength, NA is the numerical aperture of the lens, and k₂ is a process-dependent number smaller than 1.\n\nNotice that NA is squared. Every time you buy resolution by opening up the lens, you pay for it twice over in focus budget. For an EUV scanner at 0.33 NA, λ/NA² is about 124 nm; for the 0.55 NA high-NA tools it is about 45 nm, and imec's simulations put the practical loss at a factor of two to three.\n\nNow stack a chip. Deposit oxide over transistors and the oxide copies their topography. Deposit metal over that and it copies again, and thins where it crosses a step. Before CMP, that compounding hill-and-valley problem capped production chips at three or four wiring levels. Anything printed on a surface that wanders further than the focus budget simply does not print.",
+        "deeper_md": "Mack's derivation is worth doing once by hand. Treat defocus by a distance δ as a wavefront error: the optical path difference across the exit pupil is `OPD = δ(1 − cosθ)`. Taylor-expand and keep the first term for small angles: `OPD ≈ ½·δ·sin²θ`. Set the tolerable OPD to a fraction of a quarter-wave, `OPD_max = k₂·λ/4` with k₂ < 1 (at exactly λ/4 the 0th and 1st diffraction orders are 90° out of phase and no image forms at all), evaluate at the resolution limit where sinθ = NA, and you get `DOF = 2δ_max = k₂·λ/NA²`.\n\nThe small-angle step is the part that fails at modern NA. The exact form is `DOF = (k₂/4)·λ/sin²(θ/2)`, and with immersion fluid of index n the OPD picks up a factor n — which is precisely why 193i bought back depth of focus by at least the fluid index (n = 1.46 for water at 193 nm, per Mack's worked example).\n\nBudget arithmetic: (0.55/0.33)² = 2.78, matching imec's \"factor of 2–3.\" And k₂ is well under 1 in production, so the real slab is a fraction of those λ/NA² figures — shared with wafer flatness, chuck non-flatness, scanner focus control, and resist thickness. Post-CMP topography has to be a small slice of an already small number."
+      },
+      {
+        "heading": "The machine: a pad, a slurry, and a lot of rubbing",
+        "body_md": "The hardware is almost rudely simple. A **carrier head** holds the wafer face-down against a rotating **platen** covered in a porous polyurethane **pad**. A **retaining ring** keeps the wafer from escaping; a compliant backing film behind it evens out pressure. Slurry drips onto the pad and is dragged into the contact zone by the grooves cut into the pad surface. Both the head and the platen spin, so every point on the wafer sweeps a long path across the pad.\n\nThe pad is not smooth. Its working surface is a field of microscopic **asperities**, and only those asperity tips actually touch the wafer — the real contact area is far smaller than the wafer's area, which concentrates pressure onto the high points of the topography. Asperities glaze over and stop cutting, so a rotating **diamond conditioning disk** sweeps the pad continuously, tearing the surface back open. Without conditioning, removal rate decays run to run.",
+        "deeper_md": "Real numbers from an academic tool (MIT/Bell Labs, IPEC/Planar 372, 6-inch wafers, Klebosol PL1501 colloidal-silica slurry, IC1000/Suba IV and IC1400 pads): down force swept 0.1–4 psi, table 10–40 rpm, carrier 14–25 rpm, blanket PETEOS removal rate 1,000–3,500 Å/min. Cornell's CNF gives a practical window of 4–10 psi on their Strasbaugh 6EC — below ~4 psi the wafer hydroplanes on the slurry film, above ~10 psi you crack it — plus 0–2 psi of back pressure through the carrier plate to trim radial uniformity. Advanced-node copper runs far gentler than either, precisely to limit dishing.\n\n**Preston's equation** (F. W. Preston, *J. Soc. Glass Technol.* 11, 247, 1927) is the whole first-order model:\n\n    dz/dt = −k_p · p · v\n\nRemoval rate is proportional to pressure times relative velocity, with everything else buried in the Preston coefficient k_p. Relative velocity comes from both rotations; for a table spinning at twice the carrier rate with a 170 mm average offset, center-to-edge velocity varies only 1.2% on a 6-inch and 2.2% on an 8-inch wafer — so velocity is *not* the main source of within-wafer non-uniformity. Edge effects on local pressure are.\n\nWhere it breaks: Maury et al. found blanket oxide fits `dz/dt = −(k_p·pv + R₀)` better, with R₀ ≈ 300–1,000 Å/min. Below pv ≈ 50 psi·m/min the process is Prestonian with a steep slope; above it, high down force and table speed squeeze slurry out of the interface, polish efficiency drops, and the line acquires an intercept. Tseng and Wang's nonlinear form `MRR = K_p·P^(5/6)·V^(1/2)` fits better still. None of these know anything about consumables — that is the honest limitation of every Prestonian model."
+      },
+      {
+        "heading": "The chemistry: why grinding with rocks makes things flatter",
+        "body_md": "Pure mechanical grinding would follow the surface, not flatten it — and it would tear the film apart. Pure chemical etching removes material everywhere equally, so a bump stays a bump. CMP works because the two are staged against each other.\n\nThe slurry does four jobs with four ingredients. An **oxidizer** (hydrogen peroxide, typically) converts the top few atomic layers of metal into a soft oxide or hydroxide. A **complexing agent** (glycine, citric acid) grabs those metal ions and carries them away into solution. A **corrosion inhibitor** (benzotriazole, universally called BTA) forms a protective film that shuts the reaction *off* wherever the surface is not being rubbed. And **abrasive particles** — colloidal silica, ceria, or alumina — ride on the pad asperities and scrub the passivating film off the high points only.\n\nThat inhibitor is the trick. Without it you get etching; with it you get planarization, because only contacted regions react.",
+        "deeper_md": "The canonical cycle is **passivation → mechanical removal → repassivation**, and it applies to tungsten, copper, and cobalt alike. Deshpande, Kuiry, Klimov and Obeng (*J. Electrochem. Soc.* 151, G788, 2004) worked the copper case explicitly: 5% H₂O₂ at pH 2 with 0.1 M glycine gives high removal via Cu–glycine complexation, and adding 0.01 M BTA suppresses dissolution by growing a Cu–BTA surface complex.\n\nGlycine and BTA are genuinely in tension — glycine wants copper in solution, BTA wants it locked in a film — and the ratio is the main planarization knob. Yan et al. (*ECS J. Solid State Sci. Technol.* 6, P1, 2016) measured exactly this trade-off as **step-height reduction efficiency** in a peroxide-based weakly alkaline slurry. Too much inhibitor and removal stalls; too little and the recessed copper etches while you polish the raised copper, which is dishing by another route.\n\nSecond-order chemistry that matters: pH sets the zeta potential of the abrasive and therefore whether particles agglomerate (agglomerates are scratches) or stick to the wafer (agglomerates are defects); water plasticizes the polyurethane pad and lowers its modulus, changing the contact mechanics; and slurry chemicals attack the abrasive itself, altering size and shape mid-process."
+      },
+      {
+        "heading": "Everything that goes wrong",
+        "body_md": "**Dishing**: in a damascene structure, the pad deforms down into a wide metal trench and polishes the metal below the surrounding dielectric. Wide lines dish worse than narrow ones, because the pad can sag further.\n\n**Erosion**: once features start recessing, the exposed dielectric corners polish faster than open field, so the whole dielectric thins in dense-pattern regions. More feature edges per unit area, more erosion.\n\nBoth are **pattern-density dependent**, which means CMP reaches back into layout: designers scatter electrically dead **dummy fill** shapes across sparse regions to equalize metal density. Your layout is partly determined by a polishing pad.\n\nThen the defects. Agglomerated slurry particles and pad debris cut **microscratches**. Abrasive left on the wafer becomes a killer defect, and once slurry dries it is nearly impossible to remove — so wafers go from the polisher to a brush cleaner still wet.",
+        "deeper_md": "**Pattern density modeling.** Stine's die-scale model replaces the blanket rate with a density-weighted one, `dz/dt = −K/ρ(x,y,z)`, where ρ is the fraction of \"up\" area inside a square window whose side is the pad's *planarization length*. Maury et al. showed this over-predicts the pattern effect, because the non-Prestonian constant R₀ does not scale with density; the corrected form is `z = z₀ − (R₀ + K/ρ₀)t` in the nonlinear regime.\n\nNote the practical consequence Cornell flags: patterned-wafer selectivity is always worse than the blanket-wafer number a slurry vendor quotes, because erosion is thinning the stop layer you were counting on. A 300:1 blanket poly:oxide selectivity is a marketing number.\n\n**Endpoint detection.** Three signals, in rough order of vintage:\n- *Motor current* — the coefficient of friction changes when you break through one layer into another, and the platen or spindle motor sees it. Basim (Intel) notes this works well for bulk Cu removal precisely because Cu:Ta selectivity is high.\n- *Optical* — a laser through a transparent window in the pad, reflecting off the wafer. Signal is flat during bulk metal removal, then drops sharply as dielectric is exposed. Excellent as a final trigger.\n- *Eddy current* — a coil under the pad drives an oscillating field into the metal film; amplitude and phase track thickness continuously. Applied Materials' US6966816B2 claims useful range roughly 2,000–20,000 Å depending on drive frequency, with phase responding more linearly than amplitude. AMAT combined optical and eddy in one head so bulk thinning and final clearing are both instrumented, and the head can adjust its zone pressures in real time.\n\n**Post-CMP clean**: PVA (polyvinyl alcohol) sponge brushes with dilute ammonium hydroxide. The ammonia raises the pH to flip the electrostatic sign between particle and wafer; plain DI rinsing removes almost nothing."
+      },
+      {
+        "heading": "Where CMP sits in the flow — and its new job",
+        "body_md": "CMP shows up at least a dozen times in a modern flow. **Shallow trench isolation**: etch trenches around the active areas, overfill with oxide, and polish back to a silicon nitride layer that acts as both a stop and armor for the silicon. **Tungsten plugs**: CVD tungsten fills the contact holes everywhere, and CMP removes it from the field, leaving only the plugs. **Copper damascene**: copper cannot be plasma-etched, so you etch the trench, overfill with plated copper, and polish it flush — CMP is not cleanup here, it *is* the patterning step. In dual damascene, one polish defines both a via level and a wire level at once.\n\nThe newest job is the hardest. In wafer-to-wafer **hybrid bonding**, two wafers are joined dielectric-to-dielectric and copper-to-copper with no bumps and no solder. The bond is made by the surfaces themselves, so CMP is the bond.",
+        "deeper_md": "Hybrid-bonding CMP specs, from G. Bahar Basim's Intel review to the NCCAVS CMP User Group (Sept 2023):\n\n- **SiCN dielectric roughness**: RMS down to **0.10 nm** — one angstrom. Roughness maps directly to bond strength, because it sets how much of the two surfaces actually closes the gap.\n- **Copper dishing**: deliberately dished, not flat, into a **1–5 nm** window paired with a ~400 °C anneal. Copper expands more than the dielectric (~1 nm per mm per 50 °C), so the anneal is supposed to close exactly the gap CMP left. Too little dishing and the expanding copper cracks the dielectric interface; too much and you get a void at the Cu–Cu bond.\n- **Process**: two-step polish. Bulk copper on platen 1 with motor-current endpoint, Ta barrier on platen 2 leaving the copper recessed. Sandia's sub-11 µm-pitch work reports Cu recess of 5–25 nm and pre-anneal Cu–Cu gaps of 9–47 nm — an order of magnitude of spread, which is the whole problem.\n- Standard AMAT and Ebara CMP platforms, different consumables.\n\nRead those numbers next to the depth-of-focus discussion. Lithography wants topography controlled to a fraction of ~100 nm; hybrid bonding wants roughness controlled to angstroms *and* dishing controlled to nanometers *and* particle counts near zero, across a full 300 mm wafer, on both wafers, or the stack does not bond. That is why CMP — not the bonder — is frequently the yield-limiting step in HBM and 3D logic stacking."
+      },
+      {
+        "heading": "The economics, and the mess",
+        "body_md": "CMP is a consumables business wearing a capital-equipment costume. The tool is bought once; the pads, slurries, conditioning disks, brushes, and ultrapure water are bought forever, and the supplier landscape is concentrated — DuPont holds more than half the pad market, and Fujifilm Electronic Materials about 31% of slurry. The raw abrasives (alumina, ceria, silica) trace back to a short list of countries, which makes this an unglamorous supply-chain chokepoint.\n\nDemand is also shifting. TECHCET put overall CMP consumables growth around 6% in 2024, but consumables for the new metals — cobalt, molybdenum, ruthenium — at roughly 94% growth over five years, as those replace copper and tungsten in the tightest interconnect layers.\n\nAnd the irony worth sitting with: CMP deliberately pours abrasive particulate onto a wafer inside the cleanest industrial environment humans build, then spends an entire second tool getting it back off.",
+        "deeper_md": "Every consumable in CMP is a variable cost that scales with wafer starts, which is why fabs obsess over pad life, slurry dilution, and slurry-blend-at-point-of-use rather than tool throughput alone. A conditioning disk trades removal-rate stability against pad wear rate; run it hard and your rate is stable but you replace pads more often.\n\nThe water and waste story is structural rather than incidental. The output of a CMP module is a large volume of dilute aqueous waste carrying nanoparticles, dissolved metal (copper, in the damascene case), oxidizer, and organics — a stream that needs treatment before discharge, unlike most fab waste. Post-CMP cleaning adds ultrapure-water demand on top.\n\nOne caution on the market numbers above: they are analyst estimates (TECHCET, via *Semiconductor Digest*, May 2024), not audited figures, and different houses size the CMP consumables market quite differently. Treat the *shape* — pads concentrated in one supplier, slurry led by one, sharp growth in Co/Mo/Ru chemistries — as the durable signal, not the decimal places."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Slurry",
+        "definition": "The polishing fluid: hard abrasive particles (colloidal silica, ceria, or alumina) suspended in a reactive chemistry, continuously pumped onto the pad. Material-specific — a copper slurry and an oxide slurry are different products."
+      },
+      {
+        "term": "Preston's equation",
+        "definition": "The first-order CMP model, dz/dt = −k_p·p·v: removal rate is proportional to down pressure times the wafer-pad relative velocity. Published by F. W. Preston in 1927 for polishing glass; still the reference every more sophisticated model is measured against."
+      },
+      {
+        "term": "Down force",
+        "definition": "The pressure the carrier head applies to press the wafer against the pad, quoted in psi or kPa. Too low and the wafer hydroplanes on the slurry film; too high and you crack it, squeeze the slurry out of the interface, or dish the soft metal."
+      },
+      {
+        "term": "Pad conditioning",
+        "definition": "Sweeping a diamond-embedded disk across the polishing pad, during or between wafers, to tear off the glazed surface and re-expose fresh asperities. Without it, removal rate decays run to run."
+      },
+      {
+        "term": "Dishing",
+        "definition": "In damascene, the recessing of an inlaid metal feature below the surrounding dielectric, because the pad deforms down into the trench. Worse for wide features, softer pads, and more chemically aggressive slurries."
+      },
+      {
+        "term": "Erosion",
+        "definition": "Thinning of the dielectric field around damascene features, caused by accelerated polishing at exposed feature edges. It scales with how many feature edges sit in a given area — i.e. with pattern density — and it is why blanket-wafer selectivity always overstates real selectivity."
+      },
+      {
+        "term": "Dummy fill",
+        "definition": "Electrically dead metal shapes inserted into sparse layout regions to equalize pattern density so CMP polishes evenly. A layout rule that exists purely because of a polishing pad."
+      },
+      {
+        "term": "Damascene / dual damascene",
+        "definition": "Patterning a metal by etching the shape into dielectric first, overfilling with metal, then polishing the excess away. It is how copper wiring is made, since copper cannot be plasma-etched. Dual damascene forms the via and the wire above it in one fill and one polish."
+      },
+      {
+        "term": "Endpoint detection",
+        "definition": "Knowing in situ when to stop polishing. Motor current senses the friction change at a layer transition; an optical beam through a window in the pad senses the reflectivity change when dielectric is exposed; an eddy-current coil tracks remaining metal thickness continuously."
+      },
+      {
+        "term": "Hybrid bonding",
+        "definition": "Joining two wafers or dies directly, dielectric-to-dielectric and copper-to-copper, with no solder or bumps. The bond is formed by the polished surfaces themselves, so it demands angstrom-scale roughness and nanometer-scale copper dishing — making CMP the enabling and limiting step."
+      }
+    ],
+    "try_this": "Two free PDFs and one measurement, all doable this week. **(1)** Read Chris Mack's two-page derivation of the Rayleigh depth of focus (lithoguru.com, February 2004) — then compute the DOF of the club's own stepper. Plug your objective's NA and source wavelength into k₂·λ/NA² with k₂ = 0.5: a 405 nm source at NA 0.15 gives roughly 9 µm, which is enormous compared to a scanner and is exactly why a homebuilt maskless tool can tolerate topography that would kill a production fab. Write that number on the wall; it is your planarity spec, and it tells you how much surface variation you are allowed to ignore. **(2)** Read the four-page Maury/Ouma/Boning/Chung paper on modifying Preston's equation (boning.mit.edu) — it is the shortest honest introduction to why removal rate is not just pressure times velocity. **(3)** The Minnesota Nano Center has no CMP tool, but it does have a P7 surface profiler in both the Keller and PAN cleanrooms and a Keyence VK-X3050 confocal profilometer in PAN Bay 4. Take any patterned sample the club has already processed, scan the step height over a dense region and over a sparse region, and compare the two. That difference is the pattern-density effect that CMP exists to erase — and, until you have a polisher, the number your stepper has to live with.",
+    "sources": [
+      {
+        "title": "The Lithography Expert: The Rayleigh Depth of Focus",
+        "url": "https://www.lithoguru.com/scientist/litho_tutor/Tutor44%20(Feb%2004).pdf",
+        "publisher": "Chris A. Mack, KLA-Tencor FINLE Division / Microlithography World",
+        "date": "2004-02"
+      },
+      {
+        "title": "A Modification to Preston's Equation and Impact on Pattern Density Effect Modeling",
+        "url": "https://boning.mit.edu/wp-content/uploads/2022/11/AdvMetal97.pdf",
+        "publisher": "A. Maury, D. Ouma, D. Boning, J. Chung — Bell Labs / MIT, Advanced Metallization Conference",
+        "date": "1997"
+      },
+      {
+        "title": "Chemical Mechanical Polishing (CMP) — a primer for new users",
+        "url": "https://www.cnfusers.cornell.edu/sites/default/files/Equipment-Resources/CMP%20Primer.pdf",
+        "publisher": "Dan Woodie, Cornell NanoScale Science & Technology Facility",
+        "date": "2007"
+      },
+      {
+        "title": "A Review on CMP Challenges in Hybrid Wafer Bonding and Wafer Level Packaging",
+        "url": "https://nccavs-usergroups.avs.org/wp-content/uploads/2023/09/JointUG923-5-BasimGB.pdf",
+        "publisher": "G. Bahar Basim, Intel — NCCAVS CMP User Group Joint Meeting",
+        "date": "2023-09-13"
+      },
+      {
+        "title": "Review of Chemical-Mechanical Planarization Modeling for Integrated Circuit Fabrication: From Particle Scale to Die and Wafer Scales",
+        "url": "https://escholarship.org/content/qt4ct2n4jh/qt4ct2n4jh_noSplash_4e2f0b7a6acaa18c35d8831dfe430830.pdf",
+        "publisher": "Jianfeng Luo, UC eScholarship (NSF / UC-SMART)",
+        "date": "2003"
+      },
+      {
+        "title": "Mechanically modeling chemical mechanical planarization from wafer to molecular scales: a review and discussion of future direction",
+        "url": "https://academic.oup.com/jom/article/doi/10.1093/jom/ufae055/7915492",
+        "publisher": "K.-T. Yeh & H.-Y. Tsai, Journal of Mechanics 40, 769–773 (open access)",
+        "date": "2024"
+      },
+      {
+        "title": "Chemical Mechanical Planarization of Copper: Role of Oxidants and Inhibitors",
+        "url": "https://iopscience.iop.org/article/10.1149/1.1806395",
+        "publisher": "S. Deshpande, S. C. Kuiry, M. Klimov, Y. Obeng — Journal of The Electrochemical Society 151, G788 (paywalled full text)",
+        "date": "2004"
+      },
+      {
+        "title": "Synergistic Effect of Glycine and BTA on Step Height Reduction Efficiency after Copper CMP in Weakly Alkaline Slurry",
+        "url": "https://iopscience.iop.org/article/10.1149/2.0291612jss",
+        "publisher": "C. Yan, Y. Liu, J. Zhang, C. Wang — ECS Journal of Solid State Science and Technology 6, P1 (paywalled full text)",
+        "date": "2016-12-02"
+      },
+      {
+        "title": "Integrated endpoint detection system with optical and eddy current monitoring (US 6,966,816 B2)",
+        "url": "https://patents.google.com/patent/US6966816B2/en",
+        "publisher": "Applied Materials Inc., US Patent and Trademark Office",
+        "date": "2005-11-22"
+      },
+      {
+        "title": "High-NA EUV lithography: the next major step in lithography",
+        "url": "https://www.imec-int.com/en/articles/high-na-euvl-next-major-step-lithography",
+        "publisher": "imec",
+        "date": "2024"
+      },
+      {
+        "title": "Semiconductor CMP Pad & Slurry Forecast",
+        "url": "https://www.semiconductor-digest.com/semiconductor-cmp-pad-slurry-forecast/",
+        "publisher": "TECHCET, via Semiconductor Digest",
+        "date": "2024-05-02"
+      },
+      {
+        "title": "Equipment in PAN cleanroom / Equipment in Keller cleanroom",
+        "url": "https://cse.umn.edu/mnc/equipment-pan",
+        "publisher": "Minnesota Nano Center, University of Minnesota",
+        "date": "2026"
+      }
+    ]
+  }
+}

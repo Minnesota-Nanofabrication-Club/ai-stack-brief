@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GopherFab Brief — Minnesota Nanofabrication Club</title>
+<meta name="description" content="A daily ten-minute briefing from the Minnesota Nanofabrication Club: the five-layer AI stack in five minutes, plus five minutes of fab technology worth knowing.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fbfaf7'/%3E%3Crect x='5' y='23' width='22' height='4' fill='%2396610f'/%3E%3Crect x='5' y='18' width='22' height='4' fill='%237a0019'/%3E%3Crect x='5' y='13' width='22' height='4' fill='%231f5f86'/%3E%3Crect x='5' y='8' width='22' height='4' fill='%23524193'/%3E%3Crect x='5' y='3' width='22' height='4' fill='%231f6349'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="./style.css">
+<script>
+  /* Set the stored theme before first paint so the page never flashes the wrong palette. */
+  (function () {
+    var r = document.documentElement;
+    r.classList.remove('no-js');
+    try {
+      var t = localStorage.getItem('gfb.theme');
+      if (t === 'light' || t === 'dark') r.setAttribute('data-theme', t);
+    } catch (e) { /* storage blocked; system preference still applies */ }
+  })();
+</script>
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progress-bar"></div></div>
+
+<a class="skip-link" href="#main">Skip to the brief</a>
+
+<header class="masthead">
+  <div class="masthead__inner">
+    <div class="masthead__brand">
+      <p class="brand__owner">Minnesota Nanofabrication Club</p>
+      <h1 class="brand__name"><a href="#" id="brand-home">GopherFab&nbsp;Brief</a></h1>
+      <p class="brand__format">The five-layer AI stack in five minutes, plus five minutes of fab tech worth knowing.</p>
+    </div>
+
+    <nav class="masthead__controls" aria-label="Reader controls">
+      <div class="editionnav" role="group" aria-label="Move between editions">
+        <button type="button" class="btn btn--icon" id="btn-older" title="Older edition (left arrow)">
+          <span class="btn__glyph" aria-hidden="true">&larr;</span><span class="btn__text">Older</span>
+        </button>
+        <button type="button" class="btn btn--icon" id="btn-newer" title="Newer edition (right arrow)">
+          <span class="btn__text">Newer</span><span class="btn__glyph" aria-hidden="true">&rarr;</span>
+        </button>
+      </div>
+      <button type="button" class="btn" id="btn-expand" aria-pressed="false">Expand all</button>
+      <button type="button" class="btn" id="btn-theme" aria-label="Colour theme: follow system">Theme<span class="btn__state" id="theme-state">System</span></button>
+      <button type="button" class="btn" id="btn-archive" aria-expanded="false" aria-controls="archive">Archive</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+  <!-- Boot / failure / staleness messages land here. -->
+  <div id="notice" class="notice" role="status" aria-live="polite">
+    <p class="notice__body">Loading the latest edition&hellip;</p>
+  </div>
+
+  <article id="edition" class="edition" hidden>
+
+    <header class="edition__head">
+      <p class="edition__meta">
+        <time id="edition-date" class="edition__date"></time>
+        <span class="edition__window" id="edition-window"></span>
+        <span class="edition__readtime" id="edition-readtime"></span>
+      </p>
+      <h2 class="edition__headline" id="edition-headline"></h2>
+    </header>
+
+    <nav class="cake" id="cake" aria-label="Jump to a layer of the stack">
+      <p class="cake__caption">The cake, top layer first — energy at the base.</p>
+      <ol class="cake__stack" id="cake-stack"></ol>
+    </nav>
+
+    <section class="half" id="pulse" aria-labelledby="pulse-title">
+      <header class="half__head">
+        <p class="half__kicker">Part one</p>
+        <h2 class="half__title" id="pulse-title">The Pulse</h2>
+        <p class="half__sub">What actually happened, bottom of the stack to the top. <span class="half__time" id="pulse-time"></span></p>
+      </header>
+      <div id="pulse-layers"></div>
+    </section>
+
+    <section class="half" id="foundations" aria-labelledby="foundations-title">
+      <header class="half__head">
+        <p class="half__kicker">Part two</p>
+        <h2 class="half__title" id="foundations-title">Foundations</h2>
+        <p class="half__sub">One piece of existing technology, explained properly. <span class="half__time" id="foundations-time"></span></p>
+      </header>
+      <div id="foundations-body"></div>
+    </section>
+
+    <footer class="edition__foot">
+      <p id="edition-generated"></p>
+    </footer>
+  </article>
+</main>
+
+<div class="scrim" id="scrim" hidden></div>
+
+<aside class="archive" id="archive" aria-labelledby="archive-title" aria-hidden="true" hidden>
+  <div class="archive__head">
+    <h2 class="archive__title" id="archive-title">Archive</h2>
+    <button type="button" class="btn btn--icon archive__close" id="btn-archive-close" aria-label="Close the archive">
+      <span class="btn__glyph" aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="archive__filter">
+    <label class="archive__label" for="archive-search">Filter editions</label>
+    <input type="search" id="archive-search" class="archive__input" autocomplete="off"
+           placeholder="date, headline, or foundations topic">
+    <p class="archive__hint" id="archive-count">Matches headlines and foundations topics in the index — full item text loads with an edition.</p>
+  </div>
+  <ol class="archive__list" id="archive-list"></ol>
+</aside>
+
+<footer class="colophon">
+  <p><strong>GopherFab Brief</strong> — Minnesota Nanofabrication Club, University of Minnesota.
+  One edition a day, ten minutes to read. Every claim traces to a source in its list.</p>
+</footer>
+
+<script src="./app.js"></script>
+</body>
+</html>

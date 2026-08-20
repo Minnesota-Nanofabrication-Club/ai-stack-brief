@@ -1,0 +1,323 @@
+# Produces one edition per day: runs the research agent against
+# research/DAILY_BRIEF.md, validates the result, regenerates the index, commits.
+#
+# IMPORTANT: the workflow name below is load-bearing and must stay byte-identical.
+# `.github/workflows/discord.yml` keys off it with
+#   on: workflow_run: workflows: ["Daily brief"]
+# and that match is exact and case-sensitive. Renaming this workflow silently stops
+# the Discord post — nothing errors, the message just never arrives. Don't rename it
+# without changing discord.yml in the same commit.
+name: Daily brief
+
+on:
+  schedule:
+    # GitHub cron is always UTC and does NOT shift for US daylight saving.
+    # 12:00 UTC lands at:
+    #   07:00 America/Chicago during CDT (UTC-5, roughly mid-March to early November)
+    #   06:00 America/Chicago during CST (UTC-6, roughly early November to mid-March)
+    # So the brief is on the club's phones by 7am Central year round — an hour early
+    # in the winter, on time in the summer. GitHub also queues scheduled runs during
+    # peak load, so treat the delivery time as "7am-ish", not a guarantee.
+    - cron: "0 12 * * *"
+
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Edition date to write, YYYY-MM-DD. Leave blank for today in America/Chicago. Use this to backfill a missed day."
+        required: false
+        type: string
+
+# Minimum that actually works:
+#   contents: write  -> commit and push briefs/YYYY-MM-DD.json + briefs/index.json
+#   issues:   write  -> open / comment / close the failure-tracking issue
+#   id-token: write  -> OIDC, used by the Claude action's auth
+permissions:
+  contents: write
+  issues: write
+  id-token: write
+
+# Never let a backfill and the nightly cron write the repo at the same time.
+# cancel-in-progress is false on purpose: a half-finished run that already
+# committed is worse than a queued one.
+concurrency:
+  group: daily-brief
+  cancel-in-progress: false
+
+jobs:
+  brief:
+    name: Research and commit today's edition
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    outputs:
+      date: ${{ steps.plan.outputs.date }}
+      committed: ${{ steps.commit.outputs.committed }}
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Work out which date we are writing
+        id: plan
+        env:
+          # Via env, never inlined into the script: a workflow_dispatch input is
+          # attacker-controllable text and must not be pasted into a shell command.
+          INPUT_DATE: ${{ inputs.date }}
+        run: |
+          set -euo pipefail
+          DATE="${INPUT_DATE:-}"
+          if [ -z "$DATE" ]; then
+            DATE="$(TZ=America/Chicago date +%F)"
+            echo "No date given; using today in America/Chicago: $DATE"
+          else
+            echo "Date given by hand: $DATE"
+          fi
+          if ! printf '%s' "$DATE" | grep -Eq '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'; then
+            echo "::error::date input '$DATE' is not YYYY-MM-DD"
+            exit 1
+          fi
+          if ! date -d "$DATE" >/dev/null 2>&1; then
+            echo "::error::date input '$DATE' is not a real calendar date"
+            exit 1
+          fi
+          WINDOW_START="$(date -d "$DATE - 7 days" +%F)"
+          {
+            echo "date=$DATE"
+            echo "window=${WINDOW_START}..${DATE}"
+            echo "file=briefs/${DATE}.json"
+          } >> "$GITHUB_OUTPUT"
+          if [ -f "briefs/${DATE}.json" ]; then
+            echo "::warning::briefs/${DATE}.json already exists and will be rewritten."
+          fi
+
+      - name: Sanity-check the repo before spending any tokens
+        run: |
+          set -euo pipefail
+          for f in SPEC.md research/DAILY_BRIEF.md scripts/validate_brief.py scripts/build_index.py; do
+            if [ ! -f "$f" ]; then
+              echo "::error::$f is missing — the daily run cannot proceed without it."
+              exit 1
+            fi
+          done
+          python3 --version
+          python3 -m py_compile scripts/validate_brief.py scripts/build_index.py
+
+      # https://code.claude.com/docs/en/github-actions
+      # v1 replaced the old per-tool inputs (allowed_tools, direct_prompt, mode,
+      # max_turns, model) with `prompt` + `claude_args`, which passes Claude Code
+      # CLI flags straight through. `@beta` is deprecated; `@v1` is current.
+      - name: Research and write the edition
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            You are producing today's edition of the GopherFab AI Stack Brief.
+
+            Read `SPEC.md` first — it is the data contract and it wins over
+            anything else. Then read `research/DAILY_BRIEF.md`, which is the
+            master prompt for this run, and follow it exactly. It will point you
+            at `research/SOURCES.md`, `research/QUALITY.md`, and
+            `research/FOUNDATIONS_BACKLOG.md`. Read those too.
+
+            Parameters for this run:
+              edition date : ${{ steps.plan.outputs.date }}
+              news window  : ${{ steps.plan.outputs.window }}
+              output file  : ${{ steps.plan.outputs.file }}
+
+            Hard requirements, on top of whatever DAILY_BRIEF.md says:
+              * Write exactly one file: ${{ steps.plan.outputs.file }}.
+                Do not create, edit, or delete any other file in the repo.
+                In particular do NOT touch briefs/index.json — CI regenerates it.
+              * `date` must equal ${{ steps.plan.outputs.date }} and match the filename.
+              * Every URL in `sources` must be one you actually fetched in this run.
+                Never write a URL you have not opened. Never invent a number.
+              * Every item needs at least one primary or specialist-technical
+                source (SPEC non-negotiable rule 3) — the paper, the filing, the
+                transcript, the standard, the whitepaper, the teardown. Trade
+                press is for finding the story, not for citing it.
+              * At least one item in the `chips` layer. Omit any layer with
+                nothing genuinely newsworthy rather than padding it.
+
+            When the JSON is written, check your own work before finishing:
+
+                python3 scripts/validate_brief.py --strict ${{ steps.plan.outputs.file }}
+
+            Fix everything it reports and re-run it until it exits clean. The
+            workflow runs the same command straight after you and fails the build
+            if it is not clean, so there is no benefit to stopping early.
+          claude_args: |
+            --model claude-opus-5
+            --allowedTools "WebSearch,WebFetch,Read,Write,Edit,Glob,Grep,Bash(python3 scripts/validate_brief.py:*)"
+            --max-turns 150
+
+      - name: Validate the new edition (strict)
+        env:
+          BRIEF_FILE: ${{ steps.plan.outputs.file }}
+        run: |
+          set -euo pipefail
+          if [ ! -f "$BRIEF_FILE" ]; then
+            echo "::error::the agent did not create $BRIEF_FILE — nothing to publish."
+            exit 1
+          fi
+          echo "::group::validate $BRIEF_FILE"
+          python3 scripts/validate_brief.py --strict "$BRIEF_FILE"
+          echo "::endgroup::"
+
+      - name: Check the agent did not touch tracked files outside its remit
+        env:
+          BRIEF_FILE: ${{ steps.plan.outputs.file }}
+        run: |
+          set -euo pipefail
+          # Tracked files only — the action may leave harmless untracked scratch
+          # behind, and the commit step below only stages explicit paths anyway.
+          UNEXPECTED="$(git diff --name-only HEAD -- . ':(exclude)briefs/**' || true)"
+          if [ -n "$UNEXPECTED" ]; then
+            echo "::error::the agent modified tracked files outside briefs/:"
+            printf '  %s\n' $UNEXPECTED
+            echo "Refusing to publish. Review the run, then revert those files."
+            exit 1
+          fi
+          STRAY="$(git status --porcelain -- briefs/ | awk '{print $NF}' | grep -v "^${BRIEF_FILE}$" | grep -v '^briefs/index.json$' || true)"
+          if [ -n "$STRAY" ]; then
+            echo "::warning::unexpected changes inside briefs/ (they will NOT be committed):"
+            printf '  %s\n' $STRAY
+          fi
+
+      - name: Rebuild briefs/index.json
+        run: |
+          set -euo pipefail
+          echo "::group::build index"
+          python3 scripts/build_index.py
+          echo "::endgroup::"
+          python3 scripts/build_index.py --check
+
+      - name: Validate the whole archive
+        run: python3 scripts/validate_brief.py briefs/
+
+      - name: Commit and push
+        id: commit
+        env:
+          DATE: ${{ steps.plan.outputs.date }}
+          BRIEF_FILE: ${{ steps.plan.outputs.file }}
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Explicit paths only, so nothing the agent left lying around rides along.
+          git add -- "$BRIEF_FILE" briefs/index.json
+          if git diff --cached --quiet; then
+            echo "committed=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::nothing changed — no commit made."
+            exit 0
+          fi
+
+          HEADLINE="$(python3 -c "import json,os,sys; print(json.load(open(os.environ['BRIEF_FILE']))['headline'])")"
+          ITEMS="$(python3 -c "import json,os; d=json.load(open(os.environ['BRIEF_FILE'])); print(sum(len(l['items']) for l in d['pulse']['layers']))")"
+          TOPIC="$(python3 -c "import json,os; print(json.load(open(os.environ['BRIEF_FILE']))['foundations']['topic'])")"
+
+          git commit \
+            -m "brief: $DATE" \
+            -m "$HEADLINE" \
+            -m "$ITEMS Pulse items. Foundations: $TOPIC." \
+            -m "Generated by .github/workflows/daily-brief.yml (run $GITHUB_RUN_ID)."
+
+          # The scheduled run and a hand-triggered backfill can collide, and a
+          # human may have pushed while the agent was researching. Rebase and retry.
+          for attempt in 1 2 3; do
+            if git push; then
+              echo "committed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "push failed (attempt $attempt) — rebasing on origin and retrying"
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+          done
+          echo "::error::could not push after 3 attempts."
+          exit 1
+
+      - name: Job summary
+        if: always()
+        env:
+          DATE: ${{ steps.plan.outputs.date }}
+          COMMITTED: ${{ steps.commit.outputs.committed }}
+        run: |
+          {
+            echo "## Daily brief — ${DATE:-unknown date}"
+            echo
+            echo "* status: ${{ job.status }}"
+            echo "* committed: ${COMMITTED:-no}"
+            echo "* site: https://minnesota-nanofabrication-club.github.io/ai-stack-brief/"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # A silent cron failure is how the sibling repo went stale for weeks without
+      # anyone noticing. Make failure loud: one tracking issue, commented on daily
+      # until someone fixes it, closed automatically when a run succeeds again.
+      - name: Open or update the failure issue
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DATE: ${{ steps.plan.outputs.date }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          LABEL="daily-brief-failure"
+          gh label create "$LABEL" \
+            --color "b60205" \
+            --description "The daily brief cron job failed" 2>/dev/null || true
+
+          EXISTING="$(gh issue list --state open --label "$LABEL" --limit 1 --json number --jq '.[0].number // empty')"
+
+          BODY="$(printf '%s\n' \
+            "The \`Daily brief\` workflow failed for **${DATE:-unknown date}**." \
+            "" \
+            "* Failed run: ${RUN_URL}" \
+            "* Trigger: \`${GITHUB_EVENT_NAME}\`" \
+            "" \
+            "No edition was published for that day. Check the run log, fix the cause, then" \
+            "backfill by hand: **Actions -> Daily brief -> Run workflow**, and set the date" \
+            "input to \`${DATE:-YYYY-MM-DD}\`." \
+            "" \
+            "This issue closes itself the next time a run succeeds.")"
+
+          if [ -n "$EXISTING" ]; then
+            echo "Commenting on existing issue #$EXISTING"
+            gh issue comment "$EXISTING" --body "$BODY"
+          else
+            echo "Opening a new failure issue"
+            gh issue create \
+              --title "Daily brief is failing (since ${DATE:-unknown date})" \
+              --label "$LABEL" \
+              --body "$BODY"
+          fi
+
+      - name: Close the failure issue after a good run
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DATE: ${{ steps.plan.outputs.date }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          LABEL="daily-brief-failure"
+          for n in $(gh issue list --state open --label "$LABEL" --json number --jq '.[].number'); do
+            echo "Closing recovered failure issue #$n"
+            gh issue close "$n" \
+              --comment "Recovered: the ${DATE} run succeeded (${RUN_URL}). Closing." \
+              --reason completed
+          done
+
+  # A push made with the built-in GITHUB_TOKEN does NOT start another workflow, so
+  # the commit above will never fire pages.yml's `on: push`. Call the deploy
+  # directly instead. (GitHub docs, "Trigger a workflow": events triggered by the
+  # GITHUB_TOKEN will not create a new workflow run, with a narrow set of
+  # exceptions that `push` is not one of.)
+  deploy:
+    name: Publish to GitHub Pages
+    needs: brief
+    if: needs.brief.outputs.committed == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/pages.yml

@@ -1,0 +1,79 @@
+# Schema + index freshness check.
+#
+# Runs on every PR and every push to main. Catches:
+#   * a brief that violates SPEC.md
+#   * a hand-edited or stale briefs/index.json (build_index.py --check)
+#   * a syntax error in the scripts themselves
+name: Validate
+
+on:
+  pull_request:
+  push:
+    # See the note in pages.yml — `main` and `master` are both listed until the
+    # repo's default branch is settled.
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Schema and index
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v5
+
+      # The scripts are standard library only, so the runner's system python3 is
+      # all they need. Nothing to install.
+      - name: Show the Python version
+        run: python3 --version
+
+      - name: Compile the scripts
+        run: python3 -m py_compile scripts/validate_brief.py scripts/build_index.py scripts/serve.py
+
+      - name: Validate every brief against SPEC.md
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          briefs=()
+          for f in briefs/*.json; do
+            [ "$(basename "$f")" = "index.json" ] && continue
+            briefs+=("$f")
+          done
+          if [ "${#briefs[@]}" -eq 0 ]; then
+            echo "No editions in briefs/ yet — nothing to validate."
+            exit 0
+          fi
+          echo "Validating ${#briefs[@]} edition(s)."
+          python3 scripts/validate_brief.py "${briefs[@]}"
+
+      - name: Check briefs/index.json is in sync
+        run: |
+          set -euo pipefail
+          if [ ! -f briefs/index.json ]; then
+            echo "::warning::briefs/index.json does not exist yet — skipping the freshness check."
+            exit 0
+          fi
+          python3 scripts/build_index.py --check
+
+      - name: Check the deploy tree can be composed
+        run: |
+          set -euo pipefail
+          if [ ! -f site/index.html ]; then
+            echo "::warning::site/index.html does not exist yet — skipping."
+            exit 0
+          fi
+          rm -rf _site
+          cp -R site _site
+          mkdir -p _site/briefs
+          cp briefs/*.json _site/briefs/ 2>/dev/null || true
+          test -f _site/index.html
+          echo "OK"

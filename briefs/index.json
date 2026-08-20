@@ -1,0 +1,20 @@
+{
+  "editions": [
+    {
+      "date": "2026-08-20",
+      "foundations_slug": "cmp",
+      "foundations_topic": "Chemical mechanical planarization",
+      "headline": "The week's biggest numbers shrank on inspection: Applied Materials says cleanroom floor space, not capital, now gates chip capacity, and Nvidia's $105 billion for Ohio turns out to be a lease guaranty rather than financing.",
+      "item_count": 11,
+      "layers": [
+        "energy",
+        "chips",
+        "infrastructure",
+        "models",
+        "applications"
+      ]
+    }
+  ],
+  "generated_at": "2026-08-20T07:22:36Z",
+  "latest": "2026-08-20"
+}

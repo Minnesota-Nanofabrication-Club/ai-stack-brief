@@ -110,7 +110,12 @@ jobs:
       - name: Research and write the edition
         uses: anthropics/claude-code-action@v1
         with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Prefer the subscription token: it bills against the Max plan the club
+          # already pays for, rather than per-token API credit. Pin the precedence
+          # here rather than leaving it to the action's own resolution, so a change
+          # in that resolution cannot silently move the club onto metered billing.
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          anthropic_api_key: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' && '' || secrets.ANTHROPIC_API_KEY }}
           prompt: |
             You are producing today's edition of the GopherFab AI Stack Brief.
 

@@ -86,14 +86,20 @@ cannot judge the first one until you have seen the last.
 
 These are minimums, not targets. A run that comes in under them has not been done.
 
+You are not in a hurry. This job runs overnight, unattended, with a five-hour budget,
+and nobody is waiting on the output before morning. Depth is the whole point: read the
+paper rather than the abstract, open the second and third source rather than trusting
+the first, and follow the citation when a result rests on it. A run that wraps up in
+under ninety minutes has almost certainly skimmed.
+
 | | Minimum |
 | --- | --- |
-| Distinct web searches across the run | **30** |
-| — of those, on `chips` | **10** |
-| — of those, on each other layer | **4** each |
-| Documents actually fetched and read | **25** |
-| — of those, primary or specialist-technical (paper, filing, standard, transcript, proceeding, patent, dataset, vendor technical doc) | **12** |
-| Fetched sources behind each **published** item | **2** |
+| Distinct web searches across the run | **60** |
+| — of those, on `chips` | **18** |
+| — of those, on each other layer | **8** each |
+| Documents actually fetched and read | **50** |
+| — of those, primary or specialist-technical (paper, filing, standard, transcript, proceeding, patent, dataset, vendor technical doc) | **25** |
+| Fetched sources behind each **published** item | **3** |
 | — of those, primary or specialist-technical | **1** |
 
 A "search" means a distinct query, not the same query reworded. Vary the shape: entity

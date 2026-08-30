@@ -238,10 +238,31 @@ jobs:
         env:
           DATE: ${{ steps.plan.outputs.date }}
           BRIEF_FILE: ${{ steps.plan.outputs.file }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Re-establish push credentials from scratch rather than trusting the
+          # ones actions/checkout persisted at the top of the job.
+          #
+          # This bit the project for real: on run 33299751774 the agent researched
+          # a full valid edition, every citation resolved, every check passed — and
+          # then the push failed three times with "Invalid username or token.
+          # Password authentication is not supported for Git operations", losing
+          # 37 minutes of work. checkout HAD set http.<host>.extraheader correctly;
+          # something in the half hour of agent execution in between left a
+          # conflicting credential behind, and git preferred it.
+          #
+          # So do not depend on state that survived an untrusted agent step. Clear
+          # any credential config and point the remote at an explicitly tokenised
+          # URL. GITHUB_TOKEN is masked in logs, and it is scoped to this repo and
+          # expires with the job.
+          git config --local --unset-all http.https://github.com/.extraheader 2>/dev/null || true
+          git config --local --unset-all credential.helper 2>/dev/null || true
+          git remote set-url origin \
+            "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
           # Explicit paths only, so nothing the agent left lying around rides along.
           git add -- "$BRIEF_FILE" briefs/index.json

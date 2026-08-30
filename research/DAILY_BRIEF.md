@@ -186,7 +186,7 @@ the sources a general "semiconductor news" query never surfaces.
 
 Maintain a scratch list as you go: candidate story, layer, the primary document you found
 (or "none yet"), the independent corroboration, a one-line why-it-matters, and a
-provisional confidence. You will have 25–40 candidates and publish 7–13. The log is what
+provisional confidence. You will have 25–40 candidates and publish 4–8. The log is what
 lets you compare them honestly instead of publishing whatever you found first.
 
 ---
@@ -299,22 +299,47 @@ a lot of real semiconductor news. Use them, cite the original URL, and note in
 
 ## 4. Selection — what earns a slot
 
-You have 25–40 candidates and 7–13 slots (`SPEC.md`). Selection is most of the job.
+You have 25–40 candidates and 4–8 slots (`SPEC.md`). Selection is most of the job.
 
-### The three tests
+### The gate, then the tests
 
-1. **Consequence over novelty.** Not "is this new?" but "does a reader who skips this
-   become worse informed about something that still matters in six months?" A quiet,
-   under-covered supply agreement that determines who gets 2 nm capacity beats a loud
-   product launch that changes nothing.
-2. **Mechanism over announcement.** Prefer items where you can explain *how* the thing
-   works or *why* it follows. If the only content is that an entity said a thing, it is
-   press-release relay. `SPEC.md` rule 3: "X announced Y" with no consequence is not an
-   item.
+**The gate: does the reader finish knowing a mechanism they did not know before?**
+
+Not "is this important", not "is this new", not "will this move the industry". A physical
+constraint with its number. A device structure and why that structure. A process step and
+what it costs. An algorithm and its complexity. A tradeoff with quantities on both sides.
+
+An item that fails this is cut, however big the event. If nothing in the window passes, the
+edition is short. A short edition of real technical substance is the product working; a full
+one padded with things that merely happened is the product failing, and the reader cannot
+tell the difference from the outside — which is why the gate is yours to hold.
+
+Worked from the 2026-08-30 edition, both of which were selected under the old tests:
+
+- ✅ **"A GaN superjunction built from polarization instead of doping."** The mechanism is
+  the story: polarization charge substituting for dopants, and what that does to the field
+  distribution and the on-resistance/breakdown tradeoff. A reader finishes it understanding
+  a device.
+- ❌ **"NRC lets excavation walls go up before the reactor permit exists."** Correctly
+  sourced to the Federal Register, genuinely consequential, and it contains no technology
+  whatsoever. It is construction permitting. It should not have been in the edition.
+
+### The three tests, after the gate
+
+1. **Mechanism over announcement.** An announcement is admissible only when the
+   announcement *is* the mechanism. "Samsung moves the HBM base die onto a 4 nm logic
+   process" earns its slot because the node change is the substance — what a logic process
+   buys a base die in transistor budget and what it costs in thermal headroom under a
+   stack. "Vendor ships product" does not, whoever the vendor is.
+2. **Depth over reach.** One item explained to the point where a reader could argue with it
+   beats three summarised. You are not covering the field; you are teaching a handful of
+   things properly and pointing at the documents that teach them better.
 3. **The `why_it_matters` test.** Cover the `dek` with your hand and read `why_it_matters`
-   alone. If it only makes sense as an echo of the `dek`, **kill the item.** Do not rescue
-   it with better adjectives. This is `SPEC.md` rule 3 and it is the most common failure
-   mode — apply it ruthlessly. See the worked example in `QUALITY.md` Example 2.
+   alone. If it only makes sense as an echo of the `dek`, **kill the item.** If it reads as
+   industry significance — who is ahead, what the market does, that something is a
+   milestone — the item has failed the gate and dressing it up will not rescue it. That
+   field takes a *technical* consequence: what is now built differently, behaves
+   differently, or is constrained differently.
 
 ### The finance rule — a financial document is a source, never a subject
 
@@ -380,17 +405,19 @@ the item about the thing being built.
 
 ### Layer allocation
 
-Per `SPEC.md`: **7–13 items**, and **at least one item across `silicon` and `chips`
+Per `SPEC.md`: **4–8 items**, and **at least one item across `silicon` and `chips`
 combined**. Those two are the home layers, and in practice they should carry the largest
 share of the edition between them. **A layer with nothing genuinely newsworthy is omitted
 entirely from the `layers` array — never padded.**
 
-Seven layers is more room, not an obligation to fill seven slots. The range went from 7–11
-to 7–13 because two more layers can legitimately produce two more good items — not so that
-every layer appears every day. A day with three strong `chips` items, two `silicon`, one
-`computing` and one `energy` is a better edition than eleven thin items spread evenly, and
-**four absent layers is a normal edition, not a failed one.** Typical good shape: 4–6
-across `silicon` + `chips`, 1–3 each elsewhere, two to four layers absent entirely.
+Seven layers is a vocabulary for sorting what you found, not a set of slots to fill. Most
+editions will use two or three of them. A day with three strong `silicon` items and one
+`chips` item is a better edition than eight thin ones spread evenly, and **five absent
+layers is a normal edition, not a failed one.**
+
+The ceiling came down from 13 to 8 deliberately. The brief points at the documents; the
+reader's understanding comes from opening them. Four items taught properly, each with a
+source worth an hour, beat a dozen summarised well enough that nobody clicks through.
 
 The failure mode to watch for with the new layers is the reverse of padding: `computing`
 and `silicon` are easy to leave empty every single day, because the sources are quieter and

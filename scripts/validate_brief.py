@@ -111,12 +111,22 @@ REQUIRED_SOURCE = ["title", "url", "publisher", "date"]
 # The item range used to be a hard 5-11 with a warning below SPEC's stated floor
 # of 7. That soft band is gone: SPEC's floor and the validator's floor are now the
 # same number, because with seven layers to cover, six items is not a quiet week,
-# it is an incomplete run. Padding is still the worse sin -- the fix for a
-# six-item day is to find a seventh story worth writing up, never to inflate a
-# layer that had nothing. If a genuinely dead week ever justifies fewer, that is a
-# conscious edit to SPEC.md and to this constant, not something CI waves through.
-MIN_ITEMS = 7
-MAX_ITEMS = 13
+# The floor is deliberately low. The gate an item must pass is that it teaches a
+# mechanism, and some windows simply do not produce eight of those -- a floor set
+# above what the world supplies is an instruction to pad, which is the failure this
+# whole spec exists to prevent. The ceiling is low for the opposite reason: the
+# brief points at documents rather than replacing them, and four items taught
+# properly beat a dozen summarised well enough that nobody clicks through.
+MIN_ITEMS = 4
+MAX_ITEMS = 8
+
+# Editions published before the range changed are checked against the range they
+# were written under. CI validates the whole archive on every run, so without this
+# a rule change would retroactively fail work that was correct when it shipped --
+# and the only ways out of that are rewriting history or weakening the new rule.
+COUNT_RULE_CHANGED_ON = "2026-08-31"
+LEGACY_MIN_ITEMS = 7
+LEGACY_MAX_ITEMS = 13
 MIN_SECTIONS = 3
 MIN_GLOSSARY = 4
 MIN_FOUNDATIONS_SOURCES = 3
@@ -822,17 +832,22 @@ def check_pulse(rep: Report, brief: dict, edition_date: str | None,
             "should carry the largest share of it)",
         )
 
-    # item count
-    if total_items < MIN_ITEMS:
+    # item count, against whichever range this edition was written under
+    if edition_date and str(edition_date) < COUNT_RULE_CHANGED_ON:
+        lo, hi = LEGACY_MIN_ITEMS, LEGACY_MAX_ITEMS
+    else:
+        lo, hi = MIN_ITEMS, MAX_ITEMS
+
+    if total_items < lo:
         rep.error(
             "pulse",
-            f"{total_items} Pulse items; minimum is {MIN_ITEMS}. Find another story "
-            "worth writing up — do not pad a layer that had nothing.",
+            f"{total_items} Pulse items; minimum is {lo}. Find another story "
+            "that teaches a mechanism — do not pad with something that merely happened.",
         )
-    elif total_items > MAX_ITEMS:
+    elif total_items > hi:
         rep.error(
             "pulse",
-            f"{total_items} Pulse items; maximum is {MAX_ITEMS}",
+            f"{total_items} Pulse items; maximum is {hi}",
         )
 
     # canonical layer order

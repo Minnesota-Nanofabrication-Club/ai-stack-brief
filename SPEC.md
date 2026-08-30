@@ -151,9 +151,9 @@ at `/briefs/`. The app therefore fetches **`./briefs/index.json`** and
             "id": "chips-tsmc-a14-risk",   // kebab-case, unique within the edition
             "title": "Short declarative headline, <= 80 chars",
             "dek": "One sentence a sophomore understands, jargon expanded inline.",
-            "why_it_matters": "1-2 sentences. Consequence, not restatement.",
-            "background_md": "Markdown. The standing context the news sits in: what this area is, what problem it exists to solve, why anyone cares. 50-110 words.",
-            "deeper_md": "Markdown. The dense tier: numbers, mechanism, caveats, who disputes it. 80-200 words.",
+            "why_it_matters": "1 sentence, 2 at most. A TECHNICAL consequence: what this changes about how something is built, behaves, or is constrained. Not industry significance, not market framing, not who is now ahead. If the honest answer is 'a company gains an advantage', the item fails rule 4.",
+            "background_md": "Markdown. The footing a reader needs before the item makes sense: what this area is and what problem it exists to solve. 40-70 words. Footing, not an essay — if it runs long the item is carrying explanation that belongs in deeper_md.",
+            "deeper_md": "Markdown. THE POINT OF THE ITEM: the mechanism, with numbers, units, and the caveat that would come up if an expert read it. 80-200 words. This is the field that has to teach; everything else exists to set it up. Do not spend it restating the dek at greater length.",
             "glossary": [ { "term": "V_th", "definition": "..." } ],   // 2-4 entries
             "fab_angle": "Optional. What this means for people who run/build fabs. Omit if forced.",
             "confidence": "confirmed",     // confirmed | reported | rumored
@@ -260,13 +260,13 @@ Vendor-reported numbers stay vendor-reported no matter how confident the vendor 
 covered, the item id takes an `-update` suffix (`chips-amat-cleanroom-constraint-update`)
 and the prose says explicitly what changed since the brief last said otherwise.
 
-**Sizing per edition.** 7-13 Pulse items total across the seven layers. **At least one
+**Sizing per edition.** 4-8 Pulse items total across the seven layers. **At least one
 item across `silicon` and `chips` combined** — either one satisfies it, and in a normal
-edition the two together carry the largest share. Seven layers need more room than five
-did, which is why the ceiling moved from 11 to 13; padding is still worse than a short
-edition, and a layer with nothing genuinely newsworthy is **omitted entirely**, never
-filled. Below seven items an edition is incomplete rather than quiet: find a seventh
-story worth writing up.
+edition the two together carry the largest share. The ceiling came down from 13 because
+the brief is a pointer, not a substitute: the reader's understanding comes from the papers
+and documents cited, and a shorter edition they finish beats a longer one they skim. Four
+well-taught items with sources worth opening is the target shape. A layer with nothing
+mechanistic is **omitted entirely**, never filled, and most editions will omit several.
 
 **Word budgets are separate and never pooled.** Each is measured on its own, because
 folding a new field into an existing budget turns a useful warning into one that fires
@@ -331,14 +331,49 @@ a claim about the product that is not true.
    on press releases and aggregators is upgraded or cut. The reader's stated goal is to
    learn the technical substance, so the citation list is part of the product, not
    decoration.
-4. **No filler.** "X announced Y" with no consequence is not an item. If `why_it_matters`
-   restates `dek`, cut the item.
-5. **No external runtime dependencies in `site/`.** No CDNs, no npm, no build step. Plain
+4. **Every item must teach how something works.** This is the selection gate, and it
+   comes before every other consideration including newsworthiness.
+
+   The test is not "did something happen" but **"does the reader finish knowing a
+   mechanism they did not know before"** — a physical constraint and the number attached
+   to it, a device structure, a process step, an algorithm, a tradeoff with quantities on
+   both sides. An event with no mechanism behind it is not an item, however large the
+   event.
+
+   Both of these were selected for the 2026-08-30 edition under the old rules, and the
+   difference is the whole point:
+
+   - ✅ *"A GaN superjunction built from polarization instead of doping"* — the mechanism
+     is in the title. The reader leaves knowing that polarization charge can substitute
+     for dopants and what that does to the field distribution.
+   - ❌ *"NRC lets excavation walls go up before the reactor permit exists"* — sourced to
+     the Federal Register, real consequence, entirely correct, and there is no technology
+     in it. It is permitting law. It should never have been selected.
+
+   An announcement is admissible only when the announcement **is** a mechanism. "Samsung
+   moves the HBM base die onto a 4 nm logic process" earns its slot because the node
+   change is the substance: what a logic process buys a base die, and what it costs in
+   power and thermal budget. "Vendor ships product" does not, no matter who the vendor is.
+
+   Apply this to layers too. A layer with nothing mechanistic that window is **omitted**,
+   not filled. `energy`, `infrastructure` and `applications` are the layers most likely to
+   offer policy, procurement and product news dressed as substance — hold them to the same
+   gate as `silicon`, and expect to drop them more often than not.
+
+5. **No filler, at the sentence level.** "X announced Y" with no consequence is not an
+   item. If `why_it_matters` restates `dek`, cut the item.
+
+   Every sentence must carry information the reader did not have. Navigational prose —
+   "the complete edition follows below", "read on for the details", "this section covers"
+   — is banned outright: the reader can see what follows, and telling them trains them to
+   skim. The same applies to significance-signalling that carries no fact: "this is a
+   major development", "the industry is watching closely", "this could reshape".
+6. **No external runtime dependencies in `site/`.** No CDNs, no npm, no build step. Plain
    HTML/CSS/JS that opens from a file server. System font stack only.
-6. **Dark and light both work.** Follow `prefers-color-scheme`, plus a manual toggle that
+7. **Dark and light both work.** Follow `prefers-color-scheme`, plus a manual toggle that
    persists in `localStorage`.
-7. **Mobile first.** Most members will read this on a phone between classes.
-8. **The club's own work is context, not content.** Per the club's Drive, which is the
+8. **Mobile first.** Most members will read this on a phone between classes.
+9. **The club's own work is context, not content.** Per the club's Drive, which is the
    source of truth for what MNF is doing: the program is to *"design, fabricate, and
    demonstrate a custom integrated circuit (IC) through a vertically integrated
    fabrication workflow"* — building the fab (maskless lithography stepper, sputterer,
@@ -352,7 +387,7 @@ a claim about the product that is not true.
    underlying design theory using textbooks, literature, and other materials, while
    designing and building the fab ourselves."* Theory paired with the thing being built.
    An edition that teaches nothing has failed even if every item is true.
-9. **A financial document is a source, never a subject.** Filings, earnings calls, capex
+10. **A financial document is a source, never a subject.** Filings, earnings calls, capex
    disclosures and procurement records are excellent primary evidence — rule 3 actively
    wants them, and the best item in the archive so far is a cleanroom floor-space
    constraint read out of an earnings call. But the item must be *about* a physical or

@@ -474,10 +474,8 @@ def render_header(brief: dict, site_url: str | None, threaded: bool) -> list[str
     if minutes:
         tail += f" About {minutes} minutes to read."
     lines.append(tail)
-    lines.append(
-        "The complete edition follows in this thread: every item in full, then Foundations."
-        if threaded else
-        "The complete edition follows below: every item in full, then Foundations.")
+    # No "the complete edition follows below" line. The edition is visibly below;
+    # saying so teaches the reader nothing and trains them to skim the header.
     if site_url:
         lines += ["", f"Also readable at {edition_url(site_url, date)}"]
 

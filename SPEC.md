@@ -346,6 +346,12 @@ a claim about the product that is not true.
    through it. Both halves are the club's work, so `fab_angle` and `try_this` may
    connect to either the process side or the design side. The brief is still about the
    world, not the club.
+
+   The club's method is worth stating because this brief exists to serve it: *"building
+   a deep understanding of the chip fabrication process by pairing the study of the
+   underlying design theory using textbooks, literature, and other materials, while
+   designing and building the fab ourselves."* Theory paired with the thing being built.
+   An edition that teaches nothing has failed even if every item is true.
 9. **A financial document is a source, never a subject.** Filings, earnings calls, capex
    disclosures and procurement records are excellent primary evidence — rule 3 actively
    wants them, and the best item in the archive so far is a cleanroom floor-space

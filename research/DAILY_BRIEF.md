@@ -440,6 +440,26 @@ least 3 `sources` (`SPEC.md`).
 teaching-cleanroom equipment, a specific named paper section to read, a filing to pull, a
 calculation to do. Not "learn more about X."
 
+**Reach for what the club already uses before inventing a reference.** MNF's own stated
+philosophy is "building a deep understanding of the chip fabrication process by pairing
+the study of the underlying design theory using textbooks, literature, and other
+materials, while designing and building the fab ourselves" — this brief exists to serve
+exactly that pairing, so a `try_this` that lands inside the club's existing shelf is
+worth more than one that sends a member somewhere new. The canonical references are:
+
+| | |
+| --- | --- |
+| Peter Van Zant, *Microchip Fabrication* (6e) | The club's practical process reference |
+| Stephen A. Campbell, *Fabrication Engineering at the Micro- and Nanoscale* (3e) | The club's theory reference |
+| EE130 *Introduction to Integrated Circuit Devices* — Tsu-Jae King Liu | Device physics lecture series the club follows |
+| EE230 *Transistor Physics* — Chenming Hu | Ditto, deeper on devices |
+| Purdue *Semiconductor Fabrication 101*; CHE 232 *Micro and Nano Fabrication* | Process lecture series the club follows |
+| Hacker Fab | The community MNF documents into, alongside CMU, MIT, UWaterloo and UC Irvine |
+
+Cite a **specific chapter, lecture number, or section** — "Van Zant ch. 10 on CMP" beats
+"see Van Zant". If the topic genuinely is not covered by any of these, an outside source
+is fine; do not stretch to fit.
+
 ---
 
 ## 6. Writing

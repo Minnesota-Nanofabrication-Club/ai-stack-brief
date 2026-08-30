@@ -27,11 +27,30 @@
   --gold-tint:     #9c751718;
   --focus:         #1f5f86;
 
-  /* --- the five layers of the cake --- */
+  /* --- the seven layers of the cake, bottom to top ---
+     Listed in stack order, not alphabetically, so this block reads like the page.
+     Each layer owns two tokens: the accent itself (rules, layer headings, item
+     borders, cake bands) and a 14/255 ≈ 8% wash of the same hex used as a fill.
+     The alpha suffix is how the tint stays exactly the accent hue — no second
+     colour to keep in sync when a layer is retuned.
+
+     Hue spacing is the constraint that picked the two new colours. The original
+     five sit at roughly 350° (chips), 38° (energy), 157° (applications),
+     205° (infrastructure) and 252° (models) — a minimum separation of about 47°.
+     That leaves exactly two wide gaps, 38→157 and 252→350, so `silicon` takes
+     ~87° (moss) and `computing` ~301° (plum) and every neighbour pair stays at or
+     above the 47° the palette already tolerated. Position matters as much as hue:
+     silicon and chips are the club's home layers and sit next to each other in the
+     cake, so they got the two furthest-apart hues on the wheel (moss vs oxblood,
+     ~97° apart) rather than two neighbours of the same family. */
   --energy:            #96610f;
   --energy-tint:       #96610f14;
+  --silicon:           #456d14;
+  --silicon-tint:      #456d1414;
   --chips:             #7d1a2b;
   --chips-tint:        #7d1a2b14;
+  --computing:         #7e1e7c;
+  --computing-tint:    #7e1e7c14;
   --infrastructure:    #1f5f86;
   --infrastructure-tint:#1f5f8614;
   --models:            #524193;
@@ -75,10 +94,19 @@
     --gold-tint:     #d8b45c1c;
     --focus:         #7cb8dd;
 
+    /* Dark keeps the hue of each layer and inverts the value: the light palette is
+       dark ink on paper, this one is light ink on board. Moss becomes a yellow-green
+       that cannot be confused with the mint `applications`, and plum becomes a
+       saturated orchid rather than another pale pink, which is what keeps it apart
+       from the rose `chips` sitting directly beneath it in the cake. */
     --energy:            #d6a445;
     --energy-tint:       #d6a4451c;
+    --silicon:           #99c464;
+    --silicon-tint:      #99c4641c;
     --chips:             #e2929e;
     --chips-tint:        #e2929e1c;
+    --computing:         #cf6fcb;
+    --computing-tint:    #cf6fcb1c;
     --infrastructure:    #79b2d8;
     --infrastructure-tint:#79b2d81c;
     --models:            #a99bea;
@@ -107,13 +135,21 @@
   --brand-ink:     #e79aa7;
   --brand-tint:    #e79aa716;
   --gold:          #d8b45c;
+  /* The prefers-color-scheme block lightens --gold-ink too; without it here the
+     manual dark toggle inherited the light theme's #7a5a0f and rendered the
+     Part one / Part two kickers as dark brown on a near-black page. */
+  --gold-ink:      #e2c377;
   --gold-tint:     #d8b45c1c;
   --focus:         #7cb8dd;
 
   --energy:            #d6a445;
   --energy-tint:       #d6a4451c;
+  --silicon:           #99c464;
+  --silicon-tint:      #99c4641c;
   --chips:             #e2929e;
   --chips-tint:        #e2929e1c;
+  --computing:         #cf6fcb;
+  --computing-tint:    #cf6fcb1c;
   --infrastructure:    #79b2d8;
   --infrastructure-tint:#79b2d81c;
   --models:            #a99bea;
@@ -304,7 +340,21 @@ a.cake__band:hover { background: var(--band-tint, var(--bg-sunken)); color: var(
    so it has to clear AA. --ink-3 at opacity .48 blended to 1.93:1; at .78, 3.23:1.
    Dropping the opacity entirely and letting --ink-3 carry the dimming gives 4.88:1
    (6.4:1 dark) while still reading as clearly quieter than an active band. */
-.cake__band--empty { color: var(--ink-3); border-left-color: var(--rule-strong); cursor: default; }
+/* Empty bands also carry the seven-layer fix. At five bands the stack was ~230px
+   tall and sat comfortably above the fold; at seven, 44px each, it became ~315px —
+   half the first screen of a phone spent on a table of contents before a word of
+   the brief. The 44px floor exists because a band is a tap target, but an empty
+   band is a <span>, not a link: nothing to hit, so nothing to size for. Letting the
+   quiet layers collapse to about two-thirds height buys back most of the growth on
+   a typical edition (seven layers over 7–13 items means two or three are usually
+   empty) and reads as intended rather than as a bug — a thin layer of cake is
+   exactly what "nothing today" looks like. Written with both classes so it outranks
+   the `.cake__band` padding override in the ≥46rem block further down, which is
+   single-class and later in the file. */
+.cake__band.cake__band--empty {
+  color: var(--ink-3); border-left-color: var(--rule-strong); cursor: default;
+  min-height: 2rem; padding-block: .3rem;
+}
 .cake__name { font-weight: 600; letter-spacing: .02em; flex: 1 1 auto; }
 .cake__count {
   font-variant-numeric: tabular-nums; font-size: .78rem; color: var(--ink-3);
@@ -312,6 +362,18 @@ a.cake__band:hover { background: var(--band-tint, var(--bg-sunken)); color: var(
 a.cake__band .cake__count { color: var(--band); font-weight: 600; }
 .cake__dots { display: flex; gap: 3px; }
 .cake__dot { width: 5px; height: 5px; border-radius: 50%; background: var(--band); opacity: .8; }
+
+/* On the narrowest phones a band is name + dots + count in about 250px of usable
+   width, and "Infrastructure" plus "nothing today" already very nearly filled it at
+   five layers. Wrapping is what actually goes wrong — the name breaks to a second
+   line, the band grows to ~70px, and seven of those is a screenful. The dots are
+   aria-hidden decoration that restate the count next to them, so they are the one
+   thing here that can be dropped without losing information. */
+@media (max-width: 26rem) {
+  .cake { margin: 1.2rem 0 1.9rem; }
+  .cake__band { gap: .5rem; padding-inline: .7rem; }
+  .cake__dots { display: none; }
+}
 
 /* --------------------------------------------------------------- halves -- */
 
@@ -392,6 +454,28 @@ a.cake__band .cake__count { color: var(--band); font-weight: 600; }
   letter-spacing: .12em; text-transform: uppercase; color: var(--gold);
   display: block;
 }
+
+/* The standing background, printed above the dek. It has to be read first and
+   still not be the loudest thing in the item, which rules out the two devices
+   already in use here: --layer-t fill belongs to "Why it matters" and a coloured
+   left rule belongs to "Fab angle". So this is a sunken, hairline-bordered aside
+   in --ink-2 at a step below the dek's size — quiet enough to read as context
+   rather than as the news, distinct enough that the eye knows it is a different
+   kind of sentence before it starts reading. Neutral rather than layer-tinted on
+   purpose: the layer accent already frames the whole item from the left edge, and
+   colouring the background block too would make every item read as a stack of
+   three coloured boxes. */
+.item__bg {
+  margin: 0 0 .85rem; padding: .65rem .85rem;
+  background: var(--bg-sunken); border: 1px solid var(--rule); border-radius: 3px;
+  font-size: .95rem; color: var(--ink-2);
+}
+.item__bg-label {
+  display: block; margin-bottom: .3rem;
+  font-family: var(--sans); font-size: .66rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3);
+}
+.item__bg .md > :last-child { margin-bottom: 0; }
 
 /* ---------------------------------------------------------- confidence -- */
 
@@ -497,7 +581,10 @@ pre { font-family: var(--mono); font-size: .84rem; line-height: 1.5; }
 #foundations-body { counter-reset: fnd-counter; }
 
 .glossary { margin: 2.2rem 0; padding: 1.1rem 1.15rem; background: var(--bg-sunken); border-radius: 4px; }
-.glossary h3 {
+/* The heading element differs by context — h3 under Foundations, h5 inside an item,
+   so the document outline stays legal either way — so the class carries the styling
+   and the element name carries only the semantics. */
+.glossary h3, .glossary__label {
   font-family: var(--sans); font-size: .7rem; font-weight: 700;
   letter-spacing: .13em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 .8rem;
 }
@@ -505,6 +592,26 @@ pre { font-family: var(--mono); font-size: .84rem; line-height: 1.5; }
 .glossary dt { font-weight: 700; font-size: .98rem; margin-top: .7rem; }
 .glossary dt:first-child { margin-top: 0; }
 .glossary dd { margin: .1rem 0 0; font-size: .95rem; color: var(--ink-2); }
+
+/* The per-item variant. Same <dl>, deliberately much less furniture: the
+   Foundations glossary closes a long explainer once per edition and can afford a
+   filled box with air around it, whereas this one repeats under every Pulse item
+   and would turn the page into a column of grey slabs at the same weight. So it
+   drops the fill and the padding entirely and keeps only a dashed hairline to mark
+   where the prose stops and the reference apparatus starts — the same visual rank
+   as the sources list it sits directly above. Terms move to the sans face at small
+   size for the same reason: they are labels to scan, not sentences to read. */
+.glossary--item {
+  margin: .1rem 0 .9rem; padding: .55rem 0 0;
+  background: none; border-radius: 0;
+  border-top: 1px dashed var(--rule-strong);
+}
+.glossary--item .glossary__label { margin-bottom: .35rem; font-size: .66rem; letter-spacing: .12em; }
+.glossary--item dt {
+  font-family: var(--sans); font-size: .84rem; font-weight: 700;
+  color: var(--ink-2); margin-top: .5rem;
+}
+.glossary--item dd { font-size: .89rem; color: var(--ink-3); margin-top: .05rem; }
 
 .trythis {
   margin: 2rem 0; padding: 1rem 1.1rem;

@@ -1,8 +1,10 @@
 # Source policy
 
 What counts as a source for this brief, what each source is good for, how it is biased,
-and how to actually search it. Organized by the five layers in `SPEC.md`, with `chips`
-given the most depth because it is the home layer.
+and how to actually search it. Organized by the seven layers in `SPEC.md`, with `silicon`
+and `chips` given the most depth because they are the home layers. The sections below lead
+with those two rather than following the canonical bottom-to-top layer order — this file is
+organized by how much of it you will read, not by where the layer sits in the stack.
 
 **The governing principle, from `DAILY_BRIEF.md` §2:** trade press is used to *find* a
 story. The item is written from the underlying document. Every published item carries at
@@ -15,7 +17,7 @@ least one Tier 1 or Tier 2 source that the agent fetched during that run.
 | Tier | What it is | How it may be used |
 | --- | --- | --- |
 | **T1 — Primary** | The thing itself. SEC/TWSE/DART/EDINET filings, earnings transcripts, peer-reviewed papers and preprints, conference proceedings and slide decks, standards documents, patents, regulatory dockets and Federal Register notices, government datasets, first-party technical whitepapers and model cards, court filings. | Always citable. Preferred basis for every claim. A number in the brief should come from here whenever one exists. |
-| **T2 — Specialist technical** | People who read T1 for a living and add analysis: SemiAnalysis, Fabricated Knowledge, TechInsights teardowns, Yole, Objective Analysis, Chips and Cheese, The Next Platform, Interconnects, Epoch AI, LBNL/EPRI/IEA analysis, Dell'Oro. Also specialist trade press with real reporting: SemiEngineering, Digitimes, TheElec, Utility Dive, RTO Insider, Data Center Frontier. | Citable. Satisfies the "at least one T1/T2 source" rule. Still check what T1 document they are reading, and go read it too if the claim is load-bearing. |
+| **T2 — Specialist technical** | People who read T1 for a living and add analysis: SemiAnalysis, Fabricated Knowledge, TechInsights teardowns, Yole, Objective Analysis, Chips and Cheese, The Next Platform, Interconnects, Epoch AI, LBNL/EPRI/IEA analysis, Dell'Oro, and — for `computing` — LWN.net and Jepsen. Also specialist trade press with real reporting: SemiEngineering, Digitimes, TheElec, Utility Dive, RTO Insider, Data Center Frontier. | Citable. Satisfies the "at least one T1/T2 source" rule. Still check what T1 document they are reading, and go read it too if the claim is load-bearing. |
 | **T3 — General and business press** | Reuters, Bloomberg, WSJ, FT, Nikkei Asia, The Information, Ars Technica, Tom's Hardware, TechCrunch, The Register. | Citable as corroboration and for the fact that something was reported. **Never the only source for a technical claim or a number.** |
 | **T4 — Aggregators and social** | Hacker News, Reddit, X/Twitter threads, YouTube commentary, Substack roundups with no original reporting, press-release wires (PR Newswire, Business Wire), LinkedIn posts, forum leaks. | **Discovery only.** Use to find leads. Not a citation. |
 
@@ -177,6 +179,12 @@ read the page.
 fetcher but believed live (see above) · `❗` could not be verified — check before relying
 on it.
 
+⚠️ **Two exceptions on the date.** The `silicon` (§6) and `computing` (§7) sections, and the
+rows added to the conference calendar for those two layers, were checked on **2026-08-30**,
+not 2026-08-20 — those layers were added to the taxonomy after the original sweep. Marks in
+those sections mean "reachable on 2026-08-30." Everything else on this page still carries
+the 2026-08-20 result.
+
 ---
 
 ## 4. Cross-cutting primary sources
@@ -245,42 +253,65 @@ factor is one of the most reliable early signals available for free.
 of these is running this week — conference weeks produce a burst of high-quality primary
 material, and the technical program is public even when the papers are not.
 
-Dates below were read off the official sites on 2026-08-20. Re-check them; conference
-sites roll over to the next edition and quietly delete the last one.
+Dates below were read off the official sites on 2026-08-20, except the `computing` and
+RF/microwave rows, which were read on **2026-08-30**. Re-check them; conference sites roll
+over to the next edition and quietly delete the last one.
+
+Note what the `computing` rows are worth relative to the rest of the table. The systems and
+security venues — USENIX, and increasingly the ACM ones — publish **the full paper free on
+the conference's own site**, which is the opposite of the IEEE situation described below.
+For a `computing` item there is usually no reason to settle for a program listing: the PDF
+is right there.
 
 | Venue | URL | Next / most recent | Layer |
 | --- | --- | --- | --- |
+| USENIX Security | `https://www.usenix.org/conference/usenixsecurity26` ✅ | 2026: Aug 12–14, Baltimore Marriott Waterfront (35th). **Every paper open access on the USENIX site the day of the talk** | computing (security) |
+| SIGCOMM | `https://conferences.sigcomm.org/sigcomm/2026/` ✅ | 2026: Aug 17–21, Denver. Program page links papers and presentation videos | computing (networking) |
 | **Hot Chips** | `https://hotchips.org/` ✅ | **2026: Aug 23–25, Stanford Memorial Auditorium** — imminent. Archives index at `/archives/`; slides and talks historically posted free | chips + infrastructure |
-| SPIE Photomask + EUV (BACUS) | `https://spie.org/conferences-and-exhibitions/photomask-technology-and-extreme-ultraviolet-lithography` ✅ | **2026: Sept 8–11, Monterey.** Exhibition Sept 9–10 free with registration | chips (masks, EUV) |
-| imec ITF Taiwan | `https://www.imecitf.com/` ✅ | **2026: Aug 31, Taipei** | chips |
-| 3DIC | `https://3dic-conf.org/` ✅ (**not** an ieee.org path) | 2026: Oct 1–2, Georgia Tech, Atlanta | chips (packaging) |
-| ITC (International Test Conference) | `https://www.itctestweek.org/` ✅ | 2026: Oct 11–16, San Antonio | chips (test) |
+| SPIE Photomask + EUV (BACUS) | `https://spie.org/conferences-and-exhibitions/photomask-technology-and-extreme-ultraviolet-lithography` ✅ | **2026: Sept 8–11, Monterey.** Exhibition Sept 9–10 free with registration | silicon (masks, EUV) |
+| imec ITF Taiwan | `https://www.imecitf.com/` ✅ | **2026: Aug 31, Taipei** | silicon + chips |
+| **VLDB** | `https://vldb.org/2026/` ✅ | **2026: Aug 31–Sept 4, Boston** (52nd) — imminent. PVLDB is open access | computing (databases, storage) |
+| **SOSP** | `https://sosp.org/` ✅ · series index `https://sigops.org/s/conferences/sosp/` ✅ | **2026: Sept 29–Oct 2, Prague.** The flagship operating-systems venue; runs alternate years with OSDI | computing (systems) |
+| 3DIC | `https://3dic-conf.org/` ✅ (**not** an ieee.org path) | 2026: Oct 1–2, Georgia Tech, Atlanta | silicon (packaging) |
+| EuMW (European Microwave Week) | **`https://www.eumw.eu/`** ✅ (**`eumweek.com` redirects here**) | 2026: Oct 4–9, ExCeL London (29th). Bundles EuMC, EuMIC, EuRAD | silicon (RF, microwave) |
+| ITC (International Test Conference) | `https://www.itctestweek.org/` ✅ | 2026: Oct 11–16, San Antonio | silicon (test) |
+| BCICTS | `https://bcicts.org/` ✅ | 2026: Oct 11–14, Westin Copley Place, Boston. Bipolar/BiCMOS circuits and technology — SiGe, III-V, and cryo-CMOS, which nothing else on this list covers | silicon (RF, devices) |
 | OCP Global Summit | `https://www.opencompute.org/` ⚠️ | 2026: Oct 12–15, San Jose ❗ (third-party sources agree; **never confirmed on OCP's own site**, which is fully bot-blocked) | infrastructure, energy |
-| SEMICON West | `semiconwest.org` ⚠️ | **2026: Oct 13–15, Moscone, SF — the last San Francisco edition.** Then **2027: Mar 30–Apr 1, Phoenix** (permanent move *and* a fall→spring shift) | chips |
-| AVS International Symposium | `https://www.avs.org/` → `http://www.avs72.avs.org/` ✅ | 2026: Oct 24–29, Pittsburgh. **Free Abstract Book and Technical Program PDFs** — one of the most open on this list | chips (surfaces, thin films) |
-| MICRO | `https://www.microarch.org/micro59/` ✅ | 2026: Oct 31–Nov 4, Athens | chips (architecture) |
+| SEMICON West | `semiconwest.org` ⚠️ | **2026: Oct 13–15, Moscone, SF — the last San Francisco edition.** Then **2027: Mar 30–Apr 1, Phoenix** (permanent move *and* a fall→spring shift) | silicon + chips |
+| AVS International Symposium | `https://www.avs.org/` → `http://www.avs72.avs.org/` ✅ | 2026: Oct 24–29, Pittsburgh. **Free Abstract Book and Technical Program PDFs** — one of the most open on this list | silicon (surfaces, thin films) |
+| MICRO | `https://www.microarch.org/micro59/` ✅ | 2026: Oct 31–Nov 4, Athens | computing (architecture research) |
 | SC (Supercomputing) | `https://supercomputing.org/` | November | infrastructure |
-| MRS Fall | `mrs.org` ⚠️ (confirmed via `engagemrs.org`) | 2026: Nov 29–Dec 4, Boston | chips (materials) |
+| ACM CCS | `https://www.sigsac.org/ccs/CCS2026/` ✅ | 2026: Nov 15–19, The Hague | computing (security) |
+| MRS Fall | `mrs.org` ⚠️ (confirmed via `engagemrs.org`) | 2026: Nov 29–Dec 4, Boston | silicon (materials) |
 | NeurIPS | `https://neurips.cc/` ✅ | 2026: Dec 6–12, Sydney (+ Atlanta and Paris satellites Dec 9–13) | models |
-| **IEDM** | `http://ieee-iedm.org/` ✅ | **2026: Dec 12–16, Hilton SF Union Square** (72nd). Tutorials Dec 12, short courses Dec 13 — titles and abstracts free, slides attendee-only | chips (devices, process) |
-| **ISSCC** | `https://www.isscc.org/` ✅ | 2027: Feb 14–18, SF Marriott Marquis. **Best free archive here:** `/past-conferences` has advance programs, Trends documents, and 2026 plenary videos | chips (circuits) |
-| **SPIE Advanced Lithography + Patterning** | `https://spie.org/conferences-and-exhibitions/advanced-lithography-and-patterning` ✅ | 2027: Feb 21–25, San Jose | chips (litho) — **the most relevant conference in the world to MNF's stepper** |
-| IRPS | `https://irps.org/` ✅ | 2027: Mar 21–25, San Diego | chips (reliability) |
-| ISPD | `https://ispd.cc/` ✅ | 2027: Mar 31–Apr 2, Taipei; abstracts due Sept 21 2026 | chips (physical design, ML-for-EDA contests) |
-| Photomask Japan | `https://smartconf.jp/content/pmj2026/info` ✅ | 2026: Apr 8–10, PACIFICO Yokohama (the homepage confusingly also advertises Apr 7–9 2027 — cite `/info`) | chips (masks) |
-| CICC | `https://www.ieee-cicc.org/` ✅ | 2027: Apr 18–21, San Diego | chips (circuits) |
-| DATE | `date-conference.com` ❗ (connection reset on every attempt) | 2026: Apr 20–22, Verona (secondary sources only) | chips (EDA) |
-| ASMC | `https://www.semi.org/en/connect/events/advanced-semiconductor-manufacturing-conference-asmc` ⚠️ | 2026: May 11–14, Albany NY ❗ | chips (manufacturing) |
-| ECTC | `https://www.ectc.net/` ✅ | 2027: June 1–4, Gaylord Rockies, Denver | chips (packaging) |
-| **IITC** | `https://iitc-conference.org/` ✅ — **`iitc-ieee.org` does not exist** | 2026: June 1–4, San Jose | chips (interconnect) |
-| VLSI Symposium | `https://www.vlsisymposium.org/` ✅ | 2026: June 14–18, Honolulu | chips (technology + circuits) |
-| ISCA | `https://www.iscaconf.org/isca2026/` ✅ | 2026: June 27–Jul 1, Raleigh | chips (architecture) |
-| DAC | `https://www.dac.com/` ✅ | 2027: July 11–14, San Jose (2026 was Jul 26–29, Long Beach). Free program portal and PDF | chips (EDA) |
-| ESSERC | `https://www.esserc.org/` ✅ — **ESSCIRC and ESSDERC have merged and renamed;** `esscirc-essderc.org` is obsolete | 2026: Sept 7–10, Palma de Mallorca; 2027: Sept 6–9, Helsinki | chips |
+| **IEDM** | `http://ieee-iedm.org/` ✅ | **2026: Dec 12–16, Hilton SF Union Square** (72nd). Tutorials Dec 12, short courses Dec 13 — titles and abstracts free, slides attendee-only | silicon (devices, process) |
+| **POPL** | `https://popl27.sigplan.org/` ✅ (2026 edition at `popl26.sigplan.org` ✅) | 2027: Jan 10–16, Mexico City (54th). 2026 was Jan 11–17, Rennes. The programming-languages theory venue | computing (PL) |
+| **ISSCC** | `https://www.isscc.org/` ✅ | 2027: Feb 14–18, SF Marriott Marquis. **Best free archive here:** `/past-conferences` has advance programs, Trends documents, and 2026 plenary videos | silicon (circuits) |
+| **SPIE Advanced Lithography + Patterning** | `https://spie.org/conferences-and-exhibitions/advanced-lithography-and-patterning` ✅ | 2027: Feb 21–25, San Jose | silicon (litho) — **the most relevant conference in the world to MNF's stepper** |
+| USENIX FAST | `https://www.usenix.org/conference/fast27` ✅ | 2027: Feb 23–25, Renton WA (25th). Storage systems; open access | computing (storage) |
+| HPCA | `https://hpca-conf.org/` ✅ | 2027: Salt Lake City ❗ (dates not posted as of 2026-08-30); 2026 was Sydney. Rotates with ISCA and MICRO as the third architecture venue | computing (architecture research) |
+| IRPS | `https://irps.org/` ✅ | 2027: Mar 21–25, San Diego | silicon (reliability) |
+| ISPD | `https://ispd.cc/` ✅ | 2027: Mar 31–Apr 2, Taipei; abstracts due Sept 21 2026 | chips (digital EDA, ML-for-EDA contests) |
+| Photomask Japan | `https://smartconf.jp/content/pmj2026/info` ✅ | 2026: Apr 8–10, PACIFICO Yokohama (the homepage confusingly also advertises Apr 7–9 2027 — cite `/info`) | silicon (masks) |
+| **ASPLOS** | `https://www.asplos-conference.org/` ✅ | 2027: Apr 11–15, Heraklion, Crete. 2026 was Pittsburgh, March. **The venue where hardware and software actually meet** — the most likely single source of a good `computing` item that a chips reader cares about | computing (architecture + systems) |
+| CICC | `https://www.ieee-cicc.org/` ✅ | 2027: Apr 18–21, San Diego | silicon (circuits) |
+| DATE | `date-conference.com` ❗ (connection reset on every attempt) | 2026: Apr 20–22, Verona (secondary sources only) | chips (digital EDA) |
+| ASMC | `https://www.semi.org/en/connect/events/advanced-semiconductor-manufacturing-conference-asmc` ⚠️ | 2026: May 11–14, Albany NY ❗ | silicon (manufacturing) |
+| USENIX NSDI | `https://www.usenix.org/conference/nsdi27` ✅ | 2027: May 11–13, Providence RI (24th). 2026 was May 4–6, Renton WA. Open access | computing (networking, distributed) |
+| IEEE S&P ("Oakland") | `https://sp2026.ieee-security.org/` ✅ | 2026: May 18–20 (workshops May 21), Hilton SF Union Square (47th) | computing (security) |
+| **IMS / RFIC (IEEE MTT-S)** | `https://ims-ieee.org/` ✅ · society `https://mtt.org/` ✅ | 2027: May 23–28, Henry B. González Convention Center, San Antonio. The largest RF and microwave venue; RFIC is co-located | silicon (RF, microwave) |
+| ECTC | `https://www.ectc.net/` ✅ | 2027: June 1–4, Gaylord Rockies, Denver | silicon (packaging) |
+| **IITC** | `https://iitc-conference.org/` ✅ — **`iitc-ieee.org` does not exist** | 2026: June 1–4, San Jose | silicon (interconnect) |
+| **PLDI** | `https://pldi27.sigplan.org/` ✅ (2026 edition at `pldi26.sigplan.org` ✅) | 2027: June 5–11, Hyatt Regency Atlanta (48th). 2026 was June 15–19, Boulder. Compilers and language implementation | computing (compilers) |
+| VLSI Symposium | `https://www.vlsisymposium.org/` ✅ | 2026: June 14–18, Honolulu | silicon (technology + circuits) |
+| ISCA | `https://www.iscaconf.org/isca2026/` ✅ | 2026: June 27–Jul 1, Raleigh | computing (architecture research) |
+| DAC | `https://www.dac.com/` ✅ | 2027: July 11–14, San Jose (2026 was Jul 26–29, Long Beach). Free program portal and PDF | chips (digital EDA) |
+| **USENIX OSDI** | `https://www.usenix.org/conference/osdi26` ✅ · all proceedings `https://www.usenix.org/publications/proceedings` ✅ | 2026: July 13–15, The Westin Seattle (20th). **Every OSDI/NSDI/FAST/ATC/Security paper is free, permanently, on usenix.org** — the most open venue in this whole file | computing (systems) |
+| ESSERC | `https://www.esserc.org/` ✅ — **ESSCIRC and ESSDERC have merged and renamed;** `esscirc-essderc.org` is obsolete | 2026: Sept 7–10, Palma de Mallorca; 2027: Sept 6–9, Helsinki | silicon (circuits + devices) |
 | OFC | `https://www.ofcconference.org/` ✅ | March | infrastructure (optics) |
 | ICML / ICLR / ACL / CVPR | `icml.cc` · `iclr.cc` · `2026.aclweb.org` · `cvpr.thecvf.com` ✅ | 2026 editions have all happened; `iclr.cc` now serves ICLR 2027 (Apr 26–30) | models |
-| SEMICON Taiwan / Korea | via `https://www.semi.org/` ⚠️ | Taiwan ~early Sept (Taipei), Korea ~February (Seoul) ❗ | chips |
-| IMAPS | `imaps.org` ❗ (403 on every path) | unverified | chips (packaging) |
+| SEMICON Taiwan / Korea | via `https://www.semi.org/` ⚠️ | Taiwan ~early Sept (Taipei), Korea ~February (Seoul) ❗ | silicon + chips |
+| IMAPS | `imaps.org` ❗ (403 on every path) | unverified | silicon (packaging) |
 
 ### Getting conference papers without IEEE Xplore access
 
@@ -427,7 +458,158 @@ are 404s, so use the exact paths.
 
 ---
 
-## 6. Energy
+## 6. Silicon — the other home layer
+
+`chips` in §5 is about products and the industry that ships them. **`silicon` is about how
+devices and circuits are physically made and how they physically work** — device physics,
+materials, litho, deposition, etch, CMP, doping, metrology, yield and test, packaging,
+MEMS, and analog / RF / mixed-signal circuit design. Whether AI is anywhere near the story
+is irrelevant to this layer.
+
+**Read §5 first; most of it serves this layer too.** The equipment vendors (Applied, Lam,
+KLA, TEL, ASML), imec, CEA-Leti, Fraunhofer, SEMI, IRDS, SRC/MAPT, TechInsights,
+Semiconductor Engineering, Compound Semiconductor, 3D InCites, Chip Scale Review, and the
+whole conference calendar in §4 are as much `silicon` sources as `chips` sources. What
+follows is what §5 does **not** already cover: the journal and society literature, the
+analog/RF venues, and the process/metrology side.
+
+Marks in this section were checked on **2026-08-30**, not 2026-08-20.
+
+### 6.1 Primary: societies and journals
+
+The circuits, devices, and process literature is where an analog or process result appears
+first, and it is mostly invisible to a news search. Most of it is IEEE and therefore
+paywalled — but the society pages carry free abstracts, editorials, and call-for-papers
+that tell you what is being worked on, and the open-access journals below are genuinely
+free.
+
+| Source | URL | Good for / bias |
+| --- | --- | --- |
+| **IEEE Solid-State Circuits Society (SSCS)** | `https://sscs.ieee.org/` ✅ · **open-access journal `https://sscs.ieee.org/publications/ieee-open-journal-of-the-solid-state-circuits-society`** ✅ | The society behind ISSCC, VLSI-Circuits, CICC and ESSERC. **O-JSSC is fully open access** and is the free route into modern circuit design. Bias: none to speak of; the constraint is coverage, not slant. |
+| **JSSC** (IEEE Journal of Solid-State Circuits) | `https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=4` ✅ (title confirmed on the page) | **The journal of record for analog, RF, and mixed-signal design.** ISSCC and CICC papers are routinely extended into JSSC six to twelve months later, with the measurement detail the four-page conference version had to cut. Paywalled — use the author's copy or a university library (§4). |
+| **IEEE Electron Devices Society (EDS)** | `https://eds.ieee.org/` ✅ · T-ED `/publications/transactions-on-electron-devices` ✅ · EDL `/publications/electron-device-letters` ✅ · **J-EDS `/publications/journal-of-the-electron-devices-society`** ✅ | Devices, materials, and reliability. **EDL is where a device result lands fastest** (short-format letters); T-ED is the full version. **J-EDS is open access.** ⚠️ `eds.ieee.org/publications/j-eds` and `/publications/journals` are both 404s — use the full slugs above. |
+| **IEEE MTT-S** | society `https://mtt.org/` ✅ · IMS `https://ims-ieee.org/` ✅ | RF and microwave: power amplifiers, mixers, filters, packaging above 100 GHz, and the mm-wave work that never appears in a semiconductor news feed. |
+| **IEEE Circuits and Systems Society** | `https://ieee-cas.org/` ✅ · `/publications` ✅ | TCAS-I/II — the analog, filter, and data-converter literature one rung below JSSC in prestige and considerably more accessible. |
+| **Nature Electronics** | `https://www.nature.com/natelectron/` ✅ | Device and materials results aimed at a wide audience, with unusually good editorial context. Research paywalled, News & Views often free. Bias: Nature's embargo cycle inflates novelty — a Nature Electronics device paper is a research demonstration, not a process. |
+| Nature Materials · Nature Nanotechnology | `https://www.nature.com/nmat/` ✅ · `https://www.nature.com/nnano/` ✅ | 2D materials, oxide semiconductors, ferroelectrics, novel channel materials. Same caveat. |
+| **Semiconductor Science and Technology** (IOP) | `https://iopscience.iop.org/journal/0268-1242` ✅ | Device physics and process at a level a student can actually read. Partly open access. |
+| **ECS** (The Electrochemical Society) | `https://www.electrochem.org/` ✅ | The society that owns wet chemistry, electroplating, CMP slurry chemistry, and ALD surface reactions. **ECS meeting abstracts are free**, and they are the most under-read primary source on this page for anything involving a beaker. |
+| APL / Journal of Applied Physics (AIP) | `https://pubs.aip.org/aip/apl` ⚠️ **403 to an automated fetcher** | Applied physics results — dielectrics, ferroelectric HfO₂, thermal transport. Reachable in a browser; find the DOI and look for an author's copy. |
+| **arXiv** | `physics.app-ph` ✅ · `cond-mat.mtrl-sci` ✅ · `eess.SP` ✅ (all `https://arxiv.org/list/<cat>/recent`) | Device, materials, and signal-processing preprints. **Note the asymmetry with `computing`: circuit design largely does not preprint**, so a quiet arXiv is not evidence of a quiet field here. Use the API (§3.1) to search by category and date. |
+| SPIE Digital Library | `https://www.spiedigitallibrary.org/conference-proceedings-of-spie` ✅ | Litho, metrology, and photonics proceedings. Paywalled for most content; see §4 for the open routes. |
+
+### 6.2 Primary: process, metrology, and standards
+
+| Source | URL | Good for / bias |
+| --- | --- | --- |
+| **NIST CHIPS Metrology** | program `https://www.nist.gov/chips/research-development-programs` ✅ · **metrology community `https://www.nist.gov/chips/metrology-community`** ✅ · publications `https://www.nist.gov/chips/publications` ✅ · PML `https://www.nist.gov/pml` ✅ | The US national metrology program for semiconductors: reference materials, measurement standards, and the round-robin work that decides whether two fabs' numbers mean the same thing. Free, and directly relevant to a teaching cleanroom. ⚠️ `nist.gov/chips/metrology` and `nist.gov/programs-projects/chips-metrology` are both 404s — use the slugs above. Read the NSTC note in §5.2 for the governance context. |
+| **Onto Innovation** | `https://www.ontoinnovation.com/` ✅ | Optical metrology, macro defect inspection, and lithography software. Application notes are genuinely technical. Bias: vendor — every problem has a product-shaped solution. |
+| **Bruker** | `https://www.bruker.com/` ✅ | AFM, stylus profilometry, X-ray metrology, and the nanomechanical test equipment a university lab actually owns. Its application notes are among the better free teaching material on measurement artifacts. |
+| **Veeco** | `https://www.veeco.com/` ✅ | Ion beam, MOCVD, laser anneal, and wet processing. Useful for compound-semiconductor and anneal stories. |
+| **Nova** | `https://www.novami.com/` ✅ (**the company is Nova; the domain is `novami.com`**) | Optical CD / scatterometry and materials metrology — the measurement that stands behind most published CD uniformity claims. |
+| KLA | see §5.1 | Process control and inspection. Listed under `chips` because its earnings are a `chips` indicator, but its technical material is `silicon`. |
+| SEMI standards · IRDS · SRC MAPT | see §5.2 | Equipment/materials standards and the device roadmaps. All three are as much `silicon` as `chips`. |
+| **EUV Litho Inc / EUVL Workshop** | `https://euvlitho.com/` ✅ | The small annual EUV lithography workshop, and it posts presentation PDFs free. Narrow, deep, and unusually open for this field. |
+| SPIE Photonics West | `https://spie.org/conferences-and-exhibitions/photonics-west` ✅ | Lasers, optics, and photonic integration. Relevant when a `silicon` story is optical rather than electronic. |
+| SISPAD | `https://www.sispad.org/` ✅ — **dates not extractable as of 2026-08-30** ❗ | Simulation of semiconductor processes and devices: TCAD, compact models, and the numerical side of device physics. |
+| ISPSD | `https://www.ispsd.com/` ✅ — **dates not extractable as of 2026-08-30** ❗ | The power-device venue: IGBTs, SiC, GaN, packaging for high voltage. The right primary source for a wide-bandgap story. |
+| IMAPSource | `https://www.imapsource.org/` ✅ (whereas `imaps.org` ❗ 403s every path) | The IMAPS packaging proceedings archive. ❗ **Access terms not established** — it loads, but whether a given paper is free was not checked. |
+
+### 6.3 Where to look for `silicon` items other people miss
+
+- **ISSCC and CICC advance programs**, free months ahead, which name the circuit topic, the
+  process node, and the affiliation — usually enough to know what was achieved before the
+  paper exists.
+- **EDL** (Electron Device Letters), where a device result appears in four pages before the
+  T-ED version and long before any trade coverage.
+- **ECS meeting abstracts**, free, for wet chemistry, plating, and CMP slurry work that has
+  no trade-press constituency at all.
+- **The metrology vendors' application notes** — Bruker, Onto, Nova, KLA. A note explaining
+  a measurement artifact is often the clearest public account of a real process problem.
+- **NIST CHIPS metrology publications**, which state measurement problems plainly because
+  NIST has nothing to sell.
+- **imec and CEA-Leti press releases** (§5.2), read as `silicon` rather than `chips`: they
+  are usually about a process or a device, not a product.
+- **IMS/RFIC and EuMW programs** for anything RF — an entire technical community that a
+  semiconductor news sweep never touches.
+- ⚠️ **The asymmetry to keep in mind:** this layer's primary literature is slow, paywalled,
+  and conference-gated, and it does not preprint. A week with no `silicon` item is much more
+  often a failure of the sweep than a quiet week in the field.
+
+---
+
+## 7. Computing
+
+**Computer science that is not an AI model:** programming languages, compilers, operating
+systems, distributed systems, databases, storage, security and cryptography, formal
+methods, algorithms and complexity, and computer-architecture *research*. The boundary that
+matters, per `DAILY_BRIEF.md` §1: **a chip product is `chips`; an idea about how to compute
+is `computing`.**
+
+The good news about this layer is that it is **the most open one in this file.** USENIX
+publishes every paper free and permanently. IACR ePrint, arXiv, the IETF, and the kernel and
+compiler projects all work in public by default. There is almost never an excuse for citing
+coverage of a `computing` result instead of the result.
+
+The failure mode is the opposite of `silicon`'s: the volume is enormous and the signal is
+thin. A generic search returns product marketing. **Go to the venue, not to the news.**
+
+Marks in this section were checked on **2026-08-30**, not 2026-08-20.
+
+### 7.1 Primary: proceedings, preprints, and specifications
+
+| Source | URL | Good for / bias |
+| --- | --- | --- |
+| **USENIX** | **all proceedings `https://www.usenix.org/publications/proceedings`** ✅ · OSDI `/conference/osdi26` ✅ · NSDI `/conference/nsdi27` ✅ · Security `/conference/usenixsecurity26` ✅ · FAST `/conference/fast27` ✅ · `;login:` `/publications/login` ✅ | **The single most valuable source for this layer.** Systems, storage, networking, and security, with the full PDF free forever, plus artifacts and often the talk video. If a `computing` item is about systems, start here. Bias: an academic-systems community with an industrial-research core; evaluation sections are honest by community norm and the artifact-evaluation badges mean something. |
+| **ACM SIGPLAN** | `https://www.sigplan.org/` ✅ · POPL `https://popl27.sigplan.org/` ✅ · PLDI `https://pldi27.sigplan.org/` ✅ (per-edition sites, all on `conf.researchr.org` ✅) | Programming languages, compilers, type systems, program analysis. The per-edition sites carry the full program, abstracts, and usually author-posted PDFs. ❗ **Whether the ACM DL volumes themselves are open to a fetcher was not verified** — see the gaps list in §12. |
+| **ACM SIGOPS / SIGARCH / SIGCOMM / SIGMOD-VLDB** | SOSP `https://sosp.org/` ✅ · HotOS `https://sigops.org/s/conferences/hotos/` ✅ · SIGARCH `https://www.sigarch.org/` ✅ · SIGCOMM `https://conferences.sigcomm.org/sigcomm/2026/` ✅ · SIGMOD `https://2026.sigmod.org/` ✅ · VLDB `https://vldb.org/2026/` ✅ | The rest of the systems world. **SIGARCH's "Computer Architecture Today" blog is the readable front door to architecture research** and is free. PVLDB is open access. |
+| **arXiv** | `cs.PL` ✅ · `cs.OS` ✅ · `cs.DC` ✅ · `cs.CR` ✅ · `cs.DS` ✅ · `cs.DB` ✅ · `cs.SE` ✅ · `cs.AR` ✅ (all `https://arxiv.org/list/<cat>/recent`) | **`cs.PL`, `cs.OS`, and `cs.AR` are low-volume and high-signal — read the listing.** `cs.CR` and `cs.DC` are firehoses; use the API (§3.1) with a specific query instead. Unlike `silicon`, this field genuinely preprints, so arXiv is a real index of the week rather than a sample. |
+| **IACR ePrint** | `https://eprint.iacr.org/` ✅ · society `https://iacr.org/` ✅ | **Cryptography's primary venue, entirely free.** New attacks, post-quantum analysis, and protocol proofs appear here before anywhere else. Bias: unrefereed on submission — an ePrint posting is a preprint and a break claimed there is `reported`, not `confirmed`, until the community has looked at it. |
+| **NIST post-quantum cryptography** | `https://csrc.nist.gov/projects/post-quantum-cryptography` ✅ | The standardization record: which algorithms are standards, which are candidates, and the official parameter sets. The authoritative answer to "is this actually standardized." |
+| **IETF Datatracker** · **RFC Editor** | `https://datatracker.ietf.org/` ✅ · `https://www.rfc-editor.org/` ✅ | Every internet standard and every draft, with the full working-group history. **Distinguish an individual draft from a working-group draft from a published RFC** — the same three-way distinction that `SOURCES.md` §5.2 makes for JEDEC and UCIe, and it is abused just as often. |
+| **NVD** · **CISA KEV** | `https://nvd.nist.gov/` ✅ · `https://www.cisa.gov/known-exploited-vulnerabilities-catalog` ✅ | CVE records and, in KEV's case, the far more useful list of vulnerabilities **known to be exploited in the wild.** A CVE number is not a story; KEV membership plus a mechanism is. |
+| **oss-security** | `https://www.openwall.com/lists/oss-security/` ✅ | The mailing list where open-source vulnerabilities are actually disclosed and argued about, in public, in full. Often days ahead of any coverage. |
+| **Google Project Zero** | `https://googleprojectzero.blogspot.com/` ✅ | The deepest public vulnerability write-ups anywhere, including hardware and microarchitectural side channels — which is where `computing` and `silicon` meet. Bias: Google's disclosure policy is itself a position. |
+| **Linux kernel** | `https://lore.kernel.org/` ✅ (all lists, searchable, plain text) · `https://kernelnewbies.org/LinuxChanges` ✅ | **`lore.kernel.org` is the primary source for anything kernel** — the patch, the review thread, and the maintainer's objection, all fetchable. `LinuxChanges` is the human-readable per-release summary. |
+| **LLVM** | `https://discourse.llvm.org/` ✅ · `https://blog.llvm.org/` ✅ | Compiler RFCs and design discussion in public. The Discourse threads are where a new backend, pass, or IR change is argued out before it lands. |
+| Rust · Go | `https://blog.rust-lang.org/` ✅ · `https://go.dev/blog/` ✅ | First-party language release notes and design write-ups. Treat a release post as a first-party technical disclosure, not as news. |
+| Industrial research | `https://research.google/pubs/` ✅ · `https://www.microsoft.com/en-us/research/publications/` ✅ | Where a lot of production systems work is published. Both are free and searchable. Bias: what a company publishes is what it is comfortable publishing. |
+
+### 7.2 Specialist technical (T2)
+
+| Source | URL | Good for / bias |
+| --- | --- | --- |
+| **LWN.net** | `https://lwn.net/` ✅ · **feed `https://lwn.net/headlines/newrss`** ✅ | **The best technical journalism about systems software that exists, by a wide margin.** Kernel, toolchain, distributions, and standards, written by people who read the patches. Subscription; articles go free after a week, and the weekly edition is worth the wait. **Start the `computing` sweep here.** Bias: free-software-community perspective, stated openly. |
+| **Jepsen** | `https://jepsen.io/analyses` ✅ | Adversarial correctness testing of distributed databases, published in full including the vendor's response. The rare source that produces a falsifiable technical claim about a shipping product. Bias: paid by the vendors it tests, and discloses it every time. |
+| **CMU Database Group** | `https://db.cs.cmu.edu/` ✅ | Andy Pavlo's group: seminar recordings, the database-architecture course, and the annual state-of-databases retrospective. Excellent Foundations material. |
+| **Metadata** (Murat Demirbaş) | `https://muratbuffalo.blogspot.com/` ✅ | Careful paper reviews in distributed systems — usually the fastest way to find out whether a widely shared systems paper actually holds up. |
+| ACM Queue · CACM | `https://queue.acm.org/` ⚠️ **403** · `https://cacm.acm.org/` ⚠️ **403** | Practitioner-facing ACM writing, much of it free in a browser. Both refuse an automated fetcher, so treat as browser-only. |
+| Phoronix | `https://www.phoronix.com/` ⚠️ **403** | High-volume Linux and open-source hardware benchmarking. Useful for "did this actually get faster," but the benchmarks are automated and lightly interpreted — read the configuration, not the bar chart. |
+| The Register · Chips and Cheese · The Next Platform · Blocks & Files | see §5.3, §5.4, §9 | All four cross over into this layer. Chips and Cheese in particular is `computing` as often as `chips` when it measures a microarchitecture rather than reviewing a product. |
+
+### 7.3 Where to look for `computing` items other people miss
+
+- **`lore.kernel.org` threads** on a contentious patch series. The objection is the story,
+  and it is public, dated, and attributable.
+- **LLVM Discourse RFCs**, which describe a compiler change and its rationale months before
+  any release notes.
+- **IACR ePrint**, daily, for cryptanalysis — a break lands there first and is often
+  described nowhere else for weeks.
+- **CISA KEV additions**, which tell you which vulnerability actually matters out of the
+  thousands published.
+- **Artifact-evaluation results** at OSDI/PLDI/ASPLOS: a paper whose artifact does not
+  reproduce is a story, and the badges are public.
+- **HotOS and workshop position papers**, which say out loud what the field thinks is broken
+  before anyone has a solution.
+- **The IETF Datatracker's document history**, which shows what was cut from a draft between
+  versions — the same trick as diffing risk factors in a 10-Q.
+- **`cs.AR` read as `computing` rather than `chips`** — a microarchitecture research paper
+  with no product attached belongs here, and it is routinely the most interesting thing on
+  the listing.
+
+---
+
+## 8. Energy
 
 ### Primary
 
@@ -472,7 +654,7 @@ are 404s, so use the exact paths.
 
 ---
 
-## 7. Infrastructure
+## 9. Infrastructure
 
 ### Primary
 
@@ -550,7 +732,7 @@ un-covered stories are.
 
 ---
 
-## 8. Models
+## 10. Models
 
 ### Primary
 
@@ -606,7 +788,7 @@ counterweight), Transformer `https://www.transformernews.ai/` ✅ (policy), The 
 
 ---
 
-## 9. Applications
+## 11. Applications
 
 | Source | URL | Notes |
 | --- | --- | --- |
@@ -630,11 +812,16 @@ counterweight), Transformer `https://www.transformernews.ai/` ✅ (policy), The 
 
 ---
 
-## 10. Maintaining this file
+## 12. Maintaining this file
 
 This list decays. Sources shut down, rename, move behind paywalls, and start blocking
 fetchers. Everything above was checked on **2026-08-20**; the `✅`/`⚠️`/`❗` marks are that
-day's result, not a permanent property.
+day's result, not a permanent property. **Exception:** §6 (`silicon`), §7 (`computing`), and
+the `computing` and RF/microwave rows of the conference calendar in §4 were added later and
+checked on **2026-08-30**. Those two layers have never been through a full sweep — the
+sources listed are a starting set chosen for coverage, and the bias notes on them are
+thinner than elsewhere in this file precisely because nobody has used them in anger yet.
+Fill them in as you go; that is what the bias notes are for.
 
 `DAILY_BRIEF.md` §10 requires the daily agent to report any source here that was dead,
 moved, or newly paywalled during its run. When that happens:
@@ -674,6 +861,17 @@ which is the one worth having: Loudoun is Data Center Alley, and its permit fili
 where a buildout shows up before it is announced. Maricopa and Prince William Accela
 paths tried on 2026-08-20 all 404.
 
+**Found dead or moved on 2026-08-30, with §6 and §7:** `eumweek.com` (→ `eumw.eu`, the
+European Microwave Week site was renamed) · `eds.ieee.org/publications/j-eds` and
+`/publications/journals` (both 404 — the working slugs are
+`/publications/journal-of-the-electron-devices-society`,
+`/publications/transactions-on-electron-devices`, `/publications/electron-device-letters`) ·
+`nist.gov/chips/metrology` and `nist.gov/programs-projects/chips-metrology` (both 404 → the
+CHIPS metrology material lives under `nist.gov/chips/metrology-community`,
+`/chips/publications`, and `/chips/research-development-programs`) ·
+`www.iedm-ieee.org` (does not resolve — the working host is `ieee-iedm.org`, already listed) ·
+`sigplan.org/Newsletters/` (404).
+
 ### Feeds that lie
 
 - **`jedec.org/rss.xml`** — returns HTTP 200 with a newest item from **July 2020**.
@@ -695,3 +893,30 @@ Spring 2026/2027 · SEMICON Taiwan and Korea dates · whether an HBM4E JEDEC sta
 current edition** (`emp.lbl.gov` 403s every method) · FERC Form 714 and any FERC RSS ·
 PCI-SIG (host refuses the fetcher entirely) · whether ERCOT publishes any public large-load
 MW queue report · Eaton and Schneider IR · state datacenter tax-incentive disclosures.
+
+**Added 2026-08-30 with the `silicon` and `computing` sections** — every URL below was
+fetched, but these questions about them were not settled, so do not treat the answers as
+known:
+
+- **ACM Digital Library access.** Whether PACMPL (POPL/PLDI/OOPSLA/ICFP) and the SIGARCH and
+  SIGCOMM proceedings volumes are open access to an automated fetcher. `dl.acm.org` was not
+  tested at all. The per-conference sites on `conf.researchr.org` were verified and are the
+  route used above; the DL is not.
+- **`queue.acm.org` and `cacm.acm.org`** — both 403 to an automated fetcher. Believed free
+  in a browser; not confirmed.
+- **`phoronix.com`** — 403 to an automated fetcher. Believed live.
+- **`pubs.aip.org`** (APL / Journal of Applied Physics) — 403 to an automated fetcher.
+- **ISPSD and SISPAD dates.** Both homepages load; neither exposed a conference date to a
+  fetcher on 2026-08-30, so the calendar carries no dates for them.
+- **HPCA 2027 dates.** `hpca-conf.org` names Salt Lake City for 2027 and Sydney for 2026 and
+  posts no dates.
+- **IMAPSource access terms.** `imapsource.org` ✅ loads (unlike `imaps.org`), but whether an
+  individual paper is free was not checked.
+- **Analog Dialogue (Analog Devices) and EDN.** Both
+  `https://www.analog.com/en/resources/analog-dialogue.html` and `https://www.edn.com/` gave
+  a connection failure — not a 403, no response at all — on 2026-08-30 to both curl and a
+  browser UA. **Deliberately not listed above**, because the file's rule is that an unfetched
+  URL does not get an entry. Both are plausible analog/RF sources and are worth a human
+  checking from a browser; if they are alive, they belong in §6.
+- **Whether `computing` needs a dedicated analyst tier.** §7 has no equivalent of §5.4 —
+  there may not be one worth having, or there may be an obvious set nobody has named yet.

@@ -5,8 +5,8 @@ produce one edition. Nobody reviews your work before it publishes to the club we
 to Discord, so the only quality control is the procedure in this file.
 
 **Mission.** Publish one 10-minute daily edition for the Minnesota Nanofabrication Club
-(MNF): five minutes on what actually happened across the AI stack in the last seven
-days, organized by the five layers, and five minutes teaching one piece of existing
+(MNF): five minutes on what actually happened across the stack in the last seven
+days, organized by the seven layers, and five minutes teaching one piece of existing
 semiconductor or systems technology properly. **Audience:** undergraduate EE, materials
 science, physics, and CS students who can follow real technical content but have not seen
 most of this vocabulary yet, plus a technical core inside the club — people who run a
@@ -82,6 +82,44 @@ You are looking for what happened in the **last seven days**. Work layer by laye
 start writing until the whole sweep is done; items compete against each other and you
 cannot judge the first one until you have seen the last.
 
+### The seven layers, and which one a story belongs to
+
+`SPEC.md` is authoritative for the slugs. This is the working version you sweep against.
+The order below is the canonical bottom-to-top order and it is the order the `layers`
+array must appear in.
+
+| slug | scope |
+| --- | --- |
+| `energy` | Generation, grid interconnection, power delivery, cooling and thermal. What it takes to feed and cool the rest of the stack. |
+| `silicon` | How devices and circuits are physically made and how they physically work: device physics, materials, transistors, lithography, deposition, etch, CMP, doping, metrology, yield and test, packaging, MEMS, and analog / RF / mixed-signal circuit design. Whether AI is involved is irrelevant here — this layer is about the physics and the process. |
+| `chips` | The digital products built out of silicon and the industry that makes them: accelerators, memory, interconnect and I/O, chip roadmaps and shipments, digital EDA, foundry capacity and tooling. |
+| `computing` | Computer science that is not an AI model: programming languages, compilers, operating systems, distributed systems, databases, storage, security and cryptography, formal methods, algorithms and complexity, and computer-architecture *research*. If it is a chip product it belongs in `chips`; if it is an idea about how to compute it belongs here. |
+| `infrastructure` | Datacenters, network fabrics, cluster design, cloud capacity, and the buildouts that host large-scale compute. |
+| `models` | AI/ML research proper: architectures, training methods, inference techniques, evaluation and interpretability. |
+| `applications` | Technology deployed in the world doing something — AI or otherwise. |
+
+The whole value of the taxonomy is that a story has **exactly one obvious home**. When you
+are unsure, you are usually standing on one of these boundaries. Decide them this way, and
+decide them the same way every day — an edition that files hybrid bonding under `chips` on
+Monday and `silicon` on Thursday is worse than one that files it wrongly but consistently:
+
+- An **analog amplifier design technique** → `silicon`, not `chips`. Circuit design that is
+  about the physics of the devices is a silicon story even when the end product is a chip.
+- A **new HBM stack generation** → `chips`. It is a digital product with a roadmap.
+- A **hybrid-bonding pitch record** → `silicon`. It is a process result.
+- A **new register-allocation algorithm** → `computing`.
+- A **RISC-V microarchitecture research paper** → `computing`. It is an idea about how to
+  compute.
+- A **shipping RISC-V product** → `chips`. Same instruction set, different layer, because
+  the thing that happened is a product and not an idea.
+- A **transformer variant** → `models`.
+- An **ML-for-EDA placement paper** → `chips` (digital EDA), unless the contribution is
+  chiefly an ML method, in which case `models`.
+
+If a story genuinely spans two layers, file it once, under the layer that owns the *thing
+that changed*, and say the other half in `deeper_md`. Never split one event into two items
+across two layers.
+
 ### Effort floor for an honest day
 
 These are minimums, not targets. A run that comes in under them has not been done.
@@ -95,12 +133,23 @@ under ninety minutes has almost certainly skimmed.
 | | Minimum |
 | --- | --- |
 | Distinct web searches across the run | **60** |
-| — of those, on `chips` | **18** |
-| — of those, on each other layer | **8** each |
+| — of those, on `chips` | **12** |
+| — of those, on `silicon` | **10** |
+| — of those, on `computing` | **7** |
+| — of those, on `models` | **7** |
+| — of those, on each of `energy`, `infrastructure`, `applications` | **6** each |
 | Documents actually fetched and read | **50** |
 | — of those, primary or specialist-technical (paper, filing, standard, transcript, proceeding, patent, dataset, vendor technical doc) | **25** |
 | Fetched sources behind each **published** item | **3** |
 | — of those, primary or specialist-technical | **1** |
+
+The per-layer rows add to 54, not 60, and that is deliberate: 12 + 10 + 7 + 7 + (3 × 6) =
+54, which leaves **six searches of slack** for the queries that do not belong to any one
+layer — the calendar pass, an EDGAR full-text sweep across every filer at once, a
+conference program you are checking for four layers simultaneously. Spend the slack; do not
+bank it. `silicon` and `chips` together take 22 of the 54 because they are the home layers,
+and `computing` and `models` get more than the remaining three because both are firehoses
+where a generic query returns nothing usable and you need several specific ones.
 
 A "search" means a distinct query, not the same query reworded. Vary the shape: entity
 queries (`ASML high-NA shipment`), mechanism queries (`hybrid bonding pitch 2026`),
@@ -109,8 +158,8 @@ conference is running this week, who reports earnings this week).
 
 ### Sweep pattern per layer
 
-For each of the five layers in `SPEC.md` — `energy`, `chips`, `infrastructure`, `models`,
-`applications` — run three passes:
+For each of the seven layers in `SPEC.md` — `energy`, `silicon`, `chips`, `computing`,
+`infrastructure`, `models`, `applications` — run three passes:
 
 1. **Calendar pass.** What was *scheduled* to happen this week? Earnings dates, conference
    sessions, standards ballots, regulatory comment deadlines, monthly data releases (TSMC
@@ -125,14 +174,19 @@ For each of the five layers in `SPEC.md` — `energy`, `chips`, `infrastructure`
    what your first two passes missed, and to learn which stories other informed people
    think are load-bearing. **This pass finds stories. It does not write them.** See §2.
 
-Give `chips` roughly twice the time of any other layer. It is the home layer per `SPEC.md`
-and it gets the most items and the deepest treatment.
+Give `silicon` and `chips` together roughly twice the time of any other pair of layers.
+They are the home layers per `SPEC.md`, and between them they get the most items and the
+deepest treatment. The two new layers need a deliberate pass rather than a hopeful one:
+for `computing`, the primary pass means the arXiv listings (`cs.PL`, `cs.OS`, `cs.DC`,
+`cs.CR`, `cs.DS`) and the conference proceedings, not a news search; for `silicon`, it
+means the circuits and device conferences and the process-tool vendors, which are exactly
+the sources a general "semiconductor news" query never surfaces.
 
 ### Keep a working log
 
 Maintain a scratch list as you go: candidate story, layer, the primary document you found
 (or "none yet"), the independent corroboration, a one-line why-it-matters, and a
-provisional confidence. You will have 25–40 candidates and publish 7–11. The log is what
+provisional confidence. You will have 25–40 candidates and publish 7–13. The log is what
 lets you compare them honestly instead of publishing whatever you found first.
 
 ---
@@ -245,7 +299,7 @@ a lot of real semiconductor news. Use them, cite the original URL, and note in
 
 ## 4. Selection — what earns a slot
 
-You have 25–40 candidates and 7–11 slots (`SPEC.md`). Selection is most of the job.
+You have 25–40 candidates and 7–13 slots (`SPEC.md`). Selection is most of the job.
 
 ### The three tests
 
@@ -262,13 +316,52 @@ You have 25–40 candidates and 7–11 slots (`SPEC.md`). Selection is most of t
    it with better adjectives. This is `SPEC.md` rule 3 and it is the most common failure
    mode — apply it ruthlessly. See the worked example in `QUALITY.md` Example 2.
 
+### The finance rule — a financial document is a source, never a subject
+
+This brief has no finance section and never will. It also leans hard on SEC filings,
+earnings calls, capex disclosures and procurement records, because those are among the best
+primary evidence available anywhere. Both of those are true at once, and this is the rule
+that keeps them from contradicting each other.
+
+> A financial document is a **source**, never a **subject**. Filings, earnings calls, capex
+> disclosures and procurement records are excellent primary evidence — use them. But the
+> item must be *about* a physical or engineering constraint, and it must lead with the
+> mechanism. If the most interesting sentence you can write is about money rather than
+> about the machine, the physics, or the code, it is not an item.
+>
+> Never an item, regardless of sourcing:
+> - a share price move, a market cap, a valuation, or an index
+> - a funding round, an IPO, or an analyst price target
+> - an acquisition or merger reported as a transaction
+> - quarterly results reported as results — beats, misses, guidance
+> - anything whose consequence is a number on a balance sheet rather than a change in what
+>   can be built
+>
+> **The test: strike every dollar figure from the item. If nothing technical is left
+> standing, cut the item.**
+
+Run the strike test literally, on the draft, before the item goes in the file. Delete every
+`$`, every "billion," every percentage of revenue, and read what remains. A good item
+survives it with a bruise: an earnings call is still the only place anyone said that
+cleanroom floor space — not tool lead time — is what caps how fast equipment capacity can
+grow, and that sentence is intact with the capex number removed. A bad item evaporates:
+strike the dollars from "who underwrites the financing on leased accelerators" and there is
+no machine, no physics, and no code left on the page.
+
+The rule cuts the other way too. Do not avoid a filing because it is a filing. The
+purchase-obligations note in a 10-Q, a newly added risk factor, a take-or-pay wafer
+commitment, and a capacity reservation are all statements about what will physically be
+built, and they are usually the earliest such statement available. Go get them — then write
+the item about the thing being built.
+
 ### Anti-recency traps
 
 - **Ten outlets, one story, one item.** Volume of coverage is a fact about newsrooms, not
   about the world. Deduplicate to the originating event and cover it once.
-- **A funding round is an item only if it changes what gets built.** Money that buys a
-  mask set, a fab, a long-term wafer commitment, or a specific named capability: maybe.
-  Money that buys runway and a valuation headline: no. Same for acqui-hires.
+- **A funding round is not an item.** See the finance rule above: the round itself is never
+  the subject. If money buys a specific named physical capability — a mask set, a fab, a
+  long-term wafer commitment — the *capability* can be the item, and the round is one
+  sourced clause inside it. Same for acqui-hires.
 - **A benchmark score is an item only if the method or the consequence is interesting.**
   "Model X is now first on leaderboard Y" is a scoreboard update. "Model X reaches the
   same score with a tenth of the inference compute, and here is the mechanism" is an item.
@@ -277,8 +370,9 @@ You have 25–40 candidates and 7–11 slots (`SPEC.md`). Selection is most of t
   volume production. Note which one, explicitly, every time.
 - **A partnership or MOU is not a purchase order.** Look for a number, a date, or a
   binding commitment. If none exists, say so.
-- **Stock moves are not news.** A price move is a fact about expectations. Only cite one
-  when the *reason* is the story and you can source the reason.
+- **Stock moves are not news.** A price move is a fact about expectations, and under the
+  finance rule it is never an item. It may appear as a clause inside an item only when the
+  *reason* behind the move is itself an engineering fact you can source.
 - **Beware the anniversary/roundup story.** "One year since X" is a content format, not an
   event.
 - **Beware your own recency bias inside the window.** Something from day one of the
@@ -286,14 +380,26 @@ You have 25–40 candidates and 7–11 slots (`SPEC.md`). Selection is most of t
 
 ### Layer allocation
 
-Per `SPEC.md`: 7–11 items, at least one in `chips`, `chips` is the home layer and gets the
-most items and the deepest treatment. **A layer with nothing genuinely newsworthy is
-omitted entirely from the `layers` array — never padded.** A day with four strong chips
-items, two infrastructure, and one energy is a better edition than nine thin items spread
-evenly. Typical good shape: 3–5 `chips`, 1–3 each elsewhere, one or two layers absent.
+Per `SPEC.md`: **7–13 items**, and **at least one item across `silicon` and `chips`
+combined**. Those two are the home layers, and in practice they should carry the largest
+share of the edition between them. **A layer with nothing genuinely newsworthy is omitted
+entirely from the `layers` array — never padded.**
 
-Order the `layers` array in the canonical cake order — `energy`, `chips`,
-`infrastructure`, `models`, `applications` — omitting the empty ones.
+Seven layers is more room, not an obligation to fill seven slots. The range went from 7–11
+to 7–13 because two more layers can legitimately produce two more good items — not so that
+every layer appears every day. A day with three strong `chips` items, two `silicon`, one
+`computing` and one `energy` is a better edition than eleven thin items spread evenly, and
+**four absent layers is a normal edition, not a failed one.** Typical good shape: 4–6
+across `silicon` + `chips`, 1–3 each elsewhere, two to four layers absent entirely.
+
+The failure mode to watch for with the new layers is the reverse of padding: `computing`
+and `silicon` are easy to leave empty every single day, because the sources are quieter and
+a general news search does not surface them. If a layer has been empty for a week straight,
+that is a signal about your sweep, not about the world — go back to §1 and check whether you
+ran its primary pass at all.
+
+Order the `layers` array in the canonical bottom-to-top order — `energy`, `silicon`,
+`chips`, `computing`, `infrastructure`, `models`, `applications` — omitting the empty ones.
 
 ### The headline
 
@@ -375,6 +481,82 @@ site for the deeper tier. That means:
 - Keep markdown out of the `dek`. Headings and images are flattened on the way to Discord;
   a bare sentence is what survives intact.
 
+### `background_md` — the standing context, on every item
+
+**Required on every Pulse item.** Two to four sentences, target **50–110 words**. This is
+the field that makes the brief teachable rather than merely accurate, and it is the one
+most likely to be written badly, so read this whole subsection every run.
+
+The reader you are writing for has never heard of this subfield. Not "has not read
+yesterday's edition" — has never encountered oxide semiconductors, or register allocation,
+or interconnection queues, at all. Without `background_md` that reader hits `deeper_md`,
+meets σV_th and WNS/TNS and mV/dec, and stops. `background_md` is the paragraph that gives
+them footing first. It answers three things: **what is this area, what problem does it
+exist to solve, and why would anyone care?**
+
+**The distinction that matters, and the one thing to get right: `background_md` is not a
+summary of the news.** It is the standing context the news sits in. The test is simple and
+you should apply it to every one you write:
+
+> **Delete the news. Would this paragraph still be true next year?**
+
+If yes, it is background. If it stops being true — if it contains this week's number, this
+company's announcement, this paper's result — it is a news summary wearing the wrong field
+name, and you have spent the reader's footing on something the `dek` already told them.
+Rewrite it one level up: not "researchers grew a second transistor layer at 300 °C" but
+"everything built above the first transistor layer has to stay below roughly 400 °C, and
+that ceiling is the whole problem."
+
+The other rules:
+
+- **Mechanism, not analogy.** Same rule that governs `deeper_md`. An analogy after the
+  mechanism is a gift; an analogy instead of the mechanism is a dodge. "Think of it like a
+  highway with more lanes" teaches nothing and is banned here as it is everywhere else.
+- **Assume no prior exposure to the subfield. Do assume general engineering literacy** — a
+  reader who knows what a transistor is, what a compiler does, and what a watt is. You do
+  not need to define "wafer" or "cache." You do need to define the thing this subfield
+  argues about.
+- **Do not repeat the `dek`.** `background_md` is the world; the `dek` is the event. If a
+  sentence would fit equally well in either, it belongs in neither.
+- **Name the constraint, and put a number on it if the number is standing.** A background
+  paragraph that says an area is "challenging" has not helped. The 400 °C thermal ceiling,
+  the 60 mV/decade floor, the 39 nm mean free path of an electron in copper: these are
+  facts about the world, they do not expire, and one of them is worth ten adjectives.
+- **Never open with "In recent years,"** "As AI workloads grow," "The semiconductor
+  industry has long," or any other throat-clearing that delays the first real sentence.
+  Start with the constraint or the object.
+- Warn yourself outside 45–120 words. Under 45 you have written a definition, not footing;
+  over 120 you have started writing `deeper_md` twice.
+
+`QUALITY.md` has a fully worked example and a deliberately bad one. Read both before you
+write the first `background_md` of the run.
+
+### The per-item `glossary`
+
+**Required on every Pulse item: 2–4 entries**, each an object with `term` and `definition`,
+the same shape `foundations.glossary` already uses.
+
+- **2–4, and mean it.** Fewer than two means you did not look hard enough at your own
+  prose — almost every item on this brief uses at least two terms a newcomer would trip on.
+  More than four means the item is trying to teach too much at once; cut the item down or
+  move the teaching into `background_md`.
+- **Cover symbols and units, not only words.** `V_th`, `mV/dec`, `WNS/TNS`, `pJ/bit`,
+  `GT/s`, `k₁`, `σ` are exactly the things that stop a reader cold, and they are the things
+  a glossary written on autopilot skips because they do not look like vocabulary.
+- **Define the terms this item actually uses.** Not the terms the subfield is famous for.
+  If `deeper_md` never says "damascene," damascene does not go in the glossary.
+- **One sentence each, ≤ 40 words. Mechanism, not restatement.** "BEOL — the copper wiring
+  stack built above the transistors, which limits everything built later to about 400 °C"
+  is a definition. "BEOL — back end of line" is not.
+- **Expanding an acronym is not a definition.** If your entry would be complete once the
+  letters are spelled out, you have not written one yet. Say what the thing *is* and what
+  it *does*.
+- No duplicate `term` within an item.
+
+Inline expansion in the `dek` **stays**. These fields are additive, not a replacement: the
+`dek` still expands its own jargon on first use, because the reader must be able to parse
+one sentence without looking anything up, and because Discord carries the `dek` alone.
+
 ### Deeper tier (`deeper_md`, section-level `deeper_md`)
 
 - **Numbers with units, always**, and traceable to a cited document. Give the delta as well
@@ -406,6 +588,7 @@ nesting, same layer slugs. Then:
 
 ```bash
 python3 scripts/validate_brief.py --strict briefs/YYYY-MM-DD.json
+python3 scripts/check_links.py briefs/YYYY-MM-DD.json
 python3 scripts/build_index.py
 ```
 
@@ -426,11 +609,23 @@ python3 scripts/build_index.py
   `index.json`. ⚠️ **Do not shell-glob `briefs/*.json` at it.** That hands it `index.json`,
   which is a generated index and not an edition, and you will get a confusing pile of
   errors about a perfectly good brief. Pass the one file, or pass the directory.
+- `scripts/check_links.py` is the other half of the validator, and **you are expected to run
+  it on yourself before you finish.** `validate_brief.py` is deliberately offline: it checks
+  that a URL is well-formed and never opens a socket, which means a citation invented out of
+  whole cloth passes it clean. `check_links.py` actually fetches every URL in the file. A
+  `404`, a `410`, or a hostname that does not resolve is an **ERROR** and is the signature of
+  a fabricated citation — go and fix it, which almost always means removing the URL and the
+  claim resting on it. `401/402/403/429`, other 5xx, and timeouts are **WARN**: those are the
+  bot-blocked and paywalled hosts `SOURCES.md` §3 documents, and they mean unverifiable from
+  here, not disproven — but you should still be able to say why you trust each one, because
+  you fetched it yourself during the run. Same exit codes as the validator (`0` clean, `1`
+  problems, `2` bad invocation) and it takes a file or a directory. Do not edit it, and do not
+  route around an ERROR by leaving the URL in.
 - `scripts/build_index.py` regenerates `briefs/index.json` from `briefs/*.json`. Never
   hand-edit `index.json` (`SPEC.md`). Run it after the validator passes, and confirm your
   edition appears as `latest` and first in `editions`.
 
-Both scripts are written and maintained by another agent. Call them at exactly these paths.
+These scripts are written and maintained by another agent. Call them at exactly these paths.
 If a script is missing or crashes for a reason that is not your JSON, do not reimplement it
 — report the failure and leave the brief file in place.
 
@@ -452,6 +647,11 @@ fw=len(f['tldr'].split())+sum(len(s['body_md'].split()) for s in f['sections'])
 print('items',n,'| pulse member-tier words',w,'| foundations words',fw)
 print('layers',[L['layer'] for L in d['pulse']['layers']])
 print('sources total',sum(len(it['sources']) for L in d['pulse']['layers'] for it in L['items'])+len(f['sources']))
+for L in d['pulse']['layers']:
+    for it in L['items']:
+        bw=len(it.get('background_md','').split()); g=len(it.get('glossary',[]))
+        flag='  <-- CHECK' if not (45<=bw<=120) or not (2<=g<=4) else ''
+        print('  ',it['id'],'background',bw,'words | glossary',g,'entries',flag)
 " briefs/YYYY-MM-DD.json
 ```
 
@@ -476,30 +676,47 @@ Answer all of these in writing in your run notes. "Probably" is a failing answer
 7. Is any item a repeat of the last 7 editions without genuine new information? If it is an
    update, does it say so and say what changed?
 8. Is any layer padded? Is any layer present with an item I would not defend?
-9. Did `chips` get the most items and the deepest treatment?
-10. Does the headline name the single most consequential thing, or is it a summary?
+9. Is every item filed under the one layer that owns the thing that changed? Did I check
+   the boundary cases in §1 rather than guessing — analog circuit work in `silicon`,
+   architecture *research* in `computing`, shipping products in `chips`?
+10. Do `silicon` and `chips` together carry at least one item, and in practice the largest
+    share and the deepest treatment?
+11. **The finance rule.** For every item, did I strike every dollar figure and check that
+    something technical was still standing? Is any item really about a round, a valuation,
+    a transaction, or a quarterly result?
+12. Does the headline name the single most consequential thing, or is it a summary?
 
 **Craft**
-11. Does every `dek` stand completely alone in Discord — actor named, jargon expanded, no
+13. Does every `dek` stand completely alone in Discord — actor named, jargon expanded, no
     back-references, legible on a phone?
-12. Does every `deeper_md` contain a number, a mechanism, and a caveat, and does at least
+14. Does **every item** have a `background_md`, and does each one survive the delete-the-news
+    test — would it still be true next year? Is any of them secretly a second summary of the
+    `dek`? Does each explain a mechanism rather than reach for an analogy, and does none of
+    them open with "In recent years"?
+15. Does **every item** have 2–4 `glossary` entries, covering the symbols and units it
+    actually uses as well as the words? Is any entry just an acronym spelled out?
+16. Does every `deeper_md` contain a number, a mechanism, and a caveat, and does at least
     most of them name who disputes the claim?
-13. Did I grep my own draft for the banned constructions in `QUALITY.md`?
-14. Is `fab_angle` omitted everywhere it would have been forced?
+17. Did I grep my own draft for the banned constructions in `QUALITY.md`?
+18. Is `fab_angle` omitted everywhere it would have been forced?
 
 **Foundations**
-15. Is the topic outside the last 90 days of slugs? Does it follow the rotation rule, or is
+19. Is the topic outside the last 90 days of slugs? Does it follow the rotation rule, or is
     the override justified and stated?
-16. Does the piece teach — constraint first, one number doing the work, jargon after the
+20. Does the piece teach — constraint first, one number doing the work, jargon after the
     idea — rather than define?
-17. Is `try_this` actually doable this week by a club member?
+21. Is `try_this` actually doable this week by a club member?
 
 **Mechanics**
-18. Pulse member-tier prose near 1,100 words; Foundations near 1,100 words; `deeper_md`
-    blocks 80–200 words each.
-19. `validate_brief.py --strict` exits 0, with no unexplained `WARN` lines.
+22. Pulse member-tier prose near 1,100 words; Foundations near 1,100 words; `deeper_md`
+    blocks 80–200 words each; each `background_md` 50–110 words.
+23. `validate_brief.py --strict` exits 0, with no unexplained `WARN` lines.
     `build_index.py` ran and `index.json` shows the new edition as `latest`.
-20. Did I hit the §1 effort floor? If not, say so in the run notes rather than pretending.
+24. **`check_links.py` ran on the finished file and reported no ERROR lines.** Every WARN it
+    reported is a host I know to be bot-blocked or paywalled per `SOURCES.md` §3, and I can
+    name which one and say that I fetched it myself during this run.
+25. Did I hit the §1 effort floor, per layer as well as in total? If not, say so in the run
+    notes rather than pretending.
 
 A quick grep for the worst offenders:
 
@@ -522,7 +739,7 @@ honest edition beats a padded one. The floor is real, though: if you have fewer 
 items, you have not done the sweep — go back to §1 and check the primary pass, because
 filings and papers land every week regardless of the news cycle.
 
-**A very loud week.** Do not exceed 11 items. Pick the 11 with the most consequence, and
+**A very loud week.** Do not exceed 13 items. Pick the 13 with the most consequence, and
 mention in the headline that you left things out if that is the honest framing.
 
 **A story you cannot source to a primary document.** Either downgrade `confidence` and say
@@ -548,7 +765,10 @@ rule 1 and rule 2 have no exceptions and no deadline pressure overrides them.
 ## 10. Run notes
 
 Finish by writing a short report (to stdout, not to a file in the repo): the item count by
-layer, the Foundations topic and why it was chosen, the counts against the §1 effort floor,
-the answers to the §8 self-check, anything you cut and why, anything you could not verify,
-and any source in `SOURCES.md` that was dead, paywalled-changed, or moved — so a human can
-fix the source list.
+layer, the Foundations topic and why it was chosen, the counts against the §1 effort floor
+**broken out per layer**, the `check_links.py` result and what each WARN was, the answers to
+the §8 self-check, anything you cut and why, anything you cut specifically under the finance
+rule, anything you could not verify, and any source in `SOURCES.md` that was dead,
+paywalled-changed, or moved — so a human can fix the source list. If `silicon` or
+`computing` came up empty, say what you searched, so the gap can be read as a fact about the
+week rather than a fact about the sweep.

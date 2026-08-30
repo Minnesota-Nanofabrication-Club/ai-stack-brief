@@ -19,13 +19,32 @@
 
   /* ---------------------------------------------------------------- data -- */
 
-  // Fixed vocabulary. Bottom of the cake to the top; never reorder or extend.
+  // Fixed vocabulary, bottom of the cake to the top. This is the one place the
+  // reading order of the whole page is decided: renderPulse walks it forwards and
+  // renderCake walks it backwards, so a slug that is missing here is a layer that
+  // silently never renders, no matter what the brief JSON says.
+  //
+  // It was five — Jensen Huang's AI cake — and grew to seven, because the club's
+  // work does not fit inside "AI". `silicon` is the physics and the process
+  // (devices, materials, litho, deposition, etch, metrology, packaging, analog and
+  // RF), which used to be crammed into `chips` alongside the digital products; and
+  // `computing` is computer science that is not an AI model (languages, compilers,
+  // operating systems, distributed systems, databases, security, architecture
+  // *research*), which previously had no home at all and got misfiled into `models`.
+  // The split rule, if you are ever unsure: a shipping part is `chips`, the process
+  // that made it is `silicon`, an idea about how to compute is `computing`.
+  //
+  // The scope lines below are load-bearing, not decoration — they are printed under
+  // every layer heading and they are how a reader (and the editor) knows a story has
+  // exactly one obvious home. Keep them crisp, and keep them in sync with SPEC.md.
   var LAYERS = [
-    { slug: 'energy',         name: 'Energy',         scope: 'Generation, grid, cooling, siting' },
-    { slug: 'chips',          name: 'Chips',          scope: 'Silicon, process, litho, packaging, equipment' },
+    { slug: 'energy',         name: 'Energy',         scope: 'Generation, grid, power delivery, cooling' },
+    { slug: 'silicon',        name: 'Silicon',        scope: 'Device physics, materials, litho, process, packaging, analog and RF' },
+    { slug: 'chips',          name: 'Chips',          scope: 'Accelerators, memory, interconnect, digital EDA, foundry capacity' },
+    { slug: 'computing',      name: 'Computing',      scope: 'Languages, compilers, systems, databases, security, architecture research' },
     { slug: 'infrastructure', name: 'Infrastructure', scope: 'Racks, optics, datacenters, clouds, supply chain' },
     { slug: 'models',         name: 'Models',         scope: 'Releases, training, architectures, evals' },
-    { slug: 'applications',   name: 'Applications',   scope: 'AI deployed in the world, and the economics of it' }
+    { slug: 'applications',   name: 'Applications',   scope: 'Technology deployed in the world, doing something' }
   ];
   var LAYER_BY_SLUG = {};
   LAYERS.forEach(function (l) { LAYER_BY_SLUG[l.slug] = l; });
@@ -327,6 +346,43 @@
     return wrap;
   }
 
+  // The per-item term list. Same data shape as foundations.glossary — {term,
+  // definition} — and deliberately the same <dl> markup, because a reader who has
+  // scrolled through Foundations once should recognise this on sight. It is styled
+  // down rather than styled differently (see .glossary--item): the Foundations
+  // glossary closes a 1500-word explainer and can afford a filled box; this one
+  // appears under *every* Pulse item, so anything heavier than a hairline rule and
+  // small type would turn the page into a stack of boxes.
+  //
+  // `heading` is the element name, not a class, because the caller owns the
+  // document outline: Foundations sits under an h2 and uses h3, an item sits under
+  // the item's own h4 and must use h5 or the heading order breaks for screen readers.
+  function renderGlossary(entries, heading, label, cls) {
+    if (!Array.isArray(entries) || !entries.length) return null;
+
+    var dl = el('dl');
+    var shown = 0;
+    entries.forEach(function (entry) {
+      // Defensive on purpose. The schema requires term *and* definition, but this
+      // page is also the archive: it renders editions written before the field
+      // existed and editions written by a future agent that got it wrong, and a
+      // half-filled entry should degrade to a shorter list, never to a blank <dt>.
+      if (!entry) return;
+      var term = entry.term ? String(entry.term).trim() : '';
+      var definition = entry.definition ? String(entry.definition).trim() : '';
+      if (!term && !definition) return;
+      dl.appendChild(el('dt', null, term || '—'));
+      dl.appendChild(el('dd', null, definition));
+      shown++;
+    });
+    if (!shown) return null;
+
+    var wrap = el('div', 'glossary' + (cls ? ' ' + cls : ''));
+    wrap.appendChild(el(heading || 'h3', 'glossary__label', label || 'Glossary'));
+    wrap.appendChild(dl);
+    return wrap;
+  }
+
   function renderConfidence(value) {
     var key = String(value || '').toLowerCase();
     var meta = CONFIDENCE[key];
@@ -356,6 +412,25 @@
     h.appendChild(renderConfidence(item.confidence));
     art.appendChild(h);
 
+    // Background comes first, above the dek, and that ordering is the whole point
+    // of the field. The dek is the event; background_md is the world the event
+    // happened in — what this subfield is, what problem it exists to solve, and why
+    // the mechanism works the way it does. A reader who has never heard of
+    // monolithic 3D or of register allocation cannot parse the dek at all until they
+    // have that, so putting it after the news would be putting the answer after the
+    // exam. It runs through mdBlock rather than being set as text because it is a
+    // markdown field like deeper_md, and mdBlock escapes before it formats.
+    //
+    // Guarded even though the schema now requires it, for the same reason fab_angle
+    // is guarded: this app renders the archive, and every edition published before
+    // this field existed still has to look finished.
+    if (item.background_md && String(item.background_md).trim()) {
+      var bg = el('div', 'item__bg');
+      bg.appendChild(el('b', 'item__bg-label', 'Before the news'));
+      bg.appendChild(mdBlock(item.background_md));
+      art.appendChild(bg);
+    }
+
     if (item.dek) art.appendChild(el('p', 'item__dek', item.dek));
 
     if (item.why_it_matters) {
@@ -373,6 +448,13 @@
     }
 
     if (item.deeper_md) art.appendChild(makeDeeper(item.deeper_md, 'Go deeper', layerSlug));
+
+    // Below the deeper block, above the sources: the terms are reference apparatus,
+    // not narrative. They also cover the vocabulary used *inside* deeper_md — σV_th,
+    // WNS/TNS and friends — so a reader who opens the technical tier finds the
+    // definitions immediately underneath it rather than having to scroll back up.
+    var terms = renderGlossary(item.glossary, 'h5', 'Terms', 'glossary--item');
+    if (terms) art.appendChild(terms);
 
     var src = renderSources(item.sources);
     if (src) art.appendChild(src);
@@ -497,17 +579,10 @@
       host.appendChild(s);
     });
 
-    if (Array.isArray(f.glossary) && f.glossary.length) {
-      var g = el('div', 'glossary');
-      g.appendChild(el('h3', null, 'Glossary'));
-      var dl = el('dl');
-      f.glossary.forEach(function (entry) {
-        dl.appendChild(el('dt', null, entry.term || ''));
-        dl.appendChild(el('dd', null, entry.definition || ''));
-      });
-      g.appendChild(dl);
-      host.appendChild(g);
-    }
+    // Same renderer as the per-item term lists, minus the --item modifier, so the
+    // two can never drift apart in markup or in how they handle a malformed entry.
+    var glossary = renderGlossary(f.glossary, 'h3', 'Glossary', null);
+    if (glossary) host.appendChild(glossary);
 
     if (f.try_this) {
       var t = el('div', 'trythis');

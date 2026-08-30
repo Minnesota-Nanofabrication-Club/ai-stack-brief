@@ -20,6 +20,11 @@ Design notes for whoever is reading this because CI just failed:
   * Source `date` may be YYYY-MM-DD, YYYY-MM, or a bare YYYY. All three are
     valid per SPEC ("Source dates") -- Foundations legitimately cites classic
     papers and undated vendor references alongside dated news.
+  * Word budgets are deliberately plural and never pooled. The member tier
+    (`dek` + `why_it_matters`) is budgeted separately from `background_md`,
+    which is budgeted separately from `deeper_md` and the glossaries. Folding
+    an added field into an existing budget is how a useful warning turns into
+    one that fires on every edition and gets ignored.
   * ERROR means the file violates SPEC.md and must not ship.
   * WARN means it probably reads badly (too long, too short, restated dek,
     the same link cited twice). Fix them if you can; --strict makes them fatal.
@@ -42,16 +47,48 @@ from urllib.parse import urlsplit
 # Contract constants — these mirror SPEC.md. Change SPEC.md first.
 # --------------------------------------------------------------------------
 
-LAYER_SLUGS = ["energy", "chips", "infrastructure", "models", "applications"]
+# The taxonomy is no longer Jensen Huang's five-layer AI cake. It grew two layers
+# because the old one had nowhere to put half of what this club actually does:
+# `silicon` for device physics, process, packaging and analog/RF (work that is not
+# about AI at all), and `computing` for computer science that is not an AI model
+# (compilers, OSes, distributed systems, architecture research). The list order IS
+# the canonical bottom-to-top publication order — build_index.py imports this name
+# and uses it to order the per-edition layer list, and check_pulse() below uses it
+# to flag an edition whose layers are out of order. Reorder this list and you
+# reorder the product, so don't, unless SPEC.md changed first.
+LAYER_SLUGS = [
+    "energy",
+    "silicon",
+    "chips",
+    "computing",
+    "infrastructure",
+    "models",
+    "applications",
+]
+
+# The two home layers. SPEC used to require "at least one item in `chips`"; with
+# `silicon` split out of it, a perfectly good fab/process edition could suddenly
+# have zero `chips` items and fail a rule it was never meant to fail. The rule is
+# therefore about the pair, not either slug on its own.
+HOME_LAYER_SLUGS = ("silicon", "chips")
+
 CONFIDENCE_VALUES = ["confirmed", "reported", "rumored"]
 
 REQUIRED_TOP = ["date", "generated_at", "window", "headline", "pulse", "foundations"]
+# `background_md` and `glossary` are required on every item, not optional extras.
+# The reasoning is in SPEC: the reader this product is for is a curious engineer
+# who does not already know the subfield, and without standing context and a term
+# list they hit `deeper_md` cold. An item that cannot carry two sentences of
+# background and two defined terms is an item nobody understood well enough to
+# publish, so a missing field is an error rather than a warning.
 REQUIRED_ITEM = [
     "id",
     "title",
     "dek",
     "why_it_matters",
+    "background_md",
     "deeper_md",
+    "glossary",
     "confidence",
     "sources",
 ]
@@ -70,20 +107,42 @@ REQUIRED_FOUNDATIONS = [
 REQUIRED_SOURCE = ["title", "url", "publisher", "date"]
 
 # Hard bounds (fatal).
-MIN_ITEMS = 5
-MAX_ITEMS = 11
+#
+# The item range used to be a hard 5-11 with a warning below SPEC's stated floor
+# of 7. That soft band is gone: SPEC's floor and the validator's floor are now the
+# same number, because with seven layers to cover, six items is not a quiet week,
+# it is an incomplete run. Padding is still the worse sin -- the fix for a
+# six-item day is to find a seventh story worth writing up, never to inflate a
+# layer that had nothing. If a genuinely dead week ever justifies fewer, that is a
+# conscious edit to SPEC.md and to this constant, not something CI waves through.
+MIN_ITEMS = 7
+MAX_ITEMS = 13
 MIN_SECTIONS = 3
 MIN_GLOSSARY = 4
 MIN_FOUNDATIONS_SOURCES = 3
+# Per-item glossary bounds. Fewer than two entries means nobody reread their own
+# prose looking for jargon; more than four means the item is trying to teach a
+# whole subfield in one sitting and should have been narrowed or split.
+MIN_ITEM_GLOSSARY = 2
+MAX_ITEM_GLOSSARY = 4
 
 # Soft targets from SPEC.md (warnings only).
-SPEC_MIN_ITEMS = 7  # SPEC says 7-11; 5 and 6 are tolerated but flagged
 TITLE_MAX_CHARS = 80
 PULSE_PROSE_TARGET = 1100  # dek + why_it_matters across all items
 FOUNDATIONS_PROSE_TARGET = 1100  # member tier only: tldr + section body_md
 PROSE_TOLERANCE = 0.25  # SPEC: "within roughly +/-25%"
 DEEPER_MD_RANGE = (80, 200)  # words
 SECTION_BODY_RANGE = (100, 180)  # words
+BACKGROUND_MD_RANGE = (50, 110)  # words -- SPEC's stated target for background_md
+# The warn band is deliberately wider than the target. Two sentences of real
+# mechanism sometimes land at 47 words and sometimes at 115, and flagging that
+# would train writers to pad or truncate to hit a number, which is exactly the
+# behaviour this product does not want. Outside 45-120 it is no longer a
+# paragraph of standing context -- it is a stub, or it is a second deeper_md.
+BACKGROUND_MD_WARN_RANGE = (45, 120)
+# A definition longer than this has stopped defining and started explaining;
+# that material belongs in `deeper_md`, where the reader chose to opt in.
+GLOSSARY_DEF_MAX_WORDS = 40
 DEK_SIMILARITY_LIMIT = 0.72  # difflib ratio above this == restatement
 DEK_MIN_WORDS = 10  # SPEC "Delivery surfaces": a dek must stand alone in Discord
 DEK_MAX_WORDS = 60
@@ -345,10 +404,86 @@ def check_source(rep: Report, src, where: str, seen_urls: dict) -> None:
             rep.error(f"{where}.date", f"{sdate!r} is not a real calendar date")
 
 
+def check_glossary(rep: Report, glossary, where: str, min_entries: int,
+                   max_entries: int | None = None,
+                   definition_max_words: int | None = None,
+                   count_note: str = "") -> None:
+    """Validate a `[{term, definition}, ...]` array.
+
+    There are two glossaries in the schema now — the long-standing Foundations one
+    and the new per-item one — and they are the same shape, so they get the same
+    code. The two callers differ only in their bounds, which is exactly the kind of
+    difference a parameter is for; duplicating forty lines so that one copy could
+    say "at least 4" and the other "2-4" would guarantee the two drift apart the
+    first time somebody fixes a message in one of them.
+
+    The split between ERROR and WARN follows the rest of this file. Structure is an
+    error: not an array, wrong number of entries, a missing or empty `term` or
+    `definition`, the same term defined twice in one list. Those either break the
+    renderer or mean the writer did not do the work. Length is a warning, because
+    a 42-word definition is a style problem and a human should decide.
+
+    `definition_max_words` is deliberately left None for Foundations. Its glossary
+    is the reference appendix to a 1,100-word deep dive, where a definition that
+    carries an equation or a failure mode is doing its job; several existing ones
+    legitimately run past 40 words. The per-item glossary is inline footing for a
+    reader who is mid-paragraph, and there the cap is real.
+    """
+    if not isinstance(glossary, list):
+        rep.error(where, f"must be an array, got {typename(glossary)}")
+        return
+
+    n = len(glossary)
+    if n < min_entries or (max_entries is not None and n > max_entries):
+        expected = (
+            f"at least {min_entries}"
+            if max_entries is None
+            else f"{min_entries}-{max_entries}"
+        )
+        message = f"{n} entr(y/ies); SPEC requires {expected}"
+        if count_note:
+            message += ". " + count_note
+        rep.error(where, message)
+
+    terms_seen: dict[str, int] = {}
+    for i, entry in enumerate(glossary):
+        gwhere = f"{where}[{i}]"
+        if not isinstance(entry, dict):
+            rep.error(gwhere, f"must be an object, got {typename(entry)}")
+            continue
+        for field in ("term", "definition"):
+            if field not in entry:
+                rep.error(f"{gwhere}.{field}", "required field is missing")
+            elif not is_nonempty_str(entry[field]):
+                rep.error(f"{gwhere}.{field}", "must be a non-empty string")
+        term = entry.get("term")
+        if isinstance(term, str) and term.strip():
+            key = term.strip().lower()
+            if key in terms_seen:
+                rep.error(
+                    f"{gwhere}.term",
+                    f"duplicate glossary term {term!r} "
+                    f"(already at {where}[{terms_seen[key]}])",
+                )
+            else:
+                terms_seen[key] = i
+        definition = entry.get("definition")
+        if definition_max_words and isinstance(definition, str):
+            dn = word_count(definition)
+            if dn > definition_max_words:
+                rep.warn(
+                    f"{gwhere}.definition",
+                    f"{dn} words; SPEC asks for one sentence, <= {definition_max_words}. "
+                    "If it needs more than that, the explanation belongs in `deeper_md`.",
+                )
+
+
 def check_item(rep: Report, item, where: str, edition_date: str | None,
                seen_urls: dict) -> dict:
     """Validate one Pulse item. Returns collected stats for edition-level checks."""
-    stats = {"id": None, "prose_words": 0}
+    # `prose_words` and `background_words` are kept apart on purpose; see the two
+    # budget calls in check_pulse() for why they must never be added together.
+    stats = {"id": None, "prose_words": 0, "background_words": 0}
 
     if not isinstance(item, dict):
         rep.error(where, f"must be an object, got {typename(item)}")
@@ -386,7 +521,7 @@ def check_item(rep: Report, item, where: str, edition_date: str | None,
             )
 
     # prose fields
-    for field in ("dek", "why_it_matters", "deeper_md"):
+    for field in ("dek", "why_it_matters", "background_md", "deeper_md"):
         if field in item and not is_nonempty_str(item[field]):
             rep.error(f"{where}.{field}", "must be a non-empty string")
 
@@ -436,6 +571,47 @@ def check_item(rep: Report, item, where: str, edition_date: str | None,
                 f"{where}.deeper_md",
                 f"{n} words; SPEC targets {lo}-{hi}",
             )
+
+    # background_md — the standing context the news sits in. There is no machine
+    # check for the thing that actually matters here (is it mechanism or is it an
+    # analogy? does it duplicate the dek?), so length is the only proxy available,
+    # and it is a decent one: under ~45 words nobody has explained what a field is
+    # and why it exists, and over ~120 words the writer has drifted into writing a
+    # second `deeper_md` in the slot reserved for footing.
+    if isinstance(item.get("background_md"), str):
+        n = word_count(item["background_md"])
+        stats["background_words"] = n
+        lo, hi = BACKGROUND_MD_RANGE
+        warn_lo, warn_hi = BACKGROUND_MD_WARN_RANGE
+        if n and n < warn_lo:
+            rep.warn(
+                f"{where}.background_md",
+                f"{n} words; SPEC targets {lo}-{hi}. Too short to give a reader who has "
+                "never heard of this subfield any footing — say what the area is, what "
+                "problem it exists to solve, and what the obstacle is.",
+            )
+        elif n > warn_hi:
+            rep.warn(
+                f"{where}.background_md",
+                f"{n} words; SPEC targets {lo}-{hi}. This is drifting into a second "
+                "`deeper_md`. background_md is the standing context, not the analysis — "
+                "move the numbers and the caveats down into deeper_md.",
+            )
+
+    # per-item glossary
+    if "glossary" in item:
+        check_glossary(
+            rep,
+            item.get("glossary"),
+            f"{where}.glossary",
+            MIN_ITEM_GLOSSARY,
+            max_entries=MAX_ITEM_GLOSSARY,
+            definition_max_words=GLOSSARY_DEF_MAX_WORDS,
+            count_note=(
+                "Cover the terms this item actually uses and a newcomer would stumble "
+                "on, symbols and units included."
+            ),
+        )
 
     # confidence
     if "confidence" in item:
@@ -553,13 +729,19 @@ def check_pulse(rep: Report, brief: dict, edition_date: str | None,
         rep.error("pulse.layers", f"must be an array, got {typename(layers)}")
         return
     if not layers:
-        rep.error("pulse.layers", "is empty; an edition needs at least the chips layer")
+        rep.error(
+            "pulse.layers",
+            "is empty; an edition needs at least one item across the home layers "
+            "(`silicon` / `chips`)",
+        )
         return
 
     seen_slugs: dict[str, int] = {}
     seen_ids: dict[str, list[str]] = {}
     total_items = 0
     total_prose = 0
+    total_background = 0
+    home_items = 0
     present_order: list[str] = []
 
     for li, layer in enumerate(layers):
@@ -606,10 +788,13 @@ def check_pulse(rep: Report, brief: dict, edition_date: str | None,
 
         for ii, item in enumerate(items):
             total_items += 1
+            if slug in HOME_LAYER_SLUGS:
+                home_items += 1
             stats = check_item(
                 rep, item, f"{lwhere}.items[{ii}]", edition_date, seen_urls
             )
             total_prose += stats["prose_words"]
+            total_background += stats["background_words"]
             if stats["id"]:
                 seen_ids.setdefault(stats["id"], []).append(f"{lwhere}.items[{ii}]")
 
@@ -622,31 +807,32 @@ def check_pulse(rep: Report, brief: dict, edition_date: str | None,
                 f"({', '.join(locations)}); ids must be unique within an edition",
             )
 
-    # chips must be present
-    if "chips" not in seen_slugs:
+    # a home-layer item must be present
+    #
+    # Counting items rather than testing for the slug matters: a layer block can
+    # exist with an empty `items` array (already an error above), and "the chips
+    # key was there" is not the property SPEC cares about. What it cares about is
+    # that the edition actually says something about how silicon gets made or what
+    # got built out of it.
+    if home_items < 1:
         rep.error(
             "pulse.layers",
-            "no item in the `chips` layer; SPEC requires at least one "
-            "(chips is this club's home layer)",
+            "no item in `silicon` or `chips`; SPEC requires at least one across the "
+            "two (they are this club's home layers, and in a normal edition they "
+            "should carry the largest share of it)",
         )
 
     # item count
     if total_items < MIN_ITEMS:
         rep.error(
             "pulse",
-            f"{total_items} Pulse items; minimum is {MIN_ITEMS}",
+            f"{total_items} Pulse items; minimum is {MIN_ITEMS}. Find another story "
+            "worth writing up — do not pad a layer that had nothing.",
         )
     elif total_items > MAX_ITEMS:
         rep.error(
             "pulse",
             f"{total_items} Pulse items; maximum is {MAX_ITEMS}",
-        )
-    elif total_items < SPEC_MIN_ITEMS:
-        rep.warn(
-            "pulse",
-            f"{total_items} Pulse items; SPEC's stated target is "
-            f"{SPEC_MIN_ITEMS}-{MAX_ITEMS} (a short honest edition is allowed, "
-            "but check nothing was dropped by accident)",
         )
 
     # canonical layer order
@@ -654,34 +840,87 @@ def check_pulse(rep: Report, brief: dict, edition_date: str | None,
     if present_order and present_order != canonical:
         rep.warn(
             "pulse.layers",
-            f"layers are ordered {present_order}; SPEC fixes the cake order as "
-            f"{canonical} (energy -> chips -> infrastructure -> models -> applications)",
+            f"layers are ordered {present_order}; SPEC fixes the bottom-to-top order as "
+            f"{canonical} (out of the full sequence "
+            + " -> ".join(LAYER_SLUGS)
+            + ")",
         )
 
-    # total prose budget
+    # Two budgets, kept apart on purpose.
+    #
+    # The ~1,100-word member-tier budget was written when `dek` + `why_it_matters`
+    # were the only member-tier prose on an item. If `background_md` were folded
+    # into that number, every edition from now on would blow the ceiling by roughly
+    # the word count of the backgrounds and the warning would become noise nobody
+    # reads -- the same reason `deeper_md` and the Foundations glossary have always
+    # been counted separately. So the news budget stays exactly what it was, and
+    # background gets its own.
     _check_word_budget(
         rep, "pulse", total_prose, PULSE_PROSE_TARGET,
-        "dek + why_it_matters across all items (excludes deeper_md)",
+        "dek + why_it_matters across all items (excludes background_md, deeper_md)",
     )
+
+    # The background budget scales with the item count, because unlike the news
+    # budget it is not a fixed amount of reading spread over however many stories
+    # there are -- every item carries its own paragraph, so seven items owe about
+    # half what thirteen do. The band is the per-item target range multiplied out,
+    # which has a useful property: an edition where every single background sits
+    # inside its own 50-110 target can never trip this. What it does catch is the
+    # systematic drift the per-item check tolerates -- eleven backgrounds that are
+    # each "only" 118 words are individually fine and collectively 1,300 words of
+    # context nobody signed up to read.
+    if total_items > 0:
+        bg_lo, bg_hi = BACKGROUND_MD_RANGE
+        _check_word_budget(
+            rep, "pulse", total_background,
+            (bg_lo + bg_hi) // 2 * total_items,
+            f"background_md across all {total_items} items",
+            band=(bg_lo * total_items, bg_hi * total_items),
+            low_note=(
+                f"That averages under {bg_lo} words an item — the backgrounds are "
+                "stubs, and a newcomer still has no footing."
+            ),
+            high_note=(
+                f"That averages over {bg_hi} words an item. Background is meant to be "
+                "the footing, not the article; push detail into deeper_md."
+            ),
+        )
 
 
 def _check_word_budget(rep: Report, where: str, actual: int, target: int,
-                       what: str) -> None:
+                       what: str, band: tuple[int, int] | None = None,
+                       low_note: str = "The 5-minute read claim gets thin.",
+                       high_note: str = "This will not read in 5 minutes.") -> None:
+    """Warn when a running word total leaves its band.
+
+    `band` overrides the default +/-25% tolerance. It exists for budgets whose
+    acceptable range is already stated elsewhere in SPEC as a per-unit target --
+    multiplying that range out is both more honest and more forgiving than
+    re-deriving a percentage around its midpoint, which would flag editions whose
+    every individual item was in range.
+
+    The notes default to the read-time sentences the two ~1,100-word member-tier
+    budgets have always printed, so those messages are unchanged; a budget that is
+    not about the five-minute claim passes its own.
+    """
     if actual == 0:
         return
-    lo = int(target * (1 - PROSE_TOLERANCE))
-    hi = int(target * (1 + PROSE_TOLERANCE))
+    if band is not None:
+        lo, hi = band
+    else:
+        lo = int(target * (1 - PROSE_TOLERANCE))
+        hi = int(target * (1 + PROSE_TOLERANCE))
     if actual < lo:
         rep.warn(
             where,
             f"{what} is {actual} words; SPEC targets ~{target} "
-            f"(flagged below {lo}). The 5-minute read claim gets thin.",
+            f"(flagged below {lo}). {low_note}",
         )
     elif actual > hi:
         rep.warn(
             where,
             f"{what} is {actual} words; SPEC targets ~{target} "
-            f"(flagged above {hi}). This will not read in 5 minutes.",
+            f"(flagged above {hi}). {high_note}",
         )
 
 
@@ -769,39 +1008,10 @@ def check_foundations(rep: Report, brief: dict, seen_urls: dict) -> None:
                     if n and not (lo * 0.7 <= n <= hi * 1.3):
                         rep.warn(f"{swhere}.body_md", f"{n} words; SPEC targets {lo}-{hi}")
 
-    # glossary
-    glossary = f.get("glossary")
+    # glossary — same shape and same code as the per-item glossaries; see
+    # check_glossary() for why Foundations does not get the definition length cap.
     if "glossary" in f:
-        if not isinstance(glossary, list):
-            rep.error("foundations.glossary", f"must be an array, got {typename(glossary)}")
-        else:
-            if len(glossary) < MIN_GLOSSARY:
-                rep.error(
-                    "foundations.glossary",
-                    f"{len(glossary)} entr(y/ies); SPEC requires at least {MIN_GLOSSARY}",
-                )
-            terms_seen: dict[str, int] = {}
-            for i, entry in enumerate(glossary):
-                gwhere = f"foundations.glossary[{i}]"
-                if not isinstance(entry, dict):
-                    rep.error(gwhere, f"must be an object, got {typename(entry)}")
-                    continue
-                for field in ("term", "definition"):
-                    if field not in entry:
-                        rep.error(f"{gwhere}.{field}", "required field is missing")
-                    elif not is_nonempty_str(entry[field]):
-                        rep.error(f"{gwhere}.{field}", "must be a non-empty string")
-                term = entry.get("term")
-                if isinstance(term, str) and term.strip():
-                    key = term.strip().lower()
-                    if key in terms_seen:
-                        rep.error(
-                            f"{gwhere}.term",
-                            f"duplicate glossary term {term!r} "
-                            f"(already at foundations.glossary[{terms_seen[key]}])",
-                        )
-                    else:
-                        terms_seen[key] = i
+        check_glossary(rep, f.get("glossary"), "foundations.glossary", MIN_GLOSSARY)
 
     # sources
     sources = f.get("sources")

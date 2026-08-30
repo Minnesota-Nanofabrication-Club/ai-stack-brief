@@ -1,7 +1,10 @@
 # Foundations backlog — the rotating queue
 
 The Foundations half of each edition (see `SPEC.md`) explains **one piece of existing
-technology**, properly. Not news. This file is the queue it draws from.
+technology, research, or finding**, properly. Not news. This file is the queue it draws
+from. "Existing" is the only real constraint: a 1948 paper, a 1965 machine, and a process
+step running in a fab this morning are all equally eligible, and a landmark result that
+turned out to be wrong is often the best teaching material in the file.
 
 Every row has a **slug** (kebab-case, goes straight into `foundations.slug` in the brief
 JSON), a **topic** (goes into `foundations.topic`), a **one-line angle** — the reason the
@@ -31,21 +34,31 @@ topic. Do not make it more than that — the brief is about the world, not the c
    If the default pick would violate that, take the next eligible row that does not.
 3. **Mix the section.** Do not run two topics from the same `##` section on consecutive
    days. Skip down to the next eligible row in a different section.
-4. **Override for relevance.** If a Pulse item in today's edition makes a specific
+4. **Mix the domain.** This file is weighted toward semiconductor process and fab, because
+   that is where it started, and rule 1 reads top-to-bottom. Left alone, that combination
+   would spend a year inside the lithography, deposition, and etch sections before ever
+   reaching computing history, CS foundations, or analog and RF. So: **in any ten
+   consecutive Foundations topics, at least two must come from `## History: machines,
+   papers, and turning points` or `## Computer science foundations`, and at least one from
+   `## MEMS, analog, and mixed-signal`.** Check it the same way you check difficulty — read
+   the last ten editions' slugs and count. The taxonomy in `SPEC.md` now includes
+   `computing` and `silicon`; the Foundations queue has to cover the same ground the Pulse
+   does, or the two halves of the edition stop being about the same subject.
+5. **Override for relevance.** If a Pulse item in today's edition makes a specific
    Foundations topic unusually useful — a high-NA EUV shipment makes `high-na-euv` the
    obvious companion piece, an HBM5 spec vote makes `hbm-stack-architecture` the obvious
    companion piece — take that topic instead of the queue pick, *provided* it has not run
    in the last 90 days. Say so in one clause of the `subtitle` or the `tldr` so the reader
    sees the connection. Use this override at most twice a week; if every Foundations piece
    chases the news, the section stops being evergreen and becomes a second Pulse.
-5. **Never override into a repeat.** If the relevant topic ran 40 days ago, do not rerun
+6. **Never override into a repeat.** If the relevant topic ran 40 days ago, do not rerun
    it. Link the earlier edition from the Pulse item's `deeper_md` instead and take the
    normal queue pick.
-6. **Keep the queue fed.** Count the rows that have never run. If that count drops below
+7. **Keep the queue fed.** Count the rows that have never run. If that count drops below
    30, append at least three new rows to the appropriate sections before writing today's
    edition — the same run that consumes a topic replenishes the queue. New rows must be
-   evergreen technology, not news framed as background.
-7. **Retiring a topic is allowed.** If a row turns out to be too thin for 1,100 honest
+   evergreen technology, research, or history — not news framed as background.
+8. **Retiring a topic is allowed.** If a row turns out to be too thin for 1,100 honest
    words, or duplicates another row, delete it and note the deletion in the commit
    message. Do not silently leave dead rows to be picked again next quarter.
 
@@ -212,6 +225,15 @@ topic. Do not make it more than that — the brief is about the world, not the c
 | `pll-and-clock-distribution` | PLLs and clock distribution | Making one clean clock and getting it everywhere with less than a picosecond of skew | core | |
 | `serdes-and-signal-integrity` | SerDes and signal integrity | 224 Gb/s down a piece of copper: equalization, FEC, and the eye diagram | advanced | |
 | `on-chip-power-delivery` | On-chip power delivery and IR drop | Integrated voltage regulators, decoupling capacitance, and the di/dt problem at 1000 A | advanced | |
+| `noise-in-analog-circuits` | Noise: thermal, flicker, and noise figure | kT/C, the 1/f corner, and why the first stage in a chain sets the noise of the whole thing no matter what follows it | core | |
+| `feedback-and-stability` | Feedback, gain-bandwidth, and stability | A good amplifier is a bad amplifier wrapped in feedback; what phase margin actually buys and what it costs in settling time | core | |
+| `opamp-topologies` | Operational amplifier topologies | Telescopic, folded cascode, two-stage: the three shapes nearly every on-chip amplifier takes, and the gain/swing/power trade that picks one | core | |
+| `mismatch-and-pelgrom` | Device mismatch and Pelgrom's law | σ of a threshold voltage scales as 1/√(WL), so analog area is set by statistics rather than by lithography — the reason analog refuses to shrink with the node | advanced | |
+| `switched-capacitor-circuits` | Switched-capacitor circuits | Building a resistor out of a switch and a capacitor, because capacitor *ratios* are the one thing a CMOS process matches to a tenth of a percent | core | |
+| `impedance-matching-and-smith-chart` | Impedance matching and the Smith chart | When a wire becomes a transmission line, why a mismatch reflects power back, and the one nomogram RF engineers still reach for | core | |
+| `lna-and-receiver-chain` | Low-noise amplifiers and the receiver chain | Friis' formula, sensitivity, and the standing fight between noise figure and linearity that shapes every radio front end | core | |
+| `rf-power-amplifiers` | RF power amplifiers and efficiency classes | Class A through F, Doherty, and envelope tracking — why the transmitter dominates a radio's power budget and what each class trades to fix it | advanced | |
+| `mixers-and-frequency-conversion` | Mixers and frequency conversion | Multiplying two signals to move a whole spectrum, the image problem that creates, and why the local oscillator leaks everywhere it should not | advanced | |
 
 ## Fab operations and economics
 
@@ -237,6 +259,61 @@ topic. Do not make it more than that — the brief is about the world, not the c
 | `standard-cells-and-track-height` | Standard cells and track height | What a 6-track library means, and how cell architecture sets density more than the node number | core | |
 | `verification-formal-and-uvm` | Verification: simulation, UVM, and formal | Why verification is most of the engineering effort, and what formal proves that testing cannot | core | |
 | `ml-for-eda` | Machine learning in EDA | Where learned methods actually beat classical optimizers, and where the published comparisons are contested | advanced | |
+
+## History: machines, papers, and turning points
+
+The Foundations slot is explicitly allowed to be a piece of the past — a machine, a paper,
+or a decision that still shapes what gets built. These rows are the ones where the research
+is a library problem rather than a datasheet problem, and where the sources are books,
+oral histories, museum collections (the Computer History Museum's archive is largely
+online), and the original papers, which are usually free.
+
+| slug | topic | angle | level | ★ |
+| --- | --- | --- | --- | --- |
+| `bell-labs-transistor-1947` | The 1947 point-contact transistor | What Bardeen and Brattain actually built on 16 December, why it worked, and why Shockley's junction transistor replaced it inside two years | intro | |
+| `eniac-and-stored-program` | ENIAC, EDVAC, and the stored-program idea | Rewiring a machine by hand versus loading a program into the same memory as the data — the single change that created computing as a discipline | intro | |
+| `von-neumann-architecture` | The von Neumann architecture and its bottleneck | One memory for both instructions and data: the design that won everything, and the bandwidth wall it built in on day one | intro | |
+| `moores-law-original-paper` | Moore's 1965 paper, read properly | What Moore actually claimed (a cost-per-component minimum, over four data points), what the extrapolation was worth, and how it became a marketing slogan and then a roadmap | intro | |
+| `intel-4004-and-microprocessor` | The 4004 and the first microprocessors | A calculator chip that became a general-purpose computer by accident, and the process limits that dictated its four-bit width | intro | |
+| `history-of-dram-and-1103` | The Intel 1103 and the birth of DRAM | The part that killed magnetic core memory in three years, and the refresh problem it introduced that every DRAM since has had to pay for | core | |
+| `ibm-system-360` | IBM System/360 | The first time an instruction set was deliberately made to outlive the hardware under it, and the idea of architecture as a contract | core | |
+| `cdc-6600-and-cray` | The CDC 6600 and Seymour Cray | Ten peripheral processors, a scoreboard, and functional-unit pipelining — the first machine whose insides look like a modern CPU | core | |
+| `tomasulo-algorithm` | Tomasulo's algorithm | The 1967 IBM 360/91 answer to out-of-order execution: register renaming and a common data bus, still running inside every high-performance core shipped today | advanced | |
+| `apollo-guidance-computer` | The Apollo Guidance Computer | 2 kB of erasable memory, rope memory woven by hand, and a priority-scheduling executive that shed load and saved a landing | intro | |
+| `unix-history` | Unix, and why it spread | A system two people wrote on a spare machine, then rewrote in a new language so it could move — what "everything is a file" bought, and what it cost | intro | |
+| `arpanet-to-tcpip` | ARPANET, packet switching, and TCP/IP | Why the network was made dumb and the endpoints smart, the argument that decision settled, and the 1983 flag day | intro | |
+| `ethernet-and-aloha` | Ethernet and the ALOHA network | Carrier sense, collision detection, and exponential backoff — a protocol designed for a shared coaxial wire that comfortably outlived the wire | core | |
+| `risc-vs-cisc` | The RISC argument | Berkeley RISC, IBM 801, and MIPS: what the argument was actually about (compilers and pipelines, not instruction counts), and why both sides now claim to have won | core | |
+| `dec-vax-and-alpha` | VAX and Alpha | DEC built the most orthogonal CISC ever shipped and then the fastest RISC, and lost with both. What each machine got genuinely right, and what killed the company anyway | core | |
+| `itanium-and-epic` | Itanium and the EPIC bet | Moving instruction scheduling out of the hardware and into the compiler — the most expensive architectural failure in the industry's history, and the one specific thing the compiler could not know | advanced | |
+| `parallel-computing-dead-ends` | The Connection Machine, the transputer, and the parallel dead ends | Three machines that were right about parallelism a decade early and wrong about everything else, and what each one's failure actually proved | core | |
+
+## Computer science foundations
+
+Ideas about how to compute, as distinct from the chips that compute. Most of the landmark
+papers here are free and short; several are under ten pages and worth reading in full
+rather than summarizing. Where a row names a paper, the `try_this` should usually be
+"read section N of it."
+
+| slug | topic | angle | level | ★ |
+| --- | --- | --- | --- | --- |
+| `turing-machines-and-computability` | Turing machines and what cannot be computed | The halting problem as an engineering fact rather than a curiosity — where undecidability actually shows up in compilers, static analyzers, and verification tools | intro | |
+| `p-vs-np-and-reductions` | P, NP, and what a reduction buys you | What "NP-complete" tells a practitioner to stop trying, what it explicitly does not say about a particular instance, and why heuristics win in practice | core | |
+| `shannon-information-theory` | Shannon, entropy, and channel capacity | One 1948 paper that set a hard limit on every link, every compressor, and every error-correcting code built since — and the limit is still not reached | core | |
+| `error-correcting-codes` | Error-correcting codes | Hamming, Reed–Solomon, LDPC: adding redundancy on purpose, and which one is used where in DRAM, flash, and 224 Gb/s links, and why | core | |
+| `floating-point-ieee754` | IEEE 754 floating point | Why 0.1 + 0.2 ≠ 0.3, what a subnormal costs in silicon and in cycles, and why the FP8/BF16/FP4 argument is the same argument the standard settled in 1985 | core | |
+| `compiler-front-end` | How a compiler reads a program | Lexing, parsing, and the fact that a language's grammar sets a ceiling on how good its error messages can ever be | intro | |
+| `ssa-and-optimization` | SSA form and modern optimization | The intermediate representation that made most compiler optimizations easy to write, and the φ-node trick that makes it work at a branch merge | advanced | |
+| `register-allocation` | Register allocation | A register access costs about a cycle and a memory access costs tens; choosing which values live where is graph coloring, which is NP-complete, so every production compiler guesses | advanced | |
+| `virtual-memory-and-paging` | Virtual memory, page tables, and the TLB | The indirection that made multiprogramming and protection possible, and the TLB miss that has become a first-order performance problem again at terabyte working sets | core | |
+| `cache-coherence-protocols` | Cache coherence | MESI and its descendants: keeping N private caches honest without a global lock, and why coherence traffic puts a ceiling on core count | advanced | |
+| `memory-consistency-models` | Memory consistency models | What sequential consistency costs, why every real machine offers something weaker, and the fences that make lock-free code actually correct | advanced | |
+| `consensus-paxos-raft` | Logical clocks, Paxos, and Raft | Agreeing on an order of events without a shared clock — Lamport's 1978 paper, and why consensus is expensive on purpose rather than by accident | advanced | |
+| `end-to-end-argument` | The end-to-end argument | The 1984 Saltzer–Reed–Clark paper that explains why the internet is shaped the way it is, and the places it is now routinely violated for performance | core | |
+| `public-key-cryptography` | Public-key cryptography | Diffie–Hellman and RSA from the arithmetic up, what a large quantum computer would actually break, and what post-quantum standardization replaced it with | core | |
+| `formal-verification-in-practice` | Formal methods that shipped | seL4, CompCert, and TLA+ in production: what was genuinely proved, what was still assumed, and why the assumptions are the interesting part | advanced | |
+| `spectre-meltdown` | Spectre and Meltdown | Speculative execution as a side channel — the moment microarchitecture stopped being an implementation detail and became a security boundary | advanced | |
+| `therac-25-and-software-failure` | Therac-25 and the anatomy of a software failure | A race condition, a hardware interlock removed because software was "safer," and the six overdoses that produced modern safety-critical practice | intro | |
 
 ## Energy
 

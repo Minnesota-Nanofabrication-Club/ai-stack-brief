@@ -4,7 +4,7 @@
   "window": "2026-08-13..2026-08-20",
   "headline": "The week's biggest numbers shrank on inspection: Applied Materials says cleanroom floor space, not capital, now gates chip capacity, and Nvidia's $105 billion for Ohio turns out to be a lease guaranty rather than financing.",
   "pulse": {
-    "read_time_min": 5,
+    "read_time_min": 9,
     "layers": [
       {
         "layer": "energy",
@@ -13,6 +13,25 @@
             "id": "energy-pa-eo-2026-05-data-centers",
             "title": "Pennsylvania puts data centers over 25 MW at the back of the permit line",
             "dek": "Pennsylvania will not begin reviewing a large data center's environmental permits until the developer signs a binding agreement with the state to cover its own grid costs, meet water limits, and clear local zoning. Gov. Josh Shapiro's Aug. 18 order covers any site drawing more than 25 megawatts at peak.",
+            "background_md": "Electricity is not stored at grid scale: it has to be generated at the instant it is drawn, so a regional grid operator plans years ahead against a forecast peak and pays generators in advance to be available on the worst day. A single new load arriving in three years, against generation and transmission that take closer to a decade, resolves either into higher capacity charges spread over every customer or into a reliability shortfall. States hold a second, separate lever over that load: the water, air and stormwater permits a large site cannot break ground without.",
+            "glossary": [
+              {
+                "term": "PJM",
+                "definition": "The regional transmission organization that operates the high-voltage grid and the wholesale capacity market across much of the mid-Atlantic and Midwest, Pennsylvania included; it forecasts peak demand and procures generation against it."
+              },
+              {
+                "term": "Base Residual Auction",
+                "definition": "PJM's forward auction, run ahead of a delivery year, in which generators are paid to guarantee availability at peak; the clearing price becomes a capacity charge billed through to load."
+              },
+              {
+                "term": "Peak demand (MW) vs. energy (MWh)",
+                "definition": "Megawatts are the instantaneous rate of draw the grid must be physically sized for; megawatt-hours are the total consumed over time. Planning and most of the cost are driven by the first, bills by the second."
+              },
+              {
+                "term": "Firm capacity",
+                "definition": "Generation contracted to be available for a customer's full peak, rather than energy bought as available. A load without it is one the utility can be ordered to shed first in an emergency."
+              }
+            ],
             "why_it_matters": "Permitting, not silicon, is turning into the long pole of the AI buildout, and the state that hosts a big slice of PJM just moved data centers from the front of its fast-track queue to the back. It also told utilities to shed data-center load before any other customer in an emergency unless the site has contracted firm capacity for its whole demand, which reprices the common strategy of breaking ground first and sorting out power later.",
             "deeper_md": "EO 2026-05 took effect immediately Aug. 18, 2026; the trigger is peak demand above 25 MW. Sign DEP's template Consent Order and Agreement and you get rolling review, but permits issue only after you show consistency with the local comprehensive plan and hold every municipal zoning approval. Refuse, and DEP starts no review until local approvals and water authorizations are in hand, and you lose the PAyback and Permit Decision Guarantee clocks. All data centers lose Permit Fast Track eligibility. The findings cite PJM's 2025 Load Forecast of 74 GW of summer peak growth through 2045, and the Market Monitor's tally that data centers drove $29.4 billion — 46% — of capacity charges across PJM's last four Base Residual Auctions. Section 3 directs the PUC to make utilities curtail data centers before any other customer in emergencies unless the site secured incremental capacity for its full load, and bars tagging them critical load. From July 1, 2027, operators report monthly energy by source, average MWh per hour at peak, and total and maximum-day water with source and cooling share; NDAs with state agencies are banned. The EO creates no private right of action; enforcement runs through the consent orders themselves.",
             "fab_angle": "A modern fab is exactly the profile this order targets — well over 25 MW, with large water withdrawals — and a curtail-first rule would be brutal for one, since a fab cannot ride out a load shed without scrapping every wafer in process. The order covers data centers only, but its disclosure template (peak MWh per hour, maximum-day water demand, source, cooling share) is the same dataset any large fab siting case now turns on, and the NDA ban means those numbers become public record rather than negotiated in private.",
@@ -42,6 +61,25 @@
             "id": "energy-georgia-power-openai-3-2-gw-contract",
             "title": "Georgia regulators buy 12 more days on OpenAI's 3.2 GW power contract",
             "dek": "Georgia Power wants regulators to approve a 25-year contract supplying about 3,200 megawatts — roughly a fifth of the utility's entire system peak — to a single OpenAI data center. When commission staff signaled they would object, the utility handed them 12 extra days rather than let the review clock run out.",
+            "background_md": "A vertically integrated regulated utility does not sell into a market: it builds generation, adds the capital to a rate base it earns a fixed return on, and a state commission then decides which class of customer pays which share. That machinery assumes many small loads whose ups and downs average out. A single customer big enough to move system peak on its own destroys the averaging, so utilities negotiate special contracts — bespoke minimum bills, collateral and termination terms — to keep the risk on the load that created it. Commissions routinely allow those terms to be filed as trade secrets.",
+            "glossary": [
+              {
+                "term": "System peak",
+                "definition": "The single highest instantaneous demand a utility must serve in a year. Generation, transmission and distribution are all sized for it, so a load that adds to peak is what forces new plant to be built."
+              },
+              {
+                "term": "Special contract",
+                "definition": "A negotiated tariff written for one very large customer in place of the standard rate schedule. It needs commission approval because its terms decide how much of the utility's cost every other customer absorbs."
+              },
+              {
+                "term": "Demand response",
+                "definition": "A contractual commitment to cut load within minutes when asked. It lets a utility count the customer's flexibility instead of building firm generation for that customer's full peak."
+              },
+              {
+                "term": "Rate base",
+                "definition": "The capital a utility has invested and is allowed to earn a regulated return on. Spreading it across more sales lowers everyone's share — but only if the new sales last as long as the plant does."
+              }
+            ],
             "why_it_matters": "A special contract is the instrument that decides whether one enormous customer pays its own way or quietly leans on everyone else's bill, and the terms that determine that — minimum take, collateral, what happens if the customer walks — were filed entirely under seal. Whether Georgia forces those terms into daylight sets the template for the queue of gigawatt-scale deals behind this one.",
             "deeper_md": "Georgia Power announced the deal July 22: about 3,200 MW for OpenAI's Project Camellia in Effingham County, 25-year term, OpenAI paying full infrastructure and service costs, plus up to 1,000 MW of flexible demand response — roughly 31% of site peak — which the utility says lets it build less generation. Southern Alliance for Clean Energy puts the site at 1,400 acres and $20 billion, phasing in 2028-2032 against a system peak near 16 GW. PSC staff had 30 days from filing, expiring Aug. 14; Georgia Power granted 12 more, to Aug. 26, after staff director Tom Bond signaled an objection. Commissioner Peter Hubbard's worry is load diversity: nothing backfills \"three cities' of Atlanta worth of power customers\" if it ends early. NRDC, Sierra Club and SACE note the agreement is redacted in its entirety as trade secret, and want load commitments, ramp schedule, exit provisions, collateral and infrastructure costs unsealed. SACE reads it as requiring only two years of minimum bills on early termination, and notes that adding 3.2 GW cuts residential customers' share of plant costs from roughly 50% to 42% while the cost base grows, since new plants run about twice the cost of old ones.",
             "fab_angle": "The 1,000 MW demand-response pledge is the sharpest line between an AI campus and a fab as grid customers. Training load can be throttled or time-shifted for hours; a fab's furnaces, pumps, abatement and cleanroom air handling cannot, so a fab buys firm capacity at full price and has no flexibility to trade back to the utility. Expect large-load tariffs written around curtailable compute to price fabs worse per megawatt than the data centers they supply.",
@@ -88,6 +126,25 @@
             "id": "chips-amat-cleanroom-constraint",
             "title": "Applied Materials says cleanroom space, not cash, now gates chip capacity",
             "dek": "The world's largest chipmaking-equipment company reported record quarterly revenue of $9.12 billion on August 13 and said its customers' limit on adding capacity is no longer money for tools but the square footage of cleanroom — the filtered, vibration-isolated space where wafers are processed — they can physically bring online.",
+            "background_md": "A fab is not one machine but several hundred, and each one needs a qualified slot: air scrubbed of particles and swapped out tens of times a minute, a slab stiff enough that the tool never feels the truck outside, ultrapure water and specialty gas at the chamber, and a sub-fab level carrying pumps, chillers and exhaust abatement. That shell costs more per square foot than almost any other industrial building and takes years to permit, pour and qualify, while a process tool can be ordered and installed in months. Equipment makers therefore sell into a volume of finished space that somebody else builds.",
+            "glossary": [
+              {
+                "term": "Wafer fab equipment (WFE)",
+                "definition": "The industry's aggregate for spending on process tools — lithography, deposition, etch, CMP, implant, metrology — which is the demand number every equipment maker reports against."
+              },
+              {
+                "term": "Advanced packaging",
+                "definition": "Assembling several finished dies into one package — stacking DRAM, bonding logic to memory — instead of printing a single larger chip. It has its own tool set: thinning, plating, bonding and inspection."
+              },
+              {
+                "term": "TSV (through-silicon via)",
+                "definition": "A hole etched clean through a thinned die and filled with copper, so stacked dies connect vertically over short distances instead of routing out to bond wires at the edge."
+              },
+              {
+                "term": "Total thickness variation",
+                "definition": "The peak-to-valley spread in a wafer's or die's thickness across its area. Hybrid bonding needs it inside a a few nanometers, because the two surfaces have to make contact everywhere at once."
+              }
+            ],
             "why_it_matters": "If floor area is the scarce input, then the pacing item for AI chip supply moves from fab budgets to concrete, HVAC and utility hookups, and tool vendors start competing on wafers processed per square foot rather than only on process capability. Applied is already selling that as a product feature and charging for it: Semiconductor Systems gross margin hit 55.4%.",
             "deeper_md": "Q3 FY2026 (quarter ended July 26): revenue $9.115B, +25% YoY; Semiconductor Systems $7.0B, +27%; non-GAAP gross margin 50.4%, operating margin 34%, non-GAAP EPS $3.50. DRAM — which Applied counts together with HBM packaging — grew 52% YoY. Q4 guidance is $10.25B ±$500M. Management's framing: leading-edge foundry-logic, DRAM and advanced packaging together make up roughly **80% of wafer-fab-equipment growth** in 2026 and 2027; packaging revenue should grow **>70%** in CY2026, process diagnostics and control **>50%**, services **>20%**. The floor-space thesis shows up in hardware — a new DRAM epitaxy system that uses 20% less cleanroom area, plus Opta Quad CMP that trims total thickness variation in real time for hybrid bonding, Nokota VMax 2 electroplating with field shaping for TSV fill and microbumps, Avila 2 PECVD depositing stress-balanced dielectric around TSVs for 12- and 16-high HBM, and VeritySEM 7AP eBeam CD metrology claiming sub-10 nm sensitivity on warped, heterogeneous packages. Caveat: the 80%, 70% and 50% figures are Applied's own forward-looking estimates in prepared remarks, not audited results.",
             "fab_angle": "Two things a cleanroom operator can take from this. First, tool footprint is becoming a specification, not an afterthought — output per square foot is the metric being optimized, which is exactly the arithmetic a shared university bay lives under. Second, the packaging tool list is a map of where process control is hardest right now: hybrid bonding needs total-thickness-variation control tight enough that CMP has to close the loop in situ, and CD metrology on a warped, mixed-material package is hard enough that Applied is pushing eBeam into a job optical tools used to own.",
@@ -111,6 +168,25 @@
             "id": "chips-purdue-m3d-ald-oxide",
             "title": "Purdue stacks three tiers of ALD oxide transistors on one 200 mm wafer",
             "dek": "A Purdue-led group built three vertically stacked layers of transistors on a single 200 mm silicon wafer using atomic layer deposition — a technique that grows films roughly one atomic layer per cycle — at about 225 °C, cool enough to be done on top of finished copper wiring instead of alongside it.",
+            "background_md": "Chips are normally built as a single layer of transistors with copper wiring stacked above them. Monolithic 3D means growing a *second* layer of transistors on top of that wiring instead of bonding two finished wafers together, which would buy density without needing finer lithography. The obstacle is heat: everything above the first layer has to be built below roughly 400 °C or the copper and insulating material already in place degrade. That thermal ceiling is why the field keeps looking at oxide semiconductors deposited at low temperature rather than conventional silicon.",
+            "glossary": [
+              {
+                "term": "BEOL",
+                "definition": "The back end of line: the copper-and-dielectric wiring stack built above the transistors. Its copper and low-k insulator set the roughly 400 °C ceiling that everything added afterwards has to respect."
+              },
+              {
+                "term": "V_th and σV_th",
+                "definition": "Threshold voltage is the gate voltage at which a transistor begins to conduct; σV_th is its spread across devices. Since every gate's speed and leakage key off V_th, that spread is a yield limit, not a curiosity."
+              },
+              {
+                "term": "Subthreshold swing (mV/dec)",
+                "definition": "How many millivolts of gate swing it takes to change drain current by a factor of ten below threshold. Conventional transistors cannot beat about 60 mV/dec at room temperature, and lower means a sharper off-switch."
+              },
+              {
+                "term": "Field-effect mobility (cm²V⁻¹s⁻¹)",
+                "definition": "How fast carriers drift through the channel per unit electric field, which sets the current a transistor of a given size can deliver. Oxide semiconductors land well below the few hundred a silicon MOSFET channel reaches."
+              }
+            ],
             "why_it_matters": "Monolithic 3D has mostly been single-device demos; this is a yield-and-uniformity dataset at wafer scale, which is the argument foundries actually respond to. If transistors can be added in the back-end wiring stack, you buy density without a new lithography generation and without bonding two wafers together — but only for devices that tolerate 5 µm channels and n-type-only logic.",
             "deeper_md": "The stack: Tier 1 ferroelectric HfZrO₂ FETs, Tier 2 enhancement-mode InOₓ FETs, Tier 3 depletion-mode InOₓ FETs, separated by 17 nm isolation dielectric — over 100,000 devices across 52 dies. Best single-tier numbers: subthreshold swing 70 mV/dec, on/off ratio above ten decades, average field-effect mobility 91.6 cm²V⁻¹s⁻¹ after a 300 °C oxygen anneal. The sharpest process result is that threshold-voltage spread tracks film thickness: σV_th = 0.04 V at 1.8 nm InOₓ versus 0.18 V at 3.5 nm, attributed to across-wafer thickness fluctuation. Tier 2 averaged V_th 0.09 V (σ 0.11 V), µ 63.5; Tier 3 averaged V_th −1.18 V (σ 0.07 V), µ 82.0; Tier 1 memory window 2.18 V (σ 0.24 V). Caveats worth stating plainly: channel length is 5 µm, mobility is well under silicon's, there is no p-type oxide device so the cross-tier inverter is a zero-V_gs-load ratioed NMOS stage (23 V/V gain at V_DD = 3 V, with static current), and the four-tier computing-in-memory accelerator claiming 1.4–2.9× speedup is simulation from a custom PDK. arXiv preprint, not yet peer reviewed.",
             "fab_angle": "The BEOL thermal budget is the whole constraint — everything has to stay under ~400 °C or the copper and low-k below it degrade, which is why ALD InOₓ at ~225 °C is interesting and why epitaxial III-V or Ge channels are not. The uniformity result is the transferable lesson: at 1.8 nm the transistor's threshold voltage is essentially a readout of your deposition thickness map, so ellipsometry uniformity across the wafer becomes an electrical spec, not a film spec.",
@@ -134,6 +210,25 @@
             "id": "chips-lam-experiment-capacity",
             "title": "Lam bets $3B that experiment throughput limits process development",
             "dek": "Lam Research said on August 13 it will spend more than $3 billion over five years enlarging its worldwide network of research labs, raising the number of process experiments it can run — currently more than a million a year — by over 50%.",
+            "background_md": "Nobody derives an etch or deposition recipe from first principles. Plasma chemistry, surface reactions and the shifting geometry of a half-etched feature couple too tightly to predict, so a process is found empirically: run split lots whose pressure, power, gas ratio or time are deliberately varied, then measure what comes out. Each split costs a wafer, a chamber slot and a metrology pass. How fast a process reaches production is therefore governed by how many experiments fit in the calendar, not by how good any single experiment is — and virtual process simulators are calibrated against those same experiments.",
+            "glossary": [
+              {
+                "term": "Design-of-experiment split",
+                "definition": "A structured set of runs varying several process parameters at once, so their individual effects and their interactions can be separated from a small number of wafers rather than one variable at a time."
+              },
+              {
+                "term": "Process integration",
+                "definition": "Making individually working steps work in sequence — layer order, etch selectivity, thermal budget, topography. It is where most real failures live, and it cannot be learned from any single tool."
+              },
+              {
+                "term": "Virtual fabrication",
+                "definition": "A physics-based simulator that builds a 3D model of the structure step by step from a written process flow, so selectivity and layer-ordering mistakes surface before any wafer is consumed."
+              },
+              {
+                "term": "Pathfinding and ramp",
+                "definition": "The two ends of process development: pathfinding screens candidate integration schemes before a node is committed; ramp is the move to volume production. The interval between them is the schedule everyone is compressing."
+              }
+            ],
             "why_it_matters": "This is a claim about where the bottleneck sits: not whether an etcher or deposition chamber can be built to do something, but how many design-of-experiment splits fit between a customer's pathfinding start and its ramp date. A day after the lab announcement Lam also agreed to put its virtual-fabrication software into Northeast universities, which changes who can practice process integration without owning a cleanroom.",
             "deeper_md": "Scale check against a primary filing: Lam's FY2026 R&D expense (fiscal year ended 28 June 2026, Form 10-K filed 7 Aug 2026) was $2.376B, up from $2.096B in FY2025 — so roughly $600M/year of added lab infrastructure sits on top of a ~$2.4B/year R&D run rate. The network is described as three tiers: foundational labs for chemistries, materials and mechatronics that Lam says compress weeks of experimental work into days; process-development labs where engineering, product and manufacturing teams share the same tools; and technology centers sited near customers for qualification. The headline efficiency claim — process development shortened *up to* 2.5× in recent customer engagements — is unverified and unbounded, and \"one million experiments annually\" is never defined (wafers? splits? chamber-hours?), so treat both as marketing units. The separate 12 August agreement with NY Creates deploys SEMulator3D, a physics-based virtual process model of etch, deposition and lithography, to roughly 3,500 students over five years across the National Network for Microelectronics Education Northeast node.",
             "fab_angle": "The honest version of the university deal is that physical wafers, tool time and materials are the reason most schools cannot teach process integration, and a virtual flow removes that cost while removing the failure modes too — you learn layer ordering, selectivity and topography interactions, not contamination, drift or a misloaded cassette. Still, the underlying arithmetic is the one a club cleanroom lives by: with a single etcher, the schedule is set by experiments per week, not by what any one experiment can resolve. NY Creates operates the Albany NanoTech 300 mm complex, so the curriculum is worth watching even from Minnesota.",
@@ -168,6 +263,25 @@
             "id": "infra-meta-100k-gpu-fabric",
             "title": "Meta publishes the network stack behind a 129,000-GPU training cluster",
             "dek": "At the SIGCOMM networking conference in Denver on August 19, Meta detailed the Ethernet fabric and communication software that make roughly 129,000 H100 GPUs spread across five datacenter buildings behave as one training job, using RoCE (RDMA over Converged Ethernet, which lets one machine write directly into another machine's memory without going through its CPU).",
+            "background_md": "Training one model across many accelerators means every accelerator holds a slice of the work and, at every step, they must exchange results before any of them can proceed — an all-reduce, in which partial gradients are summed across the entire job and the sum handed back to everyone. The step therefore runs at the speed of the slowest link, and a late packet buys idle silicon. Datacenter fabrics are built as multi-stage trees of switches, so the further apart two accelerators sit in that tree, the more hops, latency and shared congestion their traffic collects.",
+            "glossary": [
+              {
+                "term": "Clos topology",
+                "definition": "A multi-stage switch fabric where every switch connects to every switch in the stage above, giving each pair of hosts many equal-cost paths and letting capacity grow by adding stages rather than bigger switches."
+              },
+              {
+                "term": "Oversubscription (e.g. 1:7)",
+                "definition": "The ratio between the bandwidth hosts below a layer could offer and the uplink bandwidth actually provided above it. At 1:7 only a seventh of the traffic gets through if everyone transmits at once."
+              },
+              {
+                "term": "Bandwidth-delay product",
+                "definition": "Link rate multiplied by round-trip time: how much data must be in flight to keep a path full. It is why a cross-building path needs far more parallel connections than one inside a rack."
+              },
+              {
+                "term": "Queue pair (QP)",
+                "definition": "The paired send and receive queues an RDMA network card uses for a single connection. Each carries its own packet flow, so the number of them sets how many parallel paths one transfer can spread over."
+              }
+            ],
             "why_it_matters": "Once a cluster outgrows a single building, the network stops being plumbing and becomes the thing you design around: Meta had to rebuild job startup, memory accounting and flow control just to keep the GPUs fed. It is the most detailed public account yet of the problems the announced million-GPU sites will hit, and it says the fixes are software and topology, not more bandwidth.",
             "deeper_md": "The cluster is one region, five buildings, ~129K H100s on Grand Teton hosts (8 GPUs per node, 8 RDMA NICs, 1:1 GPU-to-NIC at 400 Gbps). A multi-stage Clos runs rack switches to zone switches to a fully meshed aggregation layer; an AI Zone is up to 288 racks x 16 GPUs (~4K GPUs), a building ~32K. Cross-zone oversubscription was cut from 1:7 to 1:2.8. Latency scales 1x in-rack, 7x cross-rack, 15x cross-zone, 30x cross-building, so one congestion-control setting cannot serve all paths. Their CCLX library cuts startup 11x (eager process-group creation, O(N) topology discovery) and halves communication memory; stock libraries burned ~10 GB of HBM, 12.5% of an 80 GB H100. Dynamic Queue Pair Load Balancing sizes segments and queue-pair count to each path's bandwidth-delay product (64 KB segments, 2 QPs in-rack, 4 cross-rack, 64 cross-datacenter), giving ~72-90% lower peak switch buffering and +13% bus bandwidth on 8 MB AllGather. Notably they rejected DCQCN as untunable. Caveat: Meta says full-cluster production A/B tests are financially impossible, so most gains are benchmark-measured, and their CPU emulation (96K ranks on 12K servers) models control plane only.",
             "fab_angle": "Two hard links to silicon. First, HBM is the budget everything competes for: a communication library that idles 10 GB of an 80 GB stack is directly trading network buffers against model parameters, which is why per-package memory capacity gates cluster design as much as FLOPS. Second, the 1:1 GPU-to-NIC ratio at 400 Gbps means every accelerator ships with its own high-SerDes network die; at the next rate that link budget is what pushes optics from a pluggable module toward the package.",
@@ -197,6 +311,25 @@
             "id": "infra-nvidia-residual-value-guaranty-ports",
             "title": "Nvidia's $105B Ohio commitment is a lease guaranty, not a loan",
             "dek": "Nvidia's SEC filing on August 17 shows that the widely reported \"$105 billion of financing\" for an OpenAI datacenter campus in Pike County, Ohio is actually a residual value guaranty: Nvidia promises to cover the shortfall if OpenAI stops paying rent and the buildings have to be re-let or sold.",
+            "background_md": "Nobody builds a gigawatt campus out of cash on hand. A developer finances the land, substation, shell and cooling plant against a long-term lease, and lenders size that debt on how reliably the rent will arrive. The physical assets inside have wildly mismatched lifetimes: a grid interconnection and a building are twenty-year investments, while the accelerators they house are obsolete within a handful of years. So a twenty-year lease is a bet that power and conditioned floor space stay valuable long after the specific chips are gone, and whoever guarantees the lease is what the lenders actually price.",
+            "glossary": [
+              {
+                "term": "IT load",
+                "definition": "The electrical power delivered to the computing equipment itself, excluding cooling and conversion losses. Datacenter capacity is quoted in gigawatts of it because power, not floor area, is the binding physical constraint."
+              },
+              {
+                "term": "Residual value guaranty",
+                "definition": "A promise to cover the gap between an agreed value of an asset and what it actually fetches when re-let or sold. The guarantor pays nothing unless that shortfall occurs."
+              },
+              {
+                "term": "Ready for service",
+                "definition": "The contractual milestone at which the developer has delivered power, cooling and shell to specification. Rent, and any guaranty attached to the lease, begin only from that date."
+              },
+              {
+                "term": "Contingent obligation",
+                "definition": "A commitment that moves no cash today and appears only in the notes to a filing, because payment depends on an event — here a tenant default — that may never happen."
+              }
+            ],
             "why_it_matters": "This is how the buildout is being paid for: lenders who would not underwrite OpenAI directly will underwrite Nvidia's balance sheet, so Nvidia's credit standing, not the tenant's, sets the cost of capital for gigawatts of AI capacity. The exposure is contingent and off-balance-sheet, which means the headline number tells you almost nothing about how much cash actually moves or when.",
             "deeper_md": "The Form 8-K (items 1.01, 2.03, 7.01) covers leases for ~4.25 GW of IT load at the PORTS Technology Campus, with an option Nvidia may exercise at its sole discretion for ~3.8 GW more. Aggregate payment obligation is capped cumulatively at $105B — about $24.7B per IT-gigawatt of guaranteed lease value, spread over 20-year leases. Each guaranty takes effect only when its lease commences and lessor SB Energy meets ready-for-service conditions, expected from 2028. A trigger event is OpenAI insolvency or non-payment; Nvidia then pays the gap between the guaranteed minimum lease value and what a replacement lease or sale recovers, and may assume the lease, force a re-let, start a sale, terminate, or defer for a year while paying project costs. The guaranty dies early if OpenAI achieves a satisfactory credit rating, and OpenAI indemnifies Nvidia for anything paid. Caveats: the agreement text stays private until the 10-Q for the quarter ended July 26, 2026, and the scope shrank — CNBC reported talks of a $250B backstop for 10 GW, the WSJ reported a cut to under $120B. Critics read the structure, alongside the $500B+ financing platforms Nvidia announced with six asset managers on August 10, as circular financing.",
             "confidence": "confirmed",
@@ -230,6 +363,25 @@
             "id": "models-statem-harness-scaling",
             "title": "The scaffolding, not the model, moved Terminal-Bench 2.1",
             "dek": "A paper posted August 15 reports 95.3% on Terminal-Bench 2.1 — a benchmark where an AI agent must actually finish jobs in a Linux terminal — by rewriting the wrapper program that manages the model's memory and checks its steps, while leaving the model's weights completely untouched.",
+            "background_md": "A language model on its own only turns one block of text into the next. Making one do work in a terminal takes a surrounding program — the harness — that decides what goes into the context window each turn, actually executes the commands the model emits, feeds the output back, and judges when to stop, retry or give up. That program is where a finite context window gets rationed and where a mistake made twenty steps ago is either caught or silently compounded. The model never touches the world except through it.",
+            "glossary": [
+              {
+                "term": "Context window",
+                "definition": "The fixed number of tokens a model can attend to in a single call. Everything the agent currently knows must fit inside it, so the harness is constantly deciding what to keep and what to discard."
+              },
+              {
+                "term": "pass@1",
+                "definition": "The score when each task is attempted once, with no retries and no picking the best of several runs. It is a far harsher number than headline results that quietly allow best-of-N."
+              },
+              {
+                "term": "Adjudication",
+                "definition": "The benchmark maintainers' review of a submitted run to confirm tasks were genuinely solved rather than passed through a broken test or an environment side effect. A pre-adjudication score has not had it."
+              },
+              {
+                "term": "Trajectory",
+                "definition": "The full logged sequence of prompts, commands and outputs from one attempt at one task. Publishing trajectories is what makes a claimed score checkable instead of merely asserted."
+              }
+            ],
             "why_it_matters": "If a wrapper can move a score by ten-plus points, a leaderboard number describes a model-plus-harness pair, not a model, and cross-lab comparisons are meaningless unless the harness is held fixed. The same trick reportedly cut the cost of a top run from $574.68 to about $15, which says capability is currently being left on the table by software, not silicon.",
             "deeper_md": "StateM (arXiv 2608.15089, Qin, Lu, Wang and Wang) is an \"agent-native runtime\": execution is organized into explicit phases with durable state, phase-local context, transition gates that must pass a checklist/command/predicate/LLM review before the agent advances, and versioned \"runbooks\" it can recover into after a failure. Reported results on the 89-task benchmark, 445 trials: GPT-5.5 xhigh 83.1% → 92.1%; GPT-5.6 Sol xhigh 95.28% raw (424/445); DeepSeek-V4-Flash 82.7% → 88.1%, with about $38 of profile adaptation. Runbooks transfer between model versions unmodified. Read this skeptically: the 95.28% is the authors' own pre-adjudication public submission, and StateM does not appear on the official tbench.ai leaderboard, whose verified top entry is 83.8% (Claude Code + Fable 5). Artificial Analysis, running the standard Terminus 2 harness in an e2b sandbox at pass@1 over three repeats, puts GPT-5.6 Sol at 89.5%. The authors are explicit that these are system-level results, not claims about a new base model, and they released source snapshots, trial trajectories and SHA-256 checksums under Apache 2.0 so the claim is at least checkable.",
             "confidence": "confirmed",
@@ -264,6 +416,25 @@
             "id": "models-qwen38-27b-hybrid-attention",
             "title": "Qwen ships a 27B open model that is mostly linear attention",
             "dek": "Alibaba released Qwen3.8-27B under Apache 2.0 on August 14: three out of every four of its 64 layers use gated DeltaNet linear attention, which carries a fixed-size running summary of the conversation instead of storing a key-value entry for every past token, so most of the model's per-user memory stops growing as the context gets longer.",
+            "background_md": "A transformer emits one token at a time, and standard attention makes each new token compare itself against every earlier one. To avoid recomputing that, the server stores a key and a value vector for every past token in every layer — the KV cache — in the accelerator's memory. The cache grows linearly with the conversation and again with each concurrent user, so at long context it, not the weights, dominates. Linear attention instead folds the whole past into a fixed-size state updated once per token: constant memory, bought by giving up the ability to look any single token up exactly.",
+            "glossary": [
+              {
+                "term": "Query, key and value heads",
+                "definition": "Attention runs many parallel copies of itself per layer; queries come from the current token, keys and values from the history. Only the key/value heads are cached, so their count sets that layer's memory footprint."
+              },
+              {
+                "term": "HBM (high-bandwidth memory)",
+                "definition": "DRAM stacked into towers sitting beside the compute die on a shared substrate, connected by a very wide bus. It holds the weights and the KV cache, and its capacity per package caps what one accelerator can serve."
+              },
+              {
+                "term": "Quantization",
+                "definition": "Storing weights at lower numeric precision — 8 or 4 bits instead of 16 — so a model occupies proportionally less memory, at some accuracy cost. A claim that a model \"runs in 24 GB\" almost always assumes it."
+              },
+              {
+                "term": "YaRN",
+                "definition": "A method for rescaling the rotary position encodings a model was trained with, so it keeps working on sequences longer than anything it saw during training instead of degrading past the trained length."
+              }
+            ],
             "why_it_matters": "The key-value cache is what decides how many simultaneous users fit on one accelerator at long context, so an architecture that freezes the cache in 48 of 64 layers changes the economics of long-context serving more than any leaderboard delta would. It also shipped with open weights, so the memory claim is something anyone with a GPU can go measure rather than take on faith.",
             "deeper_md": "The Hugging Face card gives the layout precisely: 27.78B dense parameters, hidden dimension 5,120, FFN intermediate 17,408, and 64 layers arranged as 16 repeats of `3 x (Gated DeltaNet -> FFN) -> 1 x (Gated Attention -> FFN)`. The DeltaNet blocks use 48 linear-attention value heads and 16 QK heads at 128 dim; the full-attention blocks use 24 query and 4 KV heads at 256 dim with 64-dim rotary embeddings. It is a native vision-language model (images and hour-scale video), trained with multi-token prediction over multiple steps, native 262,144-token context, extensible toward ~1M with YaRN. Vendor-reported evals: SWE-bench Pro 61.7, GPQA Diamond 89.2, OSWorld-Verified 84.3, OmniDocBench 91.1 — all run by Alibaba, on benchmarks old enough that contamination cannot be ruled out. Two caveats worth carrying: independent testing found badly degraded output in low-resource languages (Telugu, Malayalam, Balochi, Khmer, Sindhi), and the widely repeated \"runs in 24 GB\" line refers to quantized short-context use — one hands-on test measured just over 74 GB with vLLM and KV cache enabled on an 80 GB A100.",
             "fab_angle": "Hybrid linear attention is the clearest current example of an architecture change that redirects hardware demand. A conventional 27B model's KV cache grows linearly with context, so long-context inference is bound by HBM capacity and bandwidth; replacing it with a constant-size recurrent state in 48 of 64 layers pushes the bottleneck back toward compute and toward the state-update path, and leaves the remaining 16 full-attention layers as the memory hot spot. Whether next-generation inference parts need another HBM stack or more on-die SRAM depends on which of these layouts the field standardizes on, and open weights under Apache 2.0 mean the profiling can be done outside the labs.",
@@ -292,6 +463,25 @@
             "id": "applications-ai-placers-wrong-objective",
             "title": "AI chip placers were optimizing a number that doesn't predict the chip",
             "dek": "Software that decides where blocks go on a chip has long been trained to minimize estimated wire length, and an ICCAD 2026 paper posted this week shows that number barely predicts whether the finished chip meets its speed target — so the authors retrained the objective on data taken after routing instead.",
+            "background_md": "Turning a netlist into a layout runs in stages. Placement fixes an x-y position for every cell and macro; routing then draws the actual metal between them; and only once the metal exists do you know each wire's resistance and capacitance, and therefore whether a path arrives inside its clock period. Placement decides most of that answer but runs long before it can be measured, so placers optimize a cheap stand-in — typically an estimate of total wire length taken from the bounding box of each net. Every learned placer inherits whatever the stand-in misses.",
+            "glossary": [
+              {
+                "term": "HPWL (half-perimeter wirelength)",
+                "definition": "Half the perimeter of the smallest rectangle enclosing a net's pins, summed over all nets. It is fast and differentiable, which is why placers optimize it, and it ignores congestion, layer choice and detours."
+              },
+              {
+                "term": "WNS and TNS",
+                "definition": "Worst negative slack is how far the single most-violating timing path misses the clock period; total negative slack sums that shortfall over every violating path. One measures the worst failure, the other how widespread failure is."
+              },
+              {
+                "term": "PPA",
+                "definition": "Power, performance and area — the three quantities a physical-design flow trades against one another. A change counts as an improvement only if it does not quietly pay for itself in one of the other two."
+              },
+              {
+                "term": "Global vs. detailed routing",
+                "definition": "Global routing assigns each net to coarse regions and gives a quick read on length and congestion; detailed routing commits every wire to an exact track and costs far more runtime. That gap is why label cost depends on stage."
+              }
+            ],
             "why_it_matters": "The headline results of the AI-placement literature were scored on a proxy, and when a benchmark runs the full flow all the way to a routed chip the ranking flips against the AI tools. The fix here is about where the training labels come from, not about a cleverer network — the more transferable lesson for anyone pointing ML at a multi-stage design or process flow.",
             "deeper_md": "ChiPBench previously ran AI placers through a complete RTL-to-layout flow and found that dominating the intermediate metric did not produce good final PPA. PPAPlace (Ruogu Chen and Jie Han, arXiv 13 Aug, accepted at ICCAD 2026) reports near-zero correlation between half-perimeter wirelength (HPWL) and post-route worst/total negative slack (WNS/TNS), and says all six AI placers ChiPBench evaluated degraded PPA versus a hierarchical baseline. A label-fidelity study over ten circuits at four flow stages found post-global-routing is the cheapest stage whose labels rank placements faithfully. Their surrogate is a dual-stream network — graph attention over the netlist plus spatial convolution over the placement grid — trained on ~5,000 post-global-route-labeled placements, with gradients flowing back to cell coordinates. Used inside DREAMPlace's loop (CoOpt) or as projected-gradient macro refinement (Refine), it improves average WNS 22% and TNS 51% on five held-out ChiPBench circuits with no per-circuit retraining, holding power and routability. Caveats: five test circuits, an open-source flow (DREAMPlace + OpenROAD), author-reported, no silicon.",
             "fab_angle": "The reusable part for a club running an open-source flow is the labeling pipeline, not the model: they release code plus a 5,000-placement labeled dataset built on OpenROAD and ChiPBench, and the claim is that stopping at global route — rather than full detailed route — gets you labels faithful enough to train on at a fraction of the runtime. That trade, cheap-but-faithful supervision from a late-enough flow stage, is exactly the question you face building any ML model on top of a fab or design flow where the ground truth is expensive.",
@@ -321,6 +511,25 @@
             "id": "applications-analog-eda-simulation-budget",
             "title": "Analog design automation takes aim at the SPICE bill, not the model",
             "dek": "Three papers posted the same day go after analog chip design — the hand-crafted circuits like amplifiers and voltage references that never got automated the way digital logic did — by cutting how many slow SPICE circuit simulations each design iteration costs, rather than by building a smarter model.",
+            "background_md": "Digital logic is compiled: synthesis maps a description onto a library of pre-characterized cells, and static timing analysis checks the result without simulating it. Analog has no such library. Gain, bandwidth, noise and offset all depend on exactly where each transistor sits on its own nonlinear I-V curve, so the only way to know whether a set of device dimensions works is to solve the circuit's differential equations numerically — one SPICE run — and to repeat that across process, voltage and temperature corners. The search space is continuous and every point on it costs simulator time.",
+            "glossary": [
+              {
+                "term": "Sizing",
+                "definition": "Choosing each transistor's width, length and bias current to hit a specification. The topology decides what a circuit can do; sizing decides whether it actually does it, and it is the expensive half."
+              },
+              {
+                "term": "Corners",
+                "definition": "The worst-case combinations of manufacturing variation, supply voltage and temperature a design must still meet spec under. A circuit that only works at nominal is not a design, so each candidate costs many simulations, not one."
+              },
+              {
+                "term": "Surrogate model / Bayesian optimization",
+                "definition": "Fitting a cheap probabilistic model — often a Gaussian process — to the simulations run so far, then using its predictions and uncertainty to choose the next point, so the slow simulator is called only where it will teach something."
+              },
+              {
+                "term": "Post-layout / parasitic extraction",
+                "definition": "Pulling the resistance and capacitance of the drawn wires and device geometry out of the finished layout and re-simulating with them. Analog performance routinely falls apart between the schematic result and this one."
+              }
+            ],
             "why_it_matters": "Simulator time, not algorithm quality, is what has kept analog automation out of reach for anyone without a compute cluster. If a usable amplifier takes tens of simulations instead of thousands, the tooling fits on one workstation and an open PDK, which changes who can attempt custom analog at all.",
             "deeper_md": "AaLLM (Habib, Hart, Fayazi) does topology generation and sizing end-to-end with a Designer/Critic/Evaluator agent triad plus retrieval over papers and textbooks; it reports 3-4.5x fewer SPICE calls than prior multi-agent LLM pipelines, a 40x wall-clock reduction, and generated topologies reaching up to 3x higher figure of merit than known designs. An ICLAD 2026 paper (Liu, Wei, Gao, Pan) targets post-layout parameter tuning with an act-observe-reflect loop over compact structured layout representations, claiming better post-layout performance than both the generator's default heuristics and Bayesian optimization at tens rather than hundreds-to-thousands of simulations. TTARO (Amin, Dutta, Franzon) drops the LLM entirely and instead adapts the circuit embedding during the search, jointly fitting a nonlinear feature map and a Gaussian-process surrogate after every evaluation: 15.2% lower regret AUC than plain GP-BO and 20.7% lower than deep kernel learning across 40 settings, up to 46.7% in the best case. All three are author-reported, on self-chosen baselines, with no shared benchmark and no fabricated silicon.",
             "fab_angle": "Analog is the part of full-stack codesign you cannot get from a synthesis script — bandgap references, sense amplifiers, PLLs and drive electronics all still get sized by hand. These methods are simulator-agnostic wrappers around a SPICE call, so in principle they run against ngspice or Xyce on an open PDK. The honest read is that they are demonstrated on textbook-scale blocks, and the deciding question for anyone trying them is whether the reported simulation-count savings survive on a circuit whose corners actually matter.",

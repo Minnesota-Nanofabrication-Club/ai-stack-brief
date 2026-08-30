@@ -16,8 +16,10 @@ the per-item checklist at the bottom before you commit.
 An item earns its slot when a reader who skips it is worse informed about something that
 will still matter in six months. Write the consequence, not the announcement. Write the
 mechanism, not the adjective. Put a number on it, with a unit, from a document you
-actually opened. If you cannot say who disagrees or what would falsify the claim, you
-probably do not understand it well enough to publish it yet.
+actually opened. Give the reader the standing context before you give them the event, so
+that someone who has never met this subfield can use the item at all. If you cannot say who
+disagrees or what would falsify the claim, you probably do not understand it well enough to
+publish it yet.
 
 ---
 
@@ -46,10 +48,29 @@ What is wrong with it:
 - No number in the whole item is load-bearing except the headline dollar figure, and the
   dollar figure does not change what gets built.
 
-Per the anti-recency rules in `DAILY_BRIEF.md`: a funding round is only an item if it
-changes what gets built. Most do not. **Default action: kill it.**
+Per the finance rule in `DAILY_BRIEF.md` §4: **a financial document is a source, never a
+subject.** A round, a valuation, an acquisition, or a quarter's results is never the thing
+the item is about. **Default action: kill it.**
 
-### After (only if the round genuinely changes something)
+The mechanical version of that rule, and the one to actually run on a draft:
+
+> **Strike every dollar figure from the item. If nothing technical is left standing, cut
+> the item.**
+
+Do it literally on the "before" block above. Delete `$200 million`, `$410M`, and `Series
+C`, and what remains is "a company exists and intends to develop products." There is no
+machine, no physics, and no code on the page. That is the whole test, and it takes ten
+seconds.
+
+Note what the test does *not* say. It does not say avoid filings — filings are T1 evidence
+and the brief leans on them heavily. A 10-Q purchase-obligations note, a take-or-pay wafer
+commitment, or a capacity reservation is a statement about what will physically be built,
+usually the earliest one available. Cite it, and write the item about the thing being built.
+Consider an item sourced entirely from an earnings call, whose subject is that cleanroom
+floor space — not tool lead time — is what caps how fast equipment capacity can grow. Strike
+the capex figure and the constraint is still standing. That item passes.
+
+### After (only if what the money buys is a physical commitment)
 
 ```json
 {
@@ -61,11 +82,20 @@ changes what gets built. Most do not. **Default action: kill it.**
 }
 ```
 
-The rewrite passes because the money is the *mechanism* by which something changes — a
-mask set is a specific, expensive, irreversible commitment — not just a scoreboard entry.
-Notice that `dek` expands "in-memory compute" inline, in the sentence, without a
-parenthetical lecture. Notice `confidence` is `reported`, not `confirmed`, because a
-funding announcement without a filing is a company telling you about itself.
+The rewrite passes because **the subject is the mask set, not the round.** A mask set is a
+specific, expensive, irreversible physical commitment, and it is the thing that changed; the
+financing is one sourced clause inside the sentence, doing the work a source does. Run the
+strike test on it: there is no dollar figure in the item at all, and everything still
+stands. That is the shape the finance rule permits — the round is never the subject, but a
+named physical capability the money buys can be. Notice too that `dek` expands "in-memory
+compute" inline, in the sentence, without a parenthetical lecture, and that `confidence` is
+`reported`, not `confirmed`, because a funding announcement without a filing is a company
+telling you about itself.
+
+Be honest about how rare this is. The overwhelming majority of rounds do not clear this bar,
+and "but the money buys capability X" is exactly the rationalization a padded item reaches
+for. If you cannot name the physical thing, with a specificity a reader could later check,
+the answer is the default: kill it.
 
 ---
 
@@ -325,6 +355,162 @@ anything that requires a tool the club does not have or a paywall it cannot pass
 
 ---
 
+## Example 6 — `background_md` that gives footing vs. a news summary in disguise
+
+`background_md` is required on every Pulse item, and it is the field that decides whether a
+reader who has never met this subfield can use the rest of the item at all. Two to four
+sentences, 50–110 words, and it answers exactly three questions: **what is this area, what
+problem does it exist to solve, and why would anyone care?**
+
+There is one test, and almost every bad `background_md` fails it:
+
+> **Delete the news. Would this paragraph still be true next year?**
+
+Background is the standing context the news sits in. It is not a second summary of the
+event — the `dek` already did that, and spending the reader's one paragraph of footing on a
+restatement leaves them exactly as lost as before.
+
+Take a monolithic-3D research item as the worked case.
+
+### Before (this is a news summary with the wrong field name on it)
+
+```markdown
+In recent years, monolithic 3D integration has attracted significant interest as a
+promising path to continued scaling. Researchers have now demonstrated a process that
+grows a second layer of transistors directly on top of an existing device layer, rather
+than bonding two finished wafers together. The work represents an important step toward
+practical 3D chips and could eventually change how processors are built.
+```
+
+Why it fails, in order of severity:
+
+1. **It does not survive the delete-the-news test.** Every sentence is about the
+   demonstration. Remove the demonstration and the paragraph is empty. That is the
+   definition of a news summary, and it is the failure this field exists to prevent.
+2. **It repeats the `dek`.** The reader is told twice that someone grew transistors on top
+   of transistors, and told nothing about why that is hard.
+3. **There is no mechanism and no constraint.** "Promising," "important step," "could
+   eventually" — nothing here can be wrong, so nothing here is information.
+4. **It opens with "In recent years."** Throat-clearing that delays the first real sentence
+   by a full clause. Banned; see below.
+5. **A reader who did not know what the back end of a chip is still does not.** The
+   paragraph assumed the very knowledge it was supposed to supply.
+
+### After
+
+```markdown
+Chips are normally built as a single layer of transistors with copper wiring stacked
+above them. Monolithic 3D means growing a *second* layer of transistors on top of that
+wiring instead of bonding two finished wafers together, which would buy density without
+needing finer lithography. The obstacle is heat: everything above the first layer has to
+be built below roughly 400 °C or the copper and insulating material already in place
+degrade. That thermal ceiling is why the field keeps looking at oxide semiconductors
+deposited at low temperature rather than conventional silicon.
+```
+
+Every sentence of that is still true next year. It is the world, not the event. Note what
+it does:
+
+- **It starts from the object, not from a trend.** First sentence: how chips are normally
+  built. The reader now has somewhere to stand.
+- **It names the alternative it is being compared against** — wafer bonding — because a
+  reader cannot evaluate "instead of" without knowing what the instead is.
+- **It states one hard constraint with a number**: roughly 400 °C, and *why* (copper and
+  the insulator degrade). A standing number is worth ten adjectives, and this one does not
+  expire.
+- **It ends pointing at the consequence** — low-temperature oxide semiconductors — which is
+  exactly where the item's `deeper_md` will pick up.
+- **No analogy.** Nobody is told to think of it like a layer cake. Mechanism, then stop.
+
+The same shape works outside semiconductors, which matters now that `computing` is a layer.
+For an item about a new register-allocation algorithm:
+
+```markdown
+A compiler's last serious decision is which of a program's values live in the processor's
+few dozen registers and which get written out to memory, because a register access costs
+about a cycle and a memory access costs tens to hundreds. Choosing well is equivalent to
+coloring a graph, which is NP-complete, so every production compiler runs a heuristic and
+accepts that it will sometimes spill a value it should have kept. Register allocation has
+therefore stayed an open problem for fifty years: the theory is settled and the practice
+is still tuning.
+```
+
+Same test, same result: delete the news and it stands. Same rules — a constraint the reader
+can feel (one cycle versus hundreds), a named mechanism (graph coloring, NP-complete), no
+analogy, no throat-clearing.
+
+### Three other shapes that fail
+
+- **The definition.** "Monolithic 3D integration is a technique for building multiple
+  layers of transistors in a single fabrication flow." True, 20 words, teaches nothing.
+  That is a glossary entry, not footing.
+- **The analogy dodge.** "Think of it like building a second storey on a house instead of
+  buying a second house." The reader now has a picture and still cannot tell you what goes
+  wrong. An analogy after the mechanism is a gift; an analogy instead of it is a dodge.
+- **The stakes essay.** "As AI workloads grow, the demand for compute has never been
+  higher, and the industry is under pressure to find new ways to scale." This is true of
+  every item in the brief and therefore belongs in none of them.
+
+---
+
+## Example 7 — a per-item `glossary`
+
+Required on every Pulse item: **2–4 entries**, each `{ "term": …, "definition": … }`, one
+sentence each, ≤ 40 words. Same worked item as Example 6.
+
+### Before
+
+```json
+"glossary": [
+  { "term": "BEOL", "definition": "Back end of line." },
+  { "term": "Monolithic 3D", "definition": "A monolithic 3D integration approach." },
+  { "term": "IGZO", "definition": "Indium gallium zinc oxide, a material used in the semiconductor industry." }
+]
+```
+
+Three entries, and not one of them is a definition:
+
+- **"BEOL — back end of line"** expands an acronym and stops. The reader can now pronounce
+  it. **Expanding an acronym is not a definition.** If your entry is complete once the
+  letters are spelled out, you have not written one.
+- **"Monolithic 3D — a monolithic 3D integration approach"** defines a term with itself.
+- **"IGZO — a material used in the semiconductor industry"** is true of roughly everything
+  and predicts nothing. Say what it *is* and what it *does*.
+- And the list skips every symbol and unit in the item, which is where a newcomer actually
+  gets stuck.
+
+### After
+
+```json
+"glossary": [
+  { "term": "BEOL (back end of line)", "definition": "The copper wiring stack built above the transistors; copper and the low-k insulator around it degrade with heat, so everything added after it must be processed below roughly 400 °C." },
+  { "term": "Thermal budget", "definition": "The cumulative time-at-temperature a wafer can absorb before already-built structures are damaged — here about 400 °C for anything above the first transistor layer." },
+  { "term": "IGZO", "definition": "An amorphous indium–gallium–zinc-oxide semiconductor that can be deposited below 400 °C and leaks extremely little when off, which is why it is the usual candidate for a transistor built up in the wiring stack." },
+  { "term": "mV/dec (subthreshold swing)", "definition": "The gate voltage a transistor needs to change its current tenfold; room temperature puts a floor near 60 mV/decade, so it is the number that says whether a new channel material is competitive." }
+]
+```
+
+What changed:
+
+| | Before | After |
+| --- | --- | --- |
+| BEOL | the letters spelled out | what it physically is, and the constraint it imposes |
+| Coverage | three words | two words, one concept, **one unit** |
+| Circularity | "monolithic 3D is a monolithic 3D approach" | dropped — `background_md` already teaches it |
+| Usefulness | reader can pronounce the terms | reader can parse `deeper_md` |
+
+Two habits worth naming. **Cover symbols and units, not only words** — `V_th`, `mV/dec`,
+`WNS/TNS`, `pJ/bit`, `GT/s`, `k₁`, `σ` are exactly what stops a reader cold, and exactly
+what a glossary written on autopilot skips, because they do not look like vocabulary. And
+**define only what the item actually uses**: if `deeper_md` never says "damascene,"
+damascene does not belong here, however central it is to the subfield.
+
+Fewer than two entries means you did not read your own prose adversarially. More than four
+means the item is trying to teach too much at once — cut it back, or move the teaching into
+`background_md`, which is the field built for it.
+
+---
+
 ## Per-item checklist
 
 Run this on every Pulse item before it goes in the file. An item that fails any of the
@@ -342,19 +528,31 @@ first six gets fixed or cut — there is no third option.
 5. **`dek` stands alone.** It will appear in Discord with no headline, no layer heading,
    and no other item beside it. It names the actor and the thing, expands its own jargon,
    and reads correctly cold on a phone screen.
-6. **Sources are independent.** Two outlets summarizing the same press release count as
+6. **It survives the strike test.** Delete every dollar figure in the item. Something
+   technical — a machine, a physical constraint, a piece of code — is still standing. A
+   round, a valuation, a transaction, or a quarter's results is never the subject.
+7. **Sources are independent.** Two outlets summarizing the same press release count as
    one source. If everything traces to one origin, `confidence` is at most `reported`.
-7. **`confidence` is honest.** `confirmed` = a primary document says it or two independent
+8. **`confidence` is honest.** `confirmed` = a primary document says it or two independent
    originals agree. `reported` = a credible outlet with sourcing, or a company describing
    itself. `rumored` = supply-chain chatter, unnamed sources, a single social post.
-8. **`deeper_md` adds a mechanism, a number, and a caveat** — not a longer paragraph.
-9. **The title is a finding, not an announcement.** Prefer "X moves to Y, and Z follows"
-   over "Company announces X." Under 80 characters.
-10. **`fab_angle` is omitted unless it is real.** A forced one is worse than none.
-11. **Not already covered.** Not in the last 7 editions, unless it is explicitly framed as
+9. **`background_md` is background.** Present, 50–110 words, and it survives the
+   delete-the-news test: remove the event and it is still true next year. It explains a
+   mechanism rather than reaching for an analogy, it does not repeat the `dek`, and it does
+   not open with "In recent years."
+10. **`glossary` has 2–4 real definitions**, covering the symbols and units the item uses as
+    well as the words. No entry is an acronym spelled out. No duplicate `term`.
+11. **`deeper_md` adds a mechanism, a number, and a caveat** — not a longer paragraph.
+12. **The title is a finding, not an announcement.** Prefer "X moves to Y, and Z follows"
+    over "Company announces X." Under 80 characters.
+13. **`fab_angle` is omitted unless it is real.** A forced one is worse than none.
+14. **Not already covered.** Not in the last 7 editions, unless it is explicitly framed as
     an update with what changed.
-12. **One story, one item.** Not the same event split across two layers.
-13. **Banned constructions absent.** See below.
+15. **One story, one item, one layer.** Not the same event split across two layers. It is
+    filed under the layer that owns the thing that changed — analog and process work in
+    `silicon`, architecture and systems *research* in `computing`, shipping products in
+    `chips` — and the other half of a spanning story is a sentence in `deeper_md`.
+16. **Banned constructions absent.** See below.
 
 ---
 
@@ -395,6 +593,23 @@ The brief runs daily and covers a seven-day window. Nothing in it is breaking.
 in your draft, you are probably writing from a press release — which is the actual problem
 the phrase is warning you about.
 
+**Background-paragraph tells.** `background_md` invites a register that reads like a
+literature review, and every phrase in it is a way of not saying anything: "In recent
+years", "Over the past decade", "As AI workloads grow", "With the slowing of Moore's Law",
+"has attracted significant interest", "has emerged as a promising approach", "is an active
+area of research", "has long been a challenge", "researchers have long sought", "is one of
+the most promising candidates", "represents an important step toward", "could eventually
+enable", "is expected to play a key role". Also banned here specifically: **"Think of it
+like…", "is essentially just…", "imagine a…"** — the analogy dodge, which does more damage
+in `background_md` than anywhere else, because this is the paragraph the reader was relying
+on for the mechanism. Start with the object or the constraint, in the first six words.
+
+**Glossary tells.** An entry that consists only of the expanded acronym ("BEOL — back end
+of line"). An entry that defines a term with itself ("monolithic 3D — a monolithic 3D
+approach"). And the three filler openers that guarantee a non-definition: "**refers to**",
+"**is a type of**", "**is a technique used in**". If the entry would still be true with a
+different term in front of it, it is not a definition.
+
 **Two specific bans worth calling out.** Never write that a company is "leading" or
 "leapfrogging" unless you cite the measurement and the metric. And never write "up to" a
 number without also writing what it was measured at — "up to 4× faster" with no workload
@@ -405,17 +620,22 @@ named is a marketing claim, and repeating it uncritically makes the brief an amp
 ## Word-count discipline
 
 `SPEC.md` targets ~1,100 words of Pulse prose (`dek` + `why_it_matters` across all items)
-and ~1,100 words of Foundations. With 7–11 items, that is roughly 100–150 words per item
+and ~1,100 words of Foundations. With 7–13 items, that is roughly 100–150 words per item
 for the member tier. Practical guides:
 
 - `dek`: one sentence, 25–45 words. It may be long, but it must be one idea.
 - `why_it_matters`: one or two sentences, 30–70 words.
+- `background_md`: two to four sentences, 50–110 words; anything outside 45–120 is a
+  warning. Under 45 you have written a definition rather than footing; over 120 you have
+  started writing `deeper_md` a second time.
+- `glossary`: 2–4 entries, one sentence each, ≤ 40 words.
 - `deeper_md`: 80–200 words per `SPEC.md`. Under 80 usually means you did not read a
   primary source; over 200 usually means you are narrating the paper instead of extracting
   from it.
 - Foundations `sections`: at least three, 100–180 words of `body_md` each. Four to six
   sections is the usual shape for ~1,100 words.
-- `glossary`: at least four entries. Define terms that appear in the piece, in the sense
+- Foundations `glossary`: at least four entries — a longer piece earns a longer list than
+  the 2–4 a Pulse item carries. Define terms that appear in the piece, in the sense
   the piece used them. Definitions are one or two sentences and are allowed to be
   opinionated about what matters.
 

@@ -1,5 +1,11 @@
 # Produces one edition per day: runs the research agent against
-# research/DAILY_BRIEF.md, validates the result, regenerates the index, commits.
+# research/DAILY_BRIEF.md, validates the result, verifies every citation resolves,
+# regenerates the index, and commits. `discord.yml` then delivers it.
+#
+# Discord is the publication. There is no website deploy: GitHub Pages was removed
+# deliberately, and `scripts/post_discord.py` carries a complete edition rather than
+# a teaser linking somewhere else. `site/` is kept for local reading via
+# `scripts/serve.py`, and Pages can be switched back on by restoring pages.yml.
 #
 # IMPORTANT: the workflow name below is load-bearing and must stay byte-identical.
 # `.github/workflows/discord.yml` keys off it with
@@ -279,7 +285,7 @@ jobs:
             echo
             echo "* status: ${{ job.status }}"
             echo "* committed: ${COMMITTED:-no}"
-            echo "* site: https://minnesota-nanofabrication-club.github.io/ai-stack-brief/"
+            echo "* delivery: Discord (see the Post to Discord workflow run)"
           } >> "$GITHUB_STEP_SUMMARY"
 
       # A silent cron failure is how the sibling repo went stale for weeks without
@@ -338,18 +344,3 @@ jobs:
               --comment "Recovered: the ${DATE} run succeeded (${RUN_URL}). Closing." \
               --reason completed
           done
-
-  # A push made with the built-in GITHUB_TOKEN does NOT start another workflow, so
-  # the commit above will never fire pages.yml's `on: push`. Call the deploy
-  # directly instead. (GitHub docs, "Trigger a workflow": events triggered by the
-  # GITHUB_TOKEN will not create a new workflow run, with a narrow set of
-  # exceptions that `push` is not one of.)
-  deploy:
-    name: Publish to GitHub Pages
-    needs: brief
-    if: needs.brief.outputs.committed == 'true'
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    uses: ./.github/workflows/pages.yml

@@ -10,8 +10,8 @@ days, organized by the seven layers, and five minutes teaching one piece of exis
 semiconductor or systems technology properly. **Audience:** undergraduate EE, materials
 science, physics, and CS students who can follow real technical content but have not seen
 most of this vocabulary yet, plus a technical core inside the club — people who run a
-teaching cleanroom, are building a maskless lithography stepper, and will check your
-numbers.
+teaching cleanroom, are building a maskless lithography stepper, are designing a custom
+integrated circuit to run through it, and will check your numbers.
 
 **Read first, every run, in this order:** `SPEC.md` (the data contract — schema, layer
 slugs, sizing, non-negotiable rules), `research/SOURCES.md` (where to look and what each
@@ -573,11 +573,14 @@ one sentence without looking anything up, and because Discord carries the `dek` 
 
 ### `fab_angle`
 
-Optional. Write it only when there is a real consequence for people who run or build fabs
-— a process constraint, an equipment implication, a metrology requirement, a cost or cycle-
-time effect, something MNF could observe in a teaching cleanroom. **Omit it if
-forced** (`SPEC.md`). A stretched `fab_angle` is worse than none, and the club's own
-project is context, not content (`SPEC.md` rule 7).
+Optional. Write it only when there is a real consequence for people who build a fab **or
+design the IC that runs through it** — MNF's stated program is to "design, fabricate, and
+demonstrate a custom integrated circuit (IC) through a vertically integrated fabrication
+workflow", so both halves count. A process constraint, an equipment implication, a
+metrology requirement, a cost or cycle-time effect, a design rule or EDA consequence,
+something MNF could observe in a teaching cleanroom or hit while laying out a cell.
+**Omit it if forced** (`SPEC.md`). A stretched `fab_angle` is worse than none, and the
+club's own project is context, not content (`SPEC.md` rule 8).
 
 ---
 

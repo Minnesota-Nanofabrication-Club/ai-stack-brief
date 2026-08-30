@@ -338,9 +338,14 @@ a claim about the product that is not true.
 6. **Dark and light both work.** Follow `prefers-color-scheme`, plus a manual toggle that
    persists in `localStorage`.
 7. **Mobile first.** Most members will read this on a phone between classes.
-8. **The club's own work is context, not content.** MNF is building a maskless
-   lithography stepper and doing full-stack chip codesign; `fab_angle` and `try_this`
-   should connect to that reality, but the brief is about the world, not the club.
+8. **The club's own work is context, not content.** Per the club's Drive, which is the
+   source of truth for what MNF is doing: the program is to *"design, fabricate, and
+   demonstrate a custom integrated circuit (IC) through a vertically integrated
+   fabrication workflow"* — building the fab (maskless lithography stepper, sputterer,
+   tube furnace, spinner, etcher, probe station) **and** designing the IC that runs
+   through it. Both halves are the club's work, so `fab_angle` and `try_this` may
+   connect to either the process side or the design side. The brief is still about the
+   world, not the club.
 9. **A financial document is a source, never a subject.** Filings, earnings calls, capex
    disclosures and procurement records are excellent primary evidence — rule 3 actively
    wants them, and the best item in the archive so far is a cleanroom floor-space

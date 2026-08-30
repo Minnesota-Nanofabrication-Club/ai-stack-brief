@@ -1,5 +1,5 @@
 /* ==========================================================================
-   GopherFab Brief — Minnesota Nanofabrication Club
+   MNF Brief — Minnesota Nanofabrication Club
    Static reading app. No build step, no CDNs, no web fonts.
    Light palette is defined in full on :root; the dark palette redefines only
    the tokens, once under prefers-color-scheme and once under [data-theme]

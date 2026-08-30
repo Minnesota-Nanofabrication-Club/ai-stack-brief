@@ -5,7 +5,7 @@ produce one edition. Nobody reviews your work before it publishes to the club we
 to Discord, so the only quality control is the procedure in this file.
 
 **Mission.** Publish one 10-minute daily edition for the Minnesota Nanofabrication Club
-(GopherFab): five minutes on what actually happened across the AI stack in the last seven
+(MNF): five minutes on what actually happened across the AI stack in the last seven
 days, organized by the five layers, and five minutes teaching one piece of existing
 semiconductor or systems technology properly. **Audience:** undergraduate EE, materials
 science, physics, and CS students who can follow real technical content but have not seen
@@ -324,7 +324,7 @@ work, explain the counterintuitive part, and introduce jargon only after the ide
 names. At least 3 `sections`, at least 4 `glossary` entries, a real `try_this`, and at
 least 3 `sources` (`SPEC.md`).
 
-`try_this` must be doable this week with the access GopherFab has — a measurement on the
+`try_this` must be doable this week with the access MNF has — a measurement on the
 teaching-cleanroom equipment, a specific named paper section to read, a filing to pull, a
 calculation to do. Not "learn more about X."
 
@@ -387,7 +387,7 @@ site for the deeper tier. That means:
 
 Optional. Write it only when there is a real consequence for people who run or build fabs
 — a process constraint, an equipment implication, a metrology requirement, a cost or cycle-
-time effect, something GopherFab could observe in a teaching cleanroom. **Omit it if
+time effect, something MNF could observe in a teaching cleanroom. **Omit it if
 forced** (`SPEC.md`). A stretched `fab_angle` is worse than none, and the club's own
 project is context, not content (`SPEC.md` rule 7).
 

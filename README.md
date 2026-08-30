@@ -1,7 +1,7 @@
 # ai-stack-brief
 
 **A daily 10-minute briefing on the AI hardware stack, written for the
-Minnesota Nanofabrication Club (GopherFab) at the University of Minnesota.**
+Minnesota Nanofabrication Club (MNF) at the University of Minnesota.**
 
 **Live site → <https://minnesota-nanofabrication-club.github.io/ai-stack-brief/>**
 

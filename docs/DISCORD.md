@@ -15,7 +15,7 @@ If you never set this up, nothing breaks. The workflow logs a notice and exits.
 `#general`; the brief is 2–3 messages and will bury conversation otherwise.
 
 **2. Create the webhook.** In Discord: right-click the channel → **Edit Channel** →
-**Integrations** → **Webhooks** → **New Webhook**. Name it `GopherFab Brief`, give it an
+**Integrations** → **Webhooks** → **New Webhook**. Name it `MNF Brief`, give it an
 avatar if you like, then click **Copy Webhook URL**.
 
 You need **Manage Webhooks** permission on the channel to see this menu.

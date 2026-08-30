@@ -117,7 +117,7 @@ jobs:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           anthropic_api_key: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' && '' || secrets.ANTHROPIC_API_KEY }}
           prompt: |
-            You are producing today's edition of the GopherFab AI Stack Brief.
+            You are producing today's edition of the MNF AI Stack Brief.
 
             Read `SPEC.md` first — it is the data contract and it wins over
             anything else. Then read `research/DAILY_BRIEF.md`, which is the

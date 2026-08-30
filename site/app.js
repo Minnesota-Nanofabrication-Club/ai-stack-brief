@@ -1,5 +1,5 @@
 /* ===========================================================================
-   GopherFab Brief — reading app
+   MNF Brief — reading app
    Minnesota Nanofabrication Club
 
    Plain ES2018. No build step, no dependencies. Fetches ./briefs/index.json,
@@ -523,7 +523,7 @@
   }
 
   function renderEdition(ed) {
-    document.title = 'GopherFab Brief — ' + shortDate(ed.date);
+    document.title = 'MNF Brief — ' + shortDate(ed.date);
 
     var dateNode = $('edition-date');
     dateNode.textContent = prettyDate(ed.date);

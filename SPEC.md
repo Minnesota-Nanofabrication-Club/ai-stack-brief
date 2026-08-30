@@ -6,7 +6,7 @@ contract defined here. Do not invent alternative field names or directory layout
 
 ## What this is
 
-A daily briefing app for the **Minnesota Nanofabrication Club (GopherFab)** at the
+A daily briefing app for the **Minnesota Nanofabrication Club (MNF)** at the
 University of Minnesota. It publishes one edition per day, designed to be read in
 **10 minutes total**, in two halves:
 
@@ -131,7 +131,7 @@ copied to `site/briefs/`. So the app always fetches **`./briefs/index.json`** an
       }
     ],
     "glossary": [ { "term": "Dishing", "definition": "..." } ],
-    "try_this": "Something a GopherFab member could actually do, see, or read this week.",
+    "try_this": "Something a MNF member could actually do, see, or read this week.",
     "sources": [ { "title": "...", "url": "https://...", "publisher": "...", "date": "2019" } ]
   }
 }
@@ -226,6 +226,6 @@ block, which is the intent.
 6. **Dark and light both work.** Follow `prefers-color-scheme`, plus a manual toggle that
    persists in `localStorage`.
 7. **Mobile first.** Most members will read this on a phone between classes.
-8. **The club's own work is context, not content.** GopherFab is building a maskless
+8. **The club's own work is context, not content.** MNF is building a maskless
    lithography stepper and doing full-stack chip codesign; `fab_angle` and `try_this`
    should connect to that reality, but the brief is about the world, not the club.

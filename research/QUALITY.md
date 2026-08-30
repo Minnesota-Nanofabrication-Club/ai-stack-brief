@@ -316,7 +316,7 @@ A Foundations section is a piece of teaching with a beginning, a load-bearing mi
 a handoff. If your section would survive having its sentences shuffled, it is a list, not
 an explanation. Rewrite it.
 
-**The `try_this` test.** `try_this` must be something a GopherFab member could actually
+**The `try_this` test.** `try_this` must be something a MNF member could actually
 do, see, or read *this week* with the access they have. Good: measure the contrast curve
 of the resist on the shelf and plot dose-to-clear; hold a CMP pad from the teaching lab
 and look at the grooves; read section 3 of a specific named paper; pull one company's

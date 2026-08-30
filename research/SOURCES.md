@@ -118,7 +118,7 @@ Order of attack when a fetch fails:
 1. **Retry with `curl` and a browser User-Agent** via bash. This works on many of the
    above. It is how the EDGAR full-text API was verified for this file:
    ```bash
-   curl -s -A "GopherFab ai-stack-brief <contact email>" \
+   curl -s -A "MNF ai-stack-brief <contact email>" \
      "https://efts.sec.gov/LATEST/search-index?q=%22CoWoS%22&forms=8-K&startdt=2026-08-01&enddt=2026-08-20"
    ```
    SEC specifically requires a User-Agent that identifies you with a contact address.
@@ -264,7 +264,7 @@ sites roll over to the next edition and quietly delete the last one.
 | NeurIPS | `https://neurips.cc/` ✅ | 2026: Dec 6–12, Sydney (+ Atlanta and Paris satellites Dec 9–13) | models |
 | **IEDM** | `http://ieee-iedm.org/` ✅ | **2026: Dec 12–16, Hilton SF Union Square** (72nd). Tutorials Dec 12, short courses Dec 13 — titles and abstracts free, slides attendee-only | chips (devices, process) |
 | **ISSCC** | `https://www.isscc.org/` ✅ | 2027: Feb 14–18, SF Marriott Marquis. **Best free archive here:** `/past-conferences` has advance programs, Trends documents, and 2026 plenary videos | chips (circuits) |
-| **SPIE Advanced Lithography + Patterning** | `https://spie.org/conferences-and-exhibitions/advanced-lithography-and-patterning` ✅ | 2027: Feb 21–25, San Jose | chips (litho) — **the most relevant conference in the world to GopherFab's stepper** |
+| **SPIE Advanced Lithography + Patterning** | `https://spie.org/conferences-and-exhibitions/advanced-lithography-and-patterning` ✅ | 2027: Feb 21–25, San Jose | chips (litho) — **the most relevant conference in the world to MNF's stepper** |
 | IRPS | `https://irps.org/` ✅ | 2027: Mar 21–25, San Diego | chips (reliability) |
 | ISPD | `https://ispd.cc/` ✅ | 2027: Mar 31–Apr 2, Taipei; abstracts due Sept 21 2026 | chips (physical design, ML-for-EDA contests) |
 | Photomask Japan | `https://smartconf.jp/content/pmj2026/info` ✅ | 2026: Apr 8–10, PACIFICO Yokohama (the homepage confusingly also advertises Apr 7–9 2027 — cite `/info`) | chips (masks) |

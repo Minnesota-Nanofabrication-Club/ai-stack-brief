@@ -12,7 +12,7 @@ topic is worth 1,100 words rather than a Wikipedia link — and a **difficulty**
 - `advanced` — assumes the reader already knows the `core` version and wants the physics,
   the failure modes, and the numbers.
 
-**★ = especially relevant to GopherFab's maskless lithography stepper.** These are the
+**★ = especially relevant to MNF's maskless lithography stepper.** These are the
 topics where the club is going to hit the physics personally: optics and resolution,
 resist processing, stage positioning and overlay, DMD behavior, and the metrology needed
 to know whether a print worked. Roughly one Foundations edition in four should be a ★

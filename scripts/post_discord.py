@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Post one edition of the GopherFab Brief to a Discord channel via webhook.
+"""Post one edition of the MNF Brief to a Discord channel via webhook.
 
 Discord gets the member tier only — headline, per-layer item titles and deks, the
 Foundations topic — with links back to the site for the deeper tier. See the
@@ -146,7 +146,7 @@ def render_header(brief: dict, site_url: str) -> str:
     topic = brief["foundations"]["topic"]
 
     lines = [
-        f"## GopherFab Brief — {pretty}",
+        f"## MNF Brief — {pretty}",
         "",
         f"**{headline}**",
         "",

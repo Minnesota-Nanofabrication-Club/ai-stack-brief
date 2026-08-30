@@ -94,7 +94,31 @@ jobs:
             echo "::error::date input '$DATE' is not a real calendar date"
             exit 1
           fi
-          WINDOW_START="$(date -d "$DATE - 7 days" +%F)"
+          # The window starts at the newest edition already published, not a fixed
+          # offset. On a daily cadence that researches one day instead of seven, six
+          # of which the previous run already covered -- the overlap was pure cost,
+          # paid in turns against the cap that killed the 2026-08-30 run at 181.
+          #
+          # It also self-heals. After a gap the window widens to exactly the span
+          # nobody covered, so a missed day is picked up by the next run rather than
+          # falling through. A fixed 7-day offset silently loses anything older than
+          # a week whenever the job is down longer than that.
+          LAST="$(ls briefs/*.json 2>/dev/null | sed 's|briefs/||; s|\.json$||' \
+                  | grep -E '^[0-9]{4}-[0-9]{2}-[0-9]{2}$' | sort | tail -1)"
+          if [ -n "$LAST" ] && [ "$LAST" \< "$DATE" ]; then
+            WINDOW_START="$LAST"
+          else
+            WINDOW_START="$(date -d "$DATE - 7 days" +%F)"
+          fi
+
+          # Cap the reach. A long outage should widen the window, not turn one run
+          # into an unbounded sweep it cannot finish inside its turn budget.
+          EARLIEST="$(date -d "$DATE - 14 days" +%F)"
+          if [ "$WINDOW_START" \< "$EARLIEST" ]; then
+            WINDOW_START="$EARLIEST"
+            echo "::notice::gap longer than 14 days; window clamped to $EARLIEST."
+          fi
+          echo "News window: ${WINDOW_START}..${DATE} (last edition: ${LAST:-none})"
           {
             echo "date=$DATE"
             echo "window=${WINDOW_START}..${DATE}"

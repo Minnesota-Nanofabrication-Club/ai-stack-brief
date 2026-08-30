@@ -47,7 +47,7 @@ jobs:
   brief:
     name: Research and commit today's edition
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 75
     outputs:
       date: ${{ steps.plan.outputs.date }}
       committed: ${{ steps.commit.outputs.committed }}
@@ -154,7 +154,7 @@ jobs:
           claude_args: |
             --model claude-opus-5
             --allowedTools "WebSearch,WebFetch,Read,Write,Edit,Glob,Grep,Bash(python3 scripts/validate_brief.py:*)"
-            --max-turns 150
+            --max-turns 300
 
       - name: Validate the new edition (strict)
         env:

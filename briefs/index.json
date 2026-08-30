@@ -1,6 +1,20 @@
 {
   "editions": [
     {
+      "date": "2026-08-30",
+      "foundations_slug": "photolithography-basics",
+      "foundations_topic": "Photolithography, end to end",
+      "headline": "Hot Chips week turned the memory package into the design problem: Samsung is moving the HBM base die to a 4 nm logic process, SK hynix says a 775-micrometre height limit caps the stack, and Intel dropped HBM for 480 GB of LPDDR5X.",
+      "item_count": 9,
+      "layers": [
+        "energy",
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-08-20",
       "foundations_slug": "cmp",
       "foundations_topic": "Chemical mechanical planarization",
@@ -15,6 +29,6 @@
       ]
     }
   ],
-  "generated_at": "2026-08-20T07:22:36Z",
-  "latest": "2026-08-20"
+  "generated_at": "2026-08-30T17:48:56Z",
+  "latest": "2026-08-30"
 }

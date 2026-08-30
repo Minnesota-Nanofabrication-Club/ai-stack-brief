@@ -1,0 +1,565 @@
+{
+  "date": "2026-08-30",
+  "generated_at": "2026-08-30T18:40:00Z",
+  "window": "2026-08-23..2026-08-30",
+  "headline": "Hot Chips week turned the memory package into the design problem: Samsung is moving the HBM base die to a 4 nm logic process, SK hynix says a 775-micrometre height limit caps the stack, and Intel dropped HBM for 480 GB of LPDDR5X.",
+  "pulse": {
+    "read_time_min": 9,
+    "layers": [
+      {
+        "layer": "energy",
+        "items": [
+          {
+            "id": "energy-nrc-palisades-soe-exemption",
+            "title": "NRC lets excavation walls go up before the reactor permit exists",
+            "dek": "The Nuclear Regulatory Commission on 28 August let Holtec put permanent support-of-excavation walls — the structures that hold back soil and groundwater around a deep foundation pit — into the ground at Palisades in Michigan before it has authorized any construction there.",
+            "background_md": "Nuclear construction is governed by when work may legally begin, not only by how it is done. Federal rules define \"construction\" broadly and forbid it at a proposed reactor site until the regulator issues a permit or a narrower limited work authorization, because a review that arrives after the foundations are poured cannot honestly reach a no. A deep excavation still needs a retaining system — diaphragm walls, soldier piles, cut-off walls — to stop the sides collapsing and to hold groundwater out, and building that system is itself construction.",
+            "glossary": [
+              {
+                "term": "Limited work authorization (LWA)",
+                "definition": "A narrow NRC approval that lets an applicant start defined site work — excavation, soil improvement, foundations — before the full construction permit issues, after its own safety and environmental review."
+              },
+              {
+                "term": "Support of excavation (SOE)",
+                "definition": "The retaining system around a deep pit: walls plus tieback anchors that carry the lateral soil pressure and the groundwater head so the sides do not fail inward."
+              },
+              {
+                "term": "10 CFR 50.10",
+                "definition": "The regulation that defines what counts as construction at a reactor site and bars it before authorization. The NRC may exempt part of it where an applicant shows special circumstances and no undue risk."
+              },
+              {
+                "term": "SMR-300",
+                "definition": "Holtec's 340 MWe pressurized-water small modular reactor. Two are planned at Palisades, which is where the 680 MW in the NRC's environmental assessment comes from."
+              }
+            ],
+            "why_it_matters": "A first-of-a-kind reactor's schedule is set by the order in which work becomes legal, not by how fast concrete cures. Letting a permanent structure go into the ground first pulls months out of that critical path — and the reasoning the NRC used, that temporary walls would have to be built and then torn out again, is not specific to this site and is available to every applicant behind it.",
+            "deeper_md": "The exemption was issued 28 August under dockets 50-616 and 50-617 (NRC-2026-0265) and covers three wall types — diaphragm walls, soldier-pile soil-mix walls and perimeter cut-off walls, with tieback anchors as needed. They are permanent only in the sense that they stay: the NRC's finding is that once the excavation is backfilled to grade they serve no safety function, and that narrowness is what carries the exemption. The environmental assessment and finding of no significant impact, made available 24 August and published 25 August, recorded no significant effect on groundwater, surface water, aquatic or terrestrial resources, and \"no historic properties affected.\"\n\nThe stated special circumstance is that removing temporary walls later would cost schedule and expense, and that refusing would only postpone the same impacts to the limited work authorization. That is the part worth watching, because it turns on sequencing rather than on anything about Palisades.\n\nHoltec filed Part 1 of a phased construction permit application on 31 December 2025; the NRC docketed it on 13 February 2026. Holtec has asked for approval by 31 December 2026, with Part 2 to follow in mid-2027. No opposing party appears in the notice.",
+            "confidence": "confirmed",
+            "sources": [
+              {
+                "title": "SMR, LLC; Palisades SMR, LLC; Pioneer Units 1 and 2; Exemption",
+                "url": "https://www.govinfo.gov/content/pkg/FR-2026-08-28/html/2026-17626.htm",
+                "publisher": "Nuclear Regulatory Commission / Federal Register",
+                "date": "2026-08-28"
+              },
+              {
+                "title": "SMR, LLC; Palisades SMR, LLC; Pioneer Units 1 and 2; Environmental Assessment and Finding of No Significant Impact",
+                "url": "https://www.govinfo.gov/content/pkg/FR-2026-08-25/html/2026-17253.htm",
+                "publisher": "Nuclear Regulatory Commission / Federal Register",
+                "date": "2026-08-25"
+              },
+              {
+                "title": "Holtec submits partial construction permit application for SMRs at Palisades",
+                "url": "https://www.ans.org/news/2026-01-14/article-7673/holtec-submits-partial-construction-permit-application-for-smrs-at-palisades/",
+                "publisher": "American Nuclear Society / Nuclear Newswire",
+                "date": "2026-01-14"
+              }
+            ]
+          },
+          {
+            "id": "energy-azure-slasher-power-flexibility",
+            "title": "Azure measures what shedding power actually costs, and it is not linear",
+            "dek": "Microsoft published the design of Slasher, the system it uses to cut power draw across Azure datacenters, and reports that throttling processor frequency far enough to remove 40% of dynamic power leaves only 48% of peak serving capacity.",
+            "background_md": "A datacenter's electrical demand is not one dial. A powered server draws a large fixed base load whatever it is doing, plus a smaller variable component that tracks utilization, and the building adds cooling and conversion losses on top of both. Reducing demand therefore means choosing among levers with very different speeds and very different costs: discharging batteries in under a second, slowing processors in seconds, refusing new work over hours, migrating or evicting existing work over hours to days, or switching machines off entirely.",
+            "glossary": [
+              {
+                "term": "Base power vs dynamic power",
+                "definition": "The draw a server has simply from being switched on, versus the extra draw that scales with how hard it is working. Base power dominates, so idling a machine saves far less than powering it down."
+              },
+              {
+                "term": "Fast frequency response",
+                "definition": "A grid service delivered in well under a second to arrest a frequency excursion after a generator trips. Only stored energy and hardware controls act that quickly; software cannot."
+              },
+              {
+                "term": "Notice time",
+                "definition": "How long before a power reduction must take effect. It is the parameter that decides which lever is usable at all — migration needs tens of minutes, batteries need milliseconds."
+              },
+              {
+                "term": "Expected shortfall (CVaR)",
+                "definition": "A risk measure that averages the worst tail of a distribution rather than its middle. Slasher uses it to score how much load a service would fail to serve after a given power cut."
+              }
+            ],
+            "why_it_matters": "Utilities and grid operators are now writing curtailment obligations into the tariffs that let a large load connect at all, on the assumption that compute is flexible. The operator's own measurement says the cheapest lever is the least efficient one, that most of a datacenter's draw is base power rather than utilization — and, explicitly, that GPU and language-model workloads were left out of scope.",
+            "deeper_md": "Slasher (arXiv 2608.26021, posted 26 August) is built around notice time. Batteries answer sub-second grid-frequency events through dedicated hardware controllers; generators sustain a reduction but face limits on run hours; server shutdown, deployment diversion and migration cover minutes to days.\n\nThe measured numbers are the useful part. Frequency reduction removing 40% of dynamic power retained only 48% of peak serving capacity, median over ten applications — the paper's own summary is that it sheds proportionally less power than the capacity it destroys. Unallocated servers, which can be switched off for free, are under 5% of a mature cluster but over 20% of a new one. Blocking new virtual-machine placement cut occupancy 8% within two hours and 5-15% within a day; in an idealized case where every VM could migrate, consolidation freed a further 3% of servers in an hour and 8% in a day. The production characterization covers 20 Microsoft datacenters over nine days, and a live pilot combined battery discharge with IT shutdown for fast frequency response.\n\nCaveats the authors state: some levers are not yet in production, cloud storage is not addressed, migration needs ten minutes or more of notice, and GPU and LLM-specific modulation is deferred because it would require the platform to talk to the workload.",
+            "fab_angle": "The lever list is worth reading next to a fab's load profile, because a fab has almost none of it. There is no equivalent of an unallocated server, no equivalent of declining new work, and furnaces, pumps, abatement and cleanroom air handling cannot be frequency-throttled — a load shed scraps whatever is in process. Even the flexibility Microsoft can demonstrate depends on base power being idle-able, which is exactly what a continuously running process tool is not.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Slasher: Power Flexibility for Cloud Datacenters",
+                "url": "https://arxiv.org/abs/2608.26021",
+                "publisher": "arXiv (Microsoft Azure)",
+                "date": "2026-08-26"
+              },
+              {
+                "title": "DCFlex — EPRI data center flexibility initiative",
+                "url": "https://dcflex.epri.com/",
+                "publisher": "Electric Power Research Institute",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-gan-polarization-superjunction",
+            "title": "A GaN superjunction built from polarization instead of doping",
+            "dek": "EPFL's power-electronics lab reported gallium-nitride diodes grown on ordinary silicon wafers that block 3.9 kV while conducting at 4.7 mΩ·cm², by stacking a sheet of mobile electrons directly above a sheet of mobile holes so the two charges cancel.",
+            "background_md": "A power device blocks voltage across a lightly doped drift region and conducts current through that same region, so the two things it is judged on pull against each other: a longer, more lightly doped layer holds off more volts and adds more resistance. A superjunction escapes the trade by placing equal amounts of positive and negative charge side by side. Each depletes the other when the device is off, so the field spreads evenly instead of crowding, and the doping can be raised. The two charges have to match to within a few percent.",
+            "glossary": [
+              {
+                "term": "2DEG and 2DHG",
+                "definition": "Sheets of mobile electrons and mobile holes that appear at an AlGaN/GaN interface because the crystals are spontaneously polarized. Their density is set by the layer stack, not by added dopants."
+              },
+              {
+                "term": "Specific on-resistance (mΩ·cm²)",
+                "definition": "Resistance multiplied by device area, so parts of different size compare directly. Halving it at the same breakdown voltage halves the conduction loss at a given current."
+              },
+              {
+                "term": "Drift region",
+                "definition": "The lightly doped layer that absorbs the electric field when a power device is off. Its length and doping set both the breakdown voltage and most of the on-resistance."
+              },
+              {
+                "term": "Dynamic on-resistance",
+                "definition": "On-resistance measured immediately after the device switches off a high voltage. Charge trapped during the blocking phase makes it worse than the static value, and that gap is GaN's standing reliability problem."
+              }
+            ],
+            "why_it_matters": "In silicon a superjunction means implanting matched columns of p- and n-type dopant, whose balance drifts with temperature and with any process error. Setting the charges by polarization removes the doping step entirely, which is why these devices held above 3.3 kV at 125 °C — and it is done laterally on a silicon substrate, in the process flow GaN power parts already use.",
+            "deeper_md": "The diodes reach 3.9 kV at 4.7 mΩ·cm² with a 25 µm superjunction length; transistors exceed 3.4 kV at 6.3 mΩ·cm² depletion-mode and 11.1 mΩ·cm² enhancement-mode. Charge matching is 1.03 × 10¹³ cm⁻² of electrons against 1.05 × 10¹³ cm⁻² of holes, under 2% mismatch. Dynamic on-resistance degrades less than 15% up to 3 kV. The stack is 7 µm of buffer on a six-inch silicon wafer, a 400 nm GaN channel, a 30 nm Al₀.₃₅GaN barrier with 1 nm AlN spacers, a 300 nm GaN cap, and 50 nm of Mg-doped p-GaN to make an ohmic contact to the hole gas.\n\nThe authors name their own limits. Breakdown is set by the GaN-on-silicon buffer rather than by the superjunction, so thicker buffers, local silicon removal, sapphire or bulk GaN would go higher at similar resistance. Pulsed measurements on the transistors stopped at 650 V on equipment parasitics. Net fixed charge that cannot be depleted means this is not a true superjunction. Semi-matched devices broke down softly, which suggests a competing mechanism in lateral devices on silicon. Hole mobility is 12 cm²V⁻¹s⁻¹ against 1,832 for the electrons, so the hole gas is a depletion aid, not a conduction path.",
+            "fab_angle": "Everything here is decided by epitaxy and by one ohmic contact. The charge balance the device lives on is fixed when the 30 nm barrier and the 300 nm cap are grown, so across-wafer thickness and composition uniformity become an electrical specification rather than a film specification — the same lesson as any 2DEG process, with a tighter tolerance. There is no implant and no activation anneal in the charge-balancing step, which is the hardest and most expensive part of a silicon superjunction, and the whole thing sits on a 150 mm silicon wafer.",
+            "confidence": "confirmed",
+            "sources": [
+              {
+                "title": "Intrinsic polarization superjunctions in III-nitride heterostructures for efficient power electronics",
+                "url": "https://www.nature.com/articles/s41928-026-01691-4",
+                "publisher": "Nature Electronics",
+                "date": "2026-08-28"
+              },
+              {
+                "title": "New transistor brings high voltage to microchip scale",
+                "url": "https://techxplore.com/news/2026-08-transistor-high-voltage-microchip-scale.html",
+                "publisher": "TechXplore / EPFL",
+                "date": "2026-08-28"
+              },
+              {
+                "title": "New Transistor Brings High Voltage to Microchip Scale",
+                "url": "https://www.semiconductor-digest.com/new-transistor-brings-high-voltage-to-microchip-scale/",
+                "publisher": "Semiconductor Digest",
+                "date": "2026-08-28"
+              }
+            ]
+          },
+          {
+            "id": "silicon-hbm-height-ceiling-hybrid-bonding",
+            "title": "HBM runs out of height, and hybrid bonding is not ready to rescue it",
+            "dek": "SK hynix told Hot Chips on 23 August that an HBM4 stack must fit inside 775 micrometres — roughly the thickness of a 300 mm wafer — so a 16-layer part uses DRAM dies around 50 µm thick, and copper-to-copper hybrid bonding will not replace today's molded-underfill assembly until the HBM5 generation.",
+            "background_md": "High-bandwidth memory is a tower of DRAM dies joined by copper vias that run straight through them, mounted beside a processor on a silicon interposer. The tower has a fixed height budget, because the memory and the logic die have to present one flat plane to the lid and the cooling hardware pressed onto them. JEDEC fixes that budget, so adding a layer never means a taller stack — it means a thinner die and a thinner gap between dies. Heat from every layer leaves through the same shrinking column.",
+            "glossary": [
+              {
+                "term": "MR-MUF",
+                "definition": "Mass reflow with molded underfill: all dies are placed, joined in one furnace pass, then the gaps are filled with moulding compound. Fast, but the gap-fill window narrows as dies get thinner."
+              },
+              {
+                "term": "Hybrid bonding",
+                "definition": "Joining two dies by pressing polished oxide to oxide and copper to copper and annealing, with no solder in between. It reaches sub-micron pitch and demands near-atomic flatness."
+              },
+              {
+                "term": "TSV (through-silicon via)",
+                "definition": "A copper-filled hole etched through a thinned die so a stack connects vertically instead of routing out at the edge. An HBM4 package carries more than 20,000 of them."
+              },
+              {
+                "term": "Bump pitch",
+                "definition": "Centre-to-centre spacing between interconnects joining two dies. Density rises as the inverse square of pitch, which is why 100 µm solder balls, 20 µm microbumps and sub-micron bonds are three different eras."
+              }
+            ],
+            "why_it_matters": "Capacity per stack decides how much of a model sits next to an accelerator, and the limit on it is now mechanical rather than electrical. Every added layer has to come out of die thickness and bond-line gap, which raises the oxide fraction of a stack that has to conduct heat, just as per-pin rates reach 8 Gb/s and SK hynix's own figures put the thermal load 2.2 times higher across the generations shown.",
+            "deeper_md": "The disclosed HBM4 cube is 12.8 × 11 mm and 775 µm tall, with over 20,000 TSVs, 16,148 base microbumps and 48 GB of capacity: 12-high is in production and 16-high is in customer qualification. SK hynix's own tech note, published 25 August, puts HBM3E at 720 µm with 1,024 I/Os and HBM4 at 775 µm with 2,048, and gives the pitch ladder as roughly 100 µm solder bumps, 20 µm microbumps, and below 1 µm for hybrid bonding. Against thermocompression it claims hybrid bonding is worth about 11.9× in speed, over 100× in heat dissipation and 15× in density — but costs two to three times flip-chip packaging, and placement equipment reaches about 100 nm accuracy today against 50 nm and 25 nm research targets.\n\nThere is a tension inside SK hynix's own material worth naming. The tech note says full-scale adoption is \"most likely\" at HBM4E or HBM5. The Hot Chips talk by Jaesik Lee, as reported this week, keeps MR-MUF through HBM4E and puts hybrid-bonded mass production in the HBM5 era around 2029-2030. Also disclosed: a 75% power-delivery-network improvement across recent generations, and a claim that hybrid bonding would allow thicker core dies, sub-18 µm pitch, 20-plus-high stacks and 30% lower thermal resistance.",
+            "fab_angle": "The binding constraint is flatness, and it lands on CMP. Hybrid bonding needs oxide and recessed copper polished to within a few nanometres across the whole die, which is why the equipment number SK hynix quotes — about 100 nm placement accuracy today against a 25 nm target — decides the schedule more than the bonding chemistry does. The nearer-term lesson for anyone thinning wafers is warpage: at 50 µm a DRAM die is a sheet, and holding it flat through a reflow is the actual process problem.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Tech Note: Hybrid Bonding — Evolving into a Foundational Technology for Improving Semiconductor Performance",
+                "url": "https://news.skhynix.com/en/tech-note-series-ep2/",
+                "publisher": "SK hynix Newsroom",
+                "date": "2026-08-25"
+              },
+              {
+                "title": "SK hynix HBM Packaging at Hot Chips 2026",
+                "url": "https://www.servethehome.com/sk-hynix-hbm-packaging-at-hot-chips-2026/",
+                "publisher": "ServeTheHome",
+                "date": "2026-08-23"
+              },
+              {
+                "title": "SK hynix delays hybrid bonding: MR-MUF through HBM4E, HBM5 the turning point",
+                "url": "https://www.igorslab.de/en/sk-hynix-delays-hybrid-bonding-hbm4e-mr-muf-hbm5-turning-point/",
+                "publisher": "Igor's Lab",
+                "date": "2026-08-27"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-samsung-hbm-base-die-logic-node",
+            "title": "Samsung moves the HBM base die onto a 4 nm logic process",
+            "dek": "Samsung told Hot Chips on 23 August that from HBM4 the bottom control die of its memory stacks is made on a 4 nm logic process rather than a DRAM process, so an accelerator's memory controller can move down into the memory and free area on the compute die.",
+            "background_md": "Every HBM stack sits on a base die that stores nothing. It translates the accelerator's signalling into the internal DRAM interface, distributes power and clock up through the tower, and runs the built-in test that decides which cells get repaired. Because it is at the bottom, it is the one die whose heat must escape through every other die above it. It has traditionally been made on a DRAM process, which is tuned for capacitors and low leakage rather than for fast, dense logic.",
+            "glossary": [
+              {
+                "term": "Base die",
+                "definition": "The bottom die of an HBM stack. It holds no memory cells; it does interfacing, power distribution, repair and test for the DRAM dies stacked on it."
+              },
+              {
+                "term": "PHY",
+                "definition": "The physical-layer circuitry that drives and receives a link. Moving the memory controller into the base die shrinks the PHY on both sides, and that reclaimed area is what pays for the new logic."
+              },
+              {
+                "term": "SerDes",
+                "definition": "Serializer/deserializer — circuitry that squeezes many parallel signals onto a few fast wires and reassembles them. It costs real power, so a stack sitting directly on the processor can delete it."
+              },
+              {
+                "term": "System in package (SiP)",
+                "definition": "One package holding several separately made dies. Samsung's zHBM proposal removes the silicon interposer from that package by stacking memory on top of the processor instead of beside it."
+              }
+            ],
+            "why_it_matters": "A stack whose base die runs real logic stops being a commodity part bought on capacity and pin speed. What is inside it becomes specific to one customer's accelerator, so qualification stops being fungible between memory vendors and switching supplier late in a program stops being possible. It also puts an active die underneath the DRAM, which is the layer in the package with the tightest temperature limit.",
+            "deeper_md": "Samsung pairs its D1c DRAM process with a 4 nm logic base die at HBM4, with power reduction given as the reason. The roadmap comes in three phases: first, reclaim area by moving the memory controller into the base die over a custom die-to-die interface and doing SRAM-based cell repair with spares shared across DRAM dies instead of trapped inside one; second, add thermal, voltage, process and aging sensors, on-die test and pattern generation, external memory PHYs and near-memory compute; third, zHBM, stacking memory straight onto the processor and deleting the 2.5D interposer. Base dies are quoted supporting 4-, 8-, 12- or 16-high core stacks.\n\nThe one concrete zHBM figure: four zHBM stacks in a package alongside a 1,200 W GPU save roughly 100 W, about 8.3%, mostly by removing SerDes and data-alignment overhead. Samsung separately claims 70% better power efficiency and 230% more bandwidth than a standard HBM4E stack, with no method attached to either number.\n\nThe dispute is thermal and specific. Chips and Cheese points out that AMD's stacked-cache parts — Zen 3, Zen 4 and Zen 5 — all clock lower than their unstacked versions, and zHBM proposes many more layers on a hotter die.",
+            "fab_angle": "A logic-node base die changes who makes what. A memory vendor building its control die on 4 nm needs a leading-edge logic flow and a foundry relationship for a part it used to fabricate entirely in its own DRAM fab, and it needs to run customer-specific designs through that flow. That is the mechanism behind the phrase \"custom HBM\": not a new memory cell, but a logic design service attached to a memory product.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Hot Chips 2026: Samsung and HBM Base Die Opportunities",
+                "url": "https://chipsandcheese.com/p/hot-chips-2026-samsung-and-hbm-base",
+                "publisher": "Chips and Cheese",
+                "date": "2026-08-23"
+              },
+              {
+                "title": "Samsung Evolving HBM Base Die at Hot Chips 2026",
+                "url": "https://www.servethehome.com/samsung-evolving-hbm-base-die-at-hot-chips-2026/",
+                "publisher": "ServeTheHome",
+                "date": "2026-08-23"
+              }
+            ]
+          },
+          {
+            "id": "chips-nvidia-vera-olympus-core",
+            "title": "Nvidia ships a CPU core it designed itself, fed by laptop memory",
+            "dek": "Nvidia detailed Vera at Hot Chips on 24 August: 88 Olympus cores that Nvidia designed rather than licensed from Arm, each statically split into two hardware threads, fed by up to 1.5 TB of LPDDR5X at 1.2 TB/s in place of conventional server DDR5.",
+            "background_md": "An accelerator does not run on its own. A host CPU launches its work, handles the branchy and latency-sensitive parts of a program, manages memory and moves data — and in an agent workload it also runs the sandboxes, interpreters and tool calls between model invocations. That code is dominated by unpredictable branches and pointer chasing, so it is bounded by how quickly a core recovers from a cache miss rather than by arithmetic throughput. Running two threads per core exists precisely to fill those stalls with other work.",
+            "glossary": [
+              {
+                "term": "Spatial multithreading",
+                "definition": "Nvidia's two-threads-per-core scheme in which each thread gets a statically partitioned share of the core's resources instead of competing for them, trading peak throughput for predictable latency."
+              },
+              {
+                "term": "LPDDR5X",
+                "definition": "The low-power DRAM developed for phones and laptops: more bandwidth per watt than server DDR5, but mounted close to the package rather than on a standard DIMM, which limits capacity and serviceability."
+              },
+              {
+                "term": "NVLink-C2C",
+                "definition": "Nvidia's coherent chip-to-chip link, quoted at up to 1.8 TB/s, which lets a CPU and a GPU read each other's memory without an explicit copy."
+              },
+              {
+                "term": "SOCAMM",
+                "definition": "A small detachable low-power memory module. It restores the field-replaceability that soldered LPDDR gives up, which is why a server part can use phone memory at all."
+              }
+            ],
+            "why_it_matters": "Nvidia's previous server CPU used Arm's own core designs; designing the core in-house means one company now controls the whole path from instruction fetch to tensor unit, and can change the CPU to suit the accelerator rather than the other way round. The memory choice is the more portable decision: it gives up registered-DIMM capacity and serviceability to buy bandwidth per watt.",
+            "deeper_md": "88 Olympus cores, 176 threads, Arm-compatible instruction set, on a single monolithic compute die packaged with separate memory and I/O chiplets — six dies on one interposer, per the session report. Memory is eight 128-bit LPDDR5X controllers on up to eight replaceable SOCAMM2 modules: 1.5 TB at 1.2 TB/s, which Nvidia frames as twice the bandwidth of typical server memory at half the power. Second-generation Scalable Coherency Fabric gives 3.4 TB/s of bisection, and NVLink-C2C runs at up to 1.8 TB/s to a Rubin GPU. Igor's Lab reports 2 MB of L2 per core and 164 MB of shared L3, with a configurable 250-450 W TDP; the PCIe lane count differs between accounts, 96 lanes of PCIe/CXL in one and 88 Gen6 lanes with CXL 3.1 in the other.\n\nEvery performance number is Nvidia's own. Its SPEC CPU 2026 slides show roughly 1.8× on agentic workloads and 1.5× on data processing, and Nvidia itself called them proxy workloads; the \"up to 30×\" figure is a whole Vera Rubin rack against Grace Blackwell at high interactivity, not the CPU. The claim that static partitioning \"can achieve the same performance as traditional SMT\" is about resistance to noisy neighbours, not about peak throughput, and no independent measurement exists yet.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "NVIDIA Vera CPU",
+                "url": "https://www.nvidia.com/en-us/data-center/vera-cpu/",
+                "publisher": "NVIDIA",
+                "date": "2026"
+              },
+              {
+                "title": "NVIDIA Vera CPU at Hot Chips 2026",
+                "url": "https://www.servethehome.com/nvidia-vera-cpu-at-hot-chips-2026/",
+                "publisher": "ServeTheHome",
+                "date": "2026-08-24"
+              },
+              {
+                "title": "NVIDIA Vera in detail: 88 Olympus cores, 176 threads, 1.2 TB/s memory bandwidth",
+                "url": "https://www.igorslab.de/en/nvidia-vera-in-detail-88-olympus-cores-176-threads-12-tb-s-memory-bandwidth/",
+                "publisher": "Igor's Lab",
+                "date": "2026-08-26"
+              }
+            ]
+          },
+          {
+            "id": "chips-intel-crescent-island-lpddr5x",
+            "title": "Intel builds an inference accelerator with no HBM at all",
+            "dek": "Intel described Crescent Island at Hot Chips on 24 August: an inference accelerator carrying 32 Xe3P cores and up to 480 GB of LPDDR5X — the memory in a laptop — instead of the stacked HBM every competing part uses, inside a 350 W air-cooled PCIe card.",
+            "background_md": "Generating text has two phases with opposite appetites. Reading a prompt multiplies large weight matrices against many tokens at once and saturates the arithmetic units. Generating each following token multiplies the same weights against a single token, so nearly all the time goes into moving weights and cached attention state out of memory. Capacity decides how many conversations a chip can hold at once; bandwidth decides how fast each one advances. HBM buys bandwidth by stacking DRAM on an interposer beside the die, and pays in cost, package area and heat.",
+            "glossary": [
+              {
+                "term": "XMX engine",
+                "definition": "Intel's matrix unit. Xe3P deepens its systolic array from four stages to sixteen, so more multiply-accumulate steps happen per operand fetched out of the register file."
+              },
+              {
+                "term": "KV cache",
+                "definition": "The per-token attention state a server keeps for every conversation in flight. It grows with context length and with concurrent users, and it competes with the weights for accelerator memory."
+              },
+              {
+                "term": "GRF (general register file)",
+                "definition": "The per-core register storage a GPU's threads work from. Xe3P doubles it to 1 MB per core, letting a kernel keep more of a tile resident instead of spilling it to memory."
+              },
+              {
+                "term": "MXFP4",
+                "definition": "A four-bit floating-point format with a shared scale factor per small block of values, so the block keeps its dynamic range while each element costs four bits of storage."
+              }
+            ],
+            "why_it_matters": "This is a bet on which resource runs out first. LPDDR5X gives several times HBM's capacity per package and needs no interposer and no liquid loop, at a fraction of the bandwidth; the wager is that serving many long-context agents is bounded by how much model and key-value cache you can hold, not by how fast you can stream weights. Intel declined to disclose the bandwidth.",
+            "deeper_md": "32 Xe3P cores, 256 XMX engines, systolic depth 16 against 4 in the previous generation, 1 MB of register file per core (doubled), 512 KB of L1/shared local memory per core (up from 384 KB), 32 MB of unified L2, PCIe Gen5 ×16, formats from FP4 and MXFP4 up to full-rate FP64, 350 W air-cooled, at or below 50 W active idle and about 10 W in the deeper idle state. Intel's reference card carries 160 GB with ODM designs up to 480 GB.\n\nThe missing number is the one that decides the argument. Chips and Cheese estimates a 1,280-bit bus of LPDDR5X-9600 giving somewhat over 1.5 TB/s, against several TB/s for HBM parts, and estimates roughly 1.3 PFLOP/s FP8 and 2.6 PFLOP/s FP4 at 2.5 GHz — all estimates, because Intel published neither clock nor bandwidth. The software half is real and shipping: vLLM, SGLang, llm-d and Nvidia's Dynamo, with KV-cache-aware routing. Sampling is stated for this quarter and launch for 2027, and Chips and Cheese treats that date sceptically given Intel's record of datacenter GPU slips.",
+            "fab_angle": "The packaging is the point. No interposer, no through-silicon vias, no HBM stack — an ordinary organic substrate with memory beside the die — which is why 480 GB fits in a 350 W air-cooled slot instead of a liquid-cooled tray. It also sidesteps the qualification chain that gates every HBM part: no 775 µm stack height, no bond-line thickness, no die thinning.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Hot Chips 2026: Intel's Crescent Island",
+                "url": "https://chipsandcheese.com/p/hot-chips-2026-intels-crescent-island",
+                "publisher": "Chips and Cheese",
+                "date": "2026-08-27"
+              },
+              {
+                "title": "Intel Crescent Island 160GB to 480GB LPDDR5X AI GPU at Hot Chips 2026",
+                "url": "https://www.servethehome.com/intel-crescent-island-160gb-to-480gb-lpddr5x-ai-gpu-at-hot-chips-2026/",
+                "publisher": "ServeTheHome",
+                "date": "2026-08-24"
+              },
+              {
+                "title": "Intel Hot Chips 2026: 256-Core Diamond Rapids, Crescent Island With 480GB for Inference, and Wildcat Lake at the Edge",
+                "url": "https://www.storagereview.com/news/intel-hot-chips-2026-256-core-diamond-rapids-crescent-island-with-480gb-for-inference-and-wildcat-lake-at-the-edge",
+                "publisher": "StorageReview",
+                "date": "2026-08-24"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-mold-parallel-linker",
+            "title": "The last serial step in a software build gets parallelized",
+            "dek": "Rui Ueyama posted the design paper for mold, a Unix linker that applies data parallelism to every pass rather than a few, reporting 2.4 to 16.1 times the speed of LLVM's lld and up to 112 times GNU ld, with multi-gigabyte debug binaries linked in at most a few seconds.",
+            "background_md": "A compiler turns each source file into an object file independently, which is why compiling parallelizes cleanly across cores. A linker then merges all of them into one program: it resolves every symbol reference to exactly one definition, decides which archive members to pull in, lays out sections, assigns final addresses, and rewrites millions of relocations to match. Those steps have traditionally been one pass over one global structure, because the address of anything depends on the size of everything before it — so the link stays serial at the end of an otherwise parallel build.",
+            "glossary": [
+              {
+                "term": "Linker",
+                "definition": "The program that merges object files into an executable: it matches each symbol reference to a definition, lays out the sections, and patches every address the compiler had to leave blank."
+              },
+              {
+                "term": "Relocation",
+                "definition": "A recorded place in an object file where an address must be filled in once the final layout is known. A large binary holds millions, and applying them is most of a linker's work."
+              },
+              {
+                "term": "Symbol resolution",
+                "definition": "Deciding which single definition wins for each name referenced across all object files and archives. Traditional linkers interleave it with choosing archive members, which forces a serial order."
+              },
+              {
+                "term": "lld and GNU ld",
+                "definition": "The incumbents: GNU ld is the traditional Unix linker, and lld is the LLVM project's faster replacement — written by the same author who then wrote mold."
+              }
+            ],
+            "why_it_matters": "Linking is the step of a build that cannot be split across source files, so it sits at the end of every incremental compile and inside every developer's edit-run loop, and it stayed effectively single-threaded while core counts rose two orders of magnitude. The paper's ablation is the transferable part: no single trick accounts for the speedup, so the win came from removing a serial assumption rather than from one clever algorithm.",
+            "deeper_md": "arXiv 2608.23228, submitted 24 August, accepted to ASPLOS 2027, 15 pages with 10 tables. The claimed range is 2.4-16.1× against lld and up to 112× against GNU ld, with multi-gigabyte binaries carrying debug information often linking in under a second. The structural argument is that older linkers entangle symbol resolution with archive-member selection, which imposes an order; mold decouples them and then parallelizes every pass, and the ablation reports that no single optimization dominates — the speedup is cumulative.\n\nThe project's own benchmark, run on a 64-core Threadripper 7980X and a 16-performance-core Apple M1 Ultra over Blender, Chromium, Clang, ClickHouse, Firefox, Godot, LibreOffice, PyTorch and TensorFlow, reports a 4.9× median over lld and 1.9× over wild, a newer competitor.\n\nThree caveats. The speedups are wall-clock on many-core machines, so they compress badly on a four-core laptop. The paper is an author's account of his own tool against a moving target he also wrote. And mold has shipped under the MIT licence since 2021 — around 19,000 Gentoo packages are built with it before each release as a regression check — so this is a written-up design, not a new capability.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "mold: A Massively Parallel Linker",
+                "url": "https://arxiv.org/abs/2608.23228",
+                "publisher": "arXiv (accepted, ASPLOS 2027)",
+                "date": "2026-08-24"
+              },
+              {
+                "title": "rui314/mold — source, licence and benchmark table",
+                "url": "https://github.com/rui314/mold",
+                "publisher": "GitHub",
+                "date": "2026-08"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-qwen-ngram-embedding-table",
+            "title": "Alibaba adds 51 billion parameters that need not sit on the GPU",
+            "dek": "Alibaba released Qwen3.8-Flash-Next with open weights on 26 August: beside a 125-billion-parameter mixture-of-experts model it ships a 51-billion-parameter table of trigram embeddings, looked up by the last three tokens, which can be prefetched from the host computer's memory while the accelerator computes.",
+            "background_md": "A language model's parameters must be reachable by the accelerator on every single token, which is why memory capacity per package, rather than arithmetic, usually decides how large a deployable model can be. Mixture-of-experts partly dodges this by multiplying only a slice of the weights per token, but the whole set still has to sit somewhere fast, because which experts a token needs is known only once the token arrives. Anything whose address is knowable in advance is different: it can be moved while the accelerator is busy.",
+            "glossary": [
+              {
+                "term": "N-gram",
+                "definition": "A run of n consecutive tokens. Here n is three, so the table is indexed by the current token together with the two immediately before it."
+              },
+              {
+                "term": "Activated parameters",
+                "definition": "The subset of weights a mixture-of-experts model actually multiplies for a given token — 6 billion of 125 billion here — which sets the arithmetic cost while the full set sets the memory cost."
+              },
+              {
+                "term": "Prefetch",
+                "definition": "Starting a memory transfer before the value is needed so it overlaps computation rather than stalling it. It only works when the address can be computed ahead of time."
+              },
+              {
+                "term": "Gated DeltaNet",
+                "definition": "A linear-attention block that carries a fixed-size running state instead of storing a key-value entry for every past token, so its memory cost does not grow with context length."
+              }
+            ],
+            "why_it_matters": "Every recent way of adding capability — more dense parameters, more experts, longer context — spends the resource an accelerator has least of, which is its own memory. A table indexed by local context adds parameters with almost no extra arithmetic, and because the next lookup is predictable it can travel over PCIe in advance instead of living in HBM, which moves the pressure onto the host link.",
+            "deeper_md": "The published config identifies the architecture as `Qwen4ExpForConditionalGeneration`: hidden size 2,560 over 48 text layers arranged as 12 repeats of three Gated DeltaNet blocks with mixture-of-experts feed-forwards followed by one Qwen Sparse Attention block; 512 experts with 10 active; expert intermediate width 640; vocabulary 248,320; 24 query and 2 key/value heads at 256 dimensions; native 262,144-token context extensible toward a million with static YaRN; and a 27-layer vision encoder at 1,152 dimensions on 16×16 patches. The n-gram module declares a 20-million-entry base vocabulary at n = 3, split into 128 parts. Totals are 125B main model, 51B n-gram embeddings, a 4B multi-token-prediction head, and 6B activated per token.\n\nThe README describes asynchronous prefetching of the table so it can live in host memory, but publishes no measured latency and no achieved link bandwidth — which is exactly the number that decides whether the idea survives contact with a real PCIe slot. The reported scores (GPQA Diamond 91.7, SWE-bench Pro 62.5, OSWorld 2.0 at 19.4/52.3) are all Alibaba's own runs on benchmarks old enough that contamination cannot be excluded, and the licence is `qwen-community-1.0`, not Apache 2.0.",
+            "fab_angle": "If parameters can live in host DRAM and arrive by prefetch, pressure shifts off HBM capacity per package and onto host-to-accelerator link bandwidth and the amount of ordinary DDR a server carries — the opposite direction to the one HBM roadmaps assume. The operation is also a lookup rather than a matrix multiply, so what it wants from hardware is a wide, low-latency path to a large table, not more multiply-accumulate.",
+            "confidence": "confirmed",
+            "sources": [
+              {
+                "title": "Qwen/Qwen3.8-Flash-Next — model card",
+                "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next",
+                "publisher": "Hugging Face / Alibaba Qwen Team",
+                "date": "2026-08-26"
+              },
+              {
+                "title": "Qwen3.8-Flash-Next config.json — architecture, expert and n-gram parameters",
+                "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next/blob/main/config.json",
+                "publisher": "Hugging Face / Alibaba Qwen Team",
+                "date": "2026-08-26"
+              },
+              {
+                "title": "QwenLM/Qwen3.8-Flash-Next — README and deployment notes",
+                "url": "https://github.com/QwenLM/Qwen3.8-Flash-Next/blob/main/README.md",
+                "publisher": "GitHub / Alibaba Qwen Team",
+                "date": "2026-08-26"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "Photolithography, end to end",
+    "slug": "photolithography-basics",
+    "subtitle": "Coat, expose, develop, transfer, strip — and why most of the loop is chemistry and heat rather than optics.",
+    "tldr": "Every feature on a chip begins as a pattern printed into a thin polymer film with light, and almost everything else a fab does is either preparing for that print or acting on it. The equation everyone quotes — a wavelength divided by a numerical aperture — only sets the ceiling on how small a feature can be. What decides whether a particular print works is adhesion, film thickness, bake temperature and development time, which is why a lithography bay is mostly hotplates.",
+    "sections": [
+      {
+        "heading": "The loop, and why the whole fab is built around it",
+        "body_md": "Start from what a chip is: ten to twenty patterned layers stacked on one wafer, each of which must land on the one below it. There is no tool that carves a transistor. There is only a loop, run once per layer: put down a light-sensitive polymer, shine a patterned image into it, dissolve away the parts that changed, use what remains as a stencil while you etch or deposit or implant through it, then remove it and start again.\n\nEverything else in the fab exists to serve that loop. Deposition puts down the film you are about to pattern. Etch is the step the stencil protects against. Planarization exists because the loop needs a flat surface to focus on. Metrology exists because you cannot see whether the stencil is right without measuring it. When people say lithography is roughly a third of what a wafer costs, they are describing the exposure tools; the loop's real cost is that every other process step is scheduled around it.",
+        "deeper_md": "The nine canonical steps, in order: substrate preparation and adhesion promotion; resist coat; post-apply (soft) bake; align and expose; post-exposure bake; develop; hard bake; pattern transfer; strip. Only one of those is optics. Six are chemistry and thermal control, and they are where day-to-day yield is won and lost."
+      },
+      {
+        "heading": "Getting the film down, and getting it to stay",
+        "body_md": "Resist does not stick to a wafer that has water on it, and every surface in air has water on it. So the loop starts with a dehydration bake at 200-400 °C for half an hour or more to drive the water off, followed by a vapour of hexamethyldisilazane, which reacts with the surface hydroxyl groups and leaves behind a methyl-terminated, water-hating skin for the resist to bond to. Skip it and the pattern lifts during development, in a way that looks like an exposure problem and is not.\n\nThe coat itself is a fluid-mechanics problem: dispense a puddle of dissolved polymer, spin the wafer, and the film thins by radial flow until solvent evaporation freezes it. Final thickness goes as the inverse square root of spin speed and rises with viscosity, so a 4× increase in rotation buys you half the thickness. That relationship is the first thing you calibrate on any new resist, and it is why every spinner recipe is written as a curve rather than a number.",
+        "deeper_md": "Thickness ∝ ω^(−1/2) falls out of balancing centrifugal thinning against viscous resistance while the solvent leaves. Two practical consequences: thickness is insensitive to how much you dispense, which is why the puddle volume is forgiving, and it is very sensitive to viscosity, which is why resist is stored cold and why an opened bottle drifts."
+      },
+      {
+        "heading": "The print: three geometries and one equation",
+        "body_md": "There are only three ways to get an image from a mask into resist. Press the mask against the wafer — highest resolution, and you damage the mask and the wafer on every contact. Hold it a small distance away, around 20 µm, and diffraction across that gap limits you to roughly 2-4 µm. Or put a lens in between and project a reduced image, which is what every production tool has done since the 1970s.\n\nOnly the third gets an equation worth memorizing. The smallest printable feature is CD = k₁·λ/NA: the wavelength of the light, divided by how wide a cone of diffracted light the lens can collect, multiplied by a process factor. Depth of focus follows as roughly k₂·λ/NA², and the square is the sting — every step you take toward finer features costs you focus budget twice as fast as it buys resolution. That trade is the entire history of the industry compressed into two symbols.",
+        "deeper_md": "λ went 436 → 365 → 248 → 193 nm while NA climbed from about 0.16 to 0.93 in dry systems and to 1.35 with water immersion (n ≈ 1.33). k₁ has a hard floor at 0.25 for single exposure; a measured ArF immersion system extracts k₁ ≈ 0.288 and k₂ ≈ 0.745, giving 38 nm features at NA 1.35 with a depth of focus under 50 nm. Below k₁ = 0.25 you are no longer printing the pattern once — you are splitting it across multiple exposures."
+      },
+      {
+        "heading": "The bake that does the chemistry",
+        "body_md": "Between exposure and development sits a step that looks like housekeeping and is not. Light reflecting off the wafer interferes with the light coming down, so the dose deposited in the resist varies periodically with depth and the developed sidewall comes out ridged like a contour map. A post-exposure bake at 100-130 °C lets the photoactive product diffuse a short distance, which averages those standing waves out. Reflectivity is attacked separately, with a bottom anti-reflective coating that brings substrate reflection under 1%.\n\nFor modern deep-UV resists the bake is not a smoothing step at all — it is the reaction. Exposure only generates a small amount of acid; the bake lets that acid catalyze the solubility change and then regenerate itself, so one photon does the work of many. That is chemical amplification, and it is what made 248 nm and 193 nm lithography practical at sane exposure doses. It also means bake temperature and time are first-order process variables: get them wrong and the linewidth moves, with no optical fault anywhere.",
+        "deeper_md": "Because the acid diffuses, the amplification that buys sensitivity also blurs the aerial image and costs resolution, and because the acid is a catalyst, airborne base contamination at parts-per-billion neutralizes the top of the film and produces T-topping. Chemically amplified resists are the reason a litho bay filters amines out of its air."
+      },
+      {
+        "heading": "Development is where the linewidth is decided",
+        "body_md": "Development is the step that converts a smooth distribution of absorbed dose into a binary answer: polymer here, bare wafer there. The developer is almost universally tetramethylammonium hydroxide at 0.2-0.26 normal, applied as a puddle held on a still wafer for a fixed time, then rinsed and spun dry. Spray and continuous-spin variants exist and trade uniformity against consumption.\n\nThe number that characterizes a resist here is the contrast curve. Expose a series of identical fields at doses spaced apart geometrically, develop them all together, and measure the resist left behind. Plot remaining thickness against the logarithm of dose and you get a curve that is flat, then falls off a cliff, then hits zero. Where it reaches zero is the dose-to-clear, E₀. The slope of the cliff is the contrast, γ. A high γ means a small difference in dose produces a large difference in remaining resist, which is exactly what turns a blurry aerial image into a vertical sidewall — and it is why development time is held to a second or two.",
+        "deeper_md": "The whole imaging chain is a series of contrast multiplications: the aerial image has some finite modulation set by k₁, the resist's γ sharpens it, and the etch selectivity sharpens it again. A process with a marginal aerial image can be rescued by resist contrast; one with poor contrast cannot be rescued by a better lens."
+      },
+      {
+        "heading": "Transfer, strip, and what is left behind",
+        "body_md": "The pattern in resist is not the product. It is a stencil, and there are exactly three things you can do through it. Etch away the material it does not cover, which is subtractive and by far the most common. Deposit or plate into the openings, which is additive and is how copper wiring and thick metal are made. Or fire dopant ions through the openings, where the resist is simply mass that stops them.\n\nBefore any of that, a hard bake at 120-150 °C cross-links the polymer so it survives the plasma or the acid. Afterwards the resist has to come off completely, because leftover organic residue is a contamination source for every subsequent step: wet strippers for gentle cases, oxygen plasma for the rest, which works because it burns carbon and leaves oxides and metals alone. Then the surface is measured, planarized if needed, and the loop starts again on the next layer — this time with the additional requirement that it land on the pattern already there, to a fraction of the feature size.",
+        "deeper_md": "Overlay is the quiet constraint the resolution equation never mentions. A tool that prints 100 nm features must place them on the previous layer to perhaps a fifth of that, over a wafer that has been heated, coated and polished between the two exposures. Film stress bows the wafer, and the resulting distortion appears as an overlay error nobody's optics can fix."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "HMDS (hexamethyldisilazane)",
+        "definition": "The standard adhesion promoter. Applied as a vapour, it reacts with surface hydroxyl groups and leaves a methyl-terminated surface, so the resist bonds to the wafer instead of to a monolayer of adsorbed water."
+      },
+      {
+        "term": "Soft bake (post-apply bake)",
+        "definition": "The hotplate step right after coating. It drives off 20-40% of the solvent, leaving roughly 3-8% behind — enough residual solvent for the resist to develop properly, little enough for the film to be mechanically stable."
+      },
+      {
+        "term": "PEB (post-exposure bake)",
+        "definition": "The bake between exposure and development, at 100-130 °C. In older resists it diffuses the photoproduct to smooth standing waves; in chemically amplified resists it is where the acid-catalyzed reaction actually happens."
+      },
+      {
+        "term": "TMAH developer",
+        "definition": "Tetramethylammonium hydroxide, 0.2-0.26 N, the metal-ion-free base used to dissolve exposed positive resist. Metal-ion-free matters because sodium and potassium are mobile charges that destroy MOS devices."
+      },
+      {
+        "term": "k₁",
+        "definition": "The process factor in CD = k₁·λ/NA. It bundles illumination shape, resist contrast and mask correction into one number, and 0.25 is the physical floor for a single exposure — below that the pattern must be split across several."
+      },
+      {
+        "term": "Depth of focus (DOF)",
+        "definition": "The range of focus positions over which the pattern still prints acceptably, roughly k₂·λ/NA². Because NA is squared, it shrinks faster than resolution improves, which is why wafer flatness became a first-order problem."
+      },
+      {
+        "term": "Dose-to-clear (E₀) and contrast (γ)",
+        "definition": "From the contrast curve: E₀ is the dose at which the resist is fully removed on development, γ the steepness of the transition. γ converts a gradual aerial image into a sharp edge, and it is a property of resist plus develop process, not of the resist alone."
+      },
+      {
+        "term": "BARC (bottom anti-reflective coating)",
+        "definition": "A thin absorbing film applied under the resist to cut reflection from the substrate below 1%, which suppresses standing waves and the linewidth swings caused by underlying topography."
+      }
+    ],
+    "try_this": "Run a contrast curve on whatever positive resist is on the shelf, using the Minnesota Nano Center's optical lithography and metrology tools. Coat and soft-bake a wafer to the vendor's recipe, expose a row of identical open fields at doses spaced a factor of √2 apart, develop every field together in one puddle for the stated time, then measure remaining resist thickness at each dose with the reflectometer or ellipsometer. Plot thickness against log dose: the intercept where it hits zero is E₀, the slope of the fall is γ. Every process document you will ever read assumes somebody already has that plot for the resist in question, and almost nobody checks whether it still holds for the bottle currently open.",
+    "sources": [
+      {
+        "title": "Semiconductor Lithography (Photolithography) — The Basic Process",
+        "url": "https://www.lithoguru.com/scientist/lithobasics.html",
+        "publisher": "Chris Mack, lithoguru.com",
+        "date": "2026"
+      },
+      {
+        "title": "The Rayleigh criterion for resolution",
+        "url": "https://www.asml.com/en/technology/lithography-principles/rayleigh-criterion",
+        "publisher": "ASML",
+        "date": "2026"
+      },
+      {
+        "title": "A Study on the Resolution and Depth of Focus of ArF Immersion Photolithography",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9696816/",
+        "publisher": "Micromachines 13(11):1971 (Song, Kim & Lee)",
+        "date": "2022-11-14"
+      },
+      {
+        "title": "Photolithography — tools, resists and resolutions",
+        "url": "https://www.cnfusers.cornell.edu/Photolithography",
+        "publisher": "Cornell NanoScale Science and Technology Facility",
+        "date": "2026"
+      },
+      {
+        "title": "Device Fabrication — lithography options and minimum feature sizes",
+        "url": "https://cse.umn.edu/mnc/device-fabrication",
+        "publisher": "Minnesota Nano Center, University of Minnesota",
+        "date": "2026"
+      },
+      {
+        "title": "6.152J Micro/Nano Processing Technology — lecture notes",
+        "url": "https://ocw.mit.edu/courses/6-152j-micro-nano-processing-technology-fall-2005/pages/lecture-notes/",
+        "publisher": "MIT OpenCourseWare",
+        "date": "2005"
+      },
+      {
+        "title": "Lithography Tutor / Lithography Expert column index",
+        "url": "https://www.lithoguru.com/scientist/tutor.html",
+        "publisher": "Chris Mack, lithoguru.com",
+        "date": "2008"
+      }
+    ]
+  }
+}

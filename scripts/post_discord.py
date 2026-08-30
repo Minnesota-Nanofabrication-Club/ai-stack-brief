@@ -157,8 +157,10 @@ def render_header(brief: dict, site_url: str) -> str:
 
 
 def render_item_field(item: dict, site_url: str, date: str) -> dict:
-    title = truncate(to_discord_markdown(item["title"]), MAX_FIELD_NAME)
-    title += CONFIDENCE_MARK.get(item.get("confidence", "confirmed"), "")
+    # Reserve room for the marker up front. Appending it after truncating to the
+    # cap and then truncating again would silently eat the confidence signal.
+    mark = CONFIDENCE_MARK.get(item.get("confidence", "confirmed"), "")
+    title = truncate(to_discord_markdown(item["title"]), MAX_FIELD_NAME - len(mark)) + mark
 
     dek = to_discord_markdown(item["dek"])
     source_line = ""
@@ -174,7 +176,7 @@ def render_item_field(item: dict, site_url: str, date: str) -> dict:
     deep_link = f" · [go deeper]({edition_url(site_url, date, item['id'])})"
     room = MAX_FIELD_VALUE - len(source_line) - len(deep_link)
     value = truncate(dek, room) + source_line + deep_link
-    return {"name": truncate(title, MAX_FIELD_NAME), "value": value, "inline": False}
+    return {"name": title, "value": value, "inline": False}
 
 
 def render_layer_embed(layer: dict, site_url: str, date: str) -> dict:

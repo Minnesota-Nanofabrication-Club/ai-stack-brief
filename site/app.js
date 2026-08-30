@@ -512,7 +512,7 @@
     if (f.try_this) {
       var t = el('div', 'trythis');
       t.appendChild(el('h3', null, 'Try this'));
-      t.appendChild(el('p', null, f.try_this));
+      t.appendChild(mdBlock(f.try_this));
       host.appendChild(t);
     }
 

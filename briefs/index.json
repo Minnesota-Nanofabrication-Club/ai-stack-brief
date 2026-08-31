@@ -1,6 +1,18 @@
 {
   "editions": [
     {
+      "date": "2026-08-31",
+      "foundations_slug": "thermal-oxidation",
+      "foundations_topic": "Thermal oxidation and the Deal–Grove model",
+      "headline": "A quiet two days at the end of August: the most consequential thing published is an EPFL circulator that gets 40 decibels of isolation out of ordinary 65-nanometre CMOS by making two leakage paths cancel.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing"
+      ]
+    },
+    {
       "date": "2026-08-30",
       "foundations_slug": "photolithography-basics",
       "foundations_topic": "Photolithography, end to end",
@@ -29,6 +41,6 @@
       ]
     }
   ],
-  "generated_at": "2026-08-30T17:48:56Z",
-  "latest": "2026-08-30"
+  "generated_at": "2026-08-31T15:42:28Z",
+  "latest": "2026-08-31"
 }

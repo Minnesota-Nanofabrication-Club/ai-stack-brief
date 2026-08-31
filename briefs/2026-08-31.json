@@ -1,0 +1,392 @@
+{
+  "date": "2026-08-31",
+  "generated_at": "2026-08-31T16:40:00Z",
+  "window": "2026-08-30..2026-08-31",
+  "headline": "A quiet two days at the end of August: the most consequential thing published is an EPFL circulator that gets 40 decibels of isolation out of ordinary 65-nanometre CMOS by making two leakage paths cancel.",
+  "pulse": {
+    "read_time_min": 7,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-floquet-leakage-interference-circulator",
+            "title": "Two leakages cancel, and a CMOS circulator reaches 40 dB of isolation",
+            "dek": "EPFL's Laboratory of Wave Engineering, working with Huawei's Swedish research centre, built a circulator — a three-port device that passes signals around one way only, so a radio can transmit and receive on a single antenna — in ordinary 65-nanometre CMOS, and measured 40 decibels of isolation at the blocked port.",
+            "background_md": "Passive circuits are reciprocal by default: whatever a network passes from port A to port B, it passes equally from B to A. Radios need the opposite, because a transmitter running at hundreds of milliwatts shares an antenna with a receiver listening at picowatts. The classical fix is a ferrite biased by a permanent magnet, which cannot be put on a silicon die. The alternative is to break reciprocity with time rather than with a magnetic field: switch the circuit periodically at a rate comparable to the signal, so forward and reverse waves see different sequences of states. Everything hard about doing that on-chip comes from the switches being imperfect.",
+            "glossary": [
+              {
+                "term": "Circulator",
+                "definition": "A three-port network that passes power in one rotational direction only — 1 to 2, 2 to 3, 3 to 1 — so a transmitter and a receiver can share one antenna without the transmitter reaching the receiver."
+              },
+              {
+                "term": "Isolation (dB)",
+                "definition": "How far below the input the signal reaching the blocked port sits, on a logarithmic scale: 20 dB is one hundredth of the power, 40 dB one ten-thousandth."
+              },
+              {
+                "term": "Off-state capacitance",
+                "definition": "The capacitance still bridging a transistor switch when it is nominally open. It carries more current as frequency rises, so it sets the floor on how well any switched network can block a path."
+              },
+              {
+                "term": "Time-Floquet modulation",
+                "definition": "Driving a circuit with a strictly periodic modulation so its steady-state response splits into sidebands spaced by the modulation frequency; interference between those sidebands is what breaks reciprocity."
+              }
+            ],
+            "why_it_matters": "Every attempt to build a circulator on a chip without a magnet hits the same wall: the transistor switches doing the time modulation are not truly open when off, and the current that sneaks through their residual capacitance arrives at the port meant to be dead, which in this chip caps isolation near 14 dB. Turning that leak into one arm of an interferometer, so a second leak arrives equal and opposite, converts a limit set by transistor physics into a circuit parameter a designer can tune — and that reframing, rather than the 40 dB itself, is what carries to other switched networks and to higher frequencies where off-state capacitance bites harder.",
+            "deeper_md": "The circuit is an N-path switched-resonator network with N = 3: three on-chip LC resonators, each with three transistor switches, nine in all, driven with a modulation period of 1.8 ns, about 556 MHz. Two coherent leakages reach the isolated port. One is the stored wave released at the resonator's ring-down frequency, 5.37 GHz in the fabricated part; the other is the input passing straight through the switches' off-state capacitance at the carrier. Where the two are equal in amplitude and opposite in phase they cancel, and the measured cancellation sits at 5.8 GHz and reaches 40 dB, against roughly 14 dB of natural switch isolation set by the transistors' 455 GHz cutoff frequency. Because the interference establishes itself within a single modulation period, the direction of circulation reverses in 0.6 ns. The die is 1 mm² in 65-nm CMOS.\n\nThe authors name their own limits rather than leaving them to a reader. The 40 dB is bounded by their measurement noise floor, not by physics; the lower of the two destructive-interference branches falls below the measured band; and inter-cycle self-interference has to be suppressed for the cancellation to survive from period to period. Insertion loss and bandwidth are not reported, and those are the first two numbers a front-end designer would ask for.",
+            "fab_angle": "The cancellation depends on two paths matching, not on either being small, which moves the burden from device quality onto matching — the same argument analog designers make about capacitor ratios. It also spends area on three on-chip LC resonators, and inductors are the least scalable thing in an RF layout: 1 mm² for one circulator in a 65-nm process is the real cost, not the switches.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Beating the nonreciprocal isolation limit of integrated circulators by Floquet leakage interference",
+                "url": "https://arxiv.org/abs/2608.28130v1",
+                "publisher": "arXiv (EPFL Laboratory of Wave Engineering; Huawei Technologies Sweden)",
+                "date": "2026-08-28"
+              },
+              {
+                "title": "Floquet leakage interference — full text, with the measured cancellation, the N-path topology, affiliations and funding",
+                "url": "https://arxiv.org/html/2608.28130",
+                "publisher": "arXiv (HTML rendering of v1)",
+                "date": "2026-08-28"
+              }
+            ]
+          },
+          {
+            "id": "silicon-mos2-liquid-precursor-cvd-substrate",
+            "title": "One MoS₂ recipe, five substrates, and five different crystals come out",
+            "dek": "A group at the University of Duisburg-Essen and CIMAP in Caen ran a single liquid-precursor recipe for monolayer molybdenum disulfide — a semiconductor three atoms thick — across five crystal substrates, and got everything from five-micrometre triangles on strontium titanate to dendrites hundreds of micrometres long on magnesium oxide.",
+            "background_md": "Molybdenum disulfide is a layered crystal that stays semiconducting down to a single three-atom-thick sheet, which is why it keeps appearing on scaling roadmaps as a channel material for when silicon films get too thin to gate properly. Making it over large areas is the unsolved part. Chemical vapour deposition grows it by bringing a molybdenum source and sulfur vapour to a hot substrate, where islands nucleate and spread sideways until they collide. Grain boundaries between islands scatter carriers, so the metric that matters is not how much of the wafer is covered but how large one crystalline domain gets before it meets a neighbour.",
+            "glossary": [
+              {
+                "term": "Monolayer MoS₂",
+                "definition": "A single molybdenum layer sandwiched between two sulfur layers. In that one-sheet form the crystal has a direct bandgap and can be fully depleted by a gate, which is why it is studied as a transistor channel."
+              },
+              {
+                "term": "Liquid-precursor CVD",
+                "definition": "Spin-coating a soluble metal salt onto the substrate and converting it in place, instead of transporting the metal as a vapour from a distant boat, so the precursor's distribution is fixed by wetting before growth starts."
+              },
+              {
+                "term": "Nucleation density",
+                "definition": "How many separate islands begin growing per unit area. It caps the maximum domain size, because islands stop spreading when they touch, so fewer nuclei means larger single crystals."
+              },
+              {
+                "term": "Sulfurization",
+                "definition": "The step that converts the molybdenum-oxide intermediate into MoS₂ by exposing it to sulfur vapour at temperature — here 750 °C for 30 minutes under 500 sccm of argon."
+              }
+            ],
+            "why_it_matters": "Two-dimensional semiconductors are supposed to arrive in a fab as a deposition step with a recipe, and this result says the recipe is not the process: how the molybdenum precursor wets and anchors to whatever is underneath it fixes nucleation density and domain shape before any sulfur arrives. The practical consequence is that a growth developed on sapphire does not transfer to a different underlayer, and the parameter that has to be characterised and controlled is the substrate's surface chemistry, not only the furnace profile — which is a harder specification to write into a process document than a temperature and a flow rate.",
+            "deeper_md": "The precursor is 1 mL of saturated ammonium heptamolybdate with 1 mL of OptiPrep and 3.5 mL of deionised water, spin-coated at 12,000 rpm for 45 s onto a substrate first treated with 2% sodium cholate at 4,500 rpm, calcined at 300 °C for 30 minutes in air, then sulfurized at 750 °C for 30 minutes with the sulfur source held at 170 °C under 500 sccm of argon. One recipe, five substrates — sapphire (0001), TiO₂ (001), SrTiO₃ (100), MgO (100) and SiC (0001) — and five outcomes. SrTiO₃ gives many small domains around 5 µm at roughly 66% monolayer and 23% multilayer coverage; TiO₂ gives star-shaped domains beyond 500 µm at 44.3% and 23.7%; MgO gives dendrites extending hundreds of micrometres at 49% and 28%; SiC gives well-defined triangles at only 15.1% and 7.2%. The authors attribute these to reduced lateral diffusion length, precursor anchoring, surface hydration and crystallographic templating respectively.\n\nThe correlation they lean on is also the weakness they name: contact angles were measured at room temperature, which is not the surface after calcination or during sulfurization, and their Raman analysis is offered as a relative indicator rather than an absolute measurement.",
+            "fab_angle": "Everything decisive here happens before the furnace — a surfactant pre-treatment, a spin-coat and a 300 °C bake in air, all steps a teaching cleanroom already owns. The instrument that would actually gate the work is the one that measures wetting, a contact-angle goniometer, because the paper's own argument is that surface energy predicts the morphology that comes out of the tube.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Phenomenological Growth Regimes in Liquid-Precursor CVD of MoS₂ on Functional Substrates",
+                "url": "https://arxiv.org/abs/2608.28269",
+                "publisher": "arXiv (University of Duisburg-Essen / CENIDE; CIMAP, Caen)",
+                "date": "2026-08-28"
+              },
+              {
+                "title": "Liquid-precursor CVD of MoS₂ — full text with the recipe, the per-substrate coverage figures and the wetting measurements",
+                "url": "https://arxiv.org/html/2608.28269v1",
+                "publisher": "arXiv (HTML rendering of v1)",
+                "date": "2026-08-28"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-rvv-vector-silicon-measured",
+            "title": "RISC-V vector chips hit their FMA peak, then fall over when loads arrive",
+            "dek": "Jülich Supercomputing Centre benchmarked the shipping chips that implement RISC-V's ratified vector extension — SiFive's X280, SpacemiT's X60, X100 and A100, and T-Head's C920v2 — and found one of them delivering 7.999 of a possible 8 floating-point operations per cycle on pure multiply-add, and 0.5593 once every multiply-add needs a load.",
+            "background_md": "A vector instruction tells a processor to apply one operation to many elements at once, which is how a core does more arithmetic per instruction fetched. RISC-V's vector extension differs from Arm's or x86's in being length-agnostic: the same binary runs on a machine with 128-bit vector registers or 1024-bit ones, and the program asks the hardware at run time how wide it actually is. That flexibility moves the performance question off the instruction set and onto each implementation, so two chips advertising the same extension can differ by an order of magnitude on the same loop.",
+            "glossary": [
+              {
+                "term": "RVV 1.0",
+                "definition": "The RISC-V vector extension in its ratified form. It defines vector operations without fixing a register width, so one binary runs across implementations and the hardware reports its width at run time."
+              },
+              {
+                "term": "VLEN",
+                "definition": "The physical width of one vector register, in bits. Across the platforms measured here it ranges from 128 to 1024, and it sets how many elements a single instruction touches."
+              },
+              {
+                "term": "FLOP/cycle",
+                "definition": "Floating-point operations completed per clock cycle — the metric that separates a core's arithmetic peak from its achieved rate. A fused multiply-add counts as two."
+              },
+              {
+                "term": "Segmented load/store",
+                "definition": "A vector memory instruction that gathers interleaved fields — the x, y and z of an array of structures — into separate registers. It is where implementations most often fall short of their unit-stride bandwidth."
+              }
+            ],
+            "why_it_matters": "A vector instruction set only pays if the machine can feed it, and the number that decides that is not the vector register width but how many loads per cycle the load-store unit can retire without contending with the arithmetic pipeline. These measurements say the remaining gap between RISC-V vector silicon and an established server core is an implementation problem — port counts, segmented-access throughput, latency hiding — rather than an instruction-set problem, which is a different and considerably more tractable kind of hard, because it is fixed in the next microarchitecture rather than in the next standard.",
+            "deeper_md": "Vector register widths across the tested parts run 128 bits on the Sophon SG2044 (T-Head C920v2), 256 on SpacemiT's X60 and X100, 512 on the SiFive X280 inside Tenstorrent Blackhole, and 1024 bits for FP32 but 256 for FP64 on SpacemiT's A100; NVIDIA Grace, the Arm comparison, is 128. Pure fused-multiply-add chains reach the theoretical peak, about 8 FLOP/cycle on the 256-bit designs. Insert one load per FMA and the A100 falls from 7.999 to 0.5593 FLOP/cycle, which the authors trace to port contention between the vector floating-point unit and the vector load-store unit; the same part needs at least 14 vector FMAs per load to hide the latency, a ratio an FFT kernel cannot supply. Segmented accesses retain 50% of unit-stride bandwidth on the SpacemiT parts and about 70% on the Sophon. On HPL the 64-core Sophon reaches 417.43 GFLOP/s of raw DGEMM but spends 54.22% of its time in panel factorization, against 12.15% for an 8-thread X100 at 83.64 GFLOP/s; Grace with 72 cores and two MPI ranks reaches 1084 GFLOP/s.\n\nThe scope is the caveat: single-node measurements on development boards, with vendor toolchains of very different maturity, submitted to a RISC-V for HPC workshop rather than peer-reviewed, and not yet reproduced by anyone else.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Great Expectations: Benchmarking the Real-World Performance of RVV 1.0 in HPC",
+                "url": "https://arxiv.org/abs/2608.28097",
+                "publisher": "arXiv (Jülich Supercomputing Centre, Forschungszentrum Jülich)",
+                "date": "2026-08-28"
+              },
+              {
+                "title": "RVV 1.0 in HPC — full text with the per-platform VLEN table, STREAM, FMA-to-load ratios and HPL/HPCG results",
+                "url": "https://arxiv.org/html/2608.28097v1",
+                "publisher": "arXiv (HTML rendering of v1)",
+                "date": "2026-08-28"
+              },
+              {
+                "title": "RVA23 Profiles, Version 1.0 — ratified specification",
+                "url": "https://docs.riscv.org/reference/rva23/v1.0/index.html",
+                "publisher": "RISC-V International",
+                "date": "2024-10-17"
+              }
+            ]
+          },
+          {
+            "id": "chips-xcena-mx1-near-memory-cxl",
+            "title": "3,072 RISC-V cores move inside the memory card because the link is narrow",
+            "dek": "XCENA's MX1, detailed at Hot Chips 2026 and built on Samsung's 4-nanometre process, is a CXL memory expander — a card that adds DRAM to a server through a PCIe slot — carrying 3,072 small RISC-V cores beside its own two terabytes of DDR5 so the work happens there rather than at the host.",
+            "background_md": "A server's memory capacity is limited by how many DIMM slots hang off the processor's own controllers, and those have not grown as fast as working sets. Compute Express Link is the answer the industry settled on: it runs a cache-coherent memory protocol over PCIe wiring, so a card in a slot can present DRAM that the processor addresses as its own. What it cannot fix is that the slot is narrower than a DIMM channel. A CXL device therefore buys capacity at the cost of bandwidth per byte held, and the further a workload has to drag that memory, the worse the trade becomes.",
+            "glossary": [
+              {
+                "term": "CXL Type 3 device",
+                "definition": "A card that presents memory to the host across the PCIe electrical link, addressable and cache-coherent, so the operating system sees extra RAM rather than a storage device."
+              },
+              {
+                "term": "Near-memory processing",
+                "definition": "Putting compute on the same board or package as the memory it reads, so a filter or reduction runs where the bandwidth is and only the much smaller result crosses the narrow host link."
+              },
+              {
+                "term": "GB/s",
+                "definition": "Gigabytes per second of sustained data movement. The two numbers to compare in this design are 268.8 GB/s of local DDR5 against 64 GB/s in each direction over the host link."
+              },
+              {
+                "term": "In-order core",
+                "definition": "A processor that issues instructions strictly in program order, with no reordering hardware. It is far cheaper in area and power than an out-of-order core, and it gives up little when the work is waiting on memory anyway."
+              }
+            ],
+            "why_it_matters": "The case for computing inside a memory card is arithmetic you can do on an envelope: four DDR5-8400 channels supply 268.8 GB/s locally, while the PCIe Gen6 ×8 link back to the processor carries 64 GB/s each way, so anything that streams the full two terabytes to the host is throttled roughly four to one before it starts. Moving the operator to the data converts a link problem into a core-count problem, and the cores are allowed to be small and in-order precisely because the workload is bandwidth-bound rather than latency-bound.",
+            "deeper_md": "MX1 is a CXL 3.2 Type 3 device on a PCIe Gen6 ×8 link — 128 GB/s aggregate, 64 GB/s per direction — with four DDR5-8400 channels for up to 2 TB, plus downstream PCIe lanes that let an attached SSD be presented as byte-addressable memory, DRAM-cached at 64 KB page granularity behind a 1,024-entry TLB. The compute side is 3,072 custom in-order RISC-V cores at 1.1 GHz, grouped 32 to a cluster sharing an 8 KB L1 instruction cache and a 256 KB L2 data cache, with 128 MB of L3 per subsystem across 24 subsystems that can run independent jobs; two Arm Cortex-A53 cores handle control. Vector processing engines give roughly 3 TFLOPS of FP32/FP16 dot-product throughput. The compute die is Samsung Foundry 4 nm at 40 W, about 90 W for the board with four DIMMs populated.\n\nXCENA's own comparative figures are the ones to treat carefully: 4.7× throughput against host-over-CXL and 2× against local DRAM, with efficiency gains quoted at 18.7× and 6.2×. No workload, harness or measured latency accompanies them, and Chips and Cheese notes that no measured performance results were presented in the session at all.",
+            "fab_angle": "The design decision worth studying is spending 4-nanometre area on 3,072 deliberately small cores instead of a few large ones. In-order cores with short pipelines are the cheapest way to convert die area into outstanding memory requests, and the cache hierarchy confirms the intent: 8 KB of L1 instruction cache shared across 32 cores only works if the code running there is a tight loop rather than a general-purpose program.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Hot Chips 2026: XCENA and Samsung's Near-Memory Compute CXL Device",
+                "url": "https://chipsandcheese.com/p/hot-chips-2026-xcena-and-samsungs",
+                "publisher": "Chips and Cheese",
+                "date": "2026-08-30"
+              },
+              {
+                "title": "XCENA MX1 CXL Computational Memory Device at Hot Chips 2026 with Samsung",
+                "url": "https://www.servethehome.com/xcena-mx1-cxl-computational-memory-device-at-hot-chips-2026/",
+                "publisher": "ServeTheHome",
+                "date": "2026-08-25"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-s4-fifo-learned-cache-eviction",
+            "title": "A cache policy that learns its constants instead of its decisions",
+            "dek": "Researchers at Harvard, Illinois and Chicago posted the OSDI 2026 paper behind S4-FIFO, a cache eviction policy that keeps plain first-in-first-out queues on the request path and uses a decision-tree model, trained on 4,140 production traces, only to choose the policy's parameters off the critical path.",
+            "background_md": "A cache holds a small fraction of a working set and has to guess which objects will be asked for again. Every policy is a guess about reuse: least-recently-used assumes recency predicts it, first-in-first-out assumes nothing and evicts the oldest, and the modern queue policies split the cache into a short probationary segment and a longer protected one so that objects touched exactly once are discarded quickly. What makes this hard in production is that the right split depends on the workload, and the cost of getting it wrong is asymmetric: a miss costs a disk or network round trip, a hit costs a memory access.",
+            "glossary": [
+              {
+                "term": "Miss ratio",
+                "definition": "The fraction of requests the cache cannot serve from its own contents. It is the metric that matters because a miss costs orders of magnitude more time than a hit."
+              },
+              {
+                "term": "S3-FIFO",
+                "definition": "A cache policy built from three first-in-first-out queues — a small probationary one, a larger main one, and a ghost queue of recently evicted keys — that filters one-hit objects cheaply. S4-FIFO learns how to size them."
+              },
+              {
+                "term": "Data plane vs control plane",
+                "definition": "The split between code that runs on every request and code that configures it. Keeping the learning out of the data plane is what lets a learned policy run at the throughput of a plain queue."
+              },
+              {
+                "term": "Ghost queue",
+                "definition": "A list of recently evicted keys with no data attached, kept so the policy can tell a genuine re-reference from a first access. Here it costs 8 bytes per entry."
+              }
+            ],
+            "why_it_matters": "Learned cache policies have consistently won on average and lost badly on the traces they were not trained for, which is why almost none of them are deployed: an eviction decision made by a model sits on every access, and its worst case is the one that takes a service down. Splitting the policy so that learning sets constants while the data plane stays a deterministic queue bounds the damage rather than trying to eliminate it — on its worst evaluation trace this policy is 0.8% worse than plain FIFO, where a comparable learned policy is 8.8% worse, and that ratio is the argument for the whole design.",
+            "deeper_md": "The framework the authors call learning-augmented heuristics keeps S3-FIFO's three deterministic queues on the request path and moves all learning to a control plane that runs asynchronously. A gradient-boosted decision-tree model — 20 trees, maximum depth 9, inference under 2 ms — reads 73 cache-level features, 60 of which are a hit-position histogram across the three queues, plus derived quantities such as ghost pressure, scan intensity and thrashing risk, and emits a configuration. Training used 4,140 production traces drawn from 14 datasets including MSR, CloudPhysics, Systor, Twitter, WikiMedia, Alibaba and Meta, spanning 2007 to 2023; evaluation used 1,035 held-out traces, with anything under 100,000 objects excluded.\n\nAt a cache sized to 10% of the working set, S4-FIFO reduces the miss ratio 26% more than S3-FIFO does relative to FIFO, and 8% more than 3L-Cache. At 0.1% it beats S3-FIFO by 8% and loses slightly to 3L-Cache, which the authors attribute to small caches carrying richer object-level signal. Storage overhead beyond the inherited 2-bit counter is tens of kilobytes, though the ghost queue itself costs several megabytes per million objects. One prediction is made per trace; the paper does not evaluate re-prediction as a workload drifts.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Learning-Augmented Heuristics: Simple yet Smart, Robust and Interpretable Cache Eviction",
+                "url": "https://arxiv.org/abs/2608.27975",
+                "publisher": "arXiv (Harvard University; UIUC; University of Chicago; Meta) — accepted to USENIX OSDI '26",
+                "date": "2026-08-28"
+              },
+              {
+                "title": "S4-FIFO — full text with the feature list, the trace datasets, the miss-ratio tables and the robustness numbers",
+                "url": "https://arxiv.org/html/2608.27975v1",
+                "publisher": "arXiv (HTML rendering of v1)",
+                "date": "2026-08-28"
+              }
+            ]
+          },
+          {
+            "id": "computing-per-core-em-side-channel",
+            "title": "A near-field probe can now tell which core on a chip is doing what",
+            "dek": "A Korea University group, working with the Agency for Defense Development, posted the DAC 2026 paper showing that a 300-micrometre near-field magnetic probe held over a quad-core Cortex-A72 can separate the electromagnetic emissions of individual cores well enough to flag anomalous activity on one of them.",
+            "background_md": "A CMOS circuit draws a current spike on every clock edge, and the size of that spike depends on how many gates switched, which depends on what instruction just executed. That current loop radiates, so a small coil held close to the die picks up a magnetic field modulated by the chip's activity. This is the mechanism behind every electromagnetic side channel: the emission is not a leak of data directly, it is a leak of switching activity. Recovering anything useful means separating one source of switching from the many others sharing the same power delivery network.",
+            "glossary": [
+              {
+                "term": "Near-field probe",
+                "definition": "A small shielded coil placed within a fraction of a wavelength of a circuit, sensing the magnetic field of the current in a conductor rather than a radiated wave. The one used here resolves about 300 µm."
+              },
+              {
+                "term": "Amplitude modulation of the carrier",
+                "definition": "The mechanism identified here: the clock-rate emission acts as a carrier, and varying switching activity modulates its amplitude, so the information sits in sidebands around the clock frequency."
+              },
+              {
+                "term": "Power delivery network",
+                "definition": "The on-die metal grid that carries supply current to every gate. Because all cores share it, their switching currents mix, which makes per-core separation a probe-positioning problem rather than a filtering one."
+              },
+              {
+                "term": "AUC",
+                "definition": "Area under the receiver-operating curve, a detection score where 0.5 is a coin flip and 1.0 is perfect separation. The anomaly detector here reports above 0.995 on all four cores."
+              }
+            ],
+            "why_it_matters": "Electromagnetic side-channel work has almost always treated a chip as a single emitter, which is why multicore has been quietly treated as accidental protection: the other cores add noise. Resolving emissions per core removes that assumption in both directions at once — it is a new attack surface on any part whose package can be opened, and it is also a way to observe a core you cannot instrument in software, which is the use the authors actually build and the reason the work appeared at a design-automation conference rather than a security one.",
+            "deeper_md": "The measurement uses Langer MFA-R 0.2–6 and MFA-R 0.2–75 active magnetic micro-probes, rated 100 MHz to 6 GHz with roughly 300 µm resolution, held vertically over the die of a Raspberry Pi 4B whose four Cortex-A72 cores run at a fixed 600 MHz; the receiver is centred on the clock frequency and sampled at 10 MS/s. The authors sort the resulting spectra into four types — idle, strictly periodic, jittered-periodic and irregular — and describe the leakage as amplitude modulation of the clock-rate carrier by instruction-dependent switching current. Their decoupled per-core probing builds a core-selection map from leakage maps taken at several coil rotation angles and uses it to suppress inter-core interference; sixteen per-core maps took about ten hours to acquire, and interference characterisation averaged 1,000 spectra per point. An autoencoder anomaly detector fed those traces scores above 0.995 AUC on all four cores at a 15 ms moving average.\n\nThe stated limits are why this is monitoring rather than a field attack: positioning must be precise and the enclosure has to be open, dynamic voltage and frequency scaling is excluded by assumption because the method starts from a fixed clock, and the targets are mission-specific embedded systems rather than general-purpose platforms.",
+            "fab_angle": "This is as much a packaging and floorplan argument as a security one. The probe resolves about 300 µm, comparable to the spacing at which cores sit on a small SoC, so whether per-core separation is possible at all is decided by physical layout and by whether the lid comes off. A metal lid, a thicker mould cap, or simply placing cores closer together than the probe can resolve are all countermeasures that live in the package rather than in the software.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Exploiting Per-Core Leakage: Electromagnetic Side-Channel Monitoring of Multicore Architectures",
+                "url": "https://arxiv.org/abs/2608.28412",
+                "publisher": "arXiv (Korea University; Agency for Defense Development) — 63rd ACM/IEEE Design Automation Conference",
+                "date": "2026-08-28"
+              },
+              {
+                "title": "Per-core electromagnetic leakage — full text with the probe setup, spectral taxonomy, acquisition times and detector scores",
+                "url": "https://arxiv.org/html/2608.28412",
+                "publisher": "arXiv (HTML rendering of v1)",
+                "date": "2026-08-28"
+              },
+              {
+                "title": "MFA-R 0.2-6, near-field micro probe 100 MHz up to 6 GHz — specifications",
+                "url": "https://www.langer-emv.com/en/product/mfa-active-1mhz-up-to-6-ghz/32/mfa-r-0-2-6-near-field-micro-probe-100-mhz-up-to-6-ghz/853",
+                "publisher": "Langer EMV-Technik",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "Thermal oxidation and the Deal–Grove model",
+    "slug": "thermal-oxidation",
+    "subtitle": "The only step in a fab that grows a film by eating the wafer, and the two constants that tell you how long it takes.",
+    "tldr": "Heat a silicon wafer in oxygen or steam and it grows its own insulator by consuming the wafer underneath: about 0.44 micrometres of silicon disappears for every micrometre of oxide that appears. Deal and Grove described the whole process in 1965 with one quadratic equation and two constants — one for the interface reaction that limits a thin film, one for diffusion through the film that limits a thick one. Which of the two you are living in decides whether an hour in the furnace buys you a gate oxide or a field oxide.",
+    "sections": [
+      {
+        "heading": "The film that grows downward",
+        "body_md": "Start with the thing that makes thermal oxidation unlike every other film step in a fab. Sputtering, evaporation and chemical vapour deposition all add material on top of the wafer. Oxidation converts the wafer: oxygen or water reaches the buried silicon–oxide interface, reacts there, and the new oxide grows downward into the substrate while pushing the older oxide up. The arithmetic follows from molar volumes. Silicon occupies 12.06 cm³ per mole and silicon dioxide 27.36 cm³ per mole, so for every micrometre of oxide you end up with, 0.44 micrometres of wafer has been eaten and the surface has risen by the remaining 0.56. Two consequences fall straight out of that. The interface carrying the channel of every MOSFET is never exposed to room air, which is the real reason thermal oxide beats every deposited oxide on interface trap density. And the surface moves, so any pattern already on the wafer ends up with a step nobody drew.",
+        "deeper_md": "The fraction is N_Si/N_SiO₂ = 12.0590/27.3608 = 0.4407, computed from densities of 2.329 and 2.196 g/cm³ and molar masses of 28.0855 and 60.0843 g/mol. Read the ratio the other way and oxidising a given volume of silicon produces about 2.27 times that volume of oxide — the inverse of 0.4407, taken here rather than quoted. That expansion is the origin of the LOCOS bird's beak and of the stress concentrations at trench corners."
+      },
+      {
+        "heading": "Three resistances in series",
+        "body_md": "Deal and Grove's 1965 paper is a few pages of physics and one equation, and the physics is a series circuit. The oxidant has to do three things in a row: cross from the gas into the outer surface of the oxide, diffuse through the oxide already grown, and react at the interface with silicon. Each step is written as a flux. Transport into the film is h(C* − C₀), where C* is the equilibrium concentration the gas could support and h is a mass-transfer coefficient. Diffusion through a film of thickness x is D(C₀ − C_s)/x, plain Fick's law. Reaction at the interface is k_s·C_s. In steady state the three fluxes are equal, and setting them equal and integrating gives x² + Ax = B(t + τ), where A = 2D(1/k_s + 1/h) and B = 2DC*/N, with N the number of oxidant molecules incorporated per unit volume of oxide. Everything else in this piece is a consequence of that one line.",
+        "deeper_md": "Note what the series structure buys you conceptually: A carries the two resistances that do not depend on how thick the film already is, while B carries the diffusion term that does. The gas-phase term 1/h is almost always negligible against 1/k_s in a real furnace, which is why nobody tunes gas velocity to control oxide thickness and everybody tunes temperature."
+      },
+      {
+        "heading": "Linear first, then parabolic",
+        "body_md": "The equation is quadratic in thickness, which means it has two regimes and a crossover, and the crossover is the whole point. When the oxide is thin the Ax term dominates and x ≈ (B/A)(t + τ): thickness grows linearly with time, because the film is thin enough that diffusion across it costs nothing and the rate is set by how fast silicon and oxygen react at the interface. B/A is called the linear rate constant for exactly that reason. When the oxide is thick the x² term dominates and x ≈ √(Bt): thickness grows as the square root of time, because every extra nanometre of oxide is another nanometre the oxidant has to cross. B is the parabolic rate constant. The practical reading is that doubling the furnace time never doubles a thick oxide — it multiplies it by about 1.41 — so the last hundred nanometres of a field oxide cost far more time than the first hundred did.",
+        "deeper_md": "The two constants carry different activation energies, and that is the evidence they describe different physics rather than being two halves of one fit. Written as B = C₁·exp(−b₁/T) and B/A = C₂·exp(−b₂/T), the tabulated (111) coefficients for dry oxygen are C₁ = 2.144 × 10⁻⁹ cm²/s with b₁ = 1.427 × 10⁴ K, and C₂ = 0.173 cm/s with b₂ = 2.320 × 10⁴ K. Multiplying each b by Boltzmann's constant — arithmetic done here, not quoted — gives roughly 1.23 eV and 2.00 eV: the first is oxygen diffusing through glass, the second is breaking a silicon–silicon bond."
+      },
+      {
+        "heading": "Why steam is about thirty times faster",
+        "body_md": "Now put a number on the difference between the two oxidising ambients, because it is much larger than most people expect. B = 2DC*/N, and C* is the solubility of the oxidant in silicon dioxide. Water dissolves in glass far more readily than molecular oxygen does, and that single term is most of the story. Evaluating the published Arrhenius coefficients at 1000 °C — arithmetic done here from the constants cited below rather than quoted from them — gives a parabolic constant of roughly 0.010 µm²/h for dry oxygen against roughly 0.33 µm²/h for steam, a factor of about thirty. Carry that through the full equation for (100) silicon and 100 nm of oxide needs something like three hours in dry oxygen and roughly ten minutes in steam. That is why every process flow uses both: dry oxide, slow and dense and low in interface defects, for the few nanometres under a gate; wet oxide for the hundreds of nanometres of field and masking oxide where the interface does not carry a channel.",
+        "deeper_md": "The two reactions are Si + O₂ → SiO₂ and Si + 2H₂O → SiO₂ + 2H₂. The hydrogen produced by the wet reaction has to leave through the growing film, and the hydroxyl groups left behind are part of why wet oxide is less dense and etches faster in dilute HF than dry oxide of the same thickness — a difference you can measure with a stopwatch and a beaker before you ever measure it electrically."
+      },
+      {
+        "heading": "The crystal face changes only one of the two constants",
+        "body_md": "Here is the detail that turns the model from a curve fit into an explanation. Crystal orientation changes the linear rate constant but leaves the parabolic constant alone: the standard correction is that B/A on a (111) wafer is 1.68 times its value on (100), while B is the same on both. Ask why, and the answer falls straight out of what each constant means. B describes oxidant diffusing through amorphous silicon dioxide, and amorphous glass does not remember which crystal face it grew on. B/A describes a reaction at the interface, and the interface is crystalline: (111) presents more available silicon bonds per unit area than (100) does, so the reaction runs faster there. Orientation therefore appears exactly where a surface-reaction term should appear and nowhere else. The practical version is less elegant and more important: a recipe transferred between wafer orientations is wrong in its thin-oxide regime and right in its thick one, so check the boat before you trust the time.",
+        "deeper_md": "This is worth holding onto as a general habit rather than an oxidation fact. When a model splits a rate into two constants with different physical origins, the fastest way to test whether the split is real is to find a variable that should move only one of them and check that it does. Orientation is that variable here; ambient is another, since changing from O₂ to H₂O moves B far more than it moves the character of the interface reaction."
+      },
+      {
+        "heading": "Where the model breaks, and why nobody has replaced it",
+        "body_md": "Every model has a regime where it is wrong, and Deal–Grove's is the one that matters most today: thin dry oxides. Below roughly 50 nanometres, dry oxidation grows faster than the equation predicts, and the fit only works if you keep τ, a time offset that behaves as though some oxide were already present when the run started. Deal and Grove reported the discrepancy themselves in 1965 and did not explain it, and there is still no single accepted mechanism for it. The practical correction is to switch models: Massoud's, which adds an extra exponential term and was fitted between 800 and 1000 °C, is what oxidation calculators use for thin dry films — which is exactly the gate-oxide case. It is worth being clear about why the 1965 model survives anyway. For wet oxidation, and for anything thicker than a few tens of nanometres, it predicts furnace time to within the run-to-run variation of the furnace itself, using two constants you can look up on a public web page.",
+        "deeper_md": "τ is the tell. In a model whose physics is complete, an initial-condition parameter should equal (x_i² + A·x_i)/B for a genuine initial oxide x_i, and in wet oxidation it very nearly does. In dry oxidation the value needed to make the fit work corresponds to an initial oxide far thicker than the native oxide on a cleaned wafer, which is a polite way of saying the model is absorbing physics it does not contain."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Deal–Grove model",
+        "definition": "The 1965 linear–parabolic description of silicon oxidation, x² + Ax = B(t + τ), obtained by setting gas transport, diffusion through the growing oxide, and the interface reaction equal to one another in steady state."
+      },
+      {
+        "term": "B (parabolic rate constant)",
+        "definition": "The constant governing thick-oxide growth, in µm² per hour. B = 2DC*/N, so it is fixed by the oxidant's diffusivity in glass and its solubility there — and it does not depend on the wafer's crystal orientation."
+      },
+      {
+        "term": "B/A (linear rate constant)",
+        "definition": "The constant governing thin-oxide growth, in µm per hour. It is set by the reaction rate at the silicon–oxide interface, which is why it depends on crystal face: about 1.68 times larger on (111) than on (100)."
+      },
+      {
+        "term": "τ (tau)",
+        "definition": "A time offset added so the equation fits at small thicknesses, equivalent to pretending an oxide of some thickness was already present at t = 0. In dry oxidation the value required is larger than any real native oxide, which is the model's known failure rather than a physical initial condition."
+      },
+      {
+        "term": "Dry vs wet oxidation",
+        "definition": "Si + O₂ → SiO₂ against Si + 2H₂O → SiO₂ + 2H₂. Steam grows oxide roughly thirty times faster in the parabolic regime because water is far more soluble in silicon dioxide than molecular oxygen is; dry oxide is denser and gives the better interface."
+      },
+      {
+        "term": "Massoud model",
+        "definition": "The correction used for thin dry oxides, below about 50 nm, where Deal–Grove under-predicts growth. It adds an exponential term and was fitted over 800–1000 °C, making it the right model for a gate oxide and the wrong one for a field oxide."
+      }
+    ],
+    "try_this": "Do the arithmetic before you book furnace time. Take the Arrhenius coefficients on the Illinois ECE fabweb oxide-growth page, evaluate B and B/A at 1000 °C for (100) silicon — remembering to divide the linear-constant prefactor by 1.68 — and predict how long a dry run and a wet run each need to reach 100 nm. Then measure a real one. The Minnesota Nano Center's A–Z equipment list has a Tylan oxidation tube and a Minibrute furnace on the growth side, and Gaertner, Rudolph and Woollam ellipsometers plus a Filmetrics reflectometer on the measurement side. Grow one oxide, measure it with both an ellipsometer and a reflectometer, and see which of your two rate constants the run was actually living in: if the measured thickness sits above the pure linear prediction and below the pure parabolic one, you have found the crossover by hand, in one afternoon, on the club's own wafers.",
+    "sources": [
+      {
+        "title": "General Relationship for the Thermal Oxidation of Silicon (J. Appl. Phys. 36(12):3770)",
+        "url": "https://www.lithoguru.com/scientist/CHE323/Deal_Grove_Model_JApplPhys_36_3770.pdf",
+        "publisher": "B. E. Deal and A. S. Grove, Journal of Applied Physics (copy hosted by Chris Mack, lithoguru.com)",
+        "date": "1965"
+      },
+      {
+        "title": "GT8 · Oxide growth calculation (Grove's Model) — Arrhenius coefficients for dry and wet oxidation and the (111)/(100) correction",
+        "url": "https://fabweb.ece.illinois.edu/gt/gt/gt8.aspx",
+        "publisher": "University of Illinois Urbana-Champaign, ECE Fabweb",
+        "date": "2026"
+      },
+      {
+        "title": "Silicon thermal oxidation calculator — calculation details, molar volumes and the 0.4407 consumption ratio",
+        "url": "https://toolbox.nanofab.ualberta.ca/sithox/",
+        "publisher": "University of Alberta nanoFAB Toolbox",
+        "date": "2026"
+      },
+      {
+        "title": "Oxidation Basics — dry and wet reactions, tube-furnace practice, and the limits of Deal–Grove",
+        "url": "https://www.utep.edu/engineering/nanomil/processes/oxidation_basics.html",
+        "publisher": "University of Texas at El Paso, nanoMIL",
+        "date": "2026"
+      },
+      {
+        "title": "CHE 323 / CHE 384, Chemical Processes for Micro- and Nanofabrication — lecture index",
+        "url": "https://www.lithoguru.com/scientist/CHE323/course.html",
+        "publisher": "Chris Mack",
+        "date": "2015"
+      },
+      {
+        "title": "Equipment A–Z — oxidation tube, furnace, ellipsometers and film-thickness tools",
+        "url": "https://cse.umn.edu/mnc/equipment-z",
+        "publisher": "Minnesota Nano Center, University of Minnesota",
+        "date": "2026"
+      }
+    ]
+  }
+}

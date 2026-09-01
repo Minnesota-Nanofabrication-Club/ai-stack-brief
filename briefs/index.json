@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-01",
+      "foundations_slug": "high-na-euv",
+      "foundations_topic": "High-NA EUV lithography",
+      "headline": "ASML put production numbers on high-NA EUV at SEMICON Taiwan: ten 0.55-NA scanners running at four customers, 135 wafers an hour at acceptance on an EXE:5200B, and 1.35 million wafers exposed across the fleet.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-08-31",
       "foundations_slug": "thermal-oxidation",
       "foundations_topic": "Thermal oxidation and the Deal–Grove model",
@@ -41,6 +54,6 @@
       ]
     }
   ],
-  "generated_at": "2026-08-31T15:42:28Z",
-  "latest": "2026-08-31"
+  "generated_at": "2026-09-01T13:07:02Z",
+  "latest": "2026-09-01"
 }

@@ -1,0 +1,436 @@
+{
+  "date": "2026-09-01",
+  "generated_at": "2026-09-01T14:20:00Z",
+  "window": "2026-08-31..2026-09-01",
+  "headline": "ASML put production numbers on high-NA EUV at SEMICON Taiwan: ten 0.55-NA scanners running at four customers, 135 wafers an hour at acceptance on an EXE:5200B, and 1.35 million wafers exposed across the fleet.",
+  "pulse": {
+    "read_time_min": 8,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-high-na-euv-production-throughput",
+            "title": "High-NA EUV is in production, and throughput is now the argument",
+            "dek": "ASML told the SEMICON Taiwan advanced-process forum on 1 September that ten of its 0.55 numerical-aperture EUV scanners — the tools that print a chip's finest layers with 13.5-nanometre light — are installed and running at four customers, and that an EXE:5200B passed acceptance testing at 135 wafers an hour.",
+            "background_md": "Resolution in a projection printer follows CD = k₁λ/NA: the wavelength of the light, the numerical aperture of the lens collecting the diffracted orders, and a process factor with a hard floor near 0.25. EUV fixed λ at 13.5 nm because nothing shorter can be reflected efficiently, and k₁ is already near its floor, so NA is the only knob left with headroom. Raising it is not free. Depth of focus falls as λ/NA², and the optics must be reshaped so the steeper cone of light still lands on a mask of unchanged size.",
+            "glossary": [
+              {
+                "term": "NA (numerical aperture)",
+                "definition": "The sine of the half-angle of the cone of light a lens collects, times the index of the medium. It sets how many diffracted orders reach the wafer, so resolution improves as 1/NA and focus budget worsens as 1/NA²."
+              },
+              {
+                "term": "Anamorphic projection optics",
+                "definition": "A lens that demagnifies by 4× along one wafer axis and 8× along the other, so an unchanged mask survives the steeper collection angle — at the price of a printed field half as tall."
+              },
+              {
+                "term": "WPH (wafers per hour)",
+                "definition": "The rate at which a scanner completes wafers including stage moves, alignment and overhead. It is the figure that decides whether one high-NA exposure is cheaper than several lower-NA ones."
+              },
+              {
+                "term": "Dual-qualified layer",
+                "definition": "A mask layer signed off to be exposed on either of two scanner platforms, with the resulting wafers treated as interchangeable — which means shipping product does not prove any given wafer went through the newer tool."
+              }
+            ],
+            "why_it_matters": "A 0.55 NA scanner is bought to delete multi-patterning, so the number that settles whether it was worth buying is not resolution but wafers per hour: imec's own comparison puts a logic metal layer at three to four masks on a 0.33 NA tool against one single exposure at 0.55 NA, while the anamorphic optics that make the higher NA possible halve the printed field and therefore double the exposures needed to cover a wafer. 135 wafers an hour at acceptance, against an end-of-decade target of 180, is the first public figure to set against that doubling, and it is the quantity a fab planner needs before single patterning can be costed against the litho-etch sequences it replaces.",
+            "deeper_md": "ASML's own product listing puts the two platforms side by side: NXE at 0.33 NA and 13 nm resolution, EXE at 0.55 NA and 8 nm. The higher NA required an anamorphic lens, 4× demagnification in one direction and 8× in the other, because at 0.55 NA the cone at the mask is too wide for a standard reticle to reflect cleanly. The blank stays the same size and the printed field halves, so a wafer takes twice as many exposures; ASML answers that with a wafer stage at 8 g and a reticle stage at 32 g.\n\nGreet Storms, who leads High NA EUV product management at ASML, gave the fleet figures at the forum: ten systems installed and operational at four customers with three more shipping, cumulative exposures past 1.35 million wafers, availability at 84 percent against a 90 percent target for year end, and 135 WPH on an EXE:5200B acceptance test, with 180 WPH the end-of-decade goal and source power moving from 600 W toward 1,000 W.\n\nThe caveats are the usual vendor ones and one specific one. These are ASML's numbers from a conference talk with no published method, and an acceptance throughput is measured on a job ASML chose, not averaged over a customer's product mix. The July press release behind the production milestone is also narrower than the headline: select Intel 18A layers are dual-qualified, so a shipped Panther Lake die does not establish that its finest layers were printed at 0.55 NA.",
+            "fab_angle": "The half field is the part that reaches a design team rather than a tool team. A die larger than the printed field has to be split across two exposures and stitched inside the die, which turns a purely optical change into a floorplanning and OPC constraint — and it is the same trade a maskless writer makes when a pattern exceeds one write field, only with nanometres of tolerance instead of micrometres.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "High NA EUV reaches new readiness milestone with first high-volume Logic product",
+                "url": "https://www.asml.com/en/news/press-releases/2026/high-na-euv-reaches-new-readiness-milestone",
+                "publisher": "ASML",
+                "date": "2026-07-15"
+              },
+              {
+                "title": "EUV lithography systems — TWINSCAN NXE and EXE platform specifications (NA and resolution)",
+                "url": "https://www.asml.com/en/products/euv-lithography-systems",
+                "publisher": "ASML",
+                "date": "2026"
+              },
+              {
+                "title": "High NA EUV 邁向高量產時代，ASML 揭密先進技術藍圖與高經濟效益",
+                "url": "https://technews.tw/2026/09/01/high-na-euv-moving-towards-the-era-of-high-volume-production",
+                "publisher": "TechNews (Taiwan)",
+                "date": "2026-09-01"
+              },
+              {
+                "title": "ASML High NA EUV加速邁向高量產 已有10台投入運作",
+                "url": "https://ec.ltn.com.tw/article/breakingnews/5559179",
+                "publisher": "Liberty Times Net (自由財經)",
+                "date": "2026-09-01"
+              },
+              {
+                "title": "ASML Advances High-NA EUV Toward High-Volume Manufacturing as 10 Systems Reportedly Go Live at 4 Customers",
+                "url": "https://www.trendforce.com/news/2026/09/01/news-asml-advances-high-na-euv-toward-high-volume-manufacturing-as-10-systems-reportedly-go-live-at-4-customers/",
+                "publisher": "TrendForce",
+                "date": "2026-09-01"
+              }
+            ]
+          },
+          {
+            "id": "silicon-halide-dx-centers-algao",
+            "title": "Add aluminium to gallium oxide and the donors stop donating",
+            "dek": "A first-principles study by Sai Mu, Chris Van de Walle and three co-authors, posted on 31 August, finds that fluorine and chlorine — the halide dopants meant to make aluminium gallium oxide conduct electrons — both collapse into self-compensating DX centres, fluorine once the alloy passes 38 percent aluminium and chlorine at 50 percent.",
+            "background_md": "A power transistor's breakdown voltage scales with the critical field of its channel material, and that field rises steeply with band gap, which is why gallium oxide and its aluminium alloys are studied at all: alloying pushes the gap from about 4.8 eV toward 9 eV. The obstacle is that wide-gap materials resist being made n-type. Push the Fermi level toward a conduction band that sits very low in energy relative to the vacuum level and compensating defects become cheap to form, so the donor you added is cancelled by something the crystal makes in response.",
+            "glossary": [
+              {
+                "term": "DX centre",
+                "definition": "A donor atom that relaxes into a distorted lattice position and captures a second electron, turning into a deep acceptor. One dopant then removes two carriers instead of supplying one, so doping saturates rather than scaling."
+              },
+              {
+                "term": "Negative-U",
+                "definition": "The condition where a defect's (0/−) level lies below its (+/0) level, so the neutral state is never thermodynamically stable and the defect jumps straight from positive to negative. It is the signature of DX behaviour."
+              },
+              {
+                "term": "Transition level (+/−)",
+                "definition": "The Fermi energy at which a defect's most stable charge state switches from +1 to −1. When it falls below the conduction-band minimum, the donor compensates instead of doping."
+              },
+              {
+                "term": "CBM (conduction-band minimum)",
+                "definition": "The lowest energy at which an electron is free to conduct. A donor level sitting far below it is a trap rather than a carrier source, which is why the eV gap to the CBM is the number quoted."
+              }
+            ],
+            "why_it_matters": "Experiment already knew that silicon doping of these alloys stops producing conduction somewhere past a quarter aluminium, and the usual explanation is cation vacancies — something growth conditions might in principle be pushed against. This calculation says the halides fail for a different and less negotiable reason: the dopant atom itself relaxes into a configuration where it holds two electrons rather than releasing one, so the loss is a property of that atom in that lattice rather than of the furnace, and no amount of oxygen-partial-pressure tuning recovers it. What it leaves standing is a ranking, with chlorine holding out to a higher aluminium fraction than fluorine in both crystal phases, which is a materials-selection result rather than a process one.",
+            "deeper_md": "The calculations are HSE hybrid functional with α = 0.32 in 120-atom supercells, checked against 160-, 270- and 360-atom cells, with migration barriers from climbing-image NEB. The criterion for DX behaviour is that the (+/−) transition level falls below the conduction-band minimum, which is the negative-U condition.\n\nIn monoclinic θ-Al₂O₃ (gap 7.41 eV) substitutional fluorine has a (+/−) level 0.76 eV below the CBM, while chlorine's (+/0) level sits at 0.48 eV below — shallower, and still a donor. In corundum α-Al₂O₃ (gap 9.09 eV) the same ordering holds, 0.98 eV for fluorine against 0.48 eV for chlorine. Interpolating across the alloy, fluorine turns DX at 38 percent aluminium in the monoclinic phase and 70 percent in corundum; chlorine holds to 50 percent and 84 percent.\n\nThe authors do not oversell it. Substitutional chlorine has high formation energy, so equilibrium incorporation is low, and aluminium vacancies in the 3− state remain cheap enough to compensate whatever survives. They state plainly that true n-type conductivity in pure Al₂O₃ will be hard to observe. The alloy thresholds are also interpolations between the pure end compounds rather than calculations on random alloys.",
+            "fab_angle": "One result is directly usable by anyone running halide chemistry near an oxide. Fluorine and chlorine sitting interstitially are deep acceptors, but their migration barriers in α-Al₂O₃ are only about 2.65 and 2.75 eV, which the authors read as mobile above roughly 700 °C — so that particular compensation is an anneal problem rather than a permanent one, unlike the substitutional DX case.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Halide donors in monoclinic- and corundum-phase Ga₂O₃ and Al₂O₃",
+                "url": "https://arxiv.org/abs/2608.30680",
+                "publisher": "arXiv (Sai Mu, Haochen Wang, Yongjoong Shin, Zhi-Hao Wang, Chris G. Van de Walle)",
+                "date": "2026-08-31"
+              },
+              {
+                "title": "Halide donors in Ga₂O₃ and Al₂O₃ — full text with transition levels, Al-fraction thresholds and migration barriers",
+                "url": "https://arxiv.org/html/2608.30680v1",
+                "publisher": "arXiv (HTML rendering of v1)",
+                "date": "2026-08-31"
+              },
+              {
+                "title": "Characterisation of negative-U defects in semiconductors (J. Phys.: Condens. Matter 32, 323001)",
+                "url": "https://arxiv.org/abs/2005.06447",
+                "publisher": "José Coutinho, Vladimir P. Markevich, Anthony R. Peaker (author copy on arXiv)",
+                "date": "2020"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-icg-vs-behavioral-clock-gating",
+            "title": "A hand-written clock gate passes RTL and loses a hold race in silicon",
+            "dek": "A group publishing at IEEE UEMCON 2026 resynthesised the open-source openMSP430 microcontroller in a 32-nanometre standard-cell library and found that a hand-written clock gate — a latch and an AND gate that stop the clock reaching idle registers — simulates correctly at register-transfer level and then captures stale data once real gate delays are back-annotated.",
+            "background_md": "Dynamic power in CMOS is paid per transition, and the clock is the one net guaranteed to transition everywhere every cycle whether or not the logic it feeds is doing anything. Clock gating removes that waste by inserting a gate that holds the clock low for blocks with nothing to do. The difficulty is that the enable signal is itself produced by logic clocked by the same clock, so any glitch on it appears as a spurious clock edge. The standard answer is a purpose-built cell whose internal latch makes the enable stable across the whole high phase.",
+            "glossary": [
+              {
+                "term": "ICG cell",
+                "definition": "An integrated clock-gating cell: a latch and gate packaged as one library cell, characterised so the timing tools know the enable's setup and hold relationship to the clock and can budget the gated clock's arrival."
+              },
+              {
+                "term": "Hold race",
+                "definition": "A failure where data reaches a register's input and changes before the clock edge that was supposed to capture the previous value, so the register latches the new value a cycle early — or, as here, latches nothing useful."
+              },
+              {
+                "term": "Back-annotation (SDF)",
+                "definition": "Feeding the delays extracted from a synthesised netlist back into simulation, so the simulator models the real arrival times of signals instead of treating every gate as instantaneous."
+              },
+              {
+                "term": "Leakage vs dynamic power",
+                "definition": "Leakage is current that flows while nothing switches; dynamic power is paid per transition. Which dominates decides whether a saving in switching activity shows up in the total at all."
+              }
+            ],
+            "why_it_matters": "The two constructions are treated as interchangeable in most teaching material and in a lot of production RTL, and this result says the equivalence holds only in a simulator that gives every gate zero delay: an ICG cell is characterised as a unit, so the timing engine knows what the enable owes the clock and can close on it, while a latch and an AND gate are two ordinary cells the engine has no such contract with, and the gated clock arrives late enough to lose the race. The second finding is the one that changes how the saving should be read — at this node leakage is 96 to 99 percent of total power, so cutting dynamic power by three quarters moves the total by less than a third, and most of even that comes from the smaller area the gating buys.",
+            "deeper_md": "The design is openMSP430 synthesised against SAED32 with mixed RVT/LVT/HVT cells, four stimuli (sustained 16×16 multiplies, idle with the watchdog held, a free-running watchdog, and duty-cycled bursts), and three corners. At the nominal corner the ungated baseline closes at 357.1 MHz, 19,474 µm², 1.484 mW total with 49.64 µW dynamic. Tool-inserted ICG — 46 CGLPPRX2 cells via `compile_ultra -gate_clock` — gives 294.1 MHz, 17,745 µm², 1.050 mW total and 12.58 µW dynamic. The behavioural version, 12 discrete latches, lands between: 333.3 MHz, 18,043 µm², 1.155 mW, 39.30 µW.\n\nAcross all corners the ICG build cuts dynamic power 74–81 percent and total power 25–30 percent, and it removes 75.4 percent of clock-network toggling. Per block the savings concentrate where the block is genuinely idle: −88 percent on the multiplier, −84 percent on the watchdog.\n\nThe caveats are worth naming because they bound the claim. SAED32 is an educational library and nothing here was fabricated, so this is a synthesis-and-simulation result, not silicon. The failing behavioural case still executed correctly on the CPU — 21,926 gate-enable toggles — which is precisely why it survives RTL sign-off. And the ICG build is the slowest of the three at 294 MHz, a cost the paper reports but does not dwell on.",
+            "fab_angle": "This lands squarely on a club designing its own IC: the fix is a one-line synthesis switch, and the failure it prevents is invisible until gate-level simulation with SDF back-annotation, which is a step easy to skip on a small design. The corollary matters too — at a leakage-dominated node, the lever for total power is threshold-voltage flavour and area, not switching activity.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Clock-Gating Insertion Strategies on an Open-Source MSP430 Core: A Reproducible PPA Study and a Gate-Level Simulation Caveat",
+                "url": "https://arxiv.org/abs/2608.30954",
+                "publisher": "arXiv (Xingran Huang, Qiming Guo, Jinwen Tang, Wenqi Jia, Dongzheng Wang) — accepted at IEEE UEMCON 2026",
+                "date": "2026-08-31"
+              },
+              {
+                "title": "Clock-gating insertion on openMSP430 — full text with the per-corner power/area/frequency tables and the hold-race analysis",
+                "url": "https://arxiv.org/html/2608.30954v1",
+                "publisher": "arXiv (HTML rendering of v1)",
+                "date": "2026-08-31"
+              },
+              {
+                "title": "openMSP430 — synthesisable 16-bit microcontroller core (project overview, features, licence)",
+                "url": "https://opencores.org/projects/openmsp430",
+                "publisher": "OpenCores (Olivier Girard)",
+                "date": "2026"
+              }
+            ]
+          },
+          {
+            "id": "chips-fabo-routing-tree-breakpoints",
+            "title": "Routing trees get shorter when the detours are decided together",
+            "dek": "Shang Liu, Zhiyao Xie and four co-authors posted FABO on 31 August, a routing-tree builder that beats the standard SALT algorithm — the code that decides how one driver's wire branches out to many receivers — by choosing several detour points jointly instead of repairing one receiver's path at a time.",
+            "background_md": "A net in a chip has one driver and often dozens of receivers, and the tree of wire connecting them is chosen under two objectives that pull apart. Minimising total wirelength gives a Steiner tree, which is NP-hard and which can route some receiver the long way round. Minimising each receiver's path length gives a star, which duplicates wire everywhere. Shallow-light algorithms sit between the two: they minimise wirelength subject to a per-receiver bound, each root-to-sink path allowed to exceed its Manhattan distance by at most a factor 1 + ε.",
+            "glossary": [
+              {
+                "term": "Shallow-light tree",
+                "definition": "A routing tree that minimises total wirelength while guaranteeing no root-to-sink path exceeds a stated multiple of the direct distance, so one global objective cannot quietly sacrifice one receiver's timing."
+              },
+              {
+                "term": "ε (stretch tolerance)",
+                "definition": "The allowed multiplicative detour on each path: a sink's budget is (1 + ε) times its Manhattan distance from the driver. ε = 0 forces shortest paths; larger ε lets the tree drift toward a minimum-wirelength Steiner solution."
+              },
+              {
+                "term": "Breakpoint",
+                "definition": "The point on an over-budget path where the algorithm cuts, keeps the downstream wire to the sink, and reconnects to the driver by a shorter route. Where it is placed decides how much wire two sinks can keep sharing."
+              },
+              {
+                "term": "Fanout",
+                "definition": "The number of receivers on one net. High-fanout nets carry most of a design's routed capacitance, which is why an improvement that only shows up above about 30 pins is still worth having."
+              }
+            ],
+            "why_it_matters": "The structural claim is more interesting than the percentage: repairing paths one sink at a time can never see that two sinks share wire on the driver side and ought to break at the same place, so SALT splits early and duplicates the segment it just abandoned. Representing the feasible breakpoint positions as intervals and picking shared ones turns a sequence of local repairs into one covering decision, and the gain lands where the shared root-side wire actually is — 2.66 percent on nets above thirty pins against 0.83 percent overall, which is the shape you would predict if the diagnosis is right and not the shape you would get from a better local heuristic.",
+            "deeper_md": "The benchmark is every net with at least three pins across the eight ICCAD15 Contest Problem B designs — 1,294,541 nets, of which 904.9k have 3–9 pins and only 7k have 40 or more. At ε = 0.1125 the mean wirelength reduction against SALT is 0.83 percent, rising to 2.66 percent on 30-plus-pin nets, with the stretch and delay metrics unchanged. At ε = 0 the normalised wirelength ratio moves from SALT's 1.0429 to 1.0388.\n\nRuntime is the real price. SALT processes the whole benchmark in 62.43 s; full FABO adds 602.83 s, about 10.66× total. FABO-FAST recovers most of the gain at roughly 1.3× SALT by predicting which nets have headroom and leaving the rest alone.\n\nThe authors are explicit that the machinery is heuristic: the minimum-cover step minimises initial non-root breakpoints rather than final wirelength, the gain metric scores released support wire rather than the net change after the connector is added, and complete-tree evaluation is the only acceptance rule. The algorithm was also found by an agent search — eight hypothesis agents, a critic, three programmer–verifier chains — which is a way of generating a candidate, not evidence that it is optimal. And this is early-stage routing, before extraction gives real resistance and capacitance.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "FABO: Agent-Guided Discovery of Joint Breakpoint Optimization for Timing-Driven Routing Trees",
+                "url": "https://arxiv.org/abs/2608.30268",
+                "publisher": "arXiv (Shang Liu, Wenji Fang, Jing Wang, Hongxin Kong, Yao Lu, Zhiyao Xie)",
+                "date": "2026-08-31"
+              },
+              {
+                "title": "FABO — full text with the ICCAD15 net distribution, per-fanout wirelength results, runtime table and stated limitations",
+                "url": "https://arxiv.org/html/2608.30268v1",
+                "publisher": "arXiv (HTML rendering of v1)",
+                "date": "2026-08-31"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-axi4-timeout-monitors",
+            "title": "AXI4 has no timeout, so one stalled subordinate hangs the bus",
+            "dek": "Chaoqun Liang, Luca Benini and five co-authors published a hardware monitor on 31 August that supplies the transaction timeout AXI4 — the on-chip bus protocol nearly every system-on-chip is wired with — deliberately omits, and showed in GlobalFoundries 12-nanometre that the cheapest of three variants costs 4.4 thousand gate equivalents.",
+            "background_md": "An on-chip bus like AXI4 moves data over five independent channels, each governed by a VALID/READY handshake: the sender asserts VALID when data is available, the receiver asserts READY when it can take it, and the transfer happens when both are high. Nothing in that contract bounds how long READY may stay low. A subordinate that is merely slow and a subordinate whose state machine has been corrupted by a particle strike therefore look identical from the outside, and a manager waiting on a response it will never get blocks every transaction behind it.",
+            "glossary": [
+              {
+                "term": "VALID/READY handshake",
+                "definition": "The two-signal flow-control rule on each AXI channel: a transfer occurs on a clock edge where both are asserted. Because neither side may withdraw VALID once raised, a receiver that never asserts READY stalls the channel indefinitely."
+              },
+              {
+                "term": "kGE (kilo gate equivalent)",
+                "definition": "Area measured in thousands of two-input NAND gates, so designs can be compared across process nodes. The variants here span 4.4 to 40.6 kGE for the same monitoring job."
+              },
+              {
+                "term": "SLVERR",
+                "definition": "The AXI response code meaning the subordinate reached the transaction but could not complete it correctly. Synthesising it is how the monitor closes an abandoned transaction without violating the protocol."
+              },
+              {
+                "term": "SEU / SET",
+                "definition": "Single-event upset and single-event transient: a particle strike that flips a stored bit or injects a glitch on a wire. The fault-injection campaign models both, because they fail the bus in different ways."
+              }
+            ],
+            "why_it_matters": "Because the protocol defines no deadline, liveness has to be restored from outside it, and the restoration cannot simply drop the stuck transaction — the manager is still waiting for a specific number of beats and a specific response, so the recovery logic has to manufacture exactly those. That constraint is what turns an apparently open-ended fault-tolerance problem into a bounded storage question, and the paper measures the resulting curve: keeping per-phase state gives a median 191 cycles to detection and costs 40.6 kGE, keeping only per-ID transaction boundaries costs 4.4 kGE and takes 712 cycles, and the choice between them is a real-time deadline decision rather than a matter of taste.",
+            "deeper_md": "Three variants share one recovery mechanism and differ only in what they remember. Phase-level tracking keeps twelve counters and localises the fault to a protocol phase; channel-level tracking collapses these to seven and gives up sub-phase localisation for 36.7 percent less area; ID-level tracking keeps four and watches only transaction boundaries, for 89.2 percent less area than PLT. At a 4×16 configuration in GF12 that is 40.6, 25.7 and 4.4 kGE, all closing above 1.33 GHz against a 1 GHz target.\n\nRecovery is cut-and-drain. The unit first holds AWREADY and ARREADY low so no new transaction enters, then synthesises protocol-legal completions: one BRESP = SLVERR per outstanding write, and for reads the full ARLEN+1 beats of RRESP = SLVERR with RLAST on the last. Drain time is bounded analytically.\n\nThe fault campaign is 1.2 million injections — flip-flop upsets and port transients, on an iDMA manager and a HyperBus subordinate, against a background of 1,024 transactions. Only 1.6 to 5.4 percent of injected faults manifest as protocol or liveness violations at all, and within that class detection is complete. The stated blind spot is the important one: a fault that leaves the signalling well-formed but the data wrong is undetectable by construction, and one monitor instance is needed per subordinate.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Scalable AXI4 Transaction Monitoring for Mixed-Criticality SoCs: From Phase-Level Precision to ID-Level Efficiency",
+                "url": "https://arxiv.org/abs/2608.30435",
+                "publisher": "arXiv (Chaoqun Liang, Thomas Benz, Alessandro Ottaviano, Michael Rogenmoser, Luca Benini, Angelo Garofalo, Davide Rossi)",
+                "date": "2026-08-31"
+              },
+              {
+                "title": "AXI4 transaction monitoring — full text with the counter structures, GF12 area tables, worst-case detection bounds and fault-injection results",
+                "url": "https://arxiv.org/html/2608.30435v1",
+                "publisher": "arXiv (HTML rendering of v1)",
+                "date": "2026-08-31"
+              },
+              {
+                "title": "pulp-platform/axi — open-source SystemVerilog AXI4 and AXI4-Lite infrastructure (crossbars, converters, verification IP)",
+                "url": "https://github.com/pulp-platform/axi",
+                "publisher": "PULP Platform (ETH Zürich / University of Bologna)",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-int4-kv-cache-faithfulness",
+            "title": "Four-bit KV caches keep the answer and quietly drop the grounding",
+            "dek": "Atta Ul Asad and four co-authors, in a paper for an EMNLP 2026 workshop posted on 31 August, compressed the key–value cache of Qwen2.5-7B-Instruct — the per-token state a language model keeps so it need not re-read its context — to four bits, and found answers that stayed factually correct nonetheless stopped being supported by the retrieved documents.",
+            "background_md": "A transformer computes a key vector and a value vector for every token it has processed and keeps both so that generating the next token costs one pass over stored state rather than a re-read of the whole context. That store is the key–value cache, and it grows linearly with context length, batch size, layer count and head count, which is why it, rather than the weights, is usually what limits how many requests a server can hold at once. Quantising it to fewer bits per element is the standard lever, and the standard acceptance test is whether answers stay correct.",
+            "glossary": [
+              {
+                "term": "KV cache",
+                "definition": "The stored per-token key and value tensors that let a transformer attend to earlier tokens without recomputing them. Its size scales with layers × heads × head dimension × tokens, so it dominates serving memory at long context."
+              },
+              {
+                "term": "Group-wise quantisation",
+                "definition": "Splitting a tensor into fixed blocks — here 64 channels — each with its own scale and zero point, so outliers cannot ruin the whole tensor's dynamic range. The per-block metadata is why 4-bit is not a 4× saving."
+              },
+              {
+                "term": "Scale and zero point",
+                "definition": "The two numbers that map an integer code back to a real value. They are stored at full width alongside each block, and here they turn a nominal 4× compression into about 3.6× and a nominal 2× into about 1.9×."
+              },
+              {
+                "term": "Faithfulness vs accuracy",
+                "definition": "Accuracy asks whether the answer matches the reference; faithfulness asks whether it is entailed by the documents actually retrieved. A system can score well on the first while inventing the reasoning behind it."
+              }
+            ],
+            "why_it_matters": "Compression schemes for serving are accepted or rejected on an accuracy delta, and this measurement says that gate does not see the failure that matters in a retrieval system: among answers whose correctness was untouched by the compression, changes in grounding ran overwhelmingly one way — 231 worse against 24 better on one benchmark, 173 against 31 on the other. There is also a measurement trap in the numbers themselves, because at low retrieval depth the four-bit model refuses to answer far less often than the baseline, which inflates surface exact-match scores at exactly the point where a reader would be looking for evidence of damage.",
+            "deeper_md": "The two configurations differ in more than bit width. INT8 is per-token asymmetric quantisation with the group set to the head dimension; INT4 is group-wise with 64-channel groups, each carrying its own scale and zero point. Counting that metadata, the realised compression at five retrieved chunks is about 1.9× and 3.6× rather than the nominal 2× and 4×.\n\nINT8 is near-lossless on both accuracy and grounding. INT4 is not: on RGB, among the answers whose correctness survived, 231 got less grounded and 24 more (p < 10⁻³⁸); on HotpotQA the split is 173 to 31 (p < 10⁻³⁰). The hallucination-rate gap against the BF16 baseline reaches 0.26 and 0.25 respectively at five chunks, and widens with noisier retrieval and more documents. The refusal artefact is stark: on HotpotQA at one chunk, refusals fall from 51.3 percent to 31.7 percent.\n\nThe scope is narrow and the authors say so — one model family, two question-answering benchmarks, three retrieval depths, 300 examples each. The deeper caveat is methodological: the primary faithfulness signal is Claude Haiku 4.5 acting as judge, cross-checked against an NLI model and Vectara's HHEM-2.1-Open detector, with 92 percent judge agreement reported on an RGB validation set. A grounding metric produced by a language model is evidence, not measurement.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Faithfulness Is Not Free: Auditing Offline KV-Cache Quantization in Retrieval-Augmented Generation",
+                "url": "https://arxiv.org/abs/2608.30996",
+                "publisher": "arXiv (Atta Ul Asad, Ahsan Bilal, Muhammad Ali, Muhammad Haseeb, Dean F. Hougen) — Grounding Language Models workshop, EMNLP 2026",
+                "date": "2026-08-31"
+              },
+              {
+                "title": "Auditing offline KV-cache quantization — full text with the quantisation configurations, compression arithmetic, per-benchmark faithfulness counts and refusal rates",
+                "url": "https://arxiv.org/html/2608.30996v1",
+                "publisher": "arXiv (HTML rendering of v1)",
+                "date": "2026-08-31"
+              },
+              {
+                "title": "HHEM-2.1-Open — hallucination evaluation model card, scoring definition and stated limitations",
+                "url": "https://huggingface.co/vectara/hallucination_evaluation_model",
+                "publisher": "Vectara (Hugging Face model card)",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "High-NA EUV lithography",
+    "slug": "high-na-euv",
+    "subtitle": "Raising the numerical aperture from 0.33 to 0.55 buys an 8-nanometre line and charges for it twice — in focus budget and in field size — which is the physics under today's news that ten of these scanners are now running.",
+    "tldr": "Two equations govern a projection printer and they pull against each other: the smallest printable feature scales as λ/NA, and the depth of focus scales as λ/NA². High-NA EUV keeps the wavelength at 13.5 nanometres and raises the numerical aperture from 0.33 to 0.55, which takes the resolution from about 13 nm to about 8 nm and cuts the focus budget by roughly a factor of three. Making the lens that large forced the optics to demagnify by different amounts along the two axes, which halves the field printed on the wafer — so a big die now has to be printed in two exposures and stitched together inside itself.",
+    "sections": [
+      {
+        "heading": "Two Rayleigh equations, and only one of them is good news",
+        "body_md": "Everything about this tool follows from a pair of expressions. The smallest half-pitch a projection printer can resolve is CD = k₁λ/NA, and the range of wafer height over which that image stays printable is DOF = k₂λ/NA². Both improve with shorter wavelength; only the first improves with numerical aperture. NA appears once in the numerator's favour and twice against.\n\nPut ASML's own published figures in. Its NXE platform is 0.33 NA and 13 nm resolution; its EXE platform is 0.55 NA and 8 nm. Solving the first equation for k₁ in each case gives 0.318 and 0.326 — arithmetic done here from those two published pairs, not quoted — so the process factor barely moved. Essentially all of the resolution gain is the lens.\n\nNow the bill. The focus budget scales as 1/NA², and (0.55/0.33)² = 2.78, so the same wavelength through the bigger lens leaves you under a third of the height you had. imec puts the practical figure at two to three times worse, which matches. That single number drives most of what follows.",
+        "deeper_md": "k₁ has a hard floor of 0.25, the two-beam interference limit: below that the first diffracted order misses the pupil entirely and there is no image, only background. Landing at roughly 0.32 on both platforms means the industry has been running near that wall for years, which is exactly why the wavelength and the aperture are the only levers left. It is also why 'high-NA' is a more honest name than a node number — the tool did not get a new k₁, it got a new lens."
+      },
+      {
+        "heading": "Why the lens had to become anamorphic",
+        "body_md": "A conventional scanner demagnifies by 4× in both directions: the mask carries a pattern four times life size, and the optics shrink it. Raising NA to 0.55 widens the cone of light the optics must collect, and because an EUV mask is a reflector rather than a transmitter, that cone lands on the mask at steeper angles. Past a certain angle the multilayer coating simply stops reflecting efficiently, and the absorber pattern starts casting shadows that depend on which way the feature runs.\n\nThe fix is to demagnify asymmetrically — 4× in one direction and 8× in the other. Doubling the demagnification along one axis halves the angular spread at the mask along that axis, which buys back the reflectivity without changing the mask. That last clause is the whole point of the design: the 6-inch mask blank, its handling infrastructure, its inspection tools and its pellicle ecosystem all survive unchanged.\n\nWhat does not survive is the field. Shrinking one axis twice as hard means the same mask prints a wafer field half as tall as before.",
+        "deeper_md": "Note which constraint is doing the work. The anamorphic design is not chosen because it images better; a symmetric 8× system would also fix the angles, and it would halve the field in both directions instead of one. The asymmetry is a compromise picked to lose the minimum amount of field for the required angular reduction, with the mask size held fixed as a boundary condition rather than optimised. This is a good example of a whole industry's installed base showing up as a term in an optical design."
+      },
+      {
+        "heading": "Half the field, twice the exposures, faster stages",
+        "body_md": "A scanner's throughput is dominated by mechanics, not by optics. Each field requires the wafer stage and the reticle stage to accelerate, run a synchronised scan, decelerate and settle, and then the wafer steps to the next field. Halve the field and a wafer needs twice as many of those cycles, so a tool that changed nothing else would immediately be half as productive.\n\nASML's answer is brute mechanical force. The high-NA wafer stage accelerates at 8 g, twice the acceleration of the previous generation, and the reticle stage at 32 g — four times faster, which the company describes as zero to 100 km/h in 0.09 seconds. The reticle stage moves harder than the wafer stage because it travels the longer optical path: in a 4×/8× system, the mask must sweep eight times the wafer's scan distance along the axis with the deeper demagnification.\n\nThose accelerations are why a machine whose printed field is half the size can still be argued about on throughput at all.",
+        "deeper_md": "Two second-order consequences fall out of the accelerations. First, reaction forces: a stage doing 32 g has to be balanced against a counter-mass or the whole frame rings, and the settling time after each move competes directly with exposure time. Second, overlay: alignment is measured before the scan and must remain valid through it, so higher acceleration means the metrology and the control loop have less time to converge on a budget that has not been relaxed. Throughput and overlay are the same engineering problem viewed from two ends."
+      },
+      {
+        "heading": "Stitching, which is a design problem wearing an optics costume",
+        "body_md": "The half field has a consequence no amount of stage acceleration fixes. A die larger than the printed field cannot be exposed in one shot. It must be split across two exposures whose patterns meet somewhere inside the die, and the seam has to work electrically — wires crossing it must connect, and features near it must print to the same dimension as features in the middle.\n\nThis is called in-die stitching, and it is not a scanner feature. It is a joint solution across design, mask, optical proximity correction and scanner control: the layout must place the seam where the design can tolerate it, the two masks must carry compensating features near the boundary, and the scanner must place the second exposure on the first to a fraction of the feature size. imec demonstrated at-resolution stitching as part of the readiness work it ran alongside the first 0.55 NA tool, and framed the goal as reducing how much the design has to change to cope with the smaller field.\n\nFor a designer, the smaller field is the part of high-NA that actually reaches the floorplan.",
+        "deeper_md": "Stitching interacts badly with exactly the thing high-NA is bought for. The seam is a place where two independently-placed exposures meet, so its local overlay error adds directly to the edge-placement budget — and edge placement is already the binding constraint at 8 nm features. The practical consequence is that stitched seams get routed through the most tolerant regions of the layout, typically wide power routing or fill, and that the choice of where the seam goes becomes a floorplanning decision made early, not a physical-verification detail found late."
+      },
+      {
+        "heading": "Thin resist, because the focus budget shrank",
+        "body_md": "Return to the factor-of-three loss in depth of focus. A resist film is not a plane; it has thickness, and the aerial image has to remain in focus through all of it. If the focus budget is now tens of nanometres, the film has to be thinner than that, and a separate rule pushes the same way: a resist line much taller than it is wide falls over, so the usual working limit is an aspect ratio near 2:1. Printing an 8 nm line therefore wants a film under about 20 nm.\n\nThat is a hard place to be. A 20 nm film absorbs very few of the photons passing through it, and at 13.5 nm each photon carries about 92 eV, so there are far fewer photons per unit dose than at 193 nm to begin with. Fewer absorbed photons means Poisson counting noise becomes a yield problem rather than a curiosity — this is the stochastic regime, where a line breaks or a contact fails to open because of where individual photons happened to land.\n\nMetal-oxide resists are the main answer: they absorb EUV far more strongly per unit thickness than the chemically amplified polymers inherited from deep-UV, which puts more of the available photons to work in a film thin enough to stay in focus.",
+        "deeper_md": "imec's numbers give a sense of how the levers combine. Working on underlayer, development, mask absorber and mask bias together, it reported more than 20 percent dose reduction on lines and spaces with no increase in roughness or stochastic failures, and for contact holes a 6 percent dose reduction with a 30 percent improvement in local CD uniformity for metal-oxide resist on a binary bright-field mask against a positive-tone chemically amplified reference. The pattern worth noticing is that none of these gains came from the resist alone; each is a stack-level result."
+      },
+      {
+        "heading": "How to tell 'prints' from 'manufactures'",
+        "body_md": "A lithography claim can be true at five different levels, and conflating them is the most common way to be wrong about this field. In order: the tool resolves a pitch in a test exposure; the tool is installed and passes acceptance; a customer qualifies one layer on it; the layer is dual-qualified, meaning it can be run on either the old or the new platform with interchangeable wafers; and finally a product ships whose fine layers are made only this way. Each step can take years, and vendors quote whichever one is furthest along.\n\nThe economics live one level below all of that, in a mask count. imec's comparison for logic metal layers at the A14 and A10 generations puts 0.33 NA at three to four masks, built up by repeated litho-etch cycles, against a single exposure at 0.55 NA; for the D1d and D0a DRAM generations it is three-plus masks against one. Each removed mask removes an etch, a clean, a metrology step and an overlay error contribution — imec has put the emissions saving from replacing one litho-etch-litho-etch module at around 30 percent.\n\nSo the question a high-NA scanner is really being asked is whether one slow exposure beats four fast ones, end to end.",
+        "deeper_md": "The crossover is not a single number, because the two sides scale differently. Multi-patterning cost grows with the number of masks and carries a compounding defectivity and overlay penalty; single-exposure high-NA cost is dominated by tool depreciation divided by wafers per hour, and the field halving is already baked into that WPH figure. That is why fleet availability — the fraction of the time the tool is actually able to expose — is quoted alongside throughput in vendor updates, and why it is the more honest of the two numbers: a 250-wafer-per-hour tool available 60 percent of the time is a 150-wafer-per-hour tool."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "NA (numerical aperture)",
+        "definition": "A measure of the angular width of the cone of light the projection optics collect. Resolution improves in proportion to NA; depth of focus degrades as NA², which is the trade that defines this whole generation of tool."
+      },
+      {
+        "term": "k₁",
+        "definition": "The process factor in CD = k₁λ/NA, absorbing illumination shape, mask enhancement and resist behaviour. Its physical floor is 0.25, the two-beam interference limit, and modern EUV runs near 0.32 — so it is not where further gains come from."
+      },
+      {
+        "term": "Depth of focus (DOF)",
+        "definition": "The range of wafer height over which the printed feature stays within specification. It falls as λ/NA², so moving from 0.33 to 0.55 NA at the same wavelength costs roughly a factor of three, and it is why the resist film has to get thinner."
+      },
+      {
+        "term": "Anamorphic magnification",
+        "definition": "Demagnifying by 4× along one wafer axis and 8× along the other. It reduces the angle at which light strikes the reflective mask so the multilayer keeps reflecting, and it lets the industry keep its existing 6-inch mask format — at the cost of halving the printed field."
+      },
+      {
+        "term": "In-die stitching",
+        "definition": "Printing one die as two abutting exposures and making the seam work electrically. It requires coordinated layout, mask, OPC and scanner-overlay solutions, and its local overlay error adds directly to the edge-placement budget."
+      },
+      {
+        "term": "Metal-oxide resist (MOR)",
+        "definition": "A resist whose imaging chemistry is built on metal-containing clusters rather than a polymer with a photo-acid generator. It absorbs 13.5 nm light far more strongly per unit thickness, which is what makes a sub-20 nm film usable."
+      },
+      {
+        "term": "LCDU (local critical-dimension uniformity)",
+        "definition": "The variation in printed feature size measured across nominally identical features in one field, usually reported as a standard deviation in nanometres. At EUV it is dominated by photon shot noise, so it is the practical readout of stochastic behaviour."
+      }
+    ],
+    "try_this": "Do the Rayleigh arithmetic yourself, then walk to a tool that lives at the other end of it. Take ASML's two published pairs — 0.33 NA with 13 nm resolution, 0.55 NA with 8 nm, both at λ = 13.5 nm — and solve CD = k₁λ/NA for k₁ in each case; you should get about 0.32 in both, which tells you the gain was bought entirely with the lens. Then compute DOF = k₂λ/NA² at k₂ = 1 for both: roughly 124 nm and 45 nm, a factor of 2.8, and check that against imec's stated 'two to three times worse'. Now run the same two equations for the Minnesota Nano Center's Heidelberg DWL200 in PAN Bay 4, which is specified at 1.0 µm minimum line or space with its 2 mm write head. Look up the write head's wavelength, back out the effective NA that a 1.0 µm line implies, and compute the depth of focus that falls out. The number will be in micrometres rather than nanometres — and that is the concrete reason a laser writer will happily expose a diced piece of substrate that is not perfectly flat, while a high-NA scanner needs a wafer held flat to a small fraction of the film it is printing into.",
+    "sources": [
+      {
+        "title": "The case for High NA EUV: unlocking the next era of chip manufacturing",
+        "url": "https://www.imec-int.com/en/articles/case-high-na-euv-unlocking-next-era-chip-manufacturing",
+        "publisher": "imec",
+        "date": "2026-02-26"
+      },
+      {
+        "title": "Entering the High NA EUV Lithography era",
+        "url": "https://www.imec-int.com/en/articles/entering-high-na-euv-lithography-era",
+        "publisher": "imec (Steven Scheer)",
+        "date": "2024-07-12"
+      },
+      {
+        "title": "High-NA EUV lithography: the next major step in lithography",
+        "url": "https://www.imec-int.com/en/articles/high-na-euvl-next-major-step-lithography",
+        "publisher": "imec",
+        "date": "2021-10-04"
+      },
+      {
+        "title": "Imec demonstrates readiness of the High-NA EUV patterning ecosystem",
+        "url": "https://www.imec-int.com/en/press/imec-demonstrates-readiness-high-na-euv-patterning-ecosystem",
+        "publisher": "imec",
+        "date": "2024-02-26"
+      },
+      {
+        "title": "5 things you should know about High NA EUV lithography",
+        "url": "https://www.asml.com/en/news/stories/2024/5-things-high-na-euv",
+        "publisher": "ASML",
+        "date": "2024-01-25"
+      },
+      {
+        "title": "High-NA-EUV lithography: the future of semiconductor lithography",
+        "url": "https://www.zeiss.com/semiconductor-manufacturing-technology/smt-magazine/high-na-euv-lithography.html",
+        "publisher": "ZEISS SMT",
+        "date": "2024-01-25"
+      },
+      {
+        "title": "Laserwriter-Heidelberg DWL200 — tool specifications, minimum feature size and write heads",
+        "url": "https://cse.umn.edu/mnc/laserwriter-heidelberg-dwl200",
+        "publisher": "Minnesota Nano Center, University of Minnesota",
+        "date": "2026"
+      }
+    ]
+  }
+}

@@ -1,0 +1,434 @@
+{
+  "date": "2026-09-02",
+  "generated_at": "2026-09-02T13:20:00Z",
+  "window": "2026-09-01..2026-09-02",
+  "headline": "DDR5's standardised RowHammer defence turns out to be an attack surface of its own: a paper for RTSS 2026 shows an attacker task priming per-row activation counters can stretch a victim's runtime to 200 percent of its certified worst case.",
+  "pulse": {
+    "read_time_min": 8,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-superconductor-inas-quantum-oscillations",
+            "title": "Six superconductors on one InAs well, and none of them spoils it",
+            "dek": "Milo Coombs, Greg Mazur and six co-authors reported on 1 September that they can measure carrier density, effective mass and mobility inside an indium arsenide quantum well buried under a superconducting metal film — which normally short-circuits that measurement — for six different superconductors, and that none of them degrades the well.",
+            "background_md": "A superconductor deposited on a semiconductor lends its pairing to the electrons underneath, and that proximity effect is the basis of topological-qubit proposals and of most gate-tunable superconducting circuits. The obstacle is measurement: the metal carries current in parallel with the semiconductor, so an ordinary four-probe resistance measurement reports the film and not the channel. The parameters that decide whether a device will work — how many carriers there are, how hard they scatter, how strongly spin splits in a field — are therefore normally taken from a bare wafer with no metal on it, and assumed to survive metallisation.",
+            "glossary": [
+              {
+                "term": "2DEG (two-dimensional electron gas)",
+                "definition": "Electrons trapped in a thin layer at a heterostructure interface, free to move in the plane but quantised across it; the buried InAs layer here is one."
+              },
+              {
+                "term": "Shubnikov–de Haas oscillations",
+                "definition": "Periodic dips in resistance as a magnetic field sweeps quantised Landau levels through the Fermi energy. Their period gives carrier density; how fast their amplitude decays gives the quantum lifetime."
+              },
+              {
+                "term": "Quantum lifetime τ_q",
+                "definition": "The average time before any scattering event randomises an electron's phase, small-angle events included. Transport mobility ignores those events, so τ_q is the stricter measure of interface damage."
+              },
+              {
+                "term": "g-factor",
+                "definition": "The number relating an electron's spin energy splitting to the applied magnetic field. A large magnitude is what lets a modest field push a semiconductor into the regime these devices are built for."
+              }
+            ],
+            "why_it_matters": "The assumption these measurements replace is that a metal film is a passive contact, and that the semiconductor under it is the same semiconductor that was there before deposition. It is not. Every one of the six metals adds a second occupied subband at the interface, and the six sort into two classes by occupation energy that follow orbital character rather than work function, with aluminium and tin putting about five times as many carriers into that state as vanadium, niobium, tantalum and rhenium. What comes through untouched is the well itself, which is why a designer's numbers from a bare wafer remain usable and the interface subband becomes the thing to design around.",
+            "deeper_md": "The stack is In₀.₇₅Ga₀.₂₅As (10 nm) / InAs (7 nm) / In₀.₇₅Ga₀.₂₅As, with metal deposited at 7 K: Al 2.3 nm, Sn 5 nm, V 3 nm, Nb 2 nm, Ta 5 nm, and Re at 1, 3 and 6 nm.\n\nThe correction is what makes the method work. Because the film carries current in parallel, the measured oscillation amplitude is not the well's, so the Dingle analysis carries a Drude prefactor `P = (μ_t²B² − 1)/(1 + μ_t²B²)²` for the current redistributed into the metal before any lifetime is read off. The buried well then comes out at n = 2.5×10¹¹ cm⁻², cyclotron mass 0.040–0.044 m_e, |g_eff| = 4.9 ± 0.2, quantum lifetime 0.2–0.4 ps. The interface subband sits at 5.3–6.5×10¹¹ cm⁻² under the refractory metals against 1.2–1.3×10¹² cm⁻² under aluminium and tin.\n\nThe coupling bound, Γ_int ≤ 1.9–3.2 meV, is where the authors are most careful: normal-state data cannot separate the well's escape rate into the metal from its own disorder rate, so this constrains the induced gap rather than measuring it. Another group published the same style of extraction for aluminium on InAs in May; what is new is the six-metal comparison and the shunt correction.",
+            "fab_angle": "This is a screening measurement rather than a device measurement. Magnetotransport on the as-grown, already-metallised wafer returns density, mobility and quantum lifetime with no lithography in between, so a growth run can be graded before anything is patterned — the same logic that makes four-point probe and ellipsometry worth doing on every wafer.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Understanding the superconducting proximity effect in semiconductors through quantum oscillations",
+                "url": "https://arxiv.org/abs/2609.01593",
+                "publisher": "arXiv (Milo Coombs, Teun A. J. van Schijndel, Yu Wu, Jason T. Dong, Yilmaz Gul, Julian Choi, Christopher J. Palmstrøm, Greg P. Mazur)",
+                "date": "2026-09-01"
+              },
+              {
+                "title": "Superconducting proximity effect through quantum oscillations — full text with the heterostructure stack, film thicknesses, Dingle correction and per-metal subband densities",
+                "url": "https://arxiv.org/html/2609.01593v1",
+                "publisher": "arXiv (HTML rendering of v1)",
+                "date": "2026-09-01"
+              },
+              {
+                "title": "Shubnikov-de Haas Characterization of Superconductor-Semiconductor Heterostructures",
+                "url": "https://arxiv.org/abs/2605.13722",
+                "publisher": "arXiv (A. M. Zimmerman, Saeed Fallahi, Sergei Gronin, Tyler Lindemann, Michael J. Manfra, John Watson et al.)",
+                "date": "2026-05-13"
+              }
+            ]
+          },
+          {
+            "id": "silicon-utc-photodiode-corner-reflector",
+            "title": "A corner reflector lets a photodiode be short and still absorb the light",
+            "dek": "Zhijun Zhang, Xuejie Gao, Qiunan Li and Xiaoyu Mi posted a simulation on 1 September of a uni-travelling-carrier waveguide photodiode — the detector that turns light back into current at the end of an optical link — whose asymmetric corner reflector sends unabsorbed light back through a short absorber instead of out of the chip.",
+            "background_md": "A photodiode at the end of a fibre or an on-chip waveguide has to do two things that fight each other. Absorbing more of the light means a longer or thicker absorbing region, and every micrometre a photocarrier must then drift across adds transit time and lowers the bandwidth — so the product of bandwidth and quantum efficiency, not either number alone, is the figure of merit. Uni-travelling-carrier designs attack one half of it by making only electrons active: holes relax inside the heavily doped absorber instead of drifting, so the slower carrier never sets the speed.",
+            "glossary": [
+              {
+                "term": "UTC (uni-travelling-carrier) photodiode",
+                "definition": "A diode whose absorber is heavily p-doped so photo-holes relax locally and only electrons cross the depleted collector, removing the slow hole drift that caps a conventional p-i-n detector's bandwidth."
+              },
+              {
+                "term": "Responsivity (A/W)",
+                "definition": "Photocurrent produced per watt of incident optical power. It folds in how much light is absorbed and how much of that becomes collected charge, which is why it is quoted alongside quantum efficiency rather than instead of it."
+              },
+              {
+                "term": "Bandwidth-efficiency product (GHz)",
+                "definition": "The 3-dB bandwidth multiplied by the quantum efficiency. It is the number that says whether a design escaped the speed-versus-absorption trade rather than sliding along it."
+              },
+              {
+                "term": "Optical back-reflection (dB)",
+                "definition": "How much of the incident light the detector sends back up the waveguide. Returned light re-enters the source laser and destabilises it, so integrated links put a ceiling on it."
+              }
+            ],
+            "why_it_matters": "The comparison that matters is against fabricated silicon rather than against other simulations: the best measured waveguide device of this family reaches 206 GHz at 0.81 A/W for a bandwidth-efficiency product above 130 GHz, and this geometry claims 275 GHz and 150 GHz — a gain bought with mirror placement rather than with a new material or a finer epitaxial stack. The reflection figure is the one an integration engineer reads first. At −29 dB the detector returns little enough light up the guide that the source feeding it needs no extra isolation, and isolation is the thing that usually forces a discrete component into an otherwise monolithic link.",
+            "deeper_md": "The claimed operating point is a 275 GHz 3-dB bandwidth with 0.68 A/W responsivity and 54.5 percent quantum efficiency at 1550 nm, −29 dB back-reflection, and a 150 GHz bandwidth-efficiency product intended for sub-terahertz work.\n\nThe mechanism is a fold in the optical path rather than a change in the semiconductor. An asymmetric corner reflector returns light that survived one pass back through the same absorber, so the effective absorption length roughly doubles while the distance a photocarrier has to drift does not — that is how the bandwidth-efficiency product moves instead of the two terms trading. The asymmetry is doing the second job: it keeps the returned light out of the input waveguide mode, which is why the reflection number and the efficiency number improve together rather than against each other.\n\nThe caveat is the first phrase of the abstract: the authors numerically demonstrate the device. Nothing was grown, fabricated or measured. The two experimental points it is measured against — 206 GHz at 0.81 A/W on InP, and an earlier MBE-grown waveguide UTC above 65 GHz — are real devices carrying real fabrication tolerance, and a corner reflector's suppression depends on etched facet angle and sidewall roughness, exactly the parameters a mode solver is free to treat as ideal.",
+            "fab_angle": "The whole result rests on an etched facet, which puts it on the etch tool rather than the epitaxy tool. Facet verticality and sidewall roughness set how much of the returned light stays in the intended mode, so this is a design whose yield is decided by anisotropy and passivation control in a plasma etch, not by the quality of the absorber.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "High-Speed and High-Responsivity Asymmetric Waveguide Photodiode with Low Optical Back-Reflection",
+                "url": "https://arxiv.org/abs/2609.01138",
+                "publisher": "arXiv (Zhijun Zhang, Xuejie Gao, Qiunan Li, Xiaoyu Mi)",
+                "date": "2026-09-01"
+              },
+              {
+                "title": "Modified uni-travelling-carrier photodiodes with 206 GHz bandwidth and 0.81 A/W external responsivity",
+                "url": "https://arxiv.org/abs/2501.02812",
+                "publisher": "arXiv (Linze Li, Tianyu Long, Xiongwei Yang, Juanjuan Lu, Jianjun Yu, Baile Chen et al.)",
+                "date": "2025-01-06"
+              },
+              {
+                "title": "High performance waveguide uni-travelling carrier photodiode grown by solid source molecular beam epitaxy (Optics Express 27, 37065)",
+                "url": "https://arxiv.org/abs/1910.03982",
+                "publisher": "arXiv (Xiaoli Lin, Michele Natrella, Cyril C. Renaud, Huiyun Liu, Alwyn J. Seeds et al.)",
+                "date": "2019-09-28"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-samsung-zhbm-energy-per-bit",
+            "title": "Samsung argues the next memory step in energy per bit, not bandwidth",
+            "dek": "Samsung memory product-planning head Choi Jang-seok told the Memory Executive Summit at SEMICON Taiwan on 1 September that the point of stacking memory in three dimensions is to cut the energy needed to move a single bit, and attached figures to a design that bonds the DRAM stack straight onto the processor instead of beside it.",
+            "background_md": "High-bandwidth memory is joined to an accelerator by seating both on a silicon interposer — a slab of silicon carrying fine wiring underneath the two — and running a thousand or more signal wires sideways between them. That sideways geometry sets two limits at once. The wire count is capped by how much die perimeter the processor can spare, because every interface competes for the same edge; and the energy spent per bit rises with how far each bit has to be driven. Which is why this interface is deliberately wide and slow rather than narrow and fast.",
+            "glossary": [
+              {
+                "term": "Silicon interposer",
+                "definition": "A slab of silicon carrying fine wiring, seated under both the processor and the memory stacks so they can be joined by thousands of short traces that an ordinary organic package substrate could not route."
+              },
+              {
+                "term": "Beachfront",
+                "definition": "The length of die perimeter available for off-chip interfaces. Every interface competes for the same edge, so a wide memory bus is paid for in edge that something else on the die cannot have."
+              },
+              {
+                "term": "Energy per bit (pJ/bit)",
+                "definition": "The picojoules spent moving one bit across a link. It grows with wire length and with signalling rate, so it is the number that decides whether more bandwidth is affordable rather than merely possible."
+              },
+              {
+                "term": "Thermal resistance (°C/W)",
+                "definition": "The temperature rise a package suffers per watt passing through it. DRAM retention falls as it heats, so this is what limits how much power can sit underneath a memory stack."
+              }
+            ],
+            "why_it_matters": "Framing the next step in energy rather than in bandwidth is the substantive part, because bandwidth is easy to buy and energy is not: widening a side-by-side interface costs die perimeter, and every extra millimetre of interposer trace costs picojoules that scale with the whole link. Bonding the stack onto the processor replaces an edge-limited connection with an area-limited one and shortens every link to roughly the thickness of a die. It also parks a memory whose retention degrades with temperature directly above the hottest object in the package — and that, rather than the interface, is what decides whether the idea ever ships.",
+            "deeper_md": "The figures Choi gave, as relayed by the Korean press, are development targets with no method attached. HBM5: twice HBM4E performance, 20 percent better performance per watt, 20 percent lower thermal resistance. zHBM, the stack bonded onto the logic die instead of placed beside it: eight times HBM4E performance, three times performance per watt, thermal resistance down 75 to 90 percent. zNAND-O, a separate part: four or eight V-NAND dies joined by through-silicon vias, seven times the read bandwidth and seven times the power efficiency of conventional NAND, sampling in 2028. Samsung's own technical post on the same architecture, published around the Future of Memory and Storage conference in August, describes zHBM qualitatively — 3D integration of logic and memory to shorten the distance data travels — and carries no numbers at all.\n\nThe named objection is thermal and it is specific. Writing after Samsung's Hot Chips presentation in August, Chips and Cheese noted that AMD needed several product generations to make a single stacked cache die thermally workable, that an HBM stack is many more dies than that, and that the later phases of this roadmap look like a stretch. A reduction in the stack's own thermal resistance is a necessary condition for the architecture, not evidence that the junction temperature the DRAM ends up at is survivable.\n\nThis brief covered the move of the HBM4E base die onto a 4 nm logic process on 30 August; the base-die node was not what was new on Monday.",
+            "fab_angle": "A stack bonded onto the processor has to be bonded to a *particular* processor, which is the part that reaches a design team rather than a packaging team. Qualification stops being fungible between memory vendors, and the accelerator floorplan and the DRAM die size have to be agreed before either part is taped out.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Samsung Presents Its Vision for Next-Generation AI Infrastructure with 3D Memory Architecture at FMS 2026",
+                "url": "https://semiconductor.samsung.com/news-events/tech-blog/samsung-presents-its-vision-for-next-generation-ai-infrastructure-with-3d-memory-architecture-at-fms-2026/",
+                "publisher": "Samsung Semiconductor",
+                "date": "2026-08-14"
+              },
+              {
+                "title": "Hot Chips 2026: Samsung and HBM Base Die Opportunities — the base die on a 4 nm logic node, and why stacking HBM on compute is a thermal problem",
+                "url": "https://chipsandcheese.com/p/hot-chips-2026-samsung-and-hbm-base",
+                "publisher": "Chips and Cheese",
+                "date": "2026-08-23"
+              },
+              {
+                "title": "Samsung unveils memory road map at Semicon Taiwan",
+                "url": "https://www.koreaherald.com/article/10858907",
+                "publisher": "The Korea Herald",
+                "date": "2026-09-01"
+              },
+              {
+                "title": "Samsung showcases chip 3D architecture strategy at SEMICON Taiwan",
+                "url": "https://www.koreatimes.co.kr/business/companies/20260901/samsung-showcases-chip-3d-architecture-strategy-at-semicon-taiwan",
+                "publisher": "The Korea Times",
+                "date": "2026-09-01"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-prac-rowhammer-wcet-jenga",
+            "title": "DDR5's RowHammer counter becomes the timing attack",
+            "dek": "Six researchers publishing at the IEEE Real-Time Systems Symposium posted JENGA on 1 September: an attacker task that quietly walks DDR5's per-row activation counters up to their alert threshold can make a completely separate real-time task overrun by up to 200 percent the worst-case execution time it was certified against.",
+            "background_md": "Repeatedly activating one DRAM row disturbs the charge stored in its physical neighbours, and enough activations between refreshes flip bits in rows the attacker never addressed. DDR5 answers this inside the standard rather than in software: every row carries an activation counter, and when one crosses a threshold the DRAM raises an alert that stops the memory controller issuing new commands until refresh-management operations have repaired the threatened neighbours. The defence is therefore a stall that the memory imposes on the processor, at a moment the processor does not choose.",
+            "glossary": [
+              {
+                "term": "PRAC (per-row activation counting)",
+                "definition": "The DDR5 mechanism that keeps a counter alongside every DRAM row and updates it on each activation, so read disturbance is tracked exactly rather than sampled probabilistically."
+              },
+              {
+                "term": "ABO (alert back-off)",
+                "definition": "The protocol by which the DRAM signals the memory controller to stop issuing activations because it needs time to refresh rows that are close to being disturbed."
+              },
+              {
+                "term": "RFM (refresh management)",
+                "definition": "The command a controller issues during an alert so the DRAM can refresh victim rows. Each one occupies the bank for a fixed interval, here 350 ns, during which nothing else proceeds."
+              },
+              {
+                "term": "WCET (worst-case execution time)",
+                "definition": "The offline-computed upper bound on how long a task can take. A real-time schedule is only safe if every bound holds, so a mechanism that adds unbounded delay invalidates the schedule rather than merely slowing it."
+              }
+            ],
+            "why_it_matters": "A mitigation that is fine on average and unbounded in the worst case is a different object from a slow mitigation, and this is the distinction a certification engineer now has to price. The delay is not proportional to what the attacker spends, because the counters persist across preemptions: an attacker can take as many scheduling slots as it likes bringing many rows to one activation below threshold, then discharge all of them with a single access, each repair operation pushing the next row over and firing the next alert. The paper's closed-form bound is the usable half — it puts the mitigation term inside the timing analysis, which is what lets a certified system keep the defence switched on.",
+            "deeper_md": "The model is PRAC-N in Ramulator 2.0 under gem5: an in-order 1 GHz RISC-V core with no cache and no operating system, DDR5-3200AN, 8 GiB, closed-row policy, a RowHammer threshold of 128 activations, one refresh-management command per alert and one row repaired per command. Timing parameters are 350 ns for `tRFM` plus 15 ns of `tRCD`, against a refresh interval `tREFI` of 3,900 ns.\n\nThe attack is a cascade, which is where the name comes from. Counters survive preemption, so the attacker raises many rows in its own memory region to one below the threshold across as many slots as it needs; one final access then triggers the first alert, and the repair issued in response increments the next row's counter past threshold, and so on until the chain exhausts or an intervening activation breaks it. On TACLeBench workloads the inflation runs from near zero on compute-bound code to 249 percent on petrinet.\n\nThree assumptions carry weight, and the authors name all three. Refresh commands are not modelled, on the assumption the attacker can compensate for them; the attacker is assumed to infer counter state by timing and to know the physical-to-DRAM address mapping, which is proprietary but has been reverse-engineered before; and the single-core, cacheless setup is explicitly a lower bound on contention.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "JENGA: Exploiting Counter-Based RowHammer Countermeasures to Break Real-Time Predictability",
+                "url": "https://arxiv.org/abs/2609.01077",
+                "publisher": "arXiv (Valentin Abgrall, Marcello Traiola, Ruben Salvador, Maria Méndez Real, Alessandro Palumbo, Angeliki Kritikakou) — to appear at IEEE RTSS 2026",
+                "date": "2026-09-01"
+              },
+              {
+                "title": "JENGA — full text with the gem5/Ramulator configuration, DRAM timing parameters, the cascade construction and the analytical WCET bound",
+                "url": "https://arxiv.org/html/2609.01077v1",
+                "publisher": "arXiv (HTML rendering of v1)",
+                "date": "2026-09-01"
+              },
+              {
+                "title": "MOAT: Securely Mitigating Rowhammer with Per-Row Activation Counters",
+                "url": "https://arxiv.org/abs/2407.09995",
+                "publisher": "arXiv (Moinuddin Qureshi, Salman Qazi)",
+                "date": "2024-07-13"
+              }
+            ]
+          },
+          {
+            "id": "computing-spec-cpu-2026-zen5-characterization",
+            "title": "The new SPEC suite finds the bottleneck only at 512 copies",
+            "dek": "Kunal Kashyap, Rajiv Ramanathan and Shayantika Bhattacharya published the first microarchitectural characterisation of SPEC CPU 2026 — the industry's standard processor benchmark suite, replaced in May for the first time since 2017 — on a dual-socket AMD EPYC 9755, and found the effects that decide performance appear only when every core is loaded.",
+            "background_md": "A benchmark suite is a claim about what a processor will be asked to do, and SPEC CPU is the one vendors quote and architects design against. It comes in two shapes: speed suites run a single copy of a program and measure how long it takes, rate suites run many copies at once and measure throughput. The distinction matters because behaviour is not a property of a program alone. Last-level cache capacity, memory bandwidth and the execution resources shared by two hardware threads are all contended, so a workload characterised on an idle machine is characterised on a machine nobody runs.",
+            "glossary": [
+              {
+                "term": "IPC (instructions per cycle)",
+                "definition": "How many instructions a core retires per clock. It collapses when a core spends its cycles waiting rather than issuing, so it is the first number to read when a workload scales badly."
+              },
+              {
+                "term": "MPKI (misses per thousand instructions)",
+                "definition": "Cache misses normalised to instruction count, so cache pressure can be compared between programs that execute wildly different numbers of instructions."
+              },
+              {
+                "term": "SMT (simultaneous multithreading)",
+                "definition": "Running two threads on one core's execution resources. It raises throughput when threads stall often and wastes dispatch slots when both threads were already issuing well."
+              },
+              {
+                "term": "Top-down (TMA) accounting",
+                "definition": "A method that assigns every issue slot to retiring, frontend-bound, backend-bound or bad speculation, so a bottleneck is attributed from counters rather than guessed from a slowdown."
+              }
+            ],
+            "why_it_matters": "Characterising a workload on an otherwise idle machine is the default in this literature, and the scale sweep says the default hides what actually decides datacenter performance: the memory-bound cluster falls from 1.60–1.70 instructions per cycle at one copy to 0.42–0.70 at 512, and one benchmark holds a comfortable-looking 858 GB/s while its retiring fraction collapses from 43.0 to 13.2 percent and its last-level misses per thousand instructions rise 10.3 times — a capacity problem a bandwidth measurement would have graded healthy. The second result is a design instruction rather than a measurement: the frontend cluster branches every three to five instructions and mispredicts under 0.5 percent, so what it is short of is predictor throughput, not predictor accuracy.",
+            "deeper_md": "The platform is a dual-socket EPYC 9755 on Zen 5: 2.7 GHz base and 4.1 GHz boost, 32 KiB L1-I, 48 KiB L1-D and 1 MiB L2 per core, 512 MB of L3 per socket, and 2.3 TB of DDR5-6400 delivering about 614 GB/s per socket. SPEC CPU 2026 is 52 applications across four suites, adding cryptography, neuroscience and graph analytics, and nine of thirteen SPECspeed integer benchmarks are now multithreaded against one in 2017 — which is why a speed suite can be used to say anything about parallelism at all.\n\nThe three clusters: frontend control-flow-dominated integer work at 1.26–2.39 IPC; high-efficiency compute retiring 43–59.7 percent of slots at one copy and giving back an average 19.3 percent of dispatch slots to SMT contention at 512; and bandwidth-bound floating point running 90.3 percent backend-memory-bound at 870–931 GB/s against a dual-socket ceiling near 1,228 GB/s.\n\nTwo limits, both stated. Top-down slot accounting does not close for the 512-thread speed benchmarks — it sums to 95.3 percent on average, with barrier synchronisation sitting outside the model — and everything was built with GCC, which the authors describe as one point in the compiler design space rather than an upper bound.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Performance Characterization of SPEC CPU 2026 on AMD EPYC 9755 Processor",
+                "url": "https://arxiv.org/abs/2609.01527",
+                "publisher": "arXiv (Kunal Kashyap, Rajiv Ramanathan, Shayantika Bhattacharya) — accepted at IEEE IISWC 2026",
+                "date": "2026-09-01"
+              },
+              {
+                "title": "SPEC CPU 2026 characterization — full text with the platform configuration, cluster definitions, per-benchmark IPC/MPKI/bandwidth tables and the scale sweep",
+                "url": "https://arxiv.org/html/2609.01527v1",
+                "publisher": "arXiv (HTML rendering of v1)",
+                "date": "2026-09-01"
+              },
+              {
+                "title": "SPEC CPU 2026 — suite composition, release date and licensing",
+                "url": "https://www.spec.org/cpu2026/",
+                "publisher": "Standard Performance Evaluation Corporation",
+                "date": "2026-05-05"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-smelt-looped-moe-scaling",
+            "title": "Running the middle layers twice, with the FLOPs held constant",
+            "dek": "Shaowen Wang, Ge Zhang and seven co-authors posted SMELT on 1 September: a mixture-of-experts transformer that executes the middle half of its layers twice, matched against an ordinary model on per-token compute, parameter count and cache size simultaneously, and still reaches a given loss for 6.8 to 18.0 percent fewer training FLOPs.",
+            "background_md": "Depth in a transformer costs parameters, and parameters cost memory and per-token arithmetic. Looping is the alternative: run one block of layers more than once, so effective depth rises while the stored weights do not. The reason the idea has stayed contested for years is comparison discipline. A looped model run at the same parameter count as a baseline does strictly more arithmetic per token, so any gain it shows is partly bought rather than earned, and there are three budgets that all have to be held equal at once — per-token FLOPs, non-embedding parameters, and the key–value cache.",
+            "glossary": [
+              {
+                "term": "Mixture of experts (MoE)",
+                "definition": "A layer holding many feed-forward blocks of which a router picks a few per token, so total parameter count can rise without per-token arithmetic rising with it."
+              },
+              {
+                "term": "Compute-optimal frontier",
+                "definition": "The lowest loss reachable at a given total training compute once model size and token count are chosen together rather than fixed independently. A scaling law is a fit to that surface."
+              },
+              {
+                "term": "Attention sink",
+                "definition": "The habit of attention heads dumping probability mass on a few fixed positions, often the first token, instead of on content. It is a symptom that a layer has little useful to attend to."
+              },
+              {
+                "term": "FLOPs",
+                "definition": "Floating-point operations, the unit training compute is counted in. Because cost scales with it and quality scales with its logarithm, a percentage saved at fixed loss is the honest way to state an architectural win."
+              }
+            ],
+            "why_it_matters": "What the budget matching buys is a claim that survives the standard objection, because the recipe narrows the hidden dimension to pay for the extra layer executions and raises the expert count to put the parameters back, leaving residual mismatches under four percent on each of the three budgets. The saving also grows with scale rather than staying flat — 7.8 percent of training compute at 10²⁰ FLOPs against 15.8 percent at 10²¹ — which is the shape a real architectural advantage has and a constant-factor one does not. The mechanism offered is testable rather than decorative: a second pass weakens the attention sink and moves mass onto content tokens, predicting bigger gains at longer sequences.",
+            "deeper_md": "SMELT loops the middle half of the layers twice — six of twelve at the 200M scale, an effective depth of 18 — with the looped residual scaled by 1/√2. Matching is explicit: hidden width narrows (1280 to 1056 at 200M) to hold per-token FLOPs, expert count rises (192 to 288) to restore non-embedding parameters, and head size or the grouped-query ratio absorbs the key–value cache, with residual mismatches under 4, 1 and 4 percent respectively.\n\nSeparate Chinchilla-style surfaces were fitted per architecture. SMELT's data exponent is 0.7011 against the baseline's 0.6594 and its capacity exponent 0.3892 against 0.3703, so the two curves diverge rather than sit at a fixed offset: 7.8 percent of FLOPs saved at 10²⁰, 15.8 at 10²¹, 20.9 extrapolated at 10²². Downstream it wins 96 of 96 matched pairs on DCLM Completion, with the largest per-domain gain on code.\n\nThe caveats are the authors'. Each configuration was trained once, so reported error bars cover evaluation seeds and not training variance; the fits are anchored to 1.3×10¹⁹–2.2×10²¹ cumulative FLOPs, which puts the 10²² figure outside the fitted window. One inconsistency is worth flagging: the abstract states four sizes up to 54B non-embedding parameters, while the configuration table lists 100M, 200M, 600M and 1.6B at depths 10, 12, 20 and 30, and the text does not reconcile the two.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "SMELT: Scaling Laws for Compute-Matched MoE Looped Transformers",
+                "url": "https://arxiv.org/abs/2609.01343",
+                "publisher": "arXiv (Shaowen Wang, Ge Zhang, Kairong Luo, Yuhao Wu, Shaofan Liu, Jiaheng Liu, Wenhao Huang, Shen Yan, Jian Li)",
+                "date": "2026-09-01"
+              },
+              {
+                "title": "SMELT — full text with the budget-matching tables, per-architecture scaling-law coefficients, downstream win rates and the attention-sink analysis",
+                "url": "https://arxiv.org/html/2609.01343v1",
+                "publisher": "arXiv (HTML rendering of v1)",
+                "date": "2026-09-01"
+              },
+              {
+                "title": "Training Compute-Optimal Large Language Models",
+                "url": "https://arxiv.org/abs/2203.15556",
+                "publisher": "arXiv (Jordan Hoffmann, Sebastian Borgeaud, Arthur Mensch, Laurent Sifre et al., DeepMind)",
+                "date": "2022-03-29"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "DRAM: the one-transistor cell, its capacitor, and refresh",
+    "slug": "dram-cell-and-capacitor",
+    "subtitle": "A bit stored as charge on a capacitor that leaks — which is where refresh comes from, why the capacitor is now a hole a hundred times deeper than it is wide, and why today's RowHammer item exists at all.",
+    "tldr": "A DRAM bit is charge sitting on a capacitor behind a single transistor, and the charge drains away in milliseconds, so the entire array has to be read and rewritten continuously just to stand still. Everything odd about DRAM follows from that one fact: the read destroys the bit, the refresh schedule is written into the timing specification, the capacitor has become a hole with an aspect ratio past a hundred to one, and neighbouring cells disturb each other badly enough that the repair mechanism is now a security feature. Robert Dennard's 1967 patent already names the problem in plain words — the charge leaks off, so the memory must regenerate it.",
+    "sections": [
+      {
+        "heading": "One transistor, one capacitor, and a read that destroys the bit",
+        "body_md": "Start with what a bit physically is here. Robert Dennard's patent, filed in July 1967 and granted in June 1968, describes a memory cell made of exactly one field-effect transistor and one capacitor. The transistor's gate goes to a word line, its source to a bit line, its drain to one plate of the capacitor; the other plate sits at a reference potential. To write a one you pulse the word line so the transistor conducts and drive the bit line high, charging the capacitor. To write a zero you leave the bit line at zero and the capacitor uncharged.\n\nReading is where the trouble starts. Pulse the word line again and the capacitor discharges through the transistor onto the bit line. That discharge is the signal — and it is also the end of the stored bit, because the charge that represented it has just been spent. The patent is equally blunt about the other half: the charge on the capacitor does leak off, and Dennard reports that regeneration was necessary only every 200 microseconds.",
+        "deeper_md": "The design's entire claim was area. Every competing scheme of the period stored a bit in something bistable — a flip-flop, a magnetic core — and bistable things are stable because something actively holds them. Dennard's cell is not stable at all; it is a leaky bucket that you read by emptying. That trade, stability for area, is why the part displaced core memory inside a few years, and every awkward property of DRAM since is the interest payment on it."
+      },
+      {
+        "heading": "Why every read is also a write",
+        "body_md": "If reading destroys the bit, something has to put it back, and that something is the sense amplifier. Before the word line fires, the bit line is precharged to a level midway between the two logic states. When the cell connects, its charge redistributes between the small cell capacitor and the much larger capacitance of the bit line, nudging the line a short distance above or below the precharge point. A cross-coupled pair of inverters latches onto that difference and drives the line all the way to a rail — and because the cell is still connected to the line while that happens, the same action refills the capacitor with a full-strength copy of what it held.\n\nSo a DRAM read is a destructive read immediately followed by an automatic rewrite, performed by one circuit in one operation. Refresh is not a separate mechanism at all. It is an ordinary row activation whose result nobody looks at: open the row, let the sense amplifiers restore every cell on it, close the row.",
+        "deeper_md": "The consequence to carry into the next section is the divider. The voltage swing on the bit line goes as C_cell / (C_cell + C_bitline), so the signal the amplifier sees depends on the cell capacitance *relative* to the line it drives. Shrink the cell capacitor and the signal shrinks with it, until noise and amplifier offset eat the margin. This is the single reason DRAM cannot simply scale its capacitor down with the rest of the layout, and it is what forces the geometry described below."
+      },
+      {
+        "heading": "The refresh clock, written into the timing specification",
+        "body_md": "Because every cell leaks, a DRAM part ships with a promise about how long it will hold a bit, and the JEDEC window is that every cell is refreshed within 64 milliseconds below 85 °C, and within 32 milliseconds above it, since leakage rises with temperature. The controller does not do this in one burst. It issues 8,192 auto-refresh commands spread across the window, which is exactly where the familiar 7.8 microsecond refresh interval comes from: 64 milliseconds divided by 8K. DDR5 tightens the interval further — the parameter set used in this week's real-time paper puts it at 3,900 nanoseconds.\n\nWhat is striking is how conservative that promise is, because it is set by the worst cell in the part rather than the typical one. Measurements on a 32 GB DDR3 device found only about 30 cells with retention below 128 milliseconds, and about 1,000 needing an interval shorter than 256 milliseconds. The bill arrives as power: refresh accounts for up to 25 to 27 percent of total energy in a 32 GB device.",
+        "deeper_md": "That distribution is why retention-aware refresh keeps being proposed and keeps not shipping. If a few thousand cells out of tens of billions are the reason everything is refreshed four times more often than it needs to be, the obvious move is to profile them and refresh only their rows quickly. The obstacle is that retention time is not a fixed property of a cell: it drifts with temperature and moves between states over hours in a phenomenon usually called variable retention time, so a profile taken at test does not stay valid in the field. A conservative uniform window is the price of not having to trust a measurement made once."
+      },
+      {
+        "heading": "The capacitor became a hole",
+        "body_md": "Now put the two constraints together. The signal margin says the cell capacitance may not shrink; the layout says the footprint must. Intel's 6F² cell patent gives the standard way of counting the second one — F is half the minimum pitch, and a cell laid out on a 3F half-gate pitch occupies six F² — and F falls every generation. Constant capacitance in a collapsing footprint leaves exactly two escapes, plate area and permittivity, and DRAM has taken both.\n\nArea goes vertical. The capacitor stops being a plate and becomes a hole with an aspect ratio past 100:1, so the useful area is the cylinder wall rather than the opening. Nothing but atomic layer deposition can line a hole like that: recent process work on high-aspect-ratio DRAM capacitors states the requirement as less than 5 percent thickness variation between the top and the bottom of the trench. Permittivity goes high-k, to hafnium and zirconium oxides — one study measured 22.2 for plasma-ALD hafnium oxide, several times what the silicon dioxide it replaced can offer.",
+        "deeper_md": "The high-k half of the escape is not free, and the same study shows why. At 15 nm thickness and 0.8 V, its directly-plasma-deposited hafnium oxide leaked about 10⁻⁴ A/cm², while the remote-plasma film — lower measured permittivity, 19.2 against 22.2 — leaked about 10⁻⁷ A/cm². Three orders of magnitude of leakage, traded for roughly 15 percent of dielectric constant. In a logic capacitor that trade is about power; in a DRAM cell the leakage current *is* the retention time, so the choice feeds straight back into the refresh window of the previous section. This is the loop the whole roadmap runs in: thinner and higher-k for capacitance, thicker and better-passivated for retention."
+      },
+      {
+        "heading": "The neighbours, and how a repair became a security mechanism",
+        "body_md": "Cells this small and this close are not electrically isolated from each other. In 2014 Yoongu Kim and colleagues showed that repeatedly activating one row disturbs charge in the rows physically beside it, and that more than 80 percent of the modules they tested from all three major vendors would flip bits this way in rows the program never addressed. It is not a bug in a particular part. It is the same leakage the refresh window already accounts for, accelerated by an access pattern.\n\nThat framing tells you what the fix has to be. If disturbance drains charge faster, refresh the affected rows sooner. Every serious mitigation since is a variation on deciding *which* rows and *when*, and DDR5 standardised the strictest version of the accounting: a counter on every row, plus a protocol that lets the DRAM interrupt the memory controller and take the time it needs. Which is precisely the mechanism today's Pulse item turns into a timing attack.",
+        "deeper_md": "Note the direction of the arms race. The first mitigations were probabilistic — refresh a random neighbour with some probability on each activation — because tracking every row was thought too expensive. Counting exactly is a stronger guarantee, and it is also a stateful one: the counters are memory that an adversary's access pattern writes into, and state that persists across context switches is the raw material for both side channels and the availability attack in this edition. A defence that is exact and stateless would not have this property; nobody has one that is also cheap."
+      },
+      {
+        "heading": "What the arithmetic predicts",
+        "body_md": "Three constraints, and between them they explain most of what DRAM does. The bit is charge, so it leaks, so it must be rewritten on a schedule set by the worst cell in the part. The signal is a capacitance ratio, so the cell capacitor cannot shrink with the layout, which pushed it into the third dimension long before logic went there and made a single very deep hole the defining process step of a memory fab. And the cells are close enough to disturb one another, so the schedule became adversarial.\n\nThis is also why DRAM scaling has run slower than logic scaling for two decades. A logic transistor gets better when it gets smaller; a DRAM capacitor only gets worse, and every generation has to buy back what geometry took away, from aspect ratio and from the periodic table. It is a good area to have opinions about, because the numbers involved are small enough to check yourself — which is what the exercise below is for.",
+        "deeper_md": "One prediction worth testing against the news. If the binding constraint is capacitance per unit footprint, then every credible proposal for the next step should be about area or permittivity and nothing else — taller capacitors, better dielectrics, or a cell whose transistor moves out of the way vertically so the capacitor can have the whole footprint. Proposals that promise density from a cleverer array organisation, without touching either lever, are claiming to get around a divider equation. Read them with the ratio in mind."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "1T1C cell",
+        "definition": "The one-transistor, one-capacitor DRAM cell from Dennard's 1967 filing: the transistor is a switch onto the capacitor, and the capacitor is the bit. Nothing holds the state actively, which is what makes it small and what makes it leak."
+      },
+      {
+        "term": "Word line / bit line",
+        "definition": "The two wires that address a cell. The word line drives the access transistor's gate and selects a whole row at once; the bit line (also digit line) carries charge to and from the capacitor and runs to a sense amplifier."
+      },
+      {
+        "term": "Sense amplifier",
+        "definition": "A cross-coupled inverter pair on each bit line that latches the tiny voltage difference produced by charge sharing, amplifies it to a full logic level, and — because the cell is still connected — writes the bit back into the capacitor in the same operation."
+      },
+      {
+        "term": "Destructive read",
+        "definition": "A read that consumes the stored quantity. In DRAM the capacitor discharges to produce the signal, so the array is only non-volatile-looking because the sense amplifier immediately restores what the read destroyed."
+      },
+      {
+        "term": "tREFI (refresh interval)",
+        "definition": "The average spacing between refresh commands. It is derived, not chosen: divide the retention window the part guarantees by the number of refresh commands needed to cover the array — 64 ms over 8,192 gives the familiar 7.8 µs."
+      },
+      {
+        "term": "Retention time",
+        "definition": "How long an individual cell holds a distinguishable bit before leakage erases the margin. It varies by orders of magnitude across cells in one die and drifts with temperature, so the specification is set by the tail rather than the median."
+      },
+      {
+        "term": "F and 6F²",
+        "definition": "F is half the minimum pitch of a process — the unit a memory layout is measured in. A 6F² cell occupies six of those squares, so quoting cell area in F² separates the layout's cleverness from the lithography's resolution."
+      },
+      {
+        "term": "Aspect ratio (of the cell capacitor)",
+        "definition": "Depth divided by opening width for the etched hole the capacitor is built in. Past 100:1 it decides which deposition method can line the hole at all, because only self-limiting surface chemistry gives uniform thickness at the bottom."
+      }
+    ],
+    "try_this": "Do the capacitor arithmetic first, then go and measure one. Take the permittivity the Nanomaterials study measured for plasma-ALD hafnium oxide — 22.2 — and compute capacitance per unit area, C/A = ε₀k/t, for a 15 nm film; do it again at 5 nm and notice that the capacitance you gain is exactly the leakage margin you spend, since the same paper's films differ by three orders of magnitude in leakage at 0.8 V. Then do the geometry: a cylindrical hole of diameter d and depth h has a wall area of πdh against a footprint of πd²/4, so the area multiplier is 4h/d — put the paper's 100:1 aspect ratio in and see what a hole buys over a flat plate. Then book two Minnesota Nano Center tools and check yourself: deposit an oxide on a metallised wafer with the thermal ALD system (Ultratech Savannah or the Kurt J. Lesker tool), sputter a top electrode on one of the AJA systems, measure thickness on an ellipsometer, and pull a C–V curve on the CV-IV measurement system. Back out k from your own capacitance and thickness, and compare it against the paper's 22.2 and 19.2. That number is the exact quantity the entire DRAM roadmap is fighting over.",
+    "sources": [
+      {
+        "title": "Field-Effect Transistor Memory (US 3,387,286) — the one-transistor, one-capacitor DRAM cell",
+        "url": "https://patents.google.com/patent/US3387286A/en",
+        "publisher": "Robert H. Dennard / IBM, via Google Patents",
+        "date": "1968-06-04"
+      },
+      {
+        "title": "Retention-Aware DRAM Auto-Refresh Scheme for Energy and Performance Efficiency (Micromachines 10(9):590)",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6780894/",
+        "publisher": "Wei-Kai Cheng, Po-Yuan Shen, Xin-Lun Li, via PubMed Central",
+        "date": "2019-09-08"
+      },
+      {
+        "title": "Deposition of HfO₂ by Remote Plasma ALD for High-Aspect-Ratio Trench Capacitors in DRAM (Nanomaterials 15, 783)",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12156898/",
+        "publisher": "Nanomaterials, via PubMed Central",
+        "date": "2025"
+      },
+      {
+        "title": "Retrospective: Flipping Bits in Memory Without Accessing Them — An Experimental Study of DRAM Disturbance Errors",
+        "url": "https://arxiv.org/abs/2306.16093",
+        "publisher": "arXiv (Onur Mutlu)",
+        "date": "2023-06-28"
+      },
+      {
+        "title": "6F2 DRAM cell (WO 2013/002884 A1) — the definition of F and the 6F² layout",
+        "url": "https://patents.google.com/patent/WO2013002884A1",
+        "publisher": "Intel Corporation, via Google Patents",
+        "date": "2013-01-03"
+      },
+      {
+        "title": "Equipment A–Z — ALD systems, ellipsometers, sputterers and the CV-IV measurement system",
+        "url": "https://cse.umn.edu/mnc/equipment-z",
+        "publisher": "Minnesota Nano Center, University of Minnesota",
+        "date": "2026"
+      }
+    ]
+  }
+}

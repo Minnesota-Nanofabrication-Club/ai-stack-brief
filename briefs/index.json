@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-02",
+      "foundations_slug": "dram-cell-and-capacitor",
+      "foundations_topic": "DRAM: the one-transistor cell, its capacitor, and refresh",
+      "headline": "DDR5's standardised RowHammer defence turns out to be an attack surface of its own: a paper for RTSS 2026 shows an attacker task priming per-row activation counters can stretch a victim's runtime to 200 percent of its certified worst case.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-01",
       "foundations_slug": "high-na-euv",
       "foundations_topic": "High-NA EUV lithography",
@@ -54,6 +67,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-01T13:07:02Z",
-  "latest": "2026-09-01"
+  "generated_at": "2026-09-02T12:37:35Z",
+  "latest": "2026-09-02"
 }

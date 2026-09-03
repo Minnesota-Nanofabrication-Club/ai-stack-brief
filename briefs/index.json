@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-03",
+      "foundations_slug": "mems-fabrication",
+      "foundations_topic": "MEMS fabrication: surface versus bulk micromachining",
+      "headline": "The Optical Internetworking Forum approved CMIS-LT on 2 September: a switch chip and the optical module plugged into it can now negotiate transmitter equalisation over the management bus, instead of both running a setting fixed on a compliance board.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-02",
       "foundations_slug": "dram-cell-and-capacitor",
       "foundations_topic": "DRAM: the one-transistor cell, its capacitor, and refresh",
@@ -67,6 +80,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-02T12:37:35Z",
-  "latest": "2026-09-02"
+  "generated_at": "2026-09-03T12:42:49Z",
+  "latest": "2026-09-03"
 }

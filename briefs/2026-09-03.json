@@ -1,0 +1,387 @@
+{
+  "date": "2026-09-03",
+  "generated_at": "2026-09-03T12:10:12Z",
+  "window": "2026-09-02..2026-09-03",
+  "headline": "The Optical Internetworking Forum approved CMIS-LT on 2 September: a switch chip and the optical module plugged into it can now negotiate transmitter equalisation over the management bus, instead of both running a setting fixed on a compliance board.",
+  "pulse": {
+    "read_time_min": 7,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-3c-sic-all-dry-release",
+            "title": "A nanomechanical release that never touches a liquid",
+            "dek": "Felix David and co-authors, posting on 2 September, made suspended silicon-carbide nanostrings — 115-nanometre-thick beams clamped at both ends that vibrate like a plucked guitar string — using plasma alone, with no hydrofluoric acid bath and no critical-point drying anywhere in the flow, and measured the highest intrinsic quality factor yet reported for the material.",
+            "background_md": "A micromechanical part has to be free to move, so somewhere in the process the material underneath it is taken away. That is nearly always done in liquid: an etchant dissolves a sacrificial layer, and the wafer is then rinsed and dried. Drying is where the parts break. As the last film of liquid retreats out of the gap it pulls the beam down with a capillary force set by surface tension and the wetted area, and once the beam touches the substrate, van der Waals attraction can hold it there for good. The failure has a name — stiction — and it is the standing yield problem of the field.",
+            "glossary": [
+              {
+                "term": "Stiction",
+                "definition": "The permanent adhesion of a released micromechanical part to the surface beneath it, started by capillary pull during drying and then held by van der Waals and electrostatic forces once the two surfaces touch."
+              },
+              {
+                "term": "Critical point drying",
+                "definition": "Taking liquid out of a released structure by routing it through the supercritical state instead of boiling it off, so a liquid–vapour interface — and with it surface tension — never exists inside the gap."
+              },
+              {
+                "term": "Quality factor (Q)",
+                "definition": "The ratio of energy stored in a resonator to energy lost per radian of oscillation; it sets how sharp the resonance is and how small a force the device can resolve."
+              },
+              {
+                "term": "Dissipation dilution",
+                "definition": "The effect by which tensile stress in a string stores elastic energy without adding loss, so the measured mechanical Q rises far above the intrinsic Q of the material itself."
+              }
+            ],
+            "why_it_matters": "Deleting the wet steps deletes the process's dominant yield loss and its dominant contamination source at once: nothing is rinsed, so nothing dries, so the capillary collapse that caps how long and how thin a suspended beam can be does not arise. The consequence is a different design envelope rather than a faster one — a beam whose restoring force could never have survived a drying step becomes buildable, and the whole flow runs inside a single etch tool instead of a bench, a bath and a drier.",
+            "deeper_md": "The film is 115 nm of cubic (3C) silicon carbide grown on Si(111); the roughly 20 % lattice mismatch leaves it under 1.1–1.35 GPa of tensile stress, which is the point, because tension is what dilutes dissipation. Patterning is a 450 nm negative-tone e-beam resist plus three ICP-RIE steps in one tool: an anisotropic SF₆/Ar etch at 25 mTorr and 20 W/200 W, about 100 V DC bias, 0.96 nm/s, to cut the SiC; the same gases at 30 sccm SF₆ with the ICP source off, so the plasma turns isotropic and undercuts the silicon; then six minutes of O₂ plasma to strip the resist. Strings run 100–940 µm long at 250 nm wide. Intrinsic Q lands at 4,200 ± 440, about 50 % above the 2,900 previously reported for 3C-SiC, and dilution takes the fundamental mode of the longest strings to roughly 400,000.\n\nThe caveat is the authors' own: those longest strings are gas-damping-limited in their chamber, so the 400,000 is a floor set by the vacuum, not a property of the device. Intrinsic Q also looks surface-loss-limited at 115 nm — a 1 µm film gave about 8,000.",
+            "fab_angle": "Every step here is reachable in a teaching cleanroom that already owns an ICP-RIE, because the release is the same SF₆ chemistry as the pattern etch with the inductive source switched off. What it costs is the e-beam writer that defines a 250 nm line; a maskless optical stepper defines wider strings, which changes the stress-dilution arithmetic without changing the process.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "All-dry processing of 3C-SiC nanomechanical string resonators for extreme aspect ratios and high intrinsic quality factor",
+                "url": "https://arxiv.org/abs/2609.02530",
+                "publisher": "arXiv (cond-mat.mtrl-sci)",
+                "date": "2026-09-02"
+              },
+              {
+                "title": "Anisotropic Vapor HF etching of silicon dioxide for Si microstructure release",
+                "url": "https://arxiv.org/abs/1207.2402",
+                "publisher": "arXiv / Microelectronic Engineering 95 (2012) 83–89",
+                "date": "2012-07-10"
+              },
+              {
+                "title": "SUMMiT V Five Level Surface Micromachining Technology Design Manual, v3.1 (SAND2008-0659P)",
+                "url": "https://www.osti.gov/servlets/purl/1713032",
+                "publisher": "Sandia National Laboratories",
+                "date": "2007-12-13"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-oif-cmis-lt-link-training",
+            "title": "Optical modules get a standard way to tune the host's transmitter",
+            "dek": "The Optical Internetworking Forum said on 2 September that its members approved CMIS-LT, which lets a pluggable optical module ask the switch chip it is plugged into to move its transmit equaliser taps — over the same two-wire management bus that already reports module temperature.",
+            "background_md": "A 112-gigabit-per-second lane between a switch chip and a pluggable optical module reaches the receiver badly smeared, because the package, the board trace and the connector all attenuate high frequencies more than low ones. The fix sits in the transmitter: a short FIR filter whose taps pre-distort each symbol so the channel's smearing cancels rather than accumulates. Ethernet has long had an in-band protocol for a receiver to ask the far transmitter to move those taps, but it is defined only for backplanes and copper cables. Between a host and a module no such protocol exists, so the taps are chosen once during manufacturing and never touched again.",
+            "glossary": [
+              {
+                "term": "FFE (feed-forward equaliser)",
+                "definition": "A short FIR filter in a transmitter whose pre-cursor and post-cursor taps deliberately distort each symbol, so that the smearing the channel adds afterwards cancels instead of piling up at the receiver."
+              },
+              {
+                "term": "VEC / VEO",
+                "definition": "Vertical eye closure and vertical eye opening: the decibel and millivolt figures that say how much of the ideal signal amplitude is left by the time the receiver has to decide which symbol arrived."
+              },
+              {
+                "term": "CMIS",
+                "definition": "The register map and state machine every pluggable optical module exposes to its host over a two-wire I²C-style bus — built for reporting temperature, optical power and alarms, and now carrying training messages too."
+              },
+              {
+                "term": "C2M / VSR",
+                "definition": "The chip-to-module electrical link: a few centimetres of package, board trace and connector between a switch ASIC's SerDes and the module's DSP, specified by IEEE 802.3 as AUI C2M and by OIF as very-short-reach CEI."
+              }
+            ],
+            "why_it_matters": "A module ships with two transmit settings, AUI-S and AUI-L, and the host with one, all three picked on a compliance board that behaves nothing like the system the module ends up in; OIF's own white paper puts the penalty against an optimal setting at up to 1.6 dB of vertical eye closure and 40 % of the eye opening. That is margin the link designer currently buys back somewhere else — a shorter trace, a slower lane, or stronger forward error correction — and it is margin a 224-gigabit-per-lane link, where OIF's own summary expects training to become necessary rather than optional, does not have to spare.",
+            "deeper_md": "The mechanism works around an asymmetry in CMIS: a module is a passive target of management operations and cannot initiate a write. So host-to-module requests run as CMIS WRITE sequences, while module-to-host requests are a CMIS interrupt telling the host to come and READ the message. On top sits a message catalogue in seven parts — transmit-FFE presets, per-tap increment and decrement, driver amplitude, precoder on/off, a signal-quality metric, an SQM alarm, and status replies. That is the IEEE 802.3 Clause 136/162 control-and-status vocabulary moved out of band, plus two things in-band training lacks: direct amplitude tuning, and a register that stores the taps a link converged on so the next bring-up starts there rather than at a preset.\n\nTwo limits are written into the document. CMIS-LT specifies the messaging, not the training algorithm — that stays inside the host SerDes and the module DSP, so two compliant parts can still converge differently. And training runs per electrical lane while the data path sits in DPInitialized with the module's optical outputs muted, which makes this a bring-up mechanism first; in-service tap adjustment is optional, and the white paper warns it must move in small steps or it disturbs live traffic.",
+            "confidence": "confirmed",
+            "sources": [
+              {
+                "title": "IEEE 802.3ck-2022 — Physical Layer Specifications and Management Parameters for 100 Gb/s, 200 Gb/s, and 400 Gb/s Electrical Interfaces Based on 100 Gb/s Signaling",
+                "url": "https://standards.ieee.org/ieee/802.3ck/7322/",
+                "publisher": "IEEE Standards Association",
+                "date": "2022-12-28"
+              },
+              {
+                "title": "OIF Closes Q3 Member Meeting with Critical Implementation Agreements for High-Speed Networks",
+                "url": "https://www.oiforum.com/oif-closes-q3-member-meeting-with-critical-implementation-agreements-for-high-speed-networks/",
+                "publisher": "Optical Internetworking Forum",
+                "date": "2026-09-02"
+              },
+              {
+                "title": "White Paper: CMIS-Based Out-of-Band Messaging for Link Training (OIF-CMIS-LT-01.0)",
+                "url": "https://www.oiforum.com/wp-content/uploads/OIF-WP-CMIS-LT-01.0.pdf",
+                "publisher": "Optical Internetworking Forum",
+                "date": "2024-05-09"
+              },
+              {
+                "title": "OIF Implementation Agreements index (CMIS Out of Band Link Training IA, September 2026)",
+                "url": "https://www.oiforum.com/technical-work/implementation-agreements-ias/",
+                "publisher": "Optical Internetworking Forum",
+                "date": "2026-09"
+              }
+            ]
+          },
+          {
+            "id": "chips-batched-proxy-logic-rewriting",
+            "title": "One zero-delay simulation scores every rewrite candidate at once",
+            "dek": "Pujun Su of Fudan University, in a paper posted on 2 September, compiles all the functionally equivalent versions of a single logic-synthesis rewrite into one delay-free simulation image, scores them together, and pays for the expensive delay-annotated run only when the top two are too close to separate.",
+            "background_md": "Logic synthesis improves a circuit by repeatedly cutting a small window of gates out of the netlist and substituting a different set that computes the same Boolean function. Which substitution is best depends on delay and on switching energy, and neither can be read off the netlist: the candidate has to be mapped to a cell library, annotated with a standard-delay-format file that says how long every gate and wire takes, and simulated against a vector set. That evaluation costs seconds per candidate and sits inside the optimisation loop, so the number of alternatives a tool can afford to weigh is set by simulator throughput rather than by how many good alternatives exist.",
+            "glossary": [
+              {
+                "term": "SDF (standard delay format)",
+                "definition": "The file of per-gate and per-net propagation delays extracted after technology mapping and back-annotated onto a netlist, so a simulator reproduces real timing instead of assuming every gate switches instantly."
+              },
+              {
+                "term": "Zero-delay simulation",
+                "definition": "Gate-level simulation with all delays set to zero. It still counts how often each net toggles, so it estimates switching energy, but it cannot show glitches or anything else that depends on arrival times."
+              },
+              {
+                "term": "Logic rewriting",
+                "definition": "A synthesis optimisation that swaps a small window of gates for a different implementation of the same Boolean function, drawn from a library of pre-computed alternatives."
+              },
+              {
+                "term": "Nangate 45 nm",
+                "definition": "The open standard-cell library most academic physical-design work is calibrated against — which makes results comparable between papers, and makes none of them a statement about a modern node."
+              }
+            ],
+            "why_it_matters": "The saving is not a faster simulator; it is a change in what the optimiser is allowed to ask for. Packing every candidate of one decision into a single compiled image makes candidate count close to free, so weighing four alternatives stops costing four times what weighing one costs — measured at 1.06 seconds saved on a four-candidate decision against launching each proxy on its own. That arithmetic is what decides whether a synthesis flow searches a wide rewrite library or a narrow one.",
+            "deeper_md": "The decision gate is a relative-gap test with a fixed threshold τ = 0.13 on the two best proxy energies: above it, commit the winner and time nothing; below it, run the delay-annotated chain on every candidate. Across 250 rewrite decisions and 532 mapped candidates from the ISCAS85 and EPFL benchmark suites — Yosys 0.67 with ABC, OpenSTA 3.1, Icarus Verilog 14.0, Nangate 45 nm — the gate removed 32.52 % of timed evaluations (173 of 532) and still matched exhaustive timed selection on all 250 decisions. Complete-flow time fell 5.84 % on C6288 (7.66 s) and 30.25 % on EPFL i2c (42.60 s); that five-fold spread, not the 18.05 % average, is the honest summary.\n\nThe limits are stated. The benefit is specific to a streaming flow where candidates are generated on demand — a pre-computed table of proxy scores changes the economics completely. τ was fixed globally rather than adapted, although a post-hoc scan found no mismatches anywhere between 0.085 and 0.18. And everything ran serially on eight logical processors over combinational circuits in a 45 nm library, so nothing here says how the gate behaves on sequential designs or at a current node.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Batch Before You Time: Decision-Scoped Proxy Execution for Timing-Aware Logic Rewriting",
+                "url": "https://arxiv.org/abs/2609.02470",
+                "publisher": "arXiv (cs.AR)",
+                "date": "2026-09-02"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-graph-vector-search-power-law",
+            "title": "Graph vector search scales as a power law, not a logarithm",
+            "dek": "Sajad Faghfoor Maghrebi, Navid Eslami and Niv Dayan measured how the graph indexes underneath most vector databases actually scale, and report that the distance computations one query needs grow as dataset size raised to a fractional power — a sublinear power law, not the poly-logarithm the field assumes.",
+            "background_md": "A vector database answers \"which stored items are nearest this one\" by walking a graph instead of scanning the data. Every item is a node, joined by edges to a few dozen near neighbours plus a handful of long-range shortcuts. A query enters at a fixed point and hops greedily toward its target, keeping a beam of the best candidates found so far, and the cost of that query is essentially the number of stored vectors whose distance it had to compute on the way. The whole design rests on a claim inherited from small-world graph theory: that the walk should lengthen only logarithmically as the collection grows.",
+            "glossary": [
+              {
+                "term": "Intrinsic dimensionality (d_int)",
+                "definition": "The number of directions a dataset really varies along, usually far fewer than the coordinates stored for it — 46.5 for a set of 1,536-dimensional OpenAI embeddings measured here, against 19.2 for 128-dimensional SIFT descriptors."
+              },
+              {
+                "term": "HNSW",
+                "definition": "The hierarchical navigable small-world index: a layered graph where each node keeps a bounded number of neighbours and a query descends from a sparse top layer to the dense bottom one, hopping greedily toward its target."
+              },
+              {
+                "term": "Beam search (ef)",
+                "definition": "The query procedure that carries the ef best candidates found so far rather than one current node; raising ef buys recall and is paid for directly in distance computations."
+              },
+              {
+                "term": "Recall@k",
+                "definition": "The fraction of the true k nearest neighbours a query actually returns. Approximate indexes trade it against work, so a scaling claim means nothing without the recall it was measured at."
+              }
+            ],
+            "why_it_matters": "A poly-logarithmic cost curve and a sublinear power law agree at a million vectors and disagree badly at a billion, which is exactly the range these indexes are now being pushed into; capacity planning that assumes near-flat per-query cost gets wrong by a factor that grows with the corpus. The lever the paper points at is not a bigger machine but a smaller intrinsic dimensionality — the exponent rises with how many directions the data genuinely varies along, not with how many numbers the embedding model happened to emit, and it falls when the graph is built with more neighbours per node, which is a cost you pay once at build time rather than on every query.",
+            "deeper_md": "The measured law is dc ∝ N^c for distance computations per query, with 0 < c < 1 on all eight datasets tested, c rising with the recall target and with intrinsic dimensionality and falling as the construction parameters M and ef_construction go up. The mechanism argued is that cost is set by how many points sit inside an outer ball around the query, which grows about as k(1+ε)^d_int; because a finite sample keeps resolving more structure as it grows, d_int itself grows roughly like log N, so the ratio d_int/log N — and with it the exponent — stays put. Theorem 1 and Corollary 2 formalise that, and Theorem 3 shows the doubling dimension is Θ(log N) for N = 2^O(d) points on a sphere.\n\nThe theory does eventually predict the logarithmic regime: once d_int is o(log N) the cost becomes N^o(1). But the paper places that crossover at N ≈ 2^(2^Θ(d_int)), which is not a dataset anybody will build. Caveats the authors state: queries are assumed drawn from the same distribution as the data, the local analysis assumes neighbourhoods stay approximately ball-shaped, and the maximum-likelihood estimator used for intrinsic dimensionality assumes a smooth underlying distribution.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "A Power Law in Logarithm's Clothing: On the Scalability of Graph-Based Vector Search",
+                "url": "https://arxiv.org/abs/2609.02143",
+                "publisher": "arXiv (cs.DB)",
+                "date": "2026-09-02"
+              },
+              {
+                "title": "Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs",
+                "url": "https://arxiv.org/abs/1603.09320",
+                "publisher": "arXiv (cs.DS)",
+                "date": "2016-03-30"
+              }
+            ]
+          },
+          {
+            "id": "computing-schedblame-contention-attribution",
+            "title": "Naming the noisy neighbour by measuring the competitor",
+            "dek": "Hao Li, Tonghao Zhang and Honglei Wang describe an eBPF tracer, posted on 2 September, that answers a question Linux's own metrics cannot — which other container was burning CPU while yours sat runnable — by recording, for every scheduling slice on every core, both who ran and a bitmap of which measured containers were waiting behind them.",
+            "background_md": "When a container on a shared machine slows down, the kernel will tell you that it waited. Pressure-stall information, scheduler run-queue statistics and cgroup throttle counters all measure the same side of the transaction: how long a task was runnable but not running. None of them records who was running instead. That gap exists for a reason — the scheduler decides per CPU, in microseconds, under a run-queue lock, and attaching a list of victims to every one of those decisions is bookkeeping that would cost more than the contention it set out to measure.",
+            "glossary": [
+              {
+                "term": "eBPF",
+                "definition": "Sandboxed bytecode the kernel verifies and then runs at attachment points such as scheduler tracepoints, which lets instrumentation be added to a running production kernel without patching or rebooting it."
+              },
+              {
+                "term": "cgroup",
+                "definition": "The kernel's mechanism for accounting and capping a set of processes' CPU, memory and I/O. A container is one cgroup, and the CPU quota it gets throttled against is a property of that cgroup."
+              },
+              {
+                "term": "Runnable",
+                "definition": "The state of a task that has work to do and is waiting only for a CPU. Time spent runnable but not running is precisely the time that contention costs."
+              },
+              {
+                "term": "Horvitz–Thompson estimator",
+                "definition": "The standard way to recover an unbiased total from a sample by weighting each observation by the inverse of its probability of being selected — what lets a sampled trace stand in for a complete one."
+              }
+            ],
+            "why_it_matters": "Attribution changes what an operator can act on. Knowing a service was starved supports exactly one move, giving it more quota, while knowing which cgroup consumed the CPU while it was runnable supports relocating one of the two — and does it with a record the other team can check. The binding constraint is cost: contention is bursty, so a tracer that has to be switched on after the complaint arrives has already missed the event, and anything left on permanently has to be nearly free.",
+            "deeper_md": "The inversion is the whole design. Instead of accumulating victim wait time, each completed run slice is emitted as a 16-byte record — the competitor's cgroup id, the slice duration, and a bitmap of which measured containers had a runnable task on that CPU. Because the measured set is operator-chosen and bounded at 84 by default, that bitmap fits in one or two words and rides inside the record, so userspace holds no waiting state and a dropped record costs only its own slice instead of corrupting a running total. Hooks sit on sched_switch, sched_wakeup, sched_migrate_task and the throttle events, which fire under the run-queue lock and therefore see consistent scheduler state. Sampling happens after the kernel has maintained the waiting state rather than before, so inverse-probability rescaling stays unbiased.\n\nOn a 96-core Xeon carrying 84 production containers on stock 4.18 and 5.10 kernels, the hooks cost about 1 % of Redis throughput and the userspace tracer about 6 % of one core. The caveat is large and the authors state it: Section 9.3 lists six evaluations — attribution accuracy against a pinned-victim ground truth among them — as planned rather than performed. Section 7 names the error they think matters most: throttling by an ancestor cgroup's quota is invisible and gets charged as external contention.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "SchedBlame: Who Ran While You Waited? Culprit-Attributed CPU Contention for Containers on Stock Kernels",
+                "url": "https://arxiv.org/abs/2609.02052",
+                "publisher": "arXiv (cs.OS)",
+                "date": "2026-09-02"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-ue5m3-fp4-block-scaling",
+            "title": "A wider FP4 block scale makes the Hadamard rotation optional",
+            "dek": "Robert Hu, Carlo Luschi and Paul Balanca pretrained an 8-billion-parameter model in 4-bit floating point using an unsigned E5M3 scale for each 16-value block instead of Nvidia's signed E4M3, and reached a lower final training loss while dropping the randomised Hadamard transform altogether.",
+            "background_md": "A 4-bit float in the E2M1 layout carries one sign bit, two exponent bits and one mantissa bit, so the largest number it can hold is 6 and the spacing between representable values is coarse everywhere. Training in it is only possible because the format is never used alone: a fixed-length block of values shares one higher-precision scale factor, and each value is divided by that scale before being quantised. The scale is what supplies dynamic range. So the design question in a 4-bit training recipe is not the payload format — everyone uses E2M1 — but how many values share a scale and what the scale itself is stored in.",
+            "glossary": [
+              {
+                "term": "E2M1",
+                "definition": "A 4-bit float with one sign, two exponent and one mantissa bit. Its largest magnitude is 6, which is why every value has to be divided by a shared block scale before it can be stored."
+              },
+              {
+                "term": "Block scale",
+                "definition": "The higher-precision multiplier shared by a fixed run of quantised values — 16 of them for NVFP4, 32 for MXFP4 — supplying the dynamic range the 4-bit payload itself cannot represent."
+              },
+              {
+                "term": "Randomised Hadamard transform",
+                "definition": "An orthogonal rotation applied to a tensor before quantisation that spreads a few large coordinates over many, so no single outlier sets a block's scale. The dot product it feeds is left unchanged."
+              },
+              {
+                "term": "Stochastic rounding",
+                "definition": "Rounding up or down at random with probability set by distance to each neighbour, so the expected value is preserved and gradients smaller than one quantisation step survive in aggregate instead of truncating to zero."
+              }
+            ],
+            "why_it_matters": "A block scale is never negative, so the sign bit in Nvidia's E4M3 scale is dead weight; spending it on a fifth exponent bit lifts the largest representable scale from 448 to 61,440 without changing the spacing inside any overlapping exponent band. That is enough headroom to absorb outliers directly, which is what makes the Hadamard rotation droppable — and the rotation is not free, since it is an extra matrix multiply sitting on the gradient path of every backward pass. The argument the paper is really making is addressed to hardware designers: if a wider unsigned scale removes a whole step from the recipe, the scale format is worth changing in silicon rather than working around in software.",
+            "deeper_md": "The comparison is against Nvidia's Transformer Engine NVFP4 recipe, which shares one signed E4M3 scale across 16 E2M1 values beneath a per-tensor FP32 scale and applies a randomised Hadamard transform to the weight-gradient GEMM inputs only. Swapping that scale for unsigned E5M3 and removing the transform, while keeping selective stochastic rounding on the upstream-gradient operand of both backward GEMMs, gave a final-window training loss of 2.3090 against 2.3474 for Transformer Engine and 2.2651 for BF16, and a validation negative log-likelihood 0.0036 lower at step 30,000. The run was Nemotron-H 8B on 188.7 billion tokens, batch 768 × 8,192, 30,000 steps, tensor scales refreshed every 50 steps.\n\nThe 21.2 % throughput figure needs care: it is forward plus backward on the model body on one GB200, 3,212 → 3,894 tokens per second, and it bundles two changes — dropping the Hadamard transform and moving the last 16 projections out of BF16 into FP4 — so it isolates neither. The heavier caveat is the authors': UE5M3 exists in no silicon, so every UE5M3 run is a software emulation fitted to native FP4 outputs. Each configuration is a single seed, and 188.7 billion tokens is a fifth of what Nvidia trained on, so long-horizon stability is untested.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "UE5M3 FP4 Block Scaling for Stable Language Model Pretraining",
+                "url": "https://arxiv.org/abs/2609.02846",
+                "publisher": "arXiv",
+                "date": "2026-09-02"
+              },
+              {
+                "title": "Train Models Faster with JAX and MaxText Using NVFP4 on NVIDIA Blackwell",
+                "url": "https://developer.nvidia.com/blog/train-models-faster-with-jax-and-maxtext-using-nvfp4-on-nvidia-blackwell/",
+                "publisher": "NVIDIA Technical Blog",
+                "date": "2026-06-08"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "MEMS fabrication: surface versus bulk micromachining",
+    "slug": "mems-fabrication",
+    "subtitle": "Two ways to make silicon move — dissolve a spacer, or eat the substrate — and why the drying step is where the yield goes. Companion to today's all-dry silicon-carbide release.",
+    "tldr": "A micromachine needs a gap, and there are only two ways to get one: build a spacer layer and dissolve it afterwards, or attack the wafer itself and let the crystal decide where the etch stops. The first is surface micromachining, the second is bulk micromachining, and almost everything else — layer thickness, sidewall shape, minimum gap, and where the yield goes — follows from which one you picked.",
+    "sections": [
+      {
+        "heading": "The gap is the whole problem",
+        "body_md": "A transistor has no moving parts, so nothing in a CMOS flow has to leave a void behind. A micromechanical device does: a beam that cannot deflect is not a device, and deflection needs a defined air gap underneath, usually one or two micrometres of it.\n\nThere are exactly two ways to make that gap. You can deposit a spacer layer, build your structure on top of it, and then dissolve the spacer out from underneath — surface micromachining, in which the gap is a film you deposited on purpose in order to throw it away. Or you can attack the substrate itself and remove silicon from under the structure — bulk micromachining, in which the gap is a hole in the wafer.\n\nThe first gives you a gap you can specify to a few nanometres, because it is a deposited film thickness. The second gives you a gap measured in tens or hundreds of micrometres, because it is set by how long you leave the wafer in the bath.",
+        "deeper_md": "The distinction is not really about which layer is removed; it is about what sets the tolerance. A deposited sacrificial oxide can be controlled to a few tens of ångströms — Sandia's SUMMiT V process holds its 2.04 µm first sacrificial oxide to a standard deviation of 210 Å. A timed wet etch into the substrate is controlled by temperature, concentration and agitation, and the corresponding number is percent, not ångströms."
+      },
+      {
+        "heading": "Bulk micromachining: let the crystal do the patterning",
+        "body_md": "Potassium hydroxide attacks silicon at a rate that depends violently on which crystal plane it meets. At DTU's nanofabrication facility a 28 wt% KOH bath removes Si(100) at 0.4 µm/min at 60 °C, 0.7 at 70 °C and 1.3 at 80 °C, while the {111} planes are described as almost inert. That difference is the tool. Open a rectangular window in a mask on a (100) wafer and the etch digs downward fast, but the moment it exposes a {111} plane it stops going sideways. The sidewall angle is not something you choose; it is a property of the diamond-cubic lattice, and the cavity shape is decided by the crystal rather than by the lithography.\n\nThe mask matters as much as the etchant. LPCVD silicon nitride survives with a selectivity better than 1:10,000, so a film a few hundred nanometres thick will hold through a wafer-thickness etch. Thermal oxide will not: it goes at about 7.5 nm/min at 80 °C, which is enough to consume a normal oxide mask long before the silicon etch finishes.",
+        "deeper_md": "The reason KOH is not simply the default etchant everywhere is potassium. K⁺ is a mobile ion in silicon dioxide: it drifts under gate bias and shifts threshold voltage, which is why a fab that also runs MOS devices keeps KOH physically segregated and follows every KOH etch with a dilute HCl rinse and an RCA clean before the wafer is allowed back into a furnace. TMAH is the metal-free alternative and is chosen for exactly that reason, at the cost of a lower anisotropy ratio and worse surface finish."
+      },
+      {
+        "heading": "Surface micromachining: the gap is a layer you throw away",
+        "body_md": "Sandia's SUMMiT V is the process to read if you want to see the whole idea written down as design rules. It sits on a 6-inch <100> wafer under 0.63 µm of thermal oxide and 0.80 µm of nitride, then alternates polysilicon and sacrificial oxide: a 0.29 µm ground plane, 2.04 µm of oxide, 1.02 µm of polysilicon, 0.30 µm of oxide, 1.53 µm of polysilicon, and so on up to a 2.29 µm fourth mechanical layer.\n\nEvery gap in the finished machine is one of those oxide thicknesses. Every anchor is a hole cut in the oxide before the next polysilicon deposition, so the poly reaches through and lands on the layer beneath. Hubs and hinges get their play from the thin 0.30 µm oxide rather than the thick one. And because the topography builds up as the stack grows, the two upper sacrificial oxides are planarised by CMP — which is visible in the data: the unplanarised first oxide is held to 210 Å, while the polished third and fourth run 5,400 Å and 4,500 Å.",
+        "deeper_md": "Two numbers in the manual are worth internalising because they generalise well beyond MEMS. First, minimum width and space are 1 µm on almost every layer, and the design grid is 0.05 µm — features are snapped to that grid when the mask is written, so nothing finer exists no matter what the layout tool draws. Second, edge bias: a beam drawn at 1.000 µm in MMPOLY3 comes out measuring 0.775 µm, and one drawn at 2.000 µm in MMPOLY4 measures 1.665 µm. Lithography plus etch takes roughly 0.2–0.3 µm off the drawn width, every time, and a spring constant that goes as width cubed notices."
+      },
+      {
+        "heading": "Release is where the yield goes",
+        "body_md": "The release step — dissolving the sacrificial oxide out from under a structure that is now hundreds of micrometres wide and a micrometre above the substrate — is the step that decides whether the wafer works. The etchant has to reach the middle of a large plate, which is why SUMMiT V's rules call for etch release holes of about 2 × 2 µm spaced no more than 38 µm apart. Then the wafer has to be rinsed and dried, and as the last liquid retreats out of a one-micrometre gap it pulls the structure down hard enough to stick it permanently to the substrate.\n\nThe layout answer is the dimple: a small bump on the underside of a beam, made by a timed etch 1.5 µm into the 2 µm first oxide so that 0.5 µm of clearance is left. Dimples go in every 75 µm or closer. They do not stop the beam touching down; they make it touch down on a small, controlled contact area instead of a large one, which keeps the adhesion force below the beam's restoring force.",
+        "deeper_md": "The process answers attack the liquid rather than the geometry. Vapour HF removes the liquid–vapour interface from the release itself, and it can be made selective: implanting the sacrificial oxide to damage it raises its vapour-HF etch rate by more than 150× relative to undamaged oxide, which lets the release run fast in the gap and slow at the anchor, where undercut is the enemy. Supercritical CO₂ drying takes the interface out of the drying step instead. Today's Pulse item takes the last step and removes liquid from the flow entirely — an isotropic SF₆ plasma undercuts the silicon, an O₂ plasma strips the resist, and nothing is ever rinsed."
+      },
+      {
+        "heading": "What each route buys, and where they now meet",
+        "body_md": "Bulk micromachining gives you single-crystal silicon: no grain boundaries, no residual stress gradient, and mechanical quality factors that thin-film structures struggle to match. It costs area, because a cavity that opens out at a crystal-defined angle eats far more wafer than the structure above it, and it usually costs back-side lithography. Surface micromachining gives you arbitrary in-plane shapes at 1–2 µm thicknesses on the front side only, compatible with a CMOS-style flow, but polysilicon carries residual stress and a stress gradient that curls a released cantilever out of plane, and every released part is a stiction risk.\n\nThe interesting modern devices sit between the two. Today's silicon-carbide nanostrings are surface-like in shape — a thin film patterned, then undercut — but the undercut eats the single-crystal substrate the way a bulk etch does, and the 1.1–1.35 GPa of tensile stress in the film, which a surface micromachinist would normally fight, is deliberately kept because it is what raises the mechanical Q.",
+        "deeper_md": "Stress in a released film is two separate problems. A uniform tensile stress is usually welcome: it stiffens a doubly-clamped beam, raises its resonant frequency, and dilutes dissipation, which is why stressed silicon nitride and stressed 3C-SiC are the materials of choice for high-Q resonators. A stress *gradient* through the thickness is the enemy: it gives the film a built-in curvature, so a released cantilever bends up or down out of plane by an amount that grows as the square of its length. Surface-micromachined polysilicon is annealed specifically to flatten that gradient."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Sacrificial layer",
+        "definition": "A film deposited only so it can be removed later, leaving behind the gap that lets a structure move. Its deposited thickness is the gap, which is why surface micromachining controls gaps far better than a timed substrate etch can."
+      },
+      {
+        "term": "Anchor",
+        "definition": "The place where a released structure is still attached to what is below it. It is made by cutting a hole through the sacrificial layer before the structural film is deposited, so the film touches down and bonds there."
+      },
+      {
+        "term": "Anisotropic wet etch",
+        "definition": "A wet etch whose rate depends strongly on crystal orientation. In KOH, Si(100) goes at about 1.3 µm/min at 80 °C while {111} planes are nearly inert, so the etch front self-terminates on {111} and the cavity shape is set by the lattice."
+      },
+      {
+        "term": "Stiction",
+        "definition": "Permanent adhesion of a released part to the surface below it. Capillary force during drying makes the first contact; van der Waals and electrostatic forces hold it afterwards, and no amount of electrostatic actuation gets it back."
+      },
+      {
+        "term": "Dimple",
+        "definition": "A deliberate bump on the underside of a released structure, formed by a timed etch partway into the sacrificial oxide. It does not prevent touchdown; it limits the contact area so adhesion stays below the restoring force."
+      },
+      {
+        "term": "Edge bias",
+        "definition": "The difference between the drawn width of a feature and the width that actually comes off the line, caused by lithography and etch together. In SUMMiT V a 1.000 µm drawn polysilicon beam measures 0.775 µm."
+      },
+      {
+        "term": "Dissipation dilution",
+        "definition": "The mechanism by which built-in tensile stress lets a string store elastic energy without adding loss, so its measured Q can exceed the material's intrinsic Q by two orders of magnitude."
+      }
+    ],
+    "try_this": "Print a test pattern of lines drawn at 1, 2, 5 and 10 µm on the club's maskless stepper, develop it, and measure the developed resist widths under the microscope. Then open the SUMMiT V design manual (SAND2008-0659P, Table 6 on page 9) and compare against a process that has done this for twenty years: Sandia's 1.000 µm drawn MMPOLY3 beams measure 0.775 µm and its 2.000 µm MMPOLY4 beams measure 1.665 µm. Whatever bias you measure is the number that has to be folded into a layout before any beam width, gap or spring constant is worth trusting.",
+    "sources": [
+      {
+        "title": "SUMMiT V Five Level Surface Micromachining Technology Design Manual, v3.1 (SAND2008-0659P)",
+        "url": "https://www.osti.gov/servlets/purl/1713032",
+        "publisher": "Sandia National Laboratories",
+        "date": "2007-12-13"
+      },
+      {
+        "title": "Specific Process Knowledge / Etch / KOH Etch",
+        "url": "https://labadviser.nanolab.dtu.dk/index.php/Specific_Process_Knowledge/Etch/KOH_Etch",
+        "publisher": "DTU Nanolab LabAdviser",
+        "date": "2026-07-01"
+      },
+      {
+        "title": "Anisotropic Vapor HF etching of silicon dioxide for Si microstructure release",
+        "url": "https://arxiv.org/abs/1207.2402",
+        "publisher": "arXiv / Microelectronic Engineering 95 (2012) 83–89",
+        "date": "2012-07-10"
+      },
+      {
+        "title": "Wet Anisotropic Etching Characteristics of Si{111} in KOH-Based Solution",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11780415/",
+        "publisher": "ACS Omega 10(3), 2940–2948",
+        "date": "2025"
+      },
+      {
+        "title": "6.777J Design and Fabrication of Microelectromechanical Devices — lecture notes",
+        "url": "https://ocw.mit.edu/courses/6-777j-design-and-fabrication-of-microelectromechanical-devices-spring-2007/pages/lecture-notes/",
+        "publisher": "MIT OpenCourseWare",
+        "date": "2007"
+      },
+      {
+        "title": "All-dry processing of 3C-SiC nanomechanical string resonators for extreme aspect ratios and high intrinsic quality factor",
+        "url": "https://arxiv.org/abs/2609.02530",
+        "publisher": "arXiv (cond-mat.mtrl-sci)",
+        "date": "2026-09-02"
+      }
+    ]
+  }
+}

@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-04",
+      "foundations_slug": "bell-labs-transistor-1947",
+      "foundations_topic": "The 1947 point-contact transistor",
+      "headline": "An ETH Zürich and Czech Academy of Sciences group shows one misplaced soft phonon is why first-principles electro-optic predictions run low: put the measured frequency back and potassium niobate lands at 374 pm/V against 360 ± 30 measured.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-03",
       "foundations_slug": "mems-fabrication",
       "foundations_topic": "MEMS fabrication: surface versus bulk micromachining",
@@ -80,6 +93,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-03T12:42:49Z",
-  "latest": "2026-09-03"
+  "generated_at": "2026-09-04T12:37:15Z",
+  "latest": "2026-09-04"
 }

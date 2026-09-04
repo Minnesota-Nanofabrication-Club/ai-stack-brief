@@ -1,0 +1,386 @@
+{
+  "date": "2026-09-04",
+  "generated_at": "2026-09-04T13:40:00Z",
+  "window": "2026-09-03..2026-09-04",
+  "headline": "An ETH Zürich and Czech Academy of Sciences group shows one misplaced soft phonon is why first-principles electro-optic predictions run low: put the measured frequency back and potassium niobate lands at 374 pm/V against 360 ± 30 measured.",
+  "pulse": {
+    "read_time_min": 8,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-ktn-pockels-soft-mode",
+            "title": "One soft phonon sets the Pockels coefficient, and DFT misplaces it",
+            "dek": "Virginie de Mestral and colleagues at ETH Zürich show that the electro-optic response of potassium tantalate niobate — how far its refractive index bends per volt — rests on one soft lattice vibration, which standard simulation places at more than twice its measured frequency.",
+            "background_md": "An electro-optic modulator turns an electrical signal into an optical one by changing a crystal's refractive index with an applied field. The linear part of that change is the Pockels effect, quoted as a coefficient r in picometres per volt, and it sets the voltage-length product: a larger r means a shorter arm or a lower drive voltage. In the perovskite oxides used for this work — lithium niobate, barium titanate — most of r does not come from the electrons. It comes from the ions moving, and the softer the lattice vibration doing the moving, the larger the response.",
+            "glossary": [
+              {
+                "term": "Pockels effect",
+                "definition": "The part of a crystal's refractive-index change that is linear in the applied electric field. It exists only in materials without inversion symmetry, and it is what turns a voltage into an optical phase shift."
+              },
+              {
+                "term": "r₅₁ (pm/V)",
+                "definition": "One shear component of the Pockels tensor, in picometres per volt: multiply it by the applied field to get the change in the inverse square of the refractive index along that axis."
+              },
+              {
+                "term": "Soft mode",
+                "definition": "A lattice vibration whose restoring force nearly vanishes as a crystal approaches a ferroelectric transition, so its frequency ω falls toward zero. Ionic response scales as 1/ω², so everything it contributes grows sharply."
+              },
+              {
+                "term": "Harmonic approximation",
+                "definition": "Treating the force on a displaced atom as proportional to the displacement. It yields phonon frequencies cheaply, and it fails exactly where the energy surface is flattest — which is where soft modes live."
+              }
+            ],
+            "why_it_matters": "Because the Pockels coefficient of a soft-mode ferroelectric scales as 1/ω², a calculation that misplaces one phonon does not miss the modulator strength by a few percent — it misses it by close to an order of magnitude, which is why first-principles screening of electro-optic oxides has been running systematically low. The repair is cheap and it costs something real: substituting a measured frequency converts a predictive calculation into one that needs a far-infrared reflectivity measurement on every new composition before it will say anything at all. What it buys is a number worth chasing, an intrinsic r₅₁ near 1,800 pm/V against the 730 pm/V the same treatment gives barium titanate, which is the material integrated photonics has been building modulators from.",
+            "deeper_md": "The validation case is potassium niobate, where the answer is already known. PBEsol in the harmonic approximation returns an *imaginary* frequency for the xx-polarised transverse-optical Slater mode of the Amm2 phase — the calculation says the structure is dynamically unstable — while far-infrared work puts that mode at 56 cm⁻¹. Substituting the measured value gives r₅₁ = 374 pm/V against a measured 360 ± 30 pm/V.\n\nApplied to KTa₀.₅₁Nb₀.₄₉O₃, the same substitution replaces a calculated 60 cm⁻¹ with 24 ± 5 cm⁻¹, extracted here from far-infrared reflectivity and not previously reported, and the intrinsic r₅₁ moves from roughly 162 pm/V to roughly 1,832 pm/V — 2.5× the 730 pm/V quoted for barium titanate.\n\nThree caveats, all the authors' own. The approach stops being predictive, because each new composition now needs its own measurement first. The ±5 cm⁻¹ uncertainty on the soft mode propagates through 1/ω² into a 1,500–2,900 pm/V band, so the headline figure is a midpoint of something wide. And the calculation omits the piezoelectric contribution and the linearised Kerr response, while published measurements on this material mix Pockels and Kerr together — which matters more here than for most oxides.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Experimentally constrained modeling of the Pockels response of KNbO3 and KTaNbO3",
+                "url": "https://arxiv.org/abs/2609.03888",
+                "publisher": "arXiv",
+                "date": "2026-09-03"
+              }
+            ]
+          },
+          {
+            "id": "silicon-gesn-dmd-swir-spectrometer",
+            "title": "A GeSn photodiode buys 700 nm of reach and pays 7× in detectivity",
+            "dek": "A group at Polytechnique Montréal swapped the indium gallium arsenide detector out of a commercial digital-micromirror spectrometer and put in a germanium-tin photodiode grown on a silicon wafer, moving the cut-off from 1.7 to 2.4 micrometres at room temperature and zero bias.",
+            "background_md": "Infrared spectroscopy identifies a material from the wavelengths its molecular bonds absorb, and many of the useful polymer bands sit past 1.7 micrometres — beyond where ordinary indium gallium arsenide stops responding. Pushing a detector further into the infrared means narrowing its bandgap, which raises thermally generated dark current steeply, and that is why long-wave instruments are usually cooled. A single-pixel spectrometer avoids paying for a cooled array: a micromirror array throws one coded combination of wavelengths at a time onto one detector, and the spectrum is solved for afterwards.",
+            "glossary": [
+              {
+                "term": "eSWIR",
+                "definition": "Extended short-wave infrared, roughly 1.7–2.5 µm. It matters because the combination bands that distinguish one plastic or solvent from another lie there rather than in the near infrared below it."
+              },
+              {
+                "term": "Specific detectivity D* (cm·Hz^½/W)",
+                "definition": "A detector figure of merit that divides signal-to-noise by detector area and measurement bandwidth, so devices of different sizes can be compared. Larger is better; it falls as dark current rises."
+              },
+              {
+                "term": "GeSn",
+                "definition": "A group-IV alloy whose bandgap narrows as tin substitutes for germanium, so it can be grown in a silicon process line and still absorb light that neither silicon nor germanium reaches."
+              },
+              {
+                "term": "Hadamard multiplexing",
+                "definition": "Measuring sums of many wavelength channels at once through patterned mirrors and solving for the individual channels afterwards, which collects far more light per measurement than scanning one channel at a time."
+              }
+            ],
+            "why_it_matters": "The load-bearing number in this paper is the one that got worse. Specific detectivity at 1.55 µm falls to 1.12 × 10¹⁰ cm·Hz^½/W for the germanium-tin diode against 8.32 × 10¹⁰ for a germanium reference measured on the same bench and 3.14 × 10¹² for standard indium gallium arsenide — about seven times worse than germanium and 280 times worse than InGaAs, paid for by narrowing the bandgap until zero-bias dark current climbs from 13 nA to 490 nA. That exchange rate is the whole design question in extended short-wave infrared detection, and it is normally invisible because instruments get compared at different temperatures through different optics. Measuring both diodes in one spectrometer makes the rate explicit, and shows what is left over is still enough to separate plastics on bands past 1.7 µm.",
+            "deeper_md": "The device is a vertical double-mesa Ge₀.₉₁Sn₀.₀₉ p-i-n, grown by reduced-pressure CVD on 4-inch Si(100) through a germanium virtual substrate and a compositionally graded GeSn buffer that takes up the lattice mismatch to the active layer. The active area is 1 mm across, which is what makes a single-pixel architecture practical in the first place — there is no array to yield.\n\nThe instrument is otherwise a stock NIRscan Nano evaluation module: a DLP2010NIR micromirror array, 854 × 480 mirrors on a 5.4 µm pitch, doing Hadamard column multiplexing onto one detector, and shipping from the factory with an InGaAs photodiode over 900–1700 nm. Swapping the detector and redoing the wavelength calibration gives 492 spectral sampling points at a 21.08 nm pattern width, and an effective resolution near 10 nm that the authors attribute to how finely the mirror columns divide the dispersed spectrum rather than to the grating.\n\nCaveats. Responsivity at 1.55 µm is 0.32 A/W against 1.67 A/W for germanium, noise-equivalent power is 7.95 × 10⁻¹² W/Hz^½ against 5.32 × 10⁻¹³, and shunt resistance drops as well. No comparison is offered against a cooled extended-InGaAs or an HgCdTe instrument, which is what a lab shopping for this band would otherwise buy.",
+            "fab_angle": "The DLP2010NIR here is the same class of part a maskless stepper uses, pointed the other way: 854 × 480 mirrors on a 5.4 µm pitch chopping a dispersed spectrum into 492 wavelength columns rather than chopping an image plane into pixels. Either way the mirror pitch, not the optics, is what sets the sampling — worth holding onto when MNF specifies its own DMD.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "A Silicon-Compatible Uncooled Compact Broadband Infrared Spectrometer",
+                "url": "https://arxiv.org/abs/2609.03284",
+                "publisher": "arXiv",
+                "date": "2026-09-03"
+              },
+              {
+                "title": "DLPNIRNANOEVM — DLP NIRscan Nano Evaluation Module",
+                "url": "https://www.ti.com/tool/DLPNIRNANOEVM",
+                "publisher": "Texas Instruments",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-mldsa-norm-check-bram-escape",
+            "title": "Known-answer tests cannot reach a signature engine's fifth reject loop",
+            "dek": "Jungmin Park and co-authors report that their hardware engine for ML-DSA-65 — the lattice signature scheme NIST standardised as FIPS 204 — passed its entire known-answer-test suite while latching the accept-or-reject decision two clock cycles before the last coefficients arrived out of block RAM.",
+            "background_md": "A lattice signature scheme cannot simply sign; it has to try. A candidate signature leaks information about the secret key unless its coefficients stay small, so the signer computes norms of three intermediate polynomials, compares each against a fixed bound, and throws the candidate away and restarts with fresh randomness if any exceeds it. How many attempts that takes depends on the message being signed, so the number of loop iterations — and with it the set of hardware control paths actually exercised — is data-dependent. A test vector, by construction, fixes the message.",
+            "glossary": [
+              {
+                "term": "ML-DSA",
+                "definition": "The module-lattice digital signature algorithm standardised as FIPS 204; it signs by sampling a masked candidate, checking its norms, and retrying until one is small enough to release safely."
+              },
+              {
+                "term": "Rejection sampling",
+                "definition": "Discarding and regenerating a candidate until it satisfies a bound, so that the distribution of accepted outputs carries no information about the secret that produced them."
+              },
+              {
+                "term": "KAT (known-answer test)",
+                "definition": "A fixed input paired with its expected output, used to show an implementation computes the specified function. It exercises only the control paths its own inputs happen to reach."
+              },
+              {
+                "term": "Block RAM",
+                "definition": "The dedicated on-die memory blocks inside an FPGA. A read returns a fixed number of clock cycles after it is issued, so any logic consuming the result has to wait that latency out."
+              }
+            ],
+            "why_it_matters": "The defect is neither arithmetic nor a typing slip: the scan counter was set to the polynomial length, which is correct as mathematics and wrong as hardware, because a block-RAM read returns two cycles after it is issued and the final coefficients were therefore still in flight when the comparator latched. Nothing in the specification tells an implementer to add two. The general shape of the problem is that a fixed vector determines its own control-path coverage, so a rejection-sampled signer can only be validated by driving the loop deeper than any vector reaches — which means randomised message classes checked against a byte-exact reference, not a longer list of vectors. That turns conformance testing for post-quantum signature hardware into a coverage problem rather than a correctness one.",
+            "deeper_md": "The failure appeared on one message class at reject-loop iteration 5 and nowhere else. ML-DSA-65 signing checks three norms per candidate — ‖z‖, ‖r₀‖ and ‖c·t₀‖ — and each scan had been sized to exactly the coefficient count it needed to cover. The fix is arithmetic on the counters rather than on the data: the z scan goes from 1279 to 1281, r₀ from 1535 to 1537, and c·t₀ from 1535 to 1536, buying the block-RAM latency headroom the specification never mentions.\n\nThe detection method is the transferable part. A byte-exact golden-reference oracle in Python, driven by randomised message classes outside the vector set, ran 301,343 data-dependent signings and caught it; after the fix, 779,945 checks across key generation, signing, verification tamper-rejection, encapsulation/decapsulation and zeroisation returned no escapes.\n\nCaveats. This is one design on one part — a Kintex-7 XC7K160T at 98.5 % slice occupancy on a 100 MHz core clock — and the end-to-end rates over PCIe (480 signatures per second) are FPGA numbers, not ASIC numbers. The paper also credits a language-model agent with directing the flow, at 71.6 % task success over 232 experiments and only 50–53 % on synthesis and bring-up; that figure rests on the authors' own task labelling and nobody outside has reproduced it.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "AI-Assisted Design of a Post-Quantum Cryptographic Accelerator: A Deployed-Silicon Case Study",
+                "url": "https://arxiv.org/abs/2609.04058",
+                "publisher": "arXiv",
+                "date": "2026-09-03"
+              },
+              {
+                "title": "FIPS 204: Module-Lattice-Based Digital Signature Standard",
+                "url": "https://csrc.nist.gov/pubs/fips/204/final",
+                "publisher": "NIST",
+                "date": "2024-08-13"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-prefetch-confidence-gate",
+            "title": "A learned prefetcher's win turns out to belong to its gate",
+            "dek": "Youssef Majdane, Simone Jarno Casartelli and Enrico Lopedoto put the same confidence gate in front of a 257-parameter neural cache prefetcher and in front of a plain stride rule, and the neural advantage disappeared: the admission policy, not the predictor, was doing the work.",
+            "background_md": "A hardware prefetcher guesses which cache line a program will touch next and fetches it early, because a DRAM access costs hundreds of cycles and an L1 hit costs about one. Guessing wrong is not free — a useless prefetch occupies a cache slot, a miss-status register and a share of memory bandwidth — so prefetchers are judged on accuracy and coverage together. Learned prefetchers have been proposed for a decade on the argument that a small model captures irregular access patterns a fixed stride rule cannot.",
+            "glossary": [
+              {
+                "term": "Prefetch accuracy",
+                "definition": "The fraction of issued prefetches actually used before they are evicted. Whatever is left is cache capacity and DRAM bandwidth spent on lines nobody asked for."
+              },
+              {
+                "term": "IPC (instructions per cycle)",
+                "definition": "How many instructions a core retires per clock. It is the endpoint measure a microarchitectural change has to move; accuracy and coverage are proxies for it."
+              },
+              {
+                "term": "Stride prefetcher",
+                "definition": "The classical rule: assume the next address differs from the current one by the same delta as the previous pair did, and fetch that. Cheap, and it covers most array traversals."
+              },
+              {
+                "term": "Matched control",
+                "definition": "An experiment in which two arms differ in exactly one component, so any difference in outcome can be attributed to it. Here the gate is held identical and only the predictor changes."
+              }
+            ],
+            "why_it_matters": "Prefetcher work is usually scored on accuracy and coverage, and this run shows those proxies coming apart from the endpoint: closing the gate removed 35.1 % of prefetches in aggregate and lifted accuracy from 11.0 % to 15.4 %, while DRAM reads moved 0.07 % and the geometric-mean IPC ratio landed at 0.996 with a confidence interval straddling one. Two of the three numbers a reader would take as evidence of improvement moved a great deal; the one that pays for the memory traffic did not move at all. The design lesson separates cleanly from the negative result: an admission policy that suppresses prefetching while recent prediction error is large relative to the predicted stride is where the benefit lives, and it bolts onto a stride detector, so a learned predictor now has to beat gated stride rather than ungated stride.",
+            "deeper_md": "The gate is a running median. It keeps the last W = 48 absolute prediction errors and issues a prefetch only while median(E) < τ·|d̂| with τ = 1.0, so it shuts during a phase change and reopens once the predictor recovers. What it gates is a 6–32–1 ReLU network of 257 parameters, trained online on opcode, program counter, address, the current and previous delta, and hit/miss, predicting a delta rather than an address, with training targets clamped to ±16 words.\n\nThe matched control is the method. The identical gate goes in front of a stride detector that simply repeats the last delta. On the authors' local model the gated MLP scores 1.000 ± 0.001× speedup against 0.98× for ungated stride; with gates on both, the two are indistinguishable on random traffic and the MLP is slower on regular streams. External validation ran ChampSim at commit e6530c7, 50 M warm-up and 200 M measured instructions, over twenty SPEC CPU2017 programs: 7 wins, 11 losses, 2 ties, exact sign test p = 0.481.\n\nThe authors name the limits rather than burying them. A running median is not cheap enough to build in hardware; the ±16-word clamp destroys dense matrix multiply, where speedup collapses from 11× to 1.0×; and the conclusion covers a tiny online model, not a large offline-pretrained one such as Pythia.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Confidence-Gated Admission for Hardware Prefetching: When the Gate Matters More Than the Predictor",
+                "url": "https://arxiv.org/abs/2609.04040",
+                "publisher": "arXiv",
+                "date": "2026-09-03"
+              },
+              {
+                "title": "ChampSim — trace-based microarchitecture simulator",
+                "url": "https://github.com/ChampSim/ChampSim",
+                "publisher": "Texas A&M University",
+                "date": "2026"
+              }
+            ]
+          },
+          {
+            "id": "computing-nacre-container-privilege-split",
+            "title": "Splitting a host's right to manage memory from its right to read it",
+            "dek": "Linke Song and colleagues at the Chinese Academy of Sciences propose NACRE, a RISC-V design that gives each Linux container an identity the hardware itself recognises, so the host kernel can still schedule and page the container but cannot read or silently remap its memory.",
+            "background_md": "Containers get their density from sharing one kernel: the host allocates their memory, maps their pages and schedules their threads, which is also precisely why a compromised host can read or rewrite anything inside them. The existing answers move the protection boundary somewhere the host does not control — an enclave holding one address space, or an entire guest operating system inside a virtual machine — and both give back what containers were for, because a separate protection context means a page-table switch and a translation-cache flush on every crossing.",
+            "glossary": [
+              {
+                "term": "M-mode / S-mode",
+                "definition": "RISC-V's machine and supervisor privilege levels. M-mode is the most privileged and normally runs firmware; S-mode is where an operating-system kernel runs."
+              },
+              {
+                "term": "satp",
+                "definition": "The RISC-V control register holding the physical address of the active page table. Writing it switches address spaces, and the cached translations built under the old one have to be discarded."
+              },
+              {
+                "term": "TLB",
+                "definition": "The small cache of recent virtual-to-physical address translations. Flushing it forces the next few thousand memory accesses to walk page tables in memory instead of hitting the cache."
+              },
+              {
+                "term": "Trap delegation",
+                "definition": "Routing a hardware exception or system call to a chosen privilege level rather than the default one, so a different piece of software gets first sight of it."
+              }
+            ],
+            "why_it_matters": "The claim under test is that authority splits cleanly in two: the host keeps the right to decide which physical pages a container gets and when it runs, while a machine-mode monitor keeps the sole right to commit an identity, a mapping or a page-role change, and a supervisor-mode agent in an isolated domain is the only thing that sees the container's registers. Because that agent shares the container's own page table, a delegated system call needs no satp write, no virtual-machine entry and no TLB flush — which is why the measured cost is 3.5 % on lmbench syscall and pipe means and 1.9 % on aggregate nginx throughput rather than the multiples a VM-based confidential container pays. Whether the split holds against a genuinely hostile kernel is a separate question this prototype does not answer.",
+            "deeper_md": "The mechanism is a container identifier promoted to architectural state. Every process in a container carries the same cid; the hardware checks accesses and routes traps against it; untrusted Linux therefore cannot forge membership or reach protected pages by remapping them. Security-sensitive commits — identity changes, ownership transitions, page-role metadata — happen only in M-mode, and a delegated service that neither reads private bytes nor changes protected state never enters M-mode at all.\n\nThe numbers are small, and so is the evidence behind them. lmbench, three runs each: null syscall 4.894 µs against 4.969 µs, read 8.389 against 8.523, write 5.924 against 5.892, pipe latency 705.012 against 730.357 µs, pipe bandwidth 47.983 against 47.803 MB/s. nginx, 1 GiB at concurrency 16 over eight object sizes from 4 KiB to 512 KiB: 16,557 against 16,873 KB/s, 1.87 % lower.\n\nThe authors are unusually direct about what is missing, and it is most of the system. This is a QEMU prototype of the single-container private-memory substrate. Cross-container ownership, protected shared objects, attestation, protected storage and network paths, multicore-safe agent entry, and a teardown that is safe against a malicious host are all design rather than code — and they say plainly that three repetitions cannot support the apparent speedups their own table shows.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "NACRE: Rethinking Confidential Containers through Native Architectural Support",
+                "url": "https://arxiv.org/abs/2609.03849",
+                "publisher": "arXiv",
+                "date": "2026-09-03"
+              },
+              {
+                "title": "RISC-V Instruction Set Manual (Volume II: Privileged Architecture)",
+                "url": "https://github.com/riscv/riscv-isa-manual",
+                "publisher": "RISC-V International",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-random-kv-eviction",
+            "title": "Evicting KV cache entries at random matches every scoring heuristic",
+            "dek": "Heng Wang, Jielin Qiu and co-authors kept the prompt, then threw away later key-value cache entries uniformly at random inside each attention head, and matched the best scored eviction policy across four models and six reasoning benchmarks while serving 32–43 % more tokens per second.",
+            "background_md": "A transformer stores every token's key and value vectors so later tokens can attend to them, and that cache grows linearly with sequence length, layers and heads — long chains of reasoning routinely leave the cache, not the weights, as the thing that will not fit in memory. Eviction policies exist to drop part of it, and they all share one shape: score each cached position by some estimate of how much future queries will attend to it, keep the top K per head, discard the rest. They differ only in how the score is computed.",
+            "glossary": [
+              {
+                "term": "KV cache",
+                "definition": "The stored key and value vectors for every token already processed, kept so each new token can attend to the past without recomputing it. Its size grows with sequence length × layers × heads."
+              },
+              {
+                "term": "Per-head budget K",
+                "definition": "The number of cached positions each attention head is allowed to keep after eviction. It is the knob that sets the compression ratio, independently of which positions are chosen."
+              },
+              {
+                "term": "PagedAttention",
+                "definition": "vLLM's allocator, which stores the KV cache in fixed-size blocks rather than one contiguous region, so space freed by eviction can be reused without copying the rest."
+              },
+              {
+                "term": "SnapKV",
+                "definition": "The standard strong baseline here: it scores each cached position by the attention it received from a window of recent queries, max-pooled over positions, and keeps the highest-scoring ones."
+              }
+            ],
+            "why_it_matters": "If a carefully computed score and a coin flip retain the same information, the score was not selecting on the property it claimed to. That is a statement about the cache rather than about the scorers: at roughly 4× compression with the prompt fully protected, what survives in a head appears to be governed by how many entries survive rather than which ones. It also deletes a cost nobody was counting, because computing and maintaining per-position scores runs inside the serving loop — dropping it is worth 32–43 % throughput over the strongest scored baseline at 32k-token generation under vLLM. The practical consequence is a new floor for anyone publishing an eviction method: beat uniform random at the same budget, or the gain being reported is budget rather than selection.",
+            "deeper_md": "The policy is one line of code. Positions 1 through ℓ_p — the prompt — are given infinite score and always kept; every generated position after that gets an i.i.d. uniform score drawn independently per attention head; keep the top K. There is no scoring computation at all.\n\nThe baselines are four scored evictors: SnapKV, R-KV, VaSE and TriAttention. The models are Qwen3 at 4B, 14B and 32B plus Phi-4-reasoning at 14B. The tasks are MATH500 (500 problems), GPQA-Diamond (198), AIME (30), HMMT (60) and LiveCodeBench (383), at per-head budgets of K = 1024, 2048, 4096 and 3072 respectively — about 4× compression against typical trace length, 3× for LiveCodeBench. Throughput under vLLM with PagedAttention at 32k generations is 1.58–2.67× full attention, and 32–43 % above TriAttention.\n\nTwo things to hold onto. The result is stated at these budgets and does not claim scoring is worthless under harder compression, where protecting the whole prompt itself consumes the allowance — the authors flag exactly that for code reasoning, the one place Qwen3-32B fails to match TriAttention. And AIME at 30 problems and HMMT at 60 are small enough that parity on them is weak evidence in either direction.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Random Attention: Rethinking KV Cache Eviction for Efficient Reasoning",
+                "url": "https://arxiv.org/abs/2609.03430",
+                "publisher": "arXiv",
+                "date": "2026-09-03"
+              },
+              {
+                "title": "SnapKV: LLM Knows What You are Looking for Before Generation",
+                "url": "https://arxiv.org/abs/2404.14469",
+                "publisher": "arXiv",
+                "date": "2024-04-22"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "The 1947 point-contact transistor",
+    "slug": "bell-labs-transistor-1947",
+    "subtitle": "What Bardeen and Brattain actually built on 16 December, why it amplified, and why the device that started everything was obsolete inside four years.",
+    "tldr": "The first transistor was built to test a theory and then worked for a reason the theory did not predict. Bardeen and Brattain set out to make an electric field control current in a semiconductor; what they ended up with was a device in which one contact injected holes into germanium and a second contact, biased the other way, collected them. That mechanism — minority-carrier injection — is what every bipolar transistor since has used, and the field-effect idea they had actually been chasing took another twelve years and a layer of thermally grown oxide before it worked.",
+    "sections": [
+      {
+        "heading": "The amplifier that should have worked",
+        "body_md": "Start with the idea that failed, because everything else is a response to it. Put a metal plate close to a thin slab of semiconductor, hold it at a voltage, and the field should pull mobile charge into or out of the slab. More carriers means lower resistance. Change the plate voltage and you change the current through the slab: an amplifier with no moving parts, no vacuum, and no filament to burn out. This is the field-effect transistor, and William Shockley had been pushing versions of it since 1939, with Walter Brattain helping to test them.\n\nIt did not work. Not \"worked badly\" — the experiments produced no useful effect at all. That is a strange result, because the arithmetic is not subtle: you can compute how much charge a given field induces on a conductor from electrostatics alone, and the induced charge should have been more than enough to see. Something was intercepting the field before it reached the interior of the semiconductor, and nobody could say what.",
+        "deeper_md": "The electrostatics is the part worth doing yourself. A field E at the surface of a material with permittivity ε terminates on an areal charge density σ = εE. For a field of order 10⁵ V/cm at a semiconductor surface, σ works out to roughly 10¹² elementary charges per square centimetre — comparable to the total mobile carrier count in a thin slab, which is exactly why the effect should have been large. That same number is the reason the answer, when it came, had to be a surface charge of the same order: nothing smaller could have absorbed the field."
+      },
+      {
+        "heading": "Bardeen's answer: the surface has its own electrons",
+        "body_md": "In March 1946 John Bardeen supplied the missing piece. A crystal surface is where the lattice stops, and stopping a lattice leaves electronic states behind: bonds with nothing to bond to, plus whatever the air has deposited on top. Those states sit at energies inside the semiconductor's band gap, where the bulk has no states at all, and they are localised at the surface, so an electron occupying one is stuck there.\n\nThat changes everything about the field experiment. When you apply a field, charge does flow to the surface — but it fills surface states rather than becoming mobile carriers in the bulk. The trapped sheet of charge then terminates the field lines, and the interior of the crystal never sees them. The measured conductance barely moves, not because the electrostatics was wrong but because the induced charge went somewhere useless. Bardeen's surface states also explained an older puzzle: why the barrier height of a metal-semiconductor contact depends so weakly on which metal you use.",
+        "deeper_md": "The weak metal dependence is the diagnostic. In the textbook Schottky picture, the barrier at a metal–semiconductor junction should track the metal's work function one-for-one. Measured barriers move far less than that. If the surface-state density is high enough, filling or emptying those states supplies whatever charge is needed to keep the surface potential nearly fixed — the Fermi level is pinned — and the barrier becomes a property of the semiconductor's surface rather than of the metal. Pinning and the dead field effect are the same phenomenon seen from two directions."
+      },
+      {
+        "heading": "The workaround that half-worked, then the wedge",
+        "body_md": "If a trapped sheet of charge is screening the field, get rid of the sheet. On 17 November 1947, Robert Gibney suggested applying the gate voltage through an electrolyte in contact with the germanium surface. Ions in the solution drift up and neutralise the surface charge, leaving the applied field free to reach the interior. Within days Brattain had amplification — but only at very low frequencies, because ions in a liquid are enormously heavier and slower than electrons, and the whole mechanism has to move them every cycle.\n\nBardeen's next step was to shorten the distance the effect had to act over: put a second contact very close to the first. On 16 December 1947 Brattain cut a strip of gold foil with a razor blade where it wrapped over a plastic wedge, leaving two contacts separated by about the thickness of a sheet of paper, and pressed the wedge onto a slab of high-purity germanium with a spring. It amplified — around a hundredfold, all the way up through the audio band.",
+        "deeper_md": "The frequency ceiling on the electrolyte version is a mobility argument and it is worth putting numbers on. Electron mobility in germanium at room temperature is of order 10³ cm²/V·s; ionic mobility in an aqueous electrolyte is of order 10⁻³ cm²/V·s. Six orders of magnitude between the two means the electrolyte gate's response time is set entirely by ion transport, which is why the November device amplified only at very low frequency. Nothing about the arrangement could be scaled out of that; the geometry had to change instead."
+      },
+      {
+        "heading": "Why it amplified, and why nobody could say so cleanly",
+        "body_md": "The device was not a field-effect transistor and did not work by the mechanism it was built to demonstrate. The germanium slab was n-type, with electrons as the abundant carrier, but it carried a very thin p-type layer at the surface. The emitter contact sat at a small positive voltage — a fraction of a volt — which forward-biases it and pushes holes into that surface layer. Holes are the scarce carrier in n-type germanium, so a modest injected current represents an enormous proportional change in the local hole population.\n\nThe collector contact sat at a much larger negative voltage, between about 4 and 40 volts, reverse-biased, and would normally pass very little current. The injected holes arriving in its neighbourhood lower the barrier that was blocking it. So a small change in emitter current produces a large change in collector current, and the power delivered into the collector circuit exceeds the power taken from the emitter circuit. That is amplification by minority-carrier injection, and it is bipolar action: both carrier types matter.",
+        "deeper_md": "The awkwardness in the original literature is real and it is geometric. The current spreads in three dimensions through a thin surface layer whose thickness and doping nobody could measure directly, so there was no clean one-dimensional model to write down. Contemporary accounts say as much — that theoretical analysis is difficult because of the three-dimensional nature of the device, and that the internal operation is in fact not completely understood. That sentence was written by people with access to the device and the inventors, which is worth remembering whenever a modern retelling makes 16 December sound like the confirmation of a prediction."
+      },
+      {
+        "heading": "Why Shockley replaced it in four years",
+        "body_md": "Shockley conceived the junction transistor on 23 January 1948, five weeks after the demonstration. His objection was not that the point-contact device failed to work but that its delicate mechanical configuration — two pressed metal points a hair apart, held by a spring — would be difficult to manufacture in high volume with sufficient reliability. Nothing about that objection is about physics. It is about the fact that the electrically important dimension of the device, the spacing between emitter and collector, was set by a razor cut and a spring rather than by a process step anyone could specify.\n\nOn 16 February 1948 John Shive showed that holes injected on one face of a thin germanium slab arrive at the other face, travelling through the bulk rather than creeping along the surface. That result freed the design from the surface entirely. Shockley's junction transistor replaces the two point contacts with grown p-n junctions, so the emitter injection efficiency and the base transit are set by a doping profile you can calculate in advance. Bell Labs had manufacturable processes by 1951.",
+        "deeper_md": "The design consequence is that the junction transistor's behaviour is fixed by things a process engineer controls, while the point-contact device's behaviour is fixed by things a process engineer can only sort for. Base width becomes a diffusion or growth parameter rather than the accidental spacing of two razor-cut foils; emitter injection efficiency becomes a ratio of doping levels rather than a property of a pressed contact; the current gain becomes computable in advance rather than measured after the fact. That is the whole difference between a laboratory result and an industry, and it is why 1947 is the famous date while 1951 is the important one."
+      },
+      {
+        "heading": "The surface came back, and oxide answered it",
+        "body_md": "The surface-state problem was never solved in 1947. It was routed around: the point-contact transistor works *because* of a surface layer rather than in spite of one, and the junction transistor works by moving the action into the bulk where surface states cannot reach it. The original goal — modulate a semiconductor's conductance with an external field — stayed out of reach.\n\nWhat eventually made it reachable was a process step. Carl Frosch and Lincoln Derick found in 1955 that a thermally grown silicon-dioxide layer both masks diffusion and protects the silicon underneath it, and in 1959 John Atalla and Dawon Kahng showed that the density of states at a thermally grown Si–SiO₂ interface is low enough that an applied field does reach the silicon. That is the MOSFET, and every chip in the building descends from it. The 1947 device and the 1959 device are two answers to one question about what happens where a crystal stops.",
+        "deeper_md": "This is the point where the story lands on a tube furnace. Interface trap density D_it at a well-made thermally grown Si–SiO₂ interface is on the order of 10¹⁰ cm⁻²eV⁻¹ — roughly two orders of magnitude below the ~10¹² cm⁻² sheet the first section's electrostatics demands, which is why a gate field now survives to the channel. Getting there depends on oxidation temperature, ambient, and post-metallisation anneal in forming gas, which is to say it is a furnace recipe rather than a design choice. A cleanroom that can grow a clean gate oxide has solved Bardeen's problem; one that cannot has not."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Surface state",
+        "definition": "An electronic state localised at a crystal's surface, at an energy inside the band gap where the bulk has no states. It comes from unterminated bonds and adsorbed species, and an electron sitting in one is immobile."
+      },
+      {
+        "term": "Fermi-level pinning",
+        "definition": "What happens when surface states are dense enough that filling or emptying them absorbs any charge you push at the surface. The surface potential barely moves, so an applied field never penetrates and a contact's barrier height stops depending on which metal you used."
+      },
+      {
+        "term": "Minority-carrier injection",
+        "definition": "Driving carriers of the type that is scarce in a region — holes into n-type germanium — across a forward-biased contact. Because they are scarce, even a small injected current is a large proportional change, which is why it can control a much bigger current elsewhere."
+      },
+      {
+        "term": "Point contact",
+        "definition": "A metal wire or foil pressed onto a semiconductor surface under spring pressure, forming a rectifying junction whose area and character are set by the mechanics of the press rather than by any specified process step."
+      },
+      {
+        "term": "Emitter, base, collector",
+        "definition": "The three terminals of a bipolar transistor: the emitter injects minority carriers, the base is the region they cross, and the reverse-biased collector sweeps up whatever arrives. In 1947 the emitter and collector were the two gold points and the base was an electrode on the back of the slab."
+      },
+      {
+        "term": "Thermal oxide (SiO₂)",
+        "definition": "Silicon dioxide grown by heating silicon in oxygen or steam rather than deposited onto it. It consumes the silicon it grows from, which is why the resulting interface is buried and clean enough to cut the interface-state density by orders of magnitude."
+      },
+      {
+        "term": "D_it (interface trap density)",
+        "definition": "The number of electrically active states per square centimetre per electron-volt at a semiconductor–insulator interface. It is the modern, measurable version of the quantity that defeated the 1940s field-effect experiments."
+      }
+    ],
+    "try_this": "Pull the original two-page letter — Bardeen and Brattain, \"The Transistor, A Semi-Conductor Triode\", Physical Review 74, 230 (1948) — through the UMN library, and mark every sentence that is about the germanium surface rather than its interior; you will end up marking most of the paper, which is the whole point. Then read Campbell, Fabrication Engineering at the Micro- and Nanoscale, on thermal oxidation and the Si–SiO₂ interface, and write down the one number that separates 1947 from 1959: interface trap density. The club's tube furnace is the tool that sets it.",
+    "sources": [
+      {
+        "title": "1947: Invention of the Point-Contact Transistor",
+        "url": "https://www.computerhistory.org/siliconengine/invention-of-the-point-contact-transistor/",
+        "publisher": "Computer History Museum",
+        "date": "2026"
+      },
+      {
+        "title": "How the First Transistor Worked",
+        "url": "https://spectrum.ieee.org/transistor-history",
+        "publisher": "IEEE Spectrum",
+        "date": "2022-11-20"
+      },
+      {
+        "title": "The Surface State Job",
+        "url": "https://computerhistory.org/blog/the-surface-state-job/",
+        "publisher": "Computer History Museum",
+        "date": "2022-12-12"
+      },
+      {
+        "title": "1948: Conception of the Junction Transistor",
+        "url": "https://www.computerhistory.org/siliconengine/conception-of-the-junction-transistor/",
+        "publisher": "Computer History Museum",
+        "date": "2026"
+      },
+      {
+        "title": "1955: Development of Oxide Masking",
+        "url": "https://www.computerhistory.org/siliconengine/development-of-oxide-masking/",
+        "publisher": "Computer History Museum",
+        "date": "2026"
+      },
+      {
+        "title": "1960: Metal Oxide Semiconductor (MOS) Transistor Demonstrated",
+        "url": "https://www.computerhistory.org/siliconengine/metal-oxide-semiconductor-mos-transistor-demonstrated/",
+        "publisher": "Computer History Museum",
+        "date": "2026"
+      },
+      {
+        "title": "The Invention of the Transistor",
+        "url": "http://www.imm.dtu.dk/~flst/Edu/49260/Historie/Invention.html",
+        "publisher": "Technical University of Denmark",
+        "date": "2026"
+      }
+    ]
+  }
+}

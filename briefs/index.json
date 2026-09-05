@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-05",
+      "foundations_slug": "opc-and-resolution-enhancement",
+      "foundations_topic": "OPC, phase-shift masks, and inverse lithography",
+      "headline": "Four researchers re-read 83 microarchitectural side-channel papers from 2014 to 2024 and found 92.8 percent carry at least one full evaluation flaw and 49.4 percent shipped no code, so a decade of attack numbers cannot be ranked against each other.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-04",
       "foundations_slug": "bell-labs-transistor-1947",
       "foundations_topic": "The 1947 point-contact transistor",
@@ -93,6 +106,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-04T12:37:15Z",
-  "latest": "2026-09-04"
+  "generated_at": "2026-09-05T11:45:17Z",
+  "latest": "2026-09-05"
 }

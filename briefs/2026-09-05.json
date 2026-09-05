@@ -1,0 +1,427 @@
+{
+  "date": "2026-09-05",
+  "generated_at": "2026-09-05T12:20:00Z",
+  "window": "2026-09-04..2026-09-05",
+  "headline": "Four researchers re-read 83 microarchitectural side-channel papers from 2014 to 2024 and found 92.8 percent carry at least one full evaluation flaw and 49.4 percent shipped no code, so a decade of attack numbers cannot be ranked against each other.",
+  "pulse": {
+    "read_time_min": 8,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-3d-sensor-weighting-field-timing",
+            "title": "A 3D sensor times worst exactly where its electrodes are",
+            "dek": "A group testing a 300-micrometre 3D silicon pixel sensor in the CERN SPS beamline — a sensor whose electrodes are narrow columns etched down into the bulk rather than films on its faces — measured 153 picoseconds of timing resolution for particles crossing between the columns and about 250 picoseconds for those crossing on them.",
+            "background_md": "A pixel detector records where and when a charged particle crossed it. In a planar sensor the electrodes are films on the top and bottom faces, so liberated charge drifts the full wafer thickness. A 3D sensor instead etches doped columns down into the bulk and biases them against each other, so drift distance is set by column spacing rather than thickness — which is why irradiated experiments choose it, since a shorter drift gives trapped charge less chance to be lost. But current is induced by motion, not arrival, and the induced current is governed by the weighting field, a purely geometric quantity that a column array makes deliberately non-uniform.",
+            "glossary": [
+              {
+                "term": "Weighting field (Shockley–Ramo)",
+                "definition": "The geometric field that converts a carrier's velocity into induced current on an electrode. It is set by electrode shape alone, and it collapses toward zero for a carrier sitting right at an electrode."
+              },
+              {
+                "term": "Time walk",
+                "definition": "The dependence of a discriminator's firing time on pulse amplitude: a small signal crosses a fixed threshold later than a large one, so timing has to be corrected using the measured charge."
+              },
+              {
+                "term": "TDC bin",
+                "definition": "The quantisation step of the time-to-digital converter that timestamps a hit. A bin of width w contributes w/√12 of RMS uncertainty even if everything else is perfect."
+              },
+              {
+                "term": "Hit efficiency",
+                "definition": "The fraction of tracks the telescope says passed through a pixel that the sensor actually registered above threshold — the number that says whether the detector is losing particles outright."
+              }
+            ],
+            "why_it_matters": "Detector groups pick 3D sensors for radiation hardness, and the short drift between columns is often assumed to buy timing too. At normal incidence it does the opposite: a carrier created next to a column starts in a region where the weighting field is nearly zero, induces almost no current until it has moved, and so produces a pulse that rises late and slowly. That is a geometry problem, not an electrical one, and no amount of bias fixes it — the improvement saturates around 40 volts. What does fix it is mounting angle. Tilting eight degrees so no track sees a column end-on lifts efficiency from 97 to 99.3 percent, which makes the tilt a first-order design parameter rather than a mechanical afterthought.",
+            "deeper_md": "The device is a 3D double-sided, double-type-column sensor: 55 µm pixel pitch, 10 µm nominal column diameter, junction columns driven about 70 µm down from the front of a 300 µm wafer and ohmic columns about 60 µm up from the back. It is bump-bonded to Timepix4, a 512 × 448 array on the same 55 µm pitch whose time-to-digital converter has a 195 ps bin — 56.4 ps of RMS quantisation, measured here at 60.3 ± 1.0 ps.\n\nAt 60 V and a 1 ke⁻ threshold in the CERN SPS H8 beam (180 GeV/c mixed hadrons, telescope pointing 2.3 ± 0.1 µm, MCP-PMT reference ≈12 ps), the sensor resolves 245 ± 3 ps overall but 153 ± 0.4 ps for hits landing between electrodes. Bias helps only to about 40 V, by which point 280 ps at 5 V has already flattened out near 245 ps. Rotating to 8° gives 233 ± 3 ps, 99.3 % efficiency and ≈7 µm spatial resolution.\n\nThe authors' own caveats: an ²⁴¹Am source exposes a 17.5 % charge-calibration mismatch, the on-chip oscillator varies enough across the die to move timestamps by up to 0.5 ns before per-pixel correction, and multi-hit time measurements are 4 % correlated, which caps what cluster averaging can recover.",
+            "fab_angle": "Read the geometry as an etch problem: a 10 µm column driven 70 µm into silicon is a 7:1 hole that then has to be doped through its full depth and filled without voiding, from both wafer faces, on a 55 µm grid. That is the same aspect-ratio-dependent etch and conformal-fill fight a teaching cleanroom meets on a much shallower scale, and here the reward for winning it is radiation tolerance rather than density.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Testbeam characterization of a 3D silicon sensor read out by Timepix4",
+                "url": "https://arxiv.org/abs/2609.04042",
+                "publisher": "arXiv",
+                "date": "2026-09-03"
+              },
+              {
+                "title": "Timepix4, a large area pixel detector readout chip which can be tiled on 4 sides providing sub-200 ps timestamp binning",
+                "url": "https://iopscience.iop.org/article/10.1088/1748-0221/17/01/C01044",
+                "publisher": "Journal of Instrumentation (IOP)",
+                "date": "2022"
+              },
+              {
+                "title": "Timing resolution performance of Timepix4 bump-bonded assemblies",
+                "url": "https://arxiv.org/abs/2404.15499",
+                "publisher": "arXiv",
+                "date": "2024-04-23"
+              }
+            ]
+          },
+          {
+            "id": "silicon-tcad-graph-surrogate-fields",
+            "title": "A TCAD surrogate that predicts the fields, not the figure of merit",
+            "dek": "Leonid Popryho, Ayoub Sadeghi and Inna Partin-Vaisband trained a graph attention network directly on the tetrahedral mesh a device simulator solves on, so it returns the electrostatic potential and both quasi-Fermi levels at every node of a gallium-nitride FinFET rather than one summary number — and it runs roughly ten thousand times faster than the commercial solver it was trained against.",
+            "background_md": "Before a transistor is built, its behaviour is predicted by solving the drift-diffusion system on a mesh cut through the device: Poisson's equation for the electrostatic potential, plus one continuity equation for electrons and one for holes. The unknowns are three fields defined everywhere in the structure, and the solver iterates until current balances across every mesh cell. Cost climbs with mesh size, and a three-dimensional multi-fin structure needs tens of thousands of tetrahedra, so a single bias sweep runs for hours. Machine-learning surrogates have mostly dodged that by regressing design parameters straight onto a threshold voltage or an on-current, which discards the physics along the way.",
+            "glossary": [
+              {
+                "term": "Drift-diffusion system",
+                "definition": "The three coupled equations a device simulator solves — Poisson for potential plus electron and hole continuity — treating carriers as a fluid pushed by field and by concentration gradient."
+              },
+              {
+                "term": "Quasi-Fermi level (Φₙ, Φₚ)",
+                "definition": "The energy that a carrier population behaves as if it were in equilibrium with once a bias is applied; the split between the electron and hole levels is what drives current."
+              },
+              {
+                "term": "Physics-informed loss",
+                "definition": "A training objective that adds the residual of the governing equation — here the finite-volume divergence of the carrier current — to the ordinary data-fitting error, so the network is penalised for solutions that do not conserve current."
+              },
+              {
+                "term": "RMSE (V)",
+                "definition": "Root-mean-square error of a predicted field in volts, averaged over mesh nodes; on a potential field it should be read against the gate swing that sets the device's operating point."
+              }
+            ],
+            "why_it_matters": "Predicting a scalar ties a surrogate to the geometry family it was trained on, because the scalar is defined by that geometry. Predicting the fields on the mesh does not: the mesh is a graph, the network is a message-passing operator over graphs, and a model fitted on one-to-five-fin devices runs unchanged on forty fins, limited by GPU memory rather than by anything learned. That turns the parameter search inside out. Instead of choosing a handful of designs because each costs hours, a large candidate pool is screened in seconds and only the designs the ensemble is least certain about are handed to the real simulator — which is how the paper assembled its own training set.",
+            "deeper_md": "Training data is 200 device geometries — a bootstrap of 147 plus 53 chosen by the active-learning loop itself — giving 1,786 bias snapshots, because each Sentaurus run emits nine graphs sharing one topology: five gate-sweep points at V_DS = 0 and four drain-sweep points at maximum V_GS. Each node carries 17 features: geometry, material, doping, aluminium fraction, contact flags, bias, permittivity and a volume tag. Meshes span a few thousand nodes to about 10,700, median ≈3,800.\n\nInside the one-to-five-fin training range the surrogate reproduces ψ, Φₙ and Φₚ with per-field RMSE of 0.16–1.3 V. Pushed to eight fins, the physics-informed model's error grows 2–12×; the same network trained on data alone grows 18–22×, which is the argument for carrying the continuity residual. On a workstation with two RTX 4090s, inference takes 65 ms at two fins and 1.7 s at 38, against roughly 19 minutes and 7.5 hours for the full solver — a speedup of 1.6 × 10⁴ to 4.1 × 10⁴.\n\nThe physics term is a simplified finite-volume scheme with constant mobility and no generation–recombination, so anything recombination-limited sits outside it. The material encoding is tied to one GaN/AlGaN/HfO₂/TiN/Au stack, and the reported metric is field RMSE, not terminal current.",
+            "fab_angle": "The training set is generated by a commercial TCAD licence, which is the part a university group cannot skip: the surrogate is cheap, the labelled meshes that produced it are not. Any lab wanting this speedup for its own device family needs the expensive simulator first, and the active-learning loop is the honest way to spend the fewest runs on it.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Mesh-Native Physics-Informed Graph Surrogates for TCAD-in-the-Loop Design Space Exploration",
+                "url": "https://arxiv.org/abs/2609.02988",
+                "publisher": "arXiv",
+                "date": "2026-09-02"
+              },
+              {
+                "title": "Sentaurus Device — multidimensional device simulator",
+                "url": "https://www.synopsys.com/manufacturing/tcad/device-simulation/sentaurus-device.html",
+                "publisher": "Synopsys",
+                "date": "2026"
+              },
+              {
+                "title": "IEEE/ACM International Conference on Computer-Aided Design (ICCAD) 2026",
+                "url": "https://iccad.com/",
+                "publisher": "ICCAD",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-time-encoded-analog-photonic-interposer",
+            "title": "Sending analog values between chiplets as timing, not as bits",
+            "dek": "Subhradip Chakraborty and co-authors describe a chiplet-to-chiplet optical link that never digitises: an analog voltage is converted into the delay before a light pulse is emitted, with one laser wavelength per processing element, so a six-bit conversion happens inside the link instead of in a data converter at each end.",
+            "background_md": "Splitting a system into chiplets means every signal that used to cross a few millimetres of on-die wiring now crosses a package substrate or interposer. That crossing is normally digital: an analog sensor or analog compute array is converted to bits, driven across, and converted back. Two costs follow. The converters cost area and power that grow with the precision demanded of them, and an electrical package wire dissipates energy that grows with its length and with the number of parallel bit lanes. An optical waveguide removes the length term at these distances, but a conventional photonic link still carries bits, so the converters stay.",
+            "glossary": [
+              {
+                "term": "Interposer",
+                "definition": "The wiring layer that sits under two or more dies in one package and carries signals between them; it is where chiplet-to-chiplet energy per bit is actually spent."
+              },
+              {
+                "term": "Analog-to-time converter (ATC)",
+                "definition": "A circuit that encodes a voltage as an interval rather than a code word — a ramp climbs until a comparator crosses the input, and the elapsed time is the measurement."
+              },
+              {
+                "term": "Energy–delay product (EDP)",
+                "definition": "Energy per operation multiplied by the latency to complete it, used when a design can trade one for the other; a link that halves energy while doubling delay leaves EDP unchanged."
+              },
+              {
+                "term": "Free spectral range (FSR)",
+                "definition": "The wavelength spacing at which a ring resonator's response repeats. It caps how many independent wavelength channels one ring-based link can carry before they alias onto each other."
+              }
+            ],
+            "why_it_matters": "In a digital photonic link the precision you want costs wavelengths or costs serial time: eight bits per value means eight channels, or eight times as long on one. Encoding the value as a delay decouples the two — the number of wavelengths tracks the number of senders, not the number of bits, and the quantisation falls out of the counter that measures the interval. What is paid instead is latency per value: sixty-four clock cycles at 1 GHz, 64 nanoseconds, before a single number arrives. That is a fine trade for a vision front end producing a frame at a time and a poor one for anything that needs values back quickly.",
+            "deeper_md": "The converter is a ramp generator, a 6-bit counter and a 6-bit capacitive DAC feeding a strong-arm latched comparator clocked at 1 GHz: the ramp climbs, the comparator fires when it crosses the input, and the count at that instant is the value. Sixty-four cycles per conversion, and the six-bit quantisation is a property of the counter rather than of a separate data converter. A 3 × 3 kernel therefore needs nine wavelengths, which the authors report sits inside the free spectral range of GlobalFoundries' 45SPCLO photonic platform.\n\nEnergy is 6.6 pJ per value transmitted, 7.6 pJ once micro-ring thermal calibration is counted — roughly 15 % overhead. Against an 8-bit digital electrical link at 10 mm the energy–delay product improves 2.04×; against a precision-matched 6-bit electrical link it is 1.31× at 10 mm and 10.07× at 25 mm, because the electrical baseline pays for length and the optical one does not.\n\nAccuracy holds: 89.87 % and 86.15 % on Visual Wake Words for ResNet-18 and MobileNetV2, 92.92 % / 88.90 % on CIFAR-10 and 82.29 % / 74.84 % on ModelNet40, within two points of the digital pipeline despite 14.41 % front-end noise. The caveat is scope: only micro-ring test structures were fabricated, and the pipeline itself is circuit simulation.",
+            "fab_angle": "The 15 % of link energy spent on thermal calibration is the standing tax on ring-resonator photonics: a micro-ring's resonance shifts with temperature, so a heater has to hold it on channel, and that heater burns power whether or not data is moving. Any co-packaged optical scheme a fab or a design team evaluates should be costed with the tuner switched on.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "A Time-Encoded Analog Photonic Interposer for Energy-Efficient Integration of Analog Vision Sensors and Analog Accelerators",
+                "url": "https://arxiv.org/abs/2609.03125",
+                "publisher": "arXiv",
+                "date": "2026-09-02"
+              },
+              {
+                "title": "Visual Wake Words Dataset",
+                "url": "https://arxiv.org/abs/1906.05721",
+                "publisher": "arXiv",
+                "date": "2019-06-12"
+              },
+              {
+                "title": "Silicon photonics technology platforms",
+                "url": "https://gf.com/technology-platforms/silicon-photonics/",
+                "publisher": "GlobalFoundries",
+                "date": "2026"
+              }
+            ]
+          },
+          {
+            "id": "chips-levelsyn-physical-aware-synthesis",
+            "title": "Logic synthesis gets told where the gates will end up",
+            "dek": "Jingyi Zhou and co-authors trained a graph neural network to predict each gate's position and orientation on the die while logic synthesis is still running, so the optimiser stops estimating wire length from fan-out counts and instead scores its rewrites against a predicted floorplan.",
+            "background_md": "A digital chip is built in two stages that barely talk to each other. Logic synthesis turns a register-transfer description into a netlist of standard cells, choosing among logically equivalent implementations; placement then decides where on the die each cell physically sits. Delay and dynamic power are dominated by the wires between cells, and wire length is a property of the placement — which does not exist yet when synthesis runs. Synthesis therefore estimates it, historically from a wire-load table indexed by fan-out, and the estimate is wrong often enough that timing after placement routinely contradicts timing after synthesis.",
+            "glossary": [
+              {
+                "term": "And-inverter graph (AIG)",
+                "definition": "The canonical internal form for logic synthesis: every node is a two-input AND and every edge may be inverted, so rewriting a circuit becomes rewriting a small, uniform graph."
+              },
+              {
+                "term": "Wire-load model",
+                "definition": "A lookup table that guesses a net's capacitance from how many inputs it drives and how big the block is. It knows nothing about geometry, which is why it fails on the long nets that set the critical path."
+              },
+              {
+                "term": "Standard-cell row",
+                "definition": "The fixed horizontal track a placed cell must sit on so its power and ground rails abut its neighbours'; alternate rows are mirrored, so a cell's legal orientation follows from its y coordinate."
+              },
+              {
+                "term": "DRC violation",
+                "definition": "A geometric rule the layout breaks — spacing, width, enclosure — reported by the design rule check. A netlist that routes with thousands of them has not been placed, it has been guessed at."
+              }
+            ],
+            "why_it_matters": "Replacing a fan-out table with a positional prediction changes which rewrites win, because two logically equivalent netlists stop looking equally good once one of them puts communicating gates near each other. The size of that change is measurable here: against the same flow with a placement-blind estimator, 6.89 percent less power or 27.48 percent less delay depending on which the tool is asked to chase. The number worth watching is the third one. A synthesis step that produces prettier estimates and unroutable geometry is worse than no change at all, so the 99.59 percent drop in design-rule violations after routing is the claim that decides whether the other two mean anything.",
+            "deeper_md": "LevelSyn runs two passes over the and-inverter graph. A forward pass propagates features in topological order from the primary inputs along fan-in edges; a backward pass diffuses constraints from the primary outputs back along fan-out edges; the two embeddings are concatenated and the head emits an (x, y, orientation) triple per internal gate. Orientation is not learned separately — it is derived from the predicted y so that cells land on standard-cell rows the right way up and share power rails with their neighbours. Large designs are handled by subgraph partitioning that preserves logical dependencies.\n\nEvaluation is the EPFL Combinational Benchmark Suite — 23 natively combinational circuits, here spanning 181 to 214,591 nodes — mapped with ABC, using SkyWater's open standard cells, and placed with DREAMPlace on an A100. Against PigMap, the physical-aware mapper it is compared to, the power-oriented configuration gives 6.89 % lower power and 6.52 % less area, and the performance-oriented one 27.48 % less delay. Post-route on the *bar* circuit, DRC violations fall 99.59 %.\n\nTwo limits. That routing result is one circuit, not the suite. And the flow is combinational only: flip-flop placement is listed as future work, so nothing here has been shown on a sequential design, which is every real chip.",
+            "fab_angle": "Every tool in this flow is open — ABC for mapping, DREAMPlace for placement, SkyWater's PDK for the cells — so the baseline is reproducible on a lab machine rather than behind a licence server. For a club taking its own design through an open PDK, the useful takeaway is smaller than the headline: the wire-load model is the weakest assumption in a student RTL-to-GDSII flow, and it is worth knowing how far post-placement timing moves before trusting a synthesis report.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "LevelSyn: Physical-Aware Logic Synthesis via Level-Asynchronous Graph Neural Networks",
+                "url": "https://arxiv.org/abs/2609.03594",
+                "publisher": "arXiv",
+                "date": "2026-09-03"
+              },
+              {
+                "title": "The EPFL Combinational Benchmark Suite",
+                "url": "https://www.epfl.ch/labs/lsi/page-102566-en-html/benchmarks/",
+                "publisher": "EPFL Integrated Systems Laboratory",
+                "date": "2026"
+              },
+              {
+                "title": "SkyWater SKY130 PDK documentation",
+                "url": "https://skywater-pdk.readthedocs.io/en/main/",
+                "publisher": "SkyWater Technology / Google",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-side-channel-benchmarking-flaws",
+            "title": "Ten years of side-channel attack numbers do not compare",
+            "dek": "Iliana Fayolle, Antoine Geimer, Daniel De Almeida Braga and Clémentine Maurice re-read 83 microarchitectural side-channel attack papers published at eight top conferences between 2014 and 2024, and report that 92.8 percent contain at least one flaw serious enough that the attack numbers in them cannot be compared with anyone else's.",
+            "background_md": "A microarchitectural side channel leaks a secret through shared hardware rather than through a program's output: the attacker times its own memory accesses and infers what the victim touched from which cache lines were evicted. Everything about that measurement is contingent. It depends on which timer the platform exposes, on the cache's replacement policy and inclusiveness, on prefetchers, on frequency scaling, on what else is running, and on the exact processor stepping. A reported bit rate or error rate is therefore not a property of an attack. It is a property of an attack, a machine, and a configuration, and the paper has to say which.",
+            "glossary": [
+              {
+                "term": "Covert-channel bandwidth",
+                "definition": "Bits per second between two processes that both cooperate in the leak. It is easier to measure than a real attack and systematically optimistic, because the sender is trying to be heard."
+              },
+              {
+                "term": "Temporal resolution",
+                "definition": "How finely in time an attack can localise a victim's operation — the difference between knowing a key bit was used and knowing which of a thousand instructions used it."
+              },
+              {
+                "term": "Full flaw vs partial flaw",
+                "definition": "The survey's scoring unit: a full flaw means the paper omits a required piece of evidence entirely, a partial one that it gives it incompletely, and a paper's score is the pair of counts."
+              },
+              {
+                "term": "Artifact evaluation",
+                "definition": "A separate reviewing track where a committee runs the submitted code and awards badges for availability, functionality and reproduced results; it is optional at most venues and its badges are public."
+              }
+            ],
+            "why_it_matters": "The consequence is not that individual results are wrong; it is that the field has no ordering. If a paper does not state its error rate, its temporal resolution, or the processor and configuration it ran on, a later attack cannot be shown to beat it, and a proposed defence cannot be shown to blunt it — the defence is measured against an adversary of unknown strength. Half the corpus publishes no code, so nobody can settle the question by rerunning it. And the flaw rates split cleanly by community rather than by author, which says this is a reviewing norm being enforced differently in two rooms, not a scatter of individual sloppiness.",
+            "deeper_md": "The corpus is 83 papers, drawn from ASPLOS, HPCA, ISCA and MICRO on the architecture side and CCS, NDSS, IEEE S&P and USENIX Security on the security side, 2014–2024. Each is scored against 19 criteria; the median paper carries three full flaws and two partial ones, 5.5 combined.\n\nThe most common problem is a missing comparison rather than a missing measurement: 67.3 % compare unfairly — running a prior attack in a setting it was not built for, or against a different target — and 35.8 % make no comparison at all. Then 49.4 % publish no code, 37.0 % never test the attack under competing load, 31.7 % never state its temporal resolution, 20.7 % report a single platform and 18.3 % a single configuration. Early work leaned on proxies: covert-channel bandwidth, or key recovery against naive AES and RSA implementations, standing in for a measurement of the attack itself.\n\nThe venue split is the uncomfortable part — architecture papers carry more flaws and share code less, with more than half publishing none even after their conferences adopted artifact evaluation. Two caveats: the taxonomy is the authors' own, so 92.8 % is a function of their definitions, and a paper flagged here may still describe a genuine attack. What is missing is the evidence to rank it.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Practice Makes (Im)Perfect: A Look Back at Benchmarking Practices for Microarchitectural Side-Channel Attacks",
+                "url": "https://arxiv.org/abs/2609.03893",
+                "publisher": "arXiv",
+                "date": "2026-09-03"
+              },
+              {
+                "title": "Spectre Attacks: Exploiting Speculative Execution",
+                "url": "https://arxiv.org/abs/1801.01203",
+                "publisher": "arXiv",
+                "date": "2018-01-03"
+              },
+              {
+                "title": "USENIX Security 2026 artifact evaluation — badges and criteria",
+                "url": "https://secartifacts.github.io/usenixsec2026/badges",
+                "publisher": "USENIX Security Artifact Evaluation",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-attention-head-parity-limit",
+            "title": "k attention heads compute k-bit parity, and never k+1",
+            "dek": "Rajmohan Rajaraman, Ravi Sundaram and Amanuel Tesfaye prove that a single-layer attention network with k heads can compute the parity of k input bits and cannot compute the parity of k plus one, however wide its embedding vectors are and however many bits of numerical precision it is given.",
+            "background_md": "A transformer layer runs several attention operations in parallel — heads — and sums their outputs. Each head forms a weighted average over input positions, with the weights produced by a softmax over similarity scores. Architects pick the head count, the embedding dimension and the numerical precision more or less independently, and the working assumption is that these substitute for one another: a wider or more precise model with fewer heads should manage whatever a narrower one with more heads manages. Whether that substitution is possible at all is a question about what a fixed architecture can represent, prior to any question about training it.",
+            "glossary": [
+              {
+                "term": "Attention head",
+                "definition": "One weighted-averaging operator inside a layer: it scores every position against a query, normalises the scores with a softmax, and returns the corresponding weighted sum of value vectors."
+              },
+              {
+                "term": "Parity",
+                "definition": "The function that returns 1 when an odd number of input bits are 1. It is the standard yardstick for circuit lower bounds because flipping any single input flips the answer, so no partial view of the input suffices."
+              },
+              {
+                "term": "Embedding dimension",
+                "definition": "The width of the vector each token is represented by. Widening it is the usual way to buy capacity, and it is the resource this result shows cannot be traded for heads."
+              },
+              {
+                "term": "Non-constructive lower bound",
+                "definition": "A proof that most objects in a class are hard, obtained by counting how many exist against how many a small circuit can express — it names no particular hard example."
+              }
+            ],
+            "why_it_matters": "Head count turns out to be its own resource rather than a knob interchangeable with width or precision, and parity gives an exact ruler for it: the function on k+1 bits is the smallest thing a k-head layer provably cannot do. That matters for the way architectures are actually searched, where heads are routinely traded against dimension at a fixed parameter budget on the assumption that the two are fungible. For this family of functions they are not, and the failure is not a matter of optimisation difficulty or finite arithmetic — it survives when both are made unbounded.",
+            "deeper_md": "The object bounded is one attention-only layer: standard multi-head self-attention with softmax over a token sequence ending in a query token, with the answer read off as the argmax of two logits. Clear the softmax denominators and a k-head computation becomes a polynomial every monomial of which is a product of k factors, each depending on at most one input bit. Present k+1 bits and every monomial must omit at least one of them; summing against parity's alternating signs then gives Σₓ (−1)^f(x) Fₓ = 0, so the required output cannot be produced. Nothing in that argument mentions width or precision, which is why the bound holds at unbounded embedding dimension and unbounded numerical precision.\n\nTwo further results bracket the general case: every n-bit Boolean function is computable with 2ⁿ heads, one per monomial of its multilinear expansion, while a 1 − o(1) fraction of them require Ω(2ⁿ/n²), closing the bracket to within a polynomial factor.\n\nThe authors name the weakness themselves — that lower bound is a counting argument and exhibits no explicit hard function. And a single attention-only layer has no feed-forward block and no depth, so this constrains a component rather than a transformer.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "The Head Complexity of Boolean Functions in Single-Layer Attention",
+                "url": "https://arxiv.org/abs/2609.04046",
+                "publisher": "arXiv",
+                "date": "2026-09-03"
+              },
+              {
+                "title": "Representational Strengths and Limitations of Transformers",
+                "url": "https://arxiv.org/abs/2306.02896",
+                "publisher": "arXiv",
+                "date": "2023-06-05"
+              },
+              {
+                "title": "Attention Is All You Need",
+                "url": "https://arxiv.org/abs/1706.03762",
+                "publisher": "arXiv",
+                "date": "2017-06-12"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "OPC, phase-shift masks, and inverse lithography",
+    "slug": "opc-and-resolution-enhancement",
+    "subtitle": "The mask stops looking like the circuit, and a supercomputer decides what shape it should be instead.",
+    "tldr": "A projection lens throws away the fine spatial frequencies in a mask pattern, so what prints is not what was drawn: corners round off, line ends pull back, and a line's width depends on what sits next to it. The industry's answer was to stop drawing the circuit on the mask and start solving for whatever mask shape happens to print the circuit — first by biasing edges with rule tables, then by simulating and iterating, then by treating the mask as a free field of pixels and running gradient descent on it. The compute between the layout database and the glass now dominates mask preparation, and the shapes that come out are curves no draughtsman would draw.",
+    "sections": [
+      {
+        "heading": "The lens is a low-pass filter, and that is the whole problem",
+        "body_md": "Start with what a projection printer physically does. Light hits the mask, diffracts, and only the diffraction orders that fit inside the lens aperture make it to the wafer. Everything outside is gone, permanently. That is a low-pass filter on the mask pattern, and a sharp corner or an abrupt line end is exactly the kind of feature whose description lives in the high spatial frequencies that were discarded.\n\nSo you can predict the failures before seeing a wafer. Corners come out rounded. Line ends retract from where they were drawn, because a line end is a step in two directions at once. And a line printed alone comes out a different width from an identical line printed inside a dense array, because its neighbours' diffracted light is part of what forms its image. That last one has a name — iso-dense bias — and it is the single most measurable proximity effect on a bench.\n\nThe collective name is the optical proximity effect, and the word *proximity* is doing real work: what happens to a feature depends on what is near it.",
+        "deeper_md": "Rayleigh's expression, half-pitch = k₁λ/NA, hides the whole argument in k₁. The floor for a single exposure follows from two-beam interference: two plane waves at the largest angle the lens accepts produce a fringe period of λ/(2NA), so the smallest printable half-pitch is λ/(4NA) and k₁ = 0.25. Everything a resolution-enhancement technique does is buy back some of the distance between the k₁ a naive mask achieves and that floor — by reshaping the source, by reshaping the mask, or by changing the mask's phase rather than only its transmission."
+      },
+      {
+        "heading": "Rule-based correction, and the table that exploded",
+        "body_md": "The first correction was arithmetic. If an isolated line prints 10 nm narrow, draw it 10 nm wide on the mask. If a line end pulls back, hang a small rectangle — a hammerhead — off its tip so there is extra material to lose. If a corner rounds, notch or extend it.\n\nThat is rule-based OPC, and its content is a lookup table. The 2025 review of the field describes those tables as holding adjustments indexed by line width, by distance to the nearest neighbour, by line ends, by convex and concave corners, and by square holes. The same reference notes that isolated lines got a second treatment: sub-resolution assist features, small bars placed beside a lonely line, too fine to print themselves but close enough to contribute diffracted light and make the isolated line behave as though it had neighbours.\n\nThe method's problem is combinatorial. Every new dimension of context — a third neighbour, a diagonal, a different layer underneath — multiplies the table, and the entries have to be measured or simulated. Below roughly the 130 nm generation the table stopped being writable.",
+        "deeper_md": "Notice what a rule table implicitly assumes: that the correction for an edge is a function of a small, enumerable neighbourhood. That assumption is what breaks. The optical kernel has a physical extent of several wavelengths divided by the numerical aperture — an *ambit* over which everything influences everything — and at low k₁ that ambit covers many pitches, so the number of distinct neighbourhoods a rule table would need grows far faster than the density of the layout."
+      },
+      {
+        "heading": "Model-based OPC: simulate, measure the edge, move it",
+        "body_md": "The replacement is to stop tabulating and start simulating. Model-based OPC chops every mask polygon edge into fragments, runs an aerial-image simulation, measures how far each printed contour sits from where it was supposed to be — the edge placement error — and moves that fragment to reduce it. Then it does it again, typically for a handful of iterations, until the contour settles.\n\nThe imaging model is Hopkins' theory of partially coherent imaging, which the review writes as a sum of coherent systems: the optical system is described by a transmission cross-coefficient, that object is decomposed by singular-value decomposition into a set of kernels with eigenvalues, and the intensity at a point is the eigenvalue-weighted sum of the squared magnitudes of each kernel convolved with the mask. The resist is then approximated with a sigmoid — above a threshold intensity it clears, below it does not, with a soft edge in between.\n\nThis is where the compute enters. Correction is now a simulation over every polygon on every layer of a full chip, and it is why mask preparation became a datacentre workload.",
+        "deeper_md": "The SOCS decomposition is what makes full-chip simulation tractable: truncating the eigenvalue spectrum after a few dozen kernels turns a four-dimensional integral into a small stack of two-dimensional convolutions, each of which is an FFT. Accuracy is then set by where you truncate and by how well the sigmoid resist threshold was calibrated against measured wafers — which is why OPC models are recalibrated per layer, per process, and go stale when the process drifts."
+      },
+      {
+        "heading": "Phase, not just transmission",
+        "body_md": "There is a second lever that has nothing to do with correcting shapes. A mask modulates the amplitude of the light passing through it; it can also modulate the phase.\n\nEtch a recess of depth d into the quartz of an aperture and the light through it acquires an extra path relative to its neighbour. The optical path difference is (n − 1)d, so setting d = λ/2(n − 1) puts the two apertures exactly 180° out of phase. Between them, the diffracted fields now cancel rather than add, and a dark line appears where an unaided mask would have produced a smeared grey. Marc Levenson proposed this in 1982, and a 1996 IBM patent by Burn Lin puts the payoff plainly: an alternating phase-shifting mask has the potential to double the resolution, with good isofocal behaviour, for closely packed structures.\n\nThe same patent names the catch. Alternating masks are much less effective when spacing varies, and they simply do not work on an isolated opening or an isolated opaque feature — there is no neighbour to be out of phase with. Attenuated masks, which leak a small out-of-phase transmission through the nominally dark field, work on arbitrary patterns but do almost nothing for dense ones.",
+        "deeper_md": "Alternating masks also carry a combinatorial defect of their own: assign 0° and 180° around a layout and you can arrive back at a shape that must be both, which is the phase-conflict problem — a graph two-colouring that real layouts do not always admit. Resolving it means either redesigning the layout or splitting the level into two exposures, and that cost is a large part of why alternating masks never displaced the attenuated kind in general logic."
+      },
+      {
+        "heading": "Inverse lithography: solve for the mask",
+        "body_md": "Model-based OPC still starts from the drawn polygon and nudges its edges. Inverse lithography abandons that constraint. Write the forward model — the sum-of-coherent-systems intensity through the sigmoid resist — and define a cost as the squared difference between the resulting printed pattern and the target. Then treat the mask itself as the free variable, a field of pixels, and minimise. Level-set formulations do the same thing by evolving a contour under a partial differential equation instead of updating pixels directly.\n\nBecause nothing constrains the mask to Manhattan geometry, the optimiser returns curves. That is not decoration: the extra degrees of freedom are where the process window comes from, and the review reports ILT gaining on both pattern fidelity and process-variation band against conventional correction.\n\nThe bill is runtime. The same review states that ILT needs more than an order of magnitude longer than OPC, which is why in practice it is used on hotspots rather than full chips. That gap is the target of most current work: NVIDIA's cuLitho reported a 40-fold speedup by moving ILT onto GPUs, learned surrogates such as GAN-OPC cut runtime roughly in half, from 788.5 s to 371.3 s per case, and neural forward models such as TEMPO report up to 1,170× against rigorous simulation.",
+        "deeper_md": "The learned-surrogate numbers deserve care. GAN-OPC's speedup comes with a process-variation band of 50,568.1 against ILT's 50,899.5 and, for the refined variant, an L2 pattern error of 39,948.9 against 44,012.7 — improvements of a few percent on metrics whose absolute scale is arbitrary. A separate 2025 method reports a mean squared error of 26,574, about 6.2 % better than the hierarchical baseline it extends. These are not wafer measurements; they are simulator-versus-simulator comparisons using the same forward model the optimiser is minimising, which is a structurally optimistic way to be evaluated."
+      },
+      {
+        "heading": "The mask shop still has to write it",
+        "body_md": "A curve is only useful if someone can put it on quartz. Two constraints decide that.\n\nThe first is mask rule check. A mask has its own minimum width, spacing and area, and once shapes stop being rectangles it also needs a minimum radius of curvature on convex and concave features. Modern ILT work folds these in as part of the optimisation rather than checking afterwards: the 2025 *Micromachines* method implements them as differentiable morphological operations — top-hat and bottom-hat transforms built from max and min pooling — so a width or spacing violation contributes a gradient like any other term.\n\nThe second is write time. A variable-shaped-beam writer prints by flashing rectangles, so approximating a curve means shattering it into a great many small shots and the exposure time climbs with shape complexity. The review is direct that writing curvilinear ILT masks on VSB tools is slow and difficult. Multi-beam mask writers rasterise the whole plate with a large array of beamlets instead, at sub-10 nm writing resolution and with a write time that does not care how complicated the shape is.\n\nThat is the real sequence: curvilinear ILT became practical when the mask writer stopped charging by the corner.",
+        "deeper_md": "The differentiable-MRC trick is worth understanding because it recurs. A morphological opening — erode then dilate — deletes anything narrower than the structuring element, so the difference between a shape and its opening is exactly the set of pixels that violate minimum width. Replace erosion and dilation with min and max pooling and that difference becomes something you can backpropagate through, which turns a pass/fail geometric rule into a penalty term inside the same gradient descent that is fitting the image."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "k₁",
+        "definition": "The dimensionless coefficient in half-pitch = k₁λ/NA. It collects everything that is not the wavelength or the lens — illumination shape, mask type, resist, correction — and two-beam interference puts a hard floor at 0.25 for a single exposure."
+      },
+      {
+        "term": "Edge placement error (EPE)",
+        "definition": "The distance between where a simulated or measured printed contour lands and where the design said it should. Model-based OPC is, mechanically, an iterative minimiser of EPE over fragmented polygon edges."
+      },
+      {
+        "term": "Sub-resolution assist feature (SRAF)",
+        "definition": "A bar or dot placed next to an isolated feature, deliberately too small to print on its own. Its job is to contribute diffracted light so the isolated feature images as though it had neighbours, which shrinks iso-dense bias."
+      },
+      {
+        "term": "Transmission cross-coefficient (TCC) and SOCS",
+        "definition": "The TCC is the four-dimensional object describing a partially coherent optical system; sum-of-coherent-systems decomposes it by SVD into a truncated set of kernels, turning image simulation into a stack of two-dimensional convolutions."
+      },
+      {
+        "term": "Mask rule check (MRC)",
+        "definition": "The geometric rules a mask shop can actually write and inspect: minimum width, spacing and area, plus, once shapes are curvilinear, a minimum radius of curvature on convex and concave features."
+      },
+      {
+        "term": "Multi-beam mask writer (MBMW)",
+        "definition": "An e-beam mask writer using a large array of individually blanked beamlets to raster the whole plate, so exposure time is set by area rather than by shape complexity — the tool that made curvilinear masks affordable to write."
+      }
+    ],
+    "try_this": "Measure your own iso-dense bias on the Heidelberg DWL200 in the Minnesota Nano Center. Draw one field containing three things at the same nominal width — say 2 µm: an isolated line, a line inside a 1:1 dense array, and a line end stopping 2 µm short of a perpendicular bar. Write it with the 2 mm head (1.0 µm minimum feature, so 2 µm is comfortably resolved), develop, and measure all three under the microscope. The difference between the isolated and dense linewidths is your tool's iso-dense bias, and the pullback at the line end is your corner-rounding budget. Now redraw the isolated line biased by the amount you measured, add a hammerhead to the line end, and write it again. That is one iteration of rule-based OPC, on your own tool, with your own resist — and the same measurement is the calibration data any model-based correction for MNF's maskless stepper would have to be fitted to.",
+    "sources": [
+      {
+        "title": "Advancements and challenges in inverse lithography technology: a review of artificial intelligence-based approaches",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12287475/",
+        "publisher": "Light: Science & Applications 14:250",
+        "date": "2025-07"
+      },
+      {
+        "title": "A Hierarchical Inverse Lithography Method Considering the Optimization and Manufacturability Limit by Gradient Descent",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12300207/",
+        "publisher": "Micromachines 16(7):798",
+        "date": "2025-07"
+      },
+      {
+        "title": "Combined attenuated-alternating phase shifting mask structure and fabrication methods therefor (US 5,565,286)",
+        "url": "https://patents.google.com/patent/US5565286",
+        "publisher": "Burn J. Lin / IBM, via Google Patents",
+        "date": "1996-10-15"
+      },
+      {
+        "title": "GPU-Accelerated Inverse Lithography Towards High Quality Curvy Mask Generation",
+        "url": "https://arxiv.org/abs/2411.07311",
+        "publisher": "arXiv (ISPD 2025)",
+        "date": "2024-11-11"
+      },
+      {
+        "title": "The Lithography Tutor / The Lithography Expert — column archive, including Optical Proximity Effects parts 1–3 (1996)",
+        "url": "https://www.lithoguru.com/scientist/tutor.html",
+        "publisher": "Chris Mack, lithoguru.com",
+        "date": "2026"
+      },
+      {
+        "title": "Fundamental Principles of Optical Lithography — table of contents, ch. 10 Resolution Enhancement Technologies",
+        "url": "https://www.lithoguru.com/textbook/TOC.html",
+        "publisher": "Chris Mack, lithoguru.com",
+        "date": "2026"
+      },
+      {
+        "title": "Laserwriter — Heidelberg DWL200: write heads and minimum feature size",
+        "url": "https://cse.umn.edu/mnc/laserwriter-heidelberg-dwl200",
+        "publisher": "Minnesota Nano Center, University of Minnesota",
+        "date": "2026"
+      }
+    ]
+  }
+}

@@ -1,0 +1,386 @@
+{
+  "date": "2026-09-06",
+  "generated_at": "2026-09-06T12:15:00Z",
+  "window": "2026-09-05..2026-09-06",
+  "headline": "A quiet weekend in the stack, with no new preprint announcement since Friday and no standards release: the sharpest result standing is Rice University's Einsummable, which models every tensor operation as a relational join and beats hand-tuned PyTorch on an eight-GPU server.",
+  "pulse": {
+    "read_time_min": 7,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-bilayer-graphene-charge-noise",
+            "title": "Bilayer graphene's charge noise lands inside silicon's range",
+            "dek": "An ETH Zürich group cooled gate-defined quantum dots in bilayer graphene — two atomic layers of carbon encapsulated in boron nitride — to 20 millikelvin and measured a median charge-noise amplitude of 1.16 microelectronvolts per root hertz at 1 hertz, inside the 0.1-to-10 band that silicon and gallium arsenide dots already occupy.",
+            "background_md": "A quantum dot is a puddle of electrons held in place by gate voltages, and its energy levels sit wherever the local electrostatic potential puts them. Stray charges trapped in the surrounding oxides and interfaces hop between two configurations at random, and each hop shifts that potential slightly. Summed over many such defects the shift has a power spectrum close to 1/f, and because a spin qubit's transition frequency depends on the dot's potential, that wandering is what limits how long the qubit stays in phase. Charge noise is therefore the standing figure of merit for a host material, quoted as an energy per root hertz at 1 Hz.",
+            "why_it_matters": "A host material for spin qubits is chosen partly on its charge-noise floor, and bilayer graphene's had not been put on the same axis as the platforms it would have to displace. On that axis the number is unremarkable — better than the worst silicon devices, worse than the best, which reached an average of 0.61 microelectronvolts per root hertz in a 300 mm CMOS line. The case for graphene therefore has to rest on something other than a quieter electrostatic environment, and the noise it does have is not obviously a gate-dielectric problem, because the authors varied their parameters systematically and still could not tie the noise to any single one of them.",
+            "deeper_md": "The devices are van der Waals stacks: bilayer graphene encapsulated in hexagonal boron nitride, a graphite back gate, and metallic top gates written by electron-beam lithography as two gold layers separated by atomic-layer-deposited Al₂O₃. Noise is extracted by the flank method — parking the dot on the steep side of a Coulomb-blockade peak, where a small shift in electrochemical potential produces the largest change in current, and converting the measured current fluctuations back into µeV using the local slope.\n\nAcross three devices — single dots, double dots, and a device coupled to a superconducting resonator, plus bilayer-graphene/WSe₂ stacks — the median S_µ^½(1 Hz) is 1.16 µeV/√Hz with a 10–90 percentile spread of 0.41 to 2.24. The comparison band the authors quote for GaAs, Si MOS, Si/SiGe and Ge/SiGe dots is 0.1 to 10 µeV/√Hz.\n\nTwo caveats they raise themselves. Point-by-point comparison across platforms is unsafe, because device architectures and extraction procedures differ. And despite a systematic sweep they could not localise the microscopic source; the standing candidate in the literature is an interacting bath of two-level systems whose mutual couplings keep reshuffling their energy splittings, which is what turns a set of Lorentzians into 1/f.",
+            "glossary": [
+              {
+                "term": "S_µ^½(1 Hz)",
+                "definition": "The square root of the charge-noise power spectral density at 1 hertz, given as an energy per root hertz; it says how far a dot's electrochemical potential wanders inside a one-hertz band."
+              },
+              {
+                "term": "1/f (flicker) noise",
+                "definition": "A spectrum whose power falls roughly as the inverse of frequency, produced by summing many random two-state switchers with a broad spread of switching rates rather than by one fast process."
+              },
+              {
+                "term": "Flank method",
+                "definition": "Biasing a quantum dot on the steepest side of a conductance peak, where current responds most strongly to potential, so measured current fluctuations can be converted into energy fluctuations."
+              },
+              {
+                "term": "Two-level fluctuator",
+                "definition": "A defect that hops between two configurations with slightly different charge distributions; one of them gives a Lorentzian spectrum, and a broad ensemble of them gives 1/f."
+              }
+            ],
+            "fab_angle": "The gate stack is within reach of a university cleanroom — electron-beam-written gold, an ALD Al₂O₃ interlayer, a second gold layer, all on a transferred stack. The transferable lesson is about measurement rather than process: the noise figure depends on how it was extracted, so the flank procedure has to be reported alongside the number or two labs' values are not comparable.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Low-Frequency Charge Noise in Bilayer Graphene Quantum Dots",
+                "url": "https://arxiv.org/abs/2609.03650",
+                "publisher": "arXiv",
+                "date": "2026-09-03"
+              },
+              {
+                "title": "Low charge noise quantum dots with industrial CMOS manufacturing",
+                "url": "https://arxiv.org/abs/2212.06464",
+                "publisher": "arXiv",
+                "date": "2022-12-13"
+              },
+              {
+                "title": "Interacting Two-Level Systems as a Source of 1/f Charge Noise in Quantum Dot Qubits",
+                "url": "https://arxiv.org/abs/2308.13674",
+                "publisher": "arXiv",
+                "date": "2023-08-25"
+              }
+            ]
+          },
+          {
+            "id": "silicon-nanowire-quantum-dot-pick-and-place",
+            "title": "A tungsten probe and a dab of SiOx move one emitter at a time",
+            "dek": "A University of Waterloo and National Research Council Canada team lifted individual InP nanowires containing InAsP quantum dots off their growth chip with a sharpened tungsten probe, tacked them down with electron-beam-deposited silicon oxide, and measured 75 percent photon extraction from a wire relocated onto a gold mirror.",
+            "background_md": "Semiconductor quantum dots emit single photons on demand, but where a dot ends up on a wafer is decided by growth, while the optics it needs — a mirror, a waveguide, an electrode — is placed by lithography. Bottom-up nanowires solve half of that: growing a dot inside a tapered wire lets the wire's shape shape the emitted mode, so most photons leave through the tip instead of into the substrate. What remains is integration. A grown wire stands where it grew, on the substrate its growth chemistry demanded, which is rarely the substrate the photonics wants.",
+            "why_it_matters": "Separating growth from integration is what lets you screen first and build second: a wire can be measured on the growth chip and only the ones with the right wavelength and linewidth get moved, so the yield of the finished device stops being the yield of the growth. The cost is that the wire now sits on a surface it was never grown on, and the paper prices that. The mirror template lifted extraction from a 50 percent baseline to 75 percent, but on the gated template 120 volts moved the emission line by only 3.6 gigahertz, which the authors attribute to screening by dopants.",
+            "deeper_md": "The dots are InAsP sections grown inside InP nanowires by selective-area vapour–liquid–solid epitaxy, which already positions the wires deterministically on the growth chip. Transfer happens inside a dual-beam SEM/FIB: a tungsten probe sharpened to roughly the wire diameter lifts the wire, and focused-electron-beam-induced deposition of SiOₓ tacks it down about 3 µm above the dot, so the beam never lands on the emitter itself.\n\nTwo templates were built. On a gold mirror with a 10 nm SiO₂ spacer — a weak cavity — extraction efficiency reaches 75 percent against the 50 percent baseline, with a Purcell enhancement of 1.58 and g²(0) = 0.002. On a quadrupole of four Ti/Au electrodes separated by 1.5 µm and raised about 1.5 µm on oxide, g²(0) = 0.0021 and Stark tuning is 3.6 GHz at 120 V. Eight wires were transferred; five were characterised before and after, with linewidths near 0.7 GHz preserved.\n\nThe authors' own limits: spectral diffusion and pure dephasing cap indistinguishability, which exceeds 80 percent only inside a ±100 ps window, and bringing several transferred emitters onto a common wavelength is still unsolved.",
+            "glossary": [
+              {
+                "term": "g²(0)",
+                "definition": "The chance of two photons leaving together relative to a random source. A perfect single-photon emitter gives zero, and 0.002 means two-photon events are suppressed roughly five-hundredfold."
+              },
+              {
+                "term": "Purcell enhancement",
+                "definition": "The factor by which an optical structure speeds up an emitter's spontaneous emission, by increasing the density of photon modes the emitter can decay into."
+              },
+              {
+                "term": "EBID (electron-beam-induced deposition)",
+                "definition": "Cracking a precursor gas with the electron beam so solid material grows only where the beam points; used here to deposit SiOₓ as a localised adhesive."
+              },
+              {
+                "term": "Stark tuning",
+                "definition": "Shifting an emitter's transition energy with an applied electric field — the usual way separately grown dots are pulled onto one common wavelength."
+              }
+            ],
+            "fab_angle": "This is a pick-and-place process, not a lithographic one, and the throughput shows it: eight wires, one probe, one beam. It is the same trade a teaching cleanroom meets whenever a step is done serially — high yield per attempt, very few parts per hour — and it is why the interesting question about deterministic assembly is always how it batches, not whether it works once.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Deterministic nanofabrication for engineering nanowire quantum dot devices",
+                "url": "https://arxiv.org/abs/2609.03076",
+                "publisher": "arXiv",
+                "date": "2026-09-02"
+              },
+              {
+                "title": "Advanced architectures for coupling III-V nanowires to photonic integrated circuitry",
+                "url": "https://arxiv.org/abs/2603.12443",
+                "publisher": "arXiv",
+                "date": "2026-03-12"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-race-aimc-certified-analog",
+            "title": "Certify one analog accelerator instead of averaging over five",
+            "dek": "Two Western Digital researchers propose picking a single analog in-memory accelerator out of a pool of imperfect ones, computing a Clopper–Pearson upper bound on how often it will be wrong when it does answer, and deferring the rest to a digital fallback — cutting modelled energy 69.02 percent against running the whole pool.",
+            "background_md": "Analog in-memory computing performs a matrix–vector product inside the memory array itself: word lines carry the input as voltages, the stored conductances do the multiplication, and the bit lines sum the currents. The saving comes from never moving the weights, but the arithmetic is only as good as the conductances. Programming a cell lands it near, not on, its target; read currents fluctuate and drift; converters at the array edge quantise the result; and some cells are stuck. Every die is therefore wrong in its own way, and that wrongness is not something a one-time test can screen away.",
+            "why_it_matters": "The usual defence against analog error is redundancy — run several chips and combine their answers — which spends precisely the energy the technique existed to save. Swapping that for a statistical guarantee changes what an analog accelerator has to promise: not that it is accurate, but that it knows when it is not, and that the share of accepted-and-wrong answers stays under a stated bound. The bound is only as strong as its assumption, and the assumption is that calibration data and deployment data are exchangeable — something conductance drift, a temperature change, or a shifted input distribution each break, forcing recertification.",
+            "deeper_md": "The pool is six simulated profiles, A0–A5, sharing 8-bit conductance cells and 8-bit converters but differing in read noise (1.0–10.0 µS), write noise, stuck-cell rate (0.02–0.50 percent) and energy cost, each with its own fixed simulator seed. No fabricated silicon appears in the paper: the profiles are a stress envelope, not a fit to measured dies.\n\nThe mechanism is selective prediction. A confidence score — the margin between the top two logits after a hardware bias correction — is compared against a threshold, and inputs below it are deferred to a digital fallback. The certified bound on the accepted set is a Clopper–Pearson upper confidence limit on a binomial error rate, and the three calibration jobs use disjoint data: 3,000 examples to estimate hardware bias, 2,000 to tune the threshold, 5,000 to certify.\n\nOn CIFAR-10 with a small two-convolution network, over five runs, 70.88 ± 0.98 percent of inputs are answered directly, measured accepted risk is 7.08 ± 0.85 percent against a certified bound of 7.83 ± 0.89 percent and a 10 percent target, overall accuracy is 81.40 ± 0.50 percent, and modelled energy falls 69.02 ± 0.53 percent. The authors state plainly that CIFAR-10 with a compact CNN is a proof of concept and that the energy figures are modelled component costs rather than chip measurements.",
+            "glossary": [
+              {
+                "term": "AIMC (analog in-memory computing)",
+                "definition": "Performing a matrix–vector product inside a memory array by driving word lines with the input and summing bit-line currents, so the weights never travel to a separate arithmetic unit."
+              },
+              {
+                "term": "Clopper–Pearson interval",
+                "definition": "An exact confidence interval for a binomial proportion, built from the beta distribution. It never undercovers, which is why it is used when a number has to be a guarantee rather than an estimate."
+              },
+              {
+                "term": "Selective prediction",
+                "definition": "Letting a classifier abstain: it answers only when a confidence measure clears a threshold, trading how often it answers for a lower error rate on the answers it gives."
+              },
+              {
+                "term": "µS (microsiemens)",
+                "definition": "A unit of conductance, the reciprocal of resistance. In an analog array the stored weight is a conductance, so weight error is quoted in siemens rather than in bits."
+              }
+            ],
+            "fab_angle": "Read the six profiles as a statement about process control: they differ in exactly the quantities a memory line fights over — programming accuracy, read noise, and stuck-bit rate — and the paper's proposal is to accept that spread and price it rather than tighten it.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "RACE-AIMC: Selective Inference for Heterogeneous Analog In-Memory Accelerators at the Edge",
+                "url": "https://arxiv.org/abs/2609.03149",
+                "publisher": "arXiv",
+                "date": "2026-09-02"
+              },
+              {
+                "title": "Using the analog hardware simulator — IBM Analog Hardware Acceleration Kit",
+                "url": "https://aihwkit.readthedocs.io/en/latest/using_simulator.html",
+                "publisher": "IBM Research (aihwkit documentation)",
+                "date": "2026"
+              }
+            ]
+          },
+          {
+            "id": "chips-givens-qrd-mvdr-fpga",
+            "title": "The FPGA loses 15x on throughput and still wins per watt",
+            "dek": "Four engineers at NIELIT Calicut mapped MVDR adaptive beamforming — the calculation that steers an ultrasound or radar array's sensitivity away from interference — onto a triangular systolic array of Givens rotations on a Zynq UltraScale+ FPGA, and measured 31,123 weight vectors per second at 2.451 watts of programmable-logic power.",
+            "background_md": "Adaptive beamforming picks, for each look direction, a set of complex weights that holds the wanted direction at unit gain while nulling everything else. The textbook solution needs the inverse of the array's sample covariance matrix, and that is the numerical trap: forming a covariance matrix squares the condition number of the data, so a matrix that was merely awkward becomes ill-conditioned before the inverse is even attempted. The standard escape is never to form it — factor the data matrix directly into an orthogonal part and a triangular part, then solve by back-substitution.",
+            "why_it_matters": "The comparison the paper prints cuts against its own device, which is what makes it worth reading: a 24-core Intel Xeon Gold 5220R computes 465,699 weight vectors a second — about fifteen times the FPGA — but draws 83.08 watts, so the FPGA is roughly 2.3 times better per watt on programmable logic and slightly worse once the whole chip's power is counted. That is the actual shape of the fabric-versus-processor trade at this problem size, and it is the shape rarely printed, because accelerator papers normally report only the axis their device wins on.",
+            "deeper_md": "The design factorises the snapshot matrix with Givens rotations instead of inverting a covariance matrix. Each rotation zeroes one sub-diagonal entry using a plane rotation, which is orthogonal and so does not amplify error, and the dependency pattern maps one-to-one onto a triangular array: diagonal cells compute the rotation angle, off-diagonal cells apply it and pass it along. For an eight-element subarray the array is eight columns wide and about 33 processing elements in total.\n\nOn a ZCU104, one instance uses 484 DSP48E2 slices, 58,439 LUTs and 16 BRAM tiles; three instances take 84 percent of the DSPs and 76.9 percent of the LUTs, leaving no room for a fourth. Kernel latency is 94,300 ns at 100 MHz, and three instances give 31,123 weight vectors/s at 90.9 percent parallel efficiency — 12,698 vectors/s/W on programmable logic and 5,888 vectors/s/W on total on-chip power, against the Xeon's 5,606. Arithmetic is IEEE single precision, and the output matches a MATLAB reference to 5.10 × 10⁻⁷ RMS on a 32-element ultrasound array, with a 100 percent pass rate against a Field II cyst phantom.\n\nThe authors list the gaps themselves: only part of an image was validated, fixed-point was not evaluated, and the square root inside the diagonal cell stalls the array — they propose wavefront scheduling to hide it.",
+            "glossary": [
+              {
+                "term": "MVDR (minimum variance distortionless response)",
+                "definition": "A beamformer that minimises total output power subject to unit gain in the look direction, so it spends its remaining freedom placing nulls on interferers."
+              },
+              {
+                "term": "Givens rotation",
+                "definition": "A plane rotation applied to two rows to zero one entry. Being orthogonal, it leaves vector lengths unchanged, so a sequence of them factors a matrix without amplifying rounding error."
+              },
+              {
+                "term": "Condition number",
+                "definition": "How much a matrix magnifies relative error when a system is solved with it. Forming a covariance matrix squares it, which is the reason direct inversion is avoided here."
+              },
+              {
+                "term": "DSP48E2",
+                "definition": "The hardened multiply-accumulate block in an AMD UltraScale+ FPGA. How many of them a device has is usually what caps the number of arithmetic pipelines that will fit."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "A single-precision floating-point systolic Givens-QRD Triangular Solver for MVDR Beamforming",
+                "url": "https://arxiv.org/abs/2609.03137",
+                "publisher": "arXiv",
+                "date": "2026-09-02"
+              },
+              {
+                "title": "UltraScale Architecture DSP Slice User Guide (UG579), v1.11",
+                "url": "https://docs.amd.com/v/u/en-US/ug579-ultrascale-dsp",
+                "publisher": "AMD (Xilinx)",
+                "date": "2021-08-30"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-einsummable-join-parallelism",
+            "title": "Treat every tensor kernel as a join and the sharding falls out",
+            "dek": "Rice University's Einsummable takes a PyTorch-like description of a model with no device assignments, sharding annotations or collective calls written by hand, models every operation as a relational join followed by an aggregation, and runs LLaMA transformer blocks on eight A100s in a geometric-mean 8.97 milliseconds against 13.80 for hand-tuned PyTorch.",
+            "background_md": "Splitting one model across several GPUs means deciding, for every tensor, which slice lives on which device, and then inserting the communication that repairs the seams — an all-reduce here, an all-gather there. In current frameworks a human writes that plan: PyTorch's tensor-parallel API asks for a device mesh and a per-module choice between column-wise and row-wise sharding, then inserts collectives to match. The plan is therefore drawn from a short menu of named strategies, and that menu was designed around the layer shapes people already had.",
+            "why_it_matters": "If the space of plans is a menu, a compiler can only choose from it; if the space is every way of cutting an operation into sub-tensors, the compiler can search, and the search can land somewhere nobody named. Einsummable's optimiser recovers the classical three-dimensional matrix-multiply distribution as cost-minimising for square matrices without being told it exists, which is the evidence that the search is doing real work rather than rediscovering the menu. The catch is that the objective is a proxy — floating-point numbers moved — and the authors report it correlating with measured runtime at only r = 0.47 on one operator chain.",
+            "deeper_md": "Each operation carries a \"join-agg spec\": a way of cutting the input tensors into tensor relations such that exactly p tuples are produced, one per processor. A join phase forms the tuples, an aggregation combines partial results with an associative and commutative operator, and a recompose step reassembles the outputs. A dynamic program then picks specs across the whole computation to minimise a communication proxy built from three parts — repartitioning inputs whose tiling changed, the input volume each concrete operator sees, and the number of partial copies that have to be combined.\n\nCommunication is not handed off to a canned collective library. Einsummable synthesises an \"exchange program\" per decomposed operation — a topology-aware generalisation of Volcano's exchange operator, written in a small language that declares start and end placements and then issues transfers and aggregations as dependencies clear. Candidates are proposed, validated, and costed against a hardware simulation.\n\nThe measured hardware is a DGX A100 with eight 40 GB GPUs on NVSwitch and a DGX V100 with eight 32 GB GPUs on a hybrid cube mesh, running LLaMA-shaped blocks: model dimension 4,096, 32 query heads, 8 key/value heads, head dimension 128, feed-forward dimension 14,336, across five token workloads. The paper states its own boundary — single machine only, no multi-server parallelism, and no computation cost in the logical optimiser.",
+            "glossary": [
+              {
+                "term": "Tensor parallelism",
+                "definition": "Splitting the weights of a single layer across devices so each holds a slice, which makes every forward pass need a collective operation to reassemble the result."
+              },
+              {
+                "term": "All-reduce",
+                "definition": "A collective in which every participant contributes a value and all of them end up holding the combined result; it is the communication that partial matrix products usually require."
+              },
+              {
+                "term": "Exchange operator",
+                "definition": "A database construct that hides parallelism behind an ordinary operator interface by repartitioning tuples between processors. Einsummable generalises it to tensors and to interconnect topology."
+              },
+              {
+                "term": "Geometric mean",
+                "definition": "The n-th root of a product of n values, used for averaging runtimes and speedups because one very large ratio cannot dominate the summary the way it can with an arithmetic mean."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Every Kernel Is a Join: Automatic Multi-GPU Parallelism for AI Computations in Einsummable",
+                "url": "https://arxiv.org/abs/2609.03905",
+                "publisher": "arXiv",
+                "date": "2026-09-03"
+              },
+              {
+                "title": "Large Scale Transformer model training with Tensor Parallel (TP)",
+                "url": "https://docs.pytorch.org/tutorials/intermediate/TP_tutorial.html",
+                "publisher": "PyTorch",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-swe-gate-review-constraints",
+            "title": "A third of agent patches that pass the tests fail the reviewer",
+            "dek": "A Sun Yat-sen University-led group mined pull-request review comments into machine-checkable constraints, built 303 repair tasks from 75 Python repositories, and found that of 644 agent-written patches passing the project's functional tests, 221 — 34.3 percent — violate a constraint a human reviewer had actually written.",
+            "background_md": "A coding benchmark needs an automatic verdict, and the one in general use is the project's own test suite: apply the patch, run the tests, count a pass. That choice is what made large-scale evaluation possible, and it also pins the meaning of \"correct\" to whatever the tests happen to cover. Human review asks for more — that an exception keep its original type, that a public signature not change, that argument order be preserved — and none of those surfaces as a failing test unless somebody wrote one. The gap between the two is invisible by construction.",
+            "why_it_matters": "Once a benchmark score becomes the thing being optimised, the part of correctness the benchmark cannot see is the part that quietly degrades. This measurement puts a size on that blind spot for repository-level repair — about a third of the patches a test-only harness records as successes — using checks derived from what maintainers actually objected to rather than from a synthetic rubric. It also ships a harness other people can rerun, which is the difference between an assertion about agents and a number somebody can argue with.",
+            "deeper_md": "Constraints are mined in two passes. Review comments are first decomposed by a language model into atomic suggestions, discarding anything unverifiable — workflow, documentation, formatting. What survives is kept only where the issue is user-visible, the diff supports the stated root cause or repair direction, and the requirement can be validated by a separate test. Labels are multi-label, so the shares overlap: error semantics is the largest category at 152 instances (50.2 percent), schema, metadata and typing next at 143 (47.2 percent), with ordering, encoding, compatibility, idempotence and resource lifecycle behind them.\n\nEvaluation runs four model backends inside Mini-SWE-Agent with a cap of 100 interaction steps. Across the four, 644 generated patches pass the functional tests but only 423 pass both suites, leaving 221 — 34.3 percent of all functional successes — that the paper calls hidden failures.\n\nThe caveats are the authors' own and they bite. The pipeline that produced the constraints is itself model-assisted, so screening bias is possible; the benchmark is Python-only; and requirements that cannot yet be expressed as executable tests are excluded, which makes the measured gap a lower bound on the real one. The released repository carries the 303 instances, Docker contexts for reproduction, and standalone validation matrices for 255 of them.",
+            "glossary": [
+              {
+                "term": "Repository-level repair",
+                "definition": "Fixing a bug in a real codebase starting from an issue report, where the agent has to locate the relevant files itself rather than edit one function it was handed."
+              },
+              {
+                "term": "Hidden failure",
+                "definition": "A patch that passes every functional test yet breaks a requirement a reviewer stated, so a test-only harness scores it as a success."
+              },
+              {
+                "term": "Multi-label taxonomy",
+                "definition": "A classification in which one instance can carry several labels at once, which is why the category percentages here add to more than 100."
+              },
+              {
+                "term": "Agent scaffold",
+                "definition": "The loop around a model that gives it tools, a working directory and a step budget. Two scaffolds around the same model give different scores, so it has to be reported with the score."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "SWE-Gate: Passing Functional Tests Is Not Enough for Software Engineering Agents",
+                "url": "https://arxiv.org/abs/2609.04167",
+                "publisher": "arXiv",
+                "date": "2026-09-03"
+              },
+              {
+                "title": "DeepSoftwareAnalytics/SWE-Gate — dataset, harness and released instances",
+                "url": "https://github.com/DeepSoftwareAnalytics/SWE-Gate",
+                "publisher": "GitHub",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "ENIAC, EDVAC, and the stored-program idea",
+    "slug": "eniac-and-stored-program",
+    "subtitle": "Rewiring a machine by hand versus loading a program into the same memory as the data — and why the second one won inside three years.",
+    "tldr": "ENIAC did arithmetic at electronic speed and then sat idle for days while people rewired it for the next problem. The fix, written down in von Neumann's 1945 EDVAC draft, was to put the instructions in the same addressable memory as the numbers, so changing the program became a memory write instead of a change to the machine. Every computer you have used is built that way, including the bottleneck the choice introduced.",
+    "sections": [
+      {
+        "heading": "Thirty seconds of arithmetic, then days of rewiring",
+        "body_md": "Start with the ratio, because everything else follows from it. ENIAC, built at the Moore School of Electrical Engineering at Penn to compute bullet and missile trajectories, filled a room 30 by 50 feet, weighed 30 tons, drew 150 kilowatts, and held about 18,000 vacuum tubes wired through 70,000 resistors, 10,000 capacitors and half a million soldered joints. It had twenty accumulators for addition and subtraction, one multiplier, and a combined divider and square-rooter. A ballistics calculation that took twelve hours on a hand calculator took it about thirty seconds.\n\nAnd then the machine stopped being useful. There was no program in any modern sense. A problem was set up by plugging cables between units and setting switches, so the program was the wiring, and working out the correct configuration and physically making it took many days. The arithmetic was electronic; the control was manual. The Computer History Museum adds the other number that shaped daily life around it: a tube failed roughly every day or two.",
+        "deeper_md": "The tube-failure figure is worth holding onto because it explains a design instinct that looks strange later. With about 18,000 tubes and a mean life measured in thousands of hours, the expected time between failures anywhere in the machine is short, so ENIAC's operators ran diagnostic problems with known answers to find the dead tube. Reliability of this kind is why later designers cared so much about reducing component count per bit of function, and it is the same arithmetic — many parts, each with a failure rate, multiplied out — that a modern datacenter does when it sizes for silent corruption across a hundred thousand accelerators."
+      },
+      {
+        "heading": "The program was the machine",
+        "body_md": "The reason rewiring took days is not that engineers were slow. It is that ENIAC's program had no representation anywhere except in the physical topology of the machine. Control was distributed: each unit was told what to do by which cable arrived at which socket, and sequencing came from pulses handed unit to unit. There was nothing you could read out, copy, print, or change one item of. To modify step forty of a calculation you found the cable that was step forty.\n\nOnce you state it that way, the general lesson is forced. A machine that computes in tens of microseconds and is reconfigured in tens of hours will spend nearly all of its life idle, whatever its arithmetic rate. So a general-purpose computer has to represent its program in a medium that can be changed roughly as fast as it can be read. That is a statement about storage, not about arithmetic, and it is why the next machine's hard problem was memory."
+      },
+      {
+        "heading": "The First Draft, and the five organs",
+        "body_md": "In June 1945 von Neumann circulated the *First Draft of a Report on the EDVAC*, written around the machine the same Moore School group intended to build next. Its lasting contribution is an organisation rather than a circuit. The device is described as five organs: a central arithmetic unit (CA), a central control (CC), a memory (M), and input and output (I and O). Arithmetic and control are separated from storage, and each is specified by what it does rather than by the tubes that would do it.\n\nThe move that matters is what M is asked to hold. The memory contains both the numerical data and the orders — the instructions — in the same addressable store. The draft also argues for binary rather than decimal representation on the grounds that the available components are naturally two-state, so building ten-state behaviour out of them wastes hardware. Neither point is presented as a flourish. Both are consequences of asking what the machine has to do and what the parts can actually do.",
+        "deeper_md": "Putting orders and data in one store buys three things that no separate-program machine gets for free. First, a program can be loaded as fast as data can be written, which collapses the setup time that made ENIAC idle. Second, a program is now a value: something a program can generate, modify, or check. Assemblers, compilers, linkers, loaders and just-in-time code generation all live on that one property. Third, the address of the next instruction becomes a number held in a register, which is what makes a conditional branch a piece of arithmetic instead of a piece of wiring."
+      },
+      {
+        "heading": "The memory was the hard part",
+        "body_md": "The idea had no shortage of advocates by 1946; what it lacked was a store fast enough to feed an electronic arithmetic unit and rewritable enough to hold code. Two candidates competed. The mercury delay line, a spinoff of wartime radar, turns bits into sound waves with a transducer at each end of a mercury-filled tube and recirculates them, so the stream is reachable at exactly one point and a word is available only when it comes round — cheap in parts, serial in access. The Williams–Kilburn tube instead stores a bit as a spot of charge on the phosphor of an ordinary cathode-ray screen, which gives genuinely random access.\n\nThe catch is that the charge leaks away within seconds. Freddie Williams's answer was regeneration: read every spot and write it straight back, continuously, at electronic speed, so a decaying store behaves like a permanent one. That trick is not a historical curiosity. It is exactly what a modern DRAM does when it refreshes, and for exactly the same reason — the bit is stored as charge, and charge does not stay put."
+      },
+      {
+        "heading": "21 June 1948, and 52 minutes",
+        "body_md": "The first machine to actually run a program held in its own memory was the Manchester Small-Scale Experimental Machine, the \"Baby\", built by Frederic Williams, Tom Kilburn and Geoff Tootill and started at 11am on 21 June 1948. It was deliberately tiny: a 32-word store of 32-bit words, expandable to 8,192, and seven instructions. It was built as a test of the Williams–Kilburn tube, not as a useful computer.\n\nThe first program searched for the highest factor of a number. Run on 2¹⁸, it produced the right answer in 52 minutes, executing roughly 2.1 million instructions and making about 3.5 million memory accesses at around 1.2 milliseconds per instruction. Those numbers say something the anniversary coverage usually skips: the store held 32 words and the run executed 2.1 million instructions, so the program was almost entirely loops. The stored-program idea does not merely let you change the program; it lets a short program describe a long computation."
+      },
+      {
+        "heading": "The bill that came with it",
+        "body_md": "One memory for both instructions and data is a simplification with a price, and the price is a single path between processing and storage. Every instruction fetch competes with every data access for the same bandwidth, so beyond some arithmetic rate the machine is limited by how fast it can be fed rather than by how fast it can compute. That constraint was named later and it has never been removed — only worked around.\n\nAlmost the whole modern memory hierarchy is that workaround. Caches exist to keep the recently used part of the store close. Split instruction and data caches restore, one level up, exactly the separation the architecture gave away. Prefetchers guess what the path will be asked for next. High-bandwidth memory widens the path rather than speeding it up. When an accelerator is described as memory-bound, that is the 1945 decision still being paid for — and it is still the right decision, because the alternative is a machine you rewire by hand."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Stored-program computer",
+        "definition": "A machine whose instructions live in the same writable, addressable memory as its data, so changing the program is a memory write rather than a change to the machine's wiring."
+      },
+      {
+        "term": "Accumulator",
+        "definition": "A register that holds a running arithmetic result. ENIAC had twenty of them, and they served as its working memory as well as its adders — there was no separate store to put intermediate values in."
+      },
+      {
+        "term": "Plugboard programming",
+        "definition": "Setting up a calculation by physically connecting units with cables and setting switches, so the program is literally the machine's wiring. ENIAC's took many days to change."
+      },
+      {
+        "term": "Williams–Kilburn tube",
+        "definition": "A cathode-ray tube used as random-access memory: a bit is a spot of charge on the phosphor. The charge leaks away within seconds, so the contents are continuously read and rewritten — the same regeneration principle DRAM refresh still uses."
+      },
+      {
+        "term": "Mercury delay line",
+        "definition": "A serial memory in which data circulates as acoustic pulses travelling down a tube of mercury and is re-injected at the far end. A word can only be read when it arrives, so access time depends on where in the loop it happens to be."
+      },
+      {
+        "term": "Von Neumann bottleneck",
+        "definition": "The consequence of one memory serving both instructions and data: a single path between processor and store caps throughput no matter how fast the arithmetic gets. Caches, split L1s, prefetchers and wide memory are all responses to it."
+      }
+    ],
+    "try_this": "Open the First Draft PDF and read as far as the five organs, then find the passage where M is asked to hold both the orders and the numerical data — it is a short stretch of text and it is the whole idea. Then do the arithmetic the Baby forces on you: 32 words of store, seven instructions, about 1.2 ms per instruction, and 2.1 million instructions executed to factor 2¹⁸. Work out how many times over the executed instruction stream exceeded the store, and you have derived why loops exist. If you are laying out the club's IC, that same ratio is what decides how much instruction memory it needs before a useful program stops fitting.",
+    "sources": [
+      {
+        "title": "First Draft of a Report on the EDVAC",
+        "url": "https://cs.carleton.edu/faculty/jondich/courses/cs208_s19/assignments/16_files/edvac.pdf",
+        "publisher": "John von Neumann, Moore School of Electrical Engineering, University of Pennsylvania",
+        "date": "1945"
+      },
+      {
+        "title": "ENIAC — History & Heritage",
+        "url": "https://www.engineering.upenn.edu/about/history-heritage/eniac/",
+        "publisher": "Penn Engineering",
+        "date": "2026"
+      },
+      {
+        "title": "ENIAC — Birth of the Computer",
+        "url": "https://www.computerhistory.org/revolution/birth-of-the-computer/4/78",
+        "publisher": "Computer History Museum",
+        "date": "2026"
+      },
+      {
+        "title": "The Baby — Manchester Small-Scale Experimental Machine",
+        "url": "https://curation.cs.manchester.ac.uk/computer50/www.computer50.org/mark1/new.baby.html",
+        "publisher": "University of Manchester, Computer 50 archive",
+        "date": "1998"
+      },
+      {
+        "title": "Delay Lines — Memory & Storage",
+        "url": "https://www.computerhistory.org/revolution/memory-storage/8/309",
+        "publisher": "Computer History Museum",
+        "date": "2026"
+      },
+      {
+        "title": "How a 70-year-old 'Baby' changed the face of modern computing",
+        "url": "https://www.manchester.ac.uk/about/news/how-a-70-year-old-baby-changed-the-face-of-modern-computing/",
+        "publisher": "University of Manchester",
+        "date": "2018"
+      }
+    ]
+  }
+}

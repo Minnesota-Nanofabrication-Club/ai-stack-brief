@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-06",
+      "foundations_slug": "eniac-and-stored-program",
+      "foundations_topic": "ENIAC, EDVAC, and the stored-program idea",
+      "headline": "A quiet weekend in the stack, with no new preprint announcement since Friday and no standards release: the sharpest result standing is Rice University's Einsummable, which models every tensor operation as a relational join and beats hand-tuned PyTorch on an eight-GPU server.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-05",
       "foundations_slug": "opc-and-resolution-enhancement",
       "foundations_topic": "OPC, phase-shift masks, and inverse lithography",
@@ -106,6 +119,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-05T11:45:17Z",
-  "latest": "2026-09-05"
+  "generated_at": "2026-09-06T12:14:59Z",
+  "latest": "2026-09-06"
 }

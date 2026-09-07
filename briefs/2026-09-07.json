@@ -1,0 +1,427 @@
+{
+  "date": "2026-09-07",
+  "generated_at": "2026-09-07T14:20:00Z",
+  "window": "2026-09-06..2026-09-07",
+  "headline": "A University of Chicago-led group reports remote epitaxy on metallic and covalently bonded substrates, which a central belief in the field says should not work: the rule for which crystals can grow a peel-off single-crystal film stops being about ionic bonding.",
+  "pulse": {
+    "read_time_min": 7,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-remote-epitaxy-nonpolar",
+            "title": "Remote epitaxy works on metals, and the ionicity rule goes with it",
+            "dek": "A University of Chicago-led group reports growing single-crystal films through a monolayer of graphene on metallic and covalently bonded substrates — remote epitaxy, in which the film copies the crystal underneath without touching it — which the field had believed needed a strongly ionic substrate to work at all.",
+            "background_md": "Epitaxy grows a film that inherits the crystal orientation of the substrate beneath it, which normally means the film is chemically bonded to that substrate and cannot be taken off it. Remote epitaxy interposes a single atomic layer of graphene: the film still registers to the substrate lattice, but it rests on van der Waals forces and peels away, leaving the expensive substrate to be used again. The accepted explanation is electrostatic. A polar crystal's alternating charges project a potential that reaches through the graphene, while a metal screens its own field and a covalent crystal has little charge separation to project.",
+            "why_it_matters": "Which substrates can host remote epitaxy has decided which materials get freestanding-film treatment, and the work has clustered on ionic crystals because that is where the potential was thought to reach through. If substrate conductivity and step-edge density are the real levers, the selection rule stops being a property of the chemical bond and becomes something a process engineer sets — miscut, doping, anneal. The claim cuts the other way too: on a metal, where any remote potential should be weakest, it is hardest to rule out that the film simply grew through holes in the graphene and spread sideways.",
+            "deeper_md": "The preprint states the belief it is attacking in its own words: remote epitaxy is held to need \"a material with strong ionicity, as the interatomic electrostatic potential fluctuation in covalent and metallic materials is substantially attenuated by two-dimensional materials.\" Against that it reports non-polar remote homo- and heteroepitaxy across metals and semiconductors, engineered \"by harnessing substrate conductivity and vicinal surface step-edge density.\" Note what the abstract does not carry: a single number — no film thickness, no rocking-curve width, no lift-off yield, no pinhole density.\n\nTwo standing objections apply here with more force. Jang and co-authors grew GaN domains crystallographically aligned to the substrate and readily detachable through a thick, symmetry-incompatible van der Waals layer and even through amorphous oxide — alignment with no remote interaction available, which they named thru-hole epitaxy. LaDuca and colleagues, reviewing the mechanism in *2D Materials*, found the substrate potential permeating graphene weak enough that no published experiment cleanly excludes pinhole-seeded or serial van der Waals growth. A metal screens its own field, so it is the worst case for the remote reading and the best case for those alternatives.",
+            "glossary": [
+              {
+                "term": "Van der Waals epitaxy",
+                "definition": "Growth on a surface with no dangling bonds, where the film is held by weak dispersion forces and takes its orientation from the surface's corrugation rather than from chemical bonds — which is why it comes off again."
+              },
+              {
+                "term": "Ionicity",
+                "definition": "How far the bonding charge in a crystal sits toward one atom, leaving the lattice as alternating positive and negative sites; that alternation is the potential a film above the graphene was thought to be reading."
+              },
+              {
+                "term": "Vicinal surface (miscut)",
+                "definition": "A wafer surface cut a fraction of a degree off a crystal plane, so it is a staircase of flat terraces separated by atomic steps whose density the miscut angle sets."
+              },
+              {
+                "term": "Pinhole (thru-hole) epitaxy",
+                "definition": "Growth seeded at gaps in the graphene where film and substrate touch directly and then spreading sideways; it yields an aligned, releasable film with no remote interaction, which is why it is the alternative that has to be excluded."
+              }
+            ],
+            "fab_angle": "Miscut is a wafer purchasing specification, not a process step — it arrives fixed from the substrate vendor. If step-edge density is doing part of the work here, the stated off-cut becomes a first-order variable in a growth recipe, alongside temperature and pressure, and a lab that has never had to ask for a particular vicinal angle now has to.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Remote epitaxy beyond polarity",
+                "url": "https://arxiv.org/abs/2609.05365",
+                "publisher": "arXiv",
+                "date": "2026-09-04"
+              },
+              {
+                "title": "How transparent is graphene? A surface science perspective on remote epitaxy",
+                "url": "https://arxiv.org/abs/2507.22129",
+                "publisher": "arXiv (2D Materials 12 043006)",
+                "date": "2025-07-29"
+              },
+              {
+                "title": "Thru-Hole Epitaxy: Is Remote Epitaxy Really Remote?",
+                "url": "https://arxiv.org/abs/2110.01429",
+                "publisher": "arXiv (Advanced Materials Interfaces 10, 2201406)",
+                "date": "2021-10-04"
+              },
+              {
+                "title": "Po-Chun Hsu — Assistant Professor of Molecular Engineering",
+                "url": "https://pme.uchicago.edu/faculty/po-chun-hsu",
+                "publisher": "UChicago Pritzker School of Molecular Engineering",
+                "date": "2026"
+              }
+            ]
+          },
+          {
+            "id": "silicon-ga2o3-ebeam-niox-interlayer",
+            "title": "A 7 nm evaporated film buys 0.7 MV/cm on gallium oxide",
+            "dek": "Sriram Krishnamoorthy's group slipped a 7-nanometre evaporated nickel-oxide layer underneath the sputtered one in a gallium-oxide power diode, so that no sputtering ions ever strike the semiconductor surface, and measured a breakdown field of 4.02 megavolts per centimetre against the 3.34 their all-sputtered device reached in 2024.",
+            "background_md": "β-Ga₂O₃ is a power semiconductor picked for one property: a critical field several times silicon's, which lets the blocking layer be thinner and more heavily doped for the same voltage. Thickness and doping are what set on-resistance, so a higher critical field buys a device that blocks the same voltage and conducts better. The catch is that gallium oxide cannot be doped p-type at all, so the blocking junction has to be built from something else — usually a p-type nickel-oxide film deposited on top. That makes the deposition step part of the junction rather than part of the packaging.",
+            "why_it_matters": "Power-device papers are compared on breakdown voltage, and this diode blocks 1.64 kV where the same group's earlier one blocked more than 3 kV. The number that actually moved is the field the junction holds before it fails, and unlike breakdown voltage that one is a property of the material and its interface rather than of how thick the drift layer was made. Sputtering deposits film by knocking atoms off a target with energetic ions, and those ions reach the wafer; the gap between 3.34 and 4.02 megavolts per centimetre is a measurement of how much of gallium oxide's capability was being spent absorbing them.",
+            "deeper_md": "The stack: a 6.2 µm MOCVD epitaxial layer doped to 2.67 × 10¹⁶ cm⁻³ with silane on a conductive Sn-doped (010) β-Ga₂O₃ substrate, mesa-etched, then a 7 nm e-beam-evaporated NiOₓ interlayer before the sputtered NiOₓ, with a field plate. Forward: 700 A/cm² at 4 V, ideality factor 1.29, built-in voltage 2 V, rectification ratio 10¹¹, differential specific on-resistance 2.36 mΩ·cm². Breakdown at 1.64 kV gives a parallel-plane field of 4.02 MV/cm and a power figure of merit of 1.14 GW/cm².\n\nDo that arithmetic yourself, because it is the whole trade: PFOM is breakdown voltage squared over specific on-resistance, and 1.64 kV squared divided by 2.36 mΩ·cm² is 1.14 GW/cm². A device that blocks far less can score higher if its drift layer is thin enough.\n\nTwo things to hold. The claim is explicitly bounded — state of the art \"for diodes on MOCVD-grown (010) drift layers,\" not overall; the same group's April preprint reported over 10 kV at 43 mΩ·cm² and above 5.3 MV/cm on thick (011) epitaxy. And the 2024 comparison device used plasma-etch field termination and reached 17.26 mΩ·cm², so it indicates the interlayer's direction without isolating its effect.",
+            "glossary": [
+              {
+                "term": "Parallel-plane breakdown field (MV/cm)",
+                "definition": "The field a junction sustains before avalanche, computed for an ideal one-dimensional junction from the measured breakdown voltage and the drift layer's doping and thickness — so it reports the material and interface rather than the edge design."
+              },
+              {
+                "term": "R_on,sp (mΩ·cm²)",
+                "definition": "On-resistance multiplied by device area, so parts of different sizes compare directly; it is what sets conduction loss per unit of die area."
+              },
+              {
+                "term": "PFOM (GW/cm²)",
+                "definition": "Breakdown voltage squared divided by specific on-resistance. Power-device papers rank on it because it captures the trade between blocking more voltage and conducting more current."
+              },
+              {
+                "term": "Ideality factor",
+                "definition": "How closely forward current follows the ideal exponential of applied voltage; 1.0 means pure diffusion current, and anything above points at recombination or an interfacial layer carrying part of the drop."
+              }
+            ],
+            "fab_angle": "Sputtering and evaporation both sit on a teaching cleanroom's bench, and the usual reason to pick between them is step coverage and adhesion. This is the other reason: sputtering is a plasma process and the wafer sits inside it, so depositing the first few nanometres by evaporation is a way to get the film you want without the bombardment that normally arrives with it.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "4 MV/cm (010) β-Ga₂O₃ Heterojunction Diodes Realized by Low-Damage e-Beam NiOₓ Interlayers",
+                "url": "https://arxiv.org/abs/2609.04655",
+                "publisher": "arXiv",
+                "date": "2026-09-04"
+              },
+              {
+                "title": "VBr >10 kV E-Beam/Sputtered Vertical NiOx/(011) β-Ga2O3 HJDs with PFOM >2.3 GW/cm2",
+                "url": "https://arxiv.org/abs/2604.27262",
+                "publisher": "arXiv",
+                "date": "2026-04-29"
+              },
+              {
+                "title": "NiOx/β-Ga2O3 Heterojunction Diode Achieving Breakdown Voltage >3 kV with Plasma Etch Field-Termination",
+                "url": "https://arxiv.org/abs/2409.17374",
+                "publisher": "arXiv",
+                "date": "2024-09-25"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-flexposit-fractional-precision",
+            "title": "Bit-serial hardware makes 4.1 bits a real weight precision",
+            "dek": "Yimin Gao and colleagues' FlexPosit, accepted at MICRO 2026, quantises language-model weights to fractional average bit-widths — 4.1 bits means the most sensitive five percent of channel windows get five bits and the rest four — and runs them on a bit-serial systolic array in 16-nanometre silicon that reads whichever width arrives.",
+            "background_md": "A quantised model stores each weight in a few bits plus a shared scale factor, and the size of the group sharing that scale is the design trade. Small groups — 128 weights, say — track a layer's local dynamics and hold accuracy, but every group needs its own scale fetched and applied, which costs area and control in the datapath. Whole-channel groups make the hardware regular and cheap and lose accuracy once weights drop below about four bits. Accelerators sit on one side or the other, because a parallel multiplier array is built for one fixed operand width at tape-out.",
+            "why_it_matters": "Precision has been a menu — four bits or eight, group-wise or channel-wise — because the arithmetic unit's operand width is frozen in the layout. Feeding the weight in one bit at a time makes width a schedule instead of a wire count, so a compiler can spend a fifth of a bit where a layer is sensitive rather than jumping a whole bit everywhere. That turns a discrete choice into a continuous one, which is why the reported result beats both granularities at once instead of trading one against the other.",
+            "deeper_md": "Posit encodes a number as sign, then a regime — a run of identical bits ended by a flip — then exponent and mantissa. The regime's length varies, so bits migrate between exponent and fraction with magnitude: precision peaks near 1 and tapers away from it, which is the shape a transformer's weight distribution already has. FlexPosit fixes es = 1 and reports Posit(4,1) beating INT4 under channel-wise quantisation for that reason.\n\nThe hardware is a 32×16 output-stationary systolic array in a commercial 16 nm FinFET process at 1 GHz, 0.1098 mm² total. Weights stream bit-serially; each column carries one decoder that finds the regime by XOR-ing consecutive bits instead of using a wide parallel decoder, about 23.12 µm² per unit, and decoders, rescale logic and the global precision controller together take under 2 percent of area. Across nine models — GPT-2 Large and XL, Phi-2, OPT-2.7B, LLaMA-2-7B, Mistral-7B, DeepSeek-7B, Qwen2.5-7B and 14B, scored by WikiText-2 perplexity — it claims up to 1.8× throughput and 1.2× lower energy against BitMoD's 128-weight groups, and 1.5× and 2.0× against OliVe's channel-wise scheme.\n\nStated limits: precision explored only over 4–8 bits, activations only at FP8, and the channel window is 256–1024 wide, so this is coarse mixed precision with a fine knob rather than per-channel tuning. Nothing was fabricated; the numbers are synthesis and simulation.",
+            "glossary": [
+              {
+                "term": "Bit-serial",
+                "definition": "Processing one bit of an operand per cycle rather than all of them at once, so the number of cycles sets the precision instead of the width of the wires — which lets one datapath run any width."
+              },
+              {
+                "term": "es (exponent size)",
+                "definition": "The posit parameter fixing how many bits follow the regime as an exponent; it sets how fast the scale factor jumps per regime step, and FlexPosit holds it at 1 throughout."
+              },
+              {
+                "term": "Systolic array",
+                "definition": "A grid of small multiply-accumulate cells that hand operands to their neighbours on a fixed clocked rhythm, so a matrix multiply runs with almost no memory traffic between cells."
+              },
+              {
+                "term": "Perplexity",
+                "definition": "The exponential of a model's average per-token loss on held-out text, lower being better; quantisation papers use it because a fraction of a point is measurable where task accuracy is noise."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "FlexPosit: Tunable Fractional Precision for LLM Inference Accelerators",
+                "url": "https://arxiv.org/abs/2609.04724",
+                "publisher": "arXiv",
+                "date": "2026-09-04"
+              },
+              {
+                "title": "BitMoD: Bit-serial Mixture-of-Datatype LLM Acceleration",
+                "url": "https://arxiv.org/abs/2411.11745",
+                "publisher": "arXiv (HPCA 2025)",
+                "date": "2024-11-18"
+              },
+              {
+                "title": "MICRO 2026 — 59th IEEE/ACM International Symposium on Microarchitecture",
+                "url": "https://www.microarch.org/micro59/",
+                "publisher": "IEEE/ACM",
+                "date": "2026"
+              }
+            ]
+          },
+          {
+            "id": "chips-proton-tensil-zynq-silent-corruption",
+            "title": "A neural accelerator returns a class that was never in the set",
+            "dek": "Under a 20-to-58 MeV proton beam, an open-source Tensil accelerator running ResNet-20 on an AMD Zynq UltraScale+ chip returned a CIFAR-10 class that was not among the ten images it was being shown, for 39 inputs in a row, while the process stayed alive and the kernel log stayed clean.",
+            "background_md": "An SRAM-based FPGA stores its own circuit description in memory: configuration bits decide which lookup tables, routing switches and arithmetic blocks are wired to what. A charged particle crossing the die can flip one of those bits, and unlike a flip in data memory the change is to the logic itself, so it persists until the configuration is rewritten. Vendors ship correction blocks that continuously scrub configuration memory and classify which bits actually matter, but those manage the effect rather than prevent it; the device still has to be reconfigured before the intended circuit is back.",
+            "why_it_matters": "The failure mode measured here is the one that monitoring is worst at. Seven events took the workload down, which any watchdog catches. Two did not, and in the longer one the accelerator kept answering at its normal cadence with an answer that was impossible — a label outside the set it was classifying — and stopped only when the bitstream was rewritten on schedule. Process liveness, the kernel log, a memory test and sampled power all read normal throughout. That is an argument for checking output content end to end, and for recovery that reaches configuration memory instead of restarting the software sitting on top of it.",
+            "deeper_md": "The campaign delivered 4.29 × 10¹⁰ protons per square centimetre at 20–58 MeV inside monitored operational windows, on an unmitigated Tensil accelerator — an open-source design whose systolic array is generated at a chosen size and synthesised to Verilog for the board, which is why it was used at all: a commercial black-box accelerator leaves nowhere to put instrumentation. Nine onsets: seven interruptions, needing two restarts of the notebook process, four reboots or board resets and one power cycle, plus the two silent corruptions.\n\nThe confound is the authors' own and they lead with it. All nine onsets happened under the nominal 4 cm beam, which illuminated the SoC, the LPDDR4 and other board circuitry; none under the 2 cm field centred on the SoC alone. That reads like evidence the memory rather than the logic was responsible, and the paper refuses the inference, because field size was not separated from run order or accumulated dose. What the run establishes is a baseline for an unhardened commercial part, not an attribution — and with nine events there is no per-bit cross-section to fit either.",
+            "glossary": [
+              {
+                "term": "SEU (single-event upset)",
+                "definition": "A bit flipped by one ionising particle depositing enough charge to switch a storage node; the value is corrupted but the transistor is not damaged, so the part is correct again once the bit is rewritten."
+              },
+              {
+                "term": "Configuration memory",
+                "definition": "The SRAM inside an FPGA holding which logic and routing the device is currently implementing. An upset here changes the circuit rather than the data, and it survives a software restart."
+              },
+              {
+                "term": "Fluence (p/cm²)",
+                "definition": "The number of particles that crossed each square centimetre of the part over a run; multiplied by a device's cross-section in cm² per event it predicts how many events to expect."
+              },
+              {
+                "term": "COTS part",
+                "definition": "A commercial off-the-shelf device flown without a radiation-hardened process, chosen for performance and price and then defended in software instead of in silicon."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Proton Irradiation Characterization of an Open-Source ML Accelerator on a Zynq UltraScale+ MPSoC",
+                "url": "https://arxiv.org/abs/2609.05249",
+                "publisher": "arXiv",
+                "date": "2026-09-04"
+              },
+              {
+                "title": "tensil-ai/tensil — open source machine learning accelerators",
+                "url": "https://github.com/tensil-ai/tensil",
+                "publisher": "Tensil AI",
+                "date": "2026"
+              },
+              {
+                "title": "UltraScale Architecture Soft Error Mitigation Controller (PG187) — Introduction",
+                "url": "https://docs.amd.com/r/en-US/pg187-ultrascale-sem/Introduction",
+                "publisher": "AMD",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-fhe-ciphertext-seed-compression",
+            "title": "Half of every ciphertext is randomness, so stop storing it",
+            "dek": "BXT, an ICCD 2026 design from Ardhi Yudha and co-authors, throws away the pseudorandom half of every fully-homomorphic ciphertext and regenerates it from a seed during execution, cutting the memory traffic that now limits encrypted computation and reaching up to a 3.8-fold speedup on encrypted image classification.",
+            "background_md": "Fully homomorphic encryption lets a server add and multiply numbers it cannot read, by encoding each number as a polynomial with deliberate noise, and the price is size: a ciphertext is orders of magnitude larger than the value inside it. The arithmetic done per byte moved is correspondingly small — under one operation per byte — so the work is capped by bandwidth to memory rather than by multipliers, and that has become more true as accelerators made the arithmetic faster. One of the two polynomials in a fresh ciphertext is uniformly random and carries no message at all.",
+            "why_it_matters": "When a workload is bandwidth-limited, the only lever that helps is moving fewer bytes, and cryptography offers one that ordinary compression cannot: the random half of a ciphertext is not information, so it can be discarded and rebuilt from its seed by a hardware generator. The security argument is untouched, because the seed reconstructs only the component that was random to begin with, while the bytes crossing the bus halve. It also redirects what an FHE accelerator should be built around — entropy generation and unpacking latency rather than another rank of multipliers.",
+            "deeper_md": "Four techniques, and the first carries the result. Ciphertext compression keeps one computed polynomial plus a seed and regenerates the other during execution, halving both storage and bandwidth. Serialisation packs coefficients whose moduli run up to 36 bits as bit arrays instead of padded 64-bit integers, unpacking them on the L2-to-L1 transfer. Delayed seed generation defers the generator-heavy offline work across aggregated operations. Digit pruning drops low-significance digits in comparisons, with fault-aware training absorbing the error.\n\nMeasured against the GPU bootstrapping implementation known as 100x, which accelerated the CKKS approximate-arithmetic scheme, on a simulated RTX A6000 with 84 streaming multiprocessors, 936.2 GB/s of DRAM bandwidth and 6 MB of L2: the full-precision configuration gets 2.8–3.8×, and at 50 percent comparison precision 3.8× with under 1 percent accuracy loss on CNN inference. Arithmetic intensity improves 1.5×.\n\nThe costs are stated. A bit-to-integer converter with 2-cycle latency and generator support with 40-cycle latency have to be added; delayed seed generation only pays on workloads that aggregate; pruning mainly helps comparison-shaped operations such as ReLU. The evaluation is simulated rather than a measured GPU run, and the accuracy figures rest on fault-aware training, not on an arbitrary pretrained network surviving the pruning.",
+            "glossary": [
+              {
+                "term": "Arithmetic intensity",
+                "definition": "Operations performed per byte fetched from memory. Below roughly one, a kernel is bandwidth-limited and adding arithmetic units buys nothing — which is the position FHE is in."
+              },
+              {
+                "term": "Bootstrapping",
+                "definition": "The refresh step that resets the noise accumulated in a ciphertext so it can absorb more multiplications; it dominates the cost of any deep homomorphic computation."
+              },
+              {
+                "term": "PRNG (pseudorandom number generator)",
+                "definition": "A deterministic function expanding a short seed into a long stream that is computationally indistinguishable from random, so the stream never has to be stored — only the seed does."
+              },
+              {
+                "term": "CKKS",
+                "definition": "The homomorphic scheme for approximate arithmetic that treats encryption noise as ordinary rounding error in the low bits of the message, which is what makes it usable for neural-network inference."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Memory-Efficient Designs for Word-Wise Universal Fully Homomorphic Encryption",
+                "url": "https://arxiv.org/abs/2609.04769",
+                "publisher": "arXiv (ICCD 2026)",
+                "date": "2026-09-04"
+              },
+              {
+                "title": "Over 100x Faster Bootstrapping in Fully Homomorphic Encryption through Memory-centric Optimization with GPUs",
+                "url": "https://eprint.iacr.org/2021/508",
+                "publisher": "IACR Cryptology ePrint Archive (TCHES 2021(4))",
+                "date": "2021-04-23"
+              },
+              {
+                "title": "Homomorphic Encryption for Arithmetic of Approximate Numbers",
+                "url": "https://eprint.iacr.org/2016/421",
+                "publisher": "IACR Cryptology ePrint Archive (ASIACRYPT 2017)",
+                "date": "2016"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-moe-expert-halving-renormalisation",
+            "title": "Halving a mixture of experts fails on the gain, not the experts",
+            "dek": "Xing Chen and Hengshuai Yao report that cutting Qwen3.6-35B-A3B from eight active experts per token to four costs 4.65 MMLU points not because the four dropped experts were needed, but because the router's renormalisation quietly turns the expert branch down; normalising by the top sixteen instead costs 0.35 points.",
+            "background_md": "A mixture-of-experts layer holds many small feed-forward networks and sends each token to only a few of them, so parameter count grows without the arithmetic per token growing with it. A router scores every expert, the highest few are selected, and their scores are renormalised to sum to one before the outputs are combined. That renormalisation is not neutral: the sum of the selected probabilities sets the total gain of the expert branch against the residual stream it is added to, and the model was trained with that sum taken over a particular number of experts.",
+            "why_it_matters": "Halving the active experts is the cheapest way to cut a deployed model's compute, and it has looked like a plain accuracy trade. It is two effects wearing one number — which experts run, and how loudly their output is added back — and separating them turns a 4.65-point loss into 0.35 with no retraining, no extra parameters and one integer changed in the inference code. The result also lands a warning on how such settings get chosen, because the value that minimises perplexity on unlabelled text is not the value that maximises downstream accuracy.",
+            "deeper_md": "The change is one integer: activate the top k₁ experts, but divide by the probability mass of the top k₂, where k₂ may exceed k₁. On Qwen3.6-35B-A3B — 35 B total parameters, 3 B active, 256 experts, top-8 routed plus one shared expert across 40 layers — going from 8 experts to 4 costs 4.65 MMLU points under standard renormalisation and 0.35 with k₂ = 16, while halving routed-expert compute. On Qwen3.5-397B-A17B, roughly eleven times larger, 10 experts down to 5 costs 0.55 points with a suitable reference set.\n\nRemoving renormalisation altogether is reported as catastrophic, and that is the control that makes the gain explanation stick: what matters is not that the denominator be large but that a reference mass of the right size survive.\n\nThe authors' own limits are pointed. Perplexity and downstream accuracy prefer different k₂, so picking a compression setting from unlabelled text alone will pick the wrong one. Their analyses also find expert identity matters far more than expert weighting, and that balanced, domain-specialised routing leaves little room to prune experts outright — so this makes a smaller k survivable rather than showing the dropped experts were redundant.",
+            "glossary": [
+              {
+                "term": "Top-k routing",
+                "definition": "The rule that each token is processed by only the k highest-scoring experts, which is what keeps compute per token fixed however many experts a layer holds."
+              },
+              {
+                "term": "Router renormalisation",
+                "definition": "Dividing the selected experts' router probabilities by their sum so they add to one. Because that sum also fixes the branch's output gain, changing k changes the gain as well as the selection."
+              },
+              {
+                "term": "Shared expert",
+                "definition": "An expert every token passes through regardless of routing, holding knowledge common to all inputs so the routed experts are free to specialise."
+              },
+              {
+                "term": "MMLU",
+                "definition": "A multiple-choice benchmark spanning many academic subjects, reported as percent correct. Fractions of a point sit inside noise, which is what makes a 4.65-point move worth explaining."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Training-Free Halving of Activated Experts in Fine-Grained Mixture-of-Experts Models",
+                "url": "https://arxiv.org/abs/2609.04575",
+                "publisher": "arXiv",
+                "date": "2026-09-04"
+              },
+              {
+                "title": "Qwen/Qwen3.6-35B-A3B — model card",
+                "url": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+                "publisher": "Hugging Face",
+                "date": "2026"
+              },
+              {
+                "title": "DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models",
+                "url": "https://arxiv.org/abs/2401.06066",
+                "publisher": "arXiv",
+                "date": "2024-01-11"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "193 nm immersion lithography",
+    "slug": "immersion-193i",
+    "subtitle": "A film of water between the last lens element and the wafer, and the twenty years of patterning that followed it.",
+    "tldr": "Optical lithography ran out of shorter wavelengths in 2003: the 157 nm successor to 193 nm needed lens glass and mask covers nobody could manufacture. The escape was to leave the wavelength alone and fill the last gap — between the final lens element and the resist — with water, whose refractive index near 1.44 lets the lens collect light at angles that would otherwise be lost to total internal reflection. That single change took numerical aperture from below 1 to 1.35, where it has sat ever since, and it is still how most layers on a modern chip are printed.",
+    "sections": [
+      {
+        "heading": "Three terms, and what each one costs",
+        "body_md": "Everything in this piece follows from one equation, which ASML writes as CD = k₁ · λ / NA. CD is the smallest feature you can print, λ is the wavelength, NA is the numerical aperture of the projection lens, and k₁ is a dimensionless factor collecting everything else — the shape of the illumination, the tricks played on the mask, the contrast of the resist, the stability of the tool.\n\nThe three terms are not equally available. k₁ has a hard floor: ASML states the physical limit of lithography as k₁ = 0.25 for a single exposure, and by the early 2000s production was already grinding toward it with off-axis illumination and phase-shift masks. λ moves in jumps, because each jump means a new laser, new lens glass, new resist chemistry and a new mask infrastructure. NA is the one continuous knob — except that NA is defined as n·sinθ, the refractive index of the medium the light travels through times the sine of the steepest ray angle the lens accepts, and sinθ cannot exceed 1. With air in the gap, n is 1, so NA below 1 is a geometric ceiling, not an engineering one.",
+        "deeper_md": "It is worth being precise about what k₁ collects, because \"process factor\" makes it sound like slack. A two-beam interference image of a dense line-space pattern has its first diffracted orders at an angle set by the pitch; when the lens can only just capture them, the half-pitch is λ/(4·NA), which is k₁ = 0.25. Below that the orders leave the pupil entirely and there is no image at all, at any dose, with any resist. Everything the industry calls resolution enhancement is about getting closer to 0.25 without going under it — and everything called multipatterning is about admitting you cannot."
+      },
+      {
+        "heading": "The wavelength ran out in 2003",
+        "body_md": "The roadmap's answer to a stuck k₁ was the next wavelength: 157 nm, from a fluorine laser, one step down from the 193 nm argon-fluoride line. In February 2003 the three scanner vendors published a joint progress report saying the key issues were resolved, with production tools promised for 2004 to 2006 at NA 0.85 to 0.9.\n\nRead the same report for what \"resolved\" meant. The only practical lens material at 157 nm is calcium fluoride, and CaF₂ has an intrinsic birefringence of 11 nm/cm at that wavelength — it splits light into two polarisations that travel at different speeds and arrive with the wavefront wrecked. The fix was to build lens elements from two different crystal orientations, [111] and [100], and rotate them against each other so the errors cancel to below 0.3 nm/cm. The masks were worse. A pellicle is a thin membrane held above the mask so dust lands out of focus; organic ones went opaque after a few 157 nm pulses, giving fewer than 100 wafers per reticle, and the alternative was an 800 µm slab of fused silica sitting in the optical path.",
+        "deeper_md": "None of these were unsolvable in the laboratory sense. All of them were unsolvable in the sense that matters: each one required a new supply chain — CaF₂ boules of a quality and volume that did not exist, a pellicle material that did not exist, resists transparent at 157 nm that did not exist — to arrive on the same date. The 2003 report closes the CaF₂ section by noting that growth-yield improvement and further investment would still be necessary. That is the sentence a roadmap dies in."
+      },
+      {
+        "heading": "Water as the last lens element",
+        "body_md": "The alternative was to stop chasing λ and attack the n in n·sinθ. Fill the millimetre or so between the final lens element and the resist with a liquid, and the sine of the maximum ray angle is multiplied by that liquid's index instead of by 1. Water at 193 nm has a refractive index of about 1.44, so numerical apertures above 1 become possible for the first time, which the field promptly named hyper-NA.\n\nThe reason it is water and not something with a bigger number is the second half of the mechanism, and it is the sentence worth memorising. The steepest angle that can actually propagate is set by the *lowest* index anywhere in the chain of lens, fluid and resist. Photoresist at 193 nm has an index around 1.7, comfortably above water, so the fluid is the bottleneck: the maximum sine of the angle inside the resist is n_fluid / n_resist. Water's 1.44 is therefore a hard ceiling on NA, and production tools stopped at 1.35 — leaving margin for the lens, for the fluid's temperature and pressure dependence, and for the fact that a ray at exactly the critical angle carries no useful energy."
+      },
+      {
+        "heading": "The counterintuitive part: focus gets better",
+        "body_md": "The reflex for anyone who has used a microscope is that higher NA means shallower focus, and the reflex is right for a dry system. Immersion breaks it, and the reason is worth working through rather than accepting.\n\nDepth of focus is about phase. When the wafer sits away from the ideal plane, the diffracted orders travel different path lengths to reach it, they arrive out of phase, and the image contrast collapses. The size of that path difference depends on the angles the orders are travelling at. Inside a fluid of index 1.44, the wavelength is shorter and the angles carrying a given spatial frequency are *smaller* than they would be in air — the fluid does not enlarge the angles, it makes the same pattern printable with gentler ones. Smaller angles mean smaller optical path differences for the same defocus. So at a fixed feature size and a fixed NA, immersion buys depth of focus rather than spending it; the standard statement is a gain of at least the index of the fluid, and closer to a factor of two at the tightest pitches. In practice the industry spent that gain immediately on higher NA, which is why depth of focus at the leading edge still feels like tens of nanometres.",
+        "deeper_md": "This is also where polarisation stops being an academic concern. At hyper-NA the interfering rays meet at large angles, and only the component of the electric field perpendicular to the plane of incidence — TE — interferes with full contrast; the TM component partially cancels, so an unpolarised source loses image contrast that no dose can restore. Every immersion scanner therefore controls the polarisation state across the illumination pupil, which is one more knob that did not exist in a dry tool and one more thing that has to be measured."
+      },
+      {
+        "heading": "What the water costs",
+        "body_md": "A liquid in the exposure path is a defect source, and it was the main reason the industry hesitated. A 2007 status review put the penalty at 4 to 20 percent more defects on a wafer than dry 193 nm printing, from bubbles, droplets left behind, and particles the fluid carries into the gap. The resist and the water also attack each other: components leach out of the resist into the water, changing both, and the resist takes up water and swells. Topcoats were added to keep the two apart, and then removed again once resists were reformulated to be their own topcoat.\n\nNone of this is static, either. The wafer moves under the lens at scanning speed while a hood holds the water in place, supplies it and recovers it, so the fluid has to be degassed to keep bubbles out and temperature-controlled because the index depends on temperature. The industry accepted all of it quickly: the first 193 nm immersion scanner was delivered in August 2004, and by December 2006 more than 30 had been sold.",
+        "deeper_md": "The defect number is the one to keep. A patterning step that adds a few percent to defect density is not obviously worth taking — the honest comparison is against the alternative, which in 2004 was either 157 nm tools that did not exist or double-patterning a dry 193 nm process, which doubles the exposure and etch steps and brings its own overlay error. Immersion won that comparison on defectivity and on cost per printed layer, and then held it long enough for the defect gap to close."
+      },
+      {
+        "heading": "The road that stopped at 1.35",
+        "body_md": "The 2007 plan was for immersion to keep climbing. A second generation would use a fluid with an index of 1.65 for NA 1.55, and a third would pair it with a high-index lens material such as LuAG at around 2.2 for NA 1.65. Neither shipped. The fluids were absorbing or unstable, the lens crystals could not be made to lithographic quality, and the industry took a different route: freeze NA at 1.35 and buy resolution with multipatterning, then with EUV.\n\nThe frozen number is visible in the product line. ASML's TWINSCAN NXT:1950i, launched in December 2008, offered 1.35 NA, 38 nm single-patterning resolution, 2.5 nm overlay and more than 200 wafers an hour. The current NXT:2050i offers 1.35 NA, 40 nm with C-quad illumination and 38 nm with dipole, 2.5 nm cross-matched overlay against EUV tools, and 295 wafers an hour. Eighteen years, the same numerical aperture and the same resolution; what improved was overlay, throughput and matching. Put ASML's own numbers into the Rayleigh equation — 38 nm = k₁ × 193 nm / 1.35 — and k₁ comes out at 0.27, a rounding error away from the 0.25 that the same company calls the physical limit. There was nothing left in that equation to take."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Numerical aperture (NA)",
+        "definition": "n·sinθ for the final lens element: the refractive index of the medium in the gap times the sine of the steepest ray the lens accepts. Because n is a factor, filling the gap with water is what allows NA above 1."
+      },
+      {
+        "term": "k₁",
+        "definition": "The dimensionless process factor in CD = k₁λ/NA. It absorbs illumination shape, mask enhancements, resist contrast and tool control, and 0.25 is its physical floor for a single exposure."
+      },
+      {
+        "term": "Depth of focus",
+        "definition": "The range of wafer height over which the printed image is still acceptable. Wafer flatness, resist thickness, stage error and lens field curvature are all paid out of the same budget, which at the leading edge is tens of nanometres."
+      },
+      {
+        "term": "Hyper-NA",
+        "definition": "Lenses with numerical aperture above 1, which only an immersion fluid makes possible, and where polarisation becomes a first-order variable because the interfering rays meet at large angles."
+      },
+      {
+        "term": "Total internal reflection",
+        "definition": "Light travelling from a higher-index medium into a lower-index one is entirely reflected beyond a critical angle. In a dry tool this is what discards the steepest diffracted orders at the resist surface, and it is exactly what the water removes."
+      },
+      {
+        "term": "Pellicle",
+        "definition": "A thin membrane held a few millimetres above a photomask so that airborne particles land far outside the focal plane and do not print. The absence of a pellicle material that survives 157 nm exposure is one of the two things that killed that wavelength."
+      },
+      {
+        "term": "Birefringence (nm/cm)",
+        "definition": "A crystal presenting different refractive indices to different polarisations, so a wavefront splits and smears. Calcium fluoride's intrinsic 11 nm/cm at 157 nm had to be cancelled by rotating lens elements of different crystal orientation against each other."
+      }
+    ],
+    "try_this": "Run the Rayleigh equation backwards on the club's own stepper. Look up the projection optic's numerical aperture and the source wavelength, measure the narrowest line-space pair you have actually resolved in resist, and solve for k₁ — the same arithmetic on ASML's published figures gives 38 nm = k₁ × 193 nm / 1.35, so k₁ = 0.27 for a production immersion scanner. If your own k₁ comes out near 0.8, your limit is process and not optics, and the fix is dose, focus and resist rather than a better lens. Then read the two-page \"Immersion Lithography\" sample from Mack's Field Guide, which SPIE publishes free, and satisfy yourself about the one sentence that does all the work: the maximum sine of the ray angle inside the resist is n_fluid divided by n_resist. That is why 1.44 and not 1.7 is the number everyone quotes.",
+    "sources": [
+      {
+        "title": "The Rayleigh criterion for resolution",
+        "url": "https://www.asml.com/en/technology/lithography-principles/rayleigh-criterion",
+        "publisher": "ASML",
+        "date": "2026"
+      },
+      {
+        "title": "Immersion Lithography — Field Guide to Optical Lithography (free sample, pp. 31-32)",
+        "url": "https://spie.org/publications/fg06_p31-32_immlithography",
+        "publisher": "Chris A. Mack / SPIE Press",
+        "date": "2006"
+      },
+      {
+        "title": "193nm immersion lithography: Status and challenges",
+        "url": "https://spie.org/news/immersionlitho-intro",
+        "publisher": "Yayi Wei and David Back, SPIE Newsroom",
+        "date": "2007-03-22"
+      },
+      {
+        "title": "Progress report: 157-nm lithography prepares to graduate",
+        "url": "https://spie.org/news/progress-report-157-nm-lithography-prepares-to-graduate",
+        "publisher": "Stephane Dana, Phil Ware and Akikazu Tanimoto, SPIE",
+        "date": "2003-02"
+      },
+      {
+        "title": "ASML launches the TWINSCAN NXT:1950i immersion lithography system",
+        "url": "https://www.asml.com/en/news/press-releases/2008/asml-launches-the-twinscan-nxt1950i-immersion-lithography-system",
+        "publisher": "ASML",
+        "date": "2008-12-03"
+      },
+      {
+        "title": "TWINSCAN NXT:2050i — DUV lithography system",
+        "url": "https://www.asml.com/en/products/duv-lithography-systems/twinscan-nxt2050i",
+        "publisher": "ASML",
+        "date": "2026"
+      }
+    ]
+  }
+}

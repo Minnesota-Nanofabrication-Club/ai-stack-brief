@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-07",
+      "foundations_slug": "immersion-193i",
+      "foundations_topic": "193 nm immersion lithography",
+      "headline": "A University of Chicago-led group reports remote epitaxy on metallic and covalently bonded substrates, which a central belief in the field says should not work: the rule for which crystals can grow a peel-off single-crystal film stops being about ionic bonding.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-06",
       "foundations_slug": "eniac-and-stored-program",
       "foundations_topic": "ENIAC, EDVAC, and the stored-program idea",
@@ -119,6 +132,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-06T12:14:59Z",
-  "latest": "2026-09-06"
+  "generated_at": "2026-09-07T14:03:24Z",
+  "latest": "2026-09-07"
 }

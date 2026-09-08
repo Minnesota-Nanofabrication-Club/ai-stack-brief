@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-08",
+      "foundations_slug": "spin-coating-physics",
+      "foundations_topic": "Spin coating",
+      "headline": "ASML and TSMC opened an industry programme to grow the photomask from six inches to twelve, because high-NA EUV's anamorphic optics cut the printed field from 26 × 33 mm to 26 × 16.5 mm and left the largest dies to be stitched from two exposures.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-07",
       "foundations_slug": "immersion-193i",
       "foundations_topic": "193 nm immersion lithography",
@@ -132,6 +145,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-07T14:03:24Z",
-  "latest": "2026-09-07"
+  "generated_at": "2026-09-08T12:45:24Z",
+  "latest": "2026-09-08"
 }

@@ -1,0 +1,410 @@
+{
+  "date": "2026-09-08",
+  "generated_at": "2026-09-08T13:40:00Z",
+  "window": "2026-09-07..2026-09-08",
+  "headline": "ASML and TSMC opened an industry programme to grow the photomask from six inches to twelve, because high-NA EUV's anamorphic optics cut the printed field from 26 × 33 mm to 26 × 16.5 mm and left the largest dies to be stitched from two exposures.",
+  "pulse": {
+    "read_time_min": 7,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-large-format-photomask-high-na",
+            "title": "The photomask goes to 12 inches to give high-NA its field back",
+            "dek": "ASML and TSMC opened an industry programme on 7 September to grow the extreme-ultraviolet photomask — the reflective patterned plate a scanner images down onto the wafer — from today's 6-inch square to 12 inches, with a pilot line targeted for 2031 and full tool readiness for 2033.",
+            "background_md": "A lithography scanner does not print a mask at 1:1. It demagnifies, so a feature drawn on the mask is several times larger than the one that lands on the wafer, and the mask can therefore be written by a slower, coarser tool than the one that prints with it. The plate itself has been a six-inch square of glass for decades, and every mask writer, inspection tool, pellicle frame, shipping pod and reticle stage in the industry is dimensioned around that one number. Changing the plate changes all of them at once.",
+            "glossary": [
+              {
+                "term": "Reticle field",
+                "definition": "The rectangle of pattern that one exposure prints on the wafer; a die larger than the field has to be built from two exposures and carries their relative alignment error along the join."
+              },
+              {
+                "term": "Anamorphic projection",
+                "definition": "An optical system that demagnifies by different factors along the two axes, so the shape of the pattern on the mask is deliberately not the shape of the pattern printed on the wafer."
+              },
+              {
+                "term": "Mo/Si multilayer",
+                "definition": "The alternating molybdenum and silicon stack that makes an EUV mask reflective at 13.5 nm, where nothing transmits usefully; it works by Bragg interference and so only over a narrow band of incidence angles."
+              },
+              {
+                "term": "Mask blank",
+                "definition": "The unpatterned coated substrate a mask is written on. Its flatness and its buried-defect count put a ceiling on what any mask made from it can do, before a single feature is written."
+              }
+            ],
+            "why_it_matters": "One fixed mask format is what lets a chip designer treat the exposure field as a constant rectangle and a die as something that either fits inside it or does not. High-NA optics halve that rectangle, so any die longer than 16.5 mm in one direction has to be printed as two exposures and joined, which puts an overlay error along a seam running through the middle of the largest chips anyone builds. A bigger plate is the only way to get the rectangle back without touching the optics, and it moves the difficulty onto the mask supply chain instead.",
+            "deeper_md": "The half-field is a consequence of the mirrors. Raising numerical aperture from 0.33 to 0.55 widens the cone of light, and at the mask the incidence angles would exceed what a Mo/Si multilayer still reflects — ASML's Jan van Schoot puts the workable limit near 11°. The fix was anamorphic projection: 4× demagnification along one axis and 8× along the other, which keeps the six-inch plate but shrinks the printed field from 26 × 33 mm to 26 × 16.5 mm. ASML's own stated consequence is that a high-NA layer needs twice as many exposures as an NXE layer, which is why the EXE stages were rebuilt to accelerate at 8 g for the wafer and 32 g for the reticle.\n\nA larger plate is what would let a stronger, uniform demagnification still cover a full-size field; the release lists \"removal of stitching constraints\" among the benefits without spelling out the optics. The cost lands upstream, on a blank that has to be flat and free of phase defects over four times the area, and on the e-beam writer, the actinic inspection tool and the pellicle that all have to scale with it. Nothing like it exists yet: pilot line 2031, system readiness 2033, on ASML and TSMC's own timeline. TSMC's 2030 high-volume date is for high-NA on six-inch plates, and the release names no other committed adopter and no other date. This brief reported the fleet's throughput numbers on 1 September; this is a separate commitment about the mask, not an update to those.",
+            "fab_angle": "The argument here is about the size of an interface, not about resolution. A mask is the object that lets one slow, expensive writer serve thousands of fast exposures, and every tool in the chain is built to its dimensions. A maskless writer — the DMD-based route MNF is building — has no such interface, which is exactly why it can pattern anything and exactly why it cannot pattern quickly. This announcement is that trade seen from the other side.",
+            "confidence": "confirmed",
+            "sources": [
+              {
+                "title": "TSMC and ASML Announce Initiative to Pioneer Industry Transition to Large-Format Photomasks for High NA EUV",
+                "url": "https://www.asml.com/en/news/press-releases/2026/tsmc-and-asml-announce-industry-transition-to-large-format-photomasks-for-high-na-euv",
+                "publisher": "ASML",
+                "date": "2026-09-08"
+              },
+              {
+                "title": "5 things you should know about High NA EUV lithography",
+                "url": "https://www.asml.com/en/company/stories/2024/5-things-high-na-euv",
+                "publisher": "ASML",
+                "date": "2024"
+              },
+              {
+                "title": "This Machine Could Keep Moore's Law on Track",
+                "url": "https://spectrum.ieee.org/high-na-euv",
+                "publisher": "IEEE Spectrum",
+                "date": "2023-07-29"
+              },
+              {
+                "title": "TWINSCAN EXE:5200B — EUV lithography systems",
+                "url": "https://www.asml.com/en/products/euv-lithography-systems/twinscan-exe-5200b",
+                "publisher": "ASML",
+                "date": "2026"
+              }
+            ]
+          },
+          {
+            "id": "silicon-scgan-lattice-softening-piezo",
+            "title": "Scandium makes gallium nitride piezoelectric by making it soft",
+            "dek": "Shailesh Kalal and co-authors report that in scandium-alloyed gallium nitride — a wurtzite semiconductor being developed for piezoelectric and ferroelectric thin films — the piezoelectric strain coefficient rises more than fourfold as scandium is added, and a large share of that comes from the crystal getting mechanically softer rather than from a stronger charge response.",
+            "background_md": "Piezoelectricity is quoted through two coefficients that behave differently. The stress coefficient e₃₃ is the charge per unit area a film produces per unit strain; the strain coefficient d₃₃ is the displacement it produces per unit applied field, and d₃₃ is what an actuator or a bulk-acoustic-wave resonator actually spends. The two are linked through the crystal's stiffness — loosely, d ≈ e/C. A material can therefore improve as an actuator either by pushing more charge for the same squeeze or simply by being easier to squeeze, and those are different physics with different consequences downstream.",
+            "glossary": [
+              {
+                "term": "e₃₃ (piezoelectric stress coefficient)",
+                "definition": "The charge per unit area generated per unit strain along the polar axis, in C/m². It is what a film clamped to a substrate delivers, because a clamped film cannot deform freely."
+              },
+              {
+                "term": "d₃₃ (piezoelectric strain coefficient)",
+                "definition": "The displacement per unit applied electric field along the polar axis, in pC/N or equivalently pm/V. This is the number a resonator or actuator design is written against."
+              },
+              {
+                "term": "C₃₃ (elastic stiffness)",
+                "definition": "The stress needed per unit strain along the polar axis, in GPa. It sets the longitudinal acoustic velocity √(C₃₃/ρ), so it fixes the resonant frequency of a given film thickness."
+              },
+              {
+                "term": "EXAFS",
+                "definition": "The oscillations in X-ray absorption just above one element's edge; their period and amplitude give that element's near-neighbour distances and counts, so it probes local structure in an alloy where diffraction only reports averages."
+              }
+            ],
+            "why_it_matters": "Softness is not the same purchase as a stronger charge response, and a datasheet quoting only d₃₃ hides which one you bought. Stiffness sets the longitudinal acoustic velocity √(C₃₃/ρ), so a film whose calculated C₃₃ has fallen from 380 to 227 GPa carries sound roughly a quarter slower at unchanged density, and a thickness-mode resonator cut from it lands at a proportionally lower frequency. The same flattening of the energy landscape that buys the softness also lowers the polarisation-switching barrier — which is what makes these alloys interesting as ferroelectrics and what makes holding them in one polarisation state harder.",
+            "deeper_md": "Across x = 0.06 to 0.26 the two calculated coefficients move in opposite directions: e₃₃ roughly doubles, 0.82 → 1.66 C/m², while C₃₃ falls about 40%, 380 → 227 GPa. d₃₃ rises 2.99 → 12.46 pC/N, a factor of 4.2. Note that 2.0 × 1.7 is 3.4, not 4.2 — d₃₃ in a wurtzite crystal also involves C₁₁, C₁₂, C₁₃ and e₃₁ — so the two headline ratios do not simply multiply out, and the honest statement is that softening carries a large part of the gain rather than all of it. The intrinsic polarisation-switching barrier falls in step, 24.2 → 19.0 meV/Å³.\n\nThe experimental half is local rather than average. Sc K-edge EXAFS puts the effective Sc–N coordination number at 4.1(4) rising to 4.5(2) and the Sc–N bond length at 2.045(7) → 2.081(8) Å, while X-ray diffraction shows anisotropic expansion and a falling c/a ratio with the long-range wurtzite structure intact throughout.\n\nTwo caveats. Every piezoelectric and elastic number quoted is calculated; the measured content of the paper is structural. And the mechanism itself is not new — Tasnádi and co-authors attributed the 400% piezoelectric enhancement in ScAlN to the same pairing of internal-coordinate response and C₃₃ softening in 2010, and read it as the energy landscape flattening between competing wurtzite and hexagonal phases. What is new here is a local-coordination measurement tying that softening to a specific change around the scandium site, in the gallium system rather than the aluminium one.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Local coordination, structural softening, and polarization-switching energetics in Sc-alloyed GaN",
+                "url": "https://arxiv.org/abs/2609.05000",
+                "publisher": "arXiv",
+                "date": "2026-09-04"
+              },
+              {
+                "title": "Origin of the anomalous piezoelectric response in wurtzite Sc(x)Al(1-x)N alloys",
+                "url": "https://arxiv.org/abs/1003.3353",
+                "publisher": "arXiv / Physical Review Letters 104, 137601",
+                "date": "2010-03-17"
+              }
+            ]
+          },
+          {
+            "id": "silicon-fe3gate2-field-free-sot-switching",
+            "title": "A van der Waals magnet switches with no magnetic field to help it",
+            "dek": "Zhengxiao Li and co-authors report a spin-orbit torque memory cell — one where current in an adjacent heavy metal flips the magnet instead of a magnetic field doing it — built from the layered magnet Fe₃GaTe₂ on platinum, switching deterministically at room temperature with no external field applied.",
+            "background_md": "Writing a magnetic bit with spin-orbit torque means passing a charge current through a heavy metal such as platinum, where spin-orbit coupling deflects opposite spins towards opposite surfaces; the spin current that results torques the magnet sitting on top. The spins arriving at that interface point in the film plane. If the magnet's easy axis points out of the plane — which is what a dense, thermally stable cell needs — the in-plane torque is symmetric about the vertical, so it stalls the moment halfway and cannot pick an end state. The usual laboratory fix is an applied in-plane field, which no memory array can supply.",
+            "glossary": [
+              {
+                "term": "Spin-orbit torque (SOT)",
+                "definition": "The torque exerted on a magnet by a spin current generated when a charge current in a heavy metal is deflected by spin-orbit coupling; it writes a bit without sending the write current through a tunnel barrier."
+              },
+              {
+                "term": "Perpendicular magnetic anisotropy (PMA)",
+                "definition": "An energy preference for the magnetisation to point out of the film plane. It is what allows a magnetic bit to shrink in area without its stored energy falling below thermal noise."
+              },
+              {
+                "term": "Thermal stability factor (Δ)",
+                "definition": "The ratio of a bit's energy barrier to k_BT. It appears as an exponent in the retention time, so a change of a few units moves how long a bit survives by orders of magnitude."
+              },
+              {
+                "term": "Critical switching current density (J_c)",
+                "definition": "Current per unit cross-section of the write channel needed to flip the bit, quoted here in A cm⁻². Write energy scales with it, and it decides whether an ordinary transistor can drive the cell."
+              }
+            ],
+            "why_it_matters": "The symmetry has to be broken by something that survives manufacturing. Published routes add an exchange-biasing layer, a vertical composition gradient, or an engineered lattice tilt — each an extra deposition step and an extra source of device-to-device spread in a cell whose entire appeal is density. Taking the asymmetry from the channel itself would leave the write mechanism inside layers that are already present. Whether that is worth anything turns on the thermal stability factor, which is the exponent in the retention time, and on whether the number survives being made at wafer scale rather than by exfoliation.",
+            "deeper_md": "The stack is an Fe₃GaTe₂ flake with strong perpendicular anisotropy on a platinum channel, and the authors credit the field-free behaviour to electrical asymmetries in the Pt channel rather than to any added pinning layer. From the pulse-width dependence of switching they extract an intrinsic critical current density of 1.8 × 10⁷ A cm⁻² and a thermal stability factor of 50, and from those they project 1.5 fJ per bit at a 1 ns pulse for typical industrial device dimensions — about 40× below what they quote for an optimised W/FeCoB cell.\n\nRead the 1.5 fJ as what it is. It is a projection onto dimensions this device does not have, and the current density underneath it is itself an extrapolation of the pulse-width dependence to the long-pulse limit rather than a single measured switching event.\n\nThe standing objection to every van der Waals magnet result applies here too: Fe₃GaTe₂ is grown as bulk crystals and peeled, and nothing in this work shows the perpendicular anisotropy or the Pt interface surviving wafer-scale deposition. For scale, the dislocation-tilt route to field-free switching in Pt/Co was demonstrated in 2023 at around 10¹¹ A m⁻², which is 10⁷ A cm⁻² in the same units — the same order as this result, in a material system that can already be sputtered.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Demonstration of room-temperature, magnetic-field-free, and ultralow-power spin-orbit torque logic device based on composition-uniform van der Waals magnet Fe3GaTe2",
+                "url": "https://arxiv.org/abs/2609.04600",
+                "publisher": "arXiv",
+                "date": "2026-09-04"
+              },
+              {
+                "title": "Field-free spin-orbit switching of perpendicular magnetization enabled by dislocation-induced in-plane symmetry breaking",
+                "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10482861/",
+                "publisher": "Nature Communications",
+                "date": "2023-09-06"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-arm-neural-accelerators-shader-cores",
+            "title": "Arm moves the upscaler's neural network inside the shader cores",
+            "dek": "Arm's CSS for Mobile 2 platform, announced 8 September, puts neural-network accelerators inside the shader cores of its Mali G2-Ultra NX graphics processor, so a phone game can render one-eighth of a frame's pixels and have the network reconstruct the rest without the intermediate buffers leaving the GPU.",
+            "background_md": "Neural upscaling renders a frame at low resolution and uses a small trained network to infer the missing pixels, then optionally invents whole intermediate frames. The network's inputs are things the renderer has just produced — colour, depth, motion vectors — and they are already sitting in the graphics processor's memory. Running that network on a separate neural processing unit therefore means writing a frame's worth of buffers out to DRAM and reading them back again, every frame, at whatever frame rate the game targets. On a phone, off-chip traffic is where the power goes.",
+            "glossary": [
+              {
+                "term": "Shader core",
+                "definition": "The programmable engine inside a GPU that runs per-pixel and per-vertex code; a GPU's throughput is roughly the number of shader cores times their clock times the work each does per cycle."
+              },
+              {
+                "term": "SME2 (Scalable Matrix Extension 2)",
+                "definition": "An Arm instruction-set extension that puts an outer-product matrix engine on the CPU itself, so small matrix multiplies run in the CPU pipeline instead of being dispatched to a separate accelerator."
+              },
+              {
+                "term": "Neural super-sampling",
+                "definition": "Rendering at reduced resolution and using a trained network to infer the full-resolution frame, taking the renderer's own depth and motion-vector buffers as extra inputs so the network is not guessing from colour alone."
+              },
+              {
+                "term": "DRAM traffic per frame",
+                "definition": "The bytes moved between chip and external memory for each displayed frame. Off-chip transfers cost far more energy per byte than on-chip ones, so this term usually dominates a mobile GPU's power budget."
+              }
+            ],
+            "why_it_matters": "Where the accelerator physically sits decides whether neural rendering is affordable on a battery, because the cost that scales is data movement rather than arithmetic. Arm's own figure for the integrated version is up to 70% less DRAM traffic per frame against its previous-generation platform, and that term grows with resolution and frame rate no matter how small the network becomes. It is also the part a licensee cannot fix in software afterwards: a chip that routes its upscaler through a separate neural unit has already paid the round trip in silicon.",
+            "deeper_md": "The flagship cluster Arm describes is two C2-Ultra cores, six C2-Pro cores and two SME2 matrix units — double last year's single unit — which Arm credits with up to 70% faster execution on recent small language models, alongside 15% higher single-thread performance and 12% faster app launches against its own Lumex reference platform. The GPU is the more interesting half: the neural accelerators sit inside the shader cores rather than beside them, so the upscaler reuses the GPU's memory system and coherent caches instead of crossing the system interconnect.\n\nThe arithmetic behind \"one-eighth\": neural super-sampling reconstructs 1080p from 540p, a 4× pixel reduction, and frame generation supplies every other frame for another 2×. Arm's claims are up to 4× frames per second at a fixed sustained power against native rendering, up to 70% less DRAM traffic per frame, 14% on existing game content, and a 70% cut in ray-tracing work translating to a 30% performance gain.\n\nEvery one of those numbers carries the same footnote: internal testing between March and August 2026, against Arm's own previous-generation reference platform. Arm sells IP, not chips. There is no silicon to measure, no licensee has announced a part, and the process node is not stated — independent numbers arrive when a phone does.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Inside Arm CSS for Mobile 2: The AI-native compute platform for mobile",
+                "url": "https://newsroom.arm.com/blog/arm-css-for-mobile-2-and-c2-cpu-cluster",
+                "publisher": "Arm",
+                "date": "2026-09-08"
+              },
+              {
+                "title": "Arm CSS for Mobile 2 — AI mobile compute subsystem",
+                "url": "https://www.arm.com/products/mobile/css-for-mobile-2",
+                "publisher": "Arm",
+                "date": "2026"
+              },
+              {
+                "title": "Arm pushes agentic AI and desktop-quality graphics in next-gen phone platform",
+                "url": "https://www.theregister.com/systems/2026/09/08/arm-pushes-agentic-ai-and-desktop-quality-graphics-in-next-gen-phone-platform/5294867",
+                "publisher": "The Register",
+                "date": "2026-09-08"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-bf16-component-products-gemm",
+            "title": "Three bfloat16 numbers stand in for one float, and AMX does the rest",
+            "dek": "Bing Cui and Yu Liu describe a way to run single- and double-precision matrix multiplication on Intel's AMX matrix unit, which accepts only bfloat16 inputs, by splitting every number into several bfloat16 pieces, multiplying the pieces in the fast unit and adding the products back up at full precision.",
+            "background_md": "A matrix unit built for machine learning multiplies short number formats far faster than the general-purpose vector units beside it: bfloat16 keeps float32's exponent range but discards two-thirds of its significand, and conversion between the two is a truncation. Scientific codes cannot simply switch to it, because their results depend on the precision they were written for. The escape is that a high-precision number is exactly the sum of several low-precision ones — split both operands, multiply the pieces pairwise in the fast unit, accumulate in high precision. The bill is that the pairwise products grow as the square of the split count.",
+            "glossary": [
+              {
+                "term": "GEMM",
+                "definition": "General matrix-matrix multiply, C ← αAB + βC. Dense linear algebra and neural network training both reduce mostly to it, which is why matrix units exist at all."
+              },
+              {
+                "term": "bfloat16",
+                "definition": "A 16-bit format that keeps float32's 8-bit exponent and truncates the significand, so it spans the same dynamic range as float32 with roughly a third of the precision and converts by dropping the low 16 bits."
+              },
+              {
+                "term": "Ozaki scheme",
+                "definition": "A method for computing a matrix product accurately by splitting each operand into slices whose pairwise products incur no rounding, then summing those products back in higher precision."
+              },
+              {
+                "term": "AMX tile",
+                "definition": "One of eight 16-row × 64-byte register files that Intel's matrix unit multiplies directly; a row holds 32 bfloat16 values, so keeping operands tile-resident is what stops the splits being refetched from memory."
+              }
+            ],
+            "why_it_matters": "The split count is not a tuning parameter, it is arithmetic: three bfloat16 significands are roughly what it takes to cover float32's, which is why the FP32 path evaluates six products and the FP64 path needs a six-slice decomposition and as many as twenty-one. That ratio sets the floor on how much faster the matrix unit must be before emulation pays at all — of order six-fold for the single-precision path and twenty-one-fold for the most accurate double-precision setting, before the splitting and accumulation work is counted. It is also why the paper's double-precision result only wins at large matrix orders.",
+            "deeper_md": "For FP32 the method splits each operand into three bfloat16 components and evaluates six of the nine possible component products, targeting FP32-level accuracy against Intel's oneMKL SGEMM without claiming bitwise identity. For FP64 it uses a fixed six-slice Ozaki decomposition, valid only for inputs inside bfloat16's exponent range, and exposes four settings that retain 6, 10, 15 or 21 products — the accuracy-versus-cost knob. Each retained product is computed in FP32 by AMX, then widened and accumulated in FP64.\n\nWhat makes it work is data layout rather than arithmetic: precomputed packed component buffers, VNNI-packed B panels, and a schedule that keeps operands resident in the tile registers so every split is reused instead of refetched.\n\nThe reported outcome is asymmetric and the paper says so. AMX-FP32 exceeds oneMKL SGEMM throughput on the square matrices tested; AMX-FP64 only exceeds DGEMM at low product counts and sufficiently large orders. No speedup factor is given in the abstract, and the exponent-range restriction excludes exactly the badly scaled matrices for which double precision is usually retained. The Ozaki decomposition itself dates from 2012 and has been ported to GPU tensor cores and integer matrix units already — the contribution here is the CPU tile-register schedule, not the splitting idea.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "BF16 Component-Product Emulation of FP32 and FP64 GEMM on Intel AMX",
+                "url": "https://arxiv.org/abs/2609.04663",
+                "publisher": "arXiv",
+                "date": "2026-09-04"
+              },
+              {
+                "title": "Performance Enhancement of the Ozaki Scheme on Integer Matrix Multiplication Unit",
+                "url": "https://arxiv.org/abs/2409.13313",
+                "publisher": "arXiv / International Journal of High Performance Computing Applications",
+                "date": "2024-09-20"
+              },
+              {
+                "title": "Code Sample: Intel Advanced Matrix Extensions (Intel AMX) — Intrinsics Functions",
+                "url": "https://www.intel.com/content/www/us/en/developer/articles/code-sample/advanced-matrix-extensions-intrinsics-functions.html",
+                "publisher": "Intel",
+                "date": "2026"
+              },
+              {
+                "title": "The bfloat16 numerical format",
+                "url": "https://docs.cloud.google.com/tpu/docs/bfloat16",
+                "publisher": "Google Cloud",
+                "date": "2026-08-26"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-mhc-residual-stream-utilisation",
+            "title": "A four-stream residual path the model only uses two of",
+            "dek": "Pengxiang Zhao and co-authors probed DeepSeek-V4-Flash, which replaces a transformer's single residual connection — the running vector every block reads from and adds its output back into — with four parallel streams, and found that a typical block effectively uses about two of them.",
+            "background_md": "A transformer is a stack of blocks, each of which reads a vector, computes something, and adds its output back into that same vector. That running vector is the residual stream, and it is the only channel through which early layers reach late ones, so everything computed so far is superimposed in one place and features have to share directions. Hyper-Connections widen it: instead of one stream there are n, and each block learns which to read from, which to write to, and how the streams mix between blocks. The bet is that separating superimposed features buys more than the extra width costs.",
+            "glossary": [
+              {
+                "term": "Residual stream",
+                "definition": "The running vector each transformer block adds its output into. Because every block reads and writes the same vector, it is the model's only long-range communication channel between layers."
+              },
+              {
+                "term": "Mixer",
+                "definition": "In a hyper-connected residual pathway, the learned matrix that recombines the parallel streams between blocks. Setting it to the identity means the streams simply run forward untouched."
+              },
+              {
+                "term": "Perplexity",
+                "definition": "The exponential of the mean negative log-likelihood the model assigns per token of held-out text — its average surprise. Lower is better, and it is the standard scalar for comparing language models on one corpus."
+              },
+              {
+                "term": "C4",
+                "definition": "The Colossal Clean Crawled Corpus, a filtered snapshot of Common Crawl introduced with the T5 model and used here as the held-out text on which perplexity is measured."
+              }
+            ],
+            "why_it_matters": "Widening the residual path costs parameters and activation memory in proportion to the number of streams, and it is paid on every block of every forward pass, in training and at inference. If the trained model routes into about two effective streams and its late mixing matrices can be replaced by the identity for 1.9% perplexity, then a large part of what the extra streams cost is not buying anything the evaluation can see. That is an architecture question with a measurable answer, which is rarer than it should be at this scale.",
+            "deeper_md": "The probes are effective stream count, cross-stream residual weights and inter-stream cosine similarity, run on the four-stream pathway of DeepSeek-V4-Flash. Routing is concentrated — about two effective streams at a typical attention or FFN site — but the dominant stream changes with depth, and the streams stay directionally distinct rather than collapsing onto one another, so they are genuinely carrying different content.\n\nThe interventions are what turn that into a result. Replacing the late mixers, layers 22–42, with the identity costs 1.9% C4 perplexity and leaves a six-task average score intact; replacing the early mixers costs 41%. Freezing each early mixer at its dataset-mean value costs 0.2% perplexity and 0.25 points of average score, so what the early mixer contributes is its site-specific structure rather than its token-by-token variation. Keeping only the three largest routing weights per token everywhere costs at most 2.7% perplexity and at most 0.4 points.\n\nThe caveat is scope: one model, one stream width, one corpus for perplexity and six tasks for accuracy. Nothing here shows a four-stream pathway is useless, only that this trained model does not exploit it — and the authors do not train a two-stream model from scratch, which is the comparison that would settle whether the capacity is wasted or merely unused.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "How Does mHC Use Its Residual Streams? Selective Routing and Near-Identity Mixing",
+                "url": "https://arxiv.org/abs/2609.05309",
+                "publisher": "arXiv",
+                "date": "2026-09-04"
+              },
+              {
+                "title": "Hyper-Connections",
+                "url": "https://arxiv.org/abs/2409.19606",
+                "publisher": "arXiv",
+                "date": "2024-09-29"
+              },
+              {
+                "title": "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer",
+                "url": "https://arxiv.org/abs/1910.10683",
+                "publisher": "arXiv",
+                "date": "2019-10-23"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "Spin coating",
+    "slug": "spin-coating-physics",
+    "subtitle": "Why the final resist thickness barely depends on how much you poured, and why it falls as the inverse square root of spin speed.",
+    "tldr": "Spin coating puts a uniform film on a wafer by flinging most of the liquid off it. The physics has one counterintuitive consequence: over a wide range the thickness you end up with does not depend on how much you dispensed, because a thick film thins faster than a thin one. Everything a process engineer actually tunes — speed, viscosity, solids content, bake — is a way of choosing where on that self-levelling curve the liquid stops flowing and starts simply drying.",
+    "sections": [
+      {
+        "heading": "The problem: a film nothing is allowed to touch",
+        "body_md": "Start from what the film has to be. A photoresist layer is the mask for everything the wafer does next, and its thickness sets how much exposure dose reaches the bottom of it, how much the developer has to clear, and how tall the sidewall is that the etch will copy. So the thickness has to be the same in the middle of the wafer and at the edge, to a small percentage. Nothing may touch the surface, because a contact would leave a defect exactly where a pattern is about to be printed. It has to happen in seconds, because a fab's economics are cycle time. And the same tool has to handle liquids whose viscosity spans orders of magnitude, from a thin anti-reflective coating to a thick negative resist meant to stand ten micrometres tall.\n\nSpin coating meets all four by refusing to meter anything. You flood the wafer with far more liquid than you need, spin it, and let the fluid mechanics decide what stays."
+      },
+      {
+        "heading": "Why the film forgets how much you poured",
+        "body_md": "Put a layer of thickness h on a disc spinning at angular velocity ω. Each parcel of fluid at radius r feels an outward body force ρω²r, and the only thing resisting it is viscous shear against the wafer. Emslie, Bonner and Peck solved that balance in 1958 for a non-volatile Newtonian liquid and got\n\n`h(t) = h₀ / sqrt(1 + (4ρω²/3μ)·h₀²·t)`\n\nwhere h₀ is the starting thickness, ρ the density and μ the viscosity. Now look at what happens once the process has run for a while. The `1` under the root becomes negligible next to the second term, the h₀ in the numerator cancels the h₀² inside, and you are left with\n\n`h → sqrt(3μ / 4ρω²t)`\n\nwith no h₀ in it at all. Thick regions thin faster than thin ones — the outflow rate goes as h³ — so the film converges onto one curve regardless of where it started. That is why dispensing 2 mL instead of 1 mL barely moves the answer, and why the coating is self-levelling rather than merely thin."
+      },
+      {
+        "heading": "Where the inverse square root comes from",
+        "body_md": "The rule everyone quotes is that thickness falls as ω^(−1/2): quadruple the spin speed and you halve the film. It does not fall out of the equation above, and seeing why not is the point of this section. Differentiate the Emslie–Bonner–Peck result and the outflow rate is `dh/dt = −(2ρω²/3μ)·h³`; stop the clock at a fixed spin time and that gives h proportional to 1/ω, a full inverse power. Worse, the film never stops thinning at all, because nothing in the model removes solvent.\n\nMeyerhofer's 1978 extension supplies the missing half. Spin coating runs in two regimes: early on, thinning is radial outflow; later, once the film is thin and the polymer left behind has raised its viscosity, flow essentially stops and thinning is solvent leaving. The film sets at the crossover, where the two rates are equal. Set the outflow rate equal to an evaporation rate e and you get `h ∝ (μe/ρω²)^(1/3)`.\n\nThat is still not a half — unless e depends on ω as well. It does. Evaporation is limited by the boundary layer over a spinning disc, which thins as √ω, the same scaling Levich derived for mass transport to a rotating electrode. Put e ∝ ω^(1/2) into the crossover and the exponents give exactly ω^(−1/2)."
+      },
+      {
+        "heading": "The knobs, and what each one is really doing",
+        "body_md": "Three variables set the film, and they act at different points in the story. **Spin speed** picks where on the ω^(−1/2) curve you land, and is the fast knob: an Ossila-style working range of roughly 600–6,000 rpm spans about a factor of three in thickness, and beyond that you are fighting turbulence at the wafer edge. **Solids content** sets the endpoint directly — when the solvent is gone, what is left is whatever fraction of the dispensed liquid was not solvent, so doubling the solids roughly doubles the film for the same speed. This is why resist vendors sell the same chemistry in half a dozen dilutions instead of asking you to spin at 20,000 rpm. **Viscosity** governs how fast you traverse the flow-dominated stage and therefore how long the wafer must spin before the crossover.\n\nThe acceleration ramp is the underrated one. The first second, while the liquid is still spreading, decides whether the coating is radially uniform; a ramp that is too sharp throws the bulk off before it has covered the wafer."
+      },
+      {
+        "heading": "The defects the physics predicts",
+        "body_md": "Every characteristic spin-coat defect falls out of the same two forces. The **edge bead** is surface tension winning at the boundary: liquid on its way off the wafer cannot detach cleanly, so a raised rim of 2–5 mm forms at the perimeter, and because it is thick it keeps solvent through the bake. That is why a resist-coated wafer can stick to a contact mask at its edge, and why the standard remedy is a solvent blend sprayed at the rim while the wafer turns slowly, around 500–800 rpm, before baking.\n\n**Striations** are the radial spokes you see under a bright light. They are a solutal Marangoni–Bénard instability: evaporation at the free surface leaves the top of the film richer in polymer and cooler than the bulk, both of which raise its surface tension, and the resulting gradient drives convection cells that print themselves into the drying film. Shiratori and co-workers measured the threshold directly, finding striations decay away once the Marangoni number falls below roughly 90–160. **Comets** are the simple one — a particle in the fluid, with a wake behind it. Filter the resist and clean the dispense nozzle."
+      },
+      {
+        "heading": "The bake is part of the thickness",
+        "body_md": "The film that leaves the spinner is not the film you print with. It still holds a substantial fraction of solvent, and the soft bake — typically 90–110 °C for a minute or two on a hotplate — drives that out, relaxes the stress the spin left behind, and improves adhesion to the substrate. The film shrinks while it does so. That has a practical consequence worth internalising: the spin curve you calibrate is a spin-and-bake curve, and changing the bake temperature or time moves the thickness as surely as changing the speed does.\n\nThe bake also has limits in both directions. Too fast, and solvent escaping through a partly hardened surface leaves bubbles; too slow or too cool, and a skin forms that traps solvent underneath it, which then shows up as blistering or poor adhesion later. And for diazonaphthoquinone-based resists there is a hard ceiling — bake much above about 115 °C and the photoactive compound itself starts to decompose, so the resist loses sensitivity before the solvent has fully gone. Thick films are usually baked in stages at rising temperature for exactly this reason."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Spin curve",
+        "definition": "The measured plot of final film thickness against spin speed for one specific resist, dispense recipe and bake. It is the calibration a process is actually run from, because no model predicts the constant in front of ω^(−1/2)."
+      },
+      {
+        "term": "Emslie–Bonner–Peck model",
+        "definition": "The 1958 balance of centrifugal force against viscous shear on a spinning disc. It predicts the ω^(−1/2) scaling and the self-levelling behaviour, but has no solvent evaporation in it, so its film never dries."
+      },
+      {
+        "term": "Meyerhofer model",
+        "definition": "The 1978 extension that adds evaporation and splits the process into a flow-dominated stage and an evaporation-dominated one, with the film thickness fixed at the crossover between them — which is what produces the ω^(−1/2) rule."
+      },
+      {
+        "term": "Solids content",
+        "definition": "The fraction of the dispensed liquid that is not solvent. Since the solvent all leaves, this fraction sets the final thickness at a given speed — the usual reason a vendor sells one chemistry in several dilutions."
+      },
+      {
+        "term": "Edge bead",
+        "definition": "The raised rim of thicker, wetter material a few millimetres wide left at the wafer perimeter, where surface tension prevents liquid detaching cleanly. It is normally stripped with a solvent spray before the soft bake."
+      },
+      {
+        "term": "Striations",
+        "definition": "Radial thickness ripples caused by Marangoni convection during drying, driven by surface-tension gradients that arise as solvent evaporates from the top of the film."
+      },
+      {
+        "term": "Soft bake",
+        "definition": "The post-spin hotplate step, typically 90–110 °C, that drives out residual solvent, relaxes coating stress and sets adhesion. It shrinks the film, so it is part of the thickness, not a step after it."
+      }
+    ],
+    "try_this": "Measure a spin curve on the club's spinner. Coat four coupons with the same resist and the same soft bake at 1,000, 2,000, 4,000 and 6,000 rpm, scribe a line through each film down to the substrate, and measure the step with the profilometer. Plot log(thickness) against log(rpm) and fit the slope: flow plus evaporation predicts −0.5, pure outflow at fixed spin time would give −1, and where your number lands between them tells you which regime your recipe is actually ending in. Then repeat the 2,000 rpm point with twice the dispense volume and confirm the thickness barely moves — that is the h₀ cancelling out of the equation, in your own data. Pair it with the coating chapter in Van Zant's Microchip Fabrication, which is the club's practical process reference.",
+    "sources": [
+      {
+        "title": "Spin Coating: Complete Guide to Theory and Techniques",
+        "url": "https://www.ossila.com/pages/spin-coating",
+        "publisher": "Ossila",
+        "date": "2026"
+      },
+      {
+        "title": "Spin coating — Solid State Chemistry course wiki",
+        "url": "https://wiki.aalto.fi/spaces/SSC/pages/185198140/Spin+coating",
+        "publisher": "Aalto University",
+        "date": "2026"
+      },
+      {
+        "title": "Critical Marangoni Number for Disappearance of Striations during Spin-Coating",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12356077/",
+        "publisher": "Langmuir (American Chemical Society)",
+        "date": "2025-08-04"
+      },
+      {
+        "title": "Lithography Process Overview",
+        "url": "https://www.imicromaterials.com/technical/lithography-process-overview",
+        "publisher": "Integrated Micro Materials",
+        "date": "2026"
+      },
+      {
+        "title": "Levich Study (RDE) — mass transport to a rotating disk",
+        "url": "https://pineresearch.com/support-article/levich-study-rde/",
+        "publisher": "Pine Research Instrumentation",
+        "date": "2026"
+      }
+    ]
+  }
+}

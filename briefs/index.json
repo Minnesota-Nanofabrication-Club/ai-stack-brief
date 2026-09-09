@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-09",
+      "foundations_slug": "resolution-limits-k1-na",
+      "foundations_topic": "Resolution, NA, and the k₁ factor",
+      "headline": "A 149-test CUDA benchmark finds NVIDIA's Compute Sanitizer memcheck reports 18 of the 144 GPU memory-safety violations that apply to it, because its guard regions catch an overflow that lands in dead space and not one that runs into the next live allocation.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-08",
       "foundations_slug": "spin-coating-physics",
       "foundations_topic": "Spin coating",
@@ -145,6 +158,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-08T12:45:24Z",
-  "latest": "2026-09-08"
+  "generated_at": "2026-09-09T12:46:13Z",
+  "latest": "2026-09-09"
 }

@@ -1,0 +1,415 @@
+{
+  "date": "2026-09-09",
+  "generated_at": "2026-09-09T13:10:00Z",
+  "window": "2026-09-08..2026-09-09",
+  "headline": "A 149-test CUDA benchmark finds NVIDIA's Compute Sanitizer memcheck reports 18 of the 144 GPU memory-safety violations that apply to it, because its guard regions catch an overflow that lands in dead space and not one that runs into the next live allocation.",
+  "pulse": {
+    "read_time_min": 7,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-nanosheet-1f-noise-trap-density",
+            "title": "Gate-all-around adds no new noise; the gate stack still sets it",
+            "dek": "Ruben Asanovski and co-authors at imec measured low-frequency noise on 188 scaled p-type nanosheet channels — transistors whose silicon body is wrapped by the gate on all four sides — and, after scaling by device area, found the same effective trap density as planar devices sharing the gate stack.",
+            "background_md": "A transistor's drain current wanders slowly even at a fixed bias, because individual defects in the gate dielectric capture and release channel carriers, each with its own capture and emission time; summed over a spread of time constants the fluctuation spectrum falls as 1/f. Its magnitude scales inversely with gate area, since a larger channel averages over more traps, so a device shrunk by three orders of magnitude in area is noisier by roughly that factor before any material changes. Noise is therefore quoted as an area-normalised trap density, and it sets the floor for analog and radio-frequency circuits.",
+            "glossary": [
+              {
+                "term": "S_Vg (input-referred gate-voltage noise)",
+                "definition": "Measured drain-current noise divided by the square of the transconductance, in V²/Hz, so devices biased at different currents can be compared on one axis."
+              },
+              {
+                "term": "N_BT (effective trap density)",
+                "definition": "Dielectric defects per unit volume per unit energy, in cm⁻³·eV⁻¹, obtained by multiplying the measured noise by the gate area and the square of the oxide capacitance per area."
+              },
+              {
+                "term": "W_eff (effective width)",
+                "definition": "For a nanosheet the electrical width is the perimeter of the sheet cross-section, 2(W+H), because the gate inverts all four faces rather than one."
+              },
+              {
+                "term": "EOT (equivalent oxide thickness)",
+                "definition": "The thickness of silicon dioxide that would give the same capacitance per unit area as the actual high-permittivity gate stack, so stacks of different materials can be compared."
+              }
+            ],
+            "why_it_matters": "Gate-all-around does not only change electrostatics; it manufactures the channel by etching sacrificial silicon-germanium out from between stacked sheets, leaving four gated surfaces where a planar device has one. Any of those surfaces could have carried a defect population that no planar test structure would ever see, and low-frequency noise is the cheapest way to count defects too few and too slow to show up as a threshold shift. Finding no excess means an analog designer can carry a planar process's noise model forward and pay only the area arithmetic — and it puts the burden back on the dielectric, since improving noise now means changing the stack rather than the shape.",
+            "deeper_md": "The wafers are imec 300 mm p-type nanosheets on a 48 nm contacted gate pitch: sheet width 17 nm, sheet height 6.5 nm, gate length 19 nm, equivalent oxide thickness about 1 nm. Because the gate drives all four faces, the electrical width is the cross-section perimeter, `W_eff = 2(W+H) = 47 nm`, giving a gated area of 47 × 19 nm ≈ 890 nm² against 1 µm² for the planar comparison transistors — a ratio near 1,100, and the raw spectra differ accordingly. Measurements ran at `V_DS = −50 mV` and 25 °C from 10 Hz to 1 kHz, at drain currents of 100 nA, 200 nA, 1 µA and 2 µA, over 94 devices carrying two parallel sheets each.\n\nThe extraction is the carrier-number-fluctuation model: `N_BT = S_Vg·W·L·C_ox²·α·f/(qkT)`, with α a WKB tunnelling coefficient. Multiply the measured gate-referred noise by area and the two architectures overlay.\n\nTwo caveats the authors state. The stacks carried only a standard forming-gas sinter and no dedicated dielectric reliability anneal, so this is an unhardened stack against an unhardened stack, not a comparison of finished processes. And the band stops at 1 kHz to keep acquisition time down, which excludes the slower single-trap telegraph events that dominate a small device's worst case rather than its average.",
+            "fab_angle": "Low-frequency noise is one of the few device measurements a teaching lab can actually make: a probe station, a low-noise current amplifier and a spectrum analyser, biased in the linear region at tens of millivolts. The hard part is not the electronics but the statistics — under a small gate the trap count is small enough that spectra vary wildly from site to site, which is why this work reports 188 channels rather than one.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Wafer-Level 1/f Noise Characterization of Scaled P-Type Nanosheets and Comparison with Planar HKMG Transistors",
+                "url": "https://arxiv.org/abs/2609.08674",
+                "publisher": "arXiv / 2026 IEEE International Reliability Physics Symposium",
+                "date": "2026-09-08"
+              },
+              {
+                "title": "Spatially resolved random telegraph fluctuations of a single trap at the Si/SiO2 interface",
+                "url": "https://arxiv.org/abs/2403.07251",
+                "publisher": "arXiv",
+                "date": "2024-03-12"
+              },
+              {
+                "title": "Outer wall forksheet: bridging nanosheet and CFET device architectures",
+                "url": "https://www.imec-int.com/en/articles/outer-wall-forksheet-bridge-nanosheet-and-cfet-device-architectures-logic-technology",
+                "publisher": "imec",
+                "date": "2025-06-11"
+              }
+            ]
+          },
+          {
+            "id": "silicon-valley-splitting-shear-strain-wiggle-well",
+            "title": "Silicon's two leftover valleys, and the well widths that null the gap",
+            "dek": "Johannes Steinschuld, Hendrik Bluhm and Seyed Akbar Jafari derive a closed-form theory of valley splitting — the energy gap a silicon spin qubit needs between its two lowest conduction-band states — and find it oscillates with quantum-well width as |sin(k_min L)| once shear strain is present.",
+            "background_md": "Silicon's conduction band has six equivalent minima rather than one. Compressive strain in a silicon quantum well grown between silicon-germanium barriers pushes four of them up in energy and leaves two, at ±k₀ along the growth direction, degenerate. That leftover twofold degeneracy is what makes a spin qubit fragile: if the two valley states lie close together, the qubit's computational pair mixes with a third level and the encoded information leaks out of the two-level space. Only the atomic detail of the well interfaces breaks the tie, which is why the gap runs from tens to hundreds of microelectronvolts and differs between dots on one wafer.",
+            "glossary": [
+              {
+                "term": "Valley splitting",
+                "definition": "The energy gap between the two lowest conduction-band states of a strained silicon quantum well; it has to exceed both the thermal energy and the qubit's Zeeman splitting or the two-level encoding leaks."
+              },
+              {
+                "term": "Wiggle well",
+                "definition": "A silicon quantum well whose germanium content is made to oscillate along the growth direction at a period matched to the intervalley wavevector, so the alloy itself supplies the coupling instead of the interfaces."
+              },
+              {
+                "term": "Shear strain (ε_xy)",
+                "definition": "A distortion that slides crystal planes past one another rather than stretching them; here it moves the conduction-band minima inward from ±k₁ to ±k₁√(1−v_s²)."
+              },
+              {
+                "term": "Exact diagonalization",
+                "definition": "Numerically finding all eigenvalues of the full matrix rather than approximating them, used here as the reference the closed-form expressions are scored against."
+              }
+            ],
+            "why_it_matters": "A quantum-well thickness is chosen once, at epitaxy, for a whole wafer. If the gap varied monotonically with that thickness, thicker or thinner would be a direction to move in; if it varies as a sine, there are thicknesses at which the gap is nulled by construction and no amount of gate tuning recovers it. The same expression says where the peaks sit, so growth thickness stops being a convenience and becomes a design variable with an optimum. It also makes shear strain, normally treated as a nuisance introduced by the gate stack and by packaging, into a knob that slides those nulls along the axis.",
+            "deeper_md": "The model is a two-band effective-mass Hamiltonian in a valley basis, solved with a single-harmonic variational envelope rather than perturbatively, and checked against exact diagonalization: agreement is about 1% for intervalley couplings `V_s` of 10–30 meV, degrading to roughly 10% at `V_s ≈ 80 meV`. Uniform shear strain enters as a z-independent coupling that moves the minima from ±k₁ to `±k_min = ±k₁√(1−v_s²)`, after which the splitting carries a `|sin(k_min L)|` factor with nodes at `k_min L = nπ`. Shear strains of 0.1–0.5%, with a deformation potential near 10 eV, correspond to `V_s` of 10–50 meV against a well quantisation scale `E₁ ≈ 120 meV`.\n\nFor the wiggle well the authors find a crossover at the resonance `k_w = 2k₁`: below it the imposed oscillation sets the splitting, above it the empty-box quantisation energy takes over and the oscillation amplitude becomes a sub-leading correction. At exact resonance with L = 20 nm and `V_w = 20 meV` they get 2.87 meV.\n\nThe caveat is the ansatz: one harmonic cannot mix higher box states, so at strong coupling the theory behaves as an empirical upper bound, which the authors say they have not proved it to be. And 2.87 meV is an idealisation — the wiggle-well devices McJunkin and co-authors measured gave 54 to 239 µeV, an order of magnitude smaller, and that paper credited the enhancement it saw to random germanium concentration fluctuations rather than to the deterministic oscillation this theory is written around.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Non-perturbative theory of valley splitting in Si qubits from variational wave function",
+                "url": "https://arxiv.org/abs/2609.08839",
+                "publisher": "arXiv",
+                "date": "2026-09-08"
+              },
+              {
+                "title": "SiGe quantum wells with oscillating Ge concentrations for quantum dot qubits",
+                "url": "https://arxiv.org/abs/2112.09765",
+                "publisher": "arXiv / Nature Communications 13, 7777",
+                "date": "2021-12-17"
+              },
+              {
+                "title": "Valley Splittings in Si/SiGe Heterostructures from First Principles",
+                "url": "https://arxiv.org/abs/2512.04879",
+                "publisher": "arXiv",
+                "date": "2025-12-04"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-penda-norm-of-difference-datapath",
+            "title": "Multiplying by subtracting: a MAC array rebuilt around squarers",
+            "dek": "Kai-Chieh Hsu and Tian-Sheuan Chang rebuild the processing element of a deep-learning accelerator around a subtractor and a squarer rather than a multiplier, using the identity 2X·W = |X|² + |W|² − |X−W|², and report 11–36% less area and 5–48% less energy at TSMC 16 nm with bit-exact arithmetic.",
+            "background_md": "Nearly all the arithmetic in a neural-network accelerator is inner products, and the hardware that does them is an array of processing elements each holding one multiplier and one adder. The multiplier dominates. An n-bit binary multiply generates n partial products that a reduction tree must sum, and that tree is the largest block in the element and usually its critical path, so array size, clock frequency and energy per operation are all set by it. Squaring the same width is cheaper: because a·a is symmetric, roughly half the partial products are duplicates and can be folded before the tree is built.",
+            "glossary": [
+              {
+                "term": "MAC (multiply–accumulate)",
+                "definition": "The single operation a neural-network accelerator repeats: multiply two numbers and add the result into a running total. Counting MACs is how a layer's compute cost is quoted."
+              },
+              {
+                "term": "Partial product",
+                "definition": "One shifted copy of the multiplicand, gated by one bit of the multiplier; an n-bit multiply produces n of them, and the adder tree that reduces them sets the multiplier's area and delay."
+              },
+              {
+                "term": "Output-stationary dataflow",
+                "definition": "A systolic-array arrangement in which each processing element keeps one result in its accumulator while operands stream past, so partial sums never leave the element."
+              },
+              {
+                "term": "AET (area–energy–time product)",
+                "definition": "Area × energy × delay, used as a single figure of merit so a design that trades area for clock speed cannot look good merely by moving the cost sideways."
+              }
+            ],
+            "why_it_matters": "Most attempts to make the multiplier cheaper give up exactness — truncated, logarithmic and approximate multipliers all trade accuracy for area, which means a network has to be retrained or at least re-validated against the specific hardware. Restructuring the algebra costs nothing in accuracy, so a model's numerics are untouched and the saving is available without disturbing the training pipeline. What it does cost is accumulator width: the intermediate squares are larger than the products they replace, the accumulator grows by two or three bits, and that overhead is what eats the benefit at very low precision.",
+            "deeper_md": "The array computes `y_ij = (|X_i|² + |W_j|² − |X_i − W_j|²)/2`. Weight norms `|W_j|²` are precomputed offline and folded into the bias, so they cost nothing at run time; activation norms `|X_i|²` are computed online on a slice of the same array. What remains in each element is a subtractor, a squarer and an accumulator.\n\nSynthesised in TSMC 16 nm with Synopsys Design Compiler and PrimeTime, a 16×16 output-stationary array gives, against a conventional MAC array: INT8 15% area, 5% energy, 14% shorter clock period; INT16 11%, 10%, 19%; FP16 36%, 48%, 19%; FP32 27%, 29%, 11%. The combined area–energy–time product falls 29% at INT8 and 72% at FP16. End to end the authors report a 13.6% speedup on a ViT-B accelerator and 16.7% on ResNet-18.\n\nThree limits they name. The accumulator needs about two to three extra bits, the theoretical growth being 2√2. At INT4 the area–energy–time gain drops to 9%, and at FP8 and below the cost of a floating-point subtraction may cancel the saving outright. Norm storage adds up to 1.56% overhead on ViT-B. All of it is synthesis and simulation rather than measured silicon, and the idea of restructuring the sum is not new: Winograd's 1968 fast inner product, revived as FFIP by Pogue and Nicolici, halves the number of multiply-accumulate units by a different rearrangement of the same arithmetic.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "PENDA: An Efficient Processing Element via Norm-of-Difference for Deep Learning Accelerators",
+                "url": "https://arxiv.org/abs/2609.08424",
+                "publisher": "arXiv",
+                "date": "2026-09-08"
+              },
+              {
+                "title": "Fast Inner-Product Algorithms and Architectures for Deep Neural Network Accelerators",
+                "url": "https://arxiv.org/abs/2311.12224",
+                "publisher": "arXiv / IEEE Transactions on Computers",
+                "date": "2023-11-20"
+              },
+              {
+                "title": "Karatsuba Matrix Multiplication and its Efficient Custom Hardware Implementations",
+                "url": "https://arxiv.org/abs/2501.08889",
+                "publisher": "arXiv / IEEE Transactions on Computers",
+                "date": "2025-01-15"
+              }
+            ]
+          },
+          {
+            "id": "chips-detailed-router-learned-cost-weights",
+            "title": "A detailed router that reschedules its own cost weights",
+            "dek": "Afsara Khan and Austin Rovinski put an LSTM inside an offline reinforcement-learning policy that picks the cost weights steering OpenROAD's detailed router — the step that draws every physical wire on a chip — and cut leftover design-rule violations on the hardest cases from 15,767 to 1,215.",
+            "background_md": "Detailed routing is the last step of physical design: given a placement and a netlist, draw every wire on every metal layer without breaking a foundry's spacing, width, enclosure and minimum-area rules. No router solves this in one pass. It routes, runs a rule checker, rips up the nets that produced violations and reroutes them, repeating until the violation count reaches zero or the tool gives up. Each pass is a shortest-path search whose edge costs include penalties for vias, for existing shapes and for markers left by earlier violations, and those penalties follow a fixed schedule that knows nothing about the design in front of it.",
+            "glossary": [
+              {
+                "term": "DRV (design-rule violation)",
+                "definition": "A place where drawn geometry breaks a foundry rule on spacing, width or enclosure. A layout with any DRV cannot be taped out, so the count is a pass/fail gate rather than a quality score."
+              },
+              {
+                "term": "Rip-up and reroute",
+                "definition": "The router's outer loop: keep the routes that are legal, delete the nets involved in violations, and search again with the offending regions priced higher."
+              },
+              {
+                "term": "Conservative Q-learning (CQL)",
+                "definition": "An offline reinforcement-learning method that pushes down the estimated value of actions absent from the training data, so a policy learned from logged runs will not confidently recommend something never observed."
+              },
+              {
+                "term": "Nangate45",
+                "definition": "A free 45 nm standard-cell library and technology file that academic physical-design work uses because foundry design kits cannot be published."
+              }
+            ],
+            "why_it_matters": "The cost schedule has been treated as a constant of the tool rather than a parameter of the problem, which is why nobody had a number for what it is worth. Putting one on it changes what a physical-design engineer reaches for when a block will not close: instead of loosening the floorplan or adding routing tracks, both of which cost area, the first move becomes changing how the search is priced. The honest reading is narrower than the percentage, though — on these cases both configurations still finished with violations, so what improved is the distance from a manufacturable layout rather than arrival at one.",
+            "deeper_md": "The setup is OpenROAD's detailed router on eight Nangate45 designs — `aes`, `ariane136`, `bp_be`, `bp_fe`, `bp_multi`, `gcd`, `ibex`, `jpeg` — each run at six placement densities, with OpenROAD's own default fixed cost schedule as the baseline. The policy is conservative Q-learning trained on logged runs, extended here with a small LSTM so the state carries the history of previous iterations rather than only the current snapshot.\n\nWhere both configurations converge, total runtime falls from 598 s to 420 s. Where neither converges, terminal violations drop from 15,767 to 1,215 — an average reduction of 92% — with runtime down 10.42%. Runs exceeding 65 iterations or seven days are excluded from the tables.\n\nRead the 92% carefully. 1,215 design-rule violations is not a shippable layout either; the comparison is between two failures, and the defensible claim is that the priced search gets much closer before it stalls.\n\nThe authors also report the gains are largest when a test density falls between densities seen in training — interpolation rather than extrapolation — which is the standing objection to learned EDA heuristics. Their earlier version without the LSTM, at DATE 2026, reported 1.56× average and up to 3.01× runtime speedup on the ISPD19 benchmarks while holding violation counts. Nangate45 is a 45 nm academic library, not a foundry node with real rules.",
+            "fab_angle": "This is a tool a student can run tonight. OpenROAD is the flow behind most open-PDK tapeouts, and the cost weights the policy manipulates are ordinary parameters in `drt` — which means the experiment a club can do is not to reimplement the policy but to sweep those weights by hand on a design that will not close, and see how much of the reported gain is available without any learning at all.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Routing Dense Layouts with History-Aware Offline Reinforcement Learning using LSTM",
+                "url": "https://arxiv.org/abs/2609.08232",
+                "publisher": "arXiv / ICCAD 2026",
+                "date": "2026-09-08"
+              },
+              {
+                "title": "Accelerating Detailed Routing Convergence through Offline Reinforcement Learning",
+                "url": "https://arxiv.org/abs/2512.03594",
+                "publisher": "arXiv / DATE 2026",
+                "date": "2025-12-03"
+              },
+              {
+                "title": "TritonRoute — the OpenROAD detailed router (drt)",
+                "url": "https://openroad.readthedocs.io/en/latest/main/src/drt/README.html",
+                "publisher": "The OpenROAD Project",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-gpu-memory-safety-sanitizer-coverage",
+            "title": "NVIDIA's GPU memory checker sees one violation in eight",
+            "dek": "Saurabh Singh, Jaewon Lee, Seonjin Na and Hyesoon Kim wrote 149 CUDA test cases for GPU memory-safety bugs and found that NVIDIA's Compute Sanitizer memcheck — the standard tool for catching out-of-bounds GPU memory accesses — flagged 18 of the 144 that applied to it.",
+            "background_md": "A memory-safety checker for CPU code works by surrounding every allocation with a poisoned guard region and trapping any access that lands in one. Graphics processors make that harder. A kernel touches several distinct memory spaces — global memory allocated by the host, a scratchpad shared within a thread block, and per-thread local memory — each with its own allocation path, and tens of thousands of threads run concurrently, so instrumenting every access costs the throughput the hardware exists to provide. GPU checkers therefore instrument less than CPU ones, and what they do not instrument they cannot report.",
+            "glossary": [
+              {
+                "term": "Guard region (redzone)",
+                "definition": "A block of poisoned addresses placed around an allocation; an out-of-bounds access is caught only if it lands inside one, which is why an overflow into a neighbouring live buffer goes unseen."
+              },
+              {
+                "term": "Shared memory (CUDA)",
+                "definition": "The small on-chip scratchpad private to one thread block, allocated at kernel launch rather than through the host allocator, and therefore outside the allocation table the checker instruments."
+              },
+              {
+                "term": "Spatial vs temporal violation",
+                "definition": "Spatial means an access outside an object's bounds; temporal means an access outside its lifetime, such as a read after free. Catching each needs a different mechanism."
+              },
+              {
+                "term": "Pinned memory",
+                "definition": "Host memory locked into physical pages so the GPU can read and write it directly without a staging copy; it comes from a different allocation call than ordinary device memory."
+              }
+            ],
+            "why_it_matters": "A clean sanitizer run is widely treated as evidence that a kernel is memory-safe, and it is the check that gates a great deal of GPU code into production. The guard-region mechanism means the failure is not random: what it misses is the ordinary case, an array overrunning into the buffer allocated immediately after it, because that access lands in live memory and never touches a guard. Both mitigations already exist in the shipping tool — pad the allocations apart, or use the compile-time instrumentation that carries base and bounds — and both are off by default, so this is a configuration decision rather than a missing feature.",
+            "deeper_md": "Of 144 applicable tests, memcheck reported 18. The breakdown is where the mechanism shows itself: zero detections for local-memory violations, zero for shared-memory violations, zero of three cross-thread-block global races, and none of the intra-object boundary violations, where a write runs off one field of a struct into the next. It caught every linear overflow in device-heap memory but missed the same overflow in host-allocated and pinned memory. The other tools did better on narrower remits — apicheck 10 of 11, initcheck 4 of 4, racecheck 2 of 5. Results were consistent across an RTX A5000 (SM_86), an A100 (SM_80) and a GH200 (SM_90).\n\nNVIDIA's own documentation states the reason without being asked: \"global memory buffers can be allocated back-to-back in the virtual address space. When that happens, an overflow access into the first buffer will simply happen in the second buffer and not be detected as out-of-bounds.\" It offers a `--padding` option, and notes separately that compile-time patching uses base-and-bounds analysis and catches more adjacent-allocation errors than the default binary instrumentation.\n\nThe caveat is what the number measures. These are tests written to span a taxonomy of violation types, not a sample of bugs drawn from real code, so 12.5% is coverage against a designed checklist rather than a field miss rate. Two of the four authors are at NVIDIA and Microsoft, so this is not an outside critique of a tool the vendor has never examined.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Towards Standardized Evaluation of GPU Memory Safety with GMSBench",
+                "url": "https://arxiv.org/abs/2609.08871",
+                "publisher": "arXiv",
+                "date": "2026-09-08"
+              },
+              {
+                "title": "Compute Sanitizer User Manual",
+                "url": "https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html",
+                "publisher": "NVIDIA",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-moe-sparsity-hyperparameter-scaling",
+            "title": "Sparsity earns its own exponent in the learning-rate scaling law",
+            "dek": "Changxin Tian and co-authors ran 1,800 pre-training runs over roughly 20 trillion tokens and report that the best learning rate and batch size for a mixture-of-experts model — one routing each token to a few of many expert sub-networks — also scale with the fraction of parameters activated.",
+            "background_md": "Two numbers have to be fixed before a large training run starts and cannot be changed afterwards without paying for the run twice: the learning rate and the batch size. The usual method is to find the optimum on many small runs, fit a power law, and extrapolate — batch size rising with the number of training tokens, learning rate falling as total compute grows. Those fits were established on dense models, where every parameter takes part in every token's forward pass. A sparse model severs that link: parameter count and compute per token become independent, and a law written in terms of compute alone no longer pins both down.",
+            "glossary": [
+              {
+                "term": "Activation ratio (A)",
+                "definition": "Activated parameters divided by total parameters. A = 1 is a dense model; A = 1/64 means each token's forward pass touches a sixty-fourth of the weights."
+              },
+              {
+                "term": "Mixture of experts (MoE)",
+                "definition": "A layer holding many parallel feed-forward sub-networks plus a router that sends each token to a few of them, so parameter count can grow without compute per token growing with it."
+              },
+              {
+                "term": "Batch size (B)",
+                "definition": "The number of tokens whose gradients are averaged into one parameter update; a larger batch gives a less noisy gradient and therefore tolerates a larger step, up to a point."
+              },
+              {
+                "term": "Muon",
+                "definition": "The optimiser used in these runs, which orthogonalises the momentum matrix before applying it as an update; the numerical constants fitted here are specific to it."
+              }
+            ],
+            "why_it_matters": "Teams building sparse models have been transferring hyperparameters from dense recipes, and these exponents say that transfer is wrong in a specific, quantified direction. Taking the fitted constants at face value, a model activating one parameter in sixty-four wants roughly 0.57 times the dense learning rate and about 1.42 times the batch size — close to a factor-of-two step-size error, in a run expensive enough that nobody repeats it to check. The durable part is not the constants, which are tied to one architecture and one optimiser, but the shape: activation fraction belongs in the law as a term of its own rather than being absorbed into compute.",
+            "deeper_md": "The fitted forms are `η*(C,A) = 0.8343·C^(−0.1385)·A^(0.1361)` and `B*(D,A) = 6.4765·D^(0.5181)·A^(−0.0841)`, where C is training compute in FLOPs, D is training tokens and A is the activation ratio. The sweep covers A ∈ {1, 1/4, 1/16, 1/32} across six activated-parameter scales, models up to 6B total non-embedding parameters, about 20 trillion tokens and roughly 200,000 H800 GPU-hours. The held-out target is a 12B-parameter model at A = 1/64 with 324M activated, for which the law predicts a learning rate of 6.92 × 10⁻⁴ and a batch size of 5.84 × 10⁶ tokens. The 0.57× and 1.42× factors quoted above are ours, evaluated from those two exponents at A = 1/64; the paper reports predicted values, not ratios.\n\nThe stated limits are unusually candid. Everything rests on one hybrid linear-attention and multi-head-latent-attention backbone, one data mixture and the Muon optimiser. There is exactly one joint-extrapolation target beyond the fitting range, the grouped cross-validation intervals overlap so extrapolation along each variable cannot be isolated, and each prediction is scored once against the minimum of a noisy grid, which is not an uncertainty estimate.\n\nActivation ratio is also not the only way to parameterise sparsity. Ludziejewski and co-authors fit scaling laws in expert granularity — how finely the feed-forward layer is chopped — and concluded the conventional expert size is suboptimal at nearly every budget. The two knobs move independently.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Hyperparameter Scaling Laws Across MoE Sparsity",
+                "url": "https://arxiv.org/abs/2609.08690",
+                "publisher": "arXiv",
+                "date": "2026-09-08"
+              },
+              {
+                "title": "Scaling Laws for Fine-Grained Mixture of Experts",
+                "url": "https://arxiv.org/abs/2402.07871",
+                "publisher": "arXiv",
+                "date": "2024-02"
+              },
+              {
+                "title": "Training Compute-Optimal Large Language Models",
+                "url": "https://arxiv.org/abs/2203.15556",
+                "publisher": "arXiv",
+                "date": "2022-03-29"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "Resolution, NA, and the k₁ factor",
+    "slug": "resolution-limits-k1-na",
+    "subtitle": "Three symbols set the economics of the whole industry — and the same pair of equations says that a sharper image is always a shallower one.",
+    "tldr": "The smallest feature a projection printer can resolve is k₁λ/NA, and the range of wafer height over which that image still prints is k₂λ/NA². Numerical aperture appears once in the first equation and squared in the second, so every step towards a sharper image costs depth of focus faster than it buys resolution. Most of what the lithography industry has built in forty years is an attempt to buy that focus budget back.",
+    "sections": [
+      {
+        "heading": "Two beams, and where 0.25 comes from",
+        "body_md": "Start with a grating on the mask, pitch P, illuminated straight on. The mask diffracts light into orders at angles sin θ = mλ/P. An image of that grating exists only if the lens captures at least two orders — the zeroth and one first order — because a single beam carries no interference and therefore no fringes at all. A lens accepts light out to sin θ = NA, so the finest pitch that images on-axis is P = λ/NA, and the half-pitch, which is what a design rule quotes, is λ/2NA. That is k₁ = 0.5.\n\nYou can do better by tilting the illumination. Come in off-axis at the right angle and the zeroth order lands on one edge of the pupil while the +1 order lands on the other. The two beams still interfere, and the pitch that fits has halved: half-pitch λ/4NA, k₁ = 0.25. Below that, no illumination angle puts two orders through the lens and the image does not exist. That is why ASML calls 0.25 the physical limit of the equation, and why anything finer has to be built from more than one exposure.",
+        "deeper_md": "Numerical aperture is NA = n sin α, where n is the refractive index of whatever the light passes through on its way to the resist. In a dry system n = 1 and NA is capped below 1 by geometry; this is the constraint immersion lithography attacks, by putting water in the last gap so that n > 1 and, as ASML puts it, \"without the water, reaching an NA of more than 1 was impossible.\" Note also what the derivation is about: pitch. The equation predicts the finest *periodic* structure that images. An isolated line behaves differently, and it is why litho engineers talk about dense and isolated features as separate problems with separate process windows."
+      },
+      {
+        "heading": "What each symbol costs to change",
+        "body_md": "Only three things can move, and they are priced very differently.\n\nWavelength has gone 436 nm (mercury g-line) to 365 nm (i-line) to 248 nm (krypton fluoride) to 193 nm (argon fluoride) to 13.5 nm. Each of those was not a lamp swap: the source, the lenses, the mask blank, the pellicle and the entire resist chemistry had to be re-invented, and the jump to 13.5 nm additionally meant giving up transmissive optics, because nothing usefully transmits there.\n\nNumerical aperture is the incremental knob. Chris Mack records projection tools going from 0.16 on the first scanners to 0.93, at which point dry optics ran out of index; immersion took NA to 1.35, and the current EUV platform raised NA from 0.33 to 0.55.\n\nk₁ is the one you buy with computation rather than glass. Off-axis and freeform illumination — ASML's DUV illuminator shapes the pupil with 4,000 individually controllable mirrors — plus optical proximity correction, which distorts the mask so the wafer gets the shape you wanted, are all k₁ purchases."
+      },
+      {
+        "heading": "The bill arrives as depth of focus",
+        "body_md": "The second Rayleigh equation is DOF = k₂λ/NA². It is the range of defocus over which the aerial image is still good enough to print, and NA enters squared, so it degrades faster than resolution improves.\n\nPut the industry's own numbers on it. Song, Kim and Lee, working at 193 nm immersion, extract k₁ = 0.288 and k₂ = 0.745 from measured data, and tabulate resolution against NA: 70 nm at NA 0.85, 60 nm at 1.0, 44 nm at 1.20, 38 nm at 1.35 — with the depth of focus at NA 1.35 under 50 nm.\n\nSo raising NA from 0.85 to 1.35 bought a factor of 1.8 in resolution and spent most of the focus budget doing it. Rayleigh's own theoretical constants, as Kirchauer's dissertation states them, are k₁ = 0.61 and k₂ = 1.0; production lithography lives well below the first and pays for it in the second. Note also that the DOF equation is a paraxial approximation, and at NA above 1 it flatters the tool.",
+        "deeper_md": "The paraxial form matters more than it sounds. DOF = k₂λ/NA² comes from expanding the optical path difference to lowest order in the aperture angle, which is fine at NA 0.3 and increasingly wrong as sin α approaches 1. Solved rigorously, the dependence is on the numerical *half*-aperture rather than the full one, which is one reason the measured sub-50 nm figure at NA 1.35 sits below what the textbook formula returns for the same k₂. Treat k₂ the way you should treat k₁: not as a constant of nature but as the number you fit to a particular tool, resist and pattern."
+      },
+      {
+        "heading": "The trick hidden in the two equations",
+        "body_md": "Write the two equations together and eliminate NA. With W = k₁λ/NA and DOF = k₂λ/NA², substituting gives DOF = (k₂/k₁²)(W²/λ). Kirchauer states exactly this form, and it is the most useful thing on this page.\n\nRead what it says. Fix the feature size W you want to print. Then depth of focus goes as 1/λ — a *shorter* wavelength gives you *more* focus latitude, not less. All the pain of shallow focus comes from buying resolution with numerical aperture; buying the same resolution with wavelength refunds it.\n\nThat is the argument for extreme ultraviolet, expressed as arithmetic instead of as a roadmap slide. At a fixed 38 nm feature and fixed k values, moving from 193 nm to 13.5 nm multiplies the focus budget by 193/13.5 ≈ 14 — our arithmetic on Kirchauer's formula, not a measured tool number. It is also why 193 nm immersion at NA 1.35 was the end of the line rather than a stop on the way to NA 1.6."
+      },
+      {
+        "heading": "The budget is not all yours to spend",
+        "body_md": "A depth of focus under 50 nm is not 50 nm of focus error you are allowed. It is the total, and it is shared out.\n\nThe resist film itself takes a slice, because the image has to be acceptable through the whole thickness, not just at the top surface. Wafer non-flatness takes another: bow, warp, film stress and whatever topography the previous layers left. The chuck contributes, through particles and flatness. The scanner's own levelling and focus servo has a residual error. Field curvature and astigmatism in the lens spend some across the exposure slit. The reticle's flatness spends a little more.\n\nThis is the reason planarisation is not a housekeeping step but a lithography step, and the reason a fab spends real money on focus metrology. Song, Kim and Lee also found resist thickness itself changing the measured depth of focus, through interference between light reflected at the resist's top and bottom surfaces — so the film is not merely consuming the budget, it is altering it."
+      },
+      {
+        "heading": "The same equation on a maskless bench",
+        "body_md": "None of this is specific to a billion-dollar scanner. A projection tool built around a digital micromirror device obeys R = k₁λ/NA identically: NA comes from the objective, λ from the source, and k₁ from the illumination and the resist. What changes is the value of k₁ you can honestly assume. A scanner reaches 0.25 with engineered off-axis pupils and computationally corrected masks; a bench tool with plain Köhler illumination and no proximity correction is nearer Rayleigh's 0.61, and quoting the objective's diffraction limit as the tool's resolution will overpromise by more than a factor of two.\n\nA maskless system also adds a term the Rayleigh equations do not contain. The mirror pitch, demagnified onto the wafer, sets the smallest addressable step regardless of what the optics can resolve. If the projected mirror pitch is coarser than k₁λ/NA, the lens is being wasted; if it is far finer, data rate is being spent on detail the lens cannot deliver. Matching those two numbers is a design decision that has no counterpart in a mask-based tool."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "NA (numerical aperture)",
+        "definition": "n sin α, where α is the half-angle of the cone of light the lens collects and n is the refractive index of the medium in front of it. It is the fraction of the diffracted orders the lens can capture, which is why it sets resolution."
+      },
+      {
+        "term": "k₁",
+        "definition": "The dimensionless resolution: measured half-pitch divided by λ/NA. It is not a constant of nature but a scorecard for the illumination, the mask enhancement and the resist. On-axis two-beam imaging gives 0.5, off-axis gives 0.25, and no single exposure goes below that."
+      },
+      {
+        "term": "k₂ and depth of focus",
+        "definition": "DOF = k₂λ/NA² is the range of wafer height over which the image still prints. k₂ is the dimensionless DOF, fitted per process; Song, Kim and Lee extract 0.745 for 193 nm immersion against Rayleigh's theoretical 1.0."
+      },
+      {
+        "term": "Half-pitch",
+        "definition": "Half the period of a dense line-and-space array — the number a resolution specification usually quotes, because the diffraction argument is about the pitch of a grating rather than the width of one isolated line."
+      },
+      {
+        "term": "Off-axis illumination",
+        "definition": "Tilting the incoming light so the zeroth and first diffracted orders straddle the pupil instead of both sitting near its centre. It doubles the resolvable pitch for a given NA and is the mechanism behind half the k₁ reduction of the last thirty years."
+      },
+      {
+        "term": "Immersion lithography",
+        "definition": "Filling the last gap between the final lens element and the wafer with a liquid so that n > 1 in NA = n sin α. Water at 193 nm is what took production NA from 0.93 to 1.35."
+      }
+    ],
+    "try_this": "Read the numerical aperture off the objective on the club's maskless stepper and the wavelength off its source, then compute k₁λ/NA for k₁ = 0.61 (Rayleigh, and the honest assumption for unshaped illumination) and k₂λ/NA² for k₂ = 0.745, the value Song, Kim and Lee extract for 193 nm immersion. Then print a focus–exposure matrix: step the stage through focus in known increments at several doses and find the range over which your smallest lines still resolve. Compare that measured range with the calculated DOF. If the measurement is much narrower, the missing budget is in wafer flatness, chuck flatness and resist thickness — not in the optics — and that tells you which problem to work on next.",
+    "sources": [
+      {
+        "title": "Photolithography Simulation — §2.1 Some Fundamental Considerations",
+        "url": "https://www.iue.tuwien.ac.at/phd/kirchauer/node16.html",
+        "publisher": "Heinrich Kirchauer, dissertation, TU Wien",
+        "date": "1998"
+      },
+      {
+        "title": "A Study on the Resolution and Depth of Focus of ArF Immersion Photolithography",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9696816/",
+        "publisher": "Song, Kim & Lee, Micromachines 13(11):1971",
+        "date": "2022-11-14"
+      },
+      {
+        "title": "The Rayleigh criterion for resolution",
+        "url": "https://www.asml.com/en/technology/lithography-principles/rayleigh-criterion",
+        "publisher": "ASML",
+        "date": "2026"
+      },
+      {
+        "title": "Lenses and mirrors",
+        "url": "https://www.asml.com/en/technology/lithography-principles/lenses-and-mirrors",
+        "publisher": "ASML",
+        "date": "2026"
+      },
+      {
+        "title": "Light and lasers",
+        "url": "https://www.asml.com/en/technology/lithography-principles/light-and-lasers",
+        "publisher": "ASML",
+        "date": "2026"
+      },
+      {
+        "title": "Pushing k1 further",
+        "url": "https://www.asml.com/en/technology/lithography-principles/pushing-k1-further",
+        "publisher": "ASML",
+        "date": "2026"
+      },
+      {
+        "title": "Microlithography Basics",
+        "url": "https://www.lithoguru.com/scientist/lithobasics.html",
+        "publisher": "Chris A. Mack, lithoguru.com",
+        "date": "2023"
+      }
+    ]
+  }
+}

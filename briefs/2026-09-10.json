@@ -1,0 +1,428 @@
+{
+  "date": "2026-09-10",
+  "generated_at": "2026-09-10T13:00:00Z",
+  "window": "2026-09-09..2026-09-10",
+  "headline": "Apple's A20 Pro breaks with package-on-package: the iPhone 18 Pro's memory now sits beside the processor die instead of on top of it, leaving the die's upper face free to meet a vapour chamber with three times the previous surface area.",
+  "pulse": {
+    "read_time_min": 7,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-photosensitive-dielectric-damascene-rdl",
+            "title": "Package wiring goes damascene, with the dielectric as its own resist",
+            "dek": "Taiyo Holdings and imec built a three-layer redistribution stack — the package wiring that fans a chip's dense pads out towards board pitch — with 700-nanometre features on 12-inch wafers, by exposing trenches straight into a photosensitive insulator and filling them with copper.",
+            "background_md": "A chip's pads sit at a few tens of micrometres of pitch and a circuit board's at hundreds, so packages carry thin-film copper wiring — the redistribution layer — to bridge the two. It is normally built by the semi-additive process: sputter a copper seed across the whole wafer, pattern photoresist, plate copper up through the openings, strip the resist, then etch the exposed seed away. Nothing masks the plated lines during that last etch, so it thins them while it clears the field, and the width it costs stays roughly fixed as the lines themselves get narrower. Damascene inverts the order: cut the trench first, overfill it, polish the excess back.",
+            "glossary": [
+              {
+                "term": "RDL (redistribution layer)",
+                "definition": "Thin-film copper wiring built on top of a finished die or a moulded reconstituted wafer that moves the die's I/O outward to a pitch a package substrate or board can actually reach."
+              },
+              {
+                "term": "Semi-additive process (SAP)",
+                "definition": "Plate copper up through openings in photoresist over a blanket seed layer, then strip the resist and etch the seed away; the finished lines stand proud of the dielectric rather than sitting inside it."
+              },
+              {
+                "term": "Damascene",
+                "definition": "Cut the trench into the dielectric first, fill it with metal, then polish the overburden off, so the line ends up inlaid flush with the surface and its width was set by lithography rather than by an etch."
+              },
+              {
+                "term": "i-line",
+                "definition": "The 365 nm mercury emission line that older and cheaper exposure tools print with; a dielectric sensitive at i-line can be patterned on packaging-line optics instead of deep-ultraviolet lithography."
+              }
+            ],
+            "why_it_matters": "Damascene moves the linewidth tolerance out of a wet etch and into lithography and polishing, which is the same trade the front end made when copper replaced aluminium in the wiring stack — copper has no good plasma etch, so you cut the trench instead. Doing it with a dielectric that is its own photoresist deletes a resist coat, a develop and a separate dielectric etch from every layer. Taiyo says dual damascene becomes necessary at pitches of 1.6 micrometres or less; the pair's previous public number, ten months ago, was exactly 1.6 micrometres.",
+            "deeper_md": "The result was presented on 10 September in session MIP 1 at IEEE ESTC 2026 in Helsinki: a three-layer RDL on a 12-inch wafer at 700 nm critical dimension on both the interconnects and the vias, from a negative-tone i-line photosensitive insulator Taiyo calls the FPIM Series. The previous joint announcement, in November 2025, reported the same three-layer structure at 1.6 µm CD for the wiring and 2.0 µm for the vias; the stated next target is 500 nm. Taiyo reports \"favourable\" leakage current and resistance on the metal-1 layer, compatibility with CMP, and R&D sample shipments since 2025.\n\nWhat the release does not carry is any number behind \"favourable\" — no leakage density, no line or via resistance, no across-wafer yield, no reliability data. That gap matters because reliability, not patterning, is where organic damascene RDL is usually argued over: an IBM-led group reporting three-micrometre-pitch dual-damascene copper at ECTC 2025 concluded that fully encapsulating the polished copper with a metal liner or a silicon-nitride cap was the most effective way to stop corrosion, a step this announcement does not mention. The collaboration dates to October 2022, with Taiyo researchers resident at imec since November 2024.",
+            "fab_angle": "This is CMP arriving in the package. A damascene RDL needs a polish that clears copper overburden and stops on a soft polymer, plus an i-line exposure — both of them closer to what an undergraduate cleanroom owns than a plasma etch for copper, which does not really exist.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Copper Dual Damascene for Wafer-Level Packaging: Enabling Reliable, High-Density Interconnects",
+                "url": "https://www.3dincites.com/2025/08/copper-dual-damascene-for-wafer-level-packaging-enabling-reliable-high-density-interconnects/",
+                "publisher": "3D InCites",
+                "date": "2025-08-25"
+              },
+              {
+                "title": "IEEE ESTC 2026 technical programme — \"A Novel i-Line Photosensitive Dielectric Material Enabling 700nm Polymer Damascene RDL for Advanced Packaging\", session MIP 1",
+                "url": "https://www.conftool.org/estc2026/index.php?page=browseSessions&presentations=show&search=damascene",
+                "publisher": "IEEE Electronics System-Integration Technology Conference",
+                "date": "2026-09-10"
+              },
+              {
+                "title": "Taiyo Holdings Launches Next-generation Semiconductor-packaging Material \"FPIM Series,\" Achieving Its First Three-layer RDL Formation with 700-nm CD on 12-inch Wafers",
+                "url": "https://www.prnewswire.com/news-releases/taiyo-holdings-launches-next-generation-semiconductor-packaging-material-fpim-series-achieving-its-first-three-layer-rdl-formation-with-700-nm-cd-on-12-inch-wafers-302874600.html",
+                "publisher": "Taiyo Holdings, via PR Newswire",
+                "date": "2026-09-10"
+              },
+              {
+                "title": "Fully Encapsulated Fine Pitch Dual Damascene Organic RDL With Low Dk Df Photosensitive Polyimide and its Reliability",
+                "url": "https://research.ibm.com/publications/fully-encapsulated-fine-pitch-dual-damascene-organic-rdl-with-low-dk-df-photosensitive-polyimide-and-its-reliability",
+                "publisher": "IBM Research / ECTC 2025",
+                "date": "2025-05-27"
+              }
+            ]
+          },
+          {
+            "id": "silicon-pbse-inp-buffer-heteroepitaxy",
+            "title": "Lead selenide grows on indium phosphide, and mismatch is not the point",
+            "dek": "A University of Central Florida group led by Leland Nordin grew 150-nanometre films of lead selenide — the 1940s infrared detector material — on indium phosphide wafers through lattice-matched indium gallium arsenide buffers, and measured brighter room-temperature emission than the same material on gallium arsenide.",
+            "background_md": "Mid-wave infrared detection, the 3 to 5 micrometre band thermal cameras and gas sensors work in, needs a semiconductor whose band gap is small enough to absorb those photons, and the incumbents are expensive: mercury cadmium telluride and the III-V superlattices are grown on lattice-matched substrates because their carrier lifetimes fall as dislocation densities rise. Lead selenide is the odd one out — polycrystalline PbSe, grain boundaries and all, has been sold as a detector since the 1940s. Growing it as a single crystal should be better still, except that PbSe is a rock-salt crystal and the substrates industry actually makes are zinc-blende, so nothing is lattice-matched to it.",
+            "glossary": [
+              {
+                "term": "MBE (molecular beam epitaxy)",
+                "definition": "Growth by evaporating elemental sources onto a heated crystal in ultra-high vacuum slowly enough that arriving atoms find lattice sites, which buys monolayer control at the cost of throughput."
+              },
+              {
+                "term": "Lattice mismatch",
+                "definition": "The fractional difference between a film's natural atomic spacing and the substrate's; the strain it creates is relieved by misfit dislocations at the interface, some of which thread upward through the film."
+              },
+              {
+                "term": "Threading dislocation density (cm⁻²)",
+                "definition": "The count of line defects crossing a unit area of film surface; in most detector materials each one is a recombination path that shortens minority-carrier lifetime."
+              },
+              {
+                "term": "Shockley–Read–Hall recombination",
+                "definition": "Carrier loss through defect states sitting inside the band gap; a material in which it stays slow despite a high defect count is called defect-tolerant."
+              }
+            ],
+            "why_it_matters": "The interesting choice here is that the group did not pick the closest lattice match. Gallium antimonide sits 0.8 percent from PbSe and indium arsenide 1.5 percent, while this indium phosphide platform is about 4 percent off — but PbSe tolerates dislocations well enough that mismatch is not the binding constraint, and what InP buys instead is the InGaAs and InAlAs alloy family that grows lattice-matched on it. That turns a substrate decision into a heterostructure toolkit: the same In₀.₅₃Ga₀.₄₇As layer can be both the growth template and a short-wave infrared absorber, so one stack covers two bands.",
+            "deeper_md": "The films are 150 nm of PbSe grown by molecular beam epitaxy on 200 nm In₀.₅₃Ga₀.₄₇As and In₀.₅₂Al₀.₄₈As buffers on (001) InP. Reflection high-energy electron diffraction and X-ray diffraction show (001)-oriented rock-salt PbSe with an out-of-plane lattice constant of 6.12 Å on both buffers. Photoluminescence is measured from room temperature down to 12 K, with the peak moving from 3.7 µm to 5.0 µm as the sample cools. Against a PbSe-on-GaAs reference measured under identical conditions, room-temperature peak intensity is about 1.9× on the InGaAs buffer and about 1.3× on the InAlAs one.\n\nThe defect-tolerance argument rests on earlier work from an overlapping set of authors: PbSe on 8.3 percent mismatched GaAs carried threading dislocation densities above 10⁹ cm⁻² and still reached minority-carrier lifetimes as long as 172 ns and an estimated peak internal quantum efficiency near 30 percent at room temperature, with degenerate Auger rather than Shockley–Read–Hall recombination setting the ceiling.\n\nWhat is missing is a device. No detector was fabricated, no dark current, responsivity or detectivity is reported, and no dislocation count is given for these new InP-based films. The claim is a better platform, not yet a better detector.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Heteroepitaxial Growth of PbSe on InP Substrates via Lattice-Matched III-V Buffer Layers",
+                "url": "https://arxiv.org/abs/2609.09605",
+                "publisher": "arXiv",
+                "date": "2026-09-09"
+              },
+              {
+                "title": "Bright Mid-Infrared Photoluminescence from High Dislocation Density Epitaxial PbSe Films on GaAs",
+                "url": "https://arxiv.org/abs/2108.12701",
+                "publisher": "arXiv / APL Materials 9, 111112",
+                "date": "2021-08-28"
+              },
+              {
+                "title": "Versatile Strain Relief Pathways in Epitaxial Films of (001)-Oriented PbSe on III-V Substrates",
+                "url": "https://arxiv.org/abs/2210.05303",
+                "publisher": "arXiv",
+                "date": "2022-10-11"
+              },
+              {
+                "title": "Leland Nordin — faculty profile, CREOL and Materials Science and Engineering",
+                "url": "https://creol.ucf.edu/person/leland-nordin/",
+                "publisher": "University of Central Florida",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-apple-a20-pro-memory-off-thermal-path",
+            "title": "The iPhone's memory comes off the processor's back",
+            "dek": "Apple's A20 Pro, announced on Wednesday in the iPhone 18 Pro, drops package-on-package — stacking the DRAM directly above the processor die, as iPhones have done since the first one — and sets the memory beside the die instead, so the die's top face can meet a vapour chamber.",
+            "background_md": "A phone processor is rarely limited by how fast its transistors switch. It is limited by how much heat the case can shed before the silicon has to slow down, and the only route out runs from the die up through whatever is stacked on it. Package-on-package puts the DRAM in exactly that route: the memory package sits on the processor package and joins it through solder around the die, which saves board area and keeps the memory bus short. What it costs is a layer of moulding compound, solder and air between the hottest object in the phone and the outside world.",
+            "glossary": [
+              {
+                "term": "PoP (package-on-package)",
+                "definition": "A memory package mounted on top of a processor package and joined through solder around the die, shortening the memory bus and saving board area at the price of putting the DRAM in the processor's heat path."
+              },
+              {
+                "term": "Integrated fan-out (InFO)",
+                "definition": "Packaging that rebuilds a die into a moulded reconstituted wafer and routes its I/O outward through thin-film wiring rather than a laminate substrate; iPhone processors have shipped in an InFO package-on-package form."
+              },
+              {
+                "term": "Vapour chamber",
+                "definition": "A sealed flat cavity holding a wick and a working fluid: heat boils the fluid at the hot end and it condenses at the cool end, spreading heat sideways much faster than a solid sheet of the same thickness."
+              },
+              {
+                "term": "Sustained versus peak performance",
+                "definition": "Peak is what a chip does before it heats up; sustained is what it does once the package reaches thermal equilibrium, and the gap between them is set by the package and the chassis rather than by the transistors."
+              }
+            ],
+            "why_it_matters": "Everything a phone user notices under load — the frame rate that decays, the export that slows down — is the gap between peak and sustained performance, and that gap is a thermal-resistance problem in the package rather than a transistor problem in the die. Taking the DRAM out of the stack removes a series thermal resistance from the only route the heat has, and lets the die be attached to a spreader directly, which is the arrangement Apple's laptop and desktop parts have used for years precisely because they run hotter. Apple pairs the change with 50 percent more memory bandwidth than the A19 Pro, though it does not say the packaging is why.",
+            "deeper_md": "Apple's own words: \"custom packaging inspired by M-series Apple silicon that places the silicon die side by side with the memory, removing the memory from the thermal path of the chip\", attached to a vapour chamber built with new materials and \"three times more surface area than the previous generation on iPhone 17 Pro\", for \"up to a 40 percent gain over the previous generation — the highest sustained performance yet\". The rest of the part as Apple gives it: 2-nanometre process technology, a 6-core CPU with integrated neural accelerators, a 7-core GPU up to 40 percent faster than the A19 Pro, a dual 16-core Neural Engine totalling 32 cores, and 50 percent more memory bandwidth. No foundry is named and no transistor count is given.\n\nThe mechanism was spelled out for the M1 six years ago. A teardown analysis then noted that phone and tablet processors \"allow for the extra thermal resistance of the PoP reducing heat transfer out of the chip\", while a desktop-class die \"needs to have a large surface available to contact a heatsink\". Apple has now decided a phone belongs in the second category. Independent work as recently as December 2025 was still imaging shipping iPhone parts as integrated fan-out package-on-package.\n\nEvery figure above is vendor-reported with no independent measurement, and Apple does not split the sustained-performance gain between the node, the package and the vapour chamber.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Exposing Apple Mini M1 SoC (page 3) — package-on-package versus side-by-side memory",
+                "url": "https://www.eetimes.com/exposing-apple-mini-m1-soc/3/",
+                "publisher": "EE Times",
+                "date": "2020-11-27"
+              },
+              {
+                "title": "Apple debuts iPhone 18 Pro and iPhone 18 Pro Max",
+                "url": "https://www.apple.com/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/",
+                "publisher": "Apple Newsroom",
+                "date": "2026-09-09"
+              },
+              {
+                "title": "Quantum Diamond Microscopy for Non-Destructive Failure Analysis of an Integrated Fan-Out Package-on-Package iPhone Chip",
+                "url": "https://arxiv.org/abs/2512.07619",
+                "publisher": "arXiv",
+                "date": "2025-12-08"
+              },
+              {
+                "title": "The Packaging of Apple's A12X is… Weird",
+                "url": "https://sst.semiconductor-digest.com/chipworks_real_chips_blog/2019/01/16/the-packaging-of-apples-a12x-is-weird/",
+                "publisher": "Siliconica / Semiconductor Digest",
+                "date": "2019-01-16"
+              }
+            ]
+          },
+          {
+            "id": "chips-differential-annealing-processor-2048-spin",
+            "title": "An annealer that recomputes only the spins that just flipped",
+            "dek": "Naoya Onizawa and co-authors laid out a 2,048-spin annealing processor in 28-nanometre CMOS — a chip that solves combinatorial optimisation by letting simulated magnets settle into their lowest-energy arrangement — and cut the work per step by recomputing interactions only for spins that changed.",
+            "background_md": "Scheduling, routing and layout problems can be rewritten as an Ising model: a set of two-valued spins with a weight on every pair, where the answer is whichever arrangement minimises the total energy. Annealing hardware searches for it by flipping spins at random with a probability that falls as a simulated temperature drops. What sets the cost in silicon is connectivity. If every spin couples to every other, a machine with N spins must store N² weights and touch all N of them after each flip, so most annealers restrict which spins may couple — and then every problem has to be mapped onto that restricted graph before it can be run.",
+            "glossary": [
+              {
+                "term": "Ising model / QUBO",
+                "definition": "Two equivalent ways of writing an optimisation problem as an energy over two-valued variables with a weight on each pair, so that the minimum-energy configuration is the answer you wanted."
+              },
+              {
+                "term": "Minor embedding",
+                "definition": "Mapping a problem whose variables all interact onto hardware whose spins do not, by chaining several physical spins together to stand in for one logical variable; it costs spins and adds a failure mode when a chain breaks."
+              },
+              {
+                "term": "TTS (time-to-solution)",
+                "definition": "The wall-clock time a stochastic solver needs to reach a stated solution quality with a stated success probability, rather than the time to run a fixed number of sweeps."
+              },
+              {
+                "term": "Post-layout simulation",
+                "definition": "Timing and power extracted from the finished physical design with wire parasitics included — one step short of a fabricated chip, so it is what the design should do, not what a measured die did."
+              }
+            ],
+            "why_it_matters": "Full connectivity is what makes an annealer general: a problem whose variables all interact loads straight in, with no chains of physical spins standing in for one logical variable. It is also what makes the machine expensive, because the per-flip update cost scales with the spin count and the weight memory with its square. The differential update changes which of those two costs you pay every step — all the weights still have to be stored, but only the couplings of spins that actually flipped get read and recomputed, and late in an anneal almost nothing flips. That is an argument for spending silicon area on memory rather than on a wider datapath.",
+            "deeper_md": "The design is 3 mm × 4 mm of TSMC 28 nm closing timing at 500 MHz with 16 Mb of SRAM holding the weights. For 2,048 fully connected spins there are about 4.2 million couplings, so 16 Mb works out near four bits each — that division is ours, not the paper's. Stochastic noise is amortised across 16 spins to keep the random-number generators small, and the datapath stays serialised for density, with spin-select scheduling, priority-based weight reads and a temperature controller that skips idle steps.\n\nReported on 2,000-spin problems: 2.7 ms time-to-solution, 0.86 mJ energy-to-solution, 316 mW total, 0.15 mW per spin, and 1.5× lower power and 3.5× lower TTS energy than prior fully connected annealers.\n\nThree caveats, and they are large. These are post-layout simulation figures, not measurements on silicon. The comparison baselines are themselves described as projected. And no benchmark family or target solution quality is named, so \"time-to-solution\" is not yet anchored to something another group could reproduce. For scale in the other direction, a 16 nm mixed-signal design published in June claims 10,000 stochastic nodes inside roughly half a watt — but on a sparse interconnect topology, which is exactly the embedding overhead that full connectivity exists to avoid.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Differential Stochastic Simulated Annealing Processor for Fully Connected 2048-Spin Optimization",
+                "url": "https://arxiv.org/abs/2609.09559",
+                "publisher": "arXiv",
+                "date": "2026-09-09"
+              },
+              {
+                "title": "Quantum-Driven Neuromorphic Computing for Million-Qubit-Scale Workloads",
+                "url": "https://arxiv.org/abs/2606.12968",
+                "publisher": "arXiv",
+                "date": "2026-06-11"
+              },
+              {
+                "title": "High-performance and reliable probabilistic Ising machine based on simulated quantum annealing",
+                "url": "https://arxiv.org/abs/2503.13015",
+                "publisher": "arXiv",
+                "date": "2025-03-17"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-shor-secp256k1-point-addition-score",
+            "title": "Shor's inner loop on Bitcoin's curve gets 86 percent cheaper",
+            "dek": "A 36-author group led by Jieyi Long ran an open contest to shrink the reversible quantum circuit that adds two points on secp256k1 — the elliptic curve Bitcoin signs with — and the leading entry now does it with 1,151 logical qubits and about 1.3 million Toffoli gates.",
+            "background_md": "Public-key signatures rest on problems that are easy one way and hard the other; for elliptic-curve cryptography the hard direction is recovering a private scalar from a public point. Shor's algorithm makes that direction easy on a quantum computer, and the whole cost of running it comes down to how cheaply the group's basic operation — adding two points — can be done reversibly, because a quantum circuit is not allowed to discard information. Resource estimates are therefore quoted in two currencies at once: how many logical qubits the circuit holds live, and how many Toffoli gates it executes.",
+            "glossary": [
+              {
+                "term": "Toffoli gate",
+                "definition": "A reversible three-qubit gate that flips its target when both controls are set — the quantum equivalent of an AND, and under error correction the expensive operation that arithmetic circuits are costed in."
+              },
+              {
+                "term": "Logical versus physical qubit",
+                "definition": "A logical qubit is one error-corrected unit of quantum information; building it out of noisy hardware takes many physical qubits, so a circuit's logical width and the machine needed to run it differ by orders of magnitude."
+              },
+              {
+                "term": "secp256k1",
+                "definition": "The particular 256-bit elliptic curve Bitcoin's signature scheme is defined over; its security rests on the difficulty of the elliptic-curve discrete logarithm problem."
+              },
+              {
+                "term": "Q × T (spacetime score)",
+                "definition": "The contest's figure of merit — peak logical qubit width multiplied by average executed Toffoli count — so making a circuit narrower by making it much longer does not register as an improvement."
+              }
+            ],
+            "why_it_matters": "Point addition is the subroutine, not the attack, and the distance between the two is the useful part. The contest's own comparison is that its best circuit sits more than 50 percent below Google's published point-addition thresholds under different accounting conventions, and the paper says plainly that those differing conventions preclude any formal dominance claim. Google's estimate for the full 256-bit break is under 1,200 logical qubits and under 90 million Toffoli gates, running in minutes on fewer than half a million physical qubits at a 0.1 percent physical error rate. The logical numbers keep moving; the physical machine is the part that does not exist.",
+            "deeper_md": "The benchmark scores one reversible secp256k1 point addition as S = Q × T, with Q the peak logical qubit width and T the average executed Toffoli count. At the 26 July 2026 data cutoff the leading entry is 1,151 qubits and 1,299,453 average executed Toffolis, so S ≈ 1.496 billion; a windowed variant runs 1,162 qubits and 1,684,161 Toffolis for S ≈ 1.961 billion after adjusting for an empirical success rate of 0.99809. Entries are validated on 100,000 random inputs, and participants collectively took the score down 86.1 percent over the run of the contest.\n\nTwo things to hold onto. \"Average executed\" is not worst case, and a circuit that is cheap on average and occasionally expensive is a different engineering object from one that is uniformly cheap. And none of this includes error correction: the Google resource estimate these numbers are measured against reaches its sub-half-million physical qubit figure by assuming a 10⁻³ physical error rate and planar connectivity, and that assumption, rather than the arithmetic, is what stands between this circuit and a broken signature scheme. NIST published the replacements — FIPS 203, 204 and 205 — in August 2024, and plans to remove quantum-vulnerable algorithms from its standards by 2035.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "ECDSA.Fail: Open Autoresearch for Optimizing Elliptic-Curve Point Addition in Shor's Algorithm",
+                "url": "https://arxiv.org/abs/2609.09582",
+                "publisher": "arXiv",
+                "date": "2026-09-09"
+              },
+              {
+                "title": "Securing Elliptic Curve Cryptocurrencies against Quantum Vulnerabilities: Resource Estimates and Mitigations",
+                "url": "https://arxiv.org/abs/2603.28846",
+                "publisher": "arXiv",
+                "date": "2026-03-30"
+              },
+              {
+                "title": "Post-Quantum Cryptography project — published standards and migration timeline",
+                "url": "https://csrc.nist.gov/projects/post-quantum-cryptography",
+                "publisher": "NIST Computer Security Resource Center",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-exp-free-softmax-quantization",
+            "title": "Attention's softmax stops computing exponentials",
+            "dek": "Researchers at Xi'an Jiaotong University and Huawei replaced the exponential inside attention's softmax — the step that turns raw scores into the weights a transformer averages values with — by a single affine rule that emits four-bit floating-point probabilities directly, cutting that kernel's vector-stage latency about 40 percent.",
+            "background_md": "A transformer layer spends nearly all its arithmetic on two matrix multiplications, and accelerators now run both in four- or eight-bit formats. Between them sits softmax, which exponentiates every score, and the exponential is the one operation in the chain that is neither a multiply nor an add: hardware evaluates it in higher precision, writes out a block of probabilities, then quantises that block before the second matrix multiply can consume it. So a datapath built for low precision keeps stopping to manufacture a high-precision intermediate and throw most of it away. The producer and the consumer disagree about the number format.",
+            "glossary": [
+              {
+                "term": "Softmax",
+                "definition": "The function that turns a row of attention scores into non-negative weights summing to one, by exponentiating each score and dividing by the row's total."
+              },
+              {
+                "term": "E2M1 / MXFP4",
+                "definition": "A four-bit floating-point element with two exponent bits and one mantissa bit, used in blocks that share a single power-of-two scale factor; the shared scale is what lets four bits span a useful dynamic range."
+              },
+              {
+                "term": "Microscaling block",
+                "definition": "A short run of values that share one exponent scale, so the quantisation error each value suffers is set by its local maximum rather than by the whole tensor's range."
+              },
+              {
+                "term": "Row-maximum update",
+                "definition": "The running per-row maximum and rescaling that lets attention be computed tile by tile without ever materialising the full score matrix; any replacement for softmax has to leave it intact."
+              }
+            ],
+            "why_it_matters": "The claim worth checking is not the speedup but that quality does not fall. Deleting the exponential ought to cost accuracy, because an affine map is not the function softmax specifies; instead the reported seven-task mean on Qwen3-8B rises slightly against a four-bit baseline. The reason is that the baseline was already lossy — it computed softmax exactly and then discarded the precision in the quantiser — so replacing two lossy steps with one can land ahead. That generalises: in a mixed-precision pipeline the error that matters is the one at the interface between stages, not the one inside each stage.",
+            "deeper_md": "The mechanism: for each microscaling block, take an exponent-only scale from the block's local maximum, map the shifted scores into a normalised residual domain, and generate non-negative E2M1 codes with one affine rule. The same operand is then used for both the numerator update P̃V and the denominator update P̃·1, so the probabilities the accelerator multiplies by are exactly the ones it normalises with. FlashAttention's row-maximum update, historical rescaling, high-precision accumulation and final normalisation are all left unchanged.\n\nNumbers as reported: Qwen3-8B seven-task mean 0.6773 against 0.6749 for MXFP4; Qwen3-VL-8B-Instruct nine-task mean 0.8000 against 0.7826; WAN2.2-TI2V-5B holding temporal consistency and visual quality comparable to FP16 and MXFP4 under VBench. Latency of the fused probability-generation kernel's vector stage falls 40.33 percent on average across sequence lengths from 16K to 128K.\n\nThree caveats. That latency figure covers one vector stage of one kernel, not end-to-end decode, so it is not a tokens-per-second claim. The hardware is identified only as \"the A5 vector unit\", with no description of its width or whether it has a fast hardware exponential — on a unit that does, the saving would shrink. And the quality gaps are hundredths of a point on aggregate benchmark means, which is well inside the range where the choice of tasks moves the answer.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "EFQ-Softmax: Exp-Free Quantization for Softmax",
+                "url": "https://arxiv.org/abs/2609.09721",
+                "publisher": "arXiv",
+                "date": "2026-09-09"
+              },
+              {
+                "title": "Microscaling Data Formats for Deep Learning",
+                "url": "https://arxiv.org/abs/2310.10537",
+                "publisher": "arXiv",
+                "date": "2023-10-16"
+              },
+              {
+                "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+                "url": "https://arxiv.org/abs/2205.14135",
+                "publisher": "arXiv",
+                "date": "2022-05-27"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "Sputtering and evaporation",
+    "slug": "pvd-sputtering",
+    "subtitle": "Two ways to get a solid into the vapour phase — one with heat, one with momentum — and why almost every metal film in a modern process is knocked loose rather than boiled.",
+    "tldr": "Physical vapour deposition means turning a solid source into a vapour and letting it condense on a wafer. You can do that with heat, which is simple, fast and arrives from one direction, or with momentum — firing argon ions at a target so atoms are knocked off it — which is slower on a small tool but covers steps better, handles alloys and refractory metals, and delivers atoms carrying enough energy to stick properly. The knobs that matter are the same three every time: pressure, power and geometry.",
+    "sections": [
+      {
+        "heading": "Boiling the metal, and where that stops working",
+        "body_md": "Start with the easy one. Thermal evaporation puts a slug of the material you want into a resistively heated boat or coil, pumps the chamber down, and passes enough current to make it evaporate. Hacker Fab's DIY evaporator — the community MNF documents into — runs at 45 amps or less through a tungsten coil with about an inch of aluminium wire wrapped around it, at a chamber pressure of 3.71 × 10⁻⁵ torr, and once the aluminium goes the deposition rate \"shoots up to hundreds of angstroms per second.\" That is very fast for a table-top tool.\n\nTwo limits show up immediately. The first is chemical: the SOP warns that aluminium and tungsten alloy with each other, so the filament gets more brittle after every run. Your source and your heater are in contact, and they react. The second is geometric. At 10⁻⁵ torr the vapour travels essentially in straight lines from a small hot spot, so a feature's sidewall that cannot see the source does not get coated. Evaporation gives you a beam, and a beam casts shadows."
+      },
+      {
+        "heading": "Momentum instead of heat",
+        "body_md": "Sputtering never melts anything. You fill the chamber with a few millitorr of argon, strike a plasma, and let the electric field accelerate argon ions into a plate of the material you want — the target. An arriving ion sets off a collision cascade a few atomic layers deep; occasionally that cascade sends an atom back out through the surface. Nothing has to melt, which is why the target can be an alloy that would separate on boiling, or tungsten, which you could never evaporate out of a tungsten heater.\n\nThe efficiency of the exchange is the sputter yield: atoms ejected per incident ion. At 600 eV of argon ion energy, published reference values are 1.2 for aluminium, 2.3 for copper, 2.8 for gold, 3.4 for silver, 1.3 for chromium, and 0.6 for each of titanium, tungsten and tantalum, with silicon at 0.5. That spread is nearly sevenfold between silver and silicon, and it is the first-order answer to \"how long will this deposition take?\" — at fixed ion current, a tungsten target puts out roughly a sixth as many atoms per second as a silver one."
+      },
+      {
+        "heading": "The magnetron, and why the plasma sits in a ring",
+        "body_md": "A bare two-electrode discharge is a poor sputtering source. Most of the electrons that ionise argon are lost to the walls before they collide with anything, so you have to run at high pressure and high voltage to keep the plasma alive, and high pressure is exactly what you do not want. The magnetron fixes this with permanent magnets behind the target arranged so their field lines leave and re-enter the target face, forming a closed loop above it. Secondary electrons knocked out of the target are trapped in that loop and spiral there instead of escaping, so each one ionises many more argon atoms before it is lost.\n\nThe practical effect is a dense plasma pinned right where you want it, at the target surface, and a discharge that stays lit at a few millitorr instead of tens. Equipment vendors are explicit that magnet strength is one of the design variables that changes the deposition rate you get out of a given target material. The visible signature is the erosion racetrack: after enough hours a magnetron target has a groove worn into it exactly where the field loop sat, and everywhere else is barely touched. That groove is also why target utilisation is a cathode design specification rather than an afterthought."
+      },
+      {
+        "heading": "Why an insulating target needs radio frequency",
+        "body_md": "Run a DC discharge against a metal target and the arriving positive charge drains away through the target into the supply. Run it against alumina or silicon dioxide and it does not: positive charge accumulates on the insulating surface, the sheath voltage collapses, and, as one equipment vendor puts it, the charge build-up \"over time can stop the discharge of sputtering atoms, terminating the sputtering process.\" The fix is to alternate the electrode potential at radio frequency, so that every cycle the surface is neutralised by electrons during the half-period when it is positive with respect to the plasma.\n\nThe engineering cost of RF is impedance matching, and Hacker Fab's chamber is an unusually legible example of what that means. Their power source is a 100 W amateur-radio transceiver putting out a 14 MHz sine wave into an antenna tuner, whose selectable inductors and variable capacitor are adjusted until 90–95 percent of the forward power actually reaches the magnetron rather than reflecting back down the coaxial cable. Mistune it and the power goes into heating your transmission line."
+      },
+      {
+        "heading": "Pressure is the main knob, and it sets the microstructure",
+        "body_md": "Argon pressure does three jobs at once, which is why it is the parameter people fight over. It sets the ion supply, so at fixed power a lower pressure has to be driven at a higher voltage: in one careful study of DC magnetron copper, dropping the argon from 2 Pa to 0.5 Pa to 0.15 Pa pushed the target voltage from 338 V to 344 V to 378 V. It sets how many gas-phase collisions a sputtered atom suffers on the way to the wafer, which randomises its arrival direction — the reason sputtering covers a step better than evaporation does. And through those collisions it sets how much energy the atom still has when it lands.\n\nThat last one is the interesting one, because arriving energy is what lets an adatom move around before it sticks. In the same copper study the incident atoms carry \"from a few tenths of eV to dozens of eV\", and as the pressure fell from 2 Pa to 0.15 Pa the films moved from Volmer–Weber island growth to two-dimensional layer growth, the (111) rocking-curve width narrowed from 0.59 to 0.38, and the surface got smoother. Same target, same tool, same ten minutes — different film."
+      },
+      {
+        "heading": "What a table-top sputterer actually achieves",
+        "body_md": "It is worth knowing the numbers a student-built system reaches, because they set expectations for what MNF's own sputterer should do. The CMU Hacker Fab RF chamber, designed and built between autumn 2024 and spring 2025, pumps to a base pressure of 8.6 × 10⁻⁸ hPa — about 6.5 × 10⁻⁸ torr, comfortably past its own 10⁻⁷ torr target — and holds a stable argon plasma down to 5 mTorr, with 3 mTorr the lowest achieved. Throw distance is adjustable from 0.5 to 8 inches.\n\nThe honest part of that documentation is the rate. Aluminium deposits at roughly 2.5 nm per minute at a three-inch throw, against a design goal of more than 10 nm per minute — that is 0.42 Å per second, some two to three orders of magnitude below the evaporator in section one. The films themselves are respectable: aluminium under 4 µΩ·cm, and reactively sputtered aluminium oxide with a dielectric constant above 6 and surface roughness under 5 nm. This is the trade in one paragraph. Sputtering buys you coverage, alloys, oxides and adhesion, and it charges you throughput."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Sputter yield",
+        "definition": "Atoms ejected from the target per incident ion, at a stated ion energy. It varies by roughly sevenfold across common target materials at 600 eV argon, and it is the dominant term in how long a deposition takes."
+      },
+      {
+        "term": "Magnetron",
+        "definition": "A sputtering cathode with magnets behind the target arranged so the field lines form a closed loop over the target face, trapping secondary electrons there. The trapped electrons ionise far more argon per electron, which is what lets the discharge run at a few millitorr."
+      },
+      {
+        "term": "Racetrack",
+        "definition": "The ring-shaped groove eroded into a magnetron target under the trapped-electron loop. Because sputtering happens almost entirely there, a target is scrapped with most of its material still on it, and target utilisation becomes a cathode design metric."
+      },
+      {
+        "term": "Base pressure vs process pressure",
+        "definition": "Base pressure is how far down the chamber pumps before any gas is admitted — it measures how much water, oxygen and hydrocarbon will be built into your film. Process pressure is the working argon pressure, typically thousands of times higher. Hacker Fab's chamber reaches 6.5 × 10⁻⁸ torr base and runs at 3–5 mTorr."
+      },
+      {
+        "term": "Reactive sputtering",
+        "definition": "Sputtering a metal target while admitting a reactive gas — oxygen or nitrogen — so the compound forms on the substrate rather than being sputtered from a compound target. It is how Hacker Fab makes its aluminium oxide gate dielectric from a single aluminium target, by flowing oxygen during the run."
+      },
+      {
+        "term": "Volmer–Weber growth",
+        "definition": "Island growth: arriving atoms bind to each other more strongly than to the substrate, so the film starts as separated three-dimensional islands that later merge, leaving grain boundaries and roughness. The alternative, two-dimensional layer growth, needs the adatoms to have enough energy and mobility to spread out first."
+      },
+      {
+        "term": "Impedance matching network",
+        "definition": "The tunable inductors and capacitors between an RF supply and the plasma. The plasma's impedance changes as it strikes and as pressure varies, and without retuning most of the forward power reflects back to the amplifier instead of doing work."
+      }
+    ],
+    "try_this": "Run one afternoon's design of experiments on MNF's sputterer: the same aluminium recipe at three argon pressures — say 3, 5 and 10 mTorr — with power, throw distance and time held constant. Measure each film's step height on the profilometer to get a deposition rate, and its sheet resistance on the four-point probe; multiply the two to get resistivity. Hacker Fab's chamber reports aluminium under 4 µΩ·cm and about 2.5 nm/min at a three-inch throw, so you will know at once whether your tool is in the same regime or whether you have a leak. If you can get XRD time, Zhu's copper study is the template for what to plot next: the (111) peak width against pressure.",
+    "sources": [
+      {
+        "title": "Sputtering Yield Rates — reference table and process notes",
+        "url": "https://www.semicore.com/reference/sputtering-yields-reference",
+        "publisher": "Semicore Equipment, Inc.",
+        "date": "2026"
+      },
+      {
+        "title": "DIY RF Sputtering Chamber",
+        "url": "https://docs.hackerfab.org/home/fab-toolkit/deposition/diy-rf-sputtering-chamber",
+        "publisher": "Hacker Fab (Carnegie Mellon University)",
+        "date": "2025"
+      },
+      {
+        "title": "DIY Thermal Evaporator — standard operating procedure",
+        "url": "https://github.com/hacker-fab/gitbook/blob/main/standard-operating-procedures/diy-thermal-evaporator-sop.md",
+        "publisher": "Hacker Fab",
+        "date": "2025-08-01"
+      },
+      {
+        "title": "On the Microcrystal Structure of Sputtered Cu Films Deposited on Si(100) Surfaces: Experiment and Integrated Multiscale Simulation",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10301675/",
+        "publisher": "Molecules (MDPI)",
+        "date": "2023-06-15"
+      },
+      {
+        "title": "Copper Thin Film Deposition by An Indigenous Unbalanced Type DC Magnetron Sputtering System",
+        "url": "https://arxiv.org/abs/2001.08974",
+        "publisher": "arXiv",
+        "date": "2020-01-24"
+      }
+    ]
+  }
+}

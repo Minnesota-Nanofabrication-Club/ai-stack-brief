@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-10",
+      "foundations_slug": "pvd-sputtering",
+      "foundations_topic": "Sputtering and evaporation",
+      "headline": "Apple's A20 Pro breaks with package-on-package: the iPhone 18 Pro's memory now sits beside the processor die instead of on top of it, leaving the die's upper face free to meet a vapour chamber with three times the previous surface area.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-09",
       "foundations_slug": "resolution-limits-k1-na",
       "foundations_topic": "Resolution, NA, and the k₁ factor",
@@ -158,6 +171,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-09T12:46:13Z",
-  "latest": "2026-09-09"
+  "generated_at": "2026-09-10T12:51:54Z",
+  "latest": "2026-09-10"
 }

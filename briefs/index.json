@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-11",
+      "foundations_slug": "contact-proximity-projection",
+      "foundations_topic": "Contact, proximity, and projection printing",
+      "headline": "A six-author group shows that cooling a chip is enough to defeat the sensors meant to catch a halted clock: at −36 °C, OpenTitan's alert handler never escalates and the AES key is still sitting in its registers when the part warms up.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-10",
       "foundations_slug": "pvd-sputtering",
       "foundations_topic": "Sputtering and evaporation",
@@ -171,6 +184,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-10T12:51:54Z",
-  "latest": "2026-09-10"
+  "generated_at": "2026-09-11T12:45:57Z",
+  "latest": "2026-09-11"
 }

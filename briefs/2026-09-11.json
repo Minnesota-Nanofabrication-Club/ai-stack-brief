@@ -1,0 +1,423 @@
+{
+  "date": "2026-09-11",
+  "generated_at": "2026-09-11T14:30:00Z",
+  "window": "2026-09-10..2026-09-11",
+  "headline": "A six-author group shows that cooling a chip is enough to defeat the sensors meant to catch a halted clock: at −36 °C, OpenTitan's alert handler never escalates and the AES key is still sitting in its registers when the part warms up.",
+  "pulse": {
+    "read_time_min": 7,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-two-mirror-faceted-euv-projection",
+            "title": "Two mirrors instead of ten, if the mask pattern repeats",
+            "dek": "Vasiliy Es'kin, Egor Ivanov and Olga Martynova have proposed an extreme-ultraviolet projection optic — the mirror stack that shrinks a mask pattern four times onto the wafer — in which every diffraction order gets its own pair of flat mirror facets and reflects exactly twice.",
+            "background_md": "Nothing transmits at 13.5 nanometres, so an extreme-ultraviolet exposure tool has no lenses: every optical element is a mirror, and the only mirror that works there is a Bragg stack of alternating molybdenum and silicon layers, tuned so the weak reflections from each buried interface add in phase. Even done well, that returns roughly two-thirds to three-quarters of the light. Imaging a mask sharply across a whole exposure field takes six to ten such aspheric mirrors to cancel aberrations, and their reflectivities multiply down the chain, so the photon budget is decided before a single photon reaches the resist.",
+            "glossary": [
+              {
+                "term": "Bragg multilayer",
+                "definition": "A stack of alternating high- and low-index layers whose period is tuned so the faint reflections from every interface arrive in phase; it is the only way to make a mirror at a wavelength where every material absorbs."
+              },
+              {
+                "term": "Diffraction order",
+                "definition": "One of the discrete directions a periodic mask scatters light into. An image is rebuilt only from the orders an optic actually collects, so the highest order accepted sets the finest pitch that can print."
+              },
+              {
+                "term": "NA (numerical aperture)",
+                "definition": "The refractive index times the sine of the half-angle of the light cone an optic collects. Resolution improves roughly as 1/NA while depth of focus falls as 1/NA², so the two move against each other."
+              },
+              {
+                "term": "Depth of focus",
+                "definition": "The range of wafer height over which the printed image stays acceptable. It is the budget that every upstream process step — polish, film stress, chuck flatness — is competing for."
+              }
+            ],
+            "why_it_matters": "Every reflection in an extreme-ultraviolet tool throws away about a third of the photons, because a molybdenum–silicon Bragg stack is the best mirror anyone can build at 13.5 nanometres; ten of them in series is roughly 1.3 percent transmission, and everything about how much light an EUV source has to manufacture follows from that one number. What the proposal makes explicit is what the extra mirrors are actually buying: they exist to correct aberrations over a field of arbitrary patterns. Give that up, and restrict the mask to something that repeats, and eight of the ten reflections stop being necessary — which is also why this result sits closer to interference lithography than to a scanner.",
+            "deeper_md": "The paper's own accounting: a conventional tool takes four illumination and six projection reflections at R ≈ 0.65 each, so 0.65¹⁰ ≈ 1.3 percent, against about 18 percent for the faceted design's four reflections in total. Each accepted diffraction order (m,n) gets a dedicated pair of planar facets — the first collimates the divergent beam, the second steers it to the wafer at the demagnified angle — and facet heights on the second mirror are set so the total optical path is the same 2,998.1 mm for every order, which is what removes order-dependent phase error. Coatings are 30-bilayer stacks optimised facet by facet: 71.7–76.2 percent for Mo/Si at 13.5 nm, 74.9–79.6 percent for Ru/Be at 11.2 nm, over first-mirror incidence angles from 1.50° to 47.79°. Simulated aerial images give isolated peaks at 5.4 nm FWHM and line pairs at 6 nm.\n\nThree restrictions carry the result. The mask must be periodic: the worked case is an 857 nm mask period printing a 214 nm period on the wafer over a 10 mm field. Defocus was tested only from 0 to 5 nm, which is what an NA near unity leaves — ASML's shipping tools run NA 0.33 for 13 nm resolution and NA 0.55 for 8 nm. And the multilayers are modelled with no interface roughness, no interdiffusion and no fabrication error, with no resist simulation and no focus–dose process window behind the aerial images.",
+            "fab_angle": "The design turns on a fact any projection system obeys: the optic only has to relay the diffraction orders the mask actually produces, and the finest pitch you can print is set by the highest order that gets through. That is measurable on a bench — put a coarse grating in the club's stepper and look at what the pupil passes before arguing about resist.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "A Two-Mirror Faceted Projection System for EUV Lithography",
+                "url": "https://arxiv.org/abs/2609.11299",
+                "publisher": "arXiv",
+                "date": "2026-09-10"
+              },
+              {
+                "title": "EUV lithography systems — NXE (0.33 NA) and EXE High NA (0.55 NA)",
+                "url": "https://www.asml.com/en/products/euv-lithography-systems",
+                "publisher": "ASML",
+                "date": "2026"
+              },
+              {
+                "title": "Holographic EUV Lithography at 40 nm Resolution",
+                "url": "https://arxiv.org/abs/2605.21430",
+                "publisher": "arXiv",
+                "date": "2026-05-20"
+              }
+            ]
+          },
+          {
+            "id": "silicon-ald-snox-ptype-beol-cfet",
+            "title": "A p-type oxide transistor grown one monolayer at a time",
+            "dek": "Ziheng Wang, Mengwei Si and nine co-authors report p-channel transistors made from atomic-layer-deposited tin oxide — the missing half of a complementary logic pair that could be built in the wiring above finished silicon — with a hole mobility of 6.9 cm²/Vs and an 80-nanometre channel.",
+            "background_md": "A transistor built above finished silicon has to be made below roughly 400 °C, because the copper wiring and low-κ insulator already in place degrade above it. That rules out crystalline silicon and leaves the amorphous oxide semiconductors, which deposit cold and leak very little when switched off. The catch is polarity. In a typical oxide the top of the valence band is built from oxygen 2p states that sit on individual oxygen atoms and barely overlap, so holes are heavy and slow, while the conduction band is a broad network of overlapping metal s orbitals that carries electrons well. Oxides come out n-type almost by construction.",
+            "glossary": [
+              {
+                "term": "BEOL (back end of line)",
+                "definition": "The copper wiring and low-κ insulator built above the transistors. Both degrade with heat, so anything added afterwards has to be processed below roughly 400 °C."
+              },
+              {
+                "term": "ALD (atomic layer deposition)",
+                "definition": "Growth by alternating self-limiting surface reactions — one pulse of metal precursor, one of oxidant, per cycle — so thickness is set by cycle count rather than by time, and vertical walls coat as evenly as flat ones."
+              },
+              {
+                "term": "Subthreshold swing (mV/dec)",
+                "definition": "The extra gate voltage needed to raise the drain current tenfold below threshold. Room temperature puts a floor near 60 mV/decade; well above it means interface traps are absorbing the gate's control."
+              },
+              {
+                "term": "CFET (complementary FET)",
+                "definition": "An n-channel and a p-channel device stacked vertically on one footprint, so a logic cell's width stops being set by having to lay the two side by side."
+              }
+            ],
+            "why_it_matters": "Oxide semiconductors are the standing candidate for transistors in the wiring stack, and nearly all of them conduct only electrons, which caps what can be built up there at select devices and switches rather than logic. Making the p-side work is a chemistry problem rather than a lithography one: tin oxide carries holes usefully only in its Sn²⁺ form, and Sn²⁺ is metastable against both metallic tin and n-type SnO₂, so the whole engineering task is stopping an ALD process from oxidising its own film past the one valence state that is useful. That is why the paper's stated key is precursor and reaction engineering to suppress Sn⁴⁺, and not a new gate stack or a shorter channel.",
+            "deeper_md": "Reported numbers: field-effect mobility 6.9 cm²/Vs, subthreshold swing 185 mV/dec, on/off ratio 1.8 × 10⁴, and, with the channel scaled to 80 nm, an on-current of 38.7 mA/mm at V_DS = −1 V. Stacking the ALD SnOx p-FET on an ALD In₂O₃ n-FET gives a complementary inverter with a maximum voltage gain of 21 V/V at V_DD = 4 V.\n\nFor scale, work from an overlapping author group on ALD In₂O₃ n-channel devices reported 3.1 A/mm at V_DS = 0.5 V on an 8 nm channel. That is roughly two orders of magnitude more current at half the drain voltage — the comparison is across two papers at different biases and channel lengths, and the division is ours — and it is the asymmetry the whole p-type oxide field exists to close. The standing figure it is closing from is worse still: a survey of the field puts typical p-type oxide hole mobilities well below 1 cm²/Vs against about 100 cm²/Vs for electrons in the n-type ones.\n\nTwo caveats. 185 mV/dec is three times the 60 mV/dec room-temperature floor, so a lot of gate charge is going into traps rather than into the channel. And 4 V is a high supply for a logic demonstration; the gain is quoted there, not at a nominal core voltage.",
+            "fab_angle": "ALD is one of the few leading-edge deposition steps a teaching cleanroom can realistically own, and this result says the hard part is not the tool but the chemistry — which precursor, which oxidant, and how far you let the film oxidise. Overshoot by one valence state and you have grown an n-type film instead of a p-channel.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "High-Performance Scaled P-Type SnOx Transistor by Atomic Layer Deposition with CFET Integration",
+                "url": "https://arxiv.org/abs/2609.11114",
+                "publisher": "arXiv",
+                "date": "2026-09-10"
+              },
+              {
+                "title": "Plasma-assisted molecular beam epitaxy of SnO(001) films: Metastability, hole transport properties, Seebeck coefficient, and effective hole mass",
+                "url": "https://arxiv.org/abs/2007.13448",
+                "publisher": "arXiv / Phys. Rev. Materials 4, 124602",
+                "date": "2020-07-27"
+              },
+              {
+                "title": "Scaled indium oxide transistors fabricated using atomic layer deposition",
+                "url": "https://arxiv.org/abs/2203.02869",
+                "publisher": "arXiv / Nature Electronics",
+                "date": "2022-03-06"
+              },
+              {
+                "title": "Modulation of the Bi3+ 6s2 Lone Pair State in Perovskites for High-Mobility p-Type Oxide Semiconductors",
+                "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8867164/",
+                "publisher": "Advanced Science, via PubMed Central",
+                "date": "2022"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-reach-erasure-coded-hbm-controller",
+            "title": "HBM error correction gets cheaper by being told where to look",
+            "dek": "Rui Xie and seven co-authors propose a high-bandwidth memory controller that fixes ordinary bit errors with a short code on each 32-byte chunk and calls a long two-kilobyte code only for the chunks the short one refuses to guess at, so the long code never searches for positions.",
+            "background_md": "DRAM cells leak the charge that holds a bit, and the wires carrying that bit off the die pick up noise; as cell density and interface speed both rise, the raw error rate at a memory chip's pins rises with them. The industry's answer is layered — a code inside the DRAM die, a code across the link, and a code in the controller, each sized for a different kind of failure. The arithmetic underneath all of them is the same: a Reed–Solomon code carrying p parity symbols can rebuild p symbols whose positions are already known, but only half that many when it has to find them itself.",
+            "glossary": [
+              {
+                "term": "Reed–Solomon code",
+                "definition": "A block code over multi-bit symbols that appends parity symbols computed from the data, and can rebuild missing symbols up to the parity count — which is why it is used wherever failures arrive in bursts rather than singly."
+              },
+              {
+                "term": "Erasure versus error",
+                "definition": "An erasure is a wrong symbol at a known position; an error is wrong at an unknown one. Finding the position is most of a decoder's cost, so being handed it doubles correction strength."
+              },
+              {
+                "term": "BER (bit error rate)",
+                "definition": "The fraction of bits that arrive wrong at an interface before any correction. A raw rate of 10⁻³ means one bit in a thousand has to be repaired before software ever sees the data."
+              },
+              {
+                "term": "Write amplification",
+                "definition": "How many bytes actually move on the memory bus per byte the program wanted to write. Parity schemes inflate it, because changing one byte forces a read and a rewrite of everything the parity was computed over."
+              }
+            ],
+            "why_it_matters": "Stronger memory protection normally costs bandwidth rather than silicon, and the reason is granularity: a long codeword spans far more data than a single 32-byte read, so every small access drags in state from across the whole span and every small write has to rewrite parity computed over data it never touched. Reserving the long code for the rare chunk a local decoder has already flagged means the common case pays none of that, and the flag converts an error into an erasure, which is the cheaper of the two problems to decode. The result is a controller that gets stronger protection while ending up smaller and cooler than the brute-force version, which is the opposite of how error correction usually scales.",
+            "deeper_md": "The inner code is RS(38,32) over GF(2⁸) — 32 data bytes and 6 parity bytes on every 32-byte chunk. The outer code is a shortened RS(1138,1024) over GF(2¹⁶) spanning 2 kB, or 64 chunks. The inner decoder is deliberately timid: it rejects every 3- and 4-symbol error pattern rather than attempting a correction it might get wrong, and each rejection becomes an address-derived erasure position, so the outer decoder never runs a search for where the damage is.\n\nWrites are the other half of the design. Reed–Solomon linearity allows differential parity, P_new = P_old ⊕ RS(D_new) ⊕ RS(D_old), so unchanged chunks are neither read nor rewritten: a 32-byte write costs 10× amplification on a parity-cache hit and 18× on a miss, against 81× for updating the outer code directly. In Ramulator2 across five HBM3 stacks the design sustains 1.88 TB/s of application traffic at a 10⁻³ raw bit-error rate, in 5.19 mm² and 3.70 W synthesised in ASAP7 — 55.8 percent less area and 57.7 percent less power than the direct long-code baseline.\n\nThe caveats are load-bearing. This is not a drop-in: the endpoint must store 6 bytes of metadata per 32-byte record, and the storage break-even needs more than 25.15 percent of device-side redundancy removed to pay for it. The channel model is independent bit flips, and the authors say plainly that public sources give no common mapping from cell-level failures to an output bit-error rate. And it is tuned for read-dominated decode traffic; write-heavy workloads would need more parity engines.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "REACH: Controller-Managed Long-Span ECC for HBM AI Inference",
+                "url": "https://arxiv.org/abs/2609.10861",
+                "publisher": "arXiv",
+                "date": "2026-09-09"
+              },
+              {
+                "title": "Cerberus: Cross-Layer ECC Co-Design for Robust and Efficient Memory Protection",
+                "url": "https://arxiv.org/abs/2605.02220",
+                "publisher": "arXiv / ISCA 2026",
+                "date": "2026-05-04"
+              },
+              {
+                "title": "Ramulator 2.0: A Modern, Modular, and Extensible DRAM Simulator",
+                "url": "https://arxiv.org/abs/2308.11030",
+                "publisher": "arXiv",
+                "date": "2023-08-21"
+              }
+            ]
+          },
+          {
+            "id": "chips-opcm-twiddle-stationary-fft",
+            "title": "An FFT unit whose constants are stored as crystal structure",
+            "dek": "Guowei Yang and five co-authors propose PHAT, an accelerator for encrypted computation that stores each fast-Fourier-transform twiddle factor permanently as the crystal state of a phase-change memory cell sitting on an optical waveguide, so the multiplication happens as light passes through it.",
+            "background_md": "Fully homomorphic encryption computes on ciphertexts directly, and every operation adds noise to them; past a threshold a ciphertext decrypts to nonsense. Bootstrapping is the repair step — the scheme homomorphically evaluates its own decryption circuit to reset that noise — and it is what turns a scheme limited to a handful of operations into one that can run arbitrary programs. In the TFHE family the ciphertexts are polynomials of degree 2¹⁰ to 2¹⁴, so the polynomial multiplications inside bootstrapping are done by transforming to the frequency domain, multiplying pointwise, and transforming back. That transform is where the machine spends its life.",
+            "glossary": [
+              {
+                "term": "Bootstrapping",
+                "definition": "Homomorphically evaluating an encryption scheme's own decryption circuit in order to reset the noise accumulated in a ciphertext, which is what lets an unbounded number of encrypted operations be chained together."
+              },
+              {
+                "term": "Twiddle factor",
+                "definition": "One of the fixed complex roots of unity a fast Fourier transform multiplies by at each butterfly stage. They depend only on the transform size, never on the data, so they can in principle be built into the hardware."
+              },
+              {
+                "term": "GST (Ge₂Sb₂Te₅)",
+                "definition": "A chalcogenide that switches between amorphous and crystalline states and holds either with no power. The crystalline phase absorbs far more light, so the phase of a cell on a waveguide sets that waveguide's transmittance."
+              },
+              {
+                "term": "Weight-stationary dataflow",
+                "definition": "An arrangement in which the operand that is expensive to load stays put in a processing element and the cheap operand streams past it, chosen whenever loading costs far more than computing."
+              }
+            ],
+            "why_it_matters": "Doing arithmetic in light is attractive because a phase-change cell attenuates a beam by an amount fixed by how crystalline it is, so once the cell is set the multiplication itself is free — the beam simply arrives smaller. The entire cost has moved into programming that cell, and the paper's numbers make the asymmetry stark: crystallising one electrically takes about 400 nanoseconds and up to 860 nanojoules. Every architectural choice in the design follows from that, including the one that gives it its name: if a butterfly unit is programmed with a single twiddle factor and only ever executes butterflies using that factor, the transform never reprograms anything. It is the memory wall solved by refusing to write.",
+            "deeper_md": "Why the FFT is the target: bootstrapping is about 99 percent of TFHE gate runtime, and forward and inverse FFTs are about 90 percent of bootstrapping on a CPU. The precision problem is the interesting engineering. One optically-addressed phase-change cell carries at most 6 bits, while the programmable bootstrap needs at least 42, so PHAT decomposes each operand into seven 6-bit words — 43 bits with the sign — computes the partial products optically in a triangular array, and sums them in digital shift-and-add logic.\n\nReported results: 1.41–1.80× over the Morphling ASIC on bootstrapping alone and 2.14–5.10× across four workloads, at 75,206–249,004 bootstraps per second, on 609 mm² drawing 528 W. Programming energies are 5.55 nJ to amorphise and 860.71 nJ to crystallise.\n\nThe authors state the cost themselves and it is large: 8.1× the area and 10× the power of the accelerator they beat, with the electrical side modelled on a mature ~130 nm process. Nothing was fabricated — the transform is a custom simulator, the arithmetic is ASAP7 synthesis, and the optical losses (0.6 dB per GST cell, 0.0028 dB per waveguide crossing) are a budget rather than a measurement. Twiddle-stationary also means the largest transform size has to be committed to at design time, because changing it means reprogramming the cells the design exists to avoid reprogramming.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "PHAT: PHotonic Accelerator for TFHE",
+                "url": "https://arxiv.org/abs/2609.11613",
+                "publisher": "arXiv",
+                "date": "2026-09-10"
+              },
+              {
+                "title": "Architecting Optically-Controlled Phase Change Memory",
+                "url": "https://arxiv.org/abs/2107.11516",
+                "publisher": "arXiv",
+                "date": "2021-07-24"
+              },
+              {
+                "title": "TFHE: Fast Fully Homomorphic Encryption over the Torus",
+                "url": "https://eprint.iacr.org/2018/421",
+                "publisher": "IACR Cryptology ePrint Archive",
+                "date": "2018"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-cryogenic-clock-sensor-bypass",
+            "title": "Cool a chip far enough and its tamper sensors stop working",
+            "dek": "Fatemeh Khojasteh Dana and five co-authors show that simply cooling a chip halts its clock and disables the on-chip sensors meant to catch exactly that, with no electrical tampering at all; on OpenTitan's root of trust the AES key was still sitting in its registers afterwards rather than being wiped.",
+            "background_md": "A chip that is switching leaks a power signature correlated with what it is doing, and reading a key out of it means averaging away noise over many traces. A chip whose clock has stopped leaks something much simpler: a steady current set by the logic state frozen in its flip-flops, which an attacker can measure for as long as they like. Halting the clock is therefore an objective rather than a denial of service, and it is why secure elements carry sensors for clock stall, undervolting and out-of-range temperature, wired to an alert path that erases key material before the frozen state can be read. The scheme assumes those sensors keep working in the conditions they exist to detect.",
+            "glossary": [
+              {
+                "term": "Static side-channel analysis",
+                "definition": "Measuring a chip's steady leakage current while its clock is halted, so the reading depends on stored state rather than on switching activity — and can be averaged indefinitely instead of over noisy traces."
+              },
+              {
+                "term": "Delay-chain sensor",
+                "definition": "A tamper detector built from a string of logic gates whose propagation delay is compared against the clock; because gate delay tracks voltage and temperature, the detector is itself an analogue instrument."
+              },
+              {
+                "term": "Zeroization",
+                "definition": "The deliberate erasure of key material on detection of tampering. It is the action a security chip's alert path exists to take, and it is worth exactly as much as the detection that triggers it."
+              },
+              {
+                "term": "Inverse temperature dependence",
+                "definition": "The regime in which a circuit's propagation delay grows as the die gets colder instead of shrinking; the paper reports it for sub-28 nm parts, and it is what blunts a delay-based sensor under cooling."
+              }
+            ],
+            "why_it_matters": "The defence and the asset fail in the wrong order, and temperature is what reverses them. A clock-stall detector is a delay chain, so cooling slows the detector at the same time as it stalls the thing being detected, widening the window in which an attack can complete before an alert escalates. The practical consequence is that the threshold a temperature sensor is allowed to use is set by climate rather than by physics — a part deployed outdoors cannot alarm above −40 °C without false positives — and this attack lives entirely inside that allowance, at −36 °C. Nothing is probed, nothing is decapsulated, and nothing on the board is cut.",
+            "deeper_md": "Where the clock fails, by part: about −100 °C on an AMD Zynq UltraScale+ (16 nm), about −150 °C on a Microchip PolarFire (28 nm flash), about −176 °C on an AMD Spartan-7 (28 nm), reached with liquid nitrogen poured into an aluminium channel built over the die. The paper sorts the failures into four modes — analogue drift in bias and reference circuits until the PLL or ADC quits; a mobility-driven current surge the voltage regulator cannot follow; commercial capacitors losing about 90 percent of their capacitance with equivalent series resistance up to 1000× higher, destabilising the mixed-signal supply; and delay growth in sub-28 nm logic that blunts the sensor itself.\n\nThe OpenTitan result is not done at −196 °C, which is the part that matters. Cooling only to −36 °C slows the detection chain enough for the Chypnosis undervolting attack of Mitard and colleagues to brown the part out inside the widened window. The alert handler, which escalates within four clock cycles, never runs, and the AES key was read out of the key registers after the chip was warmed up again.\n\nThe countermeasure is 1,500 three-stage ring oscillators fired below −29 °C, holding the die near −22.5 °C in a −36 °C ambient for about 4,500 LUTs and roughly 323 mW while active against 30 mW idle. Limits the authors name: everything here is FPGAs, ASIC validation is open, and PolarFire behaves the opposite way with temperature, so the recipe is part-specific rather than universal.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Chypothermia: Clock Freezing for Static Side-channel Attacks",
+                "url": "https://arxiv.org/abs/2609.11442",
+                "publisher": "arXiv",
+                "date": "2026-09-10"
+              },
+              {
+                "title": "Chypnosis: Undervolting-based Static Side-channel Attacks",
+                "url": "https://arxiv.org/abs/2504.11633",
+                "publisher": "arXiv / IEEE Symposium on Security and Privacy 2026",
+                "date": "2025-04-15"
+              },
+              {
+                "title": "OpenTitan Alert Handler technical specification",
+                "url": "https://opentitan.org/book/hw/top_earlgrey/ip_autogen/alert_handler/index.html",
+                "publisher": "OpenTitan (lowRISC)",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-quantization-error-cancellation",
+            "title": "Quantisation errors cancel, and pretraining is what makes them",
+            "dek": "Yuxiang Chen and three co-authors measured why four-bit weights barely hurt a language model: in a pretrained network the error each block adds points against the error it inherited, cancelling about half of it, while the same architecture at random initialisation simply accumulates it.",
+            "background_md": "A large language model is trained at 16 bits and served at four or eight, because moving weights out of memory rather than multiplying them is what limits decoding speed. Post-training quantisation does that conversion after training has finished, with no retraining and at most a small calibration set, by rounding every weight to the nearest value a low-precision format can represent; a block of weights shares one scale factor so four bits can span a useful range. Each rounded weight perturbs the hidden state flowing into the next layer, and a transformer stacks dozens of layers in series, so the naive expectation is that the damage compounds with depth.",
+            "glossary": [
+              {
+                "term": "Post-training quantisation",
+                "definition": "Converting a finished model's weights to a lower-precision format with no retraining, using at most a small calibration set to choose the scale factors."
+              },
+              {
+                "term": "NVFP4",
+                "definition": "A four-bit float with one sign bit, two exponent bits and one mantissa bit, grouped in blocks of 16 that share an 8-bit float scale, with a single 32-bit scale for the whole tensor."
+              },
+              {
+                "term": "Hidden state",
+                "definition": "The vector a transformer passes from block to block. Every block reads it and adds its own output back into it, so an error introduced anywhere upstream travels in it for the rest of the network."
+              },
+              {
+                "term": "LM head",
+                "definition": "The final linear layer that projects the hidden state onto one score per vocabulary token. Only the ordering of those scores decides the output, so the head can absorb a great deal of absolute error without changing anything."
+              }
+            ],
+            "why_it_matters": "Everybody knew post-training quantisation works and nobody could say why it should: rounding at a hundred layers in series injects a hundred perturbations, and independent perturbations grow with depth. The measurement says they are not independent — the interaction term between the error a block inherits and the error it adds is negative, and that anticorrelation is something pretraining builds rather than something a quantisation algorithm arranges. That reframes what a quantisation method is doing. It is not minimising per-layer error so much as staying inside a regime the trained weights already supply, which makes the interesting question when that regime runs out rather than which rounding rule is cleverest.",
+            "deeper_md": "The cancellation is measured as the angle between a block's inherited input error Δh⁽ˡ⁻¹⁾ and the error Δu⁽ˡ⁾ the block newly adds. At random initialisation their inner product is at most 0.16 percent of ‖Δu⁽ˡ⁾‖², effectively orthogonal, and the absolute error grows as ℓ^0.80. In pretrained Qwen3-32B the interaction term cumulatively cancels 50.2 percent of the block-update error across layers 11–48; in relative terms the interaction and alignment terms together cancel 81.8 percent of what is added, against 0.09 percent at initialisation. Randomly initialising the same architecture gives 5.5× the final absolute hidden error, and 20.2× for OLMo3-7B.\n\nThe second mechanism is geometric. Quantisation rotates the LM-head input by about 12.5°, but in 4,096 dimensions the mean change in projection angle onto a vocabulary direction is about 0.159° — a 78.6× attenuation against a predicted 89.7× — and top-ranked tokens, which sit at the smallest projection angles, move least. Flip@1 runs 8.3–12.7 percent while Ret@10 and Ret@20 hold near 85 percent, and casting Qwen3-32B to NVFP4 with no calibration at all costs 0.43 points on average across six zero-shot benchmarks.\n\nLimits the authors name: single next-token predictions rather than long generations, aggregate statistics that miss individual trajectories, about 0.28 percent of positions dropped as abnormal, a uniform-direction assumption behind the head analysis, and no systematic test below four bits.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Why Does Post-Training Quantization Work?",
+                "url": "https://arxiv.org/abs/2609.11716",
+                "publisher": "arXiv",
+                "date": "2026-09-10"
+              },
+              {
+                "title": "GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers",
+                "url": "https://arxiv.org/abs/2210.17323",
+                "publisher": "arXiv / ICLR 2023",
+                "date": "2022-10-31"
+              },
+              {
+                "title": "Introducing NVFP4 for Efficient and Accurate Low-Precision Inference",
+                "url": "https://developer.nvidia.com/blog/introducing-nvfp4-for-efficient-and-accurate-low-precision-inference/",
+                "publisher": "NVIDIA Developer Blog",
+                "date": "2025-06-24"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "Contact, proximity, and projection printing",
+    "slug": "contact-proximity-projection",
+    "subtitle": "Three ways to get a pattern from a mask into resist — press it on, hold it a hair's breadth away, or image it through an optic — and why the industry paid more for the slow one.",
+    "tldr": "There are only three ways to get a pattern from a mask into photoresist. Press the mask onto the wafer and you get the best resolution and damage the mask every time. Hold it 10 to 50 micrometres away and the mask survives, but near-field diffraction blurs anything below a few micrometres. Put an imaging system in between and the mask never touches anything, the pattern can be shrunk on the way down, and you pay in field size, optics and throughput. The industry chose the third one in 1973 and has been paying ever since.",
+    "sections": [
+      {
+        "heading": "Press the mask on, and print the damage too",
+        "body_md": "Start with the geometry that has no diffraction problem at all. In contact printing the mask is laid chrome-side down directly onto the resist and clamped; with no gap there is nowhere for the light to spread between the pattern and the film it is exposing. Kirchauer's thesis puts the achievable feature size as small as 0.1 µm, on equipment that costs a small fraction of anything else in this article.\n\nNow count what the contact costs. Every exposure is a mechanical event between patterned chrome and a soft polymer. ASML's own account of the era describes the failure directly: \"dirt or coating from the wafer would stick to the reticle, ruining the pattern.\" The damage is mutual and it is cumulative, and that is the part that matters — it is not that a contact printer has a bad day, it is that the defect rate climbs with every use until the mask is scrapped. Which is exactly why the technique still lives in research labs, where a high defect level is survivable, and vanished from production, where one mask has to make thousands of identical wafers."
+      },
+      {
+        "heading": "Lift the mask, and diffraction charges you a square root",
+        "body_md": "The obvious fix is not to touch. Proximity printing floats the mask 10 to 50 µm above the wafer — Kirchauer describes the gap being maintained by a nitrogen flow — and the mask then survives indefinitely. What you have bought instead is a near-field diffraction problem: light passing an edge on the mask spreads before it lands, and the minimum printable width goes as\n\n`W = k √(λ d_g)`\n\nwith k between 1 and 2, λ the exposure wavelength and d_g the mask-to-wafer gap. Put the standard numbers in — k = 1.6, λ = 0.4 µm, d_g = 25 µm — and the answer is about 4 µm.\n\nThe square root is the cruel part. It is Fresnel behaviour, and it means halving the gap buys a factor of 1.4 in resolution rather than 2. Kirchauer notes that reaching below 0.2 µm at those gaps needs λ ≈ 1 nm, which is precisely why X-ray proximity printing absorbed so much effort. Everything else in lithography improves faster than a square root, so proximity printing stopped being a contender the moment features went under a micrometre."
+      },
+      {
+        "heading": "Offner's mirrors put an image in between",
+        "body_md": "The third geometry breaks the trade by inserting an imaging system between mask and wafer, so the two never share a volume. Perkin-Elmer shipped it in 1973 as the Micralign — the first machine went to Texas Instruments for $95,000 — and the optical choice is worth dwelling on. It used mirrors rather than lenses, in the relay Abe Offner had devised the year before, and mirrors have no chromatic aberration, which matters when your light source is a broadband mercury lamp rather than a laser. The system imaged at 1:1 and scanned a slit across the field instead of exposing it all at once.\n\nWhat that bought was not resolution: a 1:1 projection is no sharper than contact. It was the elimination of contact itself. The Chip History Center's account puts pre-Micralign yields at \"10 or 20%, often nearer zero,\" with Intel reaching the 70 percent range on the new tool, at roughly 50 four-inch wafers per hour. A quartz mask that nothing ever touches stays pristine across thousands of exposures, and that one change is what moved integrated circuits from a laboratory success rate to a manufacturing one."
+      },
+      {
+        "heading": "Why 1:1 lost to a slower, dearer machine",
+        "body_md": "Scanning projection ruled for most of a decade and then lost to step-and-repeat, and the argument is the clearest illustration in lithography of what actually decides a tool transition. A stepper images a reduced picture of the mask — 10:1 at first, then 5:1, later 4:1 — onto one small area of the wafer, then moves the stage and does it again.\n\nBy every metric a purchasing department looks at, this was worse. The Chip History Center records an early stepper managing 11 wafers per hour against roughly 40 for a projection aligner, at $600K against about $240K, which it describes as causing \"sticker shock.\" What the stepper had was defect density: about one per square inch against around four for the scanner. On a 64 kbit DRAM that difference was worth roughly a factor of five in the cost of a working part, and the industry switched.\n\nThe lesson generalises past lithography. Tools are not bought on resolution and they are not bought on throughput; they are bought on cost per good product out, and defect density is usually the term that dominates that number."
+      },
+      {
+        "heading": "The bill for reduction: a small field, a forgiving mask",
+        "body_md": "Reduction is not free, and the invoice arrives as field size. An optic corrected well enough to image at 5:1 covers only a patch of the wafer, so the wafer has to be stepped under it, and every step costs settling time and an alignment. That is where the stepper's dismal early throughput came from, and it is why the size of the exposure field has been a headline specification of every projection tool since.\n\nThe compensation lands on the mask, and it is large. At 5:1 a 1 µm feature on the wafer is 5 µm on the mask, and a particle has to be five times bigger before it prints — that multiplication is arithmetic from the ratio rather than a measured number, but it is the reason mask making got easier at exactly the moment wafer features got harder. Reduction also decouples the two: mask writing can stay at a resolution the writer can actually hold while the printed feature keeps shrinking.\n\nThe field penalty scales down as well as up. The microscope-based projection system Naiser and colleagues published in 2006 reduces by 5× through a 0.25 NA objective and covers a projected field of just 9 mm²."
+      },
+      {
+        "heading": "What a table-top projector actually reaches",
+        "body_md": "The numbers that matter to anyone building one of these are not ASML's. Naiser and colleagues replaced the mask entirely with a Texas Instruments digital micromirror device — roughly 786,000 individually tilting mirrors — and projected its image through a 5×, 0.25 NA Fluar microscope objective, reaching up to 76 mW/cm² around the 365 nm mercury i-line and a minimum feature of 3.5 µm across that 9 mm² field. That is a complete projection printer assembled from a microscope and a projector chip, and it was built to write DNA microarrays rather than circuits.\n\nHacker Fab's maskless stepper, which MNF documents alongside, is the same architecture: a DLP projector supplies the pattern instead of a photomask, an optical train reduces it, and a micropositioning stage moves the chip so that fields can be tiled across it. Its own documentation names the two figures of merit as alignment accuracy and optical resolution, which is the honest list. In a projection system those are the only two things separating a lithography tool from a slide projector, and both of them are geometry rather than chemistry."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Fresnel (near-field) diffraction",
+        "definition": "The regime in which light is evaluated close enough behind an aperture that the spreading still depends on how far it has travelled. It is why a proximity printer's resolution contains √(λ d_g) and a projection printer's does not."
+      },
+      {
+        "term": "Mask-to-wafer gap (d_g)",
+        "definition": "The separation held between mask and resist in a proximity printer, typically 10–50 µm. It is the only knob the operator has, it enters resolution under a square root, and driving it to zero means going back to contact printing and its defects."
+      },
+      {
+        "term": "Offner relay",
+        "definition": "An all-reflective 1:1 imaging system built from a concave and a convex mirror sharing a centre of curvature, devised by Abe Offner in 1972. Being all-mirror, it has no chromatic aberration, which is what made it work with a broadband mercury lamp."
+      },
+      {
+        "term": "Reduction ratio",
+        "definition": "The demagnification a projection tool applies between mask and wafer — historically 10:1, then 5:1, now 4:1. It divides the printed feature size and multiplies the tolerable mask defect size by the same factor, which is why mask making and wafer printing stopped scaling together."
+      },
+      {
+        "term": "Defect density",
+        "definition": "Killer defects per unit area of wafer. It is the term that converts a tool's optical performance into yield, and it decided the 1:1-versus-stepper argument — about one per square inch against around four — rather than resolution or throughput."
+      },
+      {
+        "term": "Exposure field",
+        "definition": "The area a projection tool prints in one exposure. Correcting aberrations over a larger field is the expensive part of the optic, so field size trades against resolution, and whatever the field does not cover has to be reached by stepping the wafer."
+      },
+      {
+        "term": "DMD (digital micromirror device)",
+        "definition": "An array of hundreds of thousands of hinged aluminium mirrors, each switchable between two tilt angles, used as a reprogrammable mask so that a projection system can print without a photomask at all."
+      }
+    ],
+    "try_this": "Find the one number that characterises any projection printer, on the club's own stepper. Lay out a ladder of line/space pairs — 20, 10, 5, 3, 2 and 1 µm — expose the whole ladder in a single field at a fixed dose, develop, and find on the microscope the finest pitch where the lines are still separated. That is your resolution, and it is directly comparable to the 3.5 µm that Naiser and colleagues reached with a 5×, 0.25 NA objective and a 786,000-mirror DMD at 365 nm (Rev. Sci. Instrum. 77, 063711, §II) — so if you land far above it, the next experiment is dose and focus, not optics. Then read §2.5.1 of Kirchauer's thesis and work out, from W = k √(λ d_g), what mask-to-wafer gap a proximity printer would need to match whatever you measured.",
+    "sources": [
+      {
+        "title": "Photolithography Simulation §2.5.1 — Contact and Proximity Printing",
+        "url": "https://www.iue.tuwien.ac.at/phd/kirchauer/node26.html",
+        "publisher": "Heinrich Kirchauer, Institute for Microelectronics, TU Vienna",
+        "date": "1998-04-17"
+      },
+      {
+        "title": "7 things you didn't know about ASML's history in Wilton, Connecticut",
+        "url": "https://www.asml.com/en/company/stories/2023/seven-things-about-our-wilton-history",
+        "publisher": "ASML",
+        "date": "2023"
+      },
+      {
+        "title": "Perkin Elmer — Micralign Projection Mask Alignment System",
+        "url": "https://www.chiphistory.org/154-perkin-elmer-micralign-projection-mask-alignment-system",
+        "publisher": "Chip History Center",
+        "date": "2026"
+      },
+      {
+        "title": "Lithography tool and competitive transition history",
+        "url": "https://www.chiphistory.org/750-lithography-tool-and-competitive-transition-history",
+        "publisher": "Chip History Center",
+        "date": "2026"
+      },
+      {
+        "title": "A versatile maskless microscope projection photolithography system and its application in light-directed fabrication of DNA microarrays",
+        "url": "https://arxiv.org/abs/q-bio/0608038",
+        "publisher": "arXiv / Rev. Sci. Instrum. 77, 063711",
+        "date": "2006-08-25"
+      },
+      {
+        "title": "Fab toolkit — Patterning",
+        "url": "https://docs.hackerfab.org/home/fab-toolkit/patterning",
+        "publisher": "Hacker Fab",
+        "date": "2026"
+      }
+    ]
+  }
+}

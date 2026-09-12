@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-12",
+      "foundations_slug": "cvd-lpcvd-pecvd",
+      "foundations_topic": "CVD: LPCVD, PECVD, and the pressure trade",
+      "headline": "A four-author team reconstructed the arithmetic inside NVIDIA's cuBLAS well enough to match it bit for bit on Blackwell and Hopper, then built the first static checker that decides whether two GPU kernels sum in the same order across NVIDIA PTX and AMD GCN.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-11",
       "foundations_slug": "contact-proximity-projection",
       "foundations_topic": "Contact, proximity, and projection printing",
@@ -184,6 +197,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-11T12:45:57Z",
-  "latest": "2026-09-11"
+  "generated_at": "2026-09-12T12:03:08Z",
+  "latest": "2026-09-12"
 }

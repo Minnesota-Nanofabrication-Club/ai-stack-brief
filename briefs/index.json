@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-13",
+      "foundations_slug": "piezo-nanopositioning",
+      "foundations_topic": "Piezoelectric actuators and flexure stages",
+      "headline": "A quiet weekend in the stack, with no new preprint announcements since Friday: the sharpest result still standing is the Intern-NCP team's 8.9-billion-parameter latent-space model, which reaches OLMo-3-7B's final pretraining loss after 51.3 percent of the tokens.",
+      "item_count": 7,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-12",
       "foundations_slug": "cvd-lpcvd-pecvd",
       "foundations_topic": "CVD: LPCVD, PECVD, and the pressure trade",
@@ -197,6 +210,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-12T12:03:08Z",
-  "latest": "2026-09-12"
+  "generated_at": "2026-09-13T13:14:28Z",
+  "latest": "2026-09-13"
 }

@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-14",
+      "foundations_slug": "von-neumann-architecture",
+      "foundations_topic": "The von Neumann architecture and its bottleneck",
+      "headline": "Aalto University inverted a standing rule of atomic layer deposition: halving how much film each cycle leaves drove zinc oxide 45 percent deeper into a 2,000-to-1 channel at the same dose, because depth scales as the inverse square root of per-cycle uptake.",
+      "item_count": 7,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-13",
       "foundations_slug": "piezo-nanopositioning",
       "foundations_topic": "Piezoelectric actuators and flexure stages",
@@ -210,6 +223,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-13T13:14:28Z",
-  "latest": "2026-09-13"
+  "generated_at": "2026-09-14T14:45:27Z",
+  "latest": "2026-09-14"
 }

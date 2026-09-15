@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-15",
+      "foundations_slug": "stepper-vs-scanner",
+      "foundations_topic": "Steppers and scanners",
+      "headline": "Yu Liu and twenty-one co-authors halved the DRAM bit cell to 2F² by bonding a wafer face-down and building a second cell on its backside, and report 27.5 percent less parasitic load, 11 percent more sense margin and half the area against a 4F² baseline.",
+      "item_count": 7,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-14",
       "foundations_slug": "von-neumann-architecture",
       "foundations_topic": "The von Neumann architecture and its bottleneck",
@@ -223,6 +236,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-14T14:45:27Z",
-  "latest": "2026-09-14"
+  "generated_at": "2026-09-15T13:08:24Z",
+  "latest": "2026-09-15"
 }

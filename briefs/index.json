@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-16",
+      "foundations_slug": "moores-law-original-paper",
+      "foundations_topic": "Moore's 1965 paper, read properly",
+      "headline": "Chris S. Lin's group turned GPU Rowhammer from a handful of bit flips into 23,597 per bank on an Nvidia RTX A5000, and showed that triple-bit errors inside one 16-byte chunk alias past the card's error-correcting code as clean data.",
+      "item_count": 7,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-15",
       "foundations_slug": "stepper-vs-scanner",
       "foundations_topic": "Steppers and scanners",
@@ -236,6 +249,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-15T13:08:24Z",
-  "latest": "2026-09-15"
+  "generated_at": "2026-09-16T13:07:50Z",
+  "latest": "2026-09-16"
 }

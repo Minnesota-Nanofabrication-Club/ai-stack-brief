@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-17",
+      "foundations_slug": "depth-of-focus",
+      "foundations_topic": "Depth of focus, and why the wafer has to be flat",
+      "headline": "A Twente–ASML team moved the top of a lithography wafer support pillar 9.3 nanometres using a 4.5-micrometre piezoelectric film beneath it, the first active substrate support built from thin films rather than bulk actuators, which is what makes thousands per clamp conceivable.",
+      "item_count": 7,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-16",
       "foundations_slug": "moores-law-original-paper",
       "foundations_topic": "Moore's 1965 paper, read properly",
@@ -249,6 +262,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-16T13:07:50Z",
-  "latest": "2026-09-16"
+  "generated_at": "2026-09-17T13:02:15Z",
+  "latest": "2026-09-17"
 }

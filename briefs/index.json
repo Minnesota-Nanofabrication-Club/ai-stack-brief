@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-18",
+      "foundations_slug": "atomic-layer-deposition",
+      "foundations_topic": "Atomic layer deposition",
+      "headline": "A symbolic checker that examines one output location for every input, instead of every output for one input, found real bugs in 600 of 6,988 machine-written CUDA kernels that differential testing had already passed.",
+      "item_count": 7,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-17",
       "foundations_slug": "depth-of-focus",
       "foundations_topic": "Depth of focus, and why the wafer has to be flat",
@@ -262,6 +275,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-17T13:02:15Z",
-  "latest": "2026-09-17"
+  "generated_at": "2026-09-18T12:43:14Z",
+  "latest": "2026-09-18"
 }

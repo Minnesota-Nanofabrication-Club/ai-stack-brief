@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-19",
+      "foundations_slug": "photoresist-chemistry",
+      "foundations_topic": "Photoresist chemistry",
+      "headline": "DeepSeek's new Flash model holds a token's key-value cache in 890 bytes of high-bandwidth memory, about a quarter of its predecessor's, by sharing keys across layers and storing them in four-bit floating point.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-18",
       "foundations_slug": "atomic-layer-deposition",
       "foundations_topic": "Atomic layer deposition",
@@ -275,6 +288,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-18T12:43:14Z",
-  "latest": "2026-09-18"
+  "generated_at": "2026-09-19T12:25:56Z",
+  "latest": "2026-09-19"
 }

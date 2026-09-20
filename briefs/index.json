@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-20",
+      "foundations_slug": "epitaxy-and-strain",
+      "foundations_topic": "Epitaxy and strained silicon",
+      "headline": "Orbital torque from a thick titanium/tungsten bilayer writes a magnetic memory bit on 300-millimetre wafers for under 0.1 picojoule, removing the few-nanometre spin source that has capped the technology.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-19",
       "foundations_slug": "photoresist-chemistry",
       "foundations_topic": "Photoresist chemistry",
@@ -288,6 +301,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-19T12:25:56Z",
-  "latest": "2026-09-19"
+  "generated_at": "2026-09-20T12:53:25Z",
+  "latest": "2026-09-20"
 }

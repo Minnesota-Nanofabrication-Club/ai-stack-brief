@@ -1,6 +1,20 @@
 {
   "editions": [
     {
+      "date": "2026-09-21",
+      "foundations_slug": "multipatterning-sadp-saqp",
+      "foundations_topic": "Multipatterning: LELE, SADP, SAQP",
+      "headline": "A single-author preprint solves the supersingular one-endomorphism problem in p^(1/3) time and memory with no heuristic, turning the cost isogeny-based cryptography already assumed into one it can prove.",
+      "item_count": 6,
+      "layers": [
+        "energy",
+        "silicon",
+        "chips",
+        "computing",
+        "infrastructure"
+      ]
+    },
+    {
       "date": "2026-09-20",
       "foundations_slug": "epitaxy-and-strain",
       "foundations_topic": "Epitaxy and strained silicon",
@@ -301,6 +315,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-20T12:53:25Z",
-  "latest": "2026-09-20"
+  "generated_at": "2026-09-21T14:46:16Z",
+  "latest": "2026-09-21"
 }

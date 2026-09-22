@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-22",
+      "foundations_slug": "subthreshold-slope-60mv",
+      "foundations_topic": "Subthreshold swing and the 60 mV/decade limit",
+      "headline": "One power trace of ML-KEM key generation on a Cortex-M4 cuts the standardised post-quantum key exchange's estimated attack cost by more than 140 bits, and Vahid Jahandideh's 937-byte change to how the sampler stores a number restores nearly all of it.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-21",
       "foundations_slug": "multipatterning-sadp-saqp",
       "foundations_topic": "Multipatterning: LELE, SADP, SAQP",
@@ -315,6 +328,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-21T14:46:16Z",
-  "latest": "2026-09-21"
+  "generated_at": "2026-09-22T13:03:52Z",
+  "latest": "2026-09-22"
 }

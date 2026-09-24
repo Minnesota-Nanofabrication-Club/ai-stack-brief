@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-24",
+      "foundations_slug": "intel-4004-and-microprocessor",
+      "foundations_topic": "The Intel 4004 and the first microprocessors",
+      "headline": "An audit of 394 adjacent-rank claims on the Open LLM Leaderboard finds 391 fail a significance test before any correction, and none survive once 27 unpublished sibling models are assumed.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-23",
       "foundations_slug": "analog-basics-bandgap",
       "foundations_topic": "Bandgap references and analog first principles",
@@ -341,6 +354,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-23T13:20:10Z",
-  "latest": "2026-09-23"
+  "generated_at": "2026-09-24T13:15:53Z",
+  "latest": "2026-09-24"
 }

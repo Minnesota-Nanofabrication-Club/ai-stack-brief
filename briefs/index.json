@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-25",
+      "foundations_slug": "contrast-curve-dose-to-clear",
+      "foundations_topic": "Contrast curves and dose-to-clear",
+      "headline": "imec told ECOC on Thursday that thinning an avalanche photodiode's multiplication layer below 100 nanometres buys 100 gigahertz of bandwidth at a 5-volt bias, and used it to receive 400 gigabits a second.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-24",
       "foundations_slug": "intel-4004-and-microprocessor",
       "foundations_topic": "The Intel 4004 and the first microprocessors",
@@ -354,6 +367,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-24T13:15:53Z",
-  "latest": "2026-09-24"
+  "generated_at": "2026-09-25T13:14:36Z",
+  "latest": "2026-09-25"
 }

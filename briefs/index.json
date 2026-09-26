@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-26",
+      "foundations_slug": "history-of-dram-and-1103",
+      "foundations_topic": "The Intel 1103 and the birth of DRAM",
+      "headline": "A Graz group shows that the file-change notification interfaces in Linux, Windows, Android and macOS report events on files the watching process is not allowed to read — on Linux that is enough to time your keystrokes.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-25",
       "foundations_slug": "contrast-curve-dose-to-clear",
       "foundations_topic": "Contrast curves and dose-to-clear",
@@ -367,6 +380,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-25T13:14:36Z",
-  "latest": "2026-09-25"
+  "generated_at": "2026-09-26T12:49:22Z",
+  "latest": "2026-09-26"
 }

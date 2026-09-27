@@ -1,6 +1,18 @@
 {
   "editions": [
     {
+      "date": "2026-09-27",
+      "foundations_slug": "resist-track-and-bake",
+      "foundations_topic": "The coat/develop track",
+      "headline": "Hao Yan and Nicholas Zhao cut Falcon-512's signature from 666 to 419 bytes by analysing the distribution of accepted signatures directly instead of bounding the NTRU lattice's smoothing parameter, leaving the security target unchanged.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing"
+      ]
+    },
+    {
       "date": "2026-09-26",
       "foundations_slug": "history-of-dram-and-1103",
       "foundations_topic": "The Intel 1103 and the birth of DRAM",
@@ -380,6 +392,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-26T12:49:22Z",
-  "latest": "2026-09-26"
+  "generated_at": "2026-09-27T13:48:43Z",
+  "latest": "2026-09-27"
 }

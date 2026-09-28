@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-28",
+      "foundations_slug": "damascene-electroplating",
+      "foundations_topic": "Copper electroplating and damascene",
+      "headline": "ETH Zürich and Huawei Research measured what in-DRAM computing actually costs and found the bit-layout conversion, not the arithmetic, dominates: it takes 77 to 100 percent of the run time in the three of twelve workloads with the lowest operations per byte.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-27",
       "foundations_slug": "resist-track-and-bake",
       "foundations_topic": "The coat/develop track",
@@ -392,6 +405,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-27T13:48:43Z",
-  "latest": "2026-09-27"
+  "generated_at": "2026-09-28T16:06:26Z",
+  "latest": "2026-09-28"
 }

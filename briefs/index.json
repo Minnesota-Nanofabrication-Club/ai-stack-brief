@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-29",
+      "foundations_slug": "overlay-and-alignment",
+      "foundations_topic": "Overlay and alignment",
+      "headline": "Katsuhiko Nishiguchi and co-authors report a silicon gain cell leaking under 10⁻²² amps, a figure eight orders of magnitude below the floor of a direct current measurement and therefore obtained by timing single electrons onto the storage node.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-28",
       "foundations_slug": "damascene-electroplating",
       "foundations_topic": "Copper electroplating and damascene",
@@ -405,6 +418,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-28T16:06:26Z",
-  "latest": "2026-09-28"
+  "generated_at": "2026-09-29T14:43:38Z",
+  "latest": "2026-09-29"
 }

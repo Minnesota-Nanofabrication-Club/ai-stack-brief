@@ -1,0 +1,412 @@
+{
+  "date": "2026-09-29",
+  "generated_at": "2026-09-29T14:33:23Z",
+  "window": "2026-09-28..2026-09-29",
+  "headline": "Katsuhiko Nishiguchi and co-authors report a silicon gain cell leaking under 10⁻²² amps, a figure eight orders of magnitude below the floor of a direct current measurement and therefore obtained by timing single electrons onto the storage node.",
+  "pulse": {
+    "read_time_min": 7,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-ntt-gain-cell-single-electron-leakage",
+            "title": "Leakage below an ammeter's floor, found by timing single electrons",
+            "dek": "Katsuhiko Nishiguchi and co-authors have measured a silicon memory cell — a gain cell, where the stored charge sits on the gate of a read transistor rather than on a capacitor — whose leakage is under 10⁻²² amps, a figure obtained by timing the arrival of individual electrons rather than by measuring any current.",
+            "why_it_matters": "The standard route to a cell that holds its state for minutes is to abandon silicon for an oxide-semiconductor channel deposited up in the wiring stack, whose wide bandgap nearly eliminates junction leakage. This device gets to the same place by deleting the junction instead of the substrate: its transfer gate sits over no reverse-biased drain, so the two dominant escape paths for stored charge have nowhere to run, and the leak rate becomes something counted rather than something extrapolated. It also relocates the measurement floor: once one electron is worth about 21 millivolts on the node, arrivals are discrete events rather than a current at all.",
+            "background_md": "A dynamic memory cell holds a bit as charge on a small capacitance, so how long it holds is set entirely by how fast that charge escapes. In silicon the two dominant escape routes are gate-induced drain leakage — band-to-band tunnelling in the drain region under an off transistor's gate — and trap-assisted tunnelling through defects in the oxide. Both sit far below what an instrument can see: a direct current measurement on a single device bottoms out near 10⁻¹⁴ amps, so the interesting part of the leakage curve has always been under the noise floor.",
+            "deeper_md": "The device is built on silicon-on-insulator with a 10 nm channel in both thickness and width, roughly 10 nm of gate length, and a 400 nm buried oxide. It carries two independent gates: a word line acting as the transfer gate, and an upper gate held at a fixed bias. That arrangement removes the pn junction beneath the word line, which is where gate-induced drain leakage and trap-assisted tunnelling would otherwise start.\n\nThe measurement is the interesting part. A single electron arriving on the storage node drops the read current by a step, so the leakage is the elementary charge divided by the average interval between steps, taken over 100 write cycles. Node capacitance comes out at 7.7 aF. At a word-line retention bias of −1.9 V the stored `1` stays separated from `0` beyond 1000 s at 298 K.\n\nTwo caveats the authors state: one device, with device-to-device variability left to future work; and the demodulation demonstration runs at −1.3 V, where arrivals are frequent enough to set a 500 Hz corner — a different operating point from the 10⁻²² A figure.",
+            "glossary": [
+              {
+                "term": "Gain cell",
+                "definition": "A memory cell that stores charge on the gate of a second transistor, so a read senses that transistor's current instead of draining the stored charge; the read is therefore non-destructive."
+              },
+              {
+                "term": "aF (attofarad)",
+                "definition": "10⁻¹⁸ farad. On the 7.7 aF node here, one elementary charge moves the node voltage by e/C, about 21 mV, which is what makes a single arrival visible in the read current."
+              },
+              {
+                "term": "GIDL (gate-induced drain leakage)",
+                "definition": "Band-to-band tunnelling in the drain region under an off transistor's gate, where the field across the gate-drain overlap bends the bands far enough to generate carriers; it usually sets how long a cell holds charge."
+              },
+              {
+                "term": "kBT/C noise",
+                "definition": "The thermal voltage fluctuation on a capacitor, of size √(kBT/C); it grows as the node shrinks, so the same small capacitance that makes single electrons visible also makes the output noisier."
+              }
+            ],
+            "fab_angle": "The sensitivity here comes from capacitance, not from a better front end: 7.7 aF is what makes one electron worth about 21 mV at the read transistor. Anyone building a charge-sensing structure has the same lever available — shrink the node before reaching for a lower-noise amplifier.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "In-Memory AM Demodulation Using an All-Silicon Independent-Dual-Gate Gain-Cell Memory with <10⁻²² A Leakage Determined by Single-Electron Counting",
+                "url": "https://arxiv.org/abs/2609.32122",
+                "publisher": "arXiv (Nishiguchi, Hayashi, Chida, Shimizu, Yamahata, Kasai); accepted for IEEE Electron Device Letters",
+                "date": "2026-09-26"
+              },
+              {
+                "title": "Gate Dielectric Engineering with an Ultrathin Silicon-oxide Interfacial Dipole Layer for Low-Leakage Oxide-Semiconductor Memories",
+                "url": "https://arxiv.org/abs/2511.00786",
+                "publisher": "arXiv (Athena, Hartanto, Passlack, Evans, Qin, Dede, Jana, Liu, Peña, Pop, Pitner, Radu, McIntyre, Wong)",
+                "date": "2025-11-02"
+              },
+              {
+                "title": "Heat-dissipation decomposition and free-energy generation in a non-equilibrium dot with multi-electron states",
+                "url": "https://arxiv.org/abs/2501.16721",
+                "publisher": "arXiv (Salhani, Chida, Shimizu, Hayashi, Nishiguchi)",
+                "date": "2025-01-28"
+              }
+            ]
+          },
+          {
+            "id": "silicon-near-field-radiation-annular-thermocouple",
+            "title": "At a 10 nm gap, radiative heat runs 2,600× the blackbody limit",
+            "dek": "Ken Araki, Wei Han Won and Liping Wang have measured heat crossing a vacuum gap with a purpose-built annular micro-thermocouple, and across a 10-nanometre gap between quartz surfaces the radiative transfer runs 2,600 times the blackbody limit — a limit whose derivation assumes separations far wider than the wavelength of the light.",
+            "why_it_matters": "Planck's ceiling governs propagating waves and nothing else. Bring two bodies closer than roughly a thermal wavelength and the non-propagating field hugging each surface reaches the other one and tunnels across, so the ceiling stops describing the situation. Pinning that regime down with a calibrated instrument at ten nanometres turns an order-of-magnitude argument into a number a thermal design can be held to, and the same instrument shows the flow is switchable: swapping in vanadium dioxide cut it by 64%. Which material sits on either side moves the figure by a factor of three, so what is being characterised is a property of the surface modes, not of the bulk.",
+            "background_md": "Every surface above absolute zero radiates, and Planck's law sets how much — but the derivation counts only waves that propagate away from the surface. Sitting on the surface as well is an evanescent field, decaying within about a wavelength and carrying no energy away by itself. Put a second surface inside that decay length and the two fields couple: photons tunnel across the gap rather than radiate across it, and the propagating-wave ceiling no longer bounds the flux. At room temperature the peak thermal wavelength is around ten micrometres, so \"inside\" means gaps measured in nanometres.",
+            "deeper_md": "The sensor is the contribution. An annular micro-thermocouple junction with a Seebeck coefficient of 25 µV/K and a thermal resistance of 8.7×10⁶ K/W turns the heat arriving across the gap into a voltage; the large thermal resistance is what makes a small absorbed power produce a readable temperature rise.\n\nEnhancements reported over the blackbody limit: 2,600× for quartz and 900× for doped silicon at a 10 nm gap, and 430× for vanadium dioxide at 15 nm, where driving the film through its insulator-to-metal transition cut the transfer by 64%. The authors report agreement with fluctuational-electrodynamics modelling.\n\nTreat the enhancement factor as geometry-specific rather than a material property. A 2023 measurement between two coplanar sub-wavelength structures found only a 20-fold enhancement, because confinement scatters the surface polaritons and cuts the number of modes available to carry heat. The three-fold spread between quartz and doped silicon is the same point in miniature: which surface modes a material supports sets the dominant in-plane wavevector, which recent analytical work on dissimilar pairs makes explicit.",
+            "glossary": [
+              {
+                "term": "Blackbody limit",
+                "definition": "The largest radiative heat flux two surfaces can exchange when only propagating waves are counted. It is a far-field result and says nothing about separations smaller than a wavelength."
+              },
+              {
+                "term": "Evanescent field",
+                "definition": "The non-propagating part of a surface's electromagnetic field, decaying within roughly a wavelength. Alone it carries no energy away, but a second surface placed inside it couples to it and heat flows."
+              },
+              {
+                "term": "Seebeck coefficient",
+                "definition": "The voltage a thermocouple junction produces per kelvin of temperature difference. At the 25 µV/K reported here a millikelvin of rise is 25 nanovolts, so readout noise sets what the sensor can resolve."
+              },
+              {
+                "term": "Surface polariton",
+                "definition": "A wave bound to an interface, formed by light coupling to a lattice vibration or to free electrons; it lives only near the surface, which is why it dominates heat flow across nanometre gaps."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Observing Colossal and Tunable Near-field Thermal Radiation with A Highly Sensitive Annular Micro-thermocouple Junction",
+                "url": "https://arxiv.org/abs/2609.34355",
+                "publisher": "arXiv (Ken Araki, Wei Han Won, Liping Wang)",
+                "date": "2026-09-28"
+              },
+              {
+                "title": "Nanodevice-Enabled Near-Field Thermal Radiation between Sub-Wavelength Surfaces",
+                "url": "https://arxiv.org/abs/2308.13733",
+                "publisher": "arXiv (Luo, Salihoglu, Wang, Li, Kim, Li, Yu, Du, Shen)",
+                "date": "2023-08-26"
+              },
+              {
+                "title": "Analytical Theory of Photon Tunneling and Near-Field Heat Transfer Between Dissimilar Materials",
+                "url": "https://arxiv.org/abs/2607.11671",
+                "publisher": "arXiv (Nimje, Pascale, Papadakis)",
+                "date": "2026-07-13"
+              }
+            ]
+          },
+          {
+            "id": "silicon-sic-rc-igbt-optical-injection",
+            "title": "LEDs in the gate stack erase the snapback in a 20 kV SiC RC-IGBT",
+            "dek": "Yujian Chen and co-authors propose a 20-kilovolt silicon-carbide reverse-conducting IGBT — a power switch whose freewheeling diode is merged onto the same die — in which light-emitting diodes built into the gate structure inject carriers optically and remove the snapback kink from its forward current-voltage curve.",
+            "why_it_matters": "Merging the diode into the transistor costs a fold in the conduction characteristic, because the shorted collector lets the device run as a unipolar MOSFET until enough voltage develops across that short for hole injection to begin, and across the fold a paralleled pair shares current unstably. Every existing remedy spends area raising the short's resistance with barriers or floating regions; supplying the missing carriers with light instead takes the simulated MOS cell count from 25 to 5. Whether that trade is worth making turns on a quantity no simulation settles: how efficiently an integrated silicon-carbide emitter converts drive current into carriers deep inside a drift region over a hundred micrometres thick.",
+            "background_md": "A reverse-conducting IGBT puts a transistor and its antiparallel freewheeling diode on one die by shorting part of the collector to n-type. That short is also a defect in the on-state. At low current the device conducts as a unipolar MOSFET through the n-collector, and only once the voltage dropped across the short exceeds roughly a diode drop does the p-collector begin injecting holes and flood the drift region with carriers. The changeover shows up as a negative-resistance fold, called snapback, and removing it is the central design argument in this device family.",
+            "deeper_md": "Light-emitting diodes are integrated into the gate structure and emit during forward conduction. The photogenerated carriers raise the concentration in the carrier-storage layer and the drift region, lowering the resistance of the JFET and drift regions and so raising the current the device passes at a given terminal voltage. More current through the collector short means the collector-side P+/N junction reaches its turn-on drop sooner, so the unipolar plateau — and the fold at its end — disappears. Once bipolar conduction is established the same carriers keep adding to conductivity modulation, which is why the on-state voltage falls too.\n\nAgainst the authors' own conventional baseline: on-state voltage down 22.37%, turn-off fall time down 25.06%, turn-off energy down 19.69%, and snapback-free operation with 5 MOS cells instead of 25.\n\nAll of it is TCAD. No device was fabricated, and every percentage is relative to a baseline simulated in the same deck. For scale on what fabrication involves, a measured 13 kV 4H-SiC n-IGBT used a 120 µm drift layer. Structural fixes are not standing still either: a 2022 design using p-barrier and p-float electron barriers reported turn-off energy reductions of 20–59% with no optics at all.",
+            "glossary": [
+              {
+                "term": "RC-IGBT",
+                "definition": "An IGBT whose collector is partly shorted to n-type so the same die also works as its own antiparallel freewheeling diode, removing a separate diode from the module."
+              },
+              {
+                "term": "Snapback",
+                "definition": "The fold in an RC-IGBT's forward characteristic at the handover from unipolar to bipolar conduction, where current rises while voltage falls; paralleled dies cannot share current stably across it."
+              },
+              {
+                "term": "Conductivity modulation",
+                "definition": "Injecting electrons and holes together into a lightly doped drift region so its carrier density far exceeds its doping; it is how a bipolar device carries current through a layer too resistive for a MOSFET."
+              },
+              {
+                "term": "TCAD",
+                "definition": "Numerical solution of the Poisson and drift-diffusion equations over a meshed device cross-section, which predicts a current-voltage curve from a doping profile without anything being built."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "A 20-kV Optical-Injection-Enhanced 4H-SiC Reverse-Conducting IGBT With Snapback-Free Operation and Low On-State Voltage",
+                "url": "https://arxiv.org/abs/2609.32437",
+                "publisher": "arXiv (Yujian Chen, Guoliang Zhang, Ruijun Zhang, Liangxun Yue, Zhanwei Shen, Feng Zhang, Rong Zhang)",
+                "date": "2026-09-26"
+              },
+              {
+                "title": "A snapback-free reverse-conducting IGBT with multiple extraction channels",
+                "url": "https://www.koreascience.kr/article/JAKO202220761007242.view?orgId=anpor&hide=breadcrumb,journalinfo",
+                "publisher": "Journal of Power Electronics 22(2), 377–382 (Chen Weizhong, Lin Xuwei, Li Shun, Huang Yao, Huang Yi, Han Zhengsheng)",
+                "date": "2022"
+              },
+              {
+                "title": "Fabrication of 4H-SiC n-channel IGBTs with ultra high blocking voltage",
+                "url": "https://www.jos.ac.cn/article/doi/10.1088/1674-4926/39/3/034005",
+                "publisher": "Journal of Semiconductors 39(3), 034005 (Xiaolei Yang, Yonghong Tao, Tongtong Yang, Runhua Huang, Bai Song)",
+                "date": "2018-03"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-megatron-pcm-in-memory-soc",
+            "title": "57.5 TOPS/W from the PCM array, 3.5 from the RISC-V cores beside it",
+            "dek": "A University of Bologna and STMicroelectronics team has measured MEGATRON, a 28-nanometre chip that keeps neural-network weights as resistances in a phase-change memory array of about four million cells and multiplies with them where they sit, reaching 57.5 tera-operations per watt against 3.5 from the eight RISC-V cores on the same die.",
+            "why_it_matters": "The sixteen-fold gap is not an implementation detail; it is the cost of fetching operands. A digital multiply-accumulate has to read both numbers out of storage before it can do any arithmetic, and that movement dominates the energy bill. Programming a value as a conductance and driving its row with a voltage lets Ohm's law do the product and Kirchhoff's current law do the summation, in the wiring, with nothing travelling. What is paid for it is a two-megaparameter ceiling on what fits and four bits of effective precision. That ceiling is the binding constraint rather than a footnote: it is why studying a whole transformer layer required modelling a larger configuration than the one on the bench.",
+            "background_md": "Analog in-memory computing replaces a digital multiply-accumulate array with a resistive crossbar. Each weight is programmed as the conductance of a device; the input vector is applied as voltages on the rows; the current summing on each column is the dot product, computed by the physics of the array rather than by an adder tree. Nothing about the weights moves during the computation, which is the whole attraction. The costs are structural: a conductance can only be set to limited precision, it drifts after programming, and every result has to cross a data converter to rejoin the digital world.",
+            "deeper_md": "MEGATRON is fabricated in STMicroelectronics 28 nm FD-SOI, die 3.38 mm × 3.38 mm, with a 6.1 mm² heterogeneous cluster and a 1.34 mm² PCM macro. The array holds 2 M signed 4-bit weights — two cells per weight, so a positive and a negative conductance can be subtracted — and supports 512 × 512 matrix-vector products at 1.52 Mparam/mm². Beside it sit eight RISC-V cores with 512 KiB of tightly coupled memory at 30.72 GB/s and a BF16 unit for softmax and GeLU rated at 25 Gtoken/s/W. The chip runs 100–480 MHz over 0.55–0.90 V; the 3.5 TOPS/W digital figure is its best case, at 0.55 V in a 4×4-bit configuration.\n\nOn one layer of SmolLM-135M at sequence length 2048 the analog path generated tokens about 3.3× faster in decode than the RISC-V baseline, with 4-bit weights and 8-bit activations showing negligible accuracy loss on WinoGrande, HellaSwag and ARC-Challenge.\n\nRead the efficiency number with its precision attached. The claimed 5.5× advantage over IBM's HERMES is measured against a 14 nm, 64-core, 256 × 256 chip with 8-bit input and output that reported 9.76 TOPS/W and 63.1 TOPS peak — a different node and a different operand width.",
+            "glossary": [
+              {
+                "term": "TOPS/W",
+                "definition": "Tera-operations per second per watt. It is only comparable between designs at equal operand precision, because a 4-bit multiply and an 8-bit multiply each count as one operation."
+              },
+              {
+                "term": "PCM (phase-change memory)",
+                "definition": "A cell whose resistance is set by how much of a chalcogenide volume is left amorphous after a heating pulse. The resistance is continuous, which is what lets a cell hold a weight rather than a bit."
+              },
+              {
+                "term": "Conductance drift",
+                "definition": "The slow rise in resistance of an amorphous phase-change cell after programming, caused by structural relaxation; an analog weight's value therefore depends on how long ago it was written."
+              },
+              {
+                "term": "FD-SOI",
+                "definition": "Fully depleted silicon-on-insulator: an undoped channel thin enough to deplete completely, sitting on a buried oxide, so the substrate underneath can be biased as a second gate to shift threshold voltage."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "MEGATRON: a 28nm Analog PCM CiM/Digital System-on-Chip for Edge GenAI",
+                "url": "https://arxiv.org/abs/2609.35254",
+                "publisher": "arXiv (Nadalini, Garofalo, Greco, Belano, Antolini, Zavalloni, Lico, Zurla, Calvetti, Croce, Pasotti, Cabrini, Franchi Scarselli, Rossi, Conti — University of Bologna, Chips-IT, STMicroelectronics, University of Pavia)",
+                "date": "2026-09-28"
+              },
+              {
+                "title": "A 64-core mixed-signal in-memory compute chip based on phase-change memory for deep neural network inference",
+                "url": "https://arxiv.org/abs/2212.02872",
+                "publisher": "arXiv / Nature Electronics 6, 680–693 (Le Gallo, Khaddam-Aljameh, Stanisavljevic, Vasilopoulos, Kersting, Dazzi, Karunaratne et al.)",
+                "date": "2023"
+              },
+              {
+                "title": "Accurate deep neural network inference using computational phase-change memory",
+                "url": "https://arxiv.org/abs/1906.03138",
+                "publisher": "arXiv / Nature Communications 11, 2473 (Joshi, Le Gallo, Haefeli, Boybat, Nandakumar, Piveteau, Dazzi, Rajendran, Sebastian, Eleftheriou)",
+                "date": "2020"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-cpython-bytecode-lookahead-engine",
+            "title": "1.3 kB of lookahead removes 74% of CPython's dispatch mispredictions",
+            "dek": "Linfeng Zheng and Hiroshi Sasaki propose handing a processor the interpreter's own bytecode metadata, so that a 1.3-kilobyte hardware engine can walk the Python bytecode stream ahead of the pipeline and supply the next handler address outright instead of leaving the dispatch jump to the branch predictor to guess.",
+            "why_it_matters": "That jump is the one indirect branch a predictor structurally cannot learn, because its destination is a function of an array the core never inspects. Growing the predictor from 16 to 64 kilobytes recovers only 5.1% more instructions per cycle, which says the shortfall is table capacity rather than history length — and reading the array converts a guess into a lookup. Dispatch accounted for 80.9% of the baseline's indirect mispredictions, so there is not a great deal else in that budget to go after. The gain also sits in an unusual place: not in a bigger table, but in telling the hardware something the software already knew.",
+            "background_md": "A bytecode interpreter runs one loop: fetch the next bytecode, use its opcode to index a table of handler addresses, jump there, repeat. That jump is a single indirect branch with as many possible destinations as the language has opcodes, and which one is taken depends on the program being interpreted, not on the interpreter's own control flow. Branch predictors learn indirect targets from patterns in recent branch history, so a branch whose target is effectively read out of a data array is their worst case — which is why interpreters have been the textbook example for thirty years.",
+            "deeper_md": "The baseline is a 16 KB ITTAGE — ten tables of 64 to 1,024 entries, history lengths from 16 to 1,536 bits, 3,392 entries in all, which the authors match to a commercial core. The proposal swaps 2 KB of that for a 1,299-byte engine and keeps 14 KB of ITTAGE as fallback. Its storage is a 1,024-byte metadata cache, a 148-byte branch-target queue, one 64-byte bytecode line, a 256-bit bytecode history register, and configuration and recovery state. Each opcode gets a 32-bit metadata word: 5 bits of length, 2 bits of type, 22 bits of handler PC. A new `BR.DISP` instruction replaces the dispatch jump, and roughly 50 lines change in CPython 3.13.14.\n\nAcross 15 server workloads from pyperformance and DyPyBench: bytecode-jump MPKI down 73.7%, overall branch MPKI down 23.3%, harmonic-mean IPC up 3.2% and at best 7.8%.\n\nCaveats. This is gem5, not silicon — a modelled 3 GHz out-of-order core with a 512-entry reorder buffer. Conditional prediction gets slightly worse, because bytecode-domain entries now share BTB capacity. And the bytecode buffer is only lazily coherent, which is worth reading against PEP 659: CPython rewrites its own bytecodes at run time.",
+            "glossary": [
+              {
+                "term": "Indirect branch",
+                "definition": "A jump whose destination comes from a register or from memory rather than being encoded in the instruction, so the processor must predict the target address as well as whether the branch is taken."
+              },
+              {
+                "term": "MPKI",
+                "definition": "Mispredictions per thousand instructions. Normalising by instruction count is what lets predictor accuracy be compared across workloads of very different lengths."
+              },
+              {
+                "term": "ITTAGE",
+                "definition": "The indirect-target predictor used in current high-performance cores: a bank of tables indexed by progressively longer slices of global branch history, with the longest matching entry supplying the prediction."
+              },
+              {
+                "term": "IPC",
+                "definition": "Instructions per cycle, the throughput a core actually sustains. At a fixed clock frequency it is proportional to performance, so a 3.2% IPC gain is a 3.2% speedup."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Improving Indirect Branch Prediction in Interpreters via Hardware/Software Co-Design",
+                "url": "https://arxiv.org/abs/2609.34263",
+                "publisher": "arXiv (Linfeng Zheng, Hiroshi Sasaki); accepted for IEEE Computer Architecture Letters",
+                "date": "2026-09-28"
+              },
+              {
+                "title": "PEP 659 – Specializing Adaptive Interpreter",
+                "url": "https://peps.python.org/pep-0659/",
+                "publisher": "Python Software Foundation (Mark Shannon)",
+                "date": "2021-04-13"
+              },
+              {
+                "title": "PEP 744 – JIT Compilation",
+                "url": "https://peps.python.org/pep-0744/",
+                "publisher": "Python Software Foundation (Brandt Bucher, Savannah Ostrowski)",
+                "date": "2024-04-11"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-mala-post-score-compute-allocation",
+            "title": "Attention that scores every pair, then spends only where the mass is",
+            "dek": "A team led by Jingze Shi has proposed MALA, an attention kernel that still computes a score for every legal token pair but uses the running softmax normaliser to decide which of those pairs are worth carrying into the value-weighted sum, cutting training forward-pass latency by 2.2 times at matched quality.",
+            "why_it_matters": "Efficient attention normally throws away the comparison itself, which forces the skipping rule — a window, a block, a learned router — to be fixed before anything about the content is known. Making the decision afterwards turns the approximation into something measurable rather than assumed: the share of probability mass omitted becomes a figure that can be reported and argued with, and here it comes out at 0.0188% against 0.0182% for an oracle handed the same compute budget. What that figure does not settle is whether ranking by contribution beats learning the rule during pretraining, which is the live argument in long-context serving.",
+            "background_md": "Attention costs what it does because every token compares itself with every earlier one: the matrix of scores grows with the square of the sequence length, and so does the weighted sum of value vectors that follows it. Between the two sits a softmax, computed online in every modern kernel — a running maximum and a running normaliser accumulated block by block, so a full row of scores never has to be held at once. That online normaliser is what keeps attention inside on-chip memory, and nearly every efficiency idea in the area is a rule for skipping part of one of these three steps.",
+            "deeper_md": "MALA divides the work at an unusual seam. Every causal pair is scored, so no interaction is invisible to the model; what gets rationed is the work after the score, ranked by each key's normalised contribution as the online-softmax normaliser evolves. The backward pass reuses the same finaliser to reconstruct which support was retained, which is why the gradient needs no separately stored mask.\n\nReported at matched work: mean omitted softmax mass of 0.0188% against 0.0182% for a reference oracle at 8K context, with the error held low from 1K to 32K; 2.2× faster forward and 3.0× faster backward in training; 1.6× faster decoding at 128K; and 89.67% on associative recall at 8K against 89.97% for full attention. Scaling runs cover 0.6B to 14B parameters.\n\nTwo things to hold back on. The speedups quoted are kernel latency, not end-to-end wall-clock training time, and the quality evidence is scaling curves and benchmark parity rather than a converged frontier model. And the comparison that decides this is against sparse attention learned during pretraining, which buys a trainable routing rule at the price of a heuristic one — omitted-mass figures do not settle that.",
+            "glossary": [
+              {
+                "term": "Online softmax",
+                "definition": "Computing a softmax in one streaming pass by carrying a running maximum and a running sum, rescaling earlier partial results whenever a larger score appears, so a full row never has to be stored."
+              },
+              {
+                "term": "Omitted mass",
+                "definition": "The fraction of the softmax distribution a sparse attention scheme leaves out of the weighted sum — a direct measure of what the approximation discarded, rather than an indirect one like a benchmark score."
+              },
+              {
+                "term": "Causal attention",
+                "definition": "Attention in which a token may only look at itself and tokens before it. That restriction is what makes next-token prediction a valid training objective on ordinary text."
+              },
+              {
+                "term": "Associative recall",
+                "definition": "A synthetic task that gives a model a key seen earlier in the same context and asks for the value paired with it; it is the standard stress test for whether an efficiency trick broke long-range lookup."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "MassAlloc Attention: Let Attention Allocate Its Own Compute",
+                "url": "https://arxiv.org/abs/2609.32712",
+                "publisher": "arXiv (Jingze Shi, Zhangyang Peng, Xianduo Li, Yanlin Qi, Xiaotian Lin, Haoxian Chen, Liangdong Wang, Guang Liu, Yuyu Luo)",
+                "date": "2026-09-26"
+              },
+              {
+                "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+                "url": "https://arxiv.org/abs/2205.14135",
+                "publisher": "arXiv (Tri Dao, Daniel Y. Fu, Stefano Ermon, Atri Rudra, Christopher Ré)",
+                "date": "2022-05-27"
+              },
+              {
+                "title": "Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention",
+                "url": "https://arxiv.org/abs/2502.11089",
+                "publisher": "arXiv (Jingyang Yuan, Huazuo Gao, Damai Dai, Junyu Luo, Liang Zhao, Zhengyan Zhang, Zhenda Xie et al.)",
+                "date": "2025-02-16"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "Overlay and alignment",
+    "slug": "overlay-and-alignment",
+    "subtitle": "Printing layer twelve on top of layer eleven, and where the nanometres go.",
+    "tldr": "Alignment is what a lithography tool does before it exposes: find where the wafer actually is, using diffraction gratings printed on earlier layers, and fit a model to the handful of marks it can afford to measure. Overlay is the verdict afterwards — how far the new layer landed from the old one. A production immersion scanner is specified at under a nanometre of overlay against itself, and almost all the engineering lives in the difference between that number and the one you get from two different tools, or from a mark the process has quietly bent out of shape.",
+    "sections": [
+      {
+        "heading": "Two different measurements, often confused",
+        "body_md": "Two numbers get called the same thing. Alignment is a measurement the exposure tool makes on the wafer in front of it, before any light reaches the resist: it locates marks printed by earlier layers and works out where the wafer really is, so the stage and the reticle can be moved to match. Overlay is what you measure afterwards, on a target containing both layers, and it is the verdict — the vector from where the new layer should have landed to where it did.\n\nThe two are connected only through a model, and that is where the errors live. ASML specifies the TWINSCAN NXT:2100i at 0.9 nanometres of single-machine overlay and 1.3 nanometres matched-machine. The gap between those two figures is not rounding: it is the price of exposing one layer on one tool and the layer beneath it on another, which is what a fab does whenever a tool is busy. Matching two machines to each other is harder than making one machine good.",
+        "deeper_md": "The distinction matters operationally because the two measurements have different jobs in the control loop. Alignment is feed-forward: it corrects the wafer currently on the chuck. Overlay is feedback: measured after develop, on a separate metrology tool, and fed into the exposure recipe for the next lot. A fab that only did alignment would never learn that its alignment was wrong."
+      },
+      {
+        "heading": "The mark is a grating, not a cross",
+        "body_md": "The instinct is that the tool looks at a cross and centres on it. It does not, because an image gives you position only as well as the imaging system resolves. Alignment marks are diffraction gratings: the sensor illuminates the grating and measures the position of its diffracted orders, so position ends up encoded in the phase of a periodic signal, and phase can be resolved to a small fraction of the period. A grating with a micrometre-scale pitch can be located to a few nanometres because nothing is being resolved — something is being interpolated.\n\nThat is also why wavelength matters, and why it is plural. The NXT:2100i moved from four colours to twelve and added more marks on the measurement side. Different wavelengths penetrate the film stack sitting above the buried mark differently, and are distorted differently by whatever the process has done to the mark's shape, so several colours amount to several independent views of the same object through several different distortions.",
+        "deeper_md": "The signal is periodic, which means it is also ambiguous: a grating measurement tells you position modulo the pitch. Coarse capture has to come from somewhere else — a second grating at a different pitch, or a lower-resolution pre-alignment step — before the fine phase measurement means anything. This is the same structure as a vernier, and the same structure as coarse and fine encoder tracks on a stage."
+      },
+      {
+        "heading": "You cannot measure every field, so you fit",
+        "body_md": "A 300 mm wafer carries on the order of a hundred exposure fields, and measuring a mark in every one costs throughput. So the tool samples. It measures a subset of marks and fits a model of the wafer to them. The first terms are the ones you would guess — translation in x and y, rotation, magnification and skew — and between them they describe a wafer that was placed slightly wrong and stretched slightly uniformly. Higher-order terms follow, because a wafer is not stretched uniformly: film stress bows it, thermal history distorts it, and a chuck that pulls it flat converts out-of-plane bow into in-plane distortion.\n\nWhat the model does not explain is the residual, and the residual is the part of overlay that alignment cannot remove. Sampling more marks shrinks it and costs wafers per hour, so how many marks get measured is a production decision as much as a metrology one.",
+        "deeper_md": "The failure mode of fitting is over-fitting, and it is not hypothetical. A high-order model fitted to a sparse sample will happily absorb measurement noise into terms that then get applied to fields that were never measured, making those fields worse. This is why sampling schemes and model order are chosen together, and why a fab will run a dense-sampling lot occasionally to check that the sparse scheme still describes the wafer."
+      },
+      {
+        "heading": "When the mark lies",
+        "body_md": "The uncomfortable assumption underneath all of this is that the grating is symmetric. It usually is not. Chemical mechanical planarisation polishes one side of a grating line slightly harder than the other; etch loads unevenly across a feature; deposition fills a trench asymmetrically. An asymmetric grating still diffracts, but its orders no longer sit symmetrically about the true centre, so the sensor reports a position the mark does not occupy. The error has a name — alignment position deviation — and it is not noise. It repeats wafer to wafer, and it is indistinguishable from a genuine placement error unless you look at more than one wavelength.\n\nMark design is the defence. Recent work parameterises segmented grating geometries, evaluates them with a finite-difference time-domain solver, and searches the design space with a multi-objective genetic algorithm, maximising diffraction efficiency while minimising the deviation the same mark shows under a deliberately asymmetric deformation. The mark is optimised for the process that will damage it.",
+        "deeper_md": "Note what this does to the boundary between process and metrology. The alignment error is created by CMP and etch, detected by an optical sensor, and corrected by a genetic algorithm run over mark geometry at design time. None of those three groups owns the problem, which is one reason process-induced overlay error survives as long as it does in a real line."
+      },
+      {
+        "heading": "The same budget at five micrometres",
+        "body_md": "This is not a large-fab-only problem; it is the same problem scaled. Hacker Fab's open lithography stepper, the design MNF's own build follows, publishes 2 µm optical resolution, a 1.5 µm mechanical step size, 5 µm mechanical repeatability and 5 µm overlay alignment accuracy on substrates up to 2 cm square, for around three thousand dollars. That overlay figure is roughly four thousand times the production number above, and the reason is not the optics — 2 µm features print fine. It is the stage and the operator.\n\nThe operating procedure makes that explicit. Alignment is done by eye: a pure red image containing only the previous layer's alignment marks is projected, the operator drives the stage until the projection sits on the developed features, and the exposure image is then swapped in. The SOP notes that one step is about a micrometre but that the smallest reliable move is eight to twelve micrometres. That published disagreement with the build's 1.5 µm specification is itself an overlay budget, written down.",
+        "deeper_md": "The manual method also loses the thing the production tool gets for free: a model. Aligning one field by eye gives you one correction for that field. There is no wafer grid, no rotation term fitted across the substrate, and therefore no way to predict where the next die should go — which is why tiling accuracy and overlay accuracy are quoted as the same 5 µm number in the build documentation."
+      },
+      {
+        "heading": "Where the number actually gets better",
+        "body_md": "Alignment corrects the wafer in the tool; overlay metrology corrects the next lot. Measured after develop on a separate instrument, it feeds a correction back into the exposure recipe, which is run-to-run control, and it is why a fab measures overlay on every lot even when nothing appears to be wrong. What gets fed back is the model fit rather than the raw offsets, because feeding back noise makes the following lot worse.\n\nThere is a second reason the two measurements have to stay separate. Alignment looks at a mark through the current film stack; overlay looks at two layers that have both been developed. If the alignment sensor is systematically wrong — an asymmetric mark, say — alignment will report success while overlay records the error, and only the second of those is the truth. The IRDS metrology roadmap lists precisely this class of problem, measurement for new materials and for three-dimensional and bonded structures, among the gaps it expects to widen as stacking replaces shrinking.",
+        "deeper_md": "Hybrid bonding makes the point sharply. Bonded wafer-to-wafer stacks need pad-to-pad placement at pitches now measured in single-digit micrometres and heading lower, but the two halves were patterned on different tools, on different days, and each has its own distortion signature. The correction can no longer be applied at exposure time for one of them, because it was exposed months ago."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Overlay",
+        "definition": "The vector between where a newly printed layer landed and where the layer beneath it actually is, measured after develop on a target containing both. It is reported as a distribution across the wafer, not as one number."
+      },
+      {
+        "term": "Alignment mark",
+        "definition": "A diffraction grating printed on an earlier layer for the exposure tool to find. It is a grating rather than a shape because position is read out of the phase of the diffracted orders, which is far finer than the imaging resolution."
+      },
+      {
+        "term": "APD (alignment position deviation)",
+        "definition": "The systematic difference between where an alignment sensor says a mark is and where it is, caused by processing having made the mark asymmetric. Because it repeats, it cannot be averaged away."
+      },
+      {
+        "term": "Wafer grid model",
+        "definition": "The polynomial fitted to a sampled set of mark positions — translation, rotation, magnification, skew, then higher orders — which the tool then uses to place every field, including the ones it never measured."
+      },
+      {
+        "term": "Matched-machine overlay",
+        "definition": "Overlay between layers exposed on two different tools of the same type. It is always worse than a tool against itself, and it is the number that matters in a fab that cannot dedicate one tool to one layer."
+      },
+      {
+        "term": "Residual",
+        "definition": "What the grid model fails to explain after fitting. It is the part of the alignment measurement that never becomes a correction, and it sets the floor that denser sampling buys down."
+      }
+    ],
+    "try_this": "Print the same two-layer test pattern five times on the club's stepper without touching the alignment settings between runs, and measure the layer-to-layer offset each time under the microscope. The spread is your repeatability; the mean is a systematic offset you can dial out of the recipe. Then compare what you measured against the three numbers Hacker Fab publishes for the V2 build — 1.5 µm mechanical step size, 5 µm mechanical repeatability, 5 µm overlay alignment accuracy — and against the SOP's statement that the smallest reliable stage move is eight to twelve micrometres. Decide which of them your stepper actually agrees with and write it down, because that number is what the next layout has to be designed against.",
+    "sources": [
+      {
+        "title": "TWINSCAN NXT:2100i — DUV lithography system",
+        "url": "https://www.asml.com/en/products/duv-lithography-systems/twinscan-nxt2100i",
+        "publisher": "ASML",
+        "date": "2026"
+      },
+      {
+        "title": "IRDS — Metrology",
+        "url": "https://irds.ieee.org/irds-metrology/",
+        "publisher": "IEEE International Roadmap for Devices and Systems",
+        "date": "2024"
+      },
+      {
+        "title": "Design method for wafer alignment marks with low alignment position deviation under process-induced asymmetry",
+        "url": "https://opg.optica.org/ao/abstract.cfm?uri=ao-64-30-8921",
+        "publisher": "Applied Optics 64(30), 8921–8929 (Zhou, Wang, Li, Feng, Zhuo, Gao, Liu, Wu)",
+        "date": "2025-10-10"
+      },
+      {
+        "title": "Lithography Stepper V2 Build",
+        "url": "https://docs.hackerfab.org/home/fab-toolkit/patterning/lithography-stepper-v2-build-work-in-progress",
+        "publisher": "Hacker Fab Documentation",
+        "date": "2026"
+      },
+      {
+        "title": "Patterning SOP — Stepper V2",
+        "url": "https://docs.hackerfab.org/home/standard-operating-procedures/patterning-sop-stepper-v2",
+        "publisher": "Hacker Fab Documentation",
+        "date": "2026"
+      }
+    ]
+  }
+}

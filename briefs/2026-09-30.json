@@ -1,0 +1,426 @@
+{
+  "date": "2026-09-30",
+  "generated_at": "2026-09-30T15:20:00Z",
+  "window": "2026-09-29..2026-09-30",
+  "headline": "ETH Zurich recasts double-precision emulation as a combinatorial search and certifies sixteen 8-bit integer matrix multiplies as the minimum needed to rebuild an exact FP64 product on Blackwell, where the chip's own FP64 unit is the slowest arithmetic on it.",
+  "pulse": {
+    "read_time_min": 7,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-acoustoelectric-phonon-gain-modulator",
+            "title": "A modulator that amplifies its own sound wave, 60 dB, before the light",
+            "dek": "Matthew Storey and co-authors at Sandia National Laboratories have built an integrated optical modulator in which a 1 GHz sound wave is amplified by 60 decibels by a drifting electron current in a bonded indium gallium arsenide layer before it ever reaches the light-carrying waveguide.",
+            "why_it_matters": "Integrated acousto-optic modulators have been limited by how much acoustic power an interdigital transducer can push into the film, which is why the efficient ones are suspended membranes — mechanically fragile, and thermally isolated from the substrate they need to dump heat into. Putting gain in the acoustic path changes the accounting: the transducer is allowed to stay weak because a 3.77 mW DC bias supplies the energy instead, so acoustic strength stops being traded against optical layout and against mechanical robustness. The half-wave voltage-length product lands at 0.077 V·cm, where a non-suspended device of the same family reported 1.004 V·cm in June.",
+            "background_md": "An acousto-optic modulator writes onto light by sending a sound wave through the material the light is travelling in: the strain field changes the refractive index, so the optical phase shifts in step with the acoustic wave. On a chip the sound comes from an interdigital transducer, interleaved metal fingers on a piezoelectric film whose spacing fixes the acoustic wavelength, and efficiency is quoted as VπL, the drive voltage times interaction length needed for a half-wave phase shift. Separately, a semiconductor in contact with a piezoelectric will amplify a passing acoustic wave rather than absorb it, once its carriers are pushed along faster than the wave itself travels.",
+            "deeper_md": "The stack is three materials doing three jobs: a 300 nm PECVD silicon nitride waveguide carries the light, an X-cut thin-film lithium niobate layer turns the RF drive into a surface acoustic wave, and a bonded InGaAs epitaxial layer carries the drift current. Amplification is the Hutson–White condition — bias the InGaAs so carrier drift outruns the acoustic phase velocity and the wave takes energy from the carriers instead of giving it up to them. Reported: up to 60 dB of continuous-wave acoustic gain near 896 MHz, 3.77 mW of DC power, VπL of 0.077 V·cm at −40 dBm drive, and acoustoelectric drag reappearing at biases shallower than −20 V.\n\nTwo things to hold against it. The authors report an unintended filtering effect because the acoustic wave crosses the waveguide twice, suppressing peak optical modulation, and put 14 dB back on the table if the layout is fixed. And platform reliability is open: a July measurement of the same InGaAs-on-lithium-niobate amplifier found bare InGaAs surfaces oxidising within weeks, with Al₂O₃ or InP passivation dropping gain from 174 dB/mm to 32 dB/mm because the passivation redistributes the piezoelectric field.",
+            "glossary": [
+              {
+                "term": "VπL (half-wave voltage-length product)",
+                "definition": "Drive voltage multiplied by interaction length needed to shift the optical phase by half a wave; quoting the product rather than the voltage lets modulators of different lengths be compared."
+              },
+              {
+                "term": "Acoustoelectric gain",
+                "definition": "Amplification of a sound wave by a drift current in a semiconductor touching a piezoelectric; net gain requires the carrier drift velocity to exceed the acoustic velocity, otherwise the carriers absorb the wave."
+              },
+              {
+                "term": "IDT (interdigital transducer)",
+                "definition": "Interleaved metal fingers patterned on a piezoelectric film; the finger pitch sets the acoustic wavelength, so the transducer converts an RF voltage into a surface acoustic wave at one frequency."
+              },
+              {
+                "term": "dB/mm",
+                "definition": "Acoustic gain per millimetre of amplifier length, the figure that decides how long a device has to be; 174 dB/mm and 32 dB/mm are a five-fold difference in required length."
+              }
+            ],
+            "fab_angle": "Two of the three layers are added on top of a finished piezoelectric wafer — a bonded III-V epitaxial layer and a conformal PECVD nitride — so the process question is what the bond and the deposition do to a surface whose piezoelectric field the device depends on. The passivation penalty in the July result is that question answered once, unfavourably.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Acoustoelectrically enhanced acousto-optic modulation in an integrated silicon nitride and thin film lithium niobate platform",
+                "url": "https://arxiv.org/abs/2609.36439",
+                "publisher": "arXiv (Storey, Dallyn, Hocek, Miller, Rakich, Diddams, Otterstrom, Eichenfield)",
+                "date": "2026-09-29"
+              },
+              {
+                "title": "SH-SAW Acousto-Electric Amplifier in Epitaxial InGaAs on Lithium Niobate on Insulator",
+                "url": "https://arxiv.org/abs/2607.28888",
+                "publisher": "arXiv (Tian, Heidelberger, Ghosh)",
+                "date": "2026-07-30"
+              },
+              {
+                "title": "Push-Pull acousto-optic modulator based on non-suspended thin-film lithium niobate on silicon substrate",
+                "url": "https://arxiv.org/abs/2606.05337",
+                "publisher": "arXiv (Ni, Bhave, Xu)",
+                "date": "2026-06-03"
+              }
+            ]
+          },
+          {
+            "id": "silicon-capacitive-feedback-tia-clearance",
+            "title": "Delete the feedback resistor and its thermal noise goes with it",
+            "dek": "Sarah Bastiaens and colleagues at imec and Ghent University have paired a silicon photonics chip with a 28-nanometre CMOS amplifier that feeds back through a capacitor instead of a resistor, and report a light detector whose noise stays dominated by the light itself out to 13.7 gigahertz.",
+            "why_it_matters": "A feedback resistor is the one noise source in a current-sensing front end that cannot be designed around: it is there because it sets the gain, and its thermal noise arrives with it whether or not anything is connected. Replacing it with a capacitor deletes that source outright and uncouples DC gain from bandwidth, two quantities a resistive loop welds together and which then have to be traded. The bill is a new failure mode rather than a smaller number: a capacitive loop integrates any steady photocurrent, so the design now needs DC cancellation on the chip and a heater-based optical balancing loop off it, neither of which a resistive front end requires.",
+            "background_md": "A photodiode answers light with a current, and everything downstream wants a voltage, which is what a transimpedance amplifier supplies. The standard arrangement wraps a resistor around an inverting stage: the resistance is the gain, and it works against the photodiode's capacitance to fix the bandwidth, so speed and sensitivity are bought from one another. That resistor also generates Johnson noise on its own, purely from the thermal motion of its carriers. In an optical front end that noise sits directly against the noise of the light being measured, and how far the second rises above the first — the clearance — is what the whole design is judged on.",
+            "deeper_md": "The measured part, in order: 3-dB bandwidth 7.6 GHz, shot-noise-limited bandwidth 13.7 GHz, peak shot-noise clearance 27 dB at 2.2 mA of photocurrent and 220 MHz, common-mode rejection between 31 and 54.7 dB from 10 MHz to 5 GHz, 45 mW, and a 1.2 × 1.2 mm die matched to 50 Ω out to 5 GHz. The optics is imec's iSiPP200 platform with balanced PIN photodiodes at a nominal 1.1 A/W at 1550 nm and tunable Mach–Zehnder interferometers to select the quadrature.\n\nRead it as a point on a trade curve, not as a record. A 250 nm Bi-CMOS monolithic detector reached 19.8 GHz of bandwidth at 15 dB of clearance; a homodyne detector built from superconducting nanowires reached 46.0 ± 1.1 dB of clearance but only 400 kHz of bandwidth, at 22.4 dB of common-mode rejection. Bandwidth and clearance pull against each other and this device sits between those two.\n\nThe authors name the limits themselves: CMOS is noisier than III-V for mobility reasons, and integrated photodiode quantum efficiency of 40–60% caps clearance directly, because photons that never become photocurrent do not contribute shot noise while the amplifier noise stays exactly where it was.",
+            "glossary": [
+              {
+                "term": "TIA (transimpedance amplifier)",
+                "definition": "An amplifier whose input is a current and whose output is a voltage; its gain has units of ohms, and in the textbook version that gain is literally a feedback resistor."
+              },
+              {
+                "term": "Shot-noise clearance (dB)",
+                "definition": "How far the noise contributed by the light rises above the circuit's own electronic noise floor; it says what fraction of a measurement is the quantum signal rather than the amplifier."
+              },
+              {
+                "term": "CMRR (common-mode rejection ratio)",
+                "definition": "How strongly a balanced pair of photodiodes suppresses whatever is common to both, which is where the laser's classical intensity noise lives; poor rejection lets that noise masquerade as signal."
+              },
+              {
+                "term": "A/W (responsivity)",
+                "definition": "Photocurrent produced per watt of incident optical power, the figure that converts an optical measurement into an electrical one and therefore sets how much signal the amplifier ever sees."
+              }
+            ],
+            "fab_angle": "The capacitance between photodiode and first transistor is a packaging decision, not a circuit one: the Bi-CMOS comparison went monolithic specifically because wirebonds and flip-chip bumps add capacitance the amplifier then has to fight. Anyone assembling a detector on a probe station is choosing a noise floor when they choose an interconnect.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Integrated balanced homodyne detector using CMOS capacitive-feedback TIA for quantum measurements",
+                "url": "https://arxiv.org/abs/2609.37671",
+                "publisher": "arXiv (Bastiaens, Bruynsteen, Cammarata, Bomhals, da Silva, Van Osta, Bauwelinck, Yin — IDLab, imec-Ghent University)",
+                "date": "2026-09-29"
+              },
+              {
+                "title": "A Bi-CMOS electronic-photonic integrated circuit quantum light detector",
+                "url": "https://arxiv.org/abs/2305.08990",
+                "publisher": "arXiv (Tasker, Frazer, Ferranti, Matthews)",
+                "date": "2023-05-15"
+              },
+              {
+                "title": "Low-noise Balanced Homodyne Detection with Superconducting Nanowire Single-Photon Detectors",
+                "url": "https://arxiv.org/abs/2307.16672",
+                "publisher": "arXiv (Protte, Schapeler, Sperling, Bartley)",
+                "date": "2023-07-31"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-compressedlut-self-similar-tables",
+            "title": "Compressing a hardware lookup table 94% out of its own self-similarity",
+            "dek": "Alireza Khataei and Kia Bazargan at the University of Minnesota have extended CompressedLUT, a tool that shrinks the lookup tables digital designers use to evaluate functions in hardware, and report 80% average table-size savings across ten nonlinear functions with no loss of accuracy at all.",
+            "why_it_matters": "Direct tabulation is the only function-evaluation method whose error a designer can state exactly rather than bound, and it gets abandoned the moment the table stops fitting on the device. Removing four-fifths of the table moves the point of abandonment: exactness stays available at resolutions where the usual move is to switch to polynomial approximation and start reasoning about approximation error again. What it costs is two extra cycles of latency and a decoder built from adders and arithmetic shifts, which is logic the plain table does not need — and that decoder is the reason an 80% bit saving turns into a 3.30× area-normalised throughput gain rather than a 5× one.",
+            "background_md": "Hardware has no library call for exp, tanh or a reciprocal. A circuit either approximates the function with polynomials and multipliers, accepting an error it then has to bound, or it stores every answer in a table addressed by the input. A table is exact and it is one memory read, but it costs 2ⁿ × m bits for an n-bit input and an m-bit output, so the cost doubles with every input bit added. At 12 bits in and 12 bits out that is 49,152 bits for a single function, on devices whose on-chip memory budget is fixed and small.",
+            "deeper_md": "Four mechanisms stack on each other. Decomposition splits a table into a coarse bias table plus a narrow difference table, cutting the stored output width. Self-similarity detection finds sub-tables that are identical, or become identical after an arithmetic right shift, and keeps one copy plus a shift amount. Higher-bit compression splits each value and compresses only the high bits, leaving the low bits alone. Multilevel compression then runs the whole procedure again on the bias table.\n\nMeasured at 12-bit resolution: 80% average table-size saving across exp, log, sqrt, reciprocal, sin, cos, sigmoid, tanh, GELU and SiLU, against 52% for the TwoTable baseline, and 94% on constant-coefficient multipliers against 65%. In FPGA area that is 3.30× the throughput per LUT of a plain table for the functions and 10.55× for the multipliers, with latency going from 2 cycles to 4.\n\nA competing line at Imperial College attacks the same self-similarity from the other side, marking input patterns never seen in training data as don't-cares to expose more of it, and reports up to 1.63× fewer physical LUTs for up to 0.01 accuracy points lost. That is the trade this tool refuses: everything here is lossless, which is also why it cannot use that lever.",
+            "glossary": [
+              {
+                "term": "LUT (FPGA lookup table)",
+                "definition": "The small k-input truth table that is an FPGA's basic logic primitive; because it is the unit of area on the device, results here are normalised as throughput per LUT rather than as raw speed."
+              },
+              {
+                "term": "CCM (constant-coefficient multiplier)",
+                "definition": "A multiplier with one operand fixed at design time, so it collapses into a few shifts and adds or into a table — which is why its table compresses far better than a general function's."
+              },
+              {
+                "term": "Bias table",
+                "definition": "In a decomposed table, the coarse part holding a shared offset for each block of entries, so the remaining difference table only has to store a narrow residual instead of the full output width."
+              },
+              {
+                "term": "Arithmetic right shift",
+                "definition": "A shift that preserves the sign bit, so it divides by a power of two; it is cheap enough in hardware that two sub-tables related by one are worth storing as a single copy plus a shift amount."
+              }
+            ],
+            "fab_angle": "This is usable on the club's IC-design half directly: the tool is free for non-profit research and emits both Verilog for RTL and C++ for HLS, so a tabulated nonlinearity in a student block can be compressed and re-synthesised without touching the logic around it.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Lossless Compression of Lookup Tables for Hardware Applications",
+                "url": "https://arxiv.org/abs/2609.36634",
+                "publisher": "arXiv (Khataei, Bazargan — ECE, University of Minnesota); submitted to IEEE Transactions on Computers",
+                "date": "2026-09-29"
+              },
+              {
+                "title": "CompressedLUT — tool source, Verilog and C++ generators",
+                "url": "https://github.com/kiabuzz/CompressedLUT",
+                "publisher": "GitHub (kiabuzz)",
+                "date": "2026"
+              },
+              {
+                "title": "ReducedLUT: Table Decomposition with \"Don't Care\" Conditions",
+                "url": "https://arxiv.org/abs/2412.18579",
+                "publisher": "arXiv (Cassidy, Andronic, Coward, Constantinides)",
+                "date": "2024-12-24"
+              }
+            ]
+          },
+          {
+            "id": "chips-analog-training-digital-gradients",
+            "title": "Analog arrays do the matmuls; the weight gradient stays digital",
+            "dek": "Zhaoxian Wu and co-authors at Cornell, IBM Research and Sandia have trained transformers up to 123 million parameters on simulated analog in-memory hardware — arrays that multiply using Ohm's law rather than logic gates — and report loss falling with model size almost as steeply as in digital training.",
+            "why_it_matters": "The appeal of an analog array is that the weight never moves; the difficulty is that changing it is a physical act with a minimum step size, and with a different step size in each direction. Splitting the work — analog for the forward and backward matrix products, digital for accumulating the weight gradient — is a concession that those two operations have genuinely different precision requirements, rather than an engineering detail. Reporting the result as a scaling exponent instead of a single accuracy number is the more useful part: it asks whether analog hardware changes the rate at which loss improves with size, which is the question that decides whether the approach survives being scaled at all.",
+            "background_md": "Training a network spends most of its energy moving weights between memory and arithmetic units rather than on the arithmetic itself. An analog in-memory array removes the movement: each weight is the conductance of a device at a crosspoint, a vector of voltages drives the rows, and the current summing on each column is the matrix–vector product, done by Ohm's law and Kirchhoff's current law in one step. Writing is the hard part. A conductance is changed by pulsing the device, it moves in steps of finite size, and the step for an increase is generally not the same size as the step for a decrease.",
+            "deeper_md": "The case for keeping gradients digital is a cancellation argument. The authors define κ as the sum of absolute per-sample contributions divided by the absolute value of their sum, and report it above one for every projection type — the net update is a small signed residual left after large opposing terms cancel, so quantisation noise can swamp the residual itself. Forward and backward products carry no such structure and tolerate low precision.\n\nThe simulation is calibrated against measured lithium-ion and metal-oxide ECRAM tiles, with 16-bit DACs and 9-bit ADCs modelled as uniform saturating quantisers. Sub-threshold updates accumulate in a digital residual buffer and fire as open-loop pulse trains once they exceed the device's minimum step, with no verify-after-write. Five Chinchilla-matched runs from 6.8M to 123.6M parameters on OpenWebText fit L ∝ N^−0.231, against N^−0.238 for a digital AdamW baseline.\n\nThe authors' own caveats carry the item. One random seed, so the fitted exponents have unquantified uncertainty. Converter energy, area and latency are not modelled at all, which they say makes this algorithmic feasibility rather than a demonstrated efficiency win — and a 9-bit ADC per column is historically where analog accelerators hand the energy back. And the validation-loss gap persists at every scale rather than closing.",
+            "glossary": [
+              {
+                "term": "AIMC (analog in-memory computing)",
+                "definition": "Doing the multiply-accumulate inside the memory array itself, using device conductance as the weight and summed currents as the result, so the weights never travel to a separate arithmetic unit."
+              },
+              {
+                "term": "ECRAM (electrochemical RAM)",
+                "definition": "A three-terminal analog memory whose channel conductance is set by shuttling ions in from a gate reservoir, which gives many closely spaced states but has historically leaked them back within hours."
+              },
+              {
+                "term": "ADC resolution (bits)",
+                "definition": "How finely the converter at the edge of an analog array digitises a column current; every analog result passes through one, so its bit count caps the array's usable precision and dominates its power."
+              },
+              {
+                "term": "Scaling exponent (L ∝ N^−α)",
+                "definition": "The power law by which validation loss falls as parameter count rises; comparing α between two training systems asks whether the hardware changes the rate of improvement, not just the starting point."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Making Analog Training Scale: Co-Designing Mapping, Optimizer, and Converters",
+                "url": "https://arxiv.org/abs/2609.36584",
+                "publisher": "arXiv (Wu, Gokmen, Fagbohungbe, Xiao, Chen — Cornell, IBM T. J. Watson, Sandia)",
+                "date": "2026-09-29"
+              },
+              {
+                "title": "Acceleration of Deep Neural Network Training with Resistive Cross-Point Devices",
+                "url": "https://arxiv.org/abs/1603.07341",
+                "publisher": "arXiv (Gokmen, Vlasov)",
+                "date": "2016-03-23"
+              },
+              {
+                "title": "Nonvolatile Electrochemical Random-Access Memory Under Short Circuit",
+                "url": "https://arxiv.org/abs/2210.06658",
+                "publisher": "arXiv (Kim, Watkins, Cline, Li, Sun, Sugar, Fuller, Talin, Li)",
+                "date": "2022-10-13"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-ozaki-int8-fp64-gemm-count",
+            "title": "Sixteen INT8 matrix multiplies add up to one exact FP64 one",
+            "dek": "Pratyai Mazumder, Alexandru Calotoiu and Torsten Hoefler at ETH Zurich have recast double-precision matrix multiplication on Nvidia's Blackwell GPUs as a combinatorial search, and find that sixteen 8-bit integer matrix multiplies are enough to rebuild an exact FP64 product.",
+            "why_it_matters": "Blackwell gives its low-precision matrix units enormous throughput and its FP64 unit very little, so the arithmetic a scientific code wants is the arithmetic the silicon is worst at. Posing emulation as a minimisation over schemes rather than as a fixed recipe makes the question answerable and, within a stated search space, certifiable — you get a number of matrix multiplies and a proof that no cheaper arrangement exists in that space. It also exposes that the answer is not stable inside one GPU generation: the same INT8 scheme wins on B200 and loses on B300, because the integer throughput was cut between them, so a portable code cannot hard-code a format.",
+            "background_md": "A GPU's matrix units are built for the precision machine learning wants, and the gap between that and the double precision numerical codes want is now an order of magnitude or more of throughput. One response is emulation: break each double-precision operand into pieces, multiply the pieces on the fast units, and reassemble. The residue variant does this with arithmetic rather than with splitting — reduce the operands modulo several pairwise-coprime integers, take an exact integer product at each modulus, and reconstruct with the Chinese remainder theorem. Integer arithmetic inside its range does not round, so the reconstruction is exact by construction rather than accurate by luck.",
+            "deeper_md": "Counted in low-precision matrix multiplies, which is the cost that matters: at an inner dimension of 2¹² the schemes need 16 in INT8, 29 in FP8 and 58 in FP4; at 2¹⁸ the counts are 18, 49 and 62. The FP4 scheme at 2¹⁴ is certified minimal by dynamic programming over moduli up to 474 or primes up to 246,568,393 — optimality within a declared search space, not in general.\n\nAgainst native FP64: INT8 runs 3.1× to 6× faster on B200 and RTX PRO 6000 and slower on B300; FP4 reaches up to 83× on B300. At n = 32,768 the matrix multiplies are 75–99% of runtime, so counting them is a good proxy only at size. The same family reported 56.6–80.2 TFLOPS of emulated FP64 on GH200 last year, already above native there.\n\nThree stated caveats. One lossy truncation survives, keeping 53 bits relative to each row's or column's largest entry, so on matrices whose entries vary widely within a row the emulated error can exceed native FP64. The FP4 path assumes exact integer accumulation within ±2²⁴ inside FP32, which Nvidia's ISA does not guarantee for Blackwell's tcgen05 instructions and which the authors verified only empirically. And the paper is explicitly preliminary, with accuracy measurements deferred.",
+            "glossary": [
+              {
+                "term": "GEMM",
+                "definition": "The general matrix-matrix multiply, the BLAS routine that dominates both scientific and AI workloads; here it is also the unit of cost, since each emulation scheme is priced in how many of them it needs."
+              },
+              {
+                "term": "CRT (Chinese remainder theorem)",
+                "definition": "If you know an integer's remainders modulo several pairwise-coprime numbers, you can reconstruct it exactly, provided it is smaller than their product — which is what makes the emulation lossless."
+              },
+              {
+                "term": "E2M1 / E4M3",
+                "definition": "Four-bit and eight-bit floating-point layouts named by exponent and mantissa bit counts; Blackwell's tensor cores implement them natively, which is why they are cheap enough to use in bulk."
+              },
+              {
+                "term": "tcgen05",
+                "definition": "Blackwell's fifth-generation tensor-core instruction family; whether its accumulator is exact over the integer range this scheme relies on is not stated in Nvidia's ISA documentation."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "FP64 Is All You Want, INT8 Is All You Need, FP4/6/8 Is All You Have",
+                "url": "https://arxiv.org/abs/2609.37693",
+                "publisher": "arXiv (Mazumder, Calotoiu, Hoefler — ETH Zurich)",
+                "date": "2026-09-29"
+              },
+              {
+                "title": "Ozaki Scheme II: A GEMM-oriented emulation of floating-point matrix multiplication using an integer modular technique",
+                "url": "https://arxiv.org/abs/2504.08009",
+                "publisher": "arXiv (Ozaki, Uchino, Imamura)",
+                "date": "2025-04-10"
+              },
+              {
+                "title": "DGEMM on Integer Matrix Multiplication Unit",
+                "url": "https://arxiv.org/abs/2306.11975",
+                "publisher": "arXiv (Ootomo, Ozaki, Yokota)",
+                "date": "2023-06-21"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-fp8-attention-zero-row-sum",
+            "title": "An FP8 backward pass breaks a sum that ought to be exactly zero",
+            "dek": "Haozhan Tang and co-authors at Carnegie Mellon, NVIDIA and MIT trace the failure of 8-bit floating-point attention training to one broken identity — the gradients within a softmax row must sum to zero — and report that restoring it closes a 0.48 validation-loss gap at 1.67 billion parameters.",
+            "why_it_matters": "The damage was invisible exactly where people test for it: at 569 million parameters FP8 attention looked nearly free, and the standard mitigations — query-key normalisation, dropping positional encoding, a smaller learning rate — postponed the collapse rather than preventing it, which is the behaviour of an accumulating error rather than a fixed penalty. Locating the cause in an algebraic identity rather than in generic rounding means the repair is exact instead of empirical, and it gives a concrete reason why small-scale ablations on numerical formats keep failing to predict what a format does at the size anyone actually cares about.",
+            "background_md": "Softmax does not care about a constant: add the same number to every score in a row and the probabilities come out unchanged. Differentiating that invariance produces a constraint on the backward pass — within one row, the gradients with respect to the scores must sum to zero, because a uniform push on all of them moves nothing. Memory-efficient attention kernels never hold the full probability matrix; they recompute it during the backward pass and rebuild the score gradient from the saved output plus a small correction term. That correction term is where an identity that is exact on paper can quietly stop holding.",
+            "deeper_md": "The correction FlashAttention uses is δᵢ = ⟨dOᵢ, Ôᵢ⟩. With the attention matmuls in FP8, dO is still BF16 while Ô is rebuilt from FP8 operands, so the probability-quantisation error and the gradient-quantisation error no longer cancel and the row sums stop being zero. The residuals are not negligible — normalised medians of 1.1×10⁻² to 4.7×10⁻² across layers — and they are not random in effect: they systematically sharpen or flatten particular attention rows and amplify particular channels' RMSNorm gains, until a few channels hold over 99% of the normalised gain product and softmax saturates.\n\nDelta-Matching computes δᵢ = Σⱼ Pᵢⱼ d̂Pᵢⱼ from unquantised probabilities against the FP8 backward operands multiplied in FP32, restoring a zero row sum up to FP32 rounding. Validation-loss gap versus BF16/FP32, stale against matched: +0.0166 / −0.0005 at 569M, +0.4792 / −0.0016 at 1.67B, +0.5978 / +0.0025 at 5.29B.\n\nIt is not free. On a 1.67B model at 30B tokens, RULER-8K reads 52.3% for the BF16 reference, 19.8% with the stale correction and 47.8% with the fix — a 4.5-point residual gap the paper reports rather than buries. Validation stops at 5.29B parameters and at two optimisers.",
+            "glossary": [
+              {
+                "term": "Softmax shift invariance",
+                "definition": "Adding the same constant to every score in a row leaves the resulting probabilities unchanged; that symmetry is what forces the row's score gradients to sum to exactly zero."
+              },
+              {
+                "term": "E4M3 with block scaling",
+                "definition": "An 8-bit float with four exponent and three mantissa bits, paired with a shared scale factor per tile so a whole block of values can be kept inside the format's narrow range."
+              },
+              {
+                "term": "RULER",
+                "definition": "A long-context benchmark that builds synthetic retrieval and tracking tasks at a chosen sequence length, so RULER-8K and RULER-64K measure the same skill at different context sizes."
+              },
+              {
+                "term": "RMSNorm gain",
+                "definition": "The per-channel scale factor a root-mean-square normalisation layer learns; a handful of channels accumulating nearly all of the gain product is the signature of the collapse described here."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Delta-Matching: Closing the Final Gap of Native 8-bit Training for LLMs",
+                "url": "https://arxiv.org/abs/2609.37852",
+                "publisher": "arXiv (Tang, Kang, Cai, Han, Xiong — Carnegie Mellon, NVIDIA, MIT)",
+                "date": "2026-09-29"
+              },
+              {
+                "title": "FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision",
+                "url": "https://arxiv.org/abs/2407.08608",
+                "publisher": "arXiv (Shah, Bikshandi, Zhang, Thakkar, Ramani, Dao)",
+                "date": "2024-07-11"
+              },
+              {
+                "title": "FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning",
+                "url": "https://arxiv.org/abs/2307.08691",
+                "publisher": "arXiv (Tri Dao)",
+                "date": "2023-07-17"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "Noise: thermal, flicker, and noise figure",
+    "slug": "noise-in-analog-circuits",
+    "subtitle": "The floor under every measurement — where it comes from, why a capacitor and not a resistor sets it, and why today's Pulse front end deletes a resistor to get underneath it.",
+    "tldr": "Every resistor produces a voltage across itself with nothing connected to it, purely from the thermal motion of its own carriers, and no amount of good design removes it. That fluctuation is a floor: a signal below it is not recovered by better circuitry, only by averaging for longer or by narrowing the bandwidth. Most of analog design is deciding where that floor sits and then refusing to put anything above it.",
+    "sections": [
+      {
+        "heading": "The one number you cannot design away",
+        "body_md": "Start with the constraint. A resistor at absolute temperature T, carrying no current at all, produces a mean-square voltage of 4kTR per hertz of bandwidth. Put numbers in it: a 1 kΩ resistor at 300 K gives √(4kTR) ≈ 4.1 nV per root hertz. That is not a property of the resistor's material, its geometry, or how much current is flowing through it. It depends on exactly two things, resistance and temperature, and it is the same for a carbon film, a diffused strip in silicon, and the channel of a transistor.\n\nThe universality is not a slogan. Metrology inverts it: a 200 Ω sensing resistor sitting in a triple-point-of-water cell was compared against a quantum-accurate synthesised noise waveform over 550 kHz of bandwidth and 33 days of integration, and the comparison produced the Boltzmann constant itself, k = 1.3806514(48) × 10⁻²³ J/K, at a relative standard uncertainty of 3.5 × 10⁻⁶. If thermal noise were a property of a particular resistor rather than of temperature, that experiment would be meaningless.\n\nThe practical handle is the unit. Noise is a density, so what you get depends on how much bandwidth you take. Ten kilohertz from that 1 kΩ resistor is about 410 nV rms; a megahertz is about 4.1 µV.",
+        "deeper_md": "Two working rules follow. Uncorrelated noise sources add in power, not in amplitude, so they combine in quadrature — a second, equal source costs you a factor of √2, not 2, and a source 3× smaller than the dominant one changes the total by about 5%. That is why chasing the second-largest noise source is usually wasted effort. Second, bandwidth is a first-class design variable: halving the bandwidth buys the same √2 that a second amplifier would cost you, for free, if the signal does not need it.\n\nThe relation is not eternal. Ghibaudo's 2022 analysis of oxide trapped charge shows that the Nyquist relation linking a trap conductance to its noise becomes inadequate at deep cryogenic temperatures, where degenerate statistics replace the Boltzmann expression. For cryo-CMOS control electronics sitting beside qubits, that is not an academic point."
+      },
+      {
+        "heading": "kT/C: the capacitor decides, not the resistor",
+        "body_md": "Now the counterintuitive one. Take that resistor and hang a capacitor on it — a sample-and-hold switch, or just the parasitic capacitance of a node. The resistor's noise density is √(4kTR), and the RC low-pass it forms has a noise bandwidth of 1/(4RC). Multiply the two: the total mean-square noise on the capacitor is 4kTR × 1/(4RC) = kT/C. The resistance cancels out completely.\n\nThis says something that surprises people the first time: making the switch resistance ten times larger does not make the sampled noise ten times worse. It makes the settling ten times slower and leaves the noise exactly where it was, because the same resistance that raised the noise density narrowed the bandwidth by the same factor. The only lever is the capacitor.\n\nPut a number on it. At 300 K, kT is 4.14 × 10⁻²¹ J, so a 1 pF sampling capacitor holds about 64 µV rms of noise no matter what is around it. A 100 fF capacitor holds about 200 µV. Resolution in any sampled system is therefore bought with capacitance, and capacitance is bought with area — which is why the sampling capacitor in a high-resolution converter is a visible fraction of the die rather than an afterthought.",
+        "deeper_md": "The exchange rate is brutal. Noise voltage goes as 1/√C, so every extra bit of resolution — halving the noise voltage — costs four times the capacitance, and therefore roughly four times the area and four times the current needed to drive it at the same speed. Sixteen bits is not twice the problem of fifteen.\n\nThis is one of the two standard answers to why analog blocks refuse to shrink with the process node; the other is device matching, which scales as 1/√(WL). Both are statistical floors set by area rather than by lithography, and neither improves when the transistors get smaller. A digital block halves in area at a new node. The sampling capacitor and the matched pair do not."
+      },
+      {
+        "heading": "Referring noise to the input is the only honest comparison",
+        "body_md": "Every stage in a chain adds its own noise, and the numbers are not comparable as stated — 10 µV at the output of a gain-of-1000 stage is not the same problem as 10 µV at its input. The fix is bookkeeping: divide each stage's noise by the total gain ahead of it, and quote everything as an equivalent source sitting at the very front. Once you do that, the arithmetic decides the architecture. A noise source behind a voltage gain of 100 contributes one hundredth as much as the identical source at the input. The first stage sets the floor of the whole chain, and nothing downstream can rescue it.\n\nFor a current-input front end reading a photodiode, the quantity that matters is the total capacitance sitting at the amplifier's input node. That capacitance turns the amplifier's own input voltage noise into output noise, and the conversion gets worse with frequency, so at high speed the interconnect between detector and amplifier is a noise specification. The group behind a 250 nm Bi-CMOS quantum light detector went fully monolithic for precisely this reason, naming the capacitance added by wirebonds and flip-chip bumps as the primary limitation on bandwidth.",
+        "deeper_md": "Technology choice is also a noise choice, and it is not always the newest node that wins. The imec–Ghent authors picked 28 nm CMOS for density and integration while stating plainly that CMOS is noisier than III-V for the same job, because of lower carrier mobility and short-channel effects. A III-V or SiGe front end would be quieter and would not let you put the DC-cancellation loop, the biasing and the output driver on the same die.\n\nThe same input-referred bookkeeping is what the RF world calls noise figure, and it is why a receiver's low-noise amplifier gets a disproportionate share of the power budget: its gain is what divides down everything after it."
+      },
+      {
+        "heading": "1/f: the noise that does not average away",
+        "body_md": "Below some frequency, the measured noise of almost any semiconductor device stops being flat and starts rising as 1/f. The mechanism is discrete and local. Individual defects near the gate oxide capture and release carriers, and one such trap produces a two-level random telegraph signal — the drain current flipping between two values at random times. Superpose many traps with a spread of time constants and the sum of their Lorentzian spectra is a 1/f slope.\n\nWhat the trapped charge then does is still argued over. The carrier-number-fluctuation account, due to McWhorter, says it changes how many carriers are in the channel. The mobility-fluctuation account, due to Hooge, says it scatters the ones already there. Compact-model work by Mavredakis and colleagues shows both contribute, with different bias dependences, and that the device-to-device *variability* of the low-frequency noise is largest in weak inversion and grows with drain bias.\n\nThe design consequence follows from the discreteness. A bigger device contains more traps and averages more of them, so the only reliable fix is gate area. The corner frequency, where the 1/f contribution equals the thermal contribution, is the number worth knowing: above it you can ignore flicker noise, and below it no amount of averaging helps, because the noise grows as fast as the averaging window.",
+        "deeper_md": "This is why chopping and auto-zeroing exist. Both modulate the signal up above the corner frequency, amplify it where the amplifier is quiet, and bring it back down — trading a switching artefact and some bandwidth for several decades of low-frequency noise. It is also why a precision DC amplifier and a fast one are different circuits made of different device sizes.\n\nThe corner is a process fact more than a design one, and CMOS has always sat far above bipolar because the noise lives at the oxide interface. Two practical corollaries: a 1/f measurement is a sensitive probe of oxide quality, which is why it is used as a reliability screen; and in a sub-threshold or cryogenic circuit, where variability is worst, a single trap in a small device can dominate the whole spectrum, at which point the ensemble description stops being useful and you are debugging one defect."
+      },
+      {
+        "heading": "Shot noise is a different animal",
+        "body_md": "Thermal noise is about temperature. Shot noise is about the discreteness of charge, and confusing them leads to the wrong fix. A current crossing a barrier is a stream of countable carriers arriving at random, uncorrelated times. Poisson statistics then set the variance equal to the mean, and the current noise density comes out as √(2qI) — 17.9 pA per root hertz at 1 mA.\n\nTwo consequences trip people up. It scales with current and not with temperature, so cooling the circuit does not reduce it; the only way down is less current, which usually means less signal. And it needs a barrier: a plain resistor in thermal equilibrium has Johnson noise but not shot noise, because its carriers are not independently crossing anything.\n\nIn a photodetector the sign of the whole problem flips. The shot noise of the photocurrent is not a nuisance to be minimised — it is the measurement. Quantum optics experiments that characterise squeezed light or generate random numbers are reading the fluctuations of the light itself, and everything the circuit adds is contamination. The figure of merit is therefore a ratio between two noises: how far the light's shot noise rises above the amplifier's electronic noise, quoted in decibels and called the clearance.",
+        "deeper_md": "The clearance is not purely a circuit number. Photons that never become photocurrent do not contribute shot noise, while the amplifier's noise is unchanged, so detector quantum efficiency enters the ratio directly — the imec–Ghent authors give 40–60% as the range for integrated photodiodes and name it as a hard cap on what their front end can achieve.\n\nThe spread across technologies makes the point. A homodyne detector built from superconducting nanowires reported 46.0 ± 1.1 dB of clearance, roughly twenty decibels better than any integrated circuit, at a bandwidth of 400 kHz and a common-mode rejection of 22.4 dB. Clearance and bandwidth are opposite ends of one lever, and where a design sits on it is a choice about what experiment it is for."
+      },
+      {
+        "heading": "Putting it together: the front end in today's Pulse",
+        "body_md": "Everything above converges on one circuit. A balanced homodyne detector measures the shot noise of a strong local oscillator, so its transimpedance amplifier is trying to get out of the way of a signal that is itself noise. Section one names the obstacle: the feedback resistor that sets the amplifier's gain also generates Johnson noise, and referred to the input as a current — √(4kT/R), 4.1 pA per root hertz at 1 kΩ — it lands in exactly the same place as the photocurrent's shot noise.\n\nThere are only two ways out. Raise the photocurrent, which raises the shot noise faster than it raises the resistor noise, and eventually saturates the amplifier. Or remove the resistor. The imec–Ghent design does the second: feedback through a capacitor in 28 nm CMOS, giving 27 dB of peak clearance at 2.2 mA of photocurrent and shot-noise-limited operation out to 13.7 GHz.\n\nDeleting a component never comes free, and the cost here is a control problem rather than a noise one. A capacitive feedback loop is an integrator with respect to DC, so any steady photocurrent walks the output into the rail. The design pays for its quieter floor with on-chip DC cancellation and a heater-based optical balancing loop that a resistive front end would not need.",
+        "deeper_md": "It is worth holding the whole trade in view. Against this device's 7.6 GHz of 3-dB bandwidth and 27 dB of clearance, a monolithic 250 nm Bi-CMOS detector got 19.8 GHz with 15 dB, and the superconducting-nanowire approach got 46 dB with 400 kHz. Three technologies, three points, one curve.\n\nThe general lesson is the one to carry out of this piece: a noise specification is never a single number. It is a density, a bandwidth, a source impedance, and a statement about which of thermal, flicker and shot dominates in the band you care about. An amplifier quoted at \"1 nV/√Hz\" with none of those attached has told you nothing you can design with."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Johnson–Nyquist noise",
+        "definition": "The voltage fluctuation a resistor produces with nothing connected to it, of mean square 4kTR per hertz. It depends only on resistance and absolute temperature — not on material, current, or construction."
+      },
+      {
+        "term": "Noise spectral density (nV/√Hz)",
+        "definition": "Noise expressed per unit bandwidth. Because uncorrelated noise adds in power, the total is the density times the square root of the bandwidth, which is why quoting a density without a bandwidth says nothing."
+      },
+      {
+        "term": "Noise bandwidth",
+        "definition": "The width of the ideal brick-wall filter that would pass the same noise power as the real filter. For a single-pole RC it is 1/(4RC), about 1.57 times the 3-dB bandwidth."
+      },
+      {
+        "term": "kT/C noise",
+        "definition": "The total mean-square voltage left on a capacitor charged through any resistance. The resistance cancels: only the capacitor and the temperature appear, so sampled-system resolution is bought with area."
+      },
+      {
+        "term": "Input-referred noise",
+        "definition": "Every stage's noise divided by the gain ahead of it and moved to the front of the chain. It is the only way to compare stages, and it is why the first stage sets the floor for all of them."
+      },
+      {
+        "term": "1/f corner frequency",
+        "definition": "Where the flicker contribution equals the thermal contribution. Above it, flicker noise can be ignored; below it, averaging stops helping, because the noise rises as fast as the averaging window grows."
+      },
+      {
+        "term": "Random telegraph noise (RTN)",
+        "definition": "The two-level switching of a device's current caused by one defect capturing and releasing a single carrier. A 1/f spectrum is what you get when many such traps, with a spread of time constants, are superposed."
+      },
+      {
+        "term": "Shot noise",
+        "definition": "Current fluctuation from the discreteness of charge crossing a barrier, of density √(2qI). It scales with current rather than temperature, so cooling does not reduce it and a plain resistor does not have it."
+      },
+      {
+        "term": "Shot-noise clearance (dB)",
+        "definition": "How far the shot noise of the measured light rises above the detector circuit's own electronic noise. It is capped by detector quantum efficiency, because photons that never become current contribute no shot noise."
+      }
+    ],
+    "try_this": "Work out your own noise floor before you go looking for a quieter amplifier. Take whatever transimpedance stage the club is using on the probe station, read the feedback resistance off the schematic, and evaluate √(4kT/R) — that is the current noise the resistor alone injects at the input, 4.1 pA/√Hz for 1 kΩ at 300 K, and it falls only as √R. Multiply by the square root of the bandwidth you actually need, and compare it against the smallest current you are trying to resolve. If the two are within a factor of ten, the instrument is largely measuring itself, and the correct fix is a larger feedback resistor plus a narrower bandwidth, not a better op-amp. Then read the circuit description in arXiv:2609.37671 for what a design does when it cannot afford that resistor at all.",
+    "sources": [
+      {
+        "title": "Improved electronic measurement of the Boltzmann constant by Johnson noise Thermometry",
+        "url": "https://arxiv.org/abs/1501.00195",
+        "publisher": "arXiv (Qu, Benz, Pollarolo, Rogalla, Tew, White, Zhou)",
+        "date": "2014-12-31"
+      },
+      {
+        "title": "Charge-Based Compact Model for Bias-Dependent Variability of 1/f Noise in MOSFETs",
+        "url": "https://arxiv.org/abs/2009.00917",
+        "publisher": "arXiv (Mavredakis, Makris, Habas, Bucher); IEEE Transactions on Electron Devices",
+        "date": "2020-09-02"
+      },
+      {
+        "title": "On the fluctuation-dissipation of the oxide trapped charge in a MOSFET operated down to deep cryogenic temperatures",
+        "url": "https://arxiv.org/abs/2204.04958",
+        "publisher": "arXiv (Gerard Ghibaudo)",
+        "date": "2022-04-11"
+      },
+      {
+        "title": "Integrated balanced homodyne detector using CMOS capacitive-feedback TIA for quantum measurements",
+        "url": "https://arxiv.org/abs/2609.37671",
+        "publisher": "arXiv (Bastiaens, Bruynsteen, Cammarata, Bomhals, da Silva, Van Osta, Bauwelinck, Yin)",
+        "date": "2026-09-29"
+      },
+      {
+        "title": "A Bi-CMOS electronic-photonic integrated circuit quantum light detector",
+        "url": "https://arxiv.org/abs/2305.08990",
+        "publisher": "arXiv (Tasker, Frazer, Ferranti, Matthews)",
+        "date": "2023-05-15"
+      }
+    ]
+  }
+}

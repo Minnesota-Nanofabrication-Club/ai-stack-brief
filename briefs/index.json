@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-09-30",
+      "foundations_slug": "noise-in-analog-circuits",
+      "foundations_topic": "Noise: thermal, flicker, and noise figure",
+      "headline": "ETH Zurich recasts double-precision emulation as a combinatorial search and certifies sixteen 8-bit integer matrix multiplies as the minimum needed to rebuild an exact FP64 product on Blackwell, where the chip's own FP64 unit is the slowest arithmetic on it.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-29",
       "foundations_slug": "overlay-and-alignment",
       "foundations_topic": "Overlay and alignment",
@@ -418,6 +431,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-29T14:43:38Z",
-  "latest": "2026-09-29"
+  "generated_at": "2026-09-30T14:28:23Z",
+  "latest": "2026-09-30"
 }

@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-10-01",
+      "foundations_slug": "euv-source-physics",
+      "foundations_topic": "The EUV source",
+      "headline": "Tomohiro Koana and Soh Kumabe give the first algorithm that decides directed Hamiltonicity faster than 2ⁿ, settling a question left open since Bellman and Held–Karp in 1962, at 1.9133ⁿ.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-09-30",
       "foundations_slug": "noise-in-analog-circuits",
       "foundations_topic": "Noise: thermal, flicker, and noise figure",
@@ -431,6 +444,6 @@
       ]
     }
   ],
-  "generated_at": "2026-09-30T14:28:23Z",
-  "latest": "2026-09-30"
+  "generated_at": "2026-10-01T15:12:42Z",
+  "latest": "2026-10-01"
 }

@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-10-02",
+      "foundations_slug": "precursor-supply-chain",
+      "foundations_topic": "Precursors, gases, and the specialty chemical supply chain",
+      "headline": "Antonio Saavedra and co-authors built AMD's own proposed public-key bitstream protection into a 7-Series FPGA's fabric and then read the decrypted configuration words off its internal 32-bit port with an infrared probe, leaving every fabric-side encryption scheme stuck behind the same hard-wired interface.",
+      "item_count": 7,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-10-01",
       "foundations_slug": "euv-source-physics",
       "foundations_topic": "The EUV source",
@@ -444,6 +457,6 @@
       ]
     }
   ],
-  "generated_at": "2026-10-01T15:12:42Z",
-  "latest": "2026-10-01"
+  "generated_at": "2026-10-02T14:29:27Z",
+  "latest": "2026-10-02"
 }

@@ -1,6 +1,20 @@
 {
   "editions": [
     {
+      "date": "2026-10-03",
+      "foundations_slug": "silicon-photonics",
+      "foundations_topic": "Silicon photonics",
+      "headline": "Benjamin Ash, Ryotatsu Yanagimoto and Mandar Sohoni made the quasi-phase-matching grating inside a silicon-nitride waveguide a projected image rather than an etched structure, so the phase mismatch a fabrication error leaves behind can be corrected on the finished chip in about a second.",
+      "item_count": 8,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "infrastructure",
+        "models"
+      ]
+    },
+    {
       "date": "2026-10-02",
       "foundations_slug": "precursor-supply-chain",
       "foundations_topic": "Precursors, gases, and the specialty chemical supply chain",
@@ -457,6 +471,6 @@
       ]
     }
   ],
-  "generated_at": "2026-10-02T14:29:27Z",
-  "latest": "2026-10-02"
+  "generated_at": "2026-10-03T13:09:40Z",
+  "latest": "2026-10-03"
 }

@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-10-04",
+      "foundations_slug": "ibm-system-360",
+      "foundations_topic": "IBM System/360",
+      "headline": "Desheng Ma and Steven Zeltmann show that a 4D-STEM dataset is already a light-field photograph, so depth slices through a specimen fall out of one four-dimensional Fourier transform — over ten times faster once more than ten depths are wanted.",
+      "item_count": 8,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "infrastructure"
+      ]
+    },
+    {
       "date": "2026-10-03",
       "foundations_slug": "silicon-photonics",
       "foundations_topic": "Silicon photonics",
@@ -471,6 +484,6 @@
       ]
     }
   ],
-  "generated_at": "2026-10-03T13:09:40Z",
-  "latest": "2026-10-03"
+  "generated_at": "2026-10-04T13:48:59Z",
+  "latest": "2026-10-04"
 }

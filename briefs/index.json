@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-10-05",
+      "foundations_slug": "wafer-stage-nanopositioning",
+      "foundations_topic": "Wafer stages and nanopositioning",
+      "headline": "Wajid Ali and Matthew Guthaus put a clock mesh in the spare thick metal under a 2-nanometre wafer and measured 45 percent lower skew than the identical mesh on the front, every flip-flop now reached through a via that crosses the silicon.",
+      "item_count": 8,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-10-04",
       "foundations_slug": "ibm-system-360",
       "foundations_topic": "IBM System/360",
@@ -484,6 +497,6 @@
       ]
     }
   ],
-  "generated_at": "2026-10-04T13:48:59Z",
-  "latest": "2026-10-04"
+  "generated_at": "2026-10-05T16:45:00Z",
+  "latest": "2026-10-05"
 }

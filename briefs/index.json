@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-10-09",
+      "foundations_slug": "wet-etching-and-anisotropy",
+      "foundations_topic": "Wet etching and crystallographic anisotropy",
+      "headline": "Maria Makeenkova, Ataberk Olgun and co-authors let a DDR5 memory controller delay a RowHammer preventive refresh behind ordinary requests that do not touch the hammered row, and measure a 21.7 percent average speedup for the four most refresh-hungry mitigations.",
+      "item_count": 7,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-10-08",
       "foundations_slug": "illumination-and-pupil-shaping",
       "foundations_topic": "Illumination engineering",
@@ -523,6 +536,6 @@
       ]
     }
   ],
-  "generated_at": "2026-10-08T15:21:12Z",
-  "latest": "2026-10-08"
+  "generated_at": "2026-10-09T14:56:56Z",
+  "latest": "2026-10-09"
 }

@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-10-10",
+      "foundations_slug": "euv-optics-and-multilayers",
+      "foundations_topic": "EUV optics and Bragg multilayers",
+      "headline": "Oliver Hitchcock and co-authors trace the microsecond ceiling on piezoelectric acoustic resonators to ion-mill damage rather than to lithium niobate itself, and reach a 21-millisecond phonon lifetime at 3.6 GHz once the damaged surface is etched off.",
+      "item_count": 7,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-10-09",
       "foundations_slug": "wet-etching-and-anisotropy",
       "foundations_topic": "Wet etching and crystallographic anisotropy",
@@ -536,6 +549,6 @@
       ]
     }
   ],
-  "generated_at": "2026-10-09T14:56:56Z",
-  "latest": "2026-10-09"
+  "generated_at": "2026-10-10T14:29:03Z",
+  "latest": "2026-10-10"
 }

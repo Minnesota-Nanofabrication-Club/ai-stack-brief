@@ -1,0 +1,413 @@
+{
+  "date": "2026-10-11",
+  "generated_at": "2026-10-11T15:10:00Z",
+  "window": "2026-10-10..2026-10-11",
+  "headline": "A quiet weekend in the stack, with no preprint announcements since Friday: the sharpest result still standing is Susanna Caroppo and Giordano Da Lozzo's count of planar meanders, which drops the best known deterministic running time for planar travelling salesman to 2^(5.543√n).",
+  "pulse": {
+    "read_time_min": 7,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-visible-light-inverse-design",
+            "title": "A fabrication-aware optimiser prints a 4.5 µm bend that loses 0.08 dB",
+            "dek": "Christoph Stockinger, Peter Banzer and co-authors ran an adjoint inverse-design optimiser — software that reshapes a waveguide's outline from the gradient of its own electromagnetic simulation — on a consumer graphics card, etched the results into 100-nanometre silicon nitride, and measured a 4.5-micrometre bend losing 0.08 decibels of blue light.",
+            "why_it_matters": "Inverse design is mostly published as simulation, and the distance between a simulated freeform shape and an etched one is a process distance: the optimiser's 100 nm minimum feature is exactly the dimension that lithography and etch round off or shrink. Putting the design rule inside the optimisation loop and then measuring the parts turns a rendering into a component with an error budget — and it also marks where the method still fails, because the same bend that loses 0.08 dB in the blue loses 1.3 dB in the red.",
+            "background_md": "A photonic integrated circuit routes light in waveguides: strips of high-index material surrounded by lower-index cladding, which confine light by total internal reflection. Silicon nitride sits near refractive index 2.0 against silica's 1.46, so confinement is weak compared with silicon's 3.5, bends have to be gentle, and components stay large — and the problem worsens towards visible wavelengths, where the contrast falls further. Conventional design picks a shape from intuition, a circular bend or a directional coupler, and tunes a few parameters. Inverse design instead treats every point in a design region as a free variable.",
+            "deeper_md": "The platform is 100 nm of LPCVD silicon nitride on 8 µm of thermal oxide, clad in 500 nm of HSQ, patterned by e-beam lithography in a 270 nm HSQ resist and etched in CHF₃/N₂/O₂ inductively coupled plasma RIE. The optimiser is adjoint topology optimisation in the open-source GPU solver `fdtdx`, on a 20 nm mesh with a 100 nm minimum feature, taking 8–24 hours per device on an RTX 4060 Ti or 5070 Ti.\n\nMeasured insertion loss for the 4.5 × 4.5 µm² bend: −0.08 ± 0.04 dB at 455 nm, −0.11 ± 0.08 dB at 514 nm, −1.3 ± 0.6 dB at 642 nm. A 4 × 4 µm² crossing gives −0.13 dB at 455 nm. The TE₀→TE₁ mode converter measures 81% conversion with 92.5% purity at 514 nm.\n\nThe authors attribute the experiment-to-simulation gaps to feature shrinkage and say over- and under-etch are not yet inside the optimisation. Their red-wavelength comparison is inconclusive by their own account: the conventional bends they measured against sat below the noise floor there. The paper also states the red design wavelength three different ways — 628, 638 and 642 nm.",
+            "glossary": [
+              {
+                "term": "Adjoint method",
+                "definition": "One extra electromagnetic simulation, run with sources and detectors swapped, that returns the gradient of a device's performance with respect to every point in its design region at once — which is what makes million-variable optimisation affordable."
+              },
+              {
+                "term": "dB of insertion loss",
+                "definition": "Ten times the base-ten logarithm of the power ratio through a component, so −0.08 dB is a loss of under 2% of the light and −1.3 dB is roughly a quarter of it."
+              },
+              {
+                "term": "TE₀ and TE₁",
+                "definition": "The first two transverse-electric guided modes of a waveguide; TE₀ has one intensity lobe across the guide and TE₁ has two, so converting between them is how one waveguide carries two independent channels."
+              },
+              {
+                "term": "ICP-RIE",
+                "definition": "Plasma etching in which a remote coil generates the plasma and a separate substrate bias accelerates ions into the wafer, so etch chemistry and ion energy can be set independently."
+              }
+            ],
+            "fab_angle": "The binding constraint here is the one a club-built stepper meets first. A 100 nm minimum feature inside the optimiser only buys a working device if litho and etch reproduce it, and the authors blame their residual loss on shrinkage rather than on the design. Any freeform layout is a bet on your own critical-dimension control, so measure that before trusting an optimiser's output.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Inverse Design of Integrated Photonic Components for Visible-Light Applications",
+                "url": "https://arxiv.org/html/2610.11453v1",
+                "publisher": "arXiv",
+                "date": "2026-10-08"
+              },
+              {
+                "title": "FDTDX — electromagnetic FDTD simulations in JAX (source repository)",
+                "url": "https://github.com/ymahlau/fdtdx",
+                "publisher": "Mahlau et al. (GitHub)",
+                "date": "2026"
+              },
+              {
+                "title": "A flexible framework for large-scale FDTD simulations: open-source inverse design for 3D nanostructures",
+                "url": "https://arxiv.org/abs/2412.12360",
+                "publisher": "arXiv",
+                "date": "2024-12-16"
+              }
+            ]
+          },
+          {
+            "id": "silicon-pys-variable-exponent",
+            "title": "Residual autocorrelation finds a second photoemission edge in doped silicon",
+            "dek": "Shinjiro Yagyu, Takahiro Nagata and Yoshiyuki Nakajima let the exponent in a photoemission-yield fit float instead of fixing it by assumption, and the autocorrelation of the fit residuals flagged what one edge was hiding: heavily doped p-type silicon has two emission thresholds, at 4.70 and 5.29 electronvolts.",
+            "why_it_matters": "Photoemission yield spectroscopy is the cheap bench route to where a material's occupied states stop — a work function, or a semiconductor's ionisation energy — and the number it hands back depends on an exponent the operator chooses from an assumed emission mechanism. Making the fit report when its own assumption has broken converts a single number into a number with a stated range of validity. That is the difference between a measurement a robot can run unattended and one that needs a person looking at the plot, and it is the same failure every straight-line extrapolation on a log axis is exposed to.",
+            "background_md": "Shine monochromatic light of rising photon energy on a surface and electrons start leaving once the photon clears the energy binding them. The yield above that threshold does not rise linearly: Kane's analysis gives yield proportional to (hν − I_th) raised to a power n, with n equal to 1 for direct unscattered transitions, 2 once elastic scattering is included and 5/2 for indirect transitions, while Gobeli and Allen's empirical cube law used n = 3 for clean silicon. Pick n, plot yield to the power 1/n, and the threshold is where the straight part crosses zero.",
+            "deeper_md": "Two statistical problems sit under that recipe. Photoelectron counts are Poisson, so variance tracks the yield itself; taking a logarithm converts that into a variance near 1/Y, which diverges exactly in the low-signal region next to the threshold where the fit is decided. The authors therefore fit in the original Y^(1/n) space under mean-absolute-error loss, scan n from 0.5 to 4.0 in steps of 0.01–0.05, and select n by Akaike information criterion.\n\nThe diagnostic is the Durbin–Watson statistic on the residuals, which detects serial correlation — residuals wandering above and below the fit in runs rather than independently. On the heavily doped p-type sample it fell to 0.8 against a reference band of roughly 1.5 to 2.5 while the error metrics still looked healthy. A two-component fit with n₁ = 1.0 and n₂ = 2.5 placed thresholds at 4.70 and 5.29 eV and cut AIC from 367 to 310, a ΔAIC near 57, with Durbin–Watson recovering to 2.0.\n\nCaveats the authors state: measurements were in ambient air on few samples, the method assumes a background near 1–2 counts per second, and the Durbin–Watson critical values come from ordinary least squares with Gaussian errors, so here they are an indicator and not a test.",
+            "glossary": [
+              {
+                "term": "I_th (ionisation threshold)",
+                "definition": "The lowest photon energy that can lift an electron out of the sample into vacuum; on a metal this is the work function, on a semiconductor it is referenced to the top of the occupied states."
+              },
+              {
+                "term": "Durbin–Watson statistic",
+                "definition": "A number near 2 when fit residuals are independent and near 0 when each residual resembles the one before it, so a low value says the model has the wrong shape rather than that the noise is large."
+              },
+              {
+                "term": "AIC (Akaike information criterion)",
+                "definition": "A score that adds a fixed penalty per fitted parameter to a model's misfit, so a more elaborate model only wins if it earns its extra freedom; differences of tens are treated as decisive."
+              },
+              {
+                "term": "Heteroscedasticity",
+                "definition": "Noise whose magnitude changes across a measurement, which breaks plain least squares because the fit implicitly trusts every point equally."
+              }
+            ],
+            "fab_angle": "Every threshold a teaching lab reads off a straight-line fit has this failure mode — dose-to-clear from a resist contrast curve, a barrier height from a log-I against V sweep, a band gap from a Tauc plot. The exponent was assumed, and the residuals are where the assumption confesses. Plotting residual against x costs nothing and catches it.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Data-Driven Variable-Exponent Analysis for Photoemission Yield Spectroscopy: An Autonomous Self-Diagnosing Framework Based on Integrated Residual Metrics",
+                "url": "https://arxiv.org/html/2610.11331v1",
+                "publisher": "arXiv",
+                "date": "2026-10-08"
+              },
+              {
+                "title": "Automated analysis of photoelectron yield spectroscopy spectra interpreted via power laws (repository record for Sci. Technol. Adv. Mater.: Methods 5(1))",
+                "url": "https://mdr.nims.go.jp/datasets/4decbdf0-19b4-4be8-8b80-f2699fa4b5d7.md",
+                "publisher": "NIMS Materials Data Repository",
+                "date": "2025-12-31"
+              },
+              {
+                "title": "Photoionization of temperature-controlled nanoparticles in a beam: accurate and efficient determination of ionization energies and work functions",
+                "url": "https://arxiv.org/abs/2602.15426",
+                "publisher": "arXiv",
+                "date": "2026-02-17"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-dynate-diffusion-token-execution",
+            "title": "An accelerator that skips the masked tokens a diffusion step will not move",
+            "dek": "Minghan Jiang, Jiayi Wang and co-authors describe a 28-nanometre accelerator for diffusion language models — models that fill in a whole block of masked words at once rather than one word at a time — which routes work away from the tokens an iteration will barely change, reporting 2.05 to 2.78 times the speed of earlier diffusion-model accelerators.",
+            "why_it_matters": "A diffusion decoder's whole appeal is that it updates many positions per pass, and its hidden cost is that it pays the full transformer price for every position whether or not that position moves. Steering low-gain tokens around the attention queries and the feed-forward block while leaving their keys and values readable makes the work per iteration track the number of tokens actually being decided, which is what the parallelism was supposed to buy. The second change is about memory rather than arithmetic: materialising a full score-per-vocabulary-entry tensor every iteration is the traffic that makes a diffusion step bandwidth-bound, and streaming it away removes a cost no amount of extra multipliers would have fixed.",
+            "background_md": "An autoregressive language model emits one token per forward pass, so its decode phase reads an entire weight matrix to produce a single column of arithmetic and is limited by memory bandwidth rather than by multipliers. A diffusion language model starts instead from a block of masked positions and refines several of them per pass, re-predicting every masked position each iteration and re-masking the ones it is least confident about. That trades one-token-per-pass serialisation for a fixed number of denoising iterations, each costing a full pass over the model.",
+            "deeper_md": "The design rests on three measurements of diffusion-model behaviour: most unresolved positions gain little from a given iteration and the high-gain set moves between iterations; strong coupling between neighbouring unresolved tokens shows up only at isolated pairs; and writing out the full tokens-by-vocabulary score tensor dominates off-chip traffic.\n\nDynaTE prunes query-side attention and feed-forward work for low-utility tokens while keeping their keys and values visible, runs a short serial refinement on detected anchor pairs, and streams the language-model head to compute a running Top-32 instead of writing scores to memory. The array is 2,048 multiply-accumulate units as eight 64 × 4 subarrays that reshape into 64 × 32, 128 × 16, 256 × 8 or 512 × 4. Synthesis puts it at 3.91 mm² and 7.36 W in TSMC 28 nm at 1 GHz, of which 5.17 W is the HBM2 model.\n\nCaveats: this is simulation and synthesis, not silicon. The dependency detector finds 45.2% of oracle pairs on LLaDA-8B and 39.1% on Dream-7B, and the largest quality loss reported is 0.7 points. One baseline is a fixed-shape systolic array the authors built themselves, and the paper's own Table IV reports 2.05–4.32× against the abstract's 2.05–2.78×.",
+            "glossary": [
+              {
+                "term": "dLLM (diffusion language model)",
+                "definition": "A model that generates text by repeatedly re-predicting a whole block of masked positions and keeping the confident ones, so the number of forward passes is set by the denoising schedule rather than by the output length."
+              },
+              {
+                "term": "MAC (multiply-accumulate unit)",
+                "definition": "The multiplier-and-adder that completes one term of a dot product per cycle; an accelerator's peak throughput is its MAC count times its clock, which makes 2,048 at 1 GHz the ceiling here."
+              },
+              {
+                "term": "Logit tensor",
+                "definition": "The raw score a model assigns to every vocabulary entry at each position; with tens of thousands of entries per position it can exceed the activations that produced it, making it a bandwidth cost in itself."
+              },
+              {
+                "term": "W8A8 / W8A4",
+                "definition": "Eight-bit weights with eight-bit or four-bit activations; halving activation width lets one multiplier produce two results, which is where the reconfigurable array gets its second throughput mode."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "DynaTE: Accelerating Diffusion LLMs via Dynamic Token Execution",
+                "url": "https://arxiv.org/html/2610.11284v1",
+                "publisher": "arXiv",
+                "date": "2026-10-08"
+              },
+              {
+                "title": "Large Language Diffusion Models (LLaDA)",
+                "url": "https://arxiv.org/abs/2502.09992",
+                "publisher": "arXiv",
+                "date": "2025-02-14"
+              },
+              {
+                "title": "Fast-dLLM: Training-free Acceleration of Diffusion LLM by Enabling KV Cache and Parallel Decoding",
+                "url": "https://arxiv.org/abs/2505.22618",
+                "publisher": "arXiv",
+                "date": "2025-05-28"
+              }
+            ]
+          },
+          {
+            "id": "chips-hbf-kv-cache-endurance",
+            "title": "Flash with HBM's bandwidth still has flash's write limit",
+            "dek": "Jaehoon Yang, Jeongmin Lee and co-authors simulate High Bandwidth Flash — stacked NAND flash carrying HBM-class read bandwidth and far more capacity per stack — and find that whether it survives five years as a serving tier depends entirely on which key-value cache segments are allowed to land on it.",
+            "why_it_matters": "A flash cell tolerates a finite number of program-erase cycles, so a memory tier built from NAND has a write budget rather than a write bandwidth, and every byte of transient attention state written to it is permanently spent. Choosing a segment's tier from how long it will live, rather than from whether DRAM happens to be full, turns endurance from a fixed ceiling into something a scheduler can manage — which is why the earliest High Bandwidth Flash proposals only held read-mostly data such as weights. At 100,000 program-erase cycles per cell and 512 gigabytes per stack the arithmetic is tight enough that the placement policy, not the device, decides whether the part outlasts its warranty.",
+            "background_md": "A NAND flash cell stores charge in a floating gate or a trapping layer, and writing it means pushing carriers through the thin oxide that holds that charge in. Each pass damages the oxide and leaves trapped charge behind, so a cell has a finite program-erase budget — around 100,000 cycles when one bit is stored per cell, falling sharply as more levels are packed into the same cell. DRAM has no equivalent limit. Any proposal to put flash where DRAM used to sit therefore has to answer a question DRAM never raised: how many times will this location be rewritten across the product's life?",
+            "deeper_md": "The paper's device model: 512 GB per stack, 100,000 program-erase cycles at single-level-cell density, 16× HBM's capacity per stack, HBM-class sequential read bandwidth, and a write amplification of 1.02 because key-value blocks are written whole and in order. Eight stack slots are split between HBM and flash at ratios from 1/7 to 4/4.\n\nThe lever is lifetime, not hotness. Lachesis fixes a segment's tier when it is allocated: short-lived segments — reasoning traces, sub-agent contexts — go to HBM, so their blocks free at a context boundary and never reach flash, while long-lived lead-agent and reasoning-stripped segments go to flash. Against an HBM-first baseline that fills DRAM and spills, simulated flash lifetime stretches 1.19–3.13×, reaching 3.3–9.3 device-years on a multi-agent trace at a 2 s time-to-first-token and 60 ms per-output-token target, against 1.9–4.8 for the baseline.\n\nAll of this is trace-driven simulation over Llama-4-Maverick and Qwen3-235B-A22B, not measured flash. The lifetime predictor ranks segments at Kendall's τ of 0.53, and the endurance result rests on the assumed cycle count and the 1.02 write amplification rather than on a characterised device.",
+            "glossary": [
+              {
+                "term": "P/E cycle (program-erase cycle)",
+                "definition": "One write-and-wipe of a flash block; each one drives carriers through the cell's tunnel oxide and leaves damage behind, so the number a cell survives is a wear budget rather than a performance figure."
+              },
+              {
+                "term": "SLC (single-level cell)",
+                "definition": "One bit per flash cell, so only two charge levels must be distinguished; it is the most durable and least dense way to use NAND, which makes endurance figures quoted at SLC the optimistic ones."
+              },
+              {
+                "term": "Write amplification",
+                "definition": "The ratio of bytes actually written to flash to bytes the host asked to write; it exceeds one whenever live data must be relocated to erase a block, so 1.02 means whole blocks arrive in order."
+              },
+              {
+                "term": "KV cache (key-value cache)",
+                "definition": "The per-token attention state a language model keeps so it need not recompute earlier tokens; it grows with every token generated and dominates memory in long-context serving."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Lachesis: Lifetime-Aware KV Cache Placement for Agent Serving across HBM and High-Bandwidth Flash",
+                "url": "https://arxiv.org/html/2610.08378v1",
+                "publisher": "arXiv",
+                "date": "2026-10-06"
+              },
+              {
+                "title": "High Bandwidth Flash gets its first open spec: 512GB stacks and up to 3.0TB/s",
+                "url": "https://www.storagereview.com/news/high-bandwidth-flash-gets-its-first-open-spec-512gb-stacks-and-up-to-3-0tb-s",
+                "publisher": "StorageReview (Brian Beeler)",
+                "date": "2026-08-04"
+              },
+              {
+                "title": "Error Characterization, Mitigation, and Recovery in Flash-Memory-Based Solid-State Drives",
+                "url": "https://arxiv.org/abs/1706.08642",
+                "publisher": "arXiv",
+                "date": "2017-06-26"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-planar-meanders-growth-constant",
+            "title": "Counting loops that cross a line sets the exponent for planar TSP",
+            "dek": "Susanna Caroppo, Giordano Da Lozzo and co-authors cut the growth constant for meanders — single closed loops drawn in the plane that cross one fixed straight line a given number of times — from 12.901 to 12.806, and with it the best known deterministic running time for planar travelling salesman to 2^(5.543√n).",
+            "why_it_matters": "The square-root exponent that makes planar problems tractable comes from a decomposition whose cost is exponential in the number of distinct states a single cut can be in, so the running time is a direct function of how many ways a partial solution can be threaded through that cut. Counting those threadings is a pure combinatorics question about loops crossing a line, which means an improvement in a decades-old enumeration problem propagates into the exponent of four separate planar algorithms without anyone touching the algorithms. It also fixes where the next improvement comes from: these bounds move again the moment the enumeration does.",
+            "background_md": "Planar graphs — those drawable without edges crossing — admit algorithms running in time exponential in √n rather than in n, which is the difference between a thousand-vertex instance being hopeless and being a long afternoon. The route is a branch decomposition: cut the drawing repeatedly along closed curves, each meeting at most bw(G) vertices, and solve by dynamic programming over what crosses the cut. For planar graphs bw(G) is at most about 2.122√n, and the dynamic program costs some constant raised to bw(G), so the entire cost of the method is hidden in that constant.",
+            "deeper_md": "The constant is set by how many distinct states a cut boundary can carry. For connectivity problems the state is a pairing of boundary vertices into partial paths, and the pairings that can coexist are exactly the non-crossing configurations a planar drawing permits — meandric systems. A meander of order n is a closed Jordan curve crossing a line at 2n points; the authors prove their number is O*(12.806^n) against a previous bound of 12.901 from Albert and Paterson in 2004. The improvement is computational rather than conceptual: they rerun Albert and Paterson's Goulden–Jackson cluster method with standard representatives of length 24 instead of 16, giving 12.805332.\n\nFed into the dynamic program that gives planar travelling salesman in 2^(6.876√n), and 2^(5.543√n) once Dorn's fast-matrix-multiplication step cuts the exponent's dependence on the label count from 1 to (ω−1)/2 with ω below 2.372. Planar Hamiltonian cycle lands at the same 2^(5.543√n), longest cycle or path at 2^(5.796√n), Steiner tree at 2^(8.037√n), connected dominating set at 2^(8.251√n).\n\nTwo caveats the paper states plainly: the matrix-multiplication versions need polynomially bounded weights, and the randomised algorithms of Pino, Bodlaender and van Rooij remain faster than all five deterministic bounds. The cluster method also converges slowly — pushing the growth rate down to 3.513 would need representative lengths in the thousands.",
+            "glossary": [
+              {
+                "term": "Meander of order n",
+                "definition": "A single closed curve drawn in the plane that crosses one fixed straight line at exactly 2n points and never touches itself; how many exist for a given n is a long-standing open enumeration problem."
+              },
+              {
+                "term": "Branchwidth bw(G)",
+                "definition": "The largest number of vertices any single cut in a recursive decomposition of a graph must touch; dynamic programming over such a decomposition costs a constant raised to this number, so it is the exponent of everything downstream."
+              },
+              {
+                "term": "O*(·)",
+                "definition": "Big-O with polynomial factors suppressed, so O*(12.806^n) means 12.806^n times something polynomial in n; it is the right notation when the exponential base is the entire result."
+              },
+              {
+                "term": "ω (matrix-multiplication exponent)",
+                "definition": "The exponent in the cost n^ω of multiplying two n × n matrices; the best published value is below 2.372, and any algorithm that can be rewritten as a matrix product inherits it."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Faster Planar Graph Algorithms for Connectivity Problems via Meanders",
+                "url": "https://arxiv.org/html/2610.11944v1",
+                "publisher": "arXiv",
+                "date": "2026-10-08"
+              },
+              {
+                "title": "Dynamic Programming for Graphs on Surfaces",
+                "url": "https://arxiv.org/abs/1104.2486",
+                "publisher": "arXiv",
+                "date": "2011-04-13"
+              },
+              {
+                "title": "New Bounds for Matrix Multiplication: from Alpha to Omega",
+                "url": "https://arxiv.org/abs/2307.07970",
+                "publisher": "arXiv",
+                "date": "2023-07-16"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-decode-time-pruning-calibration",
+            "title": "Prune on what the model says, not on what it was shown",
+            "dek": "Qitong Wang, Xinwei Niu and co-authors show that the weight-pruning masks chosen from a language model's activations on fixed calibration text are the wrong masks for generation, and that recalibrating on the model's own decoding steps lifts a 2:4-sparse Qwen3-14B from 1.85 to 4.18 on a long-form writing benchmark.",
+            "why_it_matters": "Pruning is decided once, offline, from a sample of activations, and essentially every published mask was fitted to activations recorded while the model was fed ground-truth text. During generation the model conditions on its own output instead, so the distribution it actually sees differs — and the paper measures that divergence reaching most of its final size within about twelve decoding steps, which is before any useful output exists. Calibrating where the model will run also makes structured sparsity pay at batch size one for the first time, because the bottleneck there is mask metadata rather than arithmetic.",
+            "background_md": "Pruning a language model means zeroing some fraction of each weight matrix and keeping the rest, chosen so the layer's output on representative inputs changes least. That choice needs a sample of activations, and standard practice is to push a few hundred thousand tokens of web text through the dense model with the true next token always supplied — teacher forcing — and record what each layer sees. Structured patterns such as N:M, where every group of M consecutive weights holds exactly N non-zeros, are preferred over scattered zeros because the positions fit in a fixed-size mask the hardware can index densely.",
+            "deeper_md": "Two separate results. The calibration one: generating continuations with the dense model and calibrating on decode-step activations rather than C4 text reduces the worst-case activation discrepancy in at least 87% of prunable modules, with median ratios of 1.81–3.26, and the discrepancy reaches 90% of its plateau by decoding step 12 in every layer. Fed to the same SparseGPT backend with 1M calibration tokens, WritingBench scores at 2:4 sparsity move from 1.85 to 4.18 on Qwen3-14B and 2.99 to 5.31 on Qwen3-32B, against 5.97 and 6.48 dense.\n\nThe kernel one: existing 2:4 sparse tensor-core kernels reach only 0.85–0.87× of dense speed while decoding, because a batch-one decode step is a matrix-vector product where index metadata, not multiplication, is the cost. A Triton kernel storing one bitmask bit per input column — about 2 bits of metadata per non-zero at 50% sparsity against 32 for int32 indices — gives 1.42× on Llama-3.1-8B at 2:4, peaking at 1.48×.\n\nCaveats: quality is scored by a model judge, ClassEval is only 100 tasks, and absolute numbers stay far below dense — Llama-3.1-8B moves 1.34 to 1.52 against 3.70. Timing is A100-only at a single context length.",
+            "glossary": [
+              {
+                "term": "N:M sparsity",
+                "definition": "A structured pattern in which every group of M consecutive weights holds exactly N non-zeros, so the positions fit a fixed-size mask and hardware can skip the zeros without irregular addressing."
+              },
+              {
+                "term": "Teacher forcing",
+                "definition": "Running a model with the correct next token supplied at every step rather than its own prediction; it is how models are trained and how calibration data is usually collected, and it is not how they are used."
+              },
+              {
+                "term": "Calibration set",
+                "definition": "The sample of activations a post-training compression method fits to; whatever distribution it is drawn from becomes the distribution the resulting weights are optimal for."
+              },
+              {
+                "term": "GEMV (matrix-vector product)",
+                "definition": "The single-column matrix multiply a decode step performs; it reads an entire weight matrix to produce one output vector, so it is limited by memory and metadata traffic rather than by multipliers."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "SparseDecoding: Decoding-Aware Pruning for Accurate and Efficient LLM Inference",
+                "url": "https://arxiv.org/html/2610.12327v1",
+                "publisher": "arXiv",
+                "date": "2026-10-08"
+              },
+              {
+                "title": "SparseGPT: Massive Language Models Can Be Accurately Pruned in One-Shot",
+                "url": "https://arxiv.org/abs/2301.00774",
+                "publisher": "arXiv",
+                "date": "2023-01-02"
+              },
+              {
+                "title": "A Simple and Effective Pruning Approach for Large Language Models (Wanda)",
+                "url": "https://arxiv.org/abs/2306.11695",
+                "publisher": "arXiv",
+                "date": "2023-06-20"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "ADC architectures",
+    "slug": "adc-architectures",
+    "subtitle": "Flash, successive approximation, sigma-delta and pipeline: four ways to spend area, clock cycles, bandwidth or latency on the same job.",
+    "tldr": "Every analogue-to-digital converter does the same thing — compare an input against a reference and write down the answer — and the architectures in production differ mainly in what they spend to do it. Flash spends area, successive approximation spends clock cycles, sigma-delta spends bandwidth, pipeline spends latency. Which one you can afford is decided by two numbers nobody argues with: the quantisation step and kT/C.",
+    "sections": [
+      {
+        "heading": "The two numbers nobody gets around",
+        "body_md": "Start with the error you cannot remove. A converter with full-scale range V_FS and B bits has a step Δ = V_FS/2^B, and rounding to the nearest step leaves a noise power of Δ²/12 — the variance of a uniform distribution one step wide. That is the ceiling on signal-to-noise ratio before a single transistor has been drawn.\n\nThe second number is the one that ends arguments. The switch and capacitor that freeze the input add thermal noise of k_B·T/C in volts squared, and that has to sit below the quantisation noise or the extra bits are decoration. Requiring k_B·T/C < Δ²/12 gives C > 12·k_B·T·2^(2B)/V_FS², and because the demand grows as 4^B, Vollrath's lecture table at V_FS = 3.3 V runs from about 0.3 fF at 8 bits to 80 fF at 12 bits, 20.6 pF at 16 bits and 1.32 µF at 24 bits. A 24-bit Nyquist-rate sampler is not a hard design problem; it is a refusal.",
+        "deeper_md": "Two things that table quietly assumes. It is a single-ended sampler with one capacitor, so a differential front end and any noise contributed by the reference, the buffer or the comparator all push the requirement higher still. And it is a *Nyquist-rate* requirement: the whole reason high-resolution converters oversample is to stop paying 4^B in capacitance, which is the subject of the sigma-delta section below. The required capacitance also fights bandwidth, because the sampling network is an RC filter — Vollrath gives the settling constraint as R < 0.72/(B·f_s·C), so every femtofarad added for noise tightens the switch resistance you are allowed."
+      },
+      {
+        "heading": "Flash: one comparator per code",
+        "body_md": "The direct way to digitise is to test every code at once. Build a resistor ladder generating 2^B − 1 reference levels, hang a comparator on each, and after a single clock edge the set of comparators that fired is the answer — a thermometer code, which logic turns into binary. Nothing is faster, and nothing is this expensive: comparators, ladder taps, input capacitance and power all scale as 2^B, so each extra bit doubles the converter.\n\nThere is a second, worse scaling. Every comparator needs an input-referred offset below half a step, and offset is a statistical property of device mismatch, which shrinks only as the square root of transistor area. So each extra bit halves the allowed offset *and* raises the area each of the now twice-as-many comparators needs. That is why flash converters live in the low-resolution, high-speed corner and stay there — the representative flash part in Vollrath's survey is 10 bits at 50 MSps. Flash mostly survives inside other architectures, as the coarse stage of a pipeline or the single comparator of a SAR loop."
+      },
+      {
+        "heading": "SAR: a binary search in the charge domain",
+        "body_md": "Successive approximation replaces 2^B − 1 comparators with one comparator used B times. Sample the input onto an array of binary-weighted capacitors, switch the largest capacitor to the reference, and ask the comparator whether the result sits above or below zero. Keep that bit or drop it, move to the next capacitor, and after B comparisons the capacitor array itself holds the digital word.\n\nThe elegant part is that the array is simultaneously the sample-and-hold and the digital-to-analogue converter: charge redistribution performs the subtraction, so almost nothing in the loop needs voltage gain. That is why SAR has eaten the middle of the market and why it tracks CMOS scaling — comparator, logic and switches all get smaller and faster, and matching comes from capacitor *ratios* rather than absolute values. Firlej and colleagues' 65 nm prototypes make it concrete: 10 nominal bits, 8.9 to 9.3 effective bits, roughly 400 µW at 40 MSps for the low-power variant, integral and differential non-linearity under 1 LSB on five of eight dies, laid out on a 60 µm pitch so the block can be repeated per channel."
+      },
+      {
+        "heading": "Sigma-delta: pay in bandwidth",
+        "body_md": "If quantisation noise power is stuck at Δ²/12, one escape is to stop putting all of it in band. Sample much faster than the signal needs — that ratio is the oversampling ratio — and the same total noise power spreads across a band OSR times wider, so a digital low-pass filter discards most of it. That alone buys 3 dB, half a bit, per doubling of OSR, which follows directly from the Δ²/12 figure above.\n\nNoise shaping does far better. Put a coarse quantiser, often a single bit, inside a feedback loop containing an integrator. The loop forces the quantiser's own error through a high-pass response, so in-band noise density is pushed out to frequencies the decimation filter removes anyway. The result is an architecture whose analogue front end is nearly trivial — a one-bit quantiser has no linearity to get wrong — and whose digital back end is large. Vollrath's survey range puts sigma-delta at 12 to 24 bits over 4 Hz to 40 MHz. The bill arrives as latency: the decimation filter has group delay, so sigma-delta is a poor choice inside a fast control loop."
+      },
+      {
+        "heading": "Pipeline: cut the search into stages",
+        "body_md": "A pipeline keeps the binary search but unrolls it in space. Stage one resolves a few bits with a small flash converter, reconstructs what it just decided with a DAC, subtracts that from its held input, and amplifies the residue so the next stage again sees a full-scale signal. Each stage then works on a different sample at the same time, so throughput is one sample per clock while latency is as many clocks as there are stages.\n\nThe residue amplifier is the catch. Each gain stage must be accurate to the resolution of everything downstream, which needs open-loop gain and therefore voltage headroom — exactly what every new CMOS node takes away. The industry's answer has been to let the stages be sloppy and repair them in the digital domain: add redundant comparator levels so a decision near a threshold can be corrected by a later stage, and calibrate stage gains after the fact. That is why pipelines span the widest range of any architecture here, 8 to 16 bits at 1 MHz to 4 GHz in Vollrath's survey, and why their design effort sits in the digital half.",
+        "deeper_md": "The redundancy trick is worth seeing concretely. In a 1.5-bit-per-stage pipeline each stage resolves three decision levels instead of four, so the residue it hands on is guaranteed to stay inside the next stage's input range even if its own comparators are off by up to a quarter of full scale. The cost is that the stages produce overlapping codes which have to be added with carries rather than concatenated — the digital correction. It is the same bargain as error-correcting codes: spend redundancy to relax a component tolerance, because in CMOS the redundancy is cheaper than the tolerance."
+      },
+      {
+        "heading": "Where the limits bind, and who keeps score",
+        "body_md": "Two effects decide the top corner. The first is clock jitter: for a sine input the sampled error is slope times timing error, so the attainable ratio is −20·log₁₀(2π·f_x·σ) for jitter standard deviation σ. Notice what is missing — resolution. Jitter sets a ceiling that depends only on input frequency, and halving σ buys 6 dB, one bit, wherever you are. The second is thermal noise, which is where the kT/C arithmetic returns.\n\nThe field keeps score with the energy a converter spends per sample divided by 2^ENOB, quoted in femtojoules per conversion step. Jonsson's survey traces the state of the art moving off the Walden model, where that energy doubles per extra bit, onto a thermal model where it quadruples — the signature of thermal noise rather than mismatch setting the floor — reaching about 2.2 fJ per conversion step by 2013 with almost no movement below 9 bits. For contrast, Chao and colleagues' 10-bit 13 GS/s frequency-interleaved converter reports 45.8 dB SNDR at Nyquist and 12.7 fJ per conversion step: speed is expensive. Murmann's survey, covering 1997 to 2026 from ISSCC and VLSI papers, is where any such claim gets checked."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Δ (quantisation step)",
+        "definition": "The input voltage one output code represents, V_FS/2^B. Rounding to the nearest step leaves a noise power of Δ²/12, which is the error no amount of good analogue design removes."
+      },
+      {
+        "term": "kT/C noise",
+        "definition": "The mean-square voltage k_B·T/C that thermal noise in a sampling switch leaves on the sampling capacitor. It depends only on temperature and capacitance, not on how good the switch is, which is why it cannot be designed away."
+      },
+      {
+        "term": "LSB (least significant bit)",
+        "definition": "The smallest code change, so one LSB equals Δ. Linearity errors are quoted in LSBs because that is the unit the digital output is actually measured in."
+      },
+      {
+        "term": "ENOB (effective number of bits)",
+        "definition": "The resolution a converter really delivers once noise and distortion are counted, back-calculated from measured signal-to-noise-and-distortion ratio. It always falls below the nominal bit count, and it is the number any efficiency score must use."
+      },
+      {
+        "term": "OSR (oversampling ratio)",
+        "definition": "Sampling rate divided by twice the signal bandwidth — the factor by which quantisation noise power is spread outside the band of interest before the decimation filter throws it away."
+      },
+      {
+        "term": "INL and DNL",
+        "definition": "Integral and differential non-linearity: how far a code's threshold sits from the ideal straight line, and how far one step differs from Δ. A DNL of −1 LSB means a code is missing entirely."
+      },
+      {
+        "term": "fJ/conversion-step",
+        "definition": "Energy per sample divided by 2^ENOB, the field's standard efficiency score. Plotting it against ENOB shows which physical limit is binding: a slope of 2× per bit means mismatch, 4× per bit means thermal noise."
+      }
+    ],
+    "try_this": "Pull `xls/ADCsurvey_rev20260801.xlsx` out of Boris Murmann's survey repository and open the energy-against-SNDR scatter. Then do one division by hand: Firlej and colleagues' low-power 65 nm SAR prototype draws about 400 µW at 40 MSps with roughly 9.3 effective bits, so work out its energy per sample and divide by 2^9.3 to get femtojoules per conversion step. Put that point on the survey cloud and you can see immediately what a multi-channel detector-readout design trades away against an ISSCC front-runner — then run the same arithmetic on the 12.7 fJ/conversion-step figure Chao and colleagues quote for their 13 GS/s converter and ask which of the two you would rather have in a probe-station data path.",
+    "sources": [
+      {
+        "title": "ADC Performance Survey 1997-2026 (data and plots from ISSCC and VLSI Circuit Symposium)",
+        "url": "https://github.com/bmurmann/ADC-survey",
+        "publisher": "B. Murmann (GitHub)",
+        "date": "2026"
+      },
+      {
+        "title": "Interface Electronics 08 — ADC sampling and error: quantisation noise, kT/C, settling and clock jitter",
+        "url": "https://personalpages.hs-kempten.de/~vollratj/InEl/2025_08_InEl_ADC_Sampling_Jitter.html",
+        "publisher": "Hochschule Kempten (J. Vollrath)",
+        "date": "2026"
+      },
+      {
+        "title": "Ultra-low power 10-bit 50-90 MSps SAR ADCs in 65 nm CMOS for multi-channel ASICs",
+        "url": "https://arxiv.org/abs/2312.14592",
+        "publisher": "arXiv",
+        "date": "2023-12-22"
+      },
+      {
+        "title": "A Timing-Robust Frequency-Interleaved ADC with Embedded Analog Fourier Transform",
+        "url": "https://arxiv.org/abs/2610.02936",
+        "publisher": "arXiv",
+        "date": "2026-10-02"
+      },
+      {
+        "title": "ADC Energy Efficiency Trends",
+        "url": "https://converterpassion.wordpress.com/2013/06/08/adc-energy-efficiency-trends/",
+        "publisher": "Converter Passion (B. E. Jonsson)",
+        "date": "2013-06-08"
+      }
+    ]
+  }
+}

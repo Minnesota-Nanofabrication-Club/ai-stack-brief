@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-10-11",
+      "foundations_slug": "adc-architectures",
+      "foundations_topic": "ADC architectures",
+      "headline": "A quiet weekend in the stack, with no preprint announcements since Friday: the sharpest result still standing is Susanna Caroppo and Giordano Da Lozzo's count of planar meanders, which drops the best known deterministic running time for planar travelling salesman to 2^(5.543√n).",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-10-10",
       "foundations_slug": "euv-optics-and-multilayers",
       "foundations_topic": "EUV optics and Bragg multilayers",
@@ -549,6 +562,6 @@
       ]
     }
   ],
-  "generated_at": "2026-10-10T14:29:03Z",
-  "latest": "2026-10-10"
+  "generated_at": "2026-10-11T14:48:49Z",
+  "latest": "2026-10-11"
 }

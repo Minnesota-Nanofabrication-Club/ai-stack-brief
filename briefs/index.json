@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-10-12",
+      "foundations_slug": "euv-stochastics-and-ler",
+      "foundations_topic": "Stochastics, shot noise, and line-edge roughness",
+      "headline": "Seungki Hong, Kyeongwon Jeong and Taekwang Jang find two-thirds of an Ising machine's spin flips merely undo the previous one, and subtracting that feedback reaches a 33,000 cut on a 2,000-node graph in 0.05 milliseconds — 5.2 times faster than any published hardware.",
+      "item_count": 7,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-10-11",
       "foundations_slug": "adc-architectures",
       "foundations_topic": "ADC architectures",
@@ -562,6 +575,6 @@
       ]
     }
   ],
-  "generated_at": "2026-10-11T14:48:49Z",
-  "latest": "2026-10-11"
+  "generated_at": "2026-10-12T17:29:10Z",
+  "latest": "2026-10-12"
 }

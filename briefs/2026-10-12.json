@@ -1,0 +1,455 @@
+{
+  "date": "2026-10-12",
+  "generated_at": "2026-10-12T18:20:00Z",
+  "window": "2026-10-11..2026-10-12",
+  "headline": "Seungki Hong, Kyeongwon Jeong and Taekwang Jang find two-thirds of an Ising machine's spin flips merely undo the previous one, and subtracting that feedback reaches a 33,000 cut on a 2,000-node graph in 0.05 milliseconds — 5.2 times faster than any published hardware.",
+  "pulse": {
+    "read_time_min": 8,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-helium-backscatter-sputtering",
+            "title": "Helium that bounces off a sputter target buries itself in the film",
+            "dek": "Pascal Brault, Anne-Lise Thomann and Alejandro Borroto simulated magnetron sputtering — growing a metal film by knocking atoms off a target with gas ions — and found helium reflected back off that target ends up trapped in titanium at roughly 60 atoms per 100 titanium atoms, against 12 in aluminium.",
+            "why_it_matters": "Sputtering is normally treated as a transport problem with the working gas as an inert carrier that leaves again. An incorporation threshold near 20 eV, saturating by 100 eV, says the gas is instead a second deposited species whose dose is set by the mass ratio of gas to target and by discharge voltage, neither of which appears in a recipe as a deposition parameter. The consequence shows up later and thermally: helium leaving titanium from about 950 K takes titanium atoms with it and leaves porosity, so a furnace step after deposition can un-make the film.",
+            "background_md": "Magnetron sputtering grows a film by accelerating working-gas ions into a target so target atoms are ejected and condense on a substrate. Not everything reaching the substrate came off the target. A fraction of the incident ions pick up an electron at the target surface, reflect, and cross the chamber as fast neutral atoms carrying tens of electronvolts. Light gases reflect most efficiently, because a light projectile rebounds from a heavy nucleus instead of transferring its momentum to it. Those neutrals carry no charge, so the plasma sheath does not steer them and no standard process monitor sees them.",
+            "deeper_md": "The reported helium-to-metal atomic ratio reaches about 60% in titanium against about 12% in aluminium. Energy is the knob. Thermal helium is essentially not incorporated at all; efficient trapping begins near 20 eV and saturates near 100 eV, which brackets the energies a few-hundred-volt magnetron discharge gives a backscattered neutral. Argon shows negligible trapping even at matched kinetic energy or matched momentum, so this is not a stopping-power argument — it is about whether a small atom fits an interstitial site and stays there.\n\nAnnealing separates the two metals. In titanium, helium and titanium desorb together from around 950 K and leave a porous structure behind; in aluminium the helium only leaves at higher temperature, after surface aluminium has already been removed.\n\nThe caveat is the method: classical molecular dynamics on a simulated growth, not a measurement, and the authors report no experimental comparison. Experiment is not far away, though. Sputter-deposited titanium films have been prepared with up to 30 at.% helium and studied by thermal desorption, and a 2026 reactive-sputtering study attributes post-anneal porosity in titanium-oxide films to energetic backscattered helium.",
+            "glossary": [
+              {
+                "term": "Backscattered neutral",
+                "definition": "A working-gas ion that is neutralised and reflected at the target instead of sputtering it, and then crosses the chamber as a fast uncharged atom that no bias voltage can deflect."
+              },
+              {
+                "term": "eV (electronvolt)",
+                "definition": "The energy one electron gains falling through one volt; a magnetron running at a few hundred volts therefore delivers ions and reflected neutrals at energies of tens to hundreds of eV."
+              },
+              {
+                "term": "at.% (atomic percent)",
+                "definition": "The fraction of all atoms in a film that are of a given species, counted per atom rather than per unit mass, so 30 at.% helium means three atoms in ten are helium."
+              },
+              {
+                "term": "Interstitial site",
+                "definition": "A gap between the atoms of a crystal lattice large enough to hold a foreign atom without replacing a host atom; how deep that trap is decides whether a gas atom stays or diffuses out."
+              }
+            ],
+            "fab_angle": "A club sputterer running argon is, by this paper's account, the safe case. The transferable point is that the working gas is a deposition species, not a carrier: swap in something lighter to change film stress or morphology and you are also implanting it, at a dose set by the target's mass and your discharge voltage rather than by the flow controller. If a sputtered film blisters or goes porous after a tube-furnace step, suspect trapped working gas before suspecting the metal.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Energy-dependent trapping of backscattered helium during magnetron sputtering growth: A molecular dynamics study",
+                "url": "https://arxiv.org/abs/2610.13509",
+                "publisher": "arXiv",
+                "date": "2026-10-09"
+              },
+              {
+                "title": "Thermal Annealing Behavior of Helium in Ti Films Deposited by Magnetron Sputtering",
+                "url": "https://cpl.iphy.ac.cn/article/doi/10.1088/0256-307X/29/1/012501",
+                "publisher": "Chinese Physics Letters 29(1) 012501",
+                "date": "2012"
+              },
+              {
+                "title": "Enhanced hydrogen response of copper-doped TiO2 synthesised by helium-assisted magnetron sputtering",
+                "url": "https://arxiv.org/abs/2607.03268",
+                "publisher": "arXiv",
+                "date": "2026-07-03"
+              }
+            ]
+          },
+          {
+            "id": "silicon-grain-growth-side-count",
+            "title": "A grain grows or shrinks on its side count, not on its size",
+            "dek": "Yuntong Huang, Zhihao Li and co-authors built a grain-growth simulator around the one law of two-dimensional coarsening that contains no length — area changes at a rate fixed only by a grain's number of neighbours — and report it reaching half the starting grain count about 137 times faster than the phase-field solver they checked it against.",
+            "why_it_matters": "The useful content of that law is negative: geometry does not enter it, so no choice of grain shape slows coarsening, and the only levers are boundary mobility and anything that pins a boundary. What a cheap solver buys is the statistics of the rare event rather than the average, and the paper's own application is exactly that — give a tenth of the grains a higher mobility and the chance that one runs away rises from 0.17 to 0.83 as the mobility contrast goes from about 1 to 3. That is the regime where an annealed metal line stops being a population of grains and becomes a handful.",
+            "background_md": "A sputtered or plated metal film is a mosaic of crystal grains meeting at boundaries. Heat it and the mosaic coarsens: boundaries move to cut their total area, small grains disappear, large ones absorb them. The grain size that results is not cosmetic — electron scattering at grain boundaries is one of the two mechanisms that make a thin film more resistive than bulk metal, and boundaries are also the fast diffusion paths along which atoms move under current. In two dimensions, with isotropic boundary energy and 120° triple junctions, coarsening obeys von Neumann and Mullins: dA/dt = (π/3)mγ(n − 6).",
+            "deeper_md": "A grain with more than six sides grows, one with fewer than six shrinks, and a hexagon holds its area — with no dependence on how big the grain is or what shape it is, only on n. VN-GraphGG turns a 128 × 128 pixel microstructure into a graph of grain nodes and junction nodes, advances each area by an explicit Euler step on (n − 6), and asks a heterogeneous graph-convolutional decoder to repaint the pixels, which is also where topology changes get handled.\n\nReconstruction lands at 96.46% of pixels, mean area error 2.04 pixels per grain, 0.020% of grains lost. Over 50 steps the grain count falls from 266 to 76 while the mean interior side number stays between 5.45 and 5.85, against the ideal six. Mean wall time to half the initial grain count is 38.43 s versus 5,247.01 s for the MOOSE phase-field comparison, both on one CPU thread.\n\nTwo things to hold against it. The fitted mobility comes out 3.8–4.1% below the prescribed value, so the integrator leaks. And the phase-field comparison pairs states by grain count rather than by time, each case was run once, and the whole thing is two-dimensional on a small grid — the law as written is a 2D result and the paper does not claim otherwise.",
+            "glossary": [
+              {
+                "term": "Grain boundary",
+                "definition": "The interface where two crystallites of the same material meet at a mismatched orientation; it costs energy per unit area, which is what drives it to move and shrink."
+              },
+              {
+                "term": "n (topological class)",
+                "definition": "The number of neighbouring grains a grain touches in a two-dimensional section — the only variable on the right-hand side of the von Neumann–Mullins growth law."
+              },
+              {
+                "term": "Phase-field model",
+                "definition": "The standard way to simulate microstructure: assign every point continuous order parameters, evolve them by a partial differential equation, and let boundaries emerge where the parameters change — accurate and expensive."
+              },
+              {
+                "term": "Abnormal grain growth",
+                "definition": "Coarsening in which a few grains with faster-moving boundaries consume the rest, leaving a bimodal size distribution instead of a uniformly scaled-up one."
+              }
+            ],
+            "fab_angle": "Anneal a sputtered aluminium line in the club's tube furnace and the resistance afterwards is partly a statement about grain size, because boundaries scatter electrons. The topology result is why no layout choice touches that: shape does not appear in the law, only side count and boundary mobility. Mixed texture across a film is the condition that produces a few runaway grains, so a deposition recipe that leaves texture uncontrolled is also leaving post-anneal line resistance uncontrolled.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "VN-GraphGG: von Neumann–Mullins-based graph grain growth simulation",
+                "url": "https://arxiv.org/html/2610.13418v1",
+                "publisher": "arXiv",
+                "date": "2026-10-09"
+              },
+              {
+                "title": "Two-dimensional grain boundary networks: stochastic particle models and kinetic limits",
+                "url": "https://ar5iv.labs.arxiv.org/html/1810.07828",
+                "publisher": "Klobusicky, Menon and Pego (arXiv)",
+                "date": "2018-10"
+              },
+              {
+                "title": "Resistivity scaling in metallic thin films and nanowires due to grain boundary and surface roughness scattering",
+                "url": "https://arxiv.org/abs/1606.05972",
+                "publisher": "arXiv",
+                "date": "2016-06"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-anechoic-onsager-echo",
+            "title": "Two-thirds of an Ising machine's flips were undoing the last one",
+            "dek": "Seungki Hong, Kyeongwon Jeong and Taekwang Jang show that an Ising machine — hardware that solves optimisation problems by relaxing a lattice of ±1 spins — wastes about two-thirds of its spin flips reversing the previous step's flip, and that subtracting that self-feedback reaches a target 2,000-node Max-Cut in 0.05 milliseconds on an FPGA.",
+            "why_it_matters": "Updating every spin in the same clock cycle is the entire reason this problem is worth putting in hardware, and it is also what manufactures the artefact, because each neighbour's new state still carries the spin's own previous state back to it. Identifying that feedback as an Onsager reaction term makes it computable from one population count per step, so the fix is a table lookup and an add in each decision lane rather than a different machine. It also marks the boundary of the method: the correction does nothing for constrained problems, where only 4–5% of runs finish with a balanced partition.",
+            "background_md": "Scheduling, routing and layout problems can be rewritten as finding the lowest-energy arrangement of a lattice of ±1 variables coupled in pairs — the Ising model. An Ising machine searches that energy landscape directly in hardware: compute each spin's local field from its neighbours and their coupling weights, then flip it with a probability set by the field and a falling temperature. Updating one spin at a time is faithful to the physics but serial. Updating all of them at once in a single cycle is what makes a chip worth building, and it also violates the assumption behind the update rule, since every field is computed from states that are about to change.",
+            "deeper_md": "Dynamical mean-field theory names the artefact: it is an Onsager reaction term with lag-one coefficient c(t) = n_lin(t)/(2T_t), where n_lin counts the spins whose flip probability lies strictly between 0 and 1. The decision field becomes z_i(t) = s_i(t)[h_i(t) − λ_t·c(t−1)·s_i(t−1)] + q, with λ between 0.7 and 1.05. Because n_lin is a population count over flags the decision lanes already produce, the hardware cost is one popcount, one table entry per step, and one add or subtract per lane; a variant replaces c by κT and needs no count at all.\n\nOn K2000, a 2,000-node complete graph, reaching a cut of 33,000 within 500 steps succeeds in 87% of runs against 16% for uncorrected stochastic cellular automata. Twelve engines at 250 MHz on an AMD Alveo V80 reach 99% success in 0.050 ms, at about 108 W and 5.4 mJ per solution, against 0.26 ms for ballistic simulated bifurcation.\n\nThe authors state the limits themselves: the 22 nm figure near 10 µs is a simulated design and not measured silicon, the baselines were re-implemented from their papers' settings, and travelling-salesman runs return valid but poor tours.",
+            "glossary": [
+              {
+                "term": "Max-Cut",
+                "definition": "Split a graph's vertices into two sets so that as many edges as possible run between the sets; the count of such edges is the cut, and maximising it is NP-hard."
+              },
+              {
+                "term": "Spin (±1 variable)",
+                "definition": "The binary unit of an Ising machine, taking value +1 or −1, whose energy depends on the sign and weight of its coupling to every other spin it touches."
+              },
+              {
+                "term": "Onsager reaction term",
+                "definition": "In mean-field dynamics, the part of a variable's local field that is its own earlier state returning through its neighbours — a self-echo that must be subtracted for the mean-field description to be correct."
+              },
+              {
+                "term": "popcount",
+                "definition": "A single instruction or small logic block that counts how many bits in a word are set; here it is what makes the correction cost nothing extra in hardware."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Anechoic: Onsager-Corrected Parallel Annealing for Sub-0.1 ms Dense Max-Cut on an FPGA",
+                "url": "https://arxiv.org/html/2610.13368v1",
+                "publisher": "arXiv",
+                "date": "2026-10-09"
+              },
+              {
+                "title": "skethz/anechoic — RTL, CUDA kernel, 22 nm ASIC variants, baselines and Lean 4 / Rocq proofs",
+                "url": "https://github.com/skethz/anechoic",
+                "publisher": "Hong, Jeong and Jang (GitHub)",
+                "date": "2026"
+              },
+              {
+                "title": "A proof-of-principle experiment on the spontaneous symmetry breaking machine and numerical estimation of its performance on the K2000 benchmark problem",
+                "url": "https://arxiv.org/abs/2512.17922",
+                "publisher": "arXiv",
+                "date": "2025-12-08"
+              }
+            ]
+          },
+          {
+            "id": "chips-tpcs-transaction-pruned-simulation",
+            "title": "An RTL simulator that skips dead logic with an ordinary branch",
+            "dek": "Chengzhen Meng and co-authors replaced the event queue and the activity-bit arrays of hardware simulation with plain C++ function calls, so inactive logic is skipped by a host-processor branch rather than tracked, and report 36 to 42 times the throughput of parallel Verilator on a multicore RISC-V design.",
+            "why_it_matters": "Pre-silicon schedules are mostly spent waiting on simulation, and the reason simulation is slow is structural rather than incidental: a description written in terms of signals has to run on a machine that executes instructions, and bridging that costs either an event queue or per-signal bookkeeping that itself has to be paid every cycle. Compiling each clock cycle into nested function calls hands the activity tracking to the processor's own branch prediction. The second number is what decides whether a fast simulator can double as a design entry language: the same description synthesises within 4.7% of handcrafted Verilog on clock period and 4.0% on standard-cell area.",
+            "background_md": "A register-transfer-level description defines every signal in a chip as a function of other signals. Simulating it means computing, every clock cycle, the new value of each signal in an order that respects those dependencies. Most signals do not change in a given cycle, so most of that work is redundant — but discovering which ones changed costs something too, and the balance between those two costs is what separates one simulator from another. Event-driven simulators keep a queue of pending changes and pay scheduling overhead; cycle-based compilers evaluate every node in a fixed topological order and pay for the dead ones.",
+            "deeper_md": "Transaction-Pruned Cycle Simulation compiles combinational blocks into C++ functions reached through function pointers, with the execution order fixed at construction: block dependencies are projected onto the lowest common ancestor of their owning instances and topologically sorted. Each cycle runs an execute stage and then a commit stage that applies deferred state writes. There is no event queue, no runtime scheduler and no activity-bit array, because a disabled transaction is simply not called.\n\nAgainst parallel Verilator on a RISC-V symmetric multiprocessor built from 5-stage in-order cores with 32 KB four-way L1s: 40× at one core, 42× at four, 36× at eight, with TPCS's own peak at two or three threads. Against single-threaded Verilator on accelerators it is 3.4–4.4× in full mode and 4.6–7.2× in burst mode, and 2.70× against Chisel compiled through GSIM, which does track activity bits.\n\nThe authors are explicit about what is missing: debugging, waveform and diagnostic infrastructure are immature, and coverage stops at cycle-synchronous designs — no clock-domain crossings, no asynchronous primitives, no gated clocks.",
+            "glossary": [
+              {
+                "term": "RTL (register-transfer level)",
+                "definition": "A description of hardware as registers plus the combinational functions that compute each register's next value, which is the level at which chips are actually designed and verified."
+              },
+              {
+                "term": "Event-driven simulation",
+                "definition": "Simulating by keeping a time-ordered queue of signal changes and evaluating only the logic each change reaches; exact, but the queue itself costs more than the logic on a dense design."
+              },
+              {
+                "term": "Verilator",
+                "definition": "The standard open-source tool that compiles Verilog into a C++ model rather than interpreting it, evaluating every node in topological order once per cycle."
+              },
+              {
+                "term": "Clock-domain crossing",
+                "definition": "A signal passing between two parts of a chip clocked independently, where the receiving flip-flop can sample mid-transition; handling it needs synchroniser logic and a simulator that models asynchrony."
+              }
+            ],
+            "fab_angle": "For a club taping a cell out on an open PDK, the synthesis number matters more than the speedup. A generator whose output lands within roughly 3% of handcrafted Verilog on both clock period and standard-cell area is usable as design entry rather than only as a model, and the flow used here — OpenROAD on the ASAP7 predictive library — is the same free toolchain a student can install and rerun.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "TPCS: A Cycle-Level Simulation Paradigm with Native Execution Semantics for RTL Modeling and Generation",
+                "url": "https://arxiv.org/html/2610.13067v1",
+                "publisher": "arXiv",
+                "date": "2026-10-09"
+              },
+              {
+                "title": "GSIM: Accelerating RTL Simulation for Large-Scale Designs",
+                "url": "https://arxiv.org/html/2508.02236v1",
+                "publisher": "arXiv",
+                "date": "2025-08"
+              },
+              {
+                "title": "Verilator — overview of the Verilating flow",
+                "url": "https://verilator.org/guide/latest/overview.html",
+                "publisher": "Veripool / Verilator documentation",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-cacheflex-l2-scratchpad",
+            "title": "Turning part of the L2 into a scratchpad because L1 cannot grow",
+            "dek": "Jingqun Zhang, Maohua Nie and co-authors report at MICRO 2026 that the binding constraint on wide vector units is first-level cache capacity, and convert part of a core's private second-level cache into software-managed scratchpad instead — 1.44 times on matrix multiply at 2,048-bit vectors, for 2.02% more area.",
+            "why_it_matters": "Vector width has been the cheapest way to add peak arithmetic throughput, and this measures what it actually delivers: widening from 512-bit to 2,048-bit quadruples peak half-precision throughput and returns 1.6 times, with the unit's utilisation falling from 72% to 29%. Doubling first-level bandwidth changes nothing, so the shortage is capacity, and capacity there is pinned by a single-digit-cycle latency requirement inside the pipeline. Moving the staging buffer one level out and handing it to software buys the capacity without the latency, and it also moves the decision about what stays resident from a replacement policy to the compiler.",
+            "background_md": "A processor's first-level data cache is the only memory it can reach in a few cycles, and it is small precisely because of that: capacity costs access latency, and the latency sits on the pipeline's critical path. Everything beyond it — a private second-level cache, a shared third level, DRAM — is larger and slower in step. A cache chooses what to keep by hardware policy inferred from past accesses. A scratchpad is the same SRAM with the policy removed: software names an address inside it and the data stays until software says otherwise, with no tag lookup, no address translation and no coherence traffic.",
+            "deeper_md": "CacheFlex converts a configurable subset of the private L2's ways into scratchpad at run time. Each slot is one 64-byte line addressed by its way and set index, so a 2,048-bit vector access spans four slots; the tag array is overloaded to hold the owning thread's ID and a new coherence state marks scratchpad lines. Conversion is lazy — a resident line is written back or invalidated only when a scratchpad instruction first touches its slot. Three privileged instructions configure and allocate, and four user-level ones move data, including bridges that go cache-to-scratchpad without passing through the register file.\n\nIn gem5, on a 2.5 GHz Armv8-A out-of-order core with a 64 KB L1D and a 512 KB L2, matrix multiply gains a geometric-mean 1.12× at 512-bit vectors and 1.44× at 2,048-bit, with memory-subsystem energy down 26% and 40%. Full BERT-Base prefill layers with FlashAttention reach 1.78×. The added logic is 8,377 µm² at 12 nm and no new SRAM array.\n\nCaveats the authors name: single-core only with no shared-resource contention, half-precision and prefill only, scratchpad data is not coherent so threads cannot share it, and unfused attention gains nothing because the score matrix exceeds both L2 and scratchpad.",
+            "glossary": [
+              {
+                "term": "Scratchpad memory",
+                "definition": "On-chip SRAM that software addresses directly and manages itself, with no tags, no hardware replacement policy and no coherence — predictable, at the cost of someone having to decide what goes in it."
+              },
+              {
+                "term": "Vector length (VL)",
+                "definition": "How many elements one vector instruction operates on; here quoted in units of 128 bits, so VL = 16 means a 2,048-bit register."
+              },
+              {
+                "term": "GEMM",
+                "definition": "General matrix-matrix multiply, the kernel underneath nearly all dense linear algebra and neural-network layers, and the usual benchmark for whether a machine's arithmetic units can be kept fed."
+              },
+              {
+                "term": "Way (cache associativity)",
+                "definition": "One of the several places a given address is allowed to live in a cache; converting ways rather than whole caches is what lets part of the L2 become scratchpad while the rest keeps working."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "CacheFlex: Direct Software-Managed Access to Higher-Level Cache for Scalable Vector Support",
+                "url": "https://arxiv.org/html/2610.12940v1",
+                "publisher": "arXiv",
+                "date": "2026-10-09"
+              },
+              {
+                "title": "MICRO 2026: Main Program — Session 6D, CXL-Based Tiered Memory & Storage",
+                "url": "https://www.microarch.org/micro59/program/",
+                "publisher": "IEEE/ACM International Symposium on Microarchitecture",
+                "date": "2026"
+              },
+              {
+                "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+                "url": "https://arxiv.org/abs/2205.14135",
+                "publisher": "arXiv",
+                "date": "2022-05-27"
+              }
+            ]
+          },
+          {
+            "id": "computing-ember-gpu-access-counters",
+            "title": "GPU oversubscription gets an order of magnitude by ignoring faults",
+            "dek": "Senad-Leandro Lemes Galera and co-authors rebuilt NVIDIA's unified-memory driver so data moves to the GPU when hardware access counters say a region is hot, rather than when a page fault says it is needed, and measured 6.8 to 10.6 times the stock driver across six applications at 1.5 times oversubscription.",
+            "why_it_matters": "A page fault is a poor migration signal because it fires on the first touch and tells you nothing about the hundredth: the driver moves a 2 MiB block of address space to service one access, then evicts it over the same link to service the next fault. Access counters invert the information, reporting only after a region has been touched hundreds of times and without stalling the device. The consequence is about what fits rather than how fast it goes — model sizes that cannot be run at all under manual placement run 4.7 to 16 times faster than the faulting path.",
+            "background_md": "A discrete GPU has its own memory, typically far smaller than the host's. Unified virtual memory lets a program allocate more than fits on the card and leaves a driver to shuttle pages across the interconnect on demand. The mechanism is the one an operating system uses for swap: the GPU's memory management unit raises a fault on a non-resident page, the device stalls, the driver copies the page over, and once device memory is full it must evict something first, over the same link. Oversubscription therefore converts a bandwidth problem into a scheduling one — placement decisions, not peak link rate, set throughput.",
+            "deeper_md": "The stock driver tracks memory in 2 MiB virtual-address blocks and, once more than half a subtree is resident, migrates the rest of the block, so one stray access can pull 2 MiB across. When the device fills, eviction moves onto the fault path under an approximately-LRU policy and the evicted pages become the next faults. The paper's cleanest measurement of that loop: a random-access kernel took 5× fewer faults than a sequential one, yet evicted 26× more data and ran 7× longer.\n\nEmber instead uses the GPU's roughly 256 access counters, which tally device accesses to host-resident memory and notify at a default threshold of 256 without stalling. One notification promotes a 64 MiB span around the block, so a few hundred counters cover a large mapped set. Demand halves every 25 ms; reclamation starts above 90% occupancy and stops at 85%, evicting at most 16 chunks per pass off the hot path.\n\nThe structural limit is that counters only observe host-resident memory, so coldness is inferred from decayed history and a still-hot region can be evicted and fetched twice. On GH200, where a coherent link removes most of the fault-and-evict loop, the gain falls to about 3.5×.",
+            "glossary": [
+              {
+                "term": "Unified virtual memory",
+                "definition": "One address space shared by CPU and GPU, in which a driver migrates pages between host and device memory automatically so a program can allocate more than the card physically holds."
+              },
+              {
+                "term": "Oversubscription factor",
+                "definition": "The ratio of a program's memory footprint to the GPU's physical memory; at 1.5 a third of the working set is always off the card and something must be evicted to bring anything in."
+              },
+              {
+                "term": "Access counter",
+                "definition": "A small hardware tally on the GPU that counts device accesses to a region of host memory and raises a notification past a threshold, reporting use after the fact instead of stalling on first touch."
+              },
+              {
+                "term": "NVLink-C2C",
+                "definition": "The coherent CPU-to-GPU link on parts such as GH200, over which the GPU can read host memory directly rather than migrating pages, which is why the fault-and-evict penalty largely disappears there."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Ember: Making Unified Virtual Memory Practical for Discrete-Memory GPUs",
+                "url": "https://arxiv.org/html/2610.13408v1",
+                "publisher": "arXiv",
+                "date": "2026-10-09"
+              },
+              {
+                "title": "NVIDIA/open-gpu-kernel-modules — the nvidia-uvm kernel module Ember modifies",
+                "url": "https://github.com/NVIDIA/open-gpu-kernel-modules",
+                "publisher": "NVIDIA (GitHub)",
+                "date": "2026"
+              },
+              {
+                "title": "Improving GPU Memory Oversubscription Performance",
+                "url": "https://developer.nvidia.com/blog/improving-gpu-memory-oversubscription-performance/",
+                "publisher": "NVIDIA Technical Blog",
+                "date": "2021"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-elastic-latent-recurrence",
+            "title": "Looping a language model without paying for the loops you skip",
+            "dek": "Faisal Ladhak, Shantanu Acharya and co-authors trained language models whose shared middle block can be run one to four times at inference time, and removed the penalty such models normally pay at a single pass: their 4-billion-parameter model sits 0.52 points below a same-size ordinary model at one loop and 6.7 above it at four.",
+            "why_it_matters": "A looped model is attractive because extra inference compute comes from reusing weights rather than from more parameters or more generated tokens, but until now the option cost something up front — the same model was worse than a plain one when you ran it once, so the depth had to be committed to at training time. Making one loop an explicit training endpoint turns loop count into a serving knob set per request. The memory side matters as much: keeping only the final loop's keys and values holds attention memory at the one-loop level, 3.0 GiB rather than 7.5 GiB for a 128K-token request.",
+            "background_md": "A transformer's depth is fixed when it is trained: a token passes through each layer exactly once. Latent recurrence breaks that by designating a block of middle layers as shared and running it several times, so the same weights do more arithmetic per token without the model holding more parameters and without it emitting extra text to think in. The appeal is that inference compute becomes adjustable after training. The difficulty is that one block must be a good single-pass function and a good many-pass function simultaneously, and training that samples loop counts at random optimises the average rather than either endpoint.",
+            "deeper_md": "The state update carries the result. Rather than replacing the running state with the recurrent block's output, the method takes a gated step toward it, s_i = s_(i−1) + β_i ⊙ (r_i − s_(i−1)), with β learned per token and per channel; in the 0.5B ablations this is the only update rule that matches a non-recurrent baseline at one loop. Each pass is additionally conditioned on its progress i/k and its budget k/K through zero-initialised heads, and loop counts are mixed inside each optimiser update, with a rotating third of data-parallel ranks forced to one loop.\n\nThe cost accounting is the part a serving team would read first. Training at one loop for the first 75% of tokens and only then mixing depths costs about 1.16× baseline compute against 1.62× for mixing throughout; replaying the first loop's mixture-of-experts routes on later loops cuts mixed-depth step time by 11.7%. At four loops the 4B model costs 2.33× time-to-first-token and 2.06× decode latency, and three loops already capture 96% of the gain.\n\nThe authors' own caveats: gains flatten after the second loop, the mixture-of-experts variant was never post-trained, and the released checkpoint's index scores come from their harness with no matched non-recurrent baseline.",
+            "glossary": [
+              {
+                "term": "Latent recurrence",
+                "definition": "Running one shared block of layers repeatedly on a token's hidden state, so added computation happens inside the network rather than by generating more text to reason over."
+              },
+              {
+                "term": "KV cache",
+                "definition": "The stored keys and values from every token already processed, which attention re-reads for each new token; its size grows with context length and is usually what limits how many requests a server can hold."
+              },
+              {
+                "term": "Mixture of experts",
+                "definition": "A layer that holds many parallel sub-networks and routes each token to a few of them, so parameter count rises without the arithmetic per token rising in proportion."
+              },
+              {
+                "term": "TTFT (time to first token)",
+                "definition": "How long a server takes to process the whole prompt and emit the first output token — the compute-bound half of serving, as distinct from the memory-bound decode that follows."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "One Model to Loop Them All: Elastic Latent Recurrence for Language Models",
+                "url": "https://arxiv.org/html/2610.12582v1",
+                "publisher": "arXiv",
+                "date": "2026-10-08"
+              },
+              {
+                "title": "Scaling up Test-Time Compute with Latent Reasoning: A Recurrent Depth Approach",
+                "url": "https://arxiv.org/abs/2502.05171",
+                "publisher": "arXiv",
+                "date": "2025-02-07"
+              },
+              {
+                "title": "Universal Transformers",
+                "url": "https://arxiv.org/abs/1807.03819",
+                "publisher": "arXiv",
+                "date": "2018-07-10"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "Stochastics, shot noise, and line-edge roughness",
+    "slug": "euv-stochastics-and-ler",
+    "subtitle": "At 13.5 nm a photon carries about 92 electronvolts, so an exposure dose is a countable number of them — and the counting error lands on the edge of every printed line.",
+    "tldr": "Shorter-wavelength light carries more energy in each photon, so a fixed exposure energy arrives as fewer, larger packets. At the extreme ultraviolet wavelength used for the most advanced chips, an ordinary dose works out to roughly ten photons per square nanometre, and the random variation in how many land on any small patch of resist is large enough to roughen the edge of a printed line and occasionally to break it outright. Almost every argument in resist development — dose, film thickness, absorption, chemistry — is an argument about that counting error.",
+    "sections": [
+      {
+        "heading": "A dose is a photon count, and at 13.5 nm it is a small one",
+        "body_md": "Start with the number that makes the whole subject exist. A 13.5 nm extreme ultraviolet photon carries about 92 electronvolts; a 193 nm deep-ultraviolet photon carries about 6.4. Energy per photon is fourteen times higher, so at the same dose in millijoules per square centimetre, roughly one fourteenth as many photons arrive.\n\nPut real units on it. Energy per photon in electronvolts is E = 1,240 divided by the wavelength in nanometres, and a dose D in mJ/cm² delivers N = 62.4 × D / E photons per square nanometre. At 92.5 eV and 15 mJ/cm², one published simulation quotes exactly that arithmetic: 10.2 photons per square nanometre.\n\nTen photons per square nanometre is not a lot when the thing you are printing is a few nanometres wide. Photon arrivals are independent, so the count in any fixed area is Poisson-distributed and its standard deviation is the square root of its mean. A 2 nm × 2 nm patch expects about 40 photons and will vary by about six — fifteen percent, before the resist has done anything at all.",
+        "deeper_md": "The constant 62.4 comes from 1 mJ/cm² = 6.242 × 10¹⁵ eV/cm² divided by 10¹⁴ nm² per cm². The relevant count is of *absorbed* photons, not incident ones, and absorption in a thin organic resist is a minority of the incident flux, which makes the effective N smaller still and the relative noise larger. That is the single argument behind metal-containing resists: more absorption per nanometre of film means more events per unit dose, at the same throughput."
+      },
+      {
+        "heading": "Why the noise lands on the edge and not in the middle",
+        "body_md": "A developed resist feature does not have a nominal edge drawn anywhere. The edge is wherever the accumulated exposure crosses the threshold at which the resist's solubility flips, and that contour is found by the optical image, not by the mask. In the bright middle of a line the dose is far above threshold and a fifteen percent fluctuation changes nothing; in the dark middle it is far below and the same fluctuation changes nothing. Only within a narrow band around the threshold does a few photons either way move the contour.\n\nThat gives the governing relationship directly. Roughness is noise divided by how fast the image changes with position: the steeper the aerial image at the threshold crossing, the less lateral displacement a given dose fluctuation produces. One computational study writes line-edge roughness as a proportionality constant over the image slope, fitting the constant at 0.3.\n\nThis is why numerical aperture and illumination shape matter to roughness and not only to resolution. Two tools that resolve the same pitch but print different image slopes will produce different roughness from identical resist.",
+        "deeper_md": "The same reasoning explains an otherwise puzzling observation: EUV sometimes prints *less* rough features than 193 nm immersion despite having a fourteenth of the photons, because its image slope at the same pitch is far steeper. Noise and slope are separate terms and improving either one works. It also explains why roughness gets harder as pitch shrinks at fixed numerical aperture — the image contrast falls, the slope falls with it, and the same photon noise is amplified into more edge displacement."
+      },
+      {
+        "heading": "The photon is only the first random step",
+        "body_md": "A chemically amplified resist does not respond to photons directly. An absorbed 92 eV photon ionises a molecule and launches a cascade: radical ions, molecular fragments and low-energy electrons spreading through a nanometre-scale volume known as a spur. A recent reaction-network study of one organic EUV resist enumerated over 3,300 chemical species and resolved their formation from femtoseconds to nanoseconds across a 15.5 nm domain, and found that which species was ionised first strongly changes what is produced.\n\nThe electrons do the work. In a typical model, the photoelectron starts near 92.5 eV and continues generating events until it drops below a threshold around 21 eV. Each surviving event may convert a photoacid generator molecule into an acid; during the post-exposure bake that acid diffuses, deprotecting polymer as it goes, until it meets a quencher base deliberately added at well under one percent to stop it.\n\nEvery one of those steps is countable and therefore noisy. The acid is where you put it only on average.",
+        "deeper_md": "Diffusion is the step that both helps and hurts. Acid diffusion averages over the photon noise, which smooths roughness, but it also blurs the latent image, which flattens the slope that divides the noise in the first place. Published coarse-grained models use acid diffusivities around 0.1 to 0.2 nm²/s over a sixty-second bake; too little and 16 nm half-pitch simply fails to deprotect at low dose, too much and the contrast is gone. Quencher at 0.4% exists to bound the diffusion length rather than to neutralise acid in bulk."
+      },
+      {
+        "heading": "Which noise actually dominates, measured",
+        "body_md": "It is worth being specific about whether the problem is the light or the material, because the two have different fixes. A coarse-grained Monte Carlo study simulated a 16 nm half-pitch line in a 32 × 32 × 30 nm box of 89.6% polymer, 10% photoacid generator and 0.4% quencher, at a 34 mJ/cm² dose, and ran it against three independently generated photon distributions containing 1,222, 1,161 and 1,204 photons.\n\nRe-randomising the material — where the acid generator molecules and polymer chains sit — moved line-edge roughness by 0.8 to 1.36 nm. Changing which photon distribution was used moved it by 1.06 to 3.22 nm. The photons dominate, and the third distribution, which had the most uneven photon count in the nominally unexposed region, produced roughness of 5.1 to 6.4 nm against 3.2 to 4.1 nm for the first.\n\nRaising the dose to 50 mJ/cm² pulled roughness down across the board, which is the expected √N behaviour and also the expensive one.",
+        "deeper_md": "The mechanism behind the worst distribution is specific and physical: stray photons landing in the region meant to stay unexposed create isolated, heavily deprotected chains near the interface, and those chains dissolve during development while their neighbours do not. The paper also found that aligning polymer chains parallel to the interface lowered roughness to 2.40 nm, and freezing chain motion during the pre-apply bake took it to 1.48 nm — so chain conformation is a real second-order lever even though photon statistics set the scale."
+      },
+      {
+        "heading": "Roughness is the average; the defects are the tail",
+        "body_md": "Line-edge roughness reported as a three-sigma number is a summary of a distribution, and the part of that distribution that destroys a chip is its tail. A fluctuation large enough to close the gap between two lines makes a bridge; one large enough to pinch a line makes a break. Neither shows up as a shift in the mean.\n\nThe arithmetic is unforgiving. One 2026 review puts device density for a 2 nm gate-all-around node at 80 to 150 × 10⁸ per square centimetre, so a square centimetre of die holds on the order of 10¹⁰ features, while the stated target for single-bridge defect density is below 0.1 per square centimetre. The implied per-feature failure probability is of order 10⁻¹¹. No measurement of three-sigma roughness on a few hundred lines constrains a one-in-10¹¹ event, which is why the industry moved to large-area stochastic defect inspection rather than roughness metrology alone.\n\nThe same review's stated targets for a sub-3 nm process are a resist under 20 nm thick, exposure dose under 40 mJ/cm², and post-etch line-width roughness under 1.8 nm.",
+        "deeper_md": "Published resist results show the trade in one line. A polymer-bound photoacid generator resist: 24 nm resolution, 14 mJ/cm², 5.3 nm line-width roughness. A molecular chemically amplified resist: 14 nm, 36.1 mJ/cm², 3.26 nm. An organohydrogen silsesquioxane: 22 nm, 65.4 mJ/cm², 1.4 nm. Roughness falls as dose rises, roughly as one would expect from counting statistics, and throughput falls with it — a scanner's wafers per hour is inversely proportional to dose. That is the resolution–roughness–sensitivity triangle, and nothing in forty years of resist chemistry has broken it."
+      },
+      {
+        "heading": "Why the arithmetic is kind to a longer wavelength",
+        "body_md": "Run the same formula at a wavelength a student can actually buy. A 405 nm diode emits 3.06 eV photons, so N = 62.4 × D / 3.06 ≈ 20.4 photons per square nanometre for every mJ/cm² of dose — thirty times EUV's count at the same dose, because the photon energy is thirty times lower. At a 50 mJ/cm² exposure that is about 1,020 photons per square nanometre. A one-micrometre-square pixel of a maskless projector receives around 10⁹ photons, and the relative counting error is parts in 10⁵.\n\nSo a direct-write tool at 405 nm has no shot-noise problem at all. Its edge roughness comes from the projected image, from resist contrast, from develop uniformity and from stage position — all of which are deterministic enough to measure and correct. That is not a statement about the tool being primitive; it is a statement about where 92 eV puts you.\n\nIt is also why extreme ultraviolet required an entire resist research programme rather than a scaled recipe. Everything upstream of the resist became a photon budget.",
+        "deeper_md": "High numerical aperture tightens the same screw from the other side. Going from 0.33 to 0.55 cuts the minimum printable feature by about 40%, which cuts the area of each feature by about two thirds, which cuts the photon count per feature by the same factor at constant dose. Resolution and shot noise are not independent knobs: every gain in the first is a loss in the second unless absorption or dose makes it up, and depth of focus falls at the same time, which is what forces resists thinner and therefore less absorbing."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Shot noise",
+        "definition": "The irreducible fluctuation in a count of independent arrivals. For a mean of N photons the standard deviation is √N, so relative noise is 1/√N and gets worse as the counted area or the dose gets smaller."
+      },
+      {
+        "term": "LER and LWR",
+        "definition": "Line-edge roughness is the deviation of one printed edge from a straight line; line-width roughness is the deviation of the width between two edges. Both are quoted as three standard deviations in nanometres, and LWR is roughly √2 × LER when the two edges are uncorrelated."
+      },
+      {
+        "term": "mJ/cm² (dose)",
+        "definition": "Exposure energy delivered per unit wafer area. It is the quantity a lithographer sets, and dividing it by the photon energy converts it into the quantity physics cares about, which is a number of photons."
+      },
+      {
+        "term": "PAG (photoacid generator)",
+        "definition": "A molecule blended into a chemically amplified resist that releases a strong acid when it absorbs energy from an exposure event. The acid then catalyses many deprotection reactions, which is where the amplification — and the sensitivity — comes from."
+      },
+      {
+        "term": "Quencher",
+        "definition": "A base added to the resist at a fraction of a percent whose job is to neutralise acid that has diffused too far, bounding the acid diffusion length and therefore the blur of the latent image."
+      },
+      {
+        "term": "Stochastic defect",
+        "definition": "A hard failure caused by a rare fluctuation rather than by a systematic process error — a bridge between two lines, a broken line, a missing or merged contact. It is characterised by a probability per feature, not by a mean roughness."
+      }
+    ],
+    "try_this": "Convert your own resist into photons. Take the dose-to-clear from a contrast curve measured on the club's spinner and exposure tool, read the source wavelength off the LED or laser datasheet, and compute the photon energy as E = 1,240 divided by the wavelength in nanometres, in electronvolts. Then N = 62.4 × D / E gives photons per square nanometre for a dose D in mJ/cm². Work out √N / N for a patch the size of the smallest feature you can reliably print, and compare it against the critical-dimension spread you actually measure. Then repeat the arithmetic with E = 92 eV at the same dose, and see what the ratio is. For the chain from photon count through acid to roughness written out as equations, read the Monte Carlo photon-and-acid model in Sang-Kon Kim, Micromachines 12(12):1493.",
+    "sources": [
+      {
+        "title": "Line-Edge Roughness from Extreme Ultraviolet Lithography to Fin-Field-Effect-Transistor: Computational Study",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8706712/",
+        "publisher": "Sang-Kon Kim, Micromachines 12(12):1493",
+        "date": "2021-11-30"
+      },
+      {
+        "title": "Coarse-Grained Modeling of EUV Patterning Process Reflecting Photochemical Reactions and Chain Conformations",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10180770/",
+        "publisher": "Kim et al., Polymers 15(9):1988",
+        "date": "2023-04-22"
+      },
+      {
+        "title": "Mechanisms of Film-Formation-Related Defects in EUV Photoresists for Sub-3 nm Nodes and Synergistic Materials–Process–Intelligence Co-Optimization",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13413909/",
+        "publisher": "Wu et al., Micromachines 17(7):864",
+        "date": "2026-07-21"
+      },
+      {
+        "title": "Discovering Kinetically Significant Reaction Mechanisms Beyond Chemical Intuition in Condensed-Phase Radiolysis",
+        "url": "https://arxiv.org/abs/2609.16512",
+        "publisher": "arXiv",
+        "date": "2026-09-15"
+      }
+    ]
+  }
+}

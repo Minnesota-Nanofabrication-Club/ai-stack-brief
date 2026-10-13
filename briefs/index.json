@@ -1,6 +1,21 @@
 {
   "editions": [
     {
+      "date": "2026-10-13",
+      "foundations_slug": "plasma-fundamentals",
+      "foundations_topic": "Plasma fundamentals for process engineers",
+      "headline": "arXiv announced no listing for Tuesday after the US holiday, so the window's firmest document is the Open Compute Project's: Google, Meta, Microsoft and NVIDIA now ask an AI campus to ride through a utility voltage sag and restore near-full load within two seconds.",
+      "item_count": 7,
+      "layers": [
+        "energy",
+        "silicon",
+        "chips",
+        "computing",
+        "infrastructure",
+        "models"
+      ]
+    },
+    {
       "date": "2026-10-12",
       "foundations_slug": "euv-stochastics-and-ler",
       "foundations_topic": "Stochastics, shot noise, and line-edge roughness",
@@ -575,6 +590,6 @@
       ]
     }
   ],
-  "generated_at": "2026-10-12T17:29:10Z",
-  "latest": "2026-10-12"
+  "generated_at": "2026-10-13T15:57:30Z",
+  "latest": "2026-10-13"
 }

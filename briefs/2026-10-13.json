@@ -1,0 +1,481 @@
+{
+  "date": "2026-10-13",
+  "generated_at": "2026-10-13T16:55:00Z",
+  "window": "2026-10-12..2026-10-13",
+  "headline": "arXiv announced no listing for Tuesday after the US holiday, so the window's firmest document is the Open Compute Project's: Google, Meta, Microsoft and NVIDIA now ask an AI campus to ride through a utility voltage sag and restore near-full load within two seconds.",
+  "pulse": {
+    "read_time_min": 8,
+    "layers": [
+      {
+        "layer": "energy",
+        "items": [
+          {
+            "id": "energy-ocp-grid-ride-through",
+            "title": "AI campuses get a ride-through spec, and the hard part is coming back",
+            "dek": "The Open Compute Project published a specification from Google, Meta, Microsoft and NVIDIA on Monday asking a large AI data centre to stay connected through a utility voltage sag — the brief dip a transmission fault causes — and return to near-full load within two seconds.",
+            "why_it_matters": "A data centre's uninterruptible supply is designed to protect the computers by disconnecting from a dirty grid, and that is precisely the wrong behaviour from a gigawatt of demand: the load rejection becomes the disturbance. Writing down a ride-through envelope and a two-second recovery turns the transfer threshold from a site-level protection setting into an interconnection parameter a utility can specify, test against, and eventually refuse to energise without.",
+            "background_md": "Electricity supply and demand must match instant to instant, and system frequency is the measurement of that balance: it rises when load disappears. A transmission fault pulls voltage down across a whole region for a few cycles until protection clears it, and every load on that region decides for itself whether to stay. Computer power supplies and uninterruptible-supply transfer switches are set to protect the computer, so they leave early and, in most installations, come back only when a person tells them to. Each of those choices is defensible alone; collectively they look to a grid operator like a large generator tripping in reverse.",
+            "deeper_md": "OCP's own contribution post calls it a hyperscaler–utility grid disturbance performance interface specification and scopes it to voltage ride-through, active-power recovery and facility coordination. NVIDIA's write-up gives the three requirements as stay connected, respond automatically, and restore near-full load in under two seconds.\n\nThe number that makes it worth writing is two years old. Grid Status's account of the 10 July 2024 event in Dominion's zone has a lightning-arrester failure on a 230 kV line producing six successive voltage drops, after which nearly 1,500 MW of Northern Virginia data-centre load transferred to backup generation. PJM-wide frequency rose to 60.047 Hz — outside the ±0.036 Hz band NERC targets — and the load stayed off the grid for hours, because a UPS will switch itself onto battery automatically and needs a human to switch back.\n\nTwo caveats. OCP contributions are voluntary and carry no interconnection obligation, and Converge Digest's note on the announcement says the two-second figure is a specification target rather than a verified result. OCP's same post also lists a direct-current distribution white paper covering 800 VDC and \"the evolution to 1,500 VDC\", and says rack power is on track to pass 1 MW, which is the reason the question is being asked now.",
+            "glossary": [
+              {
+                "term": "Voltage ride-through",
+                "definition": "The requirement that a load stay connected and keep operating while supply voltage is depressed by a defined amount for a defined time, rather than disconnecting to protect itself."
+              },
+              {
+                "term": "Load rejection",
+                "definition": "The sudden loss of a large block of demand, which leaves generation over-producing and pushes system frequency and voltage up until governors and controls catch it."
+              },
+              {
+                "term": "±0.036 Hz",
+                "definition": "The band NERC targets around 60 Hz for interconnection frequency; excursions outside it mean generation and demand are meaningfully out of balance across the whole synchronous system."
+              },
+              {
+                "term": "UPS retransfer",
+                "definition": "The step where an uninterruptible power supply hands its load back from battery or generator to the utility feed — usually a manual decision, which is how a few-cycle fault costs hours of grid-side load."
+              }
+            ],
+            "confidence": "confirmed",
+            "sources": [
+              {
+                "title": "Realizing the OCP Open Data Center Ecosystem Vision",
+                "url": "https://www.opencompute.org/news/realizing-the-ocp-open-data-center-ecosystem-vision/",
+                "publisher": "Open Compute Project Foundation",
+                "date": "2026-10-12"
+              },
+              {
+                "title": "OCP Global Summit: NVIDIA Opens Vera Rubin Architecture to Help Scale AI Factories Worldwide",
+                "url": "https://blogs.nvidia.com/blog/ocp-global-summit-vera-rubin-scale-ai-factories/",
+                "publisher": "NVIDIA",
+                "date": "2026-10"
+              },
+              {
+                "title": "Byte Blackouts: How large data center loads are surfacing new issues",
+                "url": "https://blog.gridstatus.io/byte-blackouts-large-data-center-loads-new-issues-pjm/",
+                "publisher": "Grid Status",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-310mm-panel-tools",
+            "title": "Panel-level packaging settles on a 310 mm square, and the tools arrive",
+            "dek": "Evatec and ERS electronic each shipped a first production tool built for 310 × 310 mm packaging panels this week, both to unnamed chipmakers — the rectangular substrate that replaces a round 300 mm wafer once the packages being built are too large to tile efficiently on a circle.",
+            "why_it_matters": "A 310 mm square holds 96,100 mm² against roughly 70,700 mm² for a 300 mm circle, and a rectangle tiles with rectangular packages without the crescents of unusable area a circle leaves at its edge. That only pays if the sheet can be handled, and both tools are built around the two steps that scale worst with panel size: the thermal carrier bond and debond, and the vacuum degas that outgassing mould compound and glass demand before any metal is sputtered onto them.",
+            "background_md": "Advanced packaging borrowed its substrate from the front end. Dies are placed face-down on a carrier, over-moulded in epoxy compound, released, and then wired together by redistribution layers patterned with the same lithography and plating tools a fab uses. Nothing about that flow requires the carrier to be round — a package is a rectangle, and rectangles tile a rectangle without waste. What resists the change is mechanical: the larger the sheet, the further each die drifts from its nominal position as the mould compound cures and shrinks, and the more the sheet bows from the mismatch in thermal expansion between carrier, compound and silicon.",
+            "deeper_md": "Evatec's CLUSTERLINE 310 integrates degas, etch and PVD for 310 × 310 mm panels of \"glass and highly outgassing organics\", and the company says it built the 310 mm tool down from the up-to-650 mm panel systems it already supplied because customers asked for the smaller format. ERS electronic's platform puts the three thermally critical steps — carrier bonding, debonding and detaping — on one frame at 13 panels an hour, aimed at backside processing for 3D IC, HBM and 2.5D packages.\n\nThe format arithmetic: 310² = 96,100 mm², the figure AnySilicon reports ASE quoting for its own 310 mm line, against π × 150² ≈ 70,686 mm² for a 300 mm wafer — about 36% more area before any edge exclusion is counted.\n\nThe direction of travel is the interesting part. Fraunhofer IZM's panel work, as reported from ECTC 2022, targets 2 µm line/space on 610 × 457 mm² panels and names warpage, die shift and fine-line redistribution as the three limits; die shift gets worse as overmould thickness falls and silicon density rises. Production is buying a panel roughly a third of that area, which is what you would expect if die shift and warpage, rather than available area, set the yield.",
+            "glossary": [
+              {
+                "term": "FOPLP (fan-out panel-level packaging)",
+                "definition": "Building packages on a large rectangular carrier instead of a round wafer: dies are placed, over-moulded, then fanned out to package pitch by thin-film copper wiring patterned on the panel."
+              },
+              {
+                "term": "Die shift",
+                "definition": "The displacement of each die from its intended position after the mould compound cures and shrinks; it grows with panel size, which is why the wiring must be aligned to the dies rather than the reverse."
+              },
+              {
+                "term": "Degas",
+                "definition": "A vacuum bake before deposition that drives water and solvent out of an organic carrier, because anything leaving the substrate once the chamber is pumped ends up embedded in the growing film."
+              },
+              {
+                "term": "RDL (redistribution layer)",
+                "definition": "The thin-film copper wiring built on top of the moulded panel that routes a die's fine pads out to the package's much coarser solder-ball pitch."
+              }
+            ],
+            "fab_angle": "Fraunhofer's proposed answer to residual die shift is adaptive patterning: measure where every die actually landed, then expose a redistribution layout matched to those positions with a maskless direct-imaging tool, since a fixed mask would be wrong by construction. It needs a maskless exposure with enough depth of focus and throughput for a panel — the same measure-then-write loop MNF's stepper has to close, at a scale where PCB data formats like Gerber and ODB++ already struggle near 2 µm.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Evatec delivers first CLUSTERLINE 310 for Advanced Packaging on small panel formats",
+                "url": "https://www.3dincites.com/2026/10/evatec-delivers-first-clusterline-310-for-advanced-packaging-on-small-panel-formats/",
+                "publisher": "3D InCites",
+                "date": "2026-10-13"
+              },
+              {
+                "title": "ERS Introduces Automated 310mm Panel-Level Packaging System",
+                "url": "https://www.semiconductor-digest.com/ers-introduces-automated-310mm-panel-level-packaging-system/",
+                "publisher": "Semiconductor Digest",
+                "date": "2026-10"
+              },
+              {
+                "title": "IFTLE 532: Fraunhofer IZM Examines Panel Level Processing Technology Limits",
+                "url": "https://www.3dincites.com/2022/09/iftle-532-fraunhofer-izm-examines-panel-level-processing-technology-limits/",
+                "publisher": "3D InCites",
+                "date": "2022-09-06"
+              },
+              {
+                "title": "ASE launches 310mm panel-level packaging line for AI and chiplet applications",
+                "url": "https://anysilicon.com/news/ase-launches-310mm-panel-level-packaging-line-for-ai-and-chiplet-applications/",
+                "publisher": "AnySilicon",
+                "date": "2026-05-28"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-hbm-base-die-thermal-path",
+            "title": "The hot spot in an HBM stack is its I/O block, not its DRAM",
+            "dek": "TrendForce reported on Monday that Samsung and SK hynix are each building a dedicated heat path around the die-to-die PHY — the high-speed input/output block in the bottom die of a high-bandwidth memory stack — with SK hynix expecting its version to cut thermal resistance by about 30%.",
+            "why_it_matters": "The material has to conduct heat and refuse to conduct charge, which is why this is a materials problem and not a layout one: you cannot route copper across a PHY. And the reason the PHY matters more than its share of the power is geometry — it sits underneath eight to twelve DRAM dies whose only route to the heat sink runs upward through every bonded interface above them, and each of those interfaces contributes a contact resistance at both of its faces on top of its bulk term.",
+            "background_md": "A high-bandwidth memory stack is eight to twelve DRAM dies bonded on top of a base die that carries their input/output and control logic, sitting beside an accelerator on a silicon interposer. Heat leaves through the top of the stack, so every die's heat crosses every bonded interface above it, and the resistance of each crossing is a bulk conduction term plus a contact term at each of its two faces. Spreading sideways inside a single silicon die is comparatively easy. The consequence is standing: the vertical temperature gradient grows with the number of dies stacked, and the dies furthest from the cooling surface are the hardest to cool.",
+            "deeper_md": "TrendForce, reading Chosun Biz of 2 October and ETNews, says Samsung calls its approach heat path block, is validating it with HBM4E and plans to introduce it with HBM5, and that SK hynix's iHBM places a highly thermally conductive but electrically insulating material around the die-to-die PHY for roughly 30% lower thermal resistance. Samsung's alternative, shown at GTC in March, is hybrid copper bonding, which replaces the microbumps between DRAM dies with direct copper-to-copper contact and thins the stack. These are vendor statements relayed through Korean-language reports this brief could not read directly, and no measured data has been published.\n\nThe published numbers set the scale. The September review by Do, Wee, Lee and colleagues at Chung-Ang University writes the effective interface resistance as R_C1 + BLT/k_TIM + R_C2 — two contact terms plus bond-line thickness over conductivity — and reports underfill going from about 0.22 W·m⁻¹·K⁻¹ for neat epoxy to about 10.18 W·m⁻¹·K⁻¹ at 75 wt% aluminium-nitride/boron-nitride filler, a roughly 46-fold gain bought at a coefficient of thermal expansion of 22.56 ppm/°C. It also notes hybrid bonding lowers vertical resistance only when contact area is high and void fraction low, and that copper height variation of several to several tens of nanometres is enough to spoil the bond.\n\nUnderneath all of it the interposer is growing: TrendForce puts current AI interposers at about 5.5× the 858 mm² a single EUV exposure covers.",
+            "glossary": [
+              {
+                "term": "D2D PHY",
+                "definition": "The physical-layer block in a memory stack's base die that drives the thousands of parallel wires to the accelerator. It switches constantly at full rate, so its power arrives concentrated in a small area."
+              },
+              {
+                "term": "Base die",
+                "definition": "The bottom die of an HBM stack, carrying input/output and control logic for the DRAM dies above it. Because it sits under the stack, its own heat has to travel up through every die above it."
+              },
+              {
+                "term": "BLT (bond-line thickness)",
+                "definition": "The thickness of thermal interface material between two surfaces. Its bulk resistance is BLT divided by conductivity, so thinning it helps only until the contact resistance at the two faces dominates."
+              },
+              {
+                "term": "W·m⁻¹·K⁻¹",
+                "definition": "Thermal conductivity: watts carried per metre of thickness per kelvin of temperature difference. Neat epoxy underfill sits near 0.22; the filled composite in this review reaches about 10."
+              }
+            ],
+            "fab_angle": "Hybrid bonding is being asked to do thermal work as well as electrical, and the review's number for that is a copper-height tolerance of several to several tens of nanometres across the bond area — which is a chemical-mechanical planarization and particle-control specification before it is a bonding one.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Thermal Management and Reliability Engineering of Advanced HBM Packages: Materials, Interfaces, and Integrated Design Strategies",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13609547/fullTextXML",
+                "publisher": "Micromachines 17(9) 1065",
+                "date": "2026-09-08"
+              },
+              {
+                "title": "AI Interposers Grow Larger, Raising HBM4E Cooling Challenges: How Samsung, SK hynix Are Responding",
+                "url": "https://trendforce.com/news/2026/10/12/news-ai-interposers-grow-larger-raising-hbm4e-cooling-challenges-how-samsung-sk-hynix-are-responding",
+                "publisher": "TrendForce",
+                "date": "2026-10-12"
+              },
+              {
+                "title": "On the Thermal Vulnerability of 3D-Stacked High-Bandwidth Memory Architectures",
+                "url": "https://arxiv.org/html/2509.00633v1",
+                "publisher": "arXiv",
+                "date": "2025-08-30"
+              }
+            ]
+          },
+          {
+            "id": "chips-usfp-400g-per-lane",
+            "title": "A pluggable optic doubles the electrical lane to 400 Gb/s",
+            "dek": "NVIDIA and Cisco proposed a pluggable-transceiver form factor on Monday called USFP, the first they say carries 400 Gb/s on each electrical lane into the switch — sixteen full-duplex lanes inside an OSFP-sized shell, dissipating up to 100 W with no dedicated cooling circuit inside the module.",
+            "why_it_matters": "The electrical side of a pluggable optic, not the laser, is what has been rationing front-panel bandwidth: lanes reach the module through a connector whose contacts must survive thousands of insertions and still pass the signal. USFP's answer is a two-dimensional contact array with a two-step insertion that mates the high-speed contacts only after the module is mechanically seated, which is how the lane count can go to 16 and then 32 without the connector itself becoming the loss budget.",
+            "background_md": "A switch's front panel is a fixed amount of sheet metal, so the bandwidth a switch can offer is set by how much traffic each pluggable cage carries. That figure is a product of two numbers: the electrical lane rate the host board can deliver to the module's connector, and how many lanes the connector has contacts for. Current modules sit at 200 Gb/s per lane using four-level pulse-amplitude modulation, and every doubling of the rate costs signal-to-noise margin that has to be bought back with heavier forward error correction, shorter host traces, or more voltage levels still.",
+            "deeper_md": "NVIDIA's release gives USFP as 16 full-duplex lanes at 400 Gb/s per lane in an octal-small-form-factor footprint — 6.4 Tb/s each way, the 12.8 Tb/s it quotes when both directions are counted — with roughly 4× the front-panel bandwidth density and about 1.3× the power efficiency of 200 Gb/s-per-lane modules. The thermal claim is the specific one: up to 100 W dissipated without a dedicated embedded cooling circuit in the transceiver.\n\nThe standards position is worth stating precisely, because there is no published electrical specification at this rate. OIF's CEI-448G work — 448 Gb/s per lane, aimed at the same 1.6T and 3.2T architectures — reached only a framework document at the consortium's Busan meeting in November 2025, naming PAM6, PAM8 and \"enhanced FEC architectures\" as options to examine across the XSR, VSR, MR and LR reaches. A framework guides later implementation agreements; it is not one.\n\nSo this is a two-company proposal with an intended multi-source agreement behind it, hardware partners named as TE Connectivity and Amphenol, no multi-vendor interoperability demonstrated, and no modulation format disclosed for its own electrical lanes. Converge Digest's note on the announcement says the same.",
+            "glossary": [
+              {
+                "term": "Pluggable transceiver",
+                "definition": "The removable module that converts a switch's electrical lanes to light and back; the cage it plugs into is what sets how much bandwidth one front-panel port can carry."
+              },
+              {
+                "term": "OSFP",
+                "definition": "The octal small-form-factor pluggable module outline used by today's 800G and 1.6T optics; USFP keeps that external size and changes the connector inside the cage."
+              },
+              {
+                "term": "PAM4 / PAM6 / PAM8",
+                "definition": "Pulse-amplitude modulation with 4, 6 or 8 voltage levels per symbol; more levels carry more bits per symbol but shrink the gap between levels, so error-correction overhead and sensitivity to loss both rise."
+              },
+              {
+                "term": "Implementation agreement",
+                "definition": "OIF's term for a finished, voted specification vendors build to; a framework document is the earlier survey of candidate approaches and binds nobody."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "NVIDIA and Cisco Introduce New Pluggable Optics Form Factor to Scale AI Factories",
+                "url": "https://nvidianews.nvidia.com/news/nvidia-and-cisco-introduce-new-pluggable-optics-form-factor-to-scale-ai-factories",
+                "publisher": "NVIDIA",
+                "date": "2026-10-12"
+              },
+              {
+                "title": "OIF Charts Path to 448G/Lane Interconnects",
+                "url": "https://convergedigest.com/oif-charts-path-to-448g-lane-interconnects/",
+                "publisher": "Converge Digest",
+                "date": "2025-11-12"
+              },
+              {
+                "title": "NVIDIA Opens Vera Rubin Architecture for AI Factories at OCP",
+                "url": "https://convergedigest.com/nvidia-ocp-2026-vera-rubin-mgx-spectrum6-usfp/",
+                "publisher": "Converge Digest",
+                "date": "2026-10-12"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-cute-layout-algebra",
+            "title": "CuTe's layout complement can return a wrong answer silently",
+            "dek": "Nan An and Xiaotian Zhou re-typed the layout algebra behind NVIDIA's CuTe — the library that describes how a GPU kernel's tiles map onto threads and memory addresses — and report 40 cases where its complement operation returns a layout breaking the library's own documented postconditions without raising any error.",
+            "why_it_matters": "A layout is what a hand-written matrix-multiply kernel consults to decide which thread touches which address, so a silently wrong complement is a wrong address computation with nothing to catch it. The paper's remedy is structural rather than a patch: give every layout a declared index space, and require that any map into a physical address be alias-free unless a broadcast is explicitly marked, which converts a class of silent write races into something that fails at compile time.",
+            "background_md": "A GPU kernel spends most of its correctness budget on indexing. Thousands of threads each have to work out which elements of a tile they own and where those elements sit in memory, and that mapping is a function from multi-dimensional coordinates to one linear index. CuTe writes the function as a shape paired with one stride per dimension, and gives it an algebra — compose two layouts, divide one by another, take the complement of one inside a larger space — so a tiling can be assembled from pieces instead of hand-indexed. Those operations are partial: they only mean anything when particular sizes divide particular strides.",
+            "deeper_md": "The preconditions are documented. CUTLASS's own layout-algebra page states a stride-divisibility and a shape-divisibility condition on composition and says both are \"statically checked in CuTe when possible\". The paper's contribution is what happens when possible does not apply: sweeping static rank-2 layouts over sizes 2–4, first strides 1–2, second strides up to 16 and target sizes 12, 24 and 48, it finds 40 cases where complement returns a result violating CUTLASS 4.8's own unit-test postconditions with no error raised. The worked example is B = (2,2):(1,3) under M = 24, where CuTe truncates the quotient 3/2 to 1 and hands back a complement covering 16 of the 24 values.\n\nThe replacement algebra makes composition total by requiring only that the left map be a dense bijection onto the right map's flattened domain, and adds a linear-time scan that decides whether a one-dimensional map is a layout and, if so, returns the coarsest shape every other valid shape refines. The decision procedure is machine-checked in Rocq; the algebra is implemented in OCaml and used to rederive CuTe's atoms.\n\nThe cost is expressiveness, and the authors say so: overlapping read-only maps such as a convolution's sliding window are not layouts here, replication is read-only by construction, and a restricted — sliced — map cannot be composed further, so a kernel must settle its whole tile view before slicing for a warp.",
+            "glossary": [
+              {
+                "term": "Layout (CuTe)",
+                "definition": "A shape together with one stride per dimension, read as a function that turns a multi-dimensional coordinate into a single linear index by taking the inner product of coordinate and stride."
+              },
+              {
+                "term": "Complement",
+                "definition": "Given a layout A and a larger size M, the layout covering exactly the elements A does not reach — what lets a kernel iterate over tiles once A has described one tile."
+              },
+              {
+                "term": "Alias-free",
+                "definition": "The property that no two distinct coordinates map to the same address. Without it two threads can write the same location, which is a race no compiler will see."
+              },
+              {
+                "term": "Rocq",
+                "definition": "The proof assistant formerly named Coq, in which a theorem and its proof are written out and checked mechanically rather than reviewed by a reader."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "A Simplified Layout Algebra for GPU Kernels",
+                "url": "https://arxiv.org/html/2610.13679v1",
+                "publisher": "arXiv",
+                "date": "2026-10-09"
+              },
+              {
+                "title": "CuTe Layout Algebra — composition, complement, divide and their divisibility conditions",
+                "url": "https://github.com/NVIDIA/cutlass/blob/main/media/docs/cpp/cute/02_layout_algebra.md",
+                "publisher": "NVIDIA CUTLASS",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "infrastructure",
+        "items": [
+          {
+            "id": "infrastructure-byteexpress-rdma",
+            "title": "RDMA hardware alone made ByteDance's tail latency worse",
+            "dek": "Fifteen ByteDance engineers describe ByteExpress, the software layer the company built above RDMA — the network hardware that writes straight into a remote machine's memory without either CPU copying the data — after finding that RDMA's hardware congestion control left 99th-percentile training latency worse than plain TCP.",
+            "why_it_matters": "The useful number is the one that got worse: moving parameter-push traffic from kernel TCP to RDMA hardware alone took 99th-percentile latency from 1.03 s to 1.12 s, and only adding a per-connection cap on outstanding bytes in software brought it to 268 ms. Hardware offload does not remove the need for a congestion window; it removes the place the kernel used to keep one, and nothing in the card's standard congestion control reacts fast enough to many senders arriving at once.",
+            "background_md": "RDMA lets one machine's network card read or write a peer's memory with neither CPU touching the payload, which is why it carries almost all large-scale AI traffic. The price is that the reliability the kernel used to provide now lives in silicon. Ethernet drops packets when a buffer fills, and an RDMA card's go-back-N recovery is ruinous under loss, so RDMA-over-Ethernet fabrics turn on Priority Flow Control: a switch sends a pause frame upstream before its buffer overflows. A pause frame stops an entire traffic class, which means it stops the flows that were not causing congestion along with the ones that were.",
+            "deeper_md": "The deployment is the credential. The paper says these systems have run in tens of data-centre clusters for more than two years behind Toutiao, TikTok and Xigua Video; the published evaluations use 300 parameter servers with 124 rankers for inference and 124 parameter servers with 346 trainers for training, on 25 Gb/s ConnectX-5 cards.\n\nAgainst kernel TCP in online inference: mean parameter-fetch latency 12.6 ms → 8.1 ms (−35.7%), 99th percentile 63.1 ms → 35.5 ms (−43.7%), total CPU 57.45% → 51.31%, with software-interrupt CPU falling from 1.70% to 0.16%. In training the ordering is the finding: fetch tail latency runs 650 ms on TCP, 1.04 s on RDMA hardware alone, and 338 ms once a software send window sits above the card's DCQCN; PFC pause time goes from 1 s per 30 s to zero. A synthetic incast test puts the number of senders tolerated before PFC fires at 63 with no window and 1,218 with a 4 KB window.\n\nThe authors list the caveats themselves: the baseline is untuned kernel TCP rather than another user-space transport, the send window is static configuration rather than adaptive and a per-engine bound does not cap aggregate traffic as engines multiply, and the absence of PFC pauses does not demonstrate that PFC could be switched off. The industry's other answer to the same problem moved on the same day — Ultra Ethernet published specification 1.1 on 12 October.",
+            "glossary": [
+              {
+                "term": "RDMA",
+                "definition": "Remote direct memory access: the network card reads or writes a peer's memory directly and runs the transport in hardware, so neither CPU copies the payload."
+              },
+              {
+                "term": "PFC (Priority Flow Control)",
+                "definition": "A link-level pause frame telling the upstream switch or card to stop sending a traffic class before a buffer overflows; it prevents loss and stalls innocent flows alongside the guilty ones."
+              },
+              {
+                "term": "P99 (99th-percentile latency)",
+                "definition": "The value one request in a hundred exceeds. It is what a serving system is judged on, because a single slow shard delays the whole response it belongs to."
+              },
+              {
+                "term": "Incast",
+                "definition": "The pattern where many senders answer one receiver at once, so the last switch hop sees a burst far larger than its buffer and any end-to-end congestion signal arrives too late to help."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Deploying RDMA for Large-Scale Inference and Training Workloads",
+                "url": "https://arxiv.org/html/2610.12815v1",
+                "publisher": "arXiv",
+                "date": "2026-10-08"
+              },
+              {
+                "title": "Ultra Ethernet Specification — version history, v1.1 released 12 October 2026",
+                "url": "https://ultraethernet.org/specification/",
+                "publisher": "Ultra Ethernet Consortium",
+                "date": "2026-10-12"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-multi-stream-attention-residuals",
+            "title": "Attention along depth grows heads, and buys 1.58× iso-loss compute",
+            "dek": "A Shanghai Jiao Tong-led group replaced a transformer's residual connections with multi-head attention across depth — each layer learning which earlier layers to read, through four differently filtered views of them — and reports reaching a given training loss with 1.58× less compute than standard residuals.",
+            "why_it_matters": "A residual connection adds every earlier layer's output with weight one, so depth accumulates an undifferentiated sum and each layer sees the same mixture. Making that aggregation a learned softmax over layers costs 0.27% more activated parameters and 0.48% more training FLOPs at 28 billion parameters, and the claimed return is stated as a multiplier on an iso-loss scaling curve rather than as a benchmark score — which is the rarer and more checkable of the two claims, because anyone can refit the curve.",
+            "background_md": "A deep network's residual connection adds a layer's input to its output, and that is what makes very deep stacks trainable: the gradient has a path back that does not pass through every transformation on the way. The side effect is arithmetic. The input to layer n is the unweighted sum of all n−1 earlier outputs, so the hidden state grows in magnitude with depth and every layer is handed the same blend. Reading that sum as attention with fixed uniform weights is what suggests the alternative — let each layer decide, from its own content, which earlier layers deserve weight.",
+            "deeper_md": "MSAR builds on the Kimi team's AttnRes from March 2026, which replaced the unit-weight residual sum with a softmax over preceding layer outputs driven by a learned pseudo-query initialised to zero, so training begins as the equal-weight average and departs from it. MSAR adds heads: each residual source is expanded into m = 4 streams, the first unchanged and the other three produced by causal depthwise 1-D convolutions with kernel sizes 4, 8 and 12, each stream retrieved with its own pseudo-query and then fused into the layer input by an input-dependent sigmoid mixer. Only single-stream block summaries are stored, so storage stays O(Nd); the extra cost is memory traffic, which the paper names.\n\nThe models are DeepSeekMoE-style, 18B total with 1.7B activated and 28B with 2.7B activated, 144 routed experts with top-8 routing, 8,192-token sequences. Twelve-benchmark averages are 45.7 against 37.5 for vanilla residuals at 18B, and 52.4 against 44.6 at 28B. The iso-loss speedup is a ratio of compute at matched loss from a fitted L(C) = A·C^(−β) + E, with E pinned at 0.72: 1.58× for MSAR, 1.35× for AttnRes, 1.30× for manifold-constrained Hyper-Connections.\n\nFixing E by hand is the soft spot — the headline multiplier is read off a curve whose asymptote was chosen rather than estimated — and the component ablations run only at 10B, where removing the convolutions moves Pile loss from 1.843 to 1.862.",
+            "glossary": [
+              {
+                "term": "Residual connection",
+                "definition": "The shortcut that adds a layer's input to its output, giving gradients a path around the layer and making very deep networks trainable at all."
+              },
+              {
+                "term": "Iso-loss compute speedup",
+                "definition": "The ratio of training compute two methods need to reach the same loss. It is read off a fitted scaling curve rather than measured at one model size, so the fit's assumptions are part of the claim."
+              },
+              {
+                "term": "MoE (mixture of experts)",
+                "definition": "A layer holding many feed-forward sub-networks that routes each token to only a few, so total parameters grow while the arithmetic per token does not."
+              },
+              {
+                "term": "Activated parameters",
+                "definition": "The subset of a mixture-of-experts model's weights a single token actually multiplies against; this number, not the total, sets the compute cost per token."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Multi-Stream Attention Residuals",
+                "url": "https://arxiv.org/html/2610.13630v1",
+                "publisher": "arXiv",
+                "date": "2026-10-09"
+              },
+              {
+                "title": "Attention Residuals",
+                "url": "https://arxiv.org/abs/2603.15031",
+                "publisher": "arXiv",
+                "date": "2026-03-16"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "Plasma fundamentals for process engineers",
+    "slug": "plasma-fundamentals",
+    "subtitle": "Electrons at tens of thousands of kelvin inside a gas you could hold your hand in, and the thin negative step every surface hides behind — the physics etch, PECVD and sputtering all share.",
+    "tldr": "A processing plasma is a gas with a tiny fraction of its atoms ionised, in which the electrons are ferociously hot and everything else stays near room temperature. That split is the whole trick: the electrons make reactive fragments, and the cold gas does not melt the wafer. Because electrons move hundreds of times faster than ions, every surface the plasma touches charges negative and sits behind a thin voltage step, and that step is what accelerates ions into the wafer and makes an etch go straight down instead of sideways.",
+    "sections": [
+      {
+        "heading": "A gas with two temperatures",
+        "body_md": "Start from what a processing plasma has to do: break a stable molecule into something that will attack silicon, and do it without heating the wafer. Cracking CF₄ thermally would take thousands of kelvin, and there is aluminium on the wafer. The way out is to abandon the idea that everything in the gas shares one temperature. Drive the gas with a radio-frequency field and the electrons, four to five orders of magnitude lighter than the ions, absorb nearly all the energy; the ions and neutrals barely respond and stay close to room temperature. The electron population ends up with a mean energy of a few electronvolts, and since one electronvolt corresponds to about 11,600 K, a few eV means tens of thousands of kelvin of electrons living inside a gas that is cool to the touch. The ionised fraction is tiny — taking Kim's simulated 1 × 10¹⁶ m⁻³ electron density against the ideal-gas neutral density at 50 mTorr and 300 K gives roughly six parts per million. A plasma is a chemistry source, not a heat source.",
+        "deeper_md": "The energies that matter are thresholds, not averages. In argon, the review by Kim, Lee and Lee puts electron-impact excitation at about 11.5 eV and ionisation at 15.76 eV, against a thermal starting energy of 0.026 eV. An electron population with a 3 eV *mean* therefore does all its useful chemistry in the tail of the distribution, which is why the shape of the electron energy probability function — not its average — sets the rate of every reaction you care about, and why a model that assumes a Maxwellian tail can be badly wrong about the rate while being right about the temperature."
+      },
+      {
+        "heading": "Why every surface in the chamber goes negative",
+        "body_md": "Put a floating piece of metal into a plasma and it does not stay at the plasma's potential. Thermal speed goes as the square root of temperature over mass, and for argon the ion is about 73,000 times the electron mass, so even at equal temperatures electrons arrive at a surface about 270 times faster. Add the temperature split from the previous section and the imbalance is larger still. The surface therefore charges negative, and it keeps charging until its potential repels enough of the electron flux to match the ion flux arriving. Olthoff and colleagues write the electron current to an electrode in exactly that form: a thermal flux multiplied by exp(−eΔφ/T_e). Because the Boltzmann factor is steep, the voltage needed is only a few times the electron temperature — tens of volts. The region holding that drop is called the sheath. It is not quasi-neutral, it is thin, and essentially the entire potential difference between plasma and wafer falls across it.",
+        "deeper_md": "Sheath thickness is set by how far a plasma can sustain a field at all: the Debye length λ_D = √(ε₀T_e/n e²), with T_e in energy units. A collisionless sheath is a few λ_D thick and thickens as the applied voltage rises, following the Child–Langmuir space-charge law. Pressure moves the boundary between regimes: Kim, Lee and Lee note that going from 100 to 500 mTorr shrinks the sheath and raises the space charge in it, which also means the sheath stops being collisionless — the point the next two sections turn on."
+      },
+      {
+        "heading": "Self-bias, and why the wafer sits on the small electrode",
+        "body_md": "Now drive one electrode with RF through a series capacitor. The capacitor passes the radio frequency and blocks direct current, so over one cycle the electrode must pass zero net charge. Electrons arrive far faster than ions during the part of the cycle when the electrode is positive, so the only way to balance the books is for the electrode to acquire a standing negative voltage — the DC self-bias — that holds electrons off for most of the cycle. NIST's Gaseous Electronics Conference RF Reference Cell is the textbook arrangement: the lower electrode driven at 13.56 MHz through a 0.1 µF blocking capacitor, with the plasma potential approximated as half the sum of the fundamental RF amplitude and the self-bias. The cell is deliberately asymmetric — the powered electrode is much smaller than the grounded electrode plus the whole chamber wall — and the smaller electrode takes the larger share of the voltage. That is why the wafer goes on the small, powered electrode. Oxford Instruments quotes 30 to 800 V of DC bias as typical for its parallel-plate RIE.",
+        "deeper_md": "Self-bias is the single most useful diagnostic on a plasma etcher, because it is the only readily measured quantity that tracks the energy ions arrive with. It is also not a clean control knob in a simple diode: raise the RF power and you raise the plasma density (and therefore ion flux) at the same time as the sheath voltage. Olthoff's data show the coupling from the other direction — self-bias magnitude falls as pressure rises in nitrogen, and shifts with the oxygen fraction in argon–oxygen mixtures — so two recipes at the same forward power and the same pressure in different chemistries are not at the same ion energy."
+      },
+      {
+        "heading": "Ion energy is a distribution, and pressure sets its shape",
+        "body_md": "Anisotropy — the fact that a plasma etch goes down and not sideways — comes from ions crossing the sheath along the field, hitting the bottom of a feature and not its walls. So the thing to know about a recipe is not an average ion energy but the whole distribution, in energy and in angle. Olthoff's measurements make the pressure dependence concrete: at 1.3 Pa in argon with 200 V peak-to-peak drive, the Ar⁺ energy distribution peaks near 21 eV; raise the pressure and it broadens down towards zero and grows secondary maxima. The mechanism is charge exchange. A fast ion hands its charge to a slow neutral partway across the sheath, leaving a slow ion that then falls through only the remaining fraction of the potential. Molecular Ar₂⁺, which has no resonant partner to exchange with, peaks near 20 eV and barely broadens at all. The maximum energies in that cell are only 20 to 25 eV, far below the applied voltage, because the ions were sampled on the low-voltage side of an asymmetric discharge.",
+        "deeper_md": "Comparison is instructive. Kim, Park and Lee simulate argon–oxygen at 50 mTorr with 100 V at 50 MHz on a 6.0 cm powered electrode and find the dominant Ar⁺ peak near 56 eV, with a low-energy tail they attribute to collisions in a sheath that is no longer collisionless at that pressure. They also find the angular distribution broadens near the electrode edge, where the field acquires a radial component — which is the simulation-side version of the tilted etch profiles that show up in the last few millimetres of a wafer. Adding oxygen changes the plasma's character entirely: their electronegativity, the ratio of negative-ion to electron density, runs from 0.83 at nine parts argon to one part oxygen up to 24.26 at two-to-eight."
+      },
+      {
+        "heading": "Separating ion energy from ion flux",
+        "body_md": "Everything above describes one generator doing two jobs, which is the fundamental limitation of a simple parallel-plate etcher. Oxford's typical-conditions list shows how tangled the space is: 5 to 500 mTorr, 0.1 to 1.5 W/cm², 30 to 800 V of bias, 5 to 200 sccm total flow, 13.56 MHz, electrode temperature anywhere from −150 to +400 °C. Push the power to get more etch rate and the ion energy climbs with it, which costs selectivity to the mask and damages the surface. The industrial answer is to use two sources: make the plasma with an inductive coil or a very-high-frequency supply, and set the ion energy with a separate low-frequency bias on the chuck. The frequency choice is physical rather than arbitrary — a bias well above the rate at which an ion can cross the sheath delivers a narrow band of energies around the time-averaged voltage, while a low-frequency bias lets ions track the instantaneous voltage and produces a wide, two-peaked distribution.",
+        "deeper_md": "The practical process space is smaller than the parameter ranges suggest, because the chemistry is where the selectivity lives. NIST's own parallel-plate etcher runs up to 600 W on argon, oxygen, CHF₃, CF₄, SF₆, C₄F₈ and nitrogen, handling pieces up to 200 mm, and is used for silicon, silicon dioxide and silicon nitride plus resist descum. That gas list is almost the entire vocabulary of fluorine-based etching: SF₆ for fast, fairly isotropic silicon removal; CF₄ and the fluorocarbons for oxide and nitride, where the polymer they deposit on sidewalls is doing as much work as the ions; oxygen to strip organics and to tune the polymer back off again."
+      },
+      {
+        "heading": "The same sheath turns up in deposition and sputtering",
+        "body_md": "The reason this physics is worth learning once rather than three times is that etch, plasma-enhanced deposition and sputtering are the same discharge with different intentions. In PECVD the point is that the electrons, not the wafer, supply the energy that dissociates the precursor, which is how a silicon nitride film can be grown at a temperature the metal underneath survives; the sheath is still there, and the ion bombardment it delivers is what densifies the growing film and sets its stress. In sputtering the target is the powered electrode, so the self-bias that would have accelerated ions into a wafer accelerates them into a slab of metal instead, ejecting the atoms that go on to form the film. Same Boltzmann factor, same sheath, same asymmetry argument about electrode areas — the only thing that changes is which surface you wanted the ions to land on. Learning to read self-bias on one tool transfers directly to the other two.",
+        "deeper_md": "The transfer is not total, and the gap is instructive. A sputtering discharge usually adds magnets to trap electrons near the target, which raises the local ionisation rate and lets the discharge run at a far lower pressure than a diode etcher; low pressure then means the sputtered atoms arrive with most of their original energy rather than thermalised. The consequence is that the species arriving at the substrate in a sputter tool are not only ions and radicals from the gas but fast neutrals from the target, a population no sheath steers and no standard process monitor sees."
+      },
+      {
+        "heading": "Why two engineers with two models get two answers",
+        "body_md": "Modelling a processing plasma splits into two camps, and the split explains a lot of disagreement about recipes. Fluid models track density and mean velocity and close the equations with a drift–diffusion approximation, Γ = μnE − D∇n, which assumes a near-Maxwellian electron distribution held in place by frequent collisions and transport set by the local field. Kinetic models push individual particles and handle collisions by Monte Carlo, and they are expensive: the review by Kim, Lee and Lee runs on a 200 µm grid with a 14.4 picosecond timestep and needs about 2,000 RF cycles to reach steady state. The reason you sometimes have to pay that is non-locality. When the distance an electron travels while losing its energy exceeds the gap between electrodes, electron energy is set by the whole potential structure rather than by the field where the electron happens to be, and no local closure can represent that.",
+        "deeper_md": "Their specific findings are the ones to remember. The drift–diffusion approximation overestimates electron power absorption in the bulk at 100 mTorr; the kinetic model shows a local minimum in electron temperature in the bulk that the fluid models do not produce at all; and because ionisation and excitation rates depend on the high-energy tail, that error survives even where the bulk is collisional enough for a fluid picture. In an asymmetric reactor the kinetic model also finds off-diagonal ion pressure components reaching about 10% of the diagonal terms in the bulk, so the isotropic-pressure closure fails there even though it holds inside the sheath. The conclusion they draw is a useful rule of thumb: fluid for higher-pressure symmetric discharges, kinetic for low-pressure strongly asymmetric ones."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "eV (electronvolt)",
+        "definition": "The energy an electron gains falling through one volt. Used as a temperature it is worth about 11,600 K, which is why a 3 eV electron population coexists with a 300 K gas."
+      },
+      {
+        "term": "Sheath",
+        "definition": "The thin non-neutral region between the quasi-neutral plasma and any surface. Nearly all of the potential difference falls across it, and ions are accelerated through it into the wafer."
+      },
+      {
+        "term": "Debye length (λ_D)",
+        "definition": "√(ε₀T_e/n e²) — the distance over which a plasma screens an imposed field. A collisionless sheath is a few Debye lengths thick, so sheath thickness falls as density rises."
+      },
+      {
+        "term": "DC self-bias",
+        "definition": "The standing negative voltage that appears on an RF-driven electrode fed through a blocking capacitor, because the electrode must pass zero net charge per cycle while electrons arrive far faster than ions."
+      },
+      {
+        "term": "Blocking capacitor",
+        "definition": "The series capacitor between RF generator and electrode. It passes the RF and blocks direct current, which is exactly what allows the electrode to float to a self-bias instead of being held at ground."
+      },
+      {
+        "term": "Charge exchange",
+        "definition": "A collision in which a fast ion hands its charge to a slow neutral, producing a slow ion partway across the sheath. It is why ion energy distributions grow a low-energy tail and secondary peaks as pressure rises."
+      },
+      {
+        "term": "Electronegativity (α)",
+        "definition": "The ratio of negative-ion density to electron density. In argon–oxygen it runs from 0.83 to 24.26 as oxygen is added; a discharge where negative ions outnumber electrons behaves differently from one where they do not."
+      },
+      {
+        "term": "EEPF (electron energy probability function)",
+        "definition": "The distribution of electron energies in the discharge. Reaction rates depend on its high-energy tail rather than its mean, which is why two plasmas at the same electron temperature can have very different chemistry."
+      },
+      {
+        "term": "Drift–diffusion approximation",
+        "definition": "The fluid closure Γ = μnE − D∇n, which neglects inertia and assumes transport is set by the local field. It fails when an electron's energy-relaxation length exceeds the electrode gap."
+      }
+    ],
+    "try_this": "Measure the self-bias. Put a DC voltmeter on the electrode side of the club etcher's blocking capacitor, then sweep RF power at fixed pressure and pressure at fixed power, and plot V_b against each. You will have the only quantity in the chamber that tracks ion energy, and you will find it is not proportional to the forward-power reading. If the tool does not expose that node, do the comparison on paper instead: Olthoff's Ar⁺ peak is 21 eV at 1.3 Pa from 200 V peak-to-peak, while Kim's 50 MHz, 50 mTorr argon case peaks near 56 eV from 100 V. Work out how much of that gap is electrode-area asymmetry and how much is which electrode the ions were sampled at, and read the plasma chapter of Campbell's Fabrication Engineering at the Micro- and Nanoscale alongside it.",
+    "sources": [
+      {
+        "title": "Studies of Ion Kinetic-Energy Distributions in the Gaseous Electronics Conference RF Reference Cell",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4887239/fullTextXML",
+        "publisher": "J. Res. National Institute of Standards and Technology 100(4) 383–400",
+        "date": "1995"
+      },
+      {
+        "title": "Comparison of Kinetic and Fluid Simulation Models for RF Capacitively Coupled Plasmas in Semiconductor Processing",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13164984/fullTextXML",
+        "publisher": "Materials 19(9) 1900",
+        "date": "2026-05-05"
+      },
+      {
+        "title": "Plasma-Side Analysis of Chemical-to-Ion Flux Balance and Ion Energy-Angular Distributions in Ar/O₂ Capacitively Coupled Plasmas",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13515833/fullTextXML",
+        "publisher": "Micromachines 17(8) 891",
+        "date": "2026-07-25"
+      },
+      {
+        "title": "New achievement of the global sheath-bulk model for the collisionless radio-frequency using in scale industries",
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9816976/fullTextXML",
+        "publisher": "Heliyon 8(12) e12264",
+        "date": "2022-12-20"
+      },
+      {
+        "title": "Reactive Ion Etching — process overview and typical conditions",
+        "url": "https://plasma.oxinst.com/campaigns/technology/reactive-ion-etching",
+        "publisher": "Oxford Instruments Plasma Technology",
+        "date": "2026"
+      },
+      {
+        "title": "NanoFab Tool: Reactive Ion Etcher — Oxford RIE PlasmaPro 80",
+        "url": "https://www.nist.gov/laboratories/tools-instruments/nanofab-tool-reactive-ion-etcher-oxford-rie-plasmapro-80",
+        "publisher": "NIST Center for Nanoscale Science and Technology",
+        "date": "2026"
+      }
+    ]
+  }
+}

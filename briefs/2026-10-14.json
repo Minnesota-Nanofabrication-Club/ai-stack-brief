@@ -1,0 +1,445 @@
+{
+  "date": "2026-10-14",
+  "generated_at": "2026-10-14T13:40:00Z",
+  "window": "2026-10-13..2026-10-14",
+  "headline": "Seri Khoury and Aaron Schild prove that no randomised distributed algorithm finds a maximal independent set in fewer than about log n / log log n rounds, leaving the forty-year-old algorithms of Luby and of Alon, Babai and Itai essentially optimal after a twenty-year gap.",
+  "pulse": {
+    "read_time_min": 8,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-heusler-silicide-thermal-window",
+            "title": "A Heusler film orders at 600 °C and silicon attacks it at 500 °C",
+            "dek": "David Robles-Cuenca and co-authors grew 750 nm films of the Heusler alloy Co₂MnAl — an ordered three-element metal grown for its unusually spin-polarised current — and found that on a silicon substrate the ordering anneal it wants runs 100 °C above the temperature at which silicon starts diffusing in and forming silicides.",
+            "why_it_matters": "Putting a magnetic functional layer on silicon is usually discussed as a lattice-matching problem, and this says the binding constraint is a diffusion couple instead: past 500 °C the substrate is a reactant, not a support. The window closes from both ends, because the B2 chemical order these films need only appears near 600 °C even on an inert oxide substrate. Anything that wants this alloy on a silicon wafer has to buy its atomic order somewhere other than a hot furnace step — a barrier layer, a seed layer, a low-temperature route — or accept the disordered phase.",
+            "background_md": "Heusler alloys are ordered intermetallics with the formula X₂YZ, and their usefulness rests entirely on that order: the band structure is calculated to open a gap in one spin channel only when all three elements sit on their own sublattices. Shuffle the sites at random and the fully ordered L2₁ arrangement degrades to B2, then to the completely random A2, and the predicted spin polarisation and Berry-curvature transport fall away with it. Order is produced by annealing, which is also what turns any substrate underneath from an inert platform into a chemical participant.",
+            "deeper_md": "Thickness is what makes this a process result rather than a spintronics one. Most Co₂MnAl work is a few nanometres inside a tunnel junction; these films are 750 nm, because the applications the authors name — anomalous-Nernst thermopiles, integrated power inductors, magnetic MEMS — scale with magnetic volume. There is a great deal of metal available to feed a reaction.\n\nOn MgO (001) the films reach their best B2 ordering at 600 °C. On silicon, above 500 °C, silicon diffuses into the Heusler layer, interfacial silicides nucleate, and the vacancy flux left behind condenses into Kirkendall voids. The authors report that this shows up as microcracking and a step in electrical resistivity before the diffraction signature has gone fully A2 — so the electrical measurement fails before the structural one does, which is the useful part for anyone screening an anneal.\n\nThe caveat is composition. These films are Mn-poor, Co₂.₂₅Mn₀.₇Al₁.₀₅, and still hold about 600 emu/cm³ of saturation magnetisation, in line with theory for off-stoichiometric Heuslers. Magnetisation is forgiving of off-stoichiometry; transverse transport is not. Sakuraba and co-workers showed that B2 disorder on its own suppresses the anomalous Hall conductivity relative to L2₁ calculations, so a film that looks magnetically healthy can have quietly lost the property it was grown for.",
+            "glossary": [
+              {
+                "term": "L2₁ order",
+                "definition": "The fully ordered full-Heusler arrangement in which each of the three elements occupies its own sublattice; it is the only arrangement for which the half-metallic band structure is calculated."
+              },
+              {
+                "term": "A2 phase",
+                "definition": "The completely random body-centred-cubic solid solution a Heusler alloy collapses into when the three elements stop distinguishing their sites, which erases the spin-split gap."
+              },
+              {
+                "term": "Kirkendall void",
+                "definition": "A cavity that forms where one species of a diffusion couple leaves faster than the other arrives, so the resulting vacancy flux condenses into a hole at or near the interface."
+              },
+              {
+                "term": "emu/cm³",
+                "definition": "Magnetic moment per unit volume in CGS units — the figure of merit for a film grown for magnetic volume rather than for interface spin polarisation."
+              }
+            ],
+            "fab_angle": "The transferable rule is that an anneal specification is incomplete without the substrate named: a recipe that works on an oxide in a tube furnace can fail on bare silicon at the same setpoint. Note also which instrument catches it first. The resistivity step arrives before the structure is visibly wrecked, so if the club ever anneals a sputtered metal on bare silicon above roughly 500 °C, a four-point probe before and after is worth more than a film that still looks mirror-bright.",
+            "confidence": "confirmed",
+            "sources": [
+              {
+                "title": "Thermal stability and structural ordering of thick Co₂MnAl films grown on MgO and Si substrates",
+                "url": "https://arxiv.org/abs/2610.17955",
+                "publisher": "arXiv (Journal of Alloys and Compounds 1079, 189914)",
+                "date": "2026-10-13"
+              },
+              {
+                "title": "Fermi level tuning and atomic ordering induced giant anomalous Nernst effect in Co₂MnAl₁₋ₓSiₓ Heusler alloy",
+                "url": "https://arxiv.org/abs/1911.07741",
+                "publisher": "arXiv (Phys. Rev. B 101, 134407)",
+                "date": "2019-11-15"
+              }
+            ]
+          },
+          {
+            "id": "silicon-exchange-bias-acoustic-isolation",
+            "title": "An acoustic isolator that works with the magnet taken out",
+            "dek": "Weiqi Du, Cheng Song and co-authors stacked an antiferromagnet against two ferromagnets on a shear-horizontal acoustic delay line and measured sound travelling 21 decibels per millimetre more easily in one direction than the other, with no external magnetic field applied at all.",
+            "why_it_matters": "Every magnetoacoustic isolator published so far has needed a bias magnet sitting next to the die, which is the reason none of them is in a phone: a magnet is not a thin film and cannot be deposited. Moving that job to exchange bias, a pinning direction held at an interface between two magnetic layers, makes the direction of isolation a property of the layer stack rather than of the package. The price shows up in the number — 21 dB/mm here, against roughly 80 dB/mm reported for a field-biased device at a comparable frequency.",
+            "background_md": "Passive structures obey reciprocity: whatever passes a signal from left to right passes it equally from right to left. A receiver sharing an antenna with a transmitter needs that symmetry broken, and the standard way is a magnetically biased ferrite circulator, which is centimetres across and cannot be built in a wafer line. Magnetoacoustics offers an on-chip route. An acoustic wave strains a magnetic film, the strain drives spin waves in it, and spin-wave dispersion is not symmetric in wavevector — so one propagation direction couples harder and loses more of its energy than the other.",
+            "deeper_md": "The symmetry bookkeeping is the design. Nonreciprocal magnon–phonon coupling needs both time-reversal and spatial-inversion symmetry broken. A single uniformly magnetised layer breaks the first but needs a field to hold its magnetisation; the second usually comes from stacking two magnetic layers whose moments differ. Here the stack is IrMn/FeGaB/Cu/FeGaB — the antiferromagnetic IrMn exchange-biases the FeGaB touching it, the copper spacer leaves the second FeGaB free, and the two therefore sit in different remanent states with nothing applied. The authors report 21 dB/mm of normalised isolation and say its sign is set by the field-sweep history used to establish the bias, which is the direct evidence that exchange bias rather than a stray field is doing the work.\n\nTwo caveats. The 91 dB/mm also quoted is a numerical optimisation, not a measurement. And normalised isolation in dB/mm is not insertion loss: a device short enough to be practical delivers a fraction of that figure, and this is a six-page preprint with no reported insertion loss or bandwidth. For scale, Hu and co-workers measured over 40 dB — 80 dB/mm — on a lithium tantalate delay line at 2.333 GHz, with a magnetostrictive bilayer that does require a field.",
+            "glossary": [
+              {
+                "term": "Reciprocity",
+                "definition": "The property of a passive structure that transmission is identical in both directions; breaking it is what lets a transmitter and receiver share one antenna without deafening the receiver."
+              },
+              {
+                "term": "Exchange bias",
+                "definition": "A preferred magnetisation direction imposed on a ferromagnet by an adjacent antiferromagnet through interfacial exchange coupling, and held with no applied field."
+              },
+              {
+                "term": "dB/mm",
+                "definition": "Isolation normalised to propagation length; it is not insertion loss, so a short device delivers proportionally less of the quoted figure."
+              },
+              {
+                "term": "Magnon",
+                "definition": "A quantised spin wave in a magnetic material; its frequency–wavevector relation is asymmetric under field, which is where directional behaviour comes from."
+              }
+            ],
+            "fab_angle": "The useful detail for anyone building one is that the isolation direction is set by a magnetic field history and then held with no field — closer to a post-deposition trim than to a lithography layer, and in principle settable per die. The matching worry is the mirror image: a stack whose sign flips with field-sweep history has no obvious immunity to whatever stray field it meets during probing, dicing or packaging.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Field-free Magnetoacoustic Nonreciprocity via Exchange-bias Engineering",
+                "url": "https://arxiv.org/abs/2610.17979",
+                "publisher": "arXiv",
+                "date": "2026-10-13"
+              },
+              {
+                "title": "Giant Nonreciprocity of Surface Acoustic Waves induced by a positive-negative magnetostrictive heterostructure",
+                "url": "https://arxiv.org/abs/2403.06234",
+                "publisher": "arXiv",
+                "date": "2024-03-10"
+              }
+            ]
+          },
+          {
+            "id": "silicon-gaon-spinel-mixed-anion",
+            "title": "A gallium oxynitride that is a crystal, not a compromise",
+            "dek": "Baikui Li and co-authors used nitrogen-plasma-assisted pulsed-laser deposition to grow crystalline spinel γ-gallium oxynitride — a semiconductor that mixes oxygen and nitrogen on the same anion sites — and placed its room-temperature band edge near 4.3 electronvolts.",
+            "why_it_matters": "Widening a semiconductor's bandgap is normally done by alloying on the metal site, which drags the lattice constant and the polarisation charge along with it. Substituting on the anion site instead is a second knob that almost nobody turns, and the obstacle has never been the idea but the synthesis: oxygen and nitrogen compete for the same sites and the usual product is a disordered or phase-separated film. A film that is demonstrably crystalline with nitrogen genuinely incorporated is what makes the knob measurable, because only then can a band edge be attributed to composition rather than to disorder.",
+            "background_md": "Gallium oxide and gallium nitride are both used because a wide bandgap raises the electric field a device survives before it breaks down. They are different compounds, with different crystal structures and different anions, and nothing sits between them. Alloying normally means substituting on the metal site — aluminium for gallium — which changes lattice constant and interface polarisation charge at the same time as the gap. Substituting on the anion site, oxygen for nitrogen, would move the gap more independently; the reason it is rare is that the two anions compete for the same lattice sites.",
+            "deeper_md": "The growth window is the result. Pulsed-laser deposition with a nitrogen plasma gives independent control of the nitrogen and oxygen supply, and the authors report three distinct outcomes as they traverse it: monoclinic β-Ga₂O₃ at one end, crystalline spinel γ-GaON in a band, and largely disordered films elsewhere. Diffraction, atomic-resolution imaging and elemental analysis are what separate the middle case from the third, and that order of evidence matters, because a disordered oxynitride will also show an absorption edge somewhere plausible and prove nothing by it.\n\nThe band edge is assigned from temperature-dependent photocurrent spectroscopy rather than a transmission fit: the γ-GaON response redshifts with temperature the way a genuine band-edge transition does, which is the argument for 4.3 eV at room temperature being a gap and not a defect level.\n\nWhat the paper has not got is a device — thirteen pages, four figures, no doping, no mobility, no breakdown field. β-Ga₂O₃ already has transistors: Das and co-workers report 150 nm-gate FinFETs reaching 764 mA/mm with an on-resistance of 9.1 Ω·mm and an on/off ratio above 10⁹. That same paper also measures about 20% current collapse under pulsed bias, attributed to trapping at the etched fin sidewalls and the Al₂O₃ interface. A new anion-site knob does nothing at all about trapped charge.",
+            "glossary": [
+              {
+                "term": "Mixed-anion semiconductor",
+                "definition": "A compound in which two different negatively charged species — here oxygen and nitrogen — share the same crystallographic sites, so composition tunes the band structure without changing the metal sublattice."
+              },
+              {
+                "term": "Spinel (γ) vs monoclinic (β)",
+                "definition": "Two different crystal structures gallium oxide-based materials can adopt; which one forms decides the symmetry, the defect chemistry and the achievable gap, so naming the phase is part of naming the material."
+              },
+              {
+                "term": "Pulsed-laser deposition",
+                "definition": "Growth by firing a pulsed laser at a target so that material ablates and condenses on a nearby substrate; it transfers complex stoichiometry well, which is why oxide research uses it."
+              },
+              {
+                "term": "Current collapse",
+                "definition": "A drop in drain current under pulsed operation relative to slow sweeps, caused by charge trapped at surfaces or interfaces partially depleting the channel."
+              }
+            ],
+            "fab_angle": "The transferable part is the order of evidence. The authors establish the crystal structure by diffraction and atomic-resolution imaging first and only then assign a band edge, because a disordered film of the same composition will still absorb somewhere believable. Any measurement that infers a gap from an optical edge alone is making the weaker of the two claims available, and in a teaching lab the diffraction half is usually the cheaper one.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Direct growth of crystalline spinel GaON films: A wide-bandgap mixed-anion semiconductor",
+                "url": "https://arxiv.org/abs/2610.18550",
+                "publisher": "arXiv",
+                "date": "2026-10-13"
+              },
+              {
+                "title": "Sub-Micron Gate β-Ga₂O₃ FinFETs with Current Density > 750 mA/mm and Regrown Contacts",
+                "url": "https://arxiv.org/abs/2610.15155",
+                "publisher": "arXiv",
+                "date": "2026-10-10"
+              }
+            ]
+          },
+          {
+            "id": "silicon-mos2-drum-dissipation-dilution",
+            "title": "A monolayer drum's record Q is mostly tension, not material",
+            "dek": "Lukas Schleicher, Eva Weig and co-authors measured mechanical quality factors up to 372,000 in drums made from a single layer of molybdenum disulphide at 4 kelvin, and attribute a factor of about a thousand of that to the film's tension rather than to the material being intrinsically low-loss.",
+            "why_it_matters": "A resonator's quality factor is habitually read as a statement about its material, and dissipation dilution says it is largely a statement about its stress state: stretch a membrane and most of the vibrational energy sits in the lossless elastic field of the tension instead of in the bending that actually dissipates. Reporting the two numbers separately is what turns a record into a design rule, and here the rule is counterintuitive — the monolayer's own loss is located at its surfaces while thicker flakes are limited by their volume, so thinner is not automatically better.",
+            "background_md": "A mechanical resonator's quality factor Q is the number of radians of oscillation over which its stored energy falls by a factor of e. Sensors, filters and quantum transducers all want it large, because the smallest force or mass a resonator can resolve improves as it rises. The dominant loss channel in a thin membrane is internal friction in the material as it bends, which gives a stressed film an escape route: tensile stress stores vibrational energy elastically with no loss channel attached, and the ratio of that stored energy to the lossy bending energy multiplies Q by a factor fixed by geometry and stress alone.",
+            "deeper_md": "The number to hold onto is the dilution factor, roughly 1,000 for the monolayer drum. Divide the measured Q — up to 372,000 ± 37,000 at 4 K, which the authors say is close to an order of magnitude above the previous best for any van der Waals material at that temperature — by that factor, and the material's own intrinsic Q is a few hundred. That is the honest figure of merit for monolayer MoS₂ as a mechanical material, and it is unremarkable. The geometry is doing the work.\n\nThe mechanism is in the thickness trend. Multilayer drums dilute less but have higher intrinsic Q, comparable to conventional top-down materials, which places the monolayer's loss at its surfaces rather than in its bulk. The temperature dependence of the damping fits a two-level-system picture — the same vocabulary used for the glassy surface loss that limits silicon nitride.\n\nTwo caveats. Nothing here says the surface loss behaves the same way warmed from 4 K to room temperature. And the authors credit a polymer-free exfoliation route, which is a cleanliness claim about fabrication rather than a measured quantity, and exactly the sort of step another group struggles to reproduce. Kanellopulos and Schmid, working on stressed silicon nitride, show the same inverse-square dependence on prestress governs frequency noise and not only damping.",
+            "glossary": [
+              {
+                "term": "Dissipation dilution",
+                "definition": "The enhancement of Q obtained by storing vibrational energy in a film's tension, which has no loss mechanism, rather than in bending, which does."
+              },
+              {
+                "term": "Intrinsic Q",
+                "definition": "The quality factor the material would have with no tension assisting it — the measured Q divided by the dilution factor, and the only part that is a property of the material."
+              },
+              {
+                "term": "Two-level system (TLS)",
+                "definition": "A defect with two nearly degenerate configurations that absorbs energy from a vibrating lattice; a population of them produces the characteristic temperature dependence of damping in glassy and surface layers."
+              },
+              {
+                "term": "Exfoliation",
+                "definition": "Peeling a single atomic layer off a bulk crystal and transferring it onto a target substrate; whatever polymer is used to carry it leaves residue that becomes surface loss."
+              }
+            ],
+            "fab_angle": "Two things here are cleanroom problems rather than physics problems. The first is transfer cleanliness: a polymer-free exfoliation is a handling recipe, and it is the half of this result a teaching lab could actually attempt and then measure. The second is that stress is a process variable — the same deposition knobs that set tensile stress in a sputtered or furnace-grown film set the dilution factor of any membrane later released from it, so a stress measurement on a blanket film is a prediction about the Q of a device nobody has built yet.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Role of dissipation dilution in achieving high mechanical quality factors in van der Waals resonators",
+                "url": "https://arxiv.org/abs/2610.18288",
+                "publisher": "arXiv",
+                "date": "2026-10-13"
+              },
+              {
+                "title": "1/f frequency-noise reduction in nanomechanical resonators by dissipation dilution",
+                "url": "https://arxiv.org/abs/2610.16711",
+                "publisher": "arXiv",
+                "date": "2026-10-12"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-fenand-wordline-airgap-analog",
+            "title": "SK hynix's ferroelectric NAND is limited by its word lines",
+            "dek": "SK hynix published a technical account of its 3D ferroelectric NAND — a NAND array whose cells hold a value as the polarisation state of hafnium zirconium oxide rather than as trapped electrons — and reports that air gaps between word lines, not the cell itself, delivered the largest single energy gain.",
+            "why_it_matters": "Compute-in-memory results are almost always reported as a cell property: how many conductance levels the device holds and how linearly it programs. This one puts most of the benefit in the wiring and the read schedule — cutting word-line parasitic capacitance by about 60% doubles energy efficiency, while lowering word-line resistance buys 16% throughput and only 3% energy — which says the array is capacitance-limited, not cell-limited. That relocates the problem from device physics to interconnect and page partitioning, both of which are ordinary logic-process levers.",
+            "background_md": "A NAND flash array stores a value by trapping charge in an insulator above a transistor channel, shifting that transistor's threshold voltage. Because the cells sit in series strings sharing word lines, the same array can be read as an analogue multiplier: drive the word lines with voltages and the current out of a string is a sum of products of stored values and applied voltages. The attraction is that the multiplication happens where the data already is, so nothing moves. The obstacle is that charge-trap cells discriminate poorly between many current levels, because trapped charge cannot be placed precisely.",
+            "deeper_md": "The ferroelectric substitution is what makes multi-level operation plausible: cell current is set by how much of the hafnium zirconium oxide has switched polarisation, and domains switch in increments. The authors abandon conventional incremental-step-pulse programming, which moves the threshold abruptly, for repeated pulses at a fixed voltage followed by small voltage increments, and report four distinct current levels per cell in the low-current region, demonstrated at 300 mm wafer scale.\n\nThe rest is wiring and scheduling. Air gaps between word lines cut parasitic capacitance by roughly 60%, giving 1.2× throughput and 2× energy efficiency; low-resistance word-line metal gives up to 16% throughput and 3% energy; together, 1.4× and 2.2×. Splitting a 16 KB page into four 4 KB subpages gives 1.2× and 1.7×, with the optimum depending on the network, since too small a page cuts a layer into many segments and lengthens accumulate latency.\n\nThe headline figures are the weak part. The article claims roughly 10–20× throughput and 4,000–5,000× energy efficiency at equal chip area but names the baseline inconsistently — \"conventional 3D arrays\" in the body, 2D non-volatile arrays in the interview — and SK hynix's earlier IEDM work puts its 4,000× density claim explicitly against 2D arrays, which is the flattering comparison. That earlier paper also reported at least 256 conductance levels per cell; this one operates four. The largest single gain here, 9× throughput from in-page pipelining, is simulated.",
+            "glossary": [
+              {
+                "term": "HZO (hafnium zirconium oxide)",
+                "definition": "A hafnia-based oxide that retains a switchable electrical polarisation in thin films, so a cell's state is stored as how much of it has switched rather than as trapped charge."
+              },
+              {
+                "term": "Word line",
+                "definition": "The shared gate conductor that drives a row of memory cells; its resistance sets how fast the row can be driven and its capacitance sets how much energy each drive costs."
+              },
+              {
+                "term": "ISPP (incremental step pulse programming)",
+                "definition": "The standard NAND write loop — apply a pulse, read back, raise the voltage a step, repeat — which converges fast but moves the threshold in jumps that blur adjacent levels."
+              },
+              {
+                "term": "MAC (multiply–accumulate)",
+                "definition": "The multiply-and-add operation that dominates neural-network arithmetic; a memory array performs it by summing the currents its cells pass."
+              }
+            ],
+            "fab_angle": "Air gaps between conductors are a deliberate void left in a dielectric, and they are one of very few process changes that improves speed and energy at once — here about 60% less word-line capacitance. They also make everything downstream harder, because the structure has to survive planarisation, wet cleans and thermal cycling without collapsing or being refilled. A club building its own interconnect meets the same trade in miniature: the lowest-capacitance dielectric is the one that is not there, and it is also the one with no mechanical strength.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "In the AI era, NAND moves beyond storage to computing — 3D FeNAND co-optimization",
+                "url": "https://news.skhynix.com/en/research-inside-ep2/",
+                "publisher": "SK hynix Newsroom",
+                "date": "2026-10-14"
+              },
+              {
+                "title": "IEEE Electron Devices Society Newsletter — IEDM 2024 paper highlights (38.1, analog computation in 3D FeNAND)",
+                "url": "https://www.ieee.org/ns/periodicals/EDS/EDS-APRIL-2025-HTML/InnerFiles/LandPage.html",
+                "publisher": "IEEE Electron Devices Society",
+                "date": "2025-04"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-mis-round-lower-bound",
+            "title": "Forty years on, Luby's algorithm turns out to be nearly optimal",
+            "dek": "Seri Khoury and Aaron Schild proved that no randomised distributed algorithm can reliably find a maximal independent set — a set of vertices with no edge between any two of them that cannot be extended — in fewer than about log n / log log n communication rounds.",
+            "why_it_matters": "This closes a gap that had been open for more than twenty years and was the main reason anyone still hunted for a faster algorithm: the upper bound was O(log n), the best lower bound was Ω(√(log n / log log n)), and a quadratically faster method was therefore not ruled out. It is now. The construction matters more than the theorem for anyone who builds these things, because the hard instances are deliberately not locally tree-like — every earlier lower bound leaned on high-girth graphs, and that family was exactly what kept the bound stuck.",
+            "background_md": "In the LOCAL model of distributed computing, every vertex of a graph is a processor that initially knows nothing but its own identifier, and in each round it may send an unbounded message to each neighbour. An algorithm's cost is its number of rounds, which is the same thing as how far information has to travel: an r-round algorithm is precisely one in which each vertex decides its output from the subgraph within distance r of itself. Maximal independent set is the model's canonical problem because it is the symmetry-breaking primitive that colouring, matching and scheduling all reduce to.",
+            "deeper_md": "The hard instance is built in three moves. Start with a D-regular graph of girth Θ(log_D n) with D = Θ(log n) — the classical high-girth scaffold — but use it only as a skeleton. Replace every vertex by a clique on n^c vertices for some constant c in (0,1), and replace every edge by a bipartite Erdős–Rényi graph between the two corresponding cliques, each possible edge included independently with probability 1/2. The result is dense with triangles, so no vertex's neighbourhood resembles a tree, and that is the point: the authors argue that a locally tree-like instance cannot close this gap at all.\n\nThe proof is a round-elimination argument that turns an r-round algorithm into an (r−1)-round one. It tracks two quantities, an occupancy probability and a conflict probability, either of which can move a long way in either direction while their combination degrades only slightly per step. What makes it work is that a dense bipartite Erdős–Rényi graph has no large biclique in its complement, which bounds the entropy of the output of any independent-set algorithm.\n\nTwo limits worth stating. The bound is on failure probability bounded away from zero rather than on expected rounds, and it is still a factor of Θ(log log n) short of the O(log n) upper bound. Khoury and Schild's own previous Ω(min{log Δ, √log n}) bound came from maximal matching on Δ-ary trees and reached MIS only through a reduction that does not preserve treeness.",
+            "glossary": [
+              {
+                "term": "LOCAL model",
+                "definition": "A distributed model in which each graph vertex is a processor, messages are unbounded, and the only cost is the number of synchronous rounds — equivalently, the radius each vertex may see before deciding."
+              },
+              {
+                "term": "Girth",
+                "definition": "The length of the shortest cycle in a graph; large girth means every small neighbourhood looks like a tree, which is why high-girth graphs were the standard source of hard instances."
+              },
+              {
+                "term": "Round elimination",
+                "definition": "A proof technique that converts any r-round algorithm into an (r−1)-round algorithm for a related problem, so that an impossibility at zero rounds propagates upward into a lower bound."
+              },
+              {
+                "term": "o(f(n)) (little-o)",
+                "definition": "Asymptotically strictly smaller than f(n); ruling out o(log n / log log n) rounds means no algorithm can beat that rate by any growing factor, however small."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "No Truly Sublogarithmic-Round Algorithm for Distributed MIS in the LOCAL Model",
+                "url": "https://arxiv.org/abs/2610.18215",
+                "publisher": "arXiv",
+                "date": "2026-10-13"
+              },
+              {
+                "title": "Round Elimination via Self-Reduction: Closing Gaps for Distributed Maximal Matching",
+                "url": "https://arxiv.org/abs/2505.15654",
+                "publisher": "arXiv",
+                "date": "2025-05-21"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-rlvr-critical-batch-size",
+            "title": "Bigger RL batches learn less per sample and fail on the same schedule",
+            "dek": "Yuante Li and co-authors ran GRPO reinforcement learning on Qwen2.5-Math-1.5B across a sixteenfold range of rollout batch sizes and found that the usual square-root learning-rate rule holds the point of training collapse at a roughly fixed number of samples while letting progress per sample get worse.",
+            "why_it_matters": "Reinforcement learning from verifiable rewards is bottlenecked on generating the model's own responses, so the standard move is to batch more rollouts and raise the learning rate as the square root of the batch. This result says that rule conserves the wrong quantity: it holds first-order drift per sample constant but not the actual loss improvement, because a bigger batch takes fewer and longer steps and surrenders more of each one to curvature. There is therefore a critical batch size that depends on the learning rate, above which sample efficiency falls — and the prescription is to start below it and switch up before the collapse arrives.",
+            "background_md": "Training a model by reinforcement learning on a verifiable reward — a maths answer that is right or wrong, a test that passes or fails — pays for a sampling step before every gradient step, because the training data is the model's own output. That makes generation, not the gradient computation, the dominant cost, and the obvious response is to generate many responses at once. Batch size has a standing theory from supervised learning: beyond some size extra samples buy less than proportionally less gradient noise, and the learning rate must be raised to make use of a larger batch at all.",
+            "deeper_md": "The analysis is a local quadratic model of the loss, which is where the two clocks come from. Under the square-root rule the expected first-order drift per sample is preserved, but the second-order term is not: a batch k times larger takes 1/k as many steps at √k the learning rate, so each step travels √k further and the curvature penalty, which is quadratic in step length, grows. Progress per sample therefore falls above a critical batch size that itself depends on the learning rate. The failure clock is separate — the authors posit a drift threshold the policy cannot cross without collapsing, and along the square-root rule that threshold arrives at a roughly constant sample count. So larger batches do not fail later; they fail in the same place having learned less.\n\nThe evidence is a 16× batch sweep with GRPO on Qwen2.5-Math-1.5B, with the progress gap reproduced on a second dataset, on a general-purpose checkpoint, and on a 7B model. Ratio clipping delays the collapse, more so for larger batches, and widening the clip range trades stability for a temporary speed-up — but the gap survives with clipping removed, so clipping is not its cause.\n\nThe caveat is scale. 1.5B and 7B are small relative to the runs this advice would change, and a local quadratic model is precisely the approximation that breaks once steps get long, which is the regime being described.",
+            "glossary": [
+              {
+                "term": "RLVR (reinforcement learning with verifiable rewards)",
+                "definition": "Training on tasks where correctness can be checked mechanically — a solved equation, a passing test — so the reward needs no learned judge and no human label."
+              },
+              {
+                "term": "Rollout batch",
+                "definition": "The set of model-generated responses collected before a gradient update; its size, not the gradient arithmetic, sets the dominant cost of an RLVR step."
+              },
+              {
+                "term": "Critical batch size",
+                "definition": "The batch beyond which extra samples stop buying proportional progress; here it depends on the learning rate rather than being a fixed property of the task."
+              },
+              {
+                "term": "Ratio clipping",
+                "definition": "Capping how far the new policy's token probabilities may move from the old policy's within one update, which limits per-step drift and so postpones collapse."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Two Clocks: Why Larger Rollout Batches Learn Slower but Fail on Schedule in Reinforcement Learning with Verifiable Rewards",
+                "url": "https://arxiv.org/abs/2610.18853",
+                "publisher": "arXiv",
+                "date": "2026-10-13"
+              },
+              {
+                "title": "An Empirical Model of Large-Batch Training",
+                "url": "https://arxiv.org/abs/1812.06162",
+                "publisher": "arXiv",
+                "date": "2018-12-14"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "How a photomask is made",
+    "slug": "photomask-manufacturing",
+    "subtitle": "A 152 mm square of quartz, a hundred nanometres of chrome, and an electron beam that takes most of a day — plus the reason the square is finally about to change size.",
+    "tldr": "A chip is printed from a master pattern carried on a plate of glass, and the plate has been the same size and shape for decades: a six-inch square of quartz with a thin metal film on it. Making one means writing the pattern with an electron beam, finding every defect in it, and repairing them, because a single flaw on the master repeats in every chip printed from it. That economics — one extremely expensive near-perfect object, used millions of times — is why mask making is a separate industry from chip making, and why a move to a twelve-inch plate is being planned a decade in advance.",
+    "sections": [
+      {
+        "heading": "The master that is not allowed a mistake",
+        "body_md": "A projection stepper does not photograph the mask onto the wafer at full size. It demagnifies, typically by 4×, and in a step-and-scan tool it sweeps a slit of light roughly 25 mm by 8 mm across the wafer while the mask travels with it. So the features on the mask are four times the size of the ones on silicon: a leading-edge optical mask carries primary features around 80 nm, which land as about 20 nm of resist pattern.\n\nThat factor of four is why masks are makeable at all. What it does not relieve is the consequence of a mistake. The mask is used for every exposure of every field of every wafer, so one defect is not one bad die — it is one bad die in every field, for as long as that mask is in the fab. Lithography is roughly 30% of manufacturing cost and a circuit takes twenty to thirty patterning steps, which means a chip is the product of twenty to thirty of these objects, each of which has to be effectively perfect.",
+        "deeper_md": "The mask has also stopped resembling the circuit. Modern layers carry sub-resolution assist features — shapes deliberately printed too small to resolve, whose only job is to improve the aerial image of the real feature beside them. In 2016 SRAFs ran about 60 nm for optical layers and 32–40 nm for EUV, with the smallest dimension at 1× scale 15 nm optical against 8–10 nm for EUV. In the July 2026 eBeam Initiative survey, 46% of respondents expected the minimum SRAF dimension to reach 15 nm or below, up from 40% a year earlier and 29% the year before that. Every one of those shapes is extra data the writer has to place and extra geometry the inspector has to decide is not a defect."
+      },
+      {
+        "heading": "The blank, where flatness is most of the specification",
+        "body_md": "Start from the plate. Shin-Etsu's own patent language for the standard article is unambiguous: \"the so-called 6-inch substrates dimensioned 152±0.2 mm by 152±0.2 mm by 6.35±0.1 mm.\" The glass can be soda-lime or borosilicate for undemanding work, but anything serious uses fused quartz, because quartz transmits well at 248 nm and 193 nm and has a very low coefficient of thermal expansion — which matters precisely when features are small and the die is large.\n\nOn top of that goes the absorber: chrome, at most about 100 nm thick, with a chromium-oxide anti-reflective layer above it to kill interference at the wafer surface. The quality requirements are flatness, pattern placement accuracy, minimum feature size, linewidth control across the whole plate, and low defect density — in that order of surprise, because flatness is the one people underestimate. A plate that is not flat moves its own features sideways when it is clamped and gravity-sagged in the tool, and that appears on the wafer as registration error, not as blur. Shin-Etsu's claims put the central region, excluding 10 mm in from each edge, at a flatness of 0.5 µm or better.",
+        "deeper_md": "Thermal expansion is a live constraint rather than a historical one. The mask absorbs some of every exposure, so it runs warm in a tool cycling at production rate, and any expansion appears as a magnification and distortion error against a wafer that is not expanding the same way. This is also why registration metrology has moved: mask shops went from sampling a few hundred dedicated registration targets to dense sampling on actual circuit features, because the error being chased is no longer uniform across the plate."
+      },
+      {
+        "heading": "Writing it: shot count, and the move to many beams",
+        "body_md": "The pattern is written with electrons, not light, because electrons have a short enough wavelength to be irrelevant to resolution. The traditional tool is a variable-shaped-beam writer: two shaped apertures combine to form a rectangle or a triangle, and the tool places one such shape per shot. Write time therefore scales with the number of shots, which scales with the complexity of the pattern — a straight line is cheap and a curve approximated by hundreds of small rectangles is not.\n\nThat is the economics that broke. The industry pushed VSB current density from 70 A/cm² in 2006 to 1,200 A/cm², which Toppan's Franklin Kalk described as roughly the end of current-density scaling for shaped beams. Even so, in 2015 the average mask took 9.6 hours to write, complex masks took 18 to 72 hours, and write times had risen about 25% since 2011. Projections for single-beam EUV masks ran to 50–100 hours each, which is not a tool specification so much as a statement that the approach had ended.",
+        "deeper_md": "Multi-beam writing replaces shapes with pixels. IMS Nanofabrication's system uses 262,144 individually blankable beams at 50 keV and has demonstrated 30 nm half-pitch; NuFlare's MBM-1000 took a similar approach with around 250,000 beams. The architectural consequence, as D2S's Aki Fujimura put it, is that write time becomes constant for a given resist regardless of how many shapes the layer contains. That is what makes curvilinear masks affordable at all, and the industry has noticed: in the July 2026 eBeam Initiative survey, 93% of respondents expected multi-beam writer purchases to rise over the next three years, and 87% expected most leading-edge mask shops to produce at least one mostly curvilinear layer within three years. The hard part is not the optics but the datapath — a quarter of a million beams all need their data with correct timing."
+      },
+      {
+        "heading": "EUV turns the mask into a mirror, and buries the defects",
+        "body_md": "At 13.5 nm nothing usefully transmits, so an EUV mask reflects. The blank is a doped quartz substrate carrying about 40 alternating molybdenum/silicon pairs that act as a Bragg reflector, capped with ruthenium, with a tantalum-based absorber patterned on top. Everything that was a surface problem on a chrome-on-quartz mask is now a buried problem.\n\nThe characteristic EUV defect is a phase defect. A bump or a pit in the substrate, or a particle incorporated during multilayer deposition, propagates upward through the forty layers and perturbs the phase of the reflected wavefront without blocking any light. It is nearly invisible to an inspection at a convenient wavelength and perfectly visible to the exposure tool. Applied Materials' Banqiu Wu put the requirement plainly: solving it almost needs a perfect substrate. The yield numbers follow. An eBeam Initiative survey put overall mask yield at 94.8% and EUV mask yield at about 64.3%, and Wu noted that high-end mask yields can sit below 50%.",
+        "deeper_md": "The only instrument that sees a phase defect for what it is works at the exposure wavelength — actinic inspection, at 13.5 nm. Actinic *blank* inspection is the easier case, because there is no pattern yet to confuse the image. Actinic *pattern* inspection is the expensive one, and for years it did not exist commercially; mask shops used optical and e-beam tools instead and accepted that some shallow defects were missed. That is changing: in the July 2026 eBeam Initiative survey, 64% of respondents expected 61–100% of 0.33-NA EUV production masks to be actinically inspected in the mask shop within three years, against 43% saying so a year earlier."
+      },
+      {
+        "heading": "Inspection and repair, or why a mask is never finished",
+        "body_md": "Writing a mask is not the long pole; qualifying it is. Historically, up to 75% of e-beam-written masks have been observed to come out defective and need repair, with the usual failures being missing chrome, pinholes in the chrome, and chrome that did not clear. Automated inspection handles defects above roughly 0.1 µm, and repair means locally adding opaque material or removing excess, using a laser or a focused ion beam.\n\nRepair is itself a risk. Removing a particle under the wrong conditions damages the quartz underneath, and a damaged substrate distorts the aerial image in a way that no further repair recovers — a scrapped plate after everything else went right. Then there is the pellicle, a thin transparent membrane held above the pattern so that any particle landing on it sits far enough out of focus not to print. Dai Nippon Printing's Naoya Hayashi described EUV mask infrastructure as about eighty percent ready, with the missing fifth being exactly this: defect assurance, inspection, and the pellicle, which Wu notes is easy to break.",
+        "deeper_md": "Inspection also has to decide what counts. Complex optical-proximity correction generates large numbers of nuisance defects — real deviations from the drawn geometry that make no lithographic difference — and separating those from hotspots, the pattern types genuinely sensitive to process-window drift, is a judgement the tool makes thousands of times per plate. Repeater defects are the diagnostic that matters most in a fab: a defect that appears at the same position in every field on the wafer is by construction on the reticle, and some of them print inconsistently from field to field, which is worse than a hard failure because it looks like a process excursion."
+      },
+      {
+        "heading": "Why the six-inch square is finally going to change",
+        "body_md": "High-NA EUV raises numerical aperture from 0.33 to 0.55, taking nominal resolution from roughly 13 nm to about 8 nm. To do that while keeping the existing six-inch reticle, ASML's optics are anamorphic — the demagnification differs between the two axes — and the consequence is that the usable exposure field is roughly halved. A die larger than that field has to be exposed in two pieces and stitched, which costs scanner time and introduces an overlay requirement in the middle of a chip where there was none.\n\nSo the plate is going to grow. On 8 September 2026, ASML and TSMC announced an industry initiative to move High-NA EUV to twelve-inch photomasks. TSMC's stated plan is to begin High-NA high-volume manufacturing on six-inch masks in 2030, with a twelve-inch pilot line targeted for 2031 and production-system readiness for 2033. The surveyed industry already expects it: 66% of the July 2026 eBeam Initiative respondents put adoption of roughly 6 × 12-inch masks within a decade.",
+        "deeper_md": "It is worth being concrete about what a blank-size change implies, because \"bigger mask\" sounds like a glass purchase and is not. Every writer, every inspection tool, every repair tool, every cleaning track, every pod and robotic handler, and the synthetic-quartz supply chain itself are all built around 152 mm × 152 mm × 6.35 mm. The flatness specification does not scale kindly either — a plate twice as long sags more under its own weight at the same thickness, and flatness is already one of the tightest numbers on the blank. ASML and TSMC describe the effort as industry-wide rather than a proprietary format for exactly this reason, and neither company has disclosed how the conversion cost is shared. The 2031 and 2033 dates should be read as what they are: targets for an infrastructure transition, not shipment dates."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Reticle",
+        "definition": "A mask used in a reduction tool, carrying the pattern for one exposure field at 4× the wafer dimensions, rather than a 1:1 master covering a whole wafer. In modern usage the words reticle and photomask are used interchangeably."
+      },
+      {
+        "term": "Mask blank",
+        "definition": "The unpatterned starting article: a 152 mm square, 6.35 mm thick plate of fused quartz already coated with its absorber film. Nearly all of a mask's flatness and defect specification is inherited from the blank, which is why blank suppliers are a distinct industry."
+      },
+      {
+        "term": "SRAF (sub-resolution assist feature)",
+        "definition": "A shape placed on the mask that is deliberately too small to print, whose purpose is to improve the image contrast of the real feature next to it. It is pattern data with no circuit meaning, and it inflates both write time and inspection difficulty."
+      },
+      {
+        "term": "VSB (variable-shaped beam)",
+        "definition": "The conventional electron-beam writer architecture, in which two apertures combine to project one rectangle or triangle per shot. Write time scales with shot count, so pattern complexity translates directly into hours on the tool."
+      },
+      {
+        "term": "Multi-beam mask writer",
+        "definition": "A writer that exposes a fixed raster of pixels using hundreds of thousands of independently blanked beamlets, so write time depends on area and dose rather than on how many shapes the layer contains."
+      },
+      {
+        "term": "Phase defect",
+        "definition": "An EUV-specific defect in which a substrate bump or a buried particle deforms the molybdenum/silicon multilayer so that reflected light returns with the wrong phase. It blocks no light, so it can pass a conventional inspection and still ruin the printed image."
+      },
+      {
+        "term": "Actinic inspection",
+        "definition": "Inspecting a mask at the wavelength it will be used at — 13.5 nm for EUV — so that the inspection sees exactly what the scanner will see. It is the only method that detects phase defects reliably, and it is correspondingly slow and expensive."
+      },
+      {
+        "term": "Registration (pattern placement error)",
+        "definition": "How far a feature sits from where it was drawn, measured in the plane of the mask. It is distinct from linewidth control: a mask can have perfect feature sizes and still fail because the features are in slightly the wrong places, which becomes overlay error on the wafer."
+      },
+      {
+        "term": "Pellicle",
+        "definition": "A thin transparent membrane suspended above the patterned side of the mask, so that a particle landing on it is far enough from the focal plane to blur out rather than print. For EUV the membrane must survive the beam and transmit at 13.5 nm, which is why it is still a limiting component."
+      }
+    ],
+    "try_this": "Do the shot-count arithmetic that pushed the industry off single-beam writing, then turn it on the club's own stepper. Chris Mack's lithography notes put a step-and-scan exposure slit at about 25 mm × 8 mm at 4× reduction, so one scan's worth of mask is roughly 100 mm × 32 mm of written pattern. A variable-shaped-beam writer places one rectangle or triangle per shot; a multi-beam writer paints a fixed raster at a rate that does not care how many shapes there are. Take one cell from a layout the IC team has already drawn, count its polygon edges, multiply by the number of instances that would tile 100 mm × 32 mm, and see where the result lands against the 9.6-hour average and the 18-to-72-hour range quoted for real masks. Then redo it assuming every straight edge is a curve, which is what 87% of mask experts surveyed in July 2026 expect to be routine within three years. The punchline is the club's own tool: a DMD carries on the order of a million mirrors against a multi-beam writer's 262,144 beams, so the maskless stepper is the same pixel-based architecture with photons instead of electrons — which makes \"why does anyone still buy masks?\" a question with a one-word answer, throughput, and a number you will have just calculated.",
+    "sources": [
+      {
+        "title": "Lithography Basics (Chris Mack's lithography tutorial: reduction ratio, step-and-scan field, resolution)",
+        "url": "https://www.lithoguru.com/scientist/lithobasics.html",
+        "publisher": "lithoguru.com — Chris A. Mack",
+        "date": "2023"
+      },
+      {
+        "title": "Photolithography Simulation, §2.4 Binary masks (dissertation)",
+        "url": "https://iue.tuwien.ac.at/phd/kirchauer/node23.html",
+        "publisher": "Heinrich Kirchauer, Institute for Microelectronics, TU Wien",
+        "date": "1998-03"
+      },
+      {
+        "title": "Photomask-forming glass substrate and making method (US9316902B2)",
+        "url": "https://patents.google.com/patent/US9316902B2/en",
+        "publisher": "Shin-Etsu Chemical Co. / USPTO",
+        "date": "2016-04-19"
+      },
+      {
+        "title": "Multi-Beam Market Heats Up",
+        "url": "https://semiengineering.com/multi-beam-market-heats-up",
+        "publisher": "Semiconductor Engineering",
+        "date": "2016-03-17"
+      },
+      {
+        "title": "Challenges Mount For Photomasks",
+        "url": "https://semiengineering.com/challenges-mount-for-photomasks",
+        "publisher": "Semiconductor Engineering",
+        "date": "2017-09-21"
+      },
+      {
+        "title": "eBeam Initiative Survey of Semiconductor Luminaries Predicts a Bright Outlook for the Photomask Industry (15th annual, surveyed July 2026)",
+        "url": "https://www.semiconductor-digest.com/ebeam-initiative-survey-of-semiconductor-luminaries-predicts-a-bright-outlook-for-the-photomask-industry/",
+        "publisher": "Semiconductor Digest",
+        "date": "2026"
+      },
+      {
+        "title": "ASML and TSMC Target 12-Inch Masks for Next Phase of High-NA EUV",
+        "url": "https://convergedigest.com/asml-tsmc-12-inch-photomasks-high-na-euv/",
+        "publisher": "Converge Digest",
+        "date": "2026-09-08"
+      }
+    ]
+  }
+}

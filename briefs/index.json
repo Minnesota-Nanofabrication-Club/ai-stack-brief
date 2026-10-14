@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-10-14",
+      "foundations_slug": "photomask-manufacturing",
+      "foundations_topic": "How a photomask is made",
+      "headline": "Seri Khoury and Aaron Schild prove that no randomised distributed algorithm finds a maximal independent set in fewer than about log n / log log n rounds, leaving the forty-year-old algorithms of Luby and of Alon, Babai and Itai essentially optimal after a twenty-year gap.",
+      "item_count": 7,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-10-13",
       "foundations_slug": "plasma-fundamentals",
       "foundations_topic": "Plasma fundamentals for process engineers",
@@ -590,6 +603,6 @@
       ]
     }
   ],
-  "generated_at": "2026-10-13T15:57:30Z",
-  "latest": "2026-10-13"
+  "generated_at": "2026-10-14T13:29:38Z",
+  "latest": "2026-10-14"
 }

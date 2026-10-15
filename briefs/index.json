@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-10-15",
+      "foundations_slug": "cdc-6600-and-cray",
+      "foundations_topic": "The CDC 6600 and Seymour Cray",
+      "headline": "Baochun Li, Zongpeng Li and Sirui Liu turn a week-old counterexample to the 2004 Li–Li network-coding conjecture into the first external-memory integer sort that provably beats the comparison bound Aggarwal and Vitter set in 1988 — by an exponent of 1.8×10⁻¹¹.",
+      "item_count": 7,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-10-14",
       "foundations_slug": "photomask-manufacturing",
       "foundations_topic": "How a photomask is made",
@@ -603,6 +616,6 @@
       ]
     }
   ],
-  "generated_at": "2026-10-14T13:29:38Z",
-  "latest": "2026-10-14"
+  "generated_at": "2026-10-15T13:12:08Z",
+  "latest": "2026-10-15"
 }

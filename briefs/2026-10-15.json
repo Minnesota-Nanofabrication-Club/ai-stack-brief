@@ -1,0 +1,473 @@
+{
+  "date": "2026-10-15",
+  "generated_at": "2026-10-15T13:20:00Z",
+  "window": "2026-10-14..2026-10-15",
+  "headline": "Baochun Li, Zongpeng Li and Sirui Liu turn a week-old counterexample to the 2004 Li–Li network-coding conjecture into the first external-memory integer sort that provably beats the comparison bound Aggarwal and Vitter set in 1988 — by an exponent of 1.8×10⁻¹¹.",
+  "pulse": {
+    "read_time_min": 8,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-aln-si111-polarity-isolation",
+            "title": "Growing better AlN on silicon dopes the silicon underneath it",
+            "dek": "Hossein Yazdani and co-authors report that the plasma-assisted molecular-beam epitaxy conditions giving the best aluminium nitride crystal on a silicon wafer — aluminium-rich flux and a hotter substrate — are the same ones that turn the silicon surface p-type, so crystal quality and electrical isolation trade directly against each other.",
+            "why_it_matters": "A nitride buffer layer is normally specified by its crystal quality and its strain, and this makes the substrate's own resistivity a growth parameter rather than something you buy: you can start from a high-resistivity wafer and still finish with a conducting surface under the device. The sharper consequence is that polarity — which fixes whether the built-in polarisation field in every layer above points toward the channel or away from it — is not an independent choice. It is coupled to the isolation budget through the same two knobs, and the authors' escape is to drop the substrate to 575 °C and give up some crystal quality.",
+            "background_md": "Gallium nitride devices are built on silicon wafers because silicon is cheap and large, but the two lattices do not match, so growth begins with an aluminium nitride layer a few tens of nanometres thick that both seeds the crystal and insulates the device from the substrate. Nitride crystals are polar: the c-axis has a metal-terminated end and a nitrogen-terminated end, and which one points up sets the direction of the built-in polarisation field every later layer sees. Radio-frequency devices need the silicon beneath the stack to stay resistive as well, because a conducting surface there couples capacitively and dissipates the signal.",
+            "deeper_md": "The trade-off falls out of two knobs at fixed nitrogen flux. Nitrogen-rich growth gives Al-polar AlN with relatively high resistivity; aluminium-rich growth gives N-polar AlN with better structural quality but more p-type conduction, which the authors attribute to unintentional aluminium doping of the silicon during growth. Raising the substrate temperature improves the crystal and worsens the conduction. Their best compromise is slightly aluminium-rich at 575 °C, giving an N-polar AlN/Si stack at 276 kΩ/sq — the only electrical number in the preprint.\n\nThe interface chemistry behind polarity is better established than the doping claim. Roshko and co-workers at NIST found an Al–Si eutectic floating on the growing AlN surface under aluminium-rich flux; abruptly cutting Al about 20 percent and roughly doubling active nitrogen incorporates that aluminium and silicon into the film, and where at least a monolayer of silicon goes in, the polarity inverts.\n\nThe aluminium-autodoping mechanism is contested. Chandrasekar and co-workers measured similar aluminium concentrations by SIMS in 50 nm and 200 nm AlN films, ruled autodoping out as the explanation for their thickness-dependent parasitic channel, and attributed it instead to thermally formed Si–O–N acceptors — about 5.07×10¹⁷ cm⁻³ at the surface against 2.8×10¹⁵ cm⁻³ in the bulk. Their substrates were 1–10 Ω·cm p-type silicon, not high-resistivity, so the two experiments are not strictly comparable.",
+            "glossary": [
+              {
+                "term": "Polarity (Al-polar / N-polar)",
+                "definition": "Which end of the nitride c-axis points away from the substrate; it reverses the sign of the spontaneous polarisation field and therefore which side of a heterojunction accumulates carriers."
+              },
+              {
+                "term": "V/III ratio",
+                "definition": "The ratio of active nitrogen arriving at the surface to arriving metal; it decides whether growth is metal-rich or nitrogen-rich, and in nitrides it also decides polarity."
+              },
+              {
+                "term": "kΩ/sq (sheet resistance)",
+                "definition": "Resistance of a square of film or surface layer, independent of square size; the standard way to quantify how leaky a nominally insulating substrate surface has become."
+              },
+              {
+                "term": "Plasma-assisted MBE",
+                "definition": "Molecular-beam epitaxy in which nitrogen is cracked into atoms by an RF plasma source rather than supplied as ammonia, which allows growth hundreds of degrees cooler than metal-organic CVD."
+              }
+            ],
+            "fab_angle": "The transferable rule is that depositing a metal-rich film on bare silicon at temperature can change the wafer, not just sit on it, and the change shows up as sheet resistance rather than as anything visible. A four-point probe on a monitor wafer before and after a hot metal-rich step costs ten minutes and catches exactly this failure; a thickness measurement does not.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Growth-induced trade-off between polarity, electrical isolation, and structural quality in AlN grown on Si(111) by plasma-assisted molecular beam epitaxy",
+                "url": "https://arxiv.org/abs/2610.20523",
+                "publisher": "arXiv (cond-mat.mtrl-sci)",
+                "date": "2026-10-14"
+              },
+              {
+                "title": "Eutectic Formation, V/III Ratio and Controlled Polarity Inversion in Nitrides on Silicon",
+                "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7739546/",
+                "publisher": "NIST author manuscript, Physica Status Solidi B 2019",
+                "date": "2019"
+              },
+              {
+                "title": "Thickness Dependent Parasitic Channel Formation at AlN/Si Interfaces",
+                "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5691057/",
+                "publisher": "Scientific Reports 7, 15749",
+                "date": "2017-11-16"
+              }
+            ]
+          },
+          {
+            "id": "silicon-hzo-access-rate-endurance",
+            "title": "How fast you write a ferroelectric cell changes how long it lasts",
+            "dek": "Roberto Guido and co-authors cycled 5 nm hafnium–zirconium-oxide capacitors — the ferroelectric film the memory industry wants because it survives a normal CMOS process — and found the polarisation they lose depends on the delay between write pulses, not only on how many pulses there have been.",
+            "why_it_matters": "Endurance is quoted as a cycle count, which quietly assumes damage accumulates per switch and that a part characterised at full speed behaves the same in a system that writes it once a minute. If the loss instead tracks the time a cell spends at rest between writes, the two established failure modes cannot simply be summed, and a qualification plan has to sweep access rate as a second axis rather than running the fastest loop available. The authors' answer is a physics-based extrapolation instead of a longer test, checked experimentally to 135 °C and 2 ms delays.",
+            "background_md": "Hafnium oxide alloyed with zirconium is ferroelectric in a metastable orthorhombic phase, and that is why it displaced the perovskites: it can be grown a few nanometres thick by atomic layer deposition and survives the back-end thermal budget. A memory cell stores a bit as the direction of its remanent polarisation. Two mechanisms limit such cells. Fatigue is the loss of switchable polarisation as the film is cycled; imprint is the drift of the switching voltage while a cell sits in one state. Both are generally traced to oxygen vacancies redistributing under the applied field.",
+            "deeper_md": "The films are 5 nm Hf₀.₅Zr₀.₅O₂, which the authors call product-relevant, and the method pairs voltage-pulse measurement with ab-initio and drift-diffusion simulation. Their mechanism is that oxygen vacancies accumulate at the electrode–ferroelectric interface as the delay between pulses grows, with electron transfer changing the vacancies' charge state, and that this reduces the fraction of domains still able to switch. The point of the paper is the negative claim: the loss is not the sum of a fatigue term from cycling and an imprint term from standing, so neither existing test predicts it.\n\nTwo groups locate the damage elsewhere. Zhang and co-workers, using nanoscale X-ray diffraction on individual LSMO/HZO/LSMO capacitors plus energy-landscape calculations, argue fatigue is a polar-orthorhombic to non-polar monoclinic phase transformation driven by vacancy redistribution — a structural change rather than an interface-charge effect. Cheng and co-workers go further and argue the hysteresis is extrinsic altogether, reproducible from charged vacancies oscillating at about 1×10²⁰ cm⁻³ without true ferroelectric switching.\n\nThe caveat is the extrapolation. A model validated over 2 ms delays and to 135 °C is being asked to predict years, and the preprint's abstract carries no cycle count at all, so the endurance figure itself cannot be read off it.",
+            "glossary": [
+              {
+                "term": "Remanent polarisation",
+                "definition": "The electric dipole per unit area a ferroelectric keeps after the applied field is removed; its sign is the stored bit, and its magnitude is what fatigue eats away."
+              },
+              {
+                "term": "Fatigue",
+                "definition": "Progressive loss of switchable polarisation as a ferroelectric is cycled between states, measured as a falling switched charge per pulse rather than as an outright failure."
+              },
+              {
+                "term": "Imprint",
+                "definition": "The shift in switching voltage a ferroelectric develops while it sits in one state, so one direction becomes easier to write than the other and the read window closes asymmetrically."
+              },
+              {
+                "term": "Oxygen vacancy",
+                "definition": "A missing oxygen atom in the oxide lattice; it is mobile under field, carries charge, and pins the nearby polarisation, which makes it the usual suspect in hafnia reliability."
+              }
+            ],
+            "fab_angle": "There is a measurement lesson here for anyone building a pulse-characterisation rig: the delay between pulses is a parameter the instrument sets silently, usually at whatever the setup settles to, and this result says it is a first-class stress variable. Log it, and vary it deliberately, or the endurance number you report describes your bench rather than the device.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Access Rate-Dependent Endurance Behavior of Ferroelectric Hafnium Zirconium Oxide Capacitors",
+                "url": "https://arxiv.org/abs/2610.20154",
+                "publisher": "arXiv (cond-mat.mtrl-sci)",
+                "date": "2026-10-14"
+              },
+              {
+                "title": "Phase Transformation Driven by Oxygen Vacancy Redistribution as the Mechanism of Ferroelectric Hf0.5Zr0.5O2 Fatigue",
+                "url": "https://www.osti.gov/biblio/2500839",
+                "publisher": "OSTI record for Advanced Electronic Materials 10(9)",
+                "date": "2024-06"
+              },
+              {
+                "title": "Extrinsic ferroelectricity originated from oxygen vacancy drift in HfO2-based films",
+                "url": "https://arxiv.org/abs/2112.13431",
+                "publisher": "arXiv (cond-mat.mtrl-sci)",
+                "date": "2021-12-26"
+              }
+            ]
+          },
+          {
+            "id": "silicon-reciprocal-tau-cell",
+            "title": "An analog network gets its gradients by running itself twice",
+            "dek": "Craig Jin and Thomas Chaffey describe a weak-inversion CMOS circuit whose connections are deliberately symmetric, so the backward pass of gradient descent is the same network driven with the error signal rather than a second circuit built specifically to compute derivatives.",
+            "why_it_matters": "On-chip learning usually fails on area rather than on mathematics: a chip that trains needs the forward datapath plus a backward one, and the backward one is dead silicon during inference. Symmetry deletes it, and the authors' simulations put the second run within 1.9 percent of the true gradient. The payoff lands exactly where analog loses, which is device mismatch — weights computed in software and loaded onto a mismatched array scored 53 to 63 percent on the Iris classification task, while the same arrays trained in place reached 88 to 96 percent.",
+            "background_md": "Analog circuits compute by letting device physics do the arithmetic. A MOSFET held in weak inversion has a drain current exponential in its gate voltage, so a current-mode circuit built from a handful of such transistors multiplies and adds at nanoamp currents instead of instantiating a multiplier. The standing objection is mismatch: two nominally identical transistors differ in threshold voltage, and that spread scales as one over the square root of gate area, so an analog weight is accurate to a few percent at best. Calibrating or training the network after it has been built is the usual proposed answer.",
+            "deeper_md": "Each cell is a current-mode leaky integrator with a ReLU built into its own dynamics; each connection is two transistors whose signed strength is set by a ratio of bias currents, which is the one thing a CMOS process matches well. The network's equilibrium is the solution of a convex program, and latching the cells that are off linearises what remains, so the second run is exactly linear rather than approximately so.\n\nThat is the circuit form of Equilibrium Propagation, which Scellier and Bengio introduced for energy-based models: nudge the output toward the target and the perturbation propagating back through the hidden layers carries the error derivatives, using only one kind of computation in both phases. The contribution here is the claim that latching makes the linearisation exact, which is what allows large error signals and therefore robustness to noise on the error path.\n\nThe caveats are the size of the demonstration. These are transistor-level simulations in SkyWater's SKY130, not fabricated silicon; no power or bandwidth figure is reported; and Iris is four features and 150 samples, so the recovery from 53–63 percent to 88–96 percent says the training loop closes on a mismatched array, not that the architecture scales. It is five pages, submitted to ISCAS 2027 and not yet reviewed.",
+            "glossary": [
+              {
+                "term": "Weak inversion (subthreshold)",
+                "definition": "Operating a MOSFET below threshold, where drain current is exponential in gate voltage rather than quadratic; it buys transconductance per microamp at the cost of speed and matching."
+              },
+              {
+                "term": "Reciprocity",
+                "definition": "The property that a network's transfer from node A to node B equals the transfer from B to A, which is what makes a backward pass the same hardware run in the other direction."
+              },
+              {
+                "term": "Mismatch (σV_th)",
+                "definition": "The random spread in threshold voltage between identically drawn transistors, falling as one over the square root of gate area, which sets the floor on analog weight accuracy."
+              },
+              {
+                "term": "SKY130",
+                "definition": "SkyWater's open 130 nm process design kit, which ships SPICE models, design rules and standard cells publicly, so a circuit claim in it can be reproduced by anyone."
+              }
+            ],
+            "fab_angle": "This is a design-side result the club can actually reproduce, because SKY130 is the open PDK and the paper reports nothing that needs a fab: the device table lists 1.8 V transistors with low- and high-threshold flavours, P+ poly precision resistors at 300 Ω/sq and MiM capacitors near 2 fF/µm², which is the whole toolbox the circuit needs. The transferable idea for a custom IC is narrower than the learning claim — if a block's connections are built symmetric, its sensitivity analysis is a second simulation of the same netlist.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "The Reciprocal tau-Cell: A Log-Domain Circuit for On-Chip Learning",
+                "url": "https://arxiv.org/abs/2610.20018",
+                "publisher": "arXiv (eess.SP), submitted to ISCAS 2027",
+                "date": "2026-10-14"
+              },
+              {
+                "title": "Equilibrium Propagation: Bridging the Gap Between Energy-Based Models and Backpropagation",
+                "url": "https://arxiv.org/abs/1602.05179",
+                "publisher": "arXiv (Frontiers in Computational Neuroscience)",
+                "date": "2017-03-28"
+              },
+              {
+                "title": "SKY130 PDK — device details, flavours and electrical specifications",
+                "url": "https://skywater-pdk.readthedocs.io/en/main/rules/device-details.html",
+                "publisher": "SkyWater Technology / Google open PDK documentation",
+                "date": "2026-10-15"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-block-scale-rebasing-accumulator",
+            "title": "Fold the block scale into the accumulator's exponent field",
+            "dek": "Jiayi Wang, Kearnan Bishop and Ang Li built a matrix-multiply array that handles the block-scaled four- and eight-bit formats AI accelerators now use by rewriting the exponent of its running sum at each block boundary, instead of carrying a second accumulator just for the scale factors.",
+            "why_it_matters": "Every low-precision format shipping today pairs a tiny number with a scale shared by a block of sixteen or thirty-two of them, so a multiplier array must re-reference its accumulator whenever the block changes, and the standard answer is a second accumulation path that costs area and energy in every tile of the array. Rebasing the exponent instead is integer-only — two adds and a subtract at the boundary — and in TSMC 28 nm it cut the incremental cost of supporting the format from 7.6 percent of array area to 2.7, and from 16.8 percent of energy per operation to 5.4.",
+            "background_md": "A multiply-accumulate array spends much of its area on exponent handling rather than on multiplication, which is why low-precision AI arithmetic moved to block floating point: cut the per-number exponent to two or three bits and give a whole block of numbers one shared scale. Four bits per weight plus one eight-bit scale per sixteen weights costs about 4.5 bits each, against sixteen for half precision. The price is that the arithmetic stops being uniform. A running sum is only meaningful relative to the scale of the block that fed it, so the hardware must re-reference the accumulator every time the block changes.",
+            "deeper_md": "The array is 16×16, closes timing at 1 GHz after routing in TSMC 28 nm, and signs off at 3.27 mm² of cell area on a 2.40 × 2.40 mm² die at 59 percent utilisation. One reconfigurable 24×24 multiplier per element splits into narrower products that are summed in carry-save form without intermediate rounding into a 76-bit accumulator, with a single round-to-nearest-even producing each FP32 partial sum. Energy per operation runs from 3.68 pJ at FP32 to 0.45 pJ at FP4, where peak throughput is 4.096 TOPS.\n\nThe rebasing trick is small. At a block boundary the two incoming E8M0 scales are added, and the accumulator is rebased by adding the scale difference to its FP32 exponent field, leaving the mantissa untouched. NVIDIA's NVFP4 uses a fractional E4M3 scale instead, so the power-of-two part goes through the same path and the fractional part is folded into the FP4 dot product with one 11×8 multiply, exact by distributivity, for 11.8 percent more area against 25.1 for the naive route.\n\nThe authors name the failure mode themselves: rebasing can clamp at FP32 limits. On adversarial inputs with a block-scale exponent spread of σ ≈ 32 they measured divergence from the naive baseline up to 8.19×10³ for MXFP8 E4M3, while real Qwen2.5-7B prefill traces sat at σ ≈ 0.7–1.4 and triggered none. Only the 16×16 array went through physical design, and the NVFP4 path is costed rather than implemented.",
+            "glossary": [
+              {
+                "term": "Block floating point",
+                "definition": "A number format in which a group of values share one exponent or scale factor, so each value stores only a mantissa and a couple of exponent bits — trading dynamic range within a block for storage and datapath area."
+              },
+              {
+                "term": "E8M0 and E4M3",
+                "definition": "Eight-bit scale encodings: E8M0 is eight exponent bits and no mantissa, so it can only express powers of two, while E4M3 has three mantissa bits and can express fractional scales."
+              },
+              {
+                "term": "pJ/op",
+                "definition": "Picojoules per arithmetic operation, the energy figure of merit for a datapath; it isolates the cost of the arithmetic from the data movement around it."
+              },
+              {
+                "term": "Clamping",
+                "definition": "Saturating a result at the largest representable value instead of overflowing; cheap in hardware, but it silently changes the answer, which is why the authors measured how far it can diverge."
+              }
+            ],
+            "fab_angle": "The numbers are the usable part for anyone laying out a datapath: a 16×16 array at 28 nm and 1 GHz lands at 3.27 mm² of cells, and adding every extra format on top of a BF16-plus-FP8 baseline costs about 25.7 percent more area, of which the block-scale support is only 1.8. Format flexibility is cheap when the normalisation is moved into the exponent field and expensive when it is given its own adder tree.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "MFSA: A Multi-Format Systolic Array with Native Micro Scaling Support",
+                "url": "https://arxiv.org/abs/2610.19645",
+                "publisher": "arXiv (cs.AR), accepted to ICCD 2026",
+                "date": "2026-10-14"
+              },
+              {
+                "title": "Microscaling Data Formats for Deep Learning",
+                "url": "https://arxiv.org/abs/2310.10537",
+                "publisher": "arXiv (cs.LG) — the OCP MX specification paper",
+                "date": "2023-10-19"
+              },
+              {
+                "title": "Introducing NVFP4 for Efficient and Accurate Low-Precision Inference",
+                "url": "https://developer.nvidia.com/blog/introducing-nvfp4-for-efficient-and-accurate-low-precision-inference/",
+                "publisher": "NVIDIA Technical Blog",
+                "date": "2025-06-24"
+              }
+            ]
+          },
+          {
+            "id": "chips-analog-digit-base-optimum",
+            "title": "The right digit base for an analog weight is about five, not sixteen",
+            "dek": "Mehmet Aktukmak and David Roberts give a closed-form answer to how a weight should be split across the few-level analog memory cells of an in-memory accelerator, and it comes out near base five rather than the byte-style base sixteen in common use, from a single measurement of the array's noise.",
+            "why_it_matters": "Splitting a weight across cells is the only way an array of four-bit analog cells can carry a number of useful precision, and the base of that split sets two competing errors at once: resolution thrown away by the cell's coarse levels, and noise amplified by the most significant digit. Accounting only for the noise term drives the answer all the way to base one, which wastes resolution; adding the quantisation term produces an interior optimum a designer can compute rather than discover by sweeping a whole array.",
+            "background_md": "An analog in-memory accelerator does matrix–vector multiplication in the wiring. Weights are stored as the conductance of memory cells in a crossbar, the input vector is applied as voltages along the rows, and Kirchhoff's current law sums the products down each column. The arithmetic is almost free; the precision is not. A phase-change or resistive cell holds only a handful of distinguishable conductance levels, and the current read back carries programming spread, read noise and drift. So a weight of any useful precision is spread across several cells like the digits of a number, and the base of that number system is a design choice nobody had a formula for.",
+            "deeper_md": "The result is b_opt = 1 + 1/(12·bound²·η²), capped at 2·bound + 1 and rounded to an integer, where η is the per-tile output-noise standard deviation normalised to the signal RMS. With signed four-bit cells, so bound = 7, and η = 0.02, that is about 5.25. It falls out of a two-term error model, relMSE(b) = kσ²η²(1+b²)/(1+b)² + kσ²/(12·bound²·(1+b)²) with kσ = 3: the first term is noise and falls with smaller bases, the second is quantisation and falls with larger ones, so the minimum sits in between.\n\nIn a physics-based simulation of a 512×512 crossbar with programming variation, IR drop solved on the resistive network and ADC quantisation, base 5 is 3.3–3.4 dB better in mean per-layer multiply-accumulate signal-to-noise ratio than base 16 and 1.6 dB better than base 1, for Gemma-3 270M and Llama-3.2 1B. On eight zero-shot commonsense tasks the base-six split gains 13.1 percent over equal fill for the 270M model and 9.0 percent for the 1B.\n\nThe assumption doing the work is that noise is additive and independent of the stored code, and the authors say so. Real cells are not: Antolini and co-workers measured 90 nm embedded phase-change cells at four levels with initial conductance spread under 6 percent, read-current noise under 9 percent for 90 percent of cells, and drift up to 15 percent after 14 hours — all worst at the lowest conductance, which is state-dependent by definition. The authors note that code-dependent noise pulls the optimum back toward base one.",
+            "glossary": [
+              {
+                "term": "Crossbar",
+                "definition": "A grid of memory cells at every row–column intersection; applying voltages to the rows makes each column current the dot product of the voltages with that column's conductances."
+              },
+              {
+                "term": "η (normalised output noise)",
+                "definition": "The standard deviation of a tile's output noise divided by the root-mean-square of its signal — a single dimensionless number that is the only device input the closed-form base needs."
+              },
+              {
+                "term": "dB (signal-to-noise ratio)",
+                "definition": "Ten times the base-ten logarithm of a power ratio, so 3 dB is a factor of two in noise power; it is the natural unit for an analog datapath because the error is noise, not rounding."
+              },
+              {
+                "term": "IR drop",
+                "definition": "Voltage lost along a wire carrying current through its own resistance; in a large crossbar it makes cells far from the driver see a lower voltage, which distorts the computed product."
+              }
+            ],
+            "fab_angle": "The result reorganises a handoff. It says a device or metrology engineer characterising an analog array only has to report one number — output-noise sigma normalised to signal RMS — for an architect to pick the digit base, instead of handing over a conductance-distribution report and leaving the architecture team to sweep. It also says what that characterisation must not omit: whether the noise depends on the programmed state, because that is the assumption the formula rests on.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Closed-Form Optimal Weight Splitting for Matrix-Vector Multiply on Noisy In-Memory Accelerators",
+                "url": "https://arxiv.org/abs/2610.20359",
+                "publisher": "arXiv (cs.ET)",
+                "date": "2026-10-14"
+              },
+              {
+                "title": "Characterization and Programming Algorithm of Phase Change Memory Cells for Analog In-Memory Computing",
+                "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8037667/",
+                "publisher": "Materials 14(7), 1624",
+                "date": "2021-03-26"
+              },
+              {
+                "title": "Analogue Phase Change Computational Memory with High Precision Reads and Energy Efficient Writes",
+                "url": "https://arxiv.org/abs/2608.29338",
+                "publisher": "arXiv (cond-mat.mtrl-sci)",
+                "date": "2026-08-29"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-external-memory-integer-sort",
+            "title": "Integer sorting on disk finally beats the comparison bound",
+            "dek": "Baochun Li, Zongpeng Li and Sirui Liu publish a deterministic algorithm that sorts N integers held on disk using fewer block transfers between disk and memory than the comparison-sorting bound Aggarwal and Vitter proved optimal in 1988, by exploiting the bits inside the keys rather than only comparing them.",
+            "why_it_matters": "The bound had an unusual status. A 2018 proof showed it was tight for integer keys too, conditional on a 2004 conjecture in network coding, and that conjecture was refuted eight days ago with an explicit counterexample. What was treated as a near-theorem is now known to be false, and the gap it had been guarding is real — tiny, but real. The practical content is close to nil; the methodological content is the point, because a conditional lower bound is a bet on its hypothesis and this one lost.",
+            "background_md": "Sorting more data than fits in memory is not measured in comparisons. The external-memory model gives an algorithm M words of fast memory and moves data between memory and disk in blocks of B words, and its cost is the number of such transfers, because one disk access is worth thousands of instructions. Comparison sorting in that model costs about (N/B)·log(N/M)/log(M/B) transfers, and that is provably optimal when the only permitted operation on a key is comparing it with another. Integer keys allow arithmetic on the bits instead, which is why radix sort beats comparison sorting in ordinary memory.",
+            "deeper_md": "The new bound is O((N/B)[1 + log N / ((log(M/B))^(1−ε)·(log M)^ε)]) for N integers of Θ(log N) bits with 2B ≤ M ≤ N, where ε = 1.8×10⁻¹¹. Put M = 2B and N = B² and the comparison bound is Θ(B log B) while this is O(B(log B)^(1−ε)). That exponent is the honest measure of the result: the improvement is unobservable at any N anyone will ever sort.\n\nThe chain of reasoning is the interesting part. Farhadi, Hajiaghayi, Larsen and Shi showed in 2018 that the comparison bound holds for integers too, conditional on the Li–Li conjecture that network coding buys nothing over fractional routing in undirected multiple-unicast networks. On 7 October, Zhang, Baochun Li and Zongpeng Li posted a counterexample: a simple subcubic undirected network of unit-capacity edges, built with parameters d = 46 and m = 46³, on which a binary linear code reaches rate 1 while routing is capped at 1 − 9/43518487588, a gap of roughly 2×10⁻¹⁰. Both names the conjecture is known by appear on that paper and on this one.\n\nThe caveats are stated. The coding rate is defined over binary linear protocols only; refuting the conjecture removes the lower bound's hypothesis but does not itself produce a faster algorithm, which comes from the authors' own recursive construction; and the authors say ChatGPT assisted in exploring constructions, proofs and the formalisation. Against that, they report that Lean 4 with Mathlib machine-checks termination, correctness, the storage and transfer bounds, and the strict advantage of coding over routing — unusually hard evidence for an unrefereed preprint.",
+            "glossary": [
+              {
+                "term": "External-memory model (N, M, B)",
+                "definition": "A cost model counting only block transfers between a fast memory of M words and unbounded slow storage moved in B-word blocks, with computation inside memory treated as free."
+              },
+              {
+                "term": "Block transfer",
+                "definition": "One movement of B contiguous words between disk and memory; it is the unit of cost because a disk or SSD access is dominated by latency rather than by the bytes moved."
+              },
+              {
+                "term": "Network coding",
+                "definition": "Allowing intermediate nodes in a network to transmit combinations of the messages they receive rather than only forwarding them, which can raise achievable rates above those of routing."
+              },
+              {
+                "term": "Lean 4 / Mathlib",
+                "definition": "A proof assistant and its mathematics library; a theorem checked in them has been verified mechanically from axioms, so a reader need not trust the authors' prose proof."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Undirected Network Coding and Faster External-Memory Integer Sorting",
+                "url": "https://arxiv.org/abs/2610.20079",
+                "publisher": "arXiv (cs.DS, cs.CC, cs.IT)",
+                "date": "2026-10-14"
+              },
+              {
+                "title": "Network Coding Can Beat Routing in Undirected Multiple-Unicast Networks",
+                "url": "https://arxiv.org/abs/2610.09367",
+                "publisher": "arXiv (cs.IT)",
+                "date": "2026-10-07"
+              },
+              {
+                "title": "Lower Bounds for External Memory Integer Sorting via Network Coding",
+                "url": "https://arxiv.org/abs/1811.01313",
+                "publisher": "arXiv (cs.DS)",
+                "date": "2018-11-04"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-ngram-table-host-memory",
+            "title": "Put the n-gram table in CPU RAM and buy compute with it",
+            "dek": "Ian Magnusson, Noah Smith and Pang Wei Koh add an extra input embedding built from n-gram counts kept in ordinary host memory — 797 GB of them, carrying no learned parameters at all — and report that a one-billion-parameter language model trained with it matches one given 46 to 89 percent more compute.",
+            "why_it_matters": "Scaling arguments trade parameters against tokens, and both of those have to live in GPU memory, which is the scarcest thing in a training cluster. This moves part of what the model knows onto host DRAM, which is roughly two orders of magnitude cheaper per byte and sits largely idle during training. Because the table is read-only and takes no gradients, it can also be swapped at inference: replacing the general counts with an 80 GB domain table lowered task loss on mathematics, biomedicine and law with no training step at all.",
+            "background_md": "Before neural language models, the standard next-word predictor was a count. Estimate the probability of each candidate from how often it followed the previous few words in a corpus, and back off to a shorter context when the longer one was never observed. The method was abandoned because the tables grow combinatorially with context length and generalise badly beyond what they have seen — not because the counts were wrong. A count is an exact statement about a corpus, where a network's weights are a lossy compression of the same statistics. The standing question is whether a transformer should spend capacity recomputing numbers that could be looked up.",
+            "deeper_md": "The added embedding is f_t = (1/J)·Σ_j Σ_k S(w_k | h_{t,j})·B[w_k], summed into the token embedding as h_t⁽⁰⁾ = f_t + e_t. B is the model's own unembedding matrix, which is why the path adds no parameters, and S is a stupid-backoff score with the conventional 0.4 discount. The counts come from the whole Dolma 3 pretraining corpus up to order six: 797.487 GB for the 370M–1B models, 17.1 GB for the 60M–190M ones, read-only in host RAM and never on the GPU. Training throughput at 1B holds at 93.1–97.8 percent of the baseline, prefill at 95.5–95.8 and decode at 95.9–96.7.\n\nThe headline is a compute-equivalence range, 46–89 percent on validation loss and 6–56 percent on task loss, measured across the OLMo-core ladder from 60M to 1B parameters at token-to-parameter ratios of 10, 20 and 40.\n\nThe ladder stopping at 1B is the weak point, and it is the worst place to stop for this particular claim: the advantage of consulting memorised statistics should shrink as the model grows large enough to memorise them itself, so the extrapolation runs the wrong way. The domain-swap accuracy results are also mixed on biomedicine, and the authors' own ethics note concedes that high-order counts over rare contexts can reproduce fragments of the source corpus. For contrast, infini-gram gets unbounded-order counts from a suffix array at millisecond latency with no precomputed table, and Over-Tokenized Transformer buys the same information with learned parameters in GPU memory.",
+            "glossary": [
+              {
+                "term": "n-gram",
+                "definition": "A sequence of n consecutive tokens; an n-gram language model predicts the next token purely from counts of which tokens followed the preceding n−1 in a training corpus."
+              },
+              {
+                "term": "Stupid backoff",
+                "definition": "A cheap unnormalised scoring rule that uses the count ratio for the longest context actually observed and falls back to shorter contexts with a fixed penalty, here 0.4, instead of a principled discount."
+              },
+              {
+                "term": "Unembedding matrix",
+                "definition": "The output projection that turns a transformer's final hidden state into per-token scores; reusing it to embed count information is what makes this path parameter-free."
+              },
+              {
+                "term": "D/N (token-to-parameter ratio)",
+                "definition": "Training tokens divided by model parameters; it is the knob compute-optimal scaling studies sweep, so quoting results at ratios of 10, 20 and 40 is how a claim is made comparable across model sizes."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "The COUNT: Counting N-grams Unlocks Scaling on Host Memory and Training-Free Adaptation",
+                "url": "https://arxiv.org/abs/2610.20456",
+                "publisher": "arXiv (cs.CL, cs.LG)",
+                "date": "2026-10-14"
+              },
+              {
+                "title": "Infini-gram: Scaling Unbounded n-gram Language Models to a Trillion Tokens",
+                "url": "https://arxiv.org/abs/2401.17377",
+                "publisher": "arXiv (COLM 2024)",
+                "date": "2024-01-30"
+              },
+              {
+                "title": "Over-Tokenized Transformer: Vocabulary is Generally Worth Scaling",
+                "url": "https://arxiv.org/abs/2501.16975",
+                "publisher": "arXiv (ICML 2025)",
+                "date": "2025-01-28"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "The CDC 6600 and Seymour Cray",
+    "slug": "cdc-6600-and-cray",
+    "subtitle": "Ten functional units, ten processors sharing one adder, and a scoreboard — the first machine whose insides look like a modern CPU.",
+    "tldr": "In 1964 Control Data shipped a machine with a 100-nanosecond clock that was roughly ten times faster than anything else available, and it got there by refusing to do one thing at a time. Ten independent arithmetic units ran concurrently under a hardware bookkeeper called the scoreboard, while ten small processors shared a single adder on a rotating schedule to handle all input and output. Both ideas are in the processor you are reading this on. Seymour Cray dropped one of them from the next machine.",
+    "sections": [
+      {
+        "heading": "The clock came first, and it needed a transistor that did not exist",
+        "body_md": "Start where the machine actually started: with a device problem. Cray wanted a 100-nanosecond clock, and the fastest silicon transistors available could not switch inside the budget a logic chain of that period allows. Germanium was faster but could not take the temperature. So Control Data went to Fairchild and specified a silicon transistor that switched in under 3 nanoseconds, and Jean Hoerni delivered it by combining two tricks: an epitaxial layer to keep the collector thin and lightly doped, and gold doping to kill minority-carrier lifetime in the base so that stored charge drains almost immediately instead of holding the device in saturation. The result, the 2N709, reached the market in July 1961 as the first silicon transistor to beat germanium on speed. In 1964 CDC ordered more than ten million of them. Roughly 600,000 went into each central processor.",
+        "deeper_md": "Gold doping is the counterintuitive step, because every other part of a silicon process spends its effort removing metals. Gold introduces deep levels near midgap, which are efficient recombination centres, and the shorter recombination lifetime collapses the charge stored in the base of a saturated bipolar transistor. Storage time falls, so turn-off is fast. The cost is paid everywhere else: leakage rises, gain falls, and the same deep levels that speed a switching transistor destroy a solar cell or a long-base power device. This is why the trick disappeared when Schottky-clamped TTL arrived — a Schottky diode across the base–collector junction keeps the transistor out of saturation in the first place, so you get the speed without poisoning the silicon."
+      },
+      {
+        "heading": "Cordwood, a cross-shaped cabinet, and Freon",
+        "body_md": "A 3-nanosecond transistor makes wiring a first-order problem. Signals travel at roughly 20 centimetres per nanosecond in cable, so half a metre of wire costs about as much delay as a gate — the comparison is a back-of-envelope from those two numbers, not a figure from the manuals, but it is the arithmetic the machine's shape answers to. The logic was built as cordwood modules: pairs of 3-inch-square cards with transistors and resistors soldered upright between them, which packs components into volume rather than across area and keeps interconnect short. The cabinet was then laid out as a cross, with the time-critical central processor in the middle of the X and the slower racks out along the arms, so that the wires that had to be short could be short. Refrigeration units and pumps lived in the outer parts of the cross. The 6600 was among the first computers cooled by circulating Freon rather than by moving air.",
+        "deeper_md": "Density and cooling are the same problem seen twice, and the 6600 is the first machine where that is obvious. Packing devices into a volume to shorten wires raises the power dissipated per unit volume, which is exactly what air cannot remove: air carries about three orders of magnitude less heat per unit volume than a liquid, and its heat-transfer coefficient at a surface is one to two orders worse. The modern version of this argument is a direct-to-chip cold plate on an accelerator package, and the driver is identical — not that the chip is hot in absolute terms but that the alternative is to spread the system out and pay for it in propagation delay."
+      },
+      {
+        "heading": "Ten functional units, and the arithmetic of not waiting",
+        "body_md": "The central processor had ten independent functional units, and that number is the whole design. There were two floating-point multipliers taking about 1 microsecond each, one divider at 3.4 microseconds, an add unit and a long-add unit at about 0.3 microseconds, two increment units, a branch unit, a boolean unit, a shift unit at about 0.1 microseconds, and a population-count unit. Now do the division that motivates all of this. A divide at 3.4 microseconds is 34 clock periods. A machine that executes one instruction at a time sits idle for 33 of them while the divider works, and the add unit beside it — eleven times faster — does nothing. The 6600 instead decodes one instruction per cycle and hands it to hardware that lets it start as soon as its inputs and its unit are free, so an add issued behind a divide does not wait for the divide. One instruction could issue every 100 nanoseconds when nothing conflicted.",
+        "deeper_md": "Three structural limits sat behind the ten units. The decoder produced one instruction per cycle, so issue was the first bottleneck. Up to three instructions could begin execution in a cycle, set by three pairs of register-file read ports, called data trunks — a port-count limit, which is still the shape of the constraint in a modern core. Up to four results could be written back per minor cycle. Note also that population count, the odd unit on the list, is there because the machine's biggest customers were weapons laboratories and cryptanalysts, and it survives in every instruction set today for entirely different reasons."
+      },
+      {
+        "heading": "The scoreboard: out-of-order execution with nothing reordered",
+        "body_md": "The hardware that let instructions start early is the scoreboard, and it is simpler than its reputation. It tracks, for every register, whether some issued instruction is going to write it, and for every functional unit, whether it is busy. Then it enforces three rules at three different moments. An instruction is not issued at all if its functional unit is busy or if another instruction already in flight is going to write the same destination register. Once issued, it does not begin execution until no pending instruction is still going to write either of its sources. And when it finishes, it does not write its result until every earlier instruction that reads that register has read it. Nothing is renamed and nothing is reordered in a buffer; the instruction simply sits in its unit and waits, and the scoreboard is the bookkeeping that decides when waiting ends.",
+        "deeper_md": "Name the three cases, because the vocabulary outlived the machine. A read-after-write dependence is real data flow and delays the start of execution. A write-after-write and a write-after-read are not data flow at all — they are collisions over the name of a register, and the 6600 pays for them in cycles because it has only the 24 registers the instruction set names. Tomasulo's 1967 design for the IBM 360/91 answered exactly this by giving each in-flight value its own tag, so two instructions writing the same architectural register no longer conflict. The 6600 also had no result forwarding: a value went to the register file and was read from there, which adds a cycle to every dependent instruction."
+      },
+      {
+        "heading": "The barrel: ten processors sharing one adder",
+        "body_md": "The central processor had no input/output instructions whatsoever. All of it was delegated to ten peripheral and control processors, each a small computer with 4,096 words of 12-bit memory and its own program counter. The trick is that they were not ten computers. They shared one arithmetic unit, and each processor's registers rotated through it in a fixed sequence — the barrel — getting a 100-nanosecond slot once every microsecond, so each executed roughly one instruction per microsecond. The reason this works is that each processor spends most of its time waiting on its own slow core memory or on a slow device, so a single shared datapath interleaved ten ways stays busy where ten private datapaths would each be idle nine-tenths of the time. Mark Smotherman's history of multithreaded processors starts here, and the taxonomy still calls this fine-grained multithreading: switch threads every cycle, in order, to cover latency.",
+        "deeper_md": "The distinction worth keeping is between this and simultaneous multithreading. Fine-grained multithreading switches every cycle on an in-order datapath, and its goal is throughput on a unit that would otherwise stall; it cannot make a single thread faster, and it does not try. Simultaneous multithreading issues from several threads into an out-of-order core in the same cycle, and its goal is filling issue slots a single thread cannot fill. The 6600 is the first of the former by about thirty years. The architectural consequence at the time was different and more immediate: because I/O ran on programmable processors rather than fixed sequencers, the operating system largely lived in the peripheral processors, and the central processor could be built without interrupts."
+      },
+      {
+        "heading": "What it cost, and the part that did not last",
+        "body_md": "Central memory was 65,536 60-bit words of core with about 475 nanoseconds of access time, phased so that one word arrived every 100 nanoseconds — the machine hid a slow memory behind interleaving, as every machine since has. Addresses were 18 bits, so the architecture allowed 262,144 words. Throughput landed around 3 million instructions per second against an instruction set of 65 operations, which is why the 6600 is sometimes read backwards as an early reduced instruction set. About fifty were built at roughly seven million dollars each. NCAR took serial number 7 in December 1965 and ran it until May 1977. Then the interesting part: when Cray built the 7600, he threw the scoreboard away and went back to in-order issue. Measured on benchmarks whose instructions had been hand-reordered to avoid stalls, the scoreboard was worth about 7 percent.",
+        "deeper_md": "That 7 percent is the most useful number in this whole piece, and it is a lesson about where to put intelligence. If a compiler or a careful programmer schedules the instruction stream, hardware dependence-tracking without renaming buys very little, because the stalls it resolves are mostly ones the scheduler had already removed. Out-of-order execution only became decisive later, when the gap between a cache hit and a memory access grew to hundreds of cycles — a latency no static schedule can hide, because the compiler cannot know which loads will miss. Cray was not wrong in 1969 and the designers who brought it back in the 1990s were not wrong either; the memory hierarchy changed the answer underneath them."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Minor cycle",
+        "definition": "The 6600's clock period, 100 nanoseconds. A major cycle is ten of them, one microsecond, which is one full rotation of the peripheral-processor barrel."
+      },
+      {
+        "term": "Scoreboard",
+        "definition": "Hardware that records which registers have pending writes and which functional units are busy, and uses that to decide when each instruction may issue, read its operands, and write its result."
+      },
+      {
+        "term": "Barrel",
+        "definition": "A rotating time-multiplex of one datapath across several register sets, giving each a fixed slot in turn; it is the earliest form of fine-grained multithreading."
+      },
+      {
+        "term": "WAR and WAW hazards",
+        "definition": "Write-after-read and write-after-write collisions, in which two instructions conflict only because they use the same register name rather than because data flows between them."
+      },
+      {
+        "term": "Cordwood module",
+        "definition": "A package in which components stand upright between two parallel circuit cards, like logs in a stack; it buys interconnect density and short wires at the price of being unrepairable and hard to cool."
+      },
+      {
+        "term": "Gold doping",
+        "definition": "Deliberately introducing gold into silicon to create midgap recombination centres, which shortens minority-carrier lifetime and so speeds up turn-off of a saturated bipolar transistor, at the cost of leakage and gain."
+      },
+      {
+        "term": "Phased memory",
+        "definition": "Interleaving independent memory units so that consecutive addresses are served by different units; the system delivers a word every cycle even though each unit needs far longer to recover."
+      }
+    ],
+    "try_this": "Open the scanned copy of Thornton's 1964 paper linked below and read the section on the peripheral and control processors, then check the barrel's arithmetic yourself: ten processors, one shared arithmetic unit, a 100-nanosecond slot each in a 1-microsecond rotation. Work out the instruction rate per processor and the aggregate rate across all ten, and compare both with the central processor's one instruction per 100 nanoseconds — the ratio tells you how much of the machine's design was spent on I/O. Then do the geometry check the cabinet layout answers to: at roughly 20 cm per nanosecond in cable, how long a wire is worth one 3-nanosecond gate delay, and how does that compare with the size of a room-filling computer?",
+    "sources": [
+      {
+        "title": "Parallel Operation in the Control Data 6600 (scanned copy, CS 850 course page)",
+        "url": "https://cs.uwaterloo.ca/~mashti/cs850-f18/papers/cdc6600.pdf",
+        "publisher": "J. E. Thornton, AFIPS Proc. FJCC Part II, vol. 26, pp. 33–40 — hosted by the University of Waterloo",
+        "date": "1964"
+      },
+      {
+        "title": "Instruction-Level Parallelism — historical survey",
+        "url": "https://mark.people.clemson.edu/ilp.html",
+        "publisher": "Mark Smotherman, Clemson University",
+        "date": "2024-04"
+      },
+      {
+        "title": "Control Data Corporation, CDC-6600 & 7600 — specifications",
+        "url": "https://ed-thelen.org/comp-hist/vs-cdc-6600.html",
+        "publisher": "Ed Thelen, Antique Computer pages",
+        "date": "2019-04-13"
+      },
+      {
+        "title": "CDC 6600 Links — transistor development, patents and period sources",
+        "url": "https://mark.people.clemson.edu/cdc6600.html",
+        "publisher": "Mark Smotherman, Clemson University",
+        "date": "2026-10-15"
+      },
+      {
+        "title": "Multithreaded processors — a history and taxonomy",
+        "url": "https://mark.people.clemson.edu/multithreading.html",
+        "publisher": "Mark Smotherman, Clemson University",
+        "date": "2007-11"
+      },
+      {
+        "title": "CDC 6600 — NCAR supercomputing history",
+        "url": "https://www.cisl.ucar.edu/ncar-supercomputing-history/cdc6600",
+        "publisher": "NSF NCAR Computational and Information Systems Lab",
+        "date": "2026-10-15"
+      }
+    ]
+  }
+}

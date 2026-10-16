@@ -1,0 +1,454 @@
+{
+  "date": "2026-10-16",
+  "generated_at": "2026-10-16T13:10:00Z",
+  "window": "2026-10-15..2026-10-16",
+  "headline": "The General Conference on Weights and Measures voted to make UTC continuous from 20 May 2027, letting civil time drift up to an hour from the Earth's rotation rather than ask the world's software to execute a negative leap second it has never tested.",
+  "pulse": {
+    "read_time_min": 7,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-plasma-negative-capacitor",
+            "title": "An argon discharge matches an 80 mm antenna from 200 to 650 MHz",
+            "dek": "Kushagra Singhal and Abbas Semnani put a 20 mm-radius tube of argon at 300 mTorr across an 80 mm capped dipole and measured better than −6 dB reflection from 200 to 650 MHz, because a plasma driven below its plasma frequency behaves as a capacitor with the sign reversed.",
+            "why_it_matters": "A passive matching network can cancel a short antenna's reactance only near one frequency, because the energy stored in that reactance fixes the product of bandwidth and match depth. A negative capacitance cancels it across a band instead, and the reason that trick is not already in every radio is that transistor versions oscillate — a gas discharge has no feedback loop to go unstable.",
+            "background_md": "An antenna much shorter than the wavelength it radiates presents its feedline a large capacitive reactance in series with a radiation resistance of an ohm or two. Nearly all the power sloshes in and out of that reactance instead of leaving as radiation. Cancelling the reactance is easy at one frequency and hard over a band: the stored reactive energy fixes a product of bandwidth and efficiency, the Chu limit, which is why short whips, buried sensors and HF sets all live with a few percent of usable band.",
+            "deeper_md": "The prototype is two 40 mm spherical domes with a 25 mm gap — 80 mm overall, about 80 g, `ka = 0.5` at 600 MHz — modelled as 1.2 Ω in series with 5.3 pF at 400 MHz. The plasma sits in a 20 mm-radius tube of argon at 300 mTorr, driven at 150 MHz, with simulated electron density near 10¹⁶ m⁻³ behind a 900 µm sheath. Ignition needs about 15 W; steady operation runs on 2 W.\n\nSimulation gives better than −6 dB from 200 to 700 MHz and measurement from 200 to 650 MHz, with measured fractional bandwidth of 72% to 95% depending on plasma power — short of the abstract's \"can exceed 100%\", and the conclusions quote a 150 MHz lower edge the results section does not support. The simulated efficiency–bandwidth product beats the Chu limit above `ka = 0.4`, but that efficiency excludes the watts spent sustaining the discharge, which is the whole question. The one earlier preprint making an above-Chu claim for a plasma antenna (0.168 at `ka = 0.5571`) has a withdrawn v2 and a note on its arXiv listing that the material is disputed by the originator of the device design, so the independent record here is thin.",
+            "glossary": [
+              {
+                "term": "Electrically small antenna (ka)",
+                "definition": "An antenna of radius a whose ka = 2πa/λ is below 1, so it is smaller than the radian sphere of its own wavelength; this prototype sits at ka = 0.5 at 600 MHz."
+              },
+              {
+                "term": "Reactance",
+                "definition": "The energy-storing part of an impedance. A short antenna's is large and capacitive, so voltage and current at the feed are nearly in quadrature and little power actually leaves."
+              },
+              {
+                "term": "Non-Foster element",
+                "definition": "A negative capacitance or inductance, whose reactance slopes the wrong way with frequency; no passive network can do it, so it needs an active circuit or a dispersive medium."
+              },
+              {
+                "term": "−6 dB reflection coefficient",
+                "definition": "A match that bounces about a quarter of the incident power back off the antenna — the looser of the two bandwidth yardsticks for small antennas, the other being −10 dB."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Plasma-Enabled Wideband Matching of Electrically Small Antennas",
+                "url": "https://arxiv.org/abs/2610.22095",
+                "publisher": "arXiv (physics.app-ph)",
+                "date": "2026-10-15"
+              },
+              {
+                "title": "Multiphysics Enabled Numerical Modeling of a Plasma Based Electrically Small VHF-UHF Antenna",
+                "url": "https://arxiv.org/abs/2405.03077",
+                "publisher": "arXiv (physics.app-ph)",
+                "date": "2024-05-05"
+              },
+              {
+                "title": "Antenna bandwidth engineering through time-varying resistance",
+                "url": "https://arxiv.org/abs/2211.06171",
+                "publisher": "arXiv (physics.app-ph)",
+                "date": "2022-11-11"
+              }
+            ]
+          },
+          {
+            "id": "silicon-rf-tem-holder-100ps",
+            "title": "A TEM holder that stays a matched line all the way to the chip",
+            "dek": "Christophe Gatel and twelve co-authors built transmission-electron-microscope specimen holders in which coaxial line and impedance-controlled circuit board run to the sample through removable mechanical contacts instead of wire bonds, giving a −3 dB bandwidth of 7.9 GHz and insertion loss below 12 dB out to 18 GHz, where in-situ electrical excitation has normally stopped in the megahertz.",
+            "why_it_matters": "A device under test inside an electron microscope has until now been driven through wiring with no defined characteristic impedance, so anything fast reflects back at the generator and in-situ measurement stalls near the megahertz — far below where real RF devices, magnetic switching and oscillating MEMS structures live. Making the whole path a matched line lifts that ceiling by three orders of magnitude with no laser in the instrument.",
+            "background_md": "A transmission electron microscope images a sample a few tens of nanometres thick by passing electrons through it, and an in-situ holder adds electrical contacts so the sample can be biased while it is being imaged. The hard part is not the contacts but the line. The specimen sits in the millimetre gap between the objective lens pole pieces, at the end of a rod reaching through the vacuum wall, and every impedance discontinuity along that rod reflects signal. Sub-nanosecond time resolution has therefore come from pulsing the electron beam with a laser rather than from driving the sample quickly.",
+            "deeper_md": "Two- and four-channel holders pair coaxial transmission lines with miniaturised impedance-controlled printed circuit boards, and connect to interchangeable TEM chips through removable mechanical contacts rather than wire bonds — which is what lets one holder serve many samples without rebuilding the line each time. Vector-network-analyser measurements through the complete path give a −3 dB bandwidth of 7.9 GHz and insertion loss below 12 dB out to 18 GHz on a representative chip. Twelve decibels is a factor of about sixteen in power, so this is bandwidth bought with signal.\n\nThe same architecture drove a miniaturised electrostatic deflector used as a beam blanker. Its temporal response is consistent with pulses approaching 100 ps, and the authors state that the floor they reached was set by their waveform generator, not by the holder. High-resolution imaging through a 200 ps probe window showed no detectable loss of spatial resolution, and off-axis electron holography still worked down to 0.5 ns. Laser-driven photoemission sources reach 220 fs by comparison — three orders of magnitude faster, but only with an optical pump chain bolted to the column. These figures come from the preprint's abstract; it is submitted to *Ultramicroscopy* and nobody has contested it yet.",
+            "glossary": [
+              {
+                "term": "In-situ TEM holder",
+                "definition": "A specimen rod carrying electrical contacts into the microscope, so a device can be biased, heated or strained while electrons are being passed through it."
+              },
+              {
+                "term": "Characteristic impedance",
+                "definition": "The voltage-to-current ratio a travelling wave sees on a line, 50 Ω by convention; wherever it changes, part of the signal reflects instead of continuing."
+              },
+              {
+                "term": "−3 dB bandwidth",
+                "definition": "The frequency span over which transmitted power stays within half its low-frequency value — the standard statement of how fast a cable or amplifier can still carry a signal."
+              },
+              {
+                "term": "Off-axis electron holography",
+                "definition": "A TEM mode that interferes the beam passing through the sample with a reference beam beside it, recovering the electron's phase and so the local electric or magnetic field."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Broadband radio-frequency TEM specimen holders for in situ biasing excitation and 100-ps-scale electron beam control",
+                "url": "https://arxiv.org/abs/2610.21275",
+                "publisher": "arXiv (cond-mat.mtrl-sci)",
+                "date": "2026-10-15"
+              },
+              {
+                "title": "Laser-driven cold-field emission source for ultrafast transmission electron microscopy",
+                "url": "https://arxiv.org/abs/2410.23961",
+                "publisher": "arXiv (physics.ins-det)",
+                "date": "2024-10-31"
+              },
+              {
+                "title": "Structural dynamics probed by high-coherence electron pulses",
+                "url": "https://arxiv.org/abs/2008.11124",
+                "publisher": "arXiv (cond-mat.mes-hall)",
+                "date": "2020-08-25"
+              }
+            ]
+          },
+          {
+            "id": "silicon-se-znmgo-photon-energy-weight",
+            "title": "Photon energy, not voltage, sets which way this synapse moves",
+            "dek": "A Se/ZnMgO thin-film photodiode reported by Zacharie Jehl Li-Kao and nine co-workers writes and reads its own stored weight using nothing but zero-bias photocurrent: at equal photon flux, 365 nm pulses raise that weight by 38% while 455 nm pulses push it back down by as much as 30%, across up to 19 distinguishable levels.",
+            "why_it_matters": "An artificial synapse that needs a voltage to be read spends energy every time the network does inference, and almost every optical synapse only potentiates, so clearing one needs an electrical erase. Putting the sign of the update in the photon energy makes both directions optical and both free, which turns the device into something a bare sensor could use with no driver circuit at all.",
+            "background_md": "An artificial synapse is a device whose conductance is the stored weight of a neural network, so a matrix multiply becomes Ohm's law across an array instead of a stream of digital multiplies. Optical versions fold the sensor into the same device: light carries the input and changes the weight. The standing obstacle is that light almost always raises conductance, because absorbed photons fill trap states and traps empty slowly. Getting the weight back down then takes an electrical erase — the step that spends the energy the architecture was supposed to save.",
+            "deeper_md": "Both wavelengths are absorbed inside the first tens of nanometres of the selenium, so depth of absorption is not the knob; the paper's optical simulation rules it out. What sets the sign is the interface defect population. Potentiation looks like electrons filling interface defect states — the stored state is erased by reverse bias in a voltage-dependent way and by sub-gap light, and drift-diffusion simulation agrees — while lower-energy photons empty them again. Spectrally resolved light soaking places the crossover at the photon energy where filling gives way to emptying.\n\nThe numbers: +38% photocurrent at 365 nm for a given flux, depression reaching 30% at 455 nm at higher flux, up to 19 distinguishable levels per branch, relearning after erase, and a response that shifts when the flexible substrate is bent. Nineteen levels is about 4.2 bits, which is close to the 4-bit effective weight precision a shipping 28 nm analogue phase-change compute-in-memory SoC actually uses. The caveat is the authors' own network result: trained on the measured updates it reaches 89% on handwritten digits, 85% once measured device noise is included, against 97.5% for floating-point weights. That 12.5-point gap, not the level count, is the thing that has to close.",
+            "glossary": [
+              {
+                "term": "Synaptic weight",
+                "definition": "The device's stored conductance, which multiplies whatever voltage or photon flux arrives — the number a digital accelerator would instead hold in a register."
+              },
+              {
+                "term": "Potentiation and depression",
+                "definition": "An increase and a decrease in that weight. A usable synapse needs both directions, and most optically driven ones only manage the first."
+              },
+              {
+                "term": "Photon flux",
+                "definition": "Photons arriving per unit area per second. Equalising it between two wavelengths is what makes the 365 nm versus 455 nm result a statement about photon energy rather than about intensity."
+              },
+              {
+                "term": "Sub-gap light",
+                "definition": "Photons carrying less energy than the semiconductor's band gap, which cannot make a free electron–hole pair but can still move charge into and out of defect states inside the gap."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Wavelength-selective bidirectional plasticity in self-powered Se/ZnMgO visual synapses",
+                "url": "https://arxiv.org/abs/2610.21618",
+                "publisher": "arXiv (cond-mat.mtrl-sci)",
+                "date": "2026-10-15"
+              },
+              {
+                "title": "Wavelength-Controlled Photocurrent Polarity Switching in BP-MoS2 Heterostructure",
+                "url": "https://arxiv.org/abs/2111.00766",
+                "publisher": "arXiv (cond-mat.mes-hall)",
+                "date": "2021-11-01"
+              },
+              {
+                "title": "MEGATRON: a 28nm Analog PCM CiM/Digital System-on-Chip for Edge GenAI at 57.5 TOPS/W and 1.52 Mparam/mm²",
+                "url": "https://arxiv.org/abs/2609.35254",
+                "publisher": "arXiv (cs.AR)",
+                "date": "2026-09-28"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-tsmc-reticle-multiple-packaging",
+            "title": "TSMC ships packages five exposure fields wide, aiming at fourteen",
+            "dek": "On its 15 October earnings call, TSMC chairman C.C. Wei said the company is already in production with advanced packages five reticle fields in area, with excellent yield, is working on nine fields and moving toward fourteen — while calling the back end that assembles all of it a little bit short of capacity.",
+            "why_it_matters": "A lithography exposure field is at most 26 × 33 mm, so an interposer bigger than roughly 860 mm² has to be stitched from several fields, and the overlay error between stitches becomes a design rule for every wire crossing a seam. Fourteen fields is around 12,000 mm² of carrier that must stay flat through reflow, which moves the limiting constraint off the wafer and onto warpage.",
+            "background_md": "A large AI accelerator is not one die. Logic chiplets and stacks of high-bandwidth memory sit side by side on a carrier — a silicon interposer, or a redistribution layer built on a moulded substrate — whose wiring carries the thousands of short connections between them. That carrier is patterned with the same scanners used for chips, so its area is counted in exposure fields, and package size is quoted as a multiple of one reticle. Everything on the carrier must also expand at nearly the same rate when heated, or joints at the edges crack open.",
+            "deeper_md": "Wei's words in the Q&A were \"We are in the real-world production of 5x reticle size\" and \"We are working on the 9x reticle size and moving into the 14x reticle size\", with yield on the 5× generation described as excellent. ASML quotes a maximum exposure field of 26 mm × 33 mm on its EUV scanners, so one field is 858 mm²; multiplying out, 14× is about 12,000 mm², a carrier roughly 110 mm on a side. That is a mechanical problem of a different kind from a reticle-sized one.\n\nTwo other disclosures bound it. Wei said \"Definitely, we have a little bit shortage on the back end\", and named the GlobalFoundries arrangement as part of back-end supply — this brief covered that arrangement on 10 October as an interposer-supply story, and what is new is TSMC itself calling the back end short. He also said CoWoS \"is still the number one choice for our customer\" while conceding a competitor now offers a competitive solution. On the front end, TSMC's 6-K puts 2 nm at 8% of third-quarter wafer revenue against 33% for 3 nm and 28% for 5 nm, and Wei expects N2-family annual capacity to more than double in 2027. No interposer-area or packaging-capacity figure was given, and the quotes here are read from a third-party transcription of the call.",
+            "glossary": [
+              {
+                "term": "Reticle field",
+                "definition": "The largest area a lithography scanner exposes in one shot — 26 mm × 33 mm on ASML's EUV tools. A bigger package is built by stepping and stitching several of them together."
+              },
+              {
+                "term": "Interposer",
+                "definition": "The wiring carrier a logic die and its memory stacks are mounted on, routing the thousands of short links between them; silicon ones are patterned like a chip, organic ones are not."
+              },
+              {
+                "term": "CoWoS",
+                "definition": "TSMC's chip-on-wafer-on-substrate packaging family, in which dies are bonded to a wiring carrier first and the whole assembly is then attached to a package substrate."
+              },
+              {
+                "term": "Back end",
+                "definition": "The assembly, packaging and test stages that follow a finished wafer. They run in separate buildings on separate tools from the wafer fab, and carry their own capacity limit."
+              }
+            ],
+            "fab_angle": "Stitched fields are an overlay problem before they are a capacity problem: a net routed across a seam has to tolerate the scanner's field-to-field overlay rather than its much tighter within-field overlay, which is a rule the layout tool has to be told about explicitly.",
+            "confidence": "confirmed",
+            "sources": [
+              {
+                "title": "TSMC 3Q26 Earnings Conference Transcript",
+                "url": "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/eba4fac72873bf546b669bd2b5d973df5c93215d/TSMC%203Q26%20Transcript.pdf",
+                "publisher": "TSMC Investor Relations",
+                "date": "2026-10-15"
+              },
+              {
+                "title": "Form 6-K: TSMC third quarter 2026 results, with guidance",
+                "url": "https://www.sec.gov/Archives/edgar/data/0001046179/000104617926000726/a3q26e_withguidancexfinal.htm",
+                "publisher": "SEC EDGAR",
+                "date": "2026-10-15"
+              },
+              {
+                "title": "TWINSCAN NXE:3600D EUV lithography system",
+                "url": "https://www.asml.com/products/euv-lithography-systems/twinscan-nxe-3600d",
+                "publisher": "ASML",
+                "date": "2026"
+              },
+              {
+                "title": "TSMC (TSM) Q3 2026 Earnings Call Transcript",
+                "url": "https://www.fool.com/earnings/call-transcripts/2026/10/15/tsmc-tsm-q3-2026-earnings-call-transcript/",
+                "publisher": "The Motley Fool",
+                "date": "2026-10-15"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-continuous-utc-20270520",
+            "title": "UTC stops stepping on 20 May 2027, and may drift an hour from the Sun",
+            "dek": "The 28th General Conference on Weights and Measures, meeting in Versailles from 13 to 15 October, adopted Resolution 5: UTC becomes continuous on 20 May 2027, and the permitted gap between atomic time and the Earth's rotation rises from under a second to 3,600 seconds — one full hour, which the resolution says will last several centuries.",
+            "why_it_matters": "That sub-second tolerance is the only reason leap seconds exist; raise the ceiling to an hour and no clock has to step for several centuries. And the immediate driver is not drift but its reverse: the next correction stands a 30% chance of being a second removed rather than inserted, and a timestamp that runs backwards has never been executed in production anywhere.",
+            "background_md": "Two clocks are in use. International Atomic Time counts SI seconds from caesium standards and never stops. UT1 tracks the Earth's actual rotation, whose day length wanders by milliseconds with the tides, the atmosphere and the core. Civil time, UTC, is the atomic one offset by a whole number of seconds so it stays near the rotational one, and that offset is changed by inserting a leap second when the two are predicted to diverge by about 0.9 s. Every insertion is a minute containing 61 seconds, which operating systems, databases and time-sync protocols each handle differently.",
+            "deeper_md": "The recitals are where the engineering sits. The 2022 CGPM had already decided to raise the limit \"in, or before, 2035\" and asked the CIPM to choose a value keeping UTC continuous for at least a century, then bring a resolution to the 2026 meeting. What pulled the date forward by up to eight years is risk: a March 2025 CCTF/IERS workshop put the probability of needing a negative leap second before 2035 at 30%, and the resolution calls a negative leap second untested and high-risk. Industrial users, ITU-T, URSI and the IEEE 1588 timing community had all asked for continuous UTC sooner, and the text records the concern that further delay would push users onto GNSS time instead and undo the standardisation.\n\nTwo things the resolution does not do. It never says \"abolish\": it removes the need for a step by setting the maximum |UT1−UTC| at 3,600 s, and welcomes the IERS commitment to change its leap-second provisions to match. And it leaves the hour itself open — no review date is set, and ITU-R's WRC-23 Resolution 655 permits dissemination of the larger UT1−UTC difference only until 2035, and no later than 2040 where equipment cannot be replaced sooner.",
+            "glossary": [
+              {
+                "term": "TAI (International Atomic Time)",
+                "definition": "A continuous count of SI seconds averaged across hundreds of atomic clocks. It never steps, and UTC is TAI shifted by a whole number of seconds."
+              },
+              {
+                "term": "UT1",
+                "definition": "Time defined by the Earth's actual rotation angle, measured against distant radio sources. Its second is not constant, because the planet's spin rate is not."
+              },
+              {
+                "term": "|UT1−UTC| (DUT1)",
+                "definition": "The gap between rotational and civil time. Holding it under roughly 0.9 s is what forced leap seconds; the new ceiling is 3,600 s, one hour."
+              },
+              {
+                "term": "Negative leap second",
+                "definition": "A minute of 59 seconds rather than 61, needed if the Earth runs fast. None has ever been declared, so no deployed clock code has ever executed one."
+              }
+            ],
+            "confidence": "confirmed",
+            "sources": [
+              {
+                "title": "Resolution 5 of the 28th CGPM (2026): On the technical actions needed to ensure the continuity of UTC",
+                "url": "https://doi.org/10.59161/CGPM2026RES5E",
+                "publisher": "Bureau International des Poids et Mesures",
+                "date": "2026-10"
+              },
+              {
+                "title": "28th meeting of the CGPM (13–15 October 2026) — resolutions adopted",
+                "url": "https://www.bipm.org/en/cgpm-2026",
+                "publisher": "Bureau International des Poids et Mesures",
+                "date": "2026-10"
+              },
+              {
+                "title": "Resolution 4 of the 27th CGPM (2022): On the use and future development of UTC",
+                "url": "https://www.bipm.org/en/committees/cg/cgpm/27-2022/resolution-4",
+                "publisher": "Bureau International des Poids et Mesures",
+                "date": "2022-11"
+              }
+            ]
+          },
+          {
+            "id": "computing-supersingular-smoothness-unconditional",
+            "title": "The smoothness guess under isogeny cryptanalysis becomes a theorem",
+            "dek": "Yi Ouyang, Wei Wei and Zheng Xu prove that for a supersingular elliptic curve drawn uniformly at random, the shortest isogeny to its Frobenius conjugate has smooth degree — the unproved assumption that Wesolowski's p^(1/3) attack on the supersingular endomorphism ring problem, which every scheme in the family reduces to, had been resting on.",
+            "why_it_matters": "Smoothness is what makes an isogeny computable at all: a degree whose prime factors are all small splits into a chain of small steps you can evaluate, while a degree with one huge prime factor is a single step nobody can take. Moving that property from assumption to theorem changes nobody's key sizes, but the best known classical cost of recovering an endomorphism ring is now a proved bound rather than a conjecture.",
+            "background_md": "Isogeny-based cryptography builds its hard problem out of a graph. The vertices are supersingular elliptic curves over a field of characteristic p, and the edges are isogenies — algebraic maps between curves that preserve the group structure. The graph expands fast, so a random walk mixes in a few steps and finding a path between two named curves looks hard. Two problems sit on top of it: find a path between two given curves, and compute a given curve's ring of endomorphisms. They are known to be equivalent, so security rests on whichever proves easier to attack.",
+            "deeper_md": "An isogeny of degree n can be evaluated as a chain of isogenies whose degrees are n's prime factors, so a smooth degree is computable and a degree with one large prime factor is not. Wesolowski's p^(1/3+o(1)) algorithm for recovering a non-scalar endomorphism needed the shortest isogeny from a curve E to its Frobenius conjugate E^(p) to have smooth degree; composing such an isogeny with Frobenius yields the endomorphism. That smoothness was assumed. Ouyang, Wei and Xu prove it for E drawn uniformly from the geometric isomorphism classes of supersingular curves over the algebraic closure of F_p.\n\nThe caveat is the word uniformly: this is an average-case statement, and a curve chosen adversarially or produced by a protocol is not a uniform draw. It also arrives a month after an independent route to the same exponent — José Luis Delgado's September preprint reaches p^(1/3+o(1)) unconditionally by fixing in advance a family of degrees with prescribed small-prime factorisations, so it never needs a smoothness heuristic at all; his introduction records 2/5 as the previous unconditional exponent. Two unrefereed preprints reaching the same bound by different arguments is corroboration of a sort, and no more than that.",
+            "glossary": [
+              {
+                "term": "Isogeny",
+                "definition": "A non-constant algebraic map between two elliptic curves that preserves the group identity. Its degree factorises, and the map can be evaluated as a chain of smaller isogenies whose degrees multiply to it."
+              },
+              {
+                "term": "Smooth number",
+                "definition": "An integer all of whose prime factors are small, for some chosen bound. Smoothness is the difference between a computation you can break into easy steps and one you cannot."
+              },
+              {
+                "term": "Frobenius conjugate E^(p)",
+                "definition": "The curve got by raising every coefficient of E's equation to the p-th power; in characteristic p it is linked to E by the Frobenius map, itself an isogeny of degree p."
+              },
+              {
+                "term": "Endomorphism ring",
+                "definition": "The isogenies from a curve to itself, under composition and addition. For a supersingular curve it is large and non-commutative, and recovering it from the curve alone is the family's core hard problem."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Smoothness of Shortest Isogenies to Frobenius Conjugates",
+                "url": "https://arxiv.org/abs/2610.21488",
+                "publisher": "arXiv (math.NT; cs.CR)",
+                "date": "2026-10-15"
+              },
+              {
+                "title": "The Supersingular Isogeny Problem in Time and Memory p^(1/3+o(1)), Unconditionally",
+                "url": "https://arxiv.org/abs/2609.22018",
+                "publisher": "arXiv (cs.CR)",
+                "date": "2026-09-18"
+              },
+              {
+                "title": "Unconditional foundations for supersingular isogeny-based cryptography",
+                "url": "https://arxiv.org/abs/2502.17010",
+                "publisher": "arXiv (cs.CR) / TCC 2025",
+                "date": "2025-02-24"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-bitsparse-relu-activation-cache",
+            "title": "ReLU's zeros are free memory if you cache them as a bitmask",
+            "dek": "Max Zhu and three co-authors report BitSparse, a GPU format that caches a feed-forward layer's saved ReLU activations as a bitmask plus the non-zero values — losslessly, not approximately — and cuts training memory per token by 31% on a small GPT and 30% on the 8-billion-parameter Nemotron-H, at no measurable cost in final validation loss.",
+            "why_it_matters": "The two existing ways to shrink the activation cache each charge you something: recomputation buys memory with a second forward pass, and lossy compression changes the gradient the backward pass sees. A format that is exactly lossless charges neither, so the decision stops being accuracy against memory and becomes a plain question of whether your activation function emits zeros.",
+            "background_md": "Training a network means keeping the forward pass's intermediate activations until the backward pass consumes them, and at long sequence lengths that cache, not the weights, is what fills an accelerator's memory. Activation checkpointing is the standard escape: keep a few boundary tensors, recompute the rest, and pay an extra forward pass — about 30% more run time in the original formulation. ReLU offers a different escape, because it sets anywhere from half to over nine-tenths of its outputs to exactly zero, and zeros do not need storing.",
+            "deeper_md": "The format is a bitmask, a packed array of non-zero values, and a 32-bit prefix array over 64×64 tiles, compressed and reconstructed by Triton kernels inside a fused autograd function. BF16 and FP8 are supported, and an optional variant drops the redundant sign bit — 15 bits kept instead of 16 for BF16, 7 instead of 8 for FP8 — pushing the ratio near the information-theoretic bound: 6.38× against an ideal 8.13× at 90% sparsity in BF16. Break-even is around 6% sparsity in BF16 and 13% in FP8 without packing, so the format almost never loses.\n\nMeasured sparsity is the load-bearing number: 0.5 at initialisation rising to about 0.82 during Modded-NanoGPT training, and a mean of 92.73% in Nemotron-H-8B. Per-token VRAM falls from 0.402 to 0.277 MiB and from 2.719 to 1.894 MiB respectively, and a full 3,350-step training run ends at validation loss 3.2780 against 3.2778 for the standard run — that is the lossless claim, measured rather than argued.\n\nThe stated limitation is the one that matters. This helps only ReLU-family activations; gated activations such as SwiGLU, which most frontier models use, are left to future work. Attention and Mamba blocks are untouched, and the memory figures exclude optimiser state.",
+            "glossary": [
+              {
+                "term": "Activation cache",
+                "definition": "The intermediate tensors a forward pass must keep so the backward pass can compute gradients. At long sequence lengths it dominates memory, not the weights."
+              },
+              {
+                "term": "Activation checkpointing",
+                "definition": "Storing only some activations and recomputing the rest during the backward pass — memory bought with arithmetic, at roughly one extra forward pass per step."
+              },
+              {
+                "term": "ReLU² (squared ReLU)",
+                "definition": "An activation that squares the positive part and zeroes everything else, so like ReLU it emits exact zeros — which is what makes the stored tensor compressible without loss."
+              },
+              {
+                "term": "MiB per token",
+                "definition": "Memory held per token of context, the unit deciding how long a sequence fits on a card; at 0.402 MiB per token, activations alone would fill 24 GiB at about 60,000 tokens."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "BitSparse: Compact Activation Storage for ReLU Feed-Forward Networks",
+                "url": "https://arxiv.org/abs/2610.22256",
+                "publisher": "arXiv (cs.LG)",
+                "date": "2026-10-15"
+              },
+              {
+                "title": "Training Deep Nets with Sublinear Memory Cost",
+                "url": "https://arxiv.org/abs/1604.06174",
+                "publisher": "arXiv (cs.LG)",
+                "date": "2016-04-21"
+              },
+              {
+                "title": "ReLU Strikes Back: Exploiting Activation Sparsity in Large Language Models",
+                "url": "https://arxiv.org/abs/2310.04564",
+                "publisher": "arXiv (cs.LG)",
+                "date": "2023-10-06"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "Pellicles",
+    "slug": "pellicles",
+    "subtitle": "A membrane stretched a few millimetres above the mask so that dust lands out of focus — and why 13.5 nm light made that nearly impossible.",
+    "tldr": "A pellicle is a thin film held a few millimetres above a photomask, so that any particle landing on it is too far from the image plane to print. At 193 nm that film is a micron of polymer passing over 99% of the light, and nobody thinks about it. At 13.5 nm nothing is transparent, the light crosses the film twice, and the pellicle became one of the hardest components in extreme-ultraviolet lithography.",
+    "sections": [
+      {
+        "heading": "Defocus is the whole trick",
+        "body_md": "Start from the failure it prevents. A mask carries the pattern, and the scanner images that pattern onto the wafer through a reduction lens. A particle sitting on the mask is in the object plane, so it is imaged as sharply as the circuit is — onto every field, on every wafer, until somebody finds it. You cannot keep a mask clean inside a production tool, so the fix is to put the dust where the lens cannot focus.\n\nStretch a film across a frame a few millimetres above the patterned face and particles land on the film instead. Geometrically, a particle of diameter d sitting a height z above the mask casts a shadow spread over roughly d + 2z·(NA/M) in the mask plane, where NA/M is the numerical aperture seen from the mask side of a lens with reduction M. Make z large enough and the shadow is smeared so thin that it dims local intensity by a few percent rather than printing a defect. Levinson gives typical frame heights of 5–10 mm, 6.35 mm being common, and notes that at a 6.3 mm standoff the process window survives particles up to about 90 µm — hundreds of times the size of the features being printed.",
+        "deeper_md": "Levinson's Eq. 7.3 gives the minimum standoff as a function of the lens reduction M, the numerical aperture, and the particle diameter d, with the criterion that image intensity change stays under 10%. He also notes that more detailed later analysis found protection holds at about half that standoff, so the classic formula is conservative by a factor of two. The asymmetry worth remembering: the pellicle is normally mounted only on the patterned side, because the mask blank's own quartz thickness already holds backside particles far enough from the object plane to do the same job."
+      },
+      {
+        "heading": "The easy version: a micron of polymer",
+        "body_md": "For deep-ultraviolet lithography the pellicle is almost embarrassingly simple. The film is about 1 µm of polymer — nitrocellulose, or a Teflon-type fluoropolymer — and it transmits over 99% at both 248 nm and 193 nm. The thickness is not arbitrary. A non-absorbing film is a thin-film interference stack, so transmission peaks at particular thicknesses and the pellicle is made at one of them, sometimes with an anti-reflection coating on top. A single film can be tuned to pass two wavelengths at once, which is how one pellicle design serves both an i-line and a KrF tool.\n\nThe frame is anodised aluminium with vent holes that are small or deliberately circuitous, so pressure equalises across the membrane without letting a particle through. The real cost is mechanical rather than optical. Bonding a frame onto a mask distorts the plate, and the resulting pattern-placement error is of order 100 nm — worse with a less flat frame and a stiffer adhesive. The pellicle is part of the overlay budget, not an accessory to it.",
+        "deeper_md": "The 193 nm films are not permanent either: high photon energy degrades perfluoro polymers, so transmittance drifts over a film's life and masks get re-pellicled rather than kept forever. And every move to a shorter wavelength has forced a pellicle redesign, because the two properties the film must have — transparency and radiation hardness — both get harder as photon energy rises. That is the trend line that runs into EUV, where it breaks outright."
+      },
+      {
+        "heading": "At 13.5 nm everything absorbs, and the light goes through twice",
+        "body_md": "EUV lithography uses no lenses, because at 13.5 nm every material absorbs. The optics are reflective molybdenum–silicon multilayer mirrors in vacuum, and the mask reflects too. A pellicle therefore cannot be a film sitting in air; it has to be a free-standing membrane thin enough to be mostly empty space. And because the mask is a mirror, the light crosses that membrane on the way in and again on the way out.\n\nThat doubling sets the specification. A GlobalFoundries pellicle patent states the industry requirement plainly in its background: at least 90% transmission for a single pass and 81% for a double pass, which is the same number squared. Roughly 50 nm of polysilicon costs about 10% per pass. ASML's film generation introduced at the end of 2018 was reported at 83% single-pass transmission with a 250 W power capability. The arithmetic is not academic. A scanner's wafers-per-hour figure is quoted at a given resist dose, so 19% fewer photons reaching the wafer means either longer exposures or a more sensitive resist. For a period TSMC's answer was to run EUV with no pellicle at all and accept the mask-defect risk instead.",
+        "deeper_md": "Note what the patent's own prior art concedes: an earlier etched-membrane attempt reached only 86% single pass, which is 74% double pass. The same patent is where the venting problem is stated — a mask is stored at atmospheric pressure, air-freighted at varying pressure, then pumped to vacuum in the scanner, and if the pressure difference across a 50 nm membrane grows large the membrane tears. Hence the frame holes, and hence a standard screening test that pressurises a membrane until it bursts."
+      },
+      {
+        "heading": "The membrane has to throw away its own heat as light",
+        "body_md": "Whatever the film absorbs becomes heat, and a free-standing membrane in vacuum has almost no way to shed it. There is no convection. Conduction sideways through tens of nanometres of material to a frame many millimetres away is negligible. Radiation is the only path out, which makes thermal emissivity a first-class design variable rather than an afterthought — some candidate materials need an extra emissivity layer deposited on them purely to raise radiated power and bring the peak temperature down.\n\nThe chemistry is the harder half. An EUV scanner floods its vacuum with hydrogen to keep tin from the source plasma off the mirrors, and EUV photons crack that hydrogen into radicals. Hydrogen radicals etch carbon. Any carbon-based membrane is therefore being slowly consumed by the environment that keeps the rest of the tool clean, and the proposed defence is to coat or encapsulate the carbon in ruthenium or molybdenum — which costs transmission, because those metals absorb more than carbon does. Every requirement on this component pulls against another one.",
+        "deeper_md": "This is why polysilicon and silicon nitride, the obvious first choices, run out: imec's assessment is that neither withstands 250 W source conditions, so the material search was forced open. Silicon and carbon are preferred in the first place because both have low EUV absorption coefficients, and the second lever is density — make the same material thinner and more porous and absorption falls further. That is precisely the lever a nanotube mesh pulls."
+      },
+      {
+        "heading": "Carbon nanotubes bought transmission and still owe lifetime",
+        "body_md": "imec's route was to stop making a solid film. A stack of three or four carbon-nanotube layers roughly 50 nm thick measured above 95% transmission, against about 83% for the silicon-based film it would replace. Mounted on reticles and exposed in an ASML NXE:3300 scanner, imec measured up to 97% single-pass transmission and reported survival beyond 600 W of scanner power — the figure that matters, because the solid membranes give up above 250 W.\n\nThe unsolved half is lifetime. Hydrogen radicals etch the nanotubes, so the mesh thins with use. That produces an unusually awkward failure mode: as the film degrades it loses material and therefore becomes more transmissive, so the tool sees slightly more light at exactly the point where its particle protection is disappearing. Targets are membranes of 10 × 10 cm² and larger, built on 300 mm process equipment. Keep the shape of the whole problem in view: the pellicle is the one component in a lithography tool whose job is to do nothing at all, and every property it needs — transparency, strength, thermal radiation, chemical inertness — is bought from the others.",
+        "deeper_md": "The honest state of play, in the sources cited here, is that uncoated nanotube pellicles met the transmission and power specifications and did not meet the lifetime specification, which is why coated variants and encapsulation chemistry became the active work. Treat any single transmission number with care: it depends on nanotube wall count and mesh density, and on whether the film has been pre-purified, because early exposures drive off adsorbed water and hydrocarbons and the measured transmission shifts during a film's first hours of use."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Pellicle",
+        "definition": "A thin, taut membrane on a frame mounted over a photomask's patterned face, so that particles settle a few millimetres away from the object plane and are imaged too weakly to print."
+      },
+      {
+        "term": "Standoff distance",
+        "definition": "The height of the membrane above the mask surface. It sets how widely a particle's shadow is spread; typical frames are 5–10 mm tall, with 6.35 mm common."
+      },
+      {
+        "term": "Single-pass vs double-pass transmission",
+        "definition": "An EUV mask reflects, so light crosses the pellicle going in and coming out. A film passing 90% once delivers 81% of the dose, and that squared number is what costs throughput."
+      },
+      {
+        "term": "Thermal emissivity",
+        "definition": "How efficiently a surface radiates heat compared with a black body. In vacuum a free-standing membrane can only cool by radiating, so emissivity rather than conductivity sets its peak temperature."
+      },
+      {
+        "term": "Hydrogen radical",
+        "definition": "Atomic hydrogen produced when EUV light cracks the scanner's hydrogen purge gas. It keeps tin off the mirrors and also etches carbon, which is the lifetime problem for carbon-based pellicles."
+      },
+      {
+        "term": "Registration error",
+        "definition": "Misplacement of the mask pattern relative to where it should be. Bonding a pellicle frame distorts the mask plate enough to contribute of order 100 nm, so the pellicle sits inside the overlay budget."
+      }
+    ],
+    "try_this": "MNF's stepper is maskless, so it has no pellicle — but it does have a cover window in front of the DMD, and the DMD sits exactly where a mask would. Measure that standoff with calipers, work out the numerical aperture seen from the DMD side (the projection NA divided by the demagnification), and compute the shadow width d + 2z·(NA/M) for a 20 µm particle. Then look at the window in dark field under the lab microscope and see whether anything on it is big enough to matter. If the standoff turns out to be small, you have just worked out why that window needs cleaning far more often than the mask of a 193 nm scanner does.",
+    "sources": [
+      {
+        "title": "Pellicles — Principles of Lithography, 2nd ed., ch. 7 (section: Explanation of pellicles)",
+        "url": "https://www.spie.org/x33165.xml",
+        "publisher": "SPIE Press (H. J. Levinson)",
+        "date": "2005"
+      },
+      {
+        "title": "EUV pellicle frame with holes and method of forming (US 9,140,975 B2)",
+        "url": "https://patents.google.com/patent/US9140975",
+        "publisher": "USPTO / GlobalFoundries",
+        "date": "2015-09-22"
+      },
+      {
+        "title": "Researchers Seek Elusive Pellicle Solution",
+        "url": "https://compoundsemiconductor.net/article/101226/Researchers_Seek_Elusive_Pellicle_Solution",
+        "publisher": "Compound Semiconductor",
+        "date": "2016-04-27"
+      },
+      {
+        "title": "Imec develops carbon nanotube EUV pellicle",
+        "url": "https://bits-chips.com/article/imec-develops-carbon-nanotube-euv-pellicle/",
+        "publisher": "Bits&Chips",
+        "date": "2020-10-06"
+      }
+    ]
+  }
+}

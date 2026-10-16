@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-10-16",
+      "foundations_slug": "pellicles",
+      "foundations_topic": "Pellicles",
+      "headline": "The General Conference on Weights and Measures voted to make UTC continuous from 20 May 2027, letting civil time drift up to an hour from the Earth's rotation rather than ask the world's software to execute a negative leap second it has never tested.",
+      "item_count": 7,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-10-15",
       "foundations_slug": "cdc-6600-and-cray",
       "foundations_topic": "The CDC 6600 and Seymour Cray",
@@ -616,6 +629,6 @@
       ]
     }
   ],
-  "generated_at": "2026-10-15T13:12:08Z",
-  "latest": "2026-10-15"
+  "generated_at": "2026-10-16T13:11:12Z",
+  "latest": "2026-10-16"
 }

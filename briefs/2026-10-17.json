@@ -1,0 +1,414 @@
+{
+  "date": "2026-10-17",
+  "generated_at": "2026-10-17T12:40:00Z",
+  "window": "2026-10-16..2026-10-17",
+  "headline": "Meta's MICRO paper says AMD's MI350X only beats an NVIDIA B200 on production recommendation training once the models are rebuilt around its 288 GB of HBM: the 1.5× came from spending memory on batch size and dropped recompute, not on faster arithmetic.",
+  "pulse": {
+    "read_time_min": 8,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-polar-skyrmion-lattice-gas",
+            "title": "Polar skyrmions order across the spacer, not inside the layer",
+            "dek": "Joohee Bang and co-authors fit the X-ray scattering between the Bragg peaks of lead-titanate/strontium-titanate superlattices and find that the polar skyrmions in them — nanometre whirls of electric polarisation — are correlated two to three times more strongly with the whirl in the layer above than with their neighbours in the same layer.",
+            "why_it_matters": "The coupling that holds these textures in place therefore runs vertically, through a strontium titanate spacer that is not itself ferroelectric, so spacer thickness is the knob that decides whether neighbouring bubbles know about each other at all — and in one of the samples the in-plane correlation is essentially zero. It also means the word lattice is doing less work than it looks: the vertical correlation falls to 0.06 by the third layer, so any device idea that assumes a periodic array of bubbles is assuming an order these films do not have. All of it is carried in the diffuse intensity between the Bragg peaks, which a conventional diffraction scan throws away.",
+            "background_md": "A ferroelectric holds a permanent electric polarisation because its cations sit off-centre in the unit cell, by tens of picometres in a perovskite cell about 3.9 Å on a side. Confine a few unit cells of such a material between layers of an ordinary dielectric and the polarisation cannot point uniformly out of plane: the uncompensated charge at the interfaces raises a depolarising field that destroys it. The polarisation instead curls into closed nanometre textures — vortices, merons, skyrmion-like bubbles — whose shape is set by the balance of electrostatic, elastic and gradient energy rather than by crystallography.",
+            "deeper_md": "The sample is a (PbTiO₃)₃/(SrTiO₃)₅ superlattice — three unit cells on five, an eight-cell period — repeated twelve times on a 10-unit-cell SrRuO₃ buffer on (001) SrTiO₃, grown by pulsed-laser deposition. It was measured at 74 keV (λ = 0.168 Å) at a grazing incidence of 0.03° on beamline P07 at PETRA III, and the diffuse intensity was inverted into a three-dimensional difference pair distribution function over an 800³ voxel volume.\n\nRefined root-mean-square displacements are 13 pm out of plane and 6 pm in plane for Pb, 11 and 5 pm for Ti. The spacer is not inert — Sr moves 7 pm out of plane and Ti 5 pm — and that polarisation reaching into the SrTiO₃ is the proposed coupling path. Correlation coefficients between bubbles run 0.60 to the adjacent PbTiO₃ layer, 0.25 to the second and 0.06 to the third, against 0.23 for the nearest in-plane neighbour at about 55 Å. A (5,2) superlattice gives 0.62 vertically and 0.03 in plane; a (7,7) gives 0.41 and 0.20. Heating a (7,7) makes the diffuse ring isotropic at 480 °C and removes it by 600 °C, reversibly on cooling.\n\nThe caveats sit in the model rather than the data. Oxygen positions are left out; variation in bubble size and shape is absorbed into an empirical damping function that the correlation numbers depend on; and the discrete parameters were found by differential evolution, with most but not all refinements converging on one solution.",
+            "glossary": [
+              {
+                "term": "Polar skyrmion",
+                "definition": "A nanometre bubble in a ferroelectric in which the polarisation rotates continuously from one direction at the centre to the opposite at the rim, so the texture cannot be flattened without passing through a non-polar state."
+              },
+              {
+                "term": "pm (picometre)",
+                "definition": "A thousandth of a nanometre. Ferroelectric polarisation comes from cation offsets of roughly 5–15 pm inside a unit cell about 390 pm across, so the measurement must resolve a few percent of a lattice spacing."
+              },
+              {
+                "term": "Diffuse scattering",
+                "definition": "The X-ray intensity in between the Bragg peaks. Bragg peaks encode the average periodic structure; the diffuse intensity encodes how neighbours deviate from it, which is where short-range order is recorded."
+              },
+              {
+                "term": "Néel-type rotation",
+                "definition": "A polarisation rotation in which the vector turns within the plane containing the texture's radius, rather than perpendicular to that plane as in a Bloch-type wall."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "From picometre displacements to a three-dimensional lattice gas of polar skyrmions",
+                "url": "https://arxiv.org/abs/2610.22309",
+                "publisher": "arXiv (cond-mat.mtrl-sci) — Bang, Strkalj, Aramberri, Rosenkranz, Simonov, Trassin, Weber",
+                "date": "2026-10-15"
+              },
+              {
+                "title": "Emergent chirality in a polar meron to skyrmion phase transition",
+                "url": "https://arxiv.org/abs/2101.04545",
+                "publisher": "arXiv (cond-mat.mtrl-sci) — Shao, Das, Hong et al.",
+                "date": "2021-01-12"
+              },
+              {
+                "title": "Hexagonal close-packed polar-skyrmion lattice in ultrathin ferroelectric PbTiO3 films",
+                "url": "https://arxiv.org/abs/2305.04169",
+                "publisher": "arXiv (cond-mat.mtrl-sci) — Yuan, Chen, Prokhorenko et al.",
+                "date": "2023-05-07"
+              }
+            ]
+          },
+          {
+            "id": "silicon-ablation-driven-microled-transfer",
+            "title": "A laser that throws the die instead of dropping it",
+            "dek": "Yuxuan Cao and co-authors replace the usual laser step for moving micro-LEDs between wafers — blow a blister in a polymer film and let the chip drop onto the receiver — with direct ablation of that polymer, so the ablation shock throws a 35-micrometre chip across a 50-micrometre gap.",
+            "why_it_matters": "The donor-to-receiver gap stops being a geometric tolerance and becomes an energy budget: a dropped chip's placement error grows with how far it falls, a thrown one's does not, and the critical gap roughly doubles against blister transfer. The same knob cuts the other way, which is the useful part of the result — above 6 µJ the 35 µm chips begin fracturing on landing, at 17.65% of them on glass and none at all on foam, so the compliance of the receiving surface is now part of the transfer recipe rather than a property of the finished display. One pulse can also only launch a chip about the size of the ablation spot, roughly 68 µm.",
+            "background_md": "A micro-LED display needs every one of several million emitters moved from the dense gallium-nitride wafer they were grown on to the sparse backplane that drives them. Picking and placing one die at a time cannot reach those counts, so the step is done with laser-induced forward transfer: a sacrificial polymer film under the die absorbs a pulse fired through the transparent carrier and pushes the die off. Donor and receiver cannot touch, because the receiver already carries circuitry and bond metal, so every die makes a short unguided flight — and the length of that flight sets placement accuracy.",
+            "deeper_md": "The release layer is 10 µm of polyimide, ablated by 355 nm, 1 ns pulses of 1–10 µJ fired through the carrier. Defocusing by 300 µm flattens the Gaussian profile enough that the ablation comes out about 68 µm across at 99.29% circularity with the film intact; focused on the surface, the peak punches through and the blister ruptures, after which 46.2% of chips land on their sides and 15.4% upside-down.\n\nTwo regimes follow from chip size. For 570 µm and 260 µm chips the pulses only release the die, which then falls, and the critical gap is under an eighth of the chip height. For 160 µm and 35 µm chips the ablation propels them: the 160 µm chip crosses more than 100 µm with a maximum mismatch under 16 µm, and the 35 µm chip crosses at least 50 µm, against a tabulated 25 µm for blister transfer and 10 µm for thermal release.\n\nTwo caveats the title does not carry. The sub-micron placement figure sits at the 0.97 µm resolution of the measuring camera, so it is a floor on the measurement rather than a measured value. And the transferred emitters are damaged: electroluminescence red-shifts 1 nm at 9 mA and 11 nm at 99 mA against bare dies, with brightness and external quantum efficiency down by up to about 35%, residual polyimide still needs a reactive-ion clean, and no throughput figure is reported at all.",
+            "glossary": [
+              {
+                "term": "LIFT (laser-induced forward transfer)",
+                "definition": "Moving a solid or liquid from a transparent donor carrier onto a nearby receiver by firing a laser pulse through the carrier so an absorbing layer at the interface expands or vaporises."
+              },
+              {
+                "term": "Dynamic release layer",
+                "definition": "The sacrificial film between carrier and die that absorbs the pulse — here polyimide, which absorbs 355 nm strongly and decomposes rather than melting."
+              },
+              {
+                "term": "Defocus distance",
+                "definition": "How far the laser's focal plane is moved away from the release layer; moving it flattens the beam's Gaussian peak, trading peak intensity for a wider, rounder, non-rupturing ablation."
+              },
+              {
+                "term": "EQE (external quantum efficiency)",
+                "definition": "Photons leaving an LED per electron injected into it; it folds internal recombination and light-extraction losses into one number, so damage anywhere in the die shows up here."
+              }
+            ],
+            "fab_angle": "The defocus study is the reproducible part on a bench. Spin polyimide on glass, fire a pulsed UV laser through the glass at several focal offsets, and measure crater diameter and circularity under a microscope: that curve, rather than the pulse energy alone, is what decides whether the film ruptures. It is also the measurement a teaching lab needs before attempting laser liftoff of anything at all.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Ablation-Driven Selective Laser Direct Mass Transfer for Micro-LEDs with High Speed, Enhanced Gap Tolerance, and High Precision",
+                "url": "https://arxiv.org/abs/2610.21839",
+                "publisher": "arXiv (physics.optics, eess.SY) — Cao, Wang, Brugger, Zhang",
+                "date": "2026-10-15"
+              },
+              {
+                "title": "Femtosecond-laser-induced nanoscale blisters in polyimide thin films through nonlinear absorption",
+                "url": "https://arxiv.org/abs/2005.04263",
+                "publisher": "arXiv / Phys. Rev. Applied 14, 044057 — Godfrey, Kallepalli, Ratté, Zhang, Corkum",
+                "date": "2020-05-08"
+              },
+              {
+                "title": "Microassembly of Multi-Material and 3D Integration Enabled by Programmable and Universal High-Precision Micro-Transfer Printing",
+                "url": "https://arxiv.org/abs/2503.11109",
+                "publisher": "arXiv — Guo, Yang, Gan et al.",
+                "date": "2025-03-14"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-mi350x-memory-for-recompute",
+            "title": "288 GB of HBM buys back what a 180 GB part pays in recompute",
+            "dek": "Meta's MICRO 2026 paper on moving production recommendation training onto AMD's MI350X reports 1.5× the throughput of a straight port of its NVIDIA code, and attributes most of that to the accelerator's 288 GB of high-bandwidth memory — 1.6× a B200's — spent on larger batches and on dropping activation recompute.",
+            "why_it_matters": "This puts a measured exchange rate on something usually argued qualitatively: memory capacity substitutes for arithmetic, because the alternative to holding activations is recomputing them. The MI350X's matrix units are the slower of the two — general matrix-multiply latency runs 1.3× to 1.7× higher, partly because the part has no native TF32 and emulates it with three BF16 multiplies — and it still lands at a geometric mean of 101.2% of a B200 across ten production models. The consequence for anyone reading accelerator comparisons is that faster is not answerable without naming the batch size the memory permits, and a model tuned to one capacity does not port back to a smaller one unchanged.",
+            "background_md": "Training a neural network stores every layer's output until the backward pass consumes it, so activation memory grows with batch size times depth and is usually what fills an accelerator first. When it does not fit there are two ways out: shrink the batch, which leaves the arithmetic units idle, or discard most activations and recompute them during the backward pass, which costs roughly an extra forward pass of compute. High-bandwidth memory is stacked DRAM bonded onto the accelerator's own package and fixed at manufacture, so capacity per part is a hardware constant that buys or sells recomputation.",
+            "deeper_md": "Table I of the paper puts the parts side by side: 256 compute units across eight accelerator dies against 148 streaming multiprocessors across two; 2,300 against 2,250 dense FP16/BF16 TFLOPS; 288 GB of HBM3e against 180 GB, both at up to 8 TB/s; 160 KB of local data share per compute unit against 256 KB of shared memory per multiprocessor; 538 GB/s of point-to-point xGMI scale-up bandwidth per GPU against 900 GB/s through an NVSwitch; a 64-wide wavefront against a 32-wide warp; and 1,000 W against 750 W as deployed in Meta's fleet, both air-cooled.\n\nThe capacity is spent three ways. A friend-recommendation model gains 26%, 46% and 51% at two, four and six times the per-GPU batch. A 1.3-billion-parameter GPT trains at 96.4 examples per second with no activation checkpointing, where the B200 needs an aggressive checkpoint budget and reaches 71.5. Moving embedding tables out of host memory into HBM adds over 10% on a feed-ranking model. Those three together are 1.26×, and kernel work takes it to 1.5×.\n\nThe caveats are the paper's own. Per-model results span 82% to 130% of the B200. Atomic-heavy kernels run over 10× slower. The B200 keeps the advantage in performance per watt. Results on 2,000-plus MI350X for large language models are deferred, and early reliability — telemetry gaps and silent data corruption — took enough work that the training-failure rate has only more than halved from its peak.",
+            "glossary": [
+              {
+                "term": "HBM3e",
+                "definition": "The current generation of high-bandwidth memory: DRAM dies stacked and through-silicon-via bonded beside the logic on one package, giving terabytes per second across a very wide, comparatively slow interface."
+              },
+              {
+                "term": "Activation checkpointing",
+                "definition": "Keeping only a few layers' activations and recomputing the rest during the backward pass; it trades roughly one extra forward pass of arithmetic for a large cut in memory."
+              },
+              {
+                "term": "TF32",
+                "definition": "A reduced-precision matrix-multiply format with the exponent range of FP32 and a shortened mantissa; a part without it in hardware has to emulate it, here with three BF16 multiplies."
+              },
+              {
+                "term": "LDS (local data share)",
+                "definition": "The software-managed scratchpad private to one compute unit. A tile of a matrix multiply has to fit inside it, so its size constrains how a kernel can block the problem."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Architecting for Hardware Diversity: Meta's End-to-End Co-Design for High-Performance AI Training on AMD GPUs",
+                "url": "https://arxiv.org/abs/2610.22230",
+                "publisher": "arXiv (cs.AR) — accepted at MICRO 2026; Zhang, Rahman, Aziz et al. (58 authors)",
+                "date": "2026-10-15"
+              },
+              {
+                "title": "AMD GPU architecture specifications (MI350X / MI355X, gfx950, CDNA4)",
+                "url": "https://rocm.docs.amd.com/en/latest/reference/gpu-arch-specs.html",
+                "publisher": "AMD ROCm documentation",
+                "date": "2026"
+              },
+              {
+                "title": "MICRO 2026 — 59th IEEE/ACM International Symposium on Microarchitecture",
+                "url": "https://www.microarch.org/micro59/",
+                "publisher": "IEEE/ACM MICRO organising committee",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-specialised-riscv-soft-core",
+            "title": "Compile the program into the processor and RV32I fits in 170 ALMs",
+            "dek": "Martin Langhammer, Bogdan Pasca and Gregg Baeckler at Altera compile a RISC-V core together with the single program it will ever run, deleting the instruction decoder and every datapath wire that program never uses, and get a 32-bit integer core of 170 adaptive logic modules closing timing at 775 MHz.",
+            "why_it_matters": "It relocates the question of what a small processor costs. On an FPGA the decoder, the forwarding network and the hazard interlocks are most of the area rather than the arithmetic, and all three can be moved into the binary at compile time: the result is half the fabric of Altera's own compact core, 170 adaptive logic modules against 336, while running fewer cycles per instruction, roughly four to five against about 6.8 on the same sort. The price is that program and processor are now one artifact — the core is assembler-compatible but not binary-compatible with RISC-V, so changing a line of C means re-synthesising the FPGA rather than reflashing a memory.",
+            "background_md": "A soft processor is a CPU written in RTL and placed into an FPGA's general-purpose fabric, where it competes for the same lookup tables as everything else in the design. It exists because a sequencing job is usually cheaper to express as a program than as a state machine. The constraint is that fabric is an expensive way to build a gate, so the structures a hardwired CPU gets almost for free — an instruction decoder, a forwarding network to pass a result back to the next instruction, interlocks to stall when it cannot — all come out of logic that could otherwise have been datapath.",
+            "deeper_md": "The method is to re-encode the program. Each instruction's register fields, immediate, shift amount and a one-hot opcode are split out into a wide word held in an application-specific instruction memory, so the decode stage disappears; immediates are sign-extended from their first significant bit and the redundant bits deleted; synthesis then removes the ALU inputs the program never drives. Forwarding and interlocks are dropped outright, and the resulting hazards are covered by NOPs inserted into the binary with branch targets adjusted to match.\n\nThe numbers are on an Agilex 5 A5EC013AB23AI1V. The eight-stage RV32I core is 170 ALMs at 775 MHz optimised, 178 at 784 MHz from default synthesis, against roughly 447 for the version before optimisation. A five-stage variant costs 207 ALMs at 478 MHz, about 35% slower, but its worst-case hazard falls from four NOPs to two. Adding single-precision floating point gives 494 ALMs, 394 optimised, and 298 once the shifter's immediates are enumerated into a 3:1 multiplexer. The baselines are Nios V/c at 336 ALMs and 675 MHz with a CPI near 6.8, and Nios II/f at 1,006 ALMs and 445 MHz.\n\nWhat is given up is listed plainly: no byte or half-word memory access, no FENCE, CSR or ECALL, single-threaded, divide and square root in software, and benchmarks no larger than a 200-element quicksort, a 256-point FFT and a 4×4 Gaussian solve. Only Altera devices were measured, and Nios V/c is encrypted, so the authors cannot account for its instruction count.",
+            "glossary": [
+              {
+                "term": "ALM (adaptive logic module)",
+                "definition": "Altera's basic fabric unit: a fracturable lookup table with two registers and carry logic. Area on an Altera FPGA is counted in ALMs the way an ASIC's is counted in gates."
+              },
+              {
+                "term": "CPI (cycles per instruction)",
+                "definition": "Clock cycles spent per instruction retired, averaged over a program. A core can win on frequency and still lose on work done, if stalls or padding NOPs push CPI up."
+              },
+              {
+                "term": "Forwarding network",
+                "definition": "The wires that route a result from a pipeline stage straight into a later instruction's operand input instead of waiting for the register file; remove it and the program must leave gaps."
+              },
+              {
+                "term": "RV32I",
+                "definition": "The 32-bit base integer instruction set of RISC-V, ratified at version 2.1. Multiplication and floating point are not in it; they arrive as separate extensions, M at 2.0 and F at 2.2."
+              }
+            ],
+            "fab_angle": "The idea carries over to a custom IC. A control sequencer whose firmware is frozen at tapeout can be synthesised against that firmware, which takes the decoder and the hazard logic out of the block entirely. It is also a caution about reading published area figures: this core is roughly a third of the unoptimised version it started from, so a processor area means little without the program it was built around.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Minimum RISC-V: Maximum FPGA Efficiency",
+                "url": "https://arxiv.org/abs/2610.21552",
+                "publisher": "arXiv (cs.AR) — Langhammer, Pasca, Baeckler (Altera)",
+                "date": "2026-10-15"
+              },
+              {
+                "title": "RISC-V ratified ISA specifications — Volume I: Unprivileged Architecture",
+                "url": "https://docs.riscv.org/reference/isa/v20260120/index.html",
+                "publisher": "RISC-V International",
+                "date": "2026-01-20"
+              },
+              {
+                "title": "RVCoreP: An optimized RISC-V soft processor of five-stage pipelining",
+                "url": "https://arxiv.org/abs/2002.03568",
+                "publisher": "arXiv (cs.AR) — Miyazaki, Kanamori, Islam, Kise",
+                "date": "2020-02-10"
+              }
+            ]
+          },
+          {
+            "id": "computing-static-sram-attribution-firmware",
+            "title": "Two thirds of a microcontroller's RAM is the network stack",
+            "dek": "Romi Fadli and co-authors rebuilt the same eight-milestone Ethernet firmware twice on a 64-kilobyte RISC-V microcontroller, in C on FreeRTOS and in async Rust on Embassy, then attributed every byte of static RAM to a symbol: networking is about 64% of it either way, but lwIP takes 40,719 bytes where smoltcp takes 9,316.",
+            "why_it_matters": "On a part this size the number that decides whether a design fits is not code size but the static RAM the linker reserves before main() runs, and this says where it goes: buffers and pools inside the TCP/IP stack, not the scheduler and not the application. The 4.4× between the two stacks is a design choice made visible — lwIP wanted a 20 KB arena to live under this platform's all-static discipline and smoltcp wanted none, because smoltcp sizes its buffers at compile time and never allocates. It also separates language from runtime: FreeRTOS task stacks grow linearly at about 1 KB per task, while Embassy's async state grows with how complicated each state machine is.",
+            "background_md": "A microcontroller has no virtual memory and often no heap worth the name: the linker divides one on-chip SRAM between initialised data, zeroed data and the stacks, and whatever is reserved there is gone before the program starts. A TCP/IP stack is the expensive tenant, because it must hold packet buffers, reassembly space and per-socket state for traffic it cannot predict. lwIP, the long-established C implementation, describes its own target as a system with tens of kilobytes of free RAM and room for about 40 kilobytes of code — which on a small part is the entire budget.",
+            "deeper_md": "The method is the contribution. Every sized ELF symbol is bounded into the .data, .bss and .stack ranges and assigned to a category — scheduler heap, network buffers and pools, task stacks, linker-reserved regions — with each category sum reconciled exactly against the size-based total, across all sixteen builds. That is what turns the network stack is big into a per-symbol number.\n\nThe part is a CH32V203RBT6, a RISC-V microcontroller with 64 KB of SRAM and an on-chip Ethernet MAC and PHY. Eight cumulative milestones run from a bare task scaffold up to an MQTT-over-Ethernet client, implemented twice with functional parity checked on hardware at each step. Networking takes 63.8% of RAM in the C build and 63.9% in the Rust one — the share is a property of the problem rather than of the language — while the absolute figures differ by 4.4×, 40,719 bytes for lwIP against 9,316 for smoltcp.\n\nThe limits are worth stating. This is static RAM only, .data plus .bss plus .stack, which says nothing about peak stack depth under load or about fragmentation, and dynamic high-water marks are where embedded systems actually fail. It is also one part, one Ethernet peripheral and one application shape. The authors release the harness, the attribution tool and all sixteen firmware builds rather than asking to be believed.",
+            "glossary": [
+              {
+                "term": ".data / .bss / .stack",
+                "definition": "The three regions a linker carves out of a microcontroller's RAM: variables with initial values copied from flash, zero-initialised variables, and the stacks. All three are reserved before main() runs."
+              },
+              {
+                "term": "lwIP",
+                "definition": "A small C implementation of the TCP/IP suite for embedded systems, which takes its packet buffers from fixed pools or from an arena whose size is chosen at build time."
+              },
+              {
+                "term": "smoltcp",
+                "definition": "An event-driven TCP/IP stack in Rust for bare-metal use that performs no heap allocation at all; buffer counts and sizes are fixed at compile time through build features."
+              },
+              {
+                "term": "ELF symbol",
+                "definition": "A named, sized object in a compiled binary's symbol table. Summing symbol sizes within each memory region is how static memory use gets attributed back to the code that caused it."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Where the SRAM Goes: Per-Symbol Attribution of Static Memory in FreeRTOS-C and Embassy-Rust IoT Firmware on a 64 KB RISC-V Microcontroller",
+                "url": "https://arxiv.org/abs/2610.21064",
+                "publisher": "arXiv (cs.OS) — Fadli, Riwurohi, Utami, Amana",
+                "date": "2026-10-15"
+              },
+              {
+                "title": "lwIP 2.1.x documentation — overview and supported protocols",
+                "url": "https://www.nongnu.org/lwip/2_1_x/index.html",
+                "publisher": "lwIP project (Savannah / nongnu.org)",
+                "date": "2026"
+              },
+              {
+                "title": "smoltcp — a standalone, event-driven TCP/IP stack for bare-metal, real-time systems",
+                "url": "https://github.com/smoltcp-rs/smoltcp",
+                "publisher": "smoltcp project README",
+                "date": "2026-10-17"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-kv-cache-fidelity-decoupling",
+            "title": "A transformer will not read a cache it did not write",
+            "dek": "Adam Deng, Shicheng Liu and Yada Zhu tested eight ways to hand one frozen language model the attention cache another model built from a passage, and all eight scored at or below the no-information floor — while letting the reader keep its own cache and attend over the sender's worked.",
+            "why_it_matters": "Everything that wants to pass processed context between models — agent handoffs, retrieval caches assembled out of pieces, a small model prefilling for a large one — has been optimising the wrong objective. The paper's claim is that closeness to the cache the reader would have written itself does not predict whether the reader can use it, because attention is a softmax in which keys compete: a displacement too small to show up in any norm can flip a close contest, and a large one along a direction nothing attends to changes nothing. The failure is therefore abrupt rather than graded, and better reconstruction error is not a route out of it.",
+            "background_md": "A transformer reading a passage turns each token into a key and a value and keeps both; the stored pairs are the KV cache, and they are the entire record of the work done reading. Re-reading the same passage costs a full forward pass over it, so a serving system would rather reuse a cache than recompute one — easy when the new text begins with exactly what it read before, and hard otherwise. The hard case matters because a cache is a set of vectors in one model's internal coordinates, and nothing guarantees those coordinates mean the same thing to a different model.",
+            "deeper_md": "The probe is split-context factual recall built from SQuAD: a sender reads the whole passage, a frozen Qwen2.5-1.5B reader gets the passage with the answer masked plus the question, greedy decoding for eight tokens, n = 200. Two anchors bound everything — 0.180 for the reader decoding from its own masked cache, 0.665 for the reader that simply read the unmasked passage.\n\nAll eight substitution methods sit at that floor: freeform regression onto the reader's cache 0.000, codebook selection 0.000, an oracle picking the nearest genuine key from a 6,000-key bank 0.000, manifold-loss and by-construction training 0.010, a worst-case per-layer hinge 0.080, a row-space target 0.085, and a high-capacity per-layer MLP 0.200. The authors call the usable region the reader's tolerable set and argue it is anisotropic — wide along directions attention does not resolve, thin along those it does — so ordinary vector norms do not measure it.\n\nAugmenting rather than substituting works. Cross-attending over the sender's cache with no trained parameters reaches 0.555; a rank-16 LoRA on the reader's query projections reaches 0.695, which the authors are careful to describe as arriving at the 0.665 reference rather than beating it, since six items at n = 200 separate the two. Pooling eight senders holds 0.395 where undirected cross-attention over the same union collapses to 0.070. One reader, one probe type, same architecture only: the paper calls itself a characterisation, not a leaderboard entry.",
+            "glossary": [
+              {
+                "term": "KV cache",
+                "definition": "The keys and values a transformer computed for every token it has already read, kept so later tokens can attend to them without the earlier text being processed again."
+              },
+              {
+                "term": "Prefix reuse",
+                "definition": "Serving a request from an earlier cache because the new prompt begins with exactly the same tokens. It is the only reuse that needs no correction, which is why anything else is a research problem."
+              },
+              {
+                "term": "Softmax competition",
+                "definition": "Attention weights come from a softmax over key-query scores, so a key's influence depends on which other keys are present rather than on any absolute threshold; moving one key can reorder the whole ranking."
+              },
+              {
+                "term": "LoRA (low-rank adaptation)",
+                "definition": "Fine-tuning by adding a low-rank correction to chosen weight matrices instead of updating them. Here it is rank 16 and applied only to the reader's query projections."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Close Enough is Nowhere Near: Fidelity-Consumability Decoupling in KV Caches",
+                "url": "https://arxiv.org/abs/2610.22016",
+                "publisher": "arXiv (cs.LG) — Deng, Liu, Zhu",
+                "date": "2026-10-15"
+              },
+              {
+                "title": "CacheLink: Functional KV Transport for Zero-Prefill Cross-Model Context Handoff",
+                "url": "https://arxiv.org/abs/2610.15509",
+                "publisher": "arXiv (cs.LG) — Qiu, Tang, Song, Han, Qiao, Zhang",
+                "date": "2026-10-11"
+              },
+              {
+                "title": "RaReCache: Bridging the Gap in Cross-Model KV Cache Reuse via Rank disagreement-based Selective Recomputation",
+                "url": "https://arxiv.org/abs/2610.11358",
+                "publisher": "arXiv (cs.LG) — Sarkar, Mitra, Huang, Kundu, Beerel",
+                "date": "2026-10-08"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "Tomasulo's algorithm",
+    "slug": "tomasulo-algorithm",
+    "subtitle": "How a 1967 floating-point unit learned to run instructions in the wrong order and still get the right answer, by renaming registers it did not have.",
+    "tldr": "The IBM System/360 Model 91 had arithmetic units whose latencies ran from two cycles to twelve, so a program that reused a register stalled constantly on conflicts that had nothing to do with data. Robert Tomasulo's answer was to stop treating a register name as a place and treat it as a tag: every pending result gets an identity, a waiting instruction holds the tag instead of the value, and one broadcast bus delivers each result to everyone who asked for it. That is register renaming, and it is still how a high-performance core works.",
+    "sections": [
+      {
+        "heading": "Three cycles to multiply, twelve to divide",
+        "body_md": "Start with the timing, because every other decision follows from it. The Model 91's floating-point area had two arithmetic units that could run at the same time. The adder was a two-stage pipeline and accepted a new operation every 60-nanosecond clock. The multiplier took three cycles for a multiply and twelve for a divide, and it could hold only one instruction at a time. The two units are therefore wildly mismatched in both latency and throughput, and the machine was being asked to run general programs one to two orders of magnitude faster than the 7090 it replaced.\n\nNow put a divide at the head of the queue. For twelve cycles the multiplier is occupied, and in those twelve cycles the adder could have retired twelve additions. A machine that issues instructions strictly in order cannot start any of them if the instruction immediately behind the divide has to wait — and it often has to wait for a reason that has nothing to do with needing the divide's result."
+      },
+      {
+        "heading": "Only one of the three dependences is real",
+        "body_md": "There are three ways two instructions can collide over a register. The second reads what the first writes: that is a true dependence, and the data genuinely has to flow from one to the other. The second writes a register the first has not finished reading. The second writes a register the first also writes, and the value left behind must be the later one. Only the first of the three is about data at all. The other two are about a name: two unrelated values have been assigned the same register because the architecture provides a small number of them and the compiler has to recycle them.\n\nThat is the whole opening. With long, uneven latencies and few registers, name collisions are not a corner case — they are most of the stalling. A design that stalls on them is paying full price for a problem created by its own notation, and the way out is to stop letting a register name be the only way to refer to a value still in flight.",
+        "deeper_md": "The three are conventionally written RAW (read-after-write, the true one), WAR (write-after-read) and WAW (write-after-write). The last two are called false or name dependences precisely because renaming eliminates them: if every write lands in a fresh location, nothing can be clobbered out of turn and nothing has to wait to avoid clobbering. What renaming costs is bookkeeping — some structure has to tell a consumer which location its producer actually used — and that bookkeeping is the subject of the rest of this piece."
+      },
+      {
+        "heading": "A tag is a promise, not a place",
+        "body_md": "The mechanism is a substitution. In front of each arithmetic unit sit reservation stations: small buffers that each hold one operation and its two operands. A station carries a Sink and a Source operand register, a tag register for each of them, and a control register naming the function. It is dispatched to its unit when all three are full, and when several become ready in the same clock the lower-numbered station goes first.\n\nThe tag is the idea. If an operand's tag is zero the value is already present, and the station is only waiting its turn. If the tag is non-zero it names the producer that will eventually supply the value, and the station holds that name in place of a number. Decode therefore stops asking which register an operand lives in and starts asking who is going to produce it. A register written twice in quick succession is no longer a collision, because the two writers have different names.",
+        "deeper_md": "The Edinburgh HASE simulation of the unit, which is the most detailed free walkthrough available, notes one deliberate divergence from the hardware: it decides whether a register is busy from whether its tag is zero, whereas the original Model 91 carried a separate busy bit per register. Operands coming from storage are staged through six floating-point buffers allocated cyclically, and the source unit stops issuing when all six are in use. Results destined for memory pass through three store data buffers, each with its own busy bit because results come back out of order. Ahead of all of it, the floating-point operation stack holds eight entries."
+      },
+      {
+        "heading": "One bus, and who gets it first",
+        "body_md": "Renaming only pays if a value can reach everyone holding its tag at once, and that is what the common data bus is for. It carries data from the decoder, the floating-point registers, the storage buffers and the arithmetic units to the reservation stations, the registers and the store buffers. When it broadcasts a tag together with a value, every operand register and every tag-table entry carrying that tag takes the value and resets its own tag to zero. Nobody needs to know where the value came from.\n\nThat one sentence is why the design is cheap. A consumer does not need a wire from each possible producer; it needs one comparator against one broadcast tag. The bus is also the obvious bottleneck, so it carries an arbitration order — requests from the multiply unit are served first, then the add unit, then the decoder — and a unit holding a finished result sits in a held state until the bus acknowledges it."
+      },
+      {
+        "heading": "What it broke, and the structure modern cores added",
+        "body_md": "Notice what those three store data buffers are telling you: each needs its own busy bit because results come back out of order. Nothing in the scheme maintains a register file that corresponds to any single point in the program. That is fine while everything goes right and awkward the moment something does not, because a core that must report where it was — an exception, a mispredicted branch — has no snapshot to report.\n\nSo the part that survived is renaming, and the part that was added is commit. Take BOOM, an open-source out-of-order RISC-V core whose documentation you can read today. It keeps a rename map table from architectural to physical registers, with a private copy per branch so a mispredict restores the mapping in one step; a busy table recording which physical registers are ready; and a free list of unused ones, with a per-branch allocation list that is OR'd back in on misspeculation. The previous mapping of a destination is held and returned to the free list only when the instruction commits.",
+        "deeper_md": "The structural change is where a renamed value lives. In Tomasulo's unit it lives in the operand slot of whichever reservation station asked for it, which is exactly why the tag is the station number, and copies of one value can sit in several stations at once. BOOM instead allocates a physical register and uses its index as the tag — an explicit physical register file, as opposed to the implicit alternative in which speculative results sit in the reorder buffer and the architectural file holds only committed state. The documentation also warns about a failure mode renaming invites: snapshotting the free list on a branch leaks registers, which is why the allocation list is OR'd back in instead."
+      },
+      {
+        "heading": "Why the scoreboard lost",
+        "body_md": "The CDC 6600 got there three years earlier with a different answer, and comparing the two is the cleanest way to see what renaming is worth. Its scoreboard decoded one instruction per cycle and tracked dependences centrally: up to three instructions could begin execution in a cycle, limited by three sets of register-file read ports, and up to four could write results in a minor cycle. A read-after-write dependence delayed the start of execution; a write-after-read dependence delayed the write; a write-after-write dependence, or a busy functional unit, blocked issue altogether.\n\nRead that list again. Two of the three stalls are name collisions, and the scoreboard's response to a name collision is to wait. Tomasulo's response is to rename it out of existence. The scoreboard's own record is thin: the 6600's successor, the 7600, dropped it for simpler in-order issue, and on hand-reordered benchmarks the scoreboard had been worth about 7% in cycle count."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Reservation station",
+        "definition": "A small buffer in front of an arithmetic unit holding one pending operation, its two operands, and a tag for each operand not yet available. The unit starts the operation when operands and control are all present."
+      },
+      {
+        "term": "Tag",
+        "definition": "An identifier for a result that does not exist yet. Zero means the operand is already in hand; a non-zero tag names the producer, so a waiting instruction holds a promise rather than a number."
+      },
+      {
+        "term": "Common data bus (CDB)",
+        "definition": "The single broadcast path on which a finished result travels together with its tag. Every operand slot and table entry carrying that tag latches the value and clears its tag in the same clock, which removes the need for point-to-point wiring between producers and consumers."
+      },
+      {
+        "term": "False (name) dependence",
+        "definition": "A write-after-read or write-after-write ordering constraint that exists only because two unrelated values were assigned the same register name. Renaming removes it, unlike a true read-after-write dependence, where data really does have to flow."
+      },
+      {
+        "term": "Register renaming",
+        "definition": "Mapping each write of an architectural register onto a fresh internal location so that reusing a register name never forces an ordering. Tomasulo's version was implicit, living in station tags; modern cores do it explicitly, into a physical register file."
+      },
+      {
+        "term": "Floating-point buffer (FLB)",
+        "definition": "One of six staging registers in the Model 91 holding operands fetched from storage. They are allocated cyclically and the source unit stops issuing when all six are occupied, which makes them a second, quieter limit on how far ahead the machine can run."
+      },
+      {
+        "term": "Reorder buffer",
+        "definition": "The queue of in-flight instructions, kept in program order, that lets a core retire results in order even though it computed them out of order. It is the structure the 1967 scheme has no counterpart for."
+      }
+    ],
+    "try_this": "Open the scanned 1967 paper linked below, find the figure of the floating-point unit, and locate the tag registers on it. Then do the arithmetic the design is an answer to: the multiply/divide unit holds one instruction at a time and a divide takes twelve cycles, while the adder is a two-stage pipeline accepting one operation every 60-nanosecond clock. Count how many add results the common data bus could carry during one divide, then count how many of those adds an in-order machine would have to hold back if the instruction right after the divide happened to name the divide's destination register. The difference is what renaming is worth, in cycles, on one page of paper. For the modern version, run the Edinburgh HASE model's dot-product demonstration and watch a single tag travel from a station to the bus, then read BOOM's rename-stage documentation and find the structure Tomasulo's unit does not have: the free list.",
+    "sources": [
+      {
+        "title": "An Efficient Algorithm for Exploiting Multiple Arithmetic Units (scanned copy, CS 6501 course page)",
+        "url": "https://www.cs.virginia.edu/evans/greatworks/tomasulo.pdf",
+        "publisher": "R. M. Tomasulo, IBM Journal of Research and Development 11(1):25–33 — hosted by the University of Virginia",
+        "date": "1967"
+      },
+      {
+        "title": "The IBM System/360 Model 91: Machine Philosophy and Instruction-Handling (scanned copy, EEC 272 course page)",
+        "url": "https://www.ece.ucdavis.edu/~vojin/CLASSES/EEC272/S2005/Papers/IBM360-Anderson_jan67.pdf",
+        "publisher": "D. W. Anderson, F. J. Sparacio, R. M. Tomasulo, IBM Journal of Research and Development 11(1):8–24 — hosted by UC Davis",
+        "date": "1967"
+      },
+      {
+        "title": "HASE Tomasulo's Algorithm Model — simulation and walkthrough",
+        "url": "https://homepages.inf.ed.ac.uk/rni/hase/models/tomasulo/index.html",
+        "publisher": "HASE Project, Institute for Computing Systems Architecture, University of Edinburgh",
+        "date": "2024-01-14"
+      },
+      {
+        "title": "Instruction-Level Parallelism — historical survey",
+        "url": "https://mark.people.clemson.edu/ilp.html",
+        "publisher": "Mark Smotherman, Clemson University",
+        "date": "2024-04"
+      },
+      {
+        "title": "BOOM documentation — the rename stage",
+        "url": "https://docs.boom-core.org/en/latest/sections/rename-stage.html",
+        "publisher": "RISC-V BOOM project documentation (Berkeley Architecture Research)",
+        "date": "2026"
+      }
+    ]
+  }
+}

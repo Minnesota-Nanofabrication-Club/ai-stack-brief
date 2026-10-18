@@ -1,0 +1,478 @@
+{
+  "date": "2026-10-18",
+  "generated_at": "2026-10-18T12:41:13Z",
+  "window": "2026-10-17..2026-10-18",
+  "headline": "No arXiv listing has gone out since Friday, so the window's newest document is cryptographic: Yuval Efron, Jovan Komatovic and Ling Ren bring deterministic Byzantine broadcast with any number of faults to within a polylogarithmic factor of the Dolev–Reischuk quadratic floor.",
+  "pulse": {
+    "read_time_min": 8,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-dewetting-rim-valley-ambient",
+            "title": "Swapping the anneal gas decides whether a film breaks into wires",
+            "dek": "Misong Ju and Carl Thompson's MIT group report that single-crystal nickel films annealed in hydrogen break up into rows of wires, while the same films annealed in carbon monoxide do not, because the gas changes which crystal face is cheapest.",
+            "why_it_matters": "Film break-up during a hot step is normally treated as a property of the metal and its thickness, which leaves a process engineer nothing to adjust except temperature and time. Making the furnace gas the deciding variable turns an outcome into a control: the same nickel at the same temperature either stays a continuous retreating sheet or separates into discrete wires depending on what is flowing over it. It also means a gas change made for an unrelated reason can quietly rewrite a metal layer's morphology.",
+            "background_md": "A thin metal film on an oxide is almost never the lowest-energy arrangement of its own atoms — isolated beads of metal with bare substrate between them usually carry less total surface and interface energy. Heated to a few tenths of its melting point the film gets there without ever melting, by atoms diffusing along its own surface: an exposed edge retreats, the atoms it sheds pile into a thickened rim just behind it, and that rim can neck down and separate. This is solid-state dewetting, and it is why a perfectly good metal layer can fall apart in a later furnace step.",
+            "deeper_md": "Ju and co-workers patterned 70 nm Ni(110) and 120 nm Cu(110) films, grown by e-beam evaporation at 0.5 Å/s, into 50 × 100 µm² patches whose edges were rotated in 5° increments, plus strips 5, 10 and 20 µm wide. Anneals ran at 700–800 °C for Cu and 950 °C for Ni, in either 5% H₂/95% N₂ or 10% CO/90% N₂. Both metals retract stably along ⟨110⟩ and ⟨001⟩; what changes is the rim's cross-section.\n\nNickel in hydrogen grows a deep valley where the rim meets the flat film, necks there and pinches off — a 5, 10 or 20 µm Ni strip retracting toward ⟨110⟩ leaves one, two or three wires. Copper in hydrogen, and nickel in CO, grow broad-topped rims with no valley and no pinch-off, and the paper notes CO barely changed the retraction rate.\n\nLevel-set simulations driven by Cahn–Hoffman ξ-vectors taken from Winterbottom analysis of the dewetted particles reproduce every case; varying only the top-facet energy switches valley formation on and off, while the relative film–substrate energy (≈0.5 Cu/H₂, ≈0.4 Ni/H₂, ≈−0.2 Ni/CO) matters less. Caveat: the simulations assume isotropic, constant surface diffusivity, and no absolute retraction rates are reported.",
+            "glossary": [
+              {
+                "term": "Rim",
+                "definition": "The thickened ridge of metal that piles up just behind a retreating film edge, fed by atoms diffusing back from that edge; its cross-sectional shape decides whether the film necks off."
+              },
+              {
+                "term": "Winterbottom construction",
+                "definition": "The equilibrium shape of a crystal resting on a substrate, found by truncating its Wulff shape at a depth set by the film–substrate interface energy; it is how relative facet energies are read off a dewetted particle."
+              },
+              {
+                "term": "Cahn–Hoffman ξ-vector",
+                "definition": "A vector field built from the surface energy and its orientation derivatives, which turns an anisotropic surface energy into a quantity a numerical interface model can integrate directly."
+              },
+              {
+                "term": "⟨110⟩",
+                "definition": "Miller-index notation for a family of equivalent crystal directions; here the in-plane directions along which a film edge retracts straight instead of wandering."
+              }
+            ],
+            "fab_angle": "The furnace ambient belongs in the metallisation recipe rather than the facilities notes — annealing a sputtered contact in forming gas is also a choice about which facet is lowest-energy, and therefore about whether the layer survives intact.",
+            "confidence": "confirmed",
+            "sources": [
+              {
+                "title": "Effects of crystalline anisotropy on edge retraction and rim pinch-off during solid-state dewetting of single-crystal Ni and Cu thin films",
+                "url": "https://pubs.aip.org/aip/jap/article/140/15/155303/3406692/Effects-of-crystalline-anisotropy-on-edge",
+                "publisher": "Journal of Applied Physics 140, 155303 — Ju, Shin, L'Etoile, Thompson (MIT)",
+                "date": "2026-10-16"
+              },
+              {
+                "title": "Study of phenomenologies during templated solid-state dewetting of thin single crystal films",
+                "url": "https://dspace.mit.edu/handle/1721.1/103184",
+                "publisher": "DSpace@MIT — Gye Hyun Kim, PhD thesis (advisor C. V. Thompson)",
+                "date": "2016"
+              },
+              {
+                "title": "Sharp-interface approach for simulating solid-state dewetting in two dimensions: a Cahn–Hoffman ξ-vector formulation",
+                "url": "https://arxiv.org/abs/1804.00270",
+                "publisher": "arXiv (cond-mat.soft) — Jiang and Zhao",
+                "date": "2018-04-01"
+              }
+            ]
+          },
+          {
+            "id": "silicon-asml-die-bonding-track",
+            "title": "ASML's bonding patent gives every die its own levitated stage",
+            "dek": "ASML's published patent application for a die-to-wafer bonder puts each individual die on its own magnetically levitated holder, which rides a closed loop through cleaning, plasma activation, levelling and alignment stations before the die is set down on the wafer.",
+            "why_it_matters": "The application's own background says existing tools cannot place a die better than 100 nanometres, and copper-to-copper bonding needs that or better. Reaching it by giving every die a measured, independently controlled stage rather than a faster gantry turns the problem from a mechanical tolerance into a metrology-and-control problem — the trade lithography made decades ago. The cost lands somewhere unusual: the patent's own throughput arithmetic needs more than ten die-handling machines feeding one loop, so accuracy is bought with floor space.",
+            "background_md": "Stacking two chips face to face normally means joining them through microbumps of solder. Hybrid bonding removes the solder entirely: copper pads on both surfaces are pressed into direct contact and annealed, with the dielectric around them bonding first at room temperature. Pads can then sit far closer together than a solder joint allows, and that pitch is where the extra interconnect density comes from. What it costs is a different class of requirement — both surfaces clean, flat, and aligned to a small fraction of the pad pitch, which is a lithography-grade specification imposed on an assembly step.",
+            "deeper_md": "WO2025201788A1 (ASML Netherlands, priority 27 March 2024, published 2 October 2025) describes a closed-loop track — oval or L-shaped — carrying substrate holders that each accept a single donor die and move independently of every other holder, with a six-coil magnet arrangement giving a holder six degrees of freedom.\n\nA die enters on a carrier through a FOUP, is lifted off by a gripper, then passes initial inspection, coarse placement, cleaning (CO₂ snow, laser particle removal and even a razor scrape are all listed), plasma treatment, topographic inspection, levelling measured at three or more points, coarse alignment, position adjustment, fine alignment, and bonding onto the acceptor wafer; rejected dies recirculate or go to a waste frame.\n\nThe telling number is that holder docking is specified only to roughly ten microns — a hundred times coarser than the placement target — so the accuracy has to come from measurement at the station, not from the transport. ASML has announced no such tool, and outside readings of its bonding filings disagree: an analysis reported by Bits&Chips in April argued ASML was adapting the Twinscan dual-stage platform for wafer-to-wafer bonding, whereas this application is explicitly about handling dies one at a time.",
+            "glossary": [
+              {
+                "term": "Die-to-wafer (D2W) bonding",
+                "definition": "Bonding singulated, already-tested dies one at a time onto a full wafer, rather than bonding two whole wafers together; it allows mixed die sizes and known-good-die selection but costs one alignment per die."
+              },
+              {
+                "term": "Plasma activation",
+                "definition": "A brief low-energy plasma exposure that leaves a dielectric surface chemically terminated so it bonds on contact at room temperature, before any anneal moves the copper underneath."
+              },
+              {
+                "term": "Placement accuracy",
+                "definition": "How far a die's actual position differs from its target once it has been set down; for hybrid bonding it must stay a fraction of the copper pad pitch or opposing pads miss each other."
+              },
+              {
+                "term": "Maglev stage",
+                "definition": "A stage suspended and driven by magnetic forces with no bearings or guideways, so it has no friction or mechanical play and can be commanded in all six degrees of freedom."
+              }
+            ],
+            "fab_angle": "It is the same overlay error budget MNF is already fighting on its stepper, moved onto an assembly tool and spent one die at a time.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "WO2025201788A1 — Semiconductor bonding systems and methods",
+                "url": "https://patents.google.com/patent/WO2025201788A1/en",
+                "publisher": "WIPO via Google Patents — applicant ASML Netherlands BV",
+                "date": "2025-10-02"
+              },
+              {
+                "title": "ASML's patents hint at Twinscan wafer-to-wafer hybrid bonding tool",
+                "url": "https://bits-chips.com/article/asmls-patents-hint-at-twinscan-wafer-to-wafer-hybrid-bonding-tool/",
+                "publisher": "Bits&Chips — Paul van Gerven",
+                "date": "2026-04-29"
+              },
+              {
+                "title": "YAP+: Pad-Layout-Aware Yield Modeling and Simulation for Hybrid Bonding",
+                "url": "https://arxiv.org/abs/2511.05506",
+                "publisher": "arXiv (cs.AR) — Chen and Gupta, UCLA",
+                "date": "2025"
+              }
+            ]
+          },
+          {
+            "id": "silicon-crn-in-plane-pseudo-anisotropy",
+            "title": "A strain-free film reads 10% different in two polarisations",
+            "dek": "Duc Dinh, Frank Peiris and Oliver Brandt report that epitaxial chromium nitride films on aluminium nitride templates return refractive index and absorption values more than 10% apart when measured with light polarised along two perpendicular in-plane directions, despite being nearly strain-free.",
+            "why_it_matters": "Ellipsometry does not measure thickness; it measures two polarisation angles and then fits an assumed stack to them. If a film is quietly anisotropic in the plane of the wafer and the model is not, the fit pushes the mismatch into whichever parameter is free, and the thickness it reports is wrong by a systematic amount that repeating the measurement will never expose. The check this result implies costs one rotation of the sample, and almost nobody does it.",
+            "background_md": "Ellipsometry reflects polarised light off a surface at a steep angle and measures how the polarisation changed. That change is far more sensitive to a few nanometres of film than any intensity measurement, which is why it is the standard way to read film thickness in a fab. But the instrument returns two angles per wavelength, Ψ and Δ, not a thickness: thickness and optical constants come out of fitting an assumed stack of layers to those angles. Everything the assumed stack leaves out — roughness, an oxide skin, anisotropy — reappears as error in the parameters it does contain.",
+            "deeper_md": "The films are CrN(113) grown by plasma-assisted molecular-beam epitaxy on AlN(11-22) templates, measured by variable-angle spectroscopic ellipsometry from 1.25 to 5 eV. Rotating the sample 90° in its own plane moves the pseudo-optical constants n and k by more than 10% across that entire range. \"Pseudo\" is the load-bearing word: those are the values obtained by inverting Ψ and Δ against a flat, isotropic, two-phase model, so they report the sample plus whatever the model omitted.\n\nThe authors argue the anisotropy is not intrinsic — the films are nearly strain-free, so there is no obvious lattice symmetry breaking to produce it — but geometric: an anisotropic surface morphology acting as a subwavelength grating in a spectral region where CrN absorbs strongly. Structure finer than the wavelength does not diffract, it averages, and because the field along the features and the field across them meet different boundary conditions, the average is birefringent.\n\nThe attribution is offered as the likely explanation rather than a demonstrated one, and no feature period is given. For scale on how badly an unmodelled surface corrupts a fit, Lehmann and colleagues found that treating a 9.24 nm-rms film with the usual 50:50 roughness layer returned a homogeneous-film thickness of 27 ± 76 nm.",
+            "glossary": [
+              {
+                "term": "Ψ and Δ",
+                "definition": "The two quantities ellipsometry actually measures at each wavelength: the amplitude ratio and the phase difference between light polarised parallel and perpendicular to the plane of incidence."
+              },
+              {
+                "term": "Pseudo-optical constants",
+                "definition": "The n and k obtained by algebraically inverting Ψ and Δ as though the sample were one flat isotropic bulk; any roughness, overlayer or anisotropy the sample really has is folded into them."
+              },
+              {
+                "term": "Form birefringence",
+                "definition": "Polarisation-dependent refraction produced by geometry rather than by the material: structure much finer than the wavelength averages into an effective medium whose index differs along and across it."
+              },
+              {
+                "term": "eV as a photon energy",
+                "definition": "Optical spectroscopy labels light by photon energy rather than wavelength, with higher energy meaning shorter wavelength; the 1.25–5 eV range here runs from the near infrared into the deep ultraviolet."
+              }
+            ],
+            "fab_angle": "Any thickness MNF reads off an ellipsometer is a fit, not a reading. The cheap check is to rotate the sample 90° in the plane and refit: if n, k or thickness move, the optical model is missing something the film has.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Large in-plane optical anisotropy in epitaxial CrN(113) films",
+                "url": "https://arxiv.org/abs/2610.21856",
+                "publisher": "arXiv (cond-mat.mtrl-sci; physics.app-ph) — Dinh, Peiris, Brandt",
+                "date": "2026-10-15"
+              },
+              {
+                "title": "Thin films with high surface roughness: thickness and dielectric function analysis using spectroscopic ellipsometry",
+                "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3929596/",
+                "publisher": "SpringerPlus 3:82, via PubMed Central — Lehmann, Seidel, Zahn",
+                "date": "2014"
+              },
+              {
+                "title": "Fully automated spectroscopic ellipsometry analyses of crystalline-phase semiconductors based on a new algorithm",
+                "url": "https://arxiv.org/abs/2205.05833",
+                "publisher": "arXiv (cond-mat.mtrl-sci) — Maeda, Oiwake, Nishigaki et al.",
+                "date": "2022-05-12"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-helix-krylov-primitives",
+            "title": "One FPGA runs eight sparse solvers by building their shared parts",
+            "dek": "Wei Chen, Yizhi Yuan and Linghao Song report Helix, an FPGA accelerator that runs eight different Krylov subspace solvers — the iterative algorithms used to solve enormous sparse systems of equations — on one unchanged circuit, by implementing the handful of operations all eight share.",
+            "why_it_matters": "A domain-specific accelerator earns its efficiency by hard-wiring one algorithm, which is why FPGA designs exist for conjugate gradient and essentially nothing for its relatives: changing solver meant a recompile and a reflash. Factoring a whole algorithm family down to its shared primitives costs 4.7% of the chip's lookup tables and under 0.6% of the runtime here, which is a small and now-measured price for keeping one bitstream. It also sets up the comparison that matters, against a GPU holding far more memory bandwidth.",
+            "background_md": "Solving a large sparse linear system is the inner loop of almost all physical simulation. Direct elimination is unaffordable at scale, so the standard approach is the Krylov subspace family: start from a guess, repeatedly multiply the residual by the matrix, and assemble the answer out of the growing subspace that generates. Every iteration is dominated by one sparse matrix–vector product, which touches each stored non-zero once and performs a multiply and an add with it. Two operations per number fetched from memory is a very low ratio, and it is why these solvers run far below any processor's peak arithmetic rate.",
+            "deeper_md": "Helix enumerates the primitives the family shares — the sparse matrix–vector product plus a small set of vector operations — gives each a programmable kernel, and links them with programmable datapaths, so a DSL compiler can map a solver on without rebuilding the hardware; the paper claims zero solver-switching latency and HBM reuse across solvers. The prototype is a Xilinx Alveo U55C, which carries 16 GB of HBM2 and dual 100 Gb/s Ethernet, and it compiles and runs eight solvers.\n\nAgainst Xilinx's own XcgSolver it is up to 7.91× faster, and against Callipepla 1.16× — but both baselines support only Jacobi-preconditioned conjugate gradient, so that comparison covers one solver of the eight. Against an NVIDIA RTX PRO 6000 it reaches 47.5–96.9% of throughput at 2.29–4.66× the energy efficiency, and 1.89–3.85× the throughput per unit of peak memory bandwidth; that last figure is the honest framing for a bandwidth-bound kernel and also the flattering one, because it divides out the GPU's bandwidth advantage. Programmability costs 0.25–0.57% of execution time, 4.7% of LUTs and 4.0% of flip-flops.\n\nCaveat: Linghao Song co-authored Callipepla, so the 1.16× is against the group's own prior design, and the abstract names only one of the eight solvers.",
+            "glossary": [
+              {
+                "term": "SpMV (sparse matrix–vector product)",
+                "definition": "Multiplying a matrix that is mostly zeros by a vector, storing and touching only the non-zero entries; it is the step that sets the cost of every Krylov iteration."
+              },
+              {
+                "term": "Arithmetic intensity",
+                "definition": "Floating-point operations performed per byte moved from memory. A kernel below the machine's compute-to-bandwidth ratio is limited by memory, and faster arithmetic units will not help it."
+              },
+              {
+                "term": "HBM",
+                "definition": "High-bandwidth memory: DRAM stacked beside the logic die in the same package and reached over a very wide interface, trading capacity and cost for bandwidth."
+              },
+              {
+                "term": "LUT (lookup table)",
+                "definition": "The basic programmable element of an FPGA — a small truth table that can implement any function of a few inputs. LUT count is how FPGA designs report area."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Helix: A Unified Programmable Accelerator for Diverse Krylov Subspace Solvers",
+                "url": "https://arxiv.org/abs/2610.21096",
+                "publisher": "arXiv (cs.AR; cs.DC) — Chen, Yuan, Song",
+                "date": "2026-10-15"
+              },
+              {
+                "title": "Callipepla: Stream Centric Instruction Set and Mixed Precision for Accelerating Conjugate Gradient Solver",
+                "url": "https://arxiv.org/abs/2209.14350",
+                "publisher": "arXiv (cs.AR) / FPGA 2023 — Song, Guo, Basalama, Chi, Lucas, Cong",
+                "date": "2022-09-28"
+              },
+              {
+                "title": "Alveo U55C Data Center Accelerator Card Data Sheet (DS978) — Summary",
+                "url": "https://docs.amd.com/r/en-US/ds978-u55c/Summary",
+                "publisher": "AMD technical documentation",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-byzantine-broadcast-quadratic",
+            "title": "Byzantine broadcast reaches its quadratic floor, 43 years on",
+            "dek": "Yuval Efron, Jovan Komatovic and Ling Ren report a deterministic protocol for Byzantine broadcast — getting every honest machine to agree on what one sender said, without assuming most machines are honest — whose total communication is quadratic in the machine count up to a polylogarithmic factor.",
+            "why_it_matters": "Quadratic communication had already been reached in the easier settings: unauthenticated agreement with fewer than a third of parties faulty, and authenticated agreement with fewer than half. Broadcast where any number short of all parties may be faulty was the case still sitting above the floor. Closing it means the remaining distance between what is provably necessary and what anyone knows how to construct is a polylogarithmic factor rather than a factor of n — a question about log terms, not about asymptotic shape.",
+            "background_md": "Byzantine broadcast asks a set of machines to agree on a message from one designated sender when some of them, possibly including the sender, may do anything at all: lie, stay silent, or tell different peers different things. The resource that matters is total bits sent, because that is what a wide-area network charges for and what stops a protocol scaling. A lower bound of Dolev and Reischuk says any deterministic protocol must send on the order of n² messages in the worst case, so the floor for n machines is quadratic, and the long-running question is how close a real protocol gets to it.",
+            "deeper_md": "The posting (ePrint 2026/2504, received 16 October) gives a deterministic protocol tolerating any t < n faults with O(n² log⁴(n)·λ) communication for security parameter λ, in O(t) rounds, and names Dolev–Strong from 1983 as the protocol it improves on at this fault threshold.\n\nTwo nearby results fix how much ground that covers. Momose and Ren closed the authenticated case at DISC 2021 with quadratic protocols at f < n/2 — one requiring a trusted threshold-signature setup, one in the plain PKI model at f ≤ (1/2 − ε)n. Civit and co-authors showed the Dolev–Reischuk bound is tight for partially synchronous consensus at maximal resilience. Neither reaches broadcast under a dishonest majority, which is what this closes.\n\nThe caveats are real. An ePrint posting is unrefereed, so this is a claim the community has not checked yet; the abstract fixes neither the base of the logarithm nor the constant, so the crossover point against Dolev–Strong is not stated; the round complexity is linear in the fault count rather than constant; and no implementation is reported.",
+            "glossary": [
+              {
+                "term": "λ (security parameter)",
+                "definition": "The bit length of the cryptographic objects a protocol uses, typically a signature or hash; communication bounds carry it because every authenticated message costs λ bits to carry its proof."
+              },
+              {
+                "term": "Deterministic protocol",
+                "definition": "One that uses no randomness, so an adversary reading the code knows exactly what every honest party will do; randomised protocols can beat deterministic lower bounds by hiding their choices."
+              },
+              {
+                "term": "t < n (fault threshold)",
+                "definition": "The assumption that merely fewer than all parties are faulty, so no honest majority is assumed at all; most consensus results instead need t < n/2 or t < n/3."
+              },
+              {
+                "term": "Dolev–Reischuk bound",
+                "definition": "The result that any deterministic protocol for this problem must send on the order of n² messages in the worst case; it is the floor every protocol in the area is measured against."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Byzantine Consensus is Θ(n²): The Dolev-Reischuk Bound is Tight even in Partial Synchrony (extended version)",
+                "url": "https://arxiv.org/abs/2208.09262",
+                "publisher": "arXiv (cs.DC) — Civit, Dzulfikar, Gilbert, Gramoli, Guerraoui, Komatovic, Vidigueira",
+                "date": "2022-08-19"
+              },
+              {
+                "title": "Byzantine Broadcast in Õ(n²) Communication (ePrint 2026/2504)",
+                "url": "https://eprint.iacr.org/2026/2504",
+                "publisher": "IACR Cryptology ePrint Archive — Efron (IAS), Komatovic (Category Labs), Ren (UIUC)",
+                "date": "2026-10-17"
+              },
+              {
+                "title": "Optimal Communication Complexity of Authenticated Byzantine Agreement",
+                "url": "https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.DISC.2021.32",
+                "publisher": "LIPIcs / DISC 2021 — Momose and Ren",
+                "date": "2021-10-04"
+              }
+            ]
+          },
+          {
+            "id": "computing-aimer-key-independent-npu-offload",
+            "title": "A signature splits so the NPU never touches the secret key",
+            "dek": "Myoungsu Shin, Jihoon Jang and co-authors report that AIMer — a post-quantum signature whose signing cost is almost entirely repeated hashing — signs 1.30 to 1.42 times faster on a Snapdragon 8 Gen 3 tablet when the repetitions needing no secret key are handed to the neural-processing unit.",
+            "why_it_matters": "A neural-processing unit is a wide matrix engine with no security story at all: nothing about it was designed to hold a secret, and nothing in a phone's threat model assumes it does. The useful finding is that this signature's work splits cleanly into a key-dependent part and a key-independent part, so an idle accelerator can be put to cryptographic use without widening the set of hardware the private key passes through. The energy number is the practical argument: 13 to 27% less per signature than waking a second CPU core.",
+            "background_md": "Post-quantum signature families have very different cost shapes. The MPC-in-the-head family has the signer simulate a multiparty computation that proves it knows a secret, then reveal enough of that simulation to be verified but not enough to leak the secret. Its security rests only on symmetric primitives — a hash and a one-way function — rather than on lattice or code-based assumptions, which is the whole attraction. The price is that one proof run leaves a cheating prover decent odds, so the run is repeated many times over, and signing becomes thousands of hash evaluations.",
+            "deeper_md": "AIMer pairs a customised BN++ proof system with the AIM one-way function, and its own project page states the tradeoff: the smallest signature among schemes resting only on symmetric primitives, small keys, fast key generation, and relatively large signing and verification times.\n\nThe split follows what touches the key. The final repetitions of the proof need no secret key, so their hashing and per-party linear maps go to the Hexagon NPU, while the CPU keeps the key and the two hashes that absorb the repetitions in index order — the part that cannot be reordered or parallelised away.\n\nAcross three short-signature parameter sets: 1.30–1.42× faster than two CPU cores and 1.74–1.97× faster than one on a Snapdragon 8 Gen 3 tablet, 1.28–1.35× on an 8 Elite phone, 1.74–1.82× on an 8 Gen 2, 13–27% lower energy per signature than the two-core version, and 4.5–6.1× over the reference single-core implementation. Caveats: no absolute latencies in milliseconds are given, the margin over two cores is modest and varies by device, and AIMer is a Korean KpqC selection and a NIST round-1 additional-signature candidate listed under symmetric-based schemes, not a published standard.",
+            "glossary": [
+              {
+                "term": "Soundness error",
+                "definition": "The probability that a cheating prover is believed in one run of a proof; running the proof independently many times drives it down exponentially, which is why these signatures are built from many repetitions."
+              },
+              {
+                "term": "NPU",
+                "definition": "A fixed-function matrix and vector engine added beside the CPU for neural-network inference, with wide datapaths and its own memory; it sits idle whenever no model is running."
+              },
+              {
+                "term": "One-way function",
+                "definition": "A function cheap to evaluate and believed infeasible to invert. AIMer's secret key is a preimage of one, and the signature is a zero-knowledge proof that the signer knows it."
+              },
+              {
+                "term": "Trust boundary",
+                "definition": "The set of hardware and software a secret is permitted to pass through. Moving computation onto a new accelerator normally widens it, which is what keeping the key on the CPU avoids."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Round 1 Additional Signatures — Post-Quantum Cryptography: Digital Signature Schemes",
+                "url": "https://csrc.nist.gov/Projects/pqc-dig-sig/round-1-additional-signatures",
+                "publisher": "NIST Computer Security Resource Center",
+                "date": "2026-10-13"
+              },
+              {
+                "title": "Heterogeneous CPU–NPU Implementation of the AIMer Post-Quantum Signature for Low Latency on a Mobile SoC (ePrint 2026/2486)",
+                "url": "https://eprint.iacr.org/2026/2486",
+                "publisher": "IACR Cryptology ePrint Archive — Shin, Jang, Shin, Kim, Lee, Kwon",
+                "date": "2026-10-17"
+              },
+              {
+                "title": "About AIMer — specification v3",
+                "url": "https://aimer-signature.org/",
+                "publisher": "AIMer project",
+                "date": "2026-08-19"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-linear-readability-predicts-generalisation",
+            "title": "Fine-tuning generalises where the model already had a direction",
+            "dek": "Faridoun Mehri and Hinrich Schütze report that whether fine-tuning a language model on a relabelled fact carries over to subjects it never saw is predicted, at a Pearson correlation of 0.87 to 0.92, by how well that relation could already be read out of the untouched model by a single linear map.",
+            "why_it_matters": "Fine-tuning is normally debugged by adjusting the training run — more examples, more steps, a different learning rate. This says most of the outcome is fixed before the run starts, by a property of the base model that a linear probe measures in minutes. That makes the useful question not how to train harder but which relations are worth fine-tuning at all, and it gives a concrete failure signature: a relation the base model cannot express linearly gets memorised on the examples supplied and does not transfer off them.",
+            "background_md": "A language model holds much of its knowledge as relations — a city to its country, a word to its opposite. For a subset of those, the computation between reading the subject and emitting the answer turns out to be well approximated by one matrix applied to the subject's hidden state, and that matrix can be estimated from a single prompt by taking a first-order approximation of the model around it. Which relations behave this way is uneven and does not track how accurately the model answers them, so linear readability is a separately measurable property rather than a proxy for competence.",
+            "deeper_md": "The design separates recall from generalisation. Take a relation the model already knows — place to continent — and relabel each answer arbitrarily: Europe becomes \"crab\", Asia becomes \"zebra\", so Paris maps to \"crab\". Fine-tune on a subset of subjects, never stating the original relation or the relabelling, then test held-out subjects that shared an original answer: does Munich become \"crab\" once Paris has?\n\nAcross 11 open-weight models and 70 relations, the within-model correlation between a relation's linear readability in the pretrained representations and this generalisation is Pearson r 0.87–0.92. It survives controls for the number of fine-tuning subjects and of answers, the base model's accuracy on the original relation, and subject frequency in pretraining text, plus re-randomised label assignments, re-seeded runs, and labels drawn from 13 other semantic categories.\n\nThe error analysis is the sharper result: mapping a wrong label back to the original answer it was assigned recovers something meaningful — \"Munich → zebra\" is \"Munich → Asia\" — and those recovered answers rank higher under the linear probe than under the base model's own output distribution. Caveats: the relations are synthetic relabellings rather than the fine-tuning anyone ships, and the correlation is reported within each model, not across models.",
+            "glossary": [
+              {
+                "term": "Linear readability",
+                "definition": "How well a relation's subject-to-answer mapping inside a model is approximated by one matrix applied to the subject's hidden state; it is measured by fitting that matrix and scoring its predictions."
+              },
+              {
+                "term": "Pearson r",
+                "definition": "A correlation coefficient between −1 and 1 measuring how close two quantities are to a straight-line relationship; 0.9 means tight scatter, and it says nothing about which way causation runs."
+              },
+              {
+                "term": "Held-out subject",
+                "definition": "An input deliberately kept out of training, so getting it right cannot be recall; it is the only way to distinguish a model that learned a rule from one that memorised examples."
+              },
+              {
+                "term": "Fine-tuning",
+                "definition": "Continuing to train a finished model on a small specific dataset so it absorbs new behaviour or facts, normally at a far lower learning rate than pretraining used."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Knowledge That Is Linear Before Fine-Tuning Generalizes After It",
+                "url": "https://arxiv.org/abs/2610.22300",
+                "publisher": "arXiv (cs.CL; cs.AI; cs.LG) — Mehri and Schütze",
+                "date": "2026-10-15"
+              },
+              {
+                "title": "Linearity of Relation Decoding in Transformer Language Models",
+                "url": "https://arxiv.org/abs/2308.09124",
+                "publisher": "arXiv (cs.CL) — Hernandez, Sen Sharma, Haklay et al.",
+                "date": "2023-08-17"
+              },
+              {
+                "title": "active-inert-facts — code and artifacts for the paper",
+                "url": "https://github.com/NightMachinery/active-inert-facts",
+                "publisher": "GitHub — Faridoun Mehri",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "Maskless lithography",
+    "slug": "maskless-lithography",
+    "subtitle": "Printing a pattern with a million mirrors instead of a plate of quartz, and the three things that costs you.",
+    "tldr": "Conventional photolithography prints through a physical mask — a quartz plate carrying the pattern, written once by an electron beam and then reused for thousands of wafers. Maskless lithography deletes the plate and forms the pattern in light instead: an array of switchable mirrors, an array of focused spots, or a single scanned beam. You get a new pattern in seconds rather than weeks, and you pay for it in field size, in stitching accuracy, and in throughput.",
+    "sections": [
+      {
+        "heading": "What a photomask is actually buying",
+        "body_md": "Start from what you give up. A photomask is a parallel pattern generator: the whole exposure field is written at once, every point of it, in a single flash. ASML quotes a maximum field of 26 mm × 33 mm on its EUV scanners — multiply that out and one exposure carries 858 mm² of pattern — and the tool steps that field across the wafer a few hundred times. The plate itself is written slowly, once, by an electron beam onto quartz, then reused for thousands of wafers, so its cost and its weeks of lead time amortise to nothing in volume.\n\nOut of volume they do not amortise at all. A 2004 IEEE Spectrum piece already put the projected cost of an advanced optical mask set above a million dollars, driven by the correction patterns needed to make the printed image resemble the drawn one. For one research wafer, or a design that changes between runs, you are paying the full price for a plate you will use once.",
+        "deeper_md": "The amortisation argument is why mask cost shows up in two very different places in the industry. At high volume it is a rounding error per wafer and nobody mentions it; at low volume it is the dominant cost and drives everything — which is exactly why multi-project wafer shuttles exist, and why the IEEE Spectrum piece noted that ASIC makers needing a handful of wafers might care more about mask cost than about throughput. That is the same calculation a university lab makes, several orders of magnitude further down."
+      },
+      {
+        "heading": "Three ways to get rid of the plate",
+        "body_md": "There are only three architectures, and they differ in how much of the field they expose at the same instant.\n\nA scanned spot — a focused laser, an electron beam, an ion beam — writes one point at a time. Resolution can be superb; throughput is the whole problem, with conventional electron-beam writing running orders of magnitude below optical projection.\n\nA spot array fixes part of that by focusing many beams at once and modulating each independently. Zone-plate-array lithography is the canonical version, and recent work by Chung, Smith and colleagues inverse-designs a single 0.6-NA element at 405 nm reaching 85.50% focusing efficiency, against 79.98% for an ideal graded-index lens.\n\nArea projection is the third, and the one that behaves most like a mask: put a programmable two-dimensional pattern in the object plane and image it onto resist. Naiser and colleagues built exactly that in 2006 with a Texas Instruments micromirror device — about 786,000 mirrors through a 5× objective at 0.25 NA, 9 mm² of field, a 3.5 µm minimum feature, and up to 76 mW/cm² at 365 nm."
+      },
+      {
+        "heading": "The mirror",
+        "body_md": "The programmable object plane is almost always a digital micromirror device, and its numbers set the geometry of everything downstream. The DLP471TP in Hacker Fab's stepper is a 0.47-inch array of 1920 × 1080 aluminium mirrors on a 5.4 µm pitch, each tilting ±17° about its diagonal.\n\nThat tilt is the entire switch. The two states differ by twice the tilt, so the reflected beam swings through 34° — enough to send one state into the projection lens and the other into a light dump. A mirror is therefore binary, and a frame is a bitmap. Grey levels exist only in time: a mirror held on for part of the exposure delivers part of the dose, which is how grayscale and dose correction are done without touching the optics.\n\nWhat a DMD cannot give you is more mirrors than it has. 1920 × 1080 is the entire information content of one exposure, and the field size and the pixel size at the wafer are then just that array divided by the demagnification.",
+        "deeper_md": "Two consequences worth holding onto. First, because the mirror array is periodic at 5.4 µm, it is an optical structure in its own right, not a neutral stencil — which is why DMD projection systems care about the illumination angle and about what the inter-mirror gaps do with the light. Second, binary mirrors plus time-domain greyscale means dose resolution is set by the frame timing, so a tool with an 8 s exposure has a great deal of grey available and a tool exposing in 50 ms has very little."
+      },
+      {
+        "heading": "The pixel is not the resolution",
+        "body_md": "Hacker Fab's Lithography Stepper V2 — the CMU-documented design the community MNF works in has built — illuminates that DMD with 410 nm LEDs and images it through a 10× DIN plan objective. Divide the 5.4 µm mirror pitch by ten and the pixel at the wafer is 0.54 µm; 1920 × 1080 of those is 1.04 mm × 0.58 mm, which is exactly the exposure field the build page reports.\n\nThe same page reports an optical resolution of 2 µm and a minimum developed feature of 2 µm. Put those two numbers side by side and you have the lesson of this whole piece: the smallest printable line is about four pixels wide, so the mirror array is not what is limiting the print. The objective's numerical aperture is, through Rayleigh's criterion, along with the resist's contrast and whatever stray light the off-state mirrors leak — Naiser's group treated low stray light as a first-order requirement, because an off mirror that leaks even slightly still exposes resist over an eight-second exposure.",
+        "deeper_md": "This is the single most common misreading of a maskless tool's specification. A vendor quotes the DMD's pixel count and the demagnification, and the reader computes a pixel size and assumes it is a critical dimension. It is not: the pixel is a sampling interval and the resolution is set by the optics and the resist. The useful ratio is critical dimension divided by pixel size. Around four, as here, means the optics are the constraint and a finer DMD buys nothing. Near one would mean the array is the constraint and a higher-resolution modulator or a smaller pixel would pay."
+      },
+      {
+        "heading": "Stitching, which is where a small field gets paid for",
+        "body_md": "A small field has to be tiled, and tiling is the hidden cost of every maskless projection tool. One Hacker Fab exposure covers about 0.6 mm²; one EUV scanner field covers about 858 mm², so the same area needs roughly 1,400 times as many exposures.\n\nEach one has to be placed relative to the last, and the build page's own numbers say how well that goes: a 1.5 µm mechanical step size, 5 µm mechanical repeatability, 5 µm tiling accuracy and 5 µm overlay accuracy, against a 2 µm minimum feature. A line crossing a seam can therefore be displaced by more than its own width.\n\nThat ratio — stitching error divided by critical dimension — is the number that decides what a maskless tool can print in practice, and it is a stage problem rather than an optics problem. It is also why maskless systems tend to be used for layouts drawn to avoid seams, with critical features kept away from field boundaries, rather than for arbitrary patterns."
+      },
+      {
+        "heading": "Where maskless genuinely wins",
+        "body_md": "Run the throughput arithmetic and the niche draws itself. At 8 s per field, covering the 2 cm × 2 cm maximum substrate the V2 accepts needs on the order of 660 exposures and an hour and a half, before any alignment overhead. A production optical scanner was expected to manage 50 to 80 whole wafers an hour; even electron projection lithography, the technology IEEE Spectrum wrote off in 2004, was being asked for 30.\n\nSo maskless does not win on throughput and never will. It wins wherever the mask is the dominant cost rather than the exposure: a pattern printed once, a design that changes between runs, a student tapeout, a process whose 2 µm rules sit nowhere near the diffraction limit.\n\nAnd it wins on two things a plate of quartz physically cannot do — per-pixel dose control, which gives grayscale and sloped three-dimensional resist profiles, and a correction that ships as an edited file rather than as a re-ordered mask."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Photomask (reticle)",
+        "definition": "A quartz plate carrying an opaque or reflective copy of the pattern, imaged onto the wafer by the exposure tool. It is written once and reused, so its cost per wafer falls with volume while a maskless tool's does not."
+      },
+      {
+        "term": "DMD (digital micromirror device)",
+        "definition": "An array of individually hinged aluminium mirrors a few microns across, each tilting between two angles to steer light either into the projection lens or into a dump. It is a binary spatial light modulator, refreshed like a video frame."
+      },
+      {
+        "term": "Exposure field",
+        "definition": "The area of wafer patterned in a single exposure. Anything larger must be built by stepping the stage and stitching fields together, so field size sets both throughput and the number of seams."
+      },
+      {
+        "term": "Stitching error",
+        "definition": "The placement error between adjacent exposure fields. A feature crossing a seam is displaced by it, so stitching error measured against the minimum feature size is the practical resolution of any tiling tool."
+      },
+      {
+        "term": "Demagnification",
+        "definition": "The ratio by which projection optics shrink the object-plane pattern. A 10× objective turns a 5.4 µm mirror into a 0.54 µm pixel and shrinks the field by the same factor in each direction."
+      },
+      {
+        "term": "Grayscale lithography",
+        "definition": "Delivering a deliberately non-uniform dose so developed resist has a sloped or stepped profile instead of vertical walls. With binary mirrors it is done by varying how long each mirror stays on."
+      },
+      {
+        "term": "Numerical aperture (NA)",
+        "definition": "The sine of the half-angle of light an objective collects, which sets the finest spatial frequency it can transfer. Resolution improves as NA rises, and depth of focus falls faster than resolution improves."
+      },
+      {
+        "term": "Zone-plate-array lithography (ZPAL)",
+        "definition": "A maskless architecture that focuses many beams at once through an array of diffractive lenses, modulating each independently, so the pattern is written by thousands of parallel spots rather than by one."
+      }
+    ],
+    "try_this": "Open the Hacker Fab Lithography Stepper V2 build page and multiply the two numbers it never multiplies together: the DLP471TP's 5.4 µm mirror pitch and the 10× objective's demagnification. Check that 1920 × 1080 of the pixel you get really is the 1.04 mm × 0.58 mm field the page quotes, then set your answer beside the page's 2 µm minimum feature and its 5 µm stitching accuracy. The first ratio tells you how much resolution the optics are throwing away; the second tells you whether your next layout should keep critical features away from field boundaries. Both are decided before anyone switches the tool on.",
+    "sources": [
+      {
+        "title": "Lithography Stepper V2 Build",
+        "url": "https://docs.hackerfab.org/home/fab-toolkit/patterning/lithography-stepper-v2-build-work-in-progress.md",
+        "publisher": "Hacker Fab (Carnegie Mellon University)",
+        "date": "2026"
+      },
+      {
+        "title": "DLP471TP 0.47-inch DMD product page",
+        "url": "https://www.ti.com/product/DLP471TP",
+        "publisher": "Texas Instruments",
+        "date": "2026"
+      },
+      {
+        "title": "Maskless microscope projection photolithography system for DNA microarrays",
+        "url": "https://arxiv.org/abs/q-bio/0608038",
+        "publisher": "arXiv / Rev. Sci. Instrum. 77, 063711 — Naiser, Mai, Michel, Ott",
+        "date": "2006-08-25"
+      },
+      {
+        "title": "Inverse Design of High-NA Metalens for Maskless Lithography",
+        "url": "https://arxiv.org/abs/2212.06441",
+        "publisher": "arXiv (physics.optics) — Chung, Zhang, Li, Miller, Smith",
+        "date": "2022-12-13"
+      },
+      {
+        "title": "TWINSCAN NXE:3600D product page",
+        "url": "https://www.asml.com/products/euv-lithography-systems/twinscan-nxe-3600d",
+        "publisher": "ASML",
+        "date": "2026"
+      },
+      {
+        "title": "Loser: A Promising Lithography Gets Stuck",
+        "url": "https://spectrum.ieee.org/loser-a-promising-lithography-gets-stuck",
+        "publisher": "IEEE Spectrum — Linda Geppert",
+        "date": "2004-01-01"
+      },
+      {
+        "title": "Hacker Fab — open-source semiconductor fabrication",
+        "url": "https://hackerfab.ece.cmu.edu/",
+        "publisher": "Hacker Fab, Carnegie Mellon University",
+        "date": "2026"
+      }
+    ]
+  }
+}

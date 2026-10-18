@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-10-18",
+      "foundations_slug": "maskless-lithography",
+      "foundations_topic": "Maskless lithography",
+      "headline": "No arXiv listing has gone out since Friday, so the window's newest document is cryptographic: Yuval Efron, Jovan Komatovic and Ling Ren bring deterministic Byzantine broadcast with any number of faults to within a polylogarithmic factor of the Dolev–Reischuk quadratic floor.",
+      "item_count": 7,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-10-17",
       "foundations_slug": "tomasulo-algorithm",
       "foundations_topic": "Tomasulo's algorithm",
@@ -642,6 +655,6 @@
       ]
     }
   ],
-  "generated_at": "2026-10-17T12:23:14Z",
-  "latest": "2026-10-17"
+  "generated_at": "2026-10-18T12:46:52Z",
+  "latest": "2026-10-18"
 }

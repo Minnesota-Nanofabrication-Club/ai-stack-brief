@@ -1,0 +1,413 @@
+{
+  "date": "2026-10-19",
+  "generated_at": "2026-10-19T15:40:00Z",
+  "window": "2026-10-18..2026-10-19",
+  "headline": "A Sandia-led team maps the fast Fourier transform onto charge-trapping flash arrays, taking a 65,536-point transform from the 3.4 × 10¹⁰ memory cells a direct matrix approach would need down to a handful of reused 1024 × 1024 crossbars.",
+  "pulse": {
+    "read_time_min": 8,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-asd-inhibitor-steric-footprint",
+            "title": "What blocks area-selective ALD is the whole molecule, not its stump",
+            "dek": "Gijin Kim, Seungwu Han and Youngho Kang simulated three aminosilane inhibitors — the small molecules dosed onto a surface to stop atomic layer deposition nucleating there — and found that two of them leave identical anchored fragments yet saturate at different coverages, because the bulk of the intact molecule decides how many hydroxyl sites it can still reach.",
+            "why_it_matters": "Inhibitor screening is usually run as a bond-energy question: find the molecule whose anchored fragment sticks to the surface you want to protect. If the saturation coverage is instead fixed by the footprint of the whole molecule at the moment it adsorbs, the quantity to compute is a packing problem on one specific amorphous surface, and a tail group picked for volatility changes blocking performance even though it is gone before the film grows. The hydroxyls that packing fails to consume are not a rounding error either — they are precisely the sites a metal precursor nucleates on, so they set the defect density of the layer that follows.",
+            "background_md": "Atomic layer deposition grows film one self-limiting monolayer per cycle, which makes thickness a matter of counting cycles and also makes it deposit everywhere. Area-selective deposition tries to put the film on some surfaces and not others, so a feature can be placed without a lithography step to align it. The usual lever is a small molecule dosed before the precursor: it chemisorbs on the surface to be protected and sterically blocks the precursor from reaching it. Amorphous silica is the standard non-growth surface, and what has to be blocked there is its population of surface hydroxyl groups, a few per square nanometre.",
+            "deeper_md": "The workflow is the pretrained SevenNet-omni machine-learning interatomic potential at PBE level with D3 dispersion, driving off-lattice grand canonical Monte Carlo on a 2,592-atom amorphous SiO₂ slab of 5.92 × 5.92 nm² at 423 K. Checked against DFT it carries mean absolute errors of 0.36 eV on reaction energy and 0.14 eV on barrier, which is the figure to hold against everything below.\n\nAt 523 K and 10⁻⁶ bar water the slab carries 4.11 OH/nm². Dosed to saturation, DMATMS consumes 2.23 ± 0.05 OH/nm², matching the experimental 2.2–2.3 nm⁻², and leaves roughly 1.9 OH/nm² untouched. HMDS gets 0.1–0.2 nm⁻² less while leaving the same trimethylsilyl stump; DMADMS consumes 2.6 OH/nm² but roughly 30% of its fragments are doubly anchored, so the fragment density is only about 2.0 nm⁻². Probing with TiCl₄ afterwards, surviving accessible sites run 0.43 ± 0.06 nm⁻² for DMATMS to 0.59 ± 0.19 nm⁻² for HMDS, against 97–99% of sites accessible on bare silica. Dosing HMDS then DMATMS takes the TiCl₄ number down to 0.39 nm⁻².\n\nThe authors' own caveats: Monte Carlo counts only chemisorption at silanols, entropy is left out of the reaction energies, and sampling is 8 silanol and 5 siloxane sites with 3–5 samples each. Nobody contests the steric picture — Mameli and Teplyakov's selection criteria already list steric effects — but these particular coverages rest on an un-fine-tuned potential and a melt-quench surface model that overestimates silanol density above 600 K.",
+            "glossary": [
+              {
+                "term": "Silanol (Si–OH)",
+                "definition": "A hydroxyl group terminating a silica surface; it is the reactive site that both inhibitors and metal precursors attack, so its areal density sets how much there is to block."
+              },
+              {
+                "term": "OH/nm²",
+                "definition": "Surface site density in groups per square nanometre. At a few per nm² the spacing between sites is a few ångström — comparable to the width of the molecules competing for them, which is why crowding decides coverage."
+              },
+              {
+                "term": "Grand canonical Monte Carlo",
+                "definition": "A sampling scheme in which molecules may enter and leave the simulated surface at fixed temperature and gas pressure, so the output is an equilibrium coverage rather than a single adsorption energy."
+              },
+              {
+                "term": "Machine-learning interatomic potential",
+                "definition": "A neural network trained to reproduce quantum-mechanical energies and forces, which lets a simulation cover thousands of atoms and thousands of configurations at a small fraction of density-functional cost."
+              }
+            ],
+            "fab_angle": "Silanol density is set by how hot and how dry the surface was last taken — the 4.11 OH/nm² here is a 250 °C, 10⁻⁶ bar number — so a selective step inherits the thermal and humidity history of the clean before it, not just the inhibitor dose.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "From Surface Reactions to Inhibitor Coverage: A Machine-Learning-Assisted Computational Study of Area-Selective Atomic Layer Deposition",
+                "url": "https://arxiv.org/abs/2610.22911",
+                "publisher": "arXiv (cond-mat.mtrl-sci) — Kim, Han, Kang",
+                "date": "2026-10-16"
+              },
+              {
+                "title": "Selection Criteria for Small-Molecule Inhibitors in Area-Selective Atomic Layer Deposition: Fundamental Surface Chemistry Considerations",
+                "url": "https://par.nsf.gov/biblio/10491392",
+                "publisher": "NSF Public Access Repository — Mameli & Teplyakov, Accounts of Chemical Research 56(15) 2084–2095",
+                "date": "2023-08-01"
+              },
+              {
+                "title": "SevenNet — scalable equivariance-enabled neural network interatomic potential",
+                "url": "https://github.com/MDIL-SNU/SevenNet",
+                "publisher": "GitHub — MDIL-SNU (Seoul National University)",
+                "date": "2026"
+              }
+            ]
+          },
+          {
+            "id": "silicon-analog-fft-flash-crossbar",
+            "title": "The FFT moves into flash arrays, and array count stops scaling as N²",
+            "dek": "T. Patrick Xiao and colleagues at Sandia report in Nature Electronics that a 65,536-point Fourier transform ran on charge-trapping flash arrays that do the arithmetic in place, by factorising the transform so that a few 1024 × 1024 arrays are reused stage by stage instead of storing the whole N × N matrix at once.",
+            "why_it_matters": "Analog in-memory computing has so far been a matrix-multiply story, and a Fourier transform written as a single matrix needs a device count that grows as N² — about 3.4 × 10¹⁰ cells at 65,536 points, which is why nobody had gone much past a few hundred. Recursive factorisation makes the count grow as N log N, which moves the binding constraint off array area and onto how many analog-to-digital conversions you are willing to pay for between stages. That inverts the usual design instinct: decomposing further reduces the arithmetic and increases the conversions, so the right stopping point is early rather than late.",
+            "background_md": "Analog in-memory computing does arithmetic where the numbers already sit. Program conductances into a crossbar of memory cells, drive the rows with voltages, and every column sums a current equal to the dot product of the input with that column's weights — one matrix-vector multiply, no data movement, in the time it takes the current to settle. Two things follow. The weights stay put, so a fixed transform is free to hold; but the answer arrives as a current and must be digitised, and that conversion dominates both the energy and the area of the whole core.",
+            "deeper_md": "Cooley–Tukey splits an N-point transform with N = N₁N₂ into N₂ transforms of length N₁, a twiddle multiplication, then N₁ transforms of length N₂. A K-point complex transform needs at least 2K rows and 4K columns of cells, so the recursion stops once an elementary transform fits an array — and the authors stop early deliberately, because each extra level adds conversions. Energy and area then scale as O(N log_K N) rather than O(N²).\n\nThe hardware is a 1024 × 1024 crossbar of two-transistor SONOS cells in a 40 nm CMOS process, run largely subthreshold with an on/off conductance ratio above 10⁶, differential pairs for signed weights, 13-bit bit-serial inputs and a 12-bit ADC spanning 0–17 µA, with up to 524k devices active at once. Weight error grows with transform size: 0.0118 in magnitude and 0.338° in phase at 16 points, 0.0458 and 1.037° at 256. A 512-point audio short-time transform reaches 56.99 dB PSNR against FP32; the full 65,536-point transform reaches 41.10 dB, at 0.244 Hz resolution.\n\nTwo caveats the authors name. Parasitic resistance along the array attenuates whichever components draw the most current, so strong low-frequency content reads low, and maximum conductance has to be retuned per transform size — 20 µS at 16 points down to 6.2 µS at 256 — to stay under the ADC clip. And the energy and area comparisons against digital FFT blocks are simulations of an 8-bit-ADC 22 nm core, not the 40 nm test chip; the authors say plainly these are not orders-of-magnitude gains.",
+            "glossary": [
+              {
+                "term": "Twiddle factor",
+                "definition": "The complex exponential each intermediate value is multiplied by between stages of a fast Fourier transform; it is what allows two half-length transforms to be recombined into a full-length one."
+              },
+              {
+                "term": "SONOS",
+                "definition": "A flash cell that stores charge in a silicon-nitride trapping layer sandwiched between oxides rather than on a conducting floating gate, which is why it can be built in an ordinary logic process."
+              },
+              {
+                "term": "Crossbar array",
+                "definition": "A grid of memory cells at every row-column intersection; driving the rows with voltages makes each column's current the dot product of the inputs with that column's stored conductances."
+              },
+              {
+                "term": "PSNR (dB)",
+                "definition": "Peak signal-to-noise ratio — the logarithmic ratio of the largest representable signal to the RMS error, used here to score an analog transform against the same transform computed in 32-bit floating point."
+              }
+            ],
+            "fab_angle": "The demonstration ran on commercial embedded SONOS in a 40 nm logic flow rather than a research memory, so the array is the easy part. The engineering sits in the 12-bit converter and in keeping maximum conductance under the clip limit — which is where the hours go on an analog design project, not in the cells.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Analogue fast Fourier transforms for scalable and efficient signal processing",
+                "url": "https://www.nature.com/articles/s41928-026-01725-x",
+                "publisher": "Nature Electronics — Xiao, Feinberg, Richardson et al. (Sandia National Laboratories, Infineon, Arizona State)",
+                "date": "2026-10-19"
+              },
+              {
+                "title": "Analog fast Fourier transforms for scalable and efficient signal processing (preprint)",
+                "url": "https://arxiv.org/abs/2409.19071",
+                "publisher": "arXiv — Xiao et al.",
+                "date": "2026-06-24"
+              },
+              {
+                "title": "On the Accuracy of Analog Neural Network Inference Accelerators",
+                "url": "https://arxiv.org/abs/2109.01262",
+                "publisher": "arXiv / IEEE Circuits and Systems Magazine 22(4) 26–48 — Xiao et al.",
+                "date": "2022"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-hbf-write-endurance-tier",
+            "title": "High Bandwidth Flash is bounded by writes, not by bandwidth",
+            "dek": "Jinheng Li and co-authors simulate High Bandwidth Flash — the NAND stacks SanDisk and SK hynix standardised through the Open Compute Project to sit beside an accelerator the way HBM does — and find that holding a continuously rewritten key-value cache in it uses the part up in 23.7 to 83.0 months.",
+            "why_it_matters": "A memory tier is normally chosen on capacity and bandwidth, and on those two numbers flash beside the accelerator looks like a clean win: 512 GB a stack against HBM4's 48 GiB, at 1.5 TB/s against 2.0. Endurance is the number that decides what it is allowed to hold. Model weights are written once and read forever, so they are free; a transformer's key-value cache is rewritten every token, and at 1.64 GiB/s of fresh cache per GPU a part rated for 100,000 program-erase cycles has a service life in years rather than a decade. So the question of what lives in DRAM and what lives in flash stops being a bandwidth calculation and becomes a wear budget, with the answer depending on the workload's output-to-input ratio.",
+            "background_md": "An accelerator's memory hierarchy is chosen by what each level costs per byte stored and per byte moved. HBM is DRAM stacked on through-silicon vias next to the compute die: wide and fast, and capped at tens of gigabytes a stack because a DRAM cell needs a capacitor and periodic refresh. NAND flash stores charge in a trapping layer and needs no refresh, so far more of it fits in the same stack height. The price is the write path: flash is programmed a page at a time and erased a block at a time, and every erase pushes charge through the tunnel oxide and leaves some of it stuck there.",
+            "deeper_md": "HBFSim is an event-driven simulator. Its flash model is 512 GiB a stack, 16 channels at 96 GB/s for 1.5 TB/s, 4 µs page read, 75 µs program, 4 KiB pages in 1 MiB blocks, on-package DRAM at 0.1% of flash capacity, and 100,000 program-erase cycles assumed from single-level-cell NAND because no endurance rating for this tier has been published. Against a baseline that swaps six flash stacks for host DRAM over PCIe 5.0 at 54 GB/s and 9.3 µs a transfer, time per output token improves 11.0–14.4× for Llama-3.1-70B and 18.6–19.0× for Qwen3-235B-A22B — but only when capacity is the binding constraint.\n\nThe lifetime figure derives from NVIDIA's published 489 output tokens/s per H200 for Llama-3.3-70B at 5,000 in and 500 out, which at 320 KiB of cache per token is 1.64 GiB/s of new cache per GPU; a weights-first placement sends 87.5–100% of that to flash. Measured write amplification was 1.0 to within 0.1%, so garbage collection is not what is consuming the part — the raw write rate is.\n\nWhat to distrust: of 30 parameter groups, 18 are assumptions; the pairing of H200 compute with HBM4 and this flash tier does not exist in silicon; each workload is a single decode step; and the lifetime assumes perfect wear levelling with peak load applied around the clock. Layer-time calibration error averages 5.0% on an H200 with a 41.8% worst case.",
+            "glossary": [
+              {
+                "term": "P/E cycle (program-erase cycle)",
+                "definition": "One write-then-erase of a flash block. Each erase drives charge through the tunnel oxide and leaves some trapped, so a cell's rating is the count after which its stored levels can no longer be told apart."
+              },
+              {
+                "term": "SLC (single-level cell)",
+                "definition": "Flash storing one bit per cell, so the sensing margin covers two levels instead of eight or sixteen; that buys roughly two orders of magnitude more endurance than the cells used in consumer SSDs, at a fraction of the capacity."
+              },
+              {
+                "term": "KV cache",
+                "definition": "The per-token keys and values a transformer retains so earlier tokens need not be recomputed. It grows with every token generated, which makes it the part of inference memory that is constantly being written."
+              },
+              {
+                "term": "Write amplification",
+                "definition": "Bytes actually programmed into flash divided by bytes the host asked to write; it rises above one when garbage collection has to relocate live data out of a block it wants to erase."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "HBFSim: A Simulator for Exploring HBF in Memory Hierarchies for LLMs",
+                "url": "https://arxiv.org/abs/2610.23503",
+                "publisher": "arXiv (cs.AR) — Li, Wang, Du, Wu, Li, Xue",
+                "date": "2026-10-16"
+              },
+              {
+                "title": "TensorRT-LLM performance overview — Llama 3.3 70B on H200",
+                "url": "https://nvidia.github.io/TensorRT-LLM/performance/perf-overview.html",
+                "publisher": "NVIDIA TensorRT-LLM documentation",
+                "date": "2026"
+              },
+              {
+                "title": "High Bandwidth Flash gets its first open spec: 512GB stacks and up to 3.0TB/s",
+                "url": "https://www.storagereview.com/news/high-bandwidth-flash-gets-its-first-open-spec-512gb-stacks-and-up-to-3-0tb-s",
+                "publisher": "StorageReview",
+                "date": "2026-08-04"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-c2rust-performance-regressions",
+            "title": "Translating C to Rust keeps the behaviour and loses the vectoriser",
+            "dek": "Zhiqiang Yuan and colleagues measured c2rust's output against the C it came from across eight projects and found 12 of 19 operations more than 3% slower — xxHash's XXH32 by 62.2% — with the losses traced to bounds checks and discarded type metadata rather than to anything inherent in Rust.",
+            "why_it_matters": "Mechanical C-to-Rust migration is sold on behaviour preservation, and c2rust's own documentation promises exactly that and nothing more: the test suite still passes. This puts numbers on what else moves. The regressions are not an abstract safety tax — they are specific places where the emitted code hides an invariant the C compiler could see, so the optimiser stops vectorising a loop or stops eliminating a reload. Being specific makes them recoverable, and it also means a migration programme that measures only correctness will ship a binary a third slower and never find out, because nothing in the pipeline is watching.",
+            "background_md": "Memory-safety bugs in C come from the language permitting a program to index past the end of an object, so one migration route is mechanical translation into Rust, which checks indices at run time. A transpiler can do this while preserving behaviour exactly, but the Rust it emits is unidiomatic and leans on raw pointers, because that is the only way to reproduce C's freedom to alias. Both halves of that bargain cost performance: a bounds check adds a conditional exit from a loop, and a raw pointer tells the optimiser nothing about what type the memory holds.",
+            "deeper_md": "The setup is c2rust 0.22.1, clang 17.0.6 at `-O3 -flto` for C, rustc 1.77.0-nightly on LLVM 17.0.6 with `opt-level=3`, fat LTO, one codegen unit and `panic=abort` for Rust, both targeting native on an 18-core i9-10980XE with AVX-512 disabled. Eight study projects of 1–180 KLoC give 19 operations: seven within ±3% of C, twelve slower by more than 3%, eight of those by more than 25%. xxHash shows the whole spread inside one library — XXH32 at +62.2%, XXH3 at +33.1%, XXH64 at −0.3%.\n\nNine recurring causes are named, and the sharpest one is directly measurable: in libzahl's `zrsh` the Rust IR carries 73 static loads where the C carries 24, and it lacks the `!tbaa` metadata, so the optimiser cannot prove two pointer accesses are disjoint and reloads instead. Others include range-bounded float-to-int conversions compiling to `llvm.fptosi.sat` intrinsics the C never needed, and hot callees that stay out of line.\n\nThe vectorisation claim needs care. LLVM's own documentation says unknown trip counts are supported and a single early exit can be vectorised, so \"bounds checks defeat the vectoriser\" is too crude — what defeats it is several exits per iteration. Other caveats: the rule set was derived from these same eight projects, runtimes are noise-sensitive even with warm-ups and alternated run order, and the repair stage is a GPT-5.4 pipeline whose 62 accepted rewrites survived both functional and performance gates, with 18 of 41 held-out operations ending up faster than the original C.",
+            "glossary": [
+              {
+                "term": "Bounds check",
+                "definition": "The comparison a Rust slice index compiles to, plus a branch to a panic path if it fails. The comparison is cheap; the branch is an extra exit from the loop, and that is what blocks later optimisation."
+              },
+              {
+                "term": "Auto-vectorisation",
+                "definition": "The compiler rewriting a scalar loop to handle several elements per instruction in SIMD registers. It requires proving the iterations are independent and that the loop's exits are known."
+              },
+              {
+                "term": "TBAA (type-based alias analysis)",
+                "definition": "Metadata a C front end attaches to loads and stores recording which type each one touches, letting the optimiser conclude two accesses cannot overlap and therefore delete a redundant reload."
+              },
+              {
+                "term": "LTO (link-time optimisation)",
+                "definition": "Compiling to an intermediate representation and optimising across translation units at link time, so inlining and alias analysis are not cut off at file boundaries."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Where Does the Performance Go? Understanding and Recovering Performance Regressions in C-to-Rust Translation",
+                "url": "https://arxiv.org/abs/2610.23044",
+                "publisher": "arXiv (cs.AI, cs.PL) — Yuan, Wang, Zhou, Liu, Peng",
+                "date": "2026-10-16"
+              },
+              {
+                "title": "C2Rust — migrate C99-compliant code to Rust",
+                "url": "https://github.com/immunant/c2rust",
+                "publisher": "GitHub — Immunant",
+                "date": "2026"
+              },
+              {
+                "title": "Auto-Vectorization in LLVM",
+                "url": "https://llvm.org/docs/Vectorizers.html",
+                "publisher": "LLVM Project documentation",
+                "date": "2026"
+              }
+            ]
+          },
+          {
+            "id": "computing-rm19-covering-radius-second-proof",
+            "title": "A nine-variable nonlinearity ceiling gets a second, independent proof",
+            "dek": "Xiang-dong Hou, Evelyn Sabo and Freeman Slaughter posted a computer-assisted proof on Sunday that the covering radius of the length-512 first-order Reed–Muller code is exactly 242 — the furthest any nine-variable Boolean function can sit from every linear one — five days after Qichun Wang's group reached the same constant by a different argument.",
+            "why_it_matters": "242 is the ceiling on how far a nine-input Boolean building block can be pushed away from linear approximation, which is the quantity a linear attack on a cipher exploits; the value had been pinned between 242 and 244 since the 1980s, and for odd numbers of variables was known exactly only up to seven. Two proofs six days apart also say where the remaining risk sits. Both shrink the search by quotienting out linear changes of variable, and both then lean on the same published classification of cubic forms in nine variables, so a reader auditing either proof is really auditing that catalogue rather than two independent things.",
+            "background_md": "A Boolean function of n variables is a table of 2ⁿ bits, and the easiest such functions to attack are the affine ones — exclusive-ors of inputs plus a constant — because an approximation that holds even slightly more often than half the time leaks information. Nonlinearity is the Hamming distance from a function to the nearest affine function, and the largest nonlinearity any n-variable function achieves is, by definition, the covering radius of the first-order Reed–Muller code of length 2ⁿ. For even n the answer is known: bent functions reach 2ⁿ⁻¹ − 2^(n/2−1). For odd n it has stayed open.",
+            "deeper_md": "Both proofs go after nonlinearity 244 first, using a divisibility constraint on the Walsh spectrum. Hou, Sabo and Slaughter show that a function of nonlinearity 243 can be converted into one of nonlinearity 244, so only 244 needs excluding, then produce a cubic function p obeying Σ_a |W_p(a)| ≤ 10240; of the two equality shapes, one is killed directly and the other by exhaustive search over the 349 orbits of RM(3,9)/RM(2,9) under GL(9,2), run twice with independent implementations and published with a verification notebook.\n\nWang, Lou and Wang instead handle 243 on its own terms, deriving ‖W_g‖₁ + 2|W_g(0)| ≤ 10368 and then showing the case splits into a spectrum bounded by 24 or the same quantity being at least 10496 — a contradiction either way. Their exclusion of 244 reduces to two homogeneous cubic forms from the Brier–Langevin classification.\n\nThe shared dependency is the interesting part. Nonlinearity is invariant under invertible linear changes of variable, which is what cuts the search from all cubic functions to a few hundred orbits, and both papers take those orbits from the same published classification of nine-variable cubic forms. Hou and co-authors audit its completeness inside their own proof, which is the right response, but it means the agreement is weaker than two independent measurements of a physical quantity. Neither paper is refereed. One layer up, GL(10,2) acting on ten-variable cubic forms has 3,691,560 nonzero orbits, so the method does not obviously scale.",
+            "glossary": [
+              {
+                "term": "Covering radius",
+                "definition": "The largest distance from any point of a space to its nearest codeword. For the first-order Reed–Muller code it is exactly the maximum nonlinearity achievable by a function of that many variables."
+              },
+              {
+                "term": "Affine function",
+                "definition": "An exclusive-or of some subset of the inputs plus a constant. The 2ⁿ⁺¹ of these are the codewords of RM(1,n), and distance to the nearest one is what nonlinearity measures."
+              },
+              {
+                "term": "Walsh spectrum",
+                "definition": "The set of ±1 correlations between a function and every affine function, obtained as a transform of its truth table; the largest-magnitude coefficient gives the nonlinearity directly."
+              },
+              {
+                "term": "GL(9,2)",
+                "definition": "The group of invertible 9 × 9 matrices over the two-element field — the invertible linear changes of variable. Nonlinearity is unchanged by them, so a search needs only one function per orbit."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "The Covering Radius of the Reed–Muller Code RM(1,9) is 242",
+                "url": "https://arxiv.org/abs/2610.17871",
+                "publisher": "arXiv (cs.IT) — Qichun Wang, Yueying Lou, Zifan Wang",
+                "date": "2026-10-13"
+              },
+              {
+                "title": "The Covering Radius of RM(1,9) is Precisely 242",
+                "url": "https://eprint.iacr.org/2026/2529",
+                "publisher": "IACR Cryptology ePrint Archive 2026/2529 — Hou, Sabo, Slaughter (University of South Florida)",
+                "date": "2026-10-18"
+              },
+              {
+                "title": "Covering-Radius — verification notebook and orbit enumeration output",
+                "url": "https://github.com/FreemanSlaughter/Covering-Radius",
+                "publisher": "GitHub — Freeman Slaughter",
+                "date": "2026"
+              },
+              {
+                "title": "Classification of Boolean Cubic Forms in Ten Variables",
+                "url": "https://arxiv.org/abs/2606.28473",
+                "publisher": "arXiv (math.NT, cs.IT) — Khoruzhii, Gelß, Pokutta",
+                "date": "2026-06-26"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-frozen-binary-vocabulary",
+            "title": "A small model's largest tensor turns out not to need training",
+            "dek": "Sai Kiran Bathula replaced the trained token embedding of a 270M-parameter language model — 62.6% of its parameters — with a fixed 16 MB table of 512-bit codes built by projecting Gemma 3's embedding onto its leading principal components and keeping only the signs of the result.",
+            "why_it_matters": "In a small model the embedding table is most of the model by parameter count, and it is normally trained like everything else. If freezing it costs 0.20 nats of validation loss and returns roughly two thirds of the parameter budget, the arithmetic of where to spend capacity changes: the same footprint can go to layers that compute rather than to a lookup. The result also localises what training the table actually buys. The frozen version wins on tokens the corpus barely contained and loses on the benchmark that leans hardest on world knowledge, which says the learned table's advantage is concentrated in frequent tokens, and its weakness is the tail that received a handful of gradient updates.",
+            "background_md": "A language model turns a token into a vector by looking it up in an embedding table with one row per vocabulary entry, so the table is vocabulary size times hidden width. Vocabularies have grown to hundreds of thousands of entries while small models have stayed narrow, which means the lookup can be larger than everything that computes. Those rows are also the only parameters a rare token ever touches: a token appearing a dozen times in training has a dozen gradient updates behind its row, while every layer above it was shaped by the whole corpus.",
+            "deeper_md": "The table is 512 directions taken from Gemma 3 270M's pretrained embedding by principal-component projection and reduced to signs, retaining 92.3% of the original variance; it holds no trainable parameters and weighs about 16 MB. Three arms were trained from scratch on the same 2.05B FineWeb-Edu tokens with the same seed — A with a learned table (268.1M trainable, 167.8M of it embedding), B with the frozen table (101.0M), and C with the frozen table plus a ternary BitNet b1.58 body (101.2M).\n\nValidation loss is 3.155, 3.358 and 3.439 respectively. Zero-shot, B beats A on LAMBADA 23.2 against 21.6, ties on HellaSwag and PIQA, and loses ARC-Easy 42.5 against 45.9. On tokens seen 10–99 times during training the frozen table is 1.7–2.3 nats better. Adding 10,000 biomedical words after training costs the frozen table about 3% in nats per character and the learned table about 43%. Packed, arm C is a 46.2 MB file generating 615–740 tokens/s in roughly 62 MB on eight laptop CPU threads, against 116 tokens/s in 471 MB for arm A's 8-bit GGUF.\n\nThis is a single author, one seed per arm, and 2.05B tokens, and the author says plainly that a learned table would probably pull ahead with more data. Arm C also differs from B in three ways at once, so the ternary body's own contribution is not isolated. And the codes derive from Gemma 3 270M's embedding, so the frozen table inherits whatever that model learned — along with its licence.",
+            "glossary": [
+              {
+                "term": "nats",
+                "definition": "The natural-logarithm unit of cross-entropy loss. A gap of 0.20 nats is a factor of about 1.22 in perplexity, so it is a real but not disqualifying difference."
+              },
+              {
+                "term": "Sign binarisation",
+                "definition": "Keeping only the sign of each coordinate of a vector, turning a 512-dimensional float embedding into 512 bits; distances between rows then become Hamming distances."
+              },
+              {
+                "term": "Principal-component projection",
+                "definition": "Rotating a set of vectors onto the orthogonal directions of greatest variance, so that a few hundred coordinates retain most of what distinguished the originals from each other."
+              },
+              {
+                "term": "Ternary weights",
+                "definition": "Weights restricted to −1, 0 and +1, as in BitNet b1.58, which turns a matrix multiply into additions and packs each weight into roughly two bits."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Embeddings Are Overpriced? A Frozen 16 MB Vocabulary for Small and Ternary Language Models",
+                "url": "https://arxiv.org/abs/2610.22428",
+                "publisher": "arXiv (cs.CL) — Sai Kiran Bathula",
+                "date": "2026-10-15"
+              },
+              {
+                "title": "The Era of 1-bit LLMs: All Large Language Models are in 1.58 Bits",
+                "url": "https://arxiv.org/abs/2402.17764",
+                "publisher": "arXiv (cs.CL) — Ma, Wang, Ma et al., Microsoft Research",
+                "date": "2024-02-27"
+              },
+              {
+                "title": "google/gemma-3-270m model card",
+                "url": "https://huggingface.co/google/gemma-3-270m",
+                "publisher": "Hugging Face — Google",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "Reactive ion etching",
+    "slug": "reactive-ion-etching",
+    "subtitle": "Neither the reactive gas nor the ion beam can etch silicon on its own; together they cut straight down, and that synergy is the entire process.",
+    "tldr": "Wet chemistry removes material in every direction at once, which stops being useful the moment a feature is as deep as it is wide. Reactive ion etching gets directionality by splitting the job in two: a plasma makes reactive neutral fragments that barely etch by themselves, and accelerates ions that also barely etch by themselves, and material comes off only where the ions land. Almost everything an etch engineer adjusts is a knob on that split.",
+    "sections": [
+      {
+        "heading": "Why directionality is the requirement",
+        "body_md": "Start with the number that kills wet etching. A liquid etchant attacks an exposed surface at the same rate in every direction, so while it removes 500 nm downward through a film it also removes 500 nm sideways from under the edge of the mask. Clearing a 500 nm film therefore costs you 500 nm of linewidth on each side of every feature — a full micron of width gone. A 1 µm line does not survive that at all, and a 10 µm line comes out as an 9 µm line with a rounded, mask-independent profile.\n\nThat was tolerable when features were tens of microns wide and films were thin. It stopped being tolerable as soon as the aspect ratio — depth divided by width — approached one, which happened in the late 1970s. What was needed was a process whose removal rate depends on direction, so that the vertical rate can be hundreds of nanometres per minute while the lateral rate is nearly zero and the printed edge of the mask is reproduced in the film underneath it. Nothing in equilibrium chemistry does that. Directionality has to be imported from somewhere outside the chemistry, and the only cheap source of direction available in a vacuum chamber is an electric field."
+      },
+      {
+        "heading": "The 1979 experiment the whole field rests on",
+        "body_md": "John Coburn and Harold Winters at IBM built the cleanest possible version of the question. They put a silicon surface in a vacuum chamber where they could dose it with xenon difluoride gas, bombard it with an argon ion beam, or both, and watch what came off. XeF₂ alone, with no ions: a negligible etch rate. Argon ions alone, sputtering at the same energy: also negligible. Both together: an etch rate far larger than the sum of the two, and it switched on and off with the ion beam.\n\nThe mechanism behind that curve is what makes dry etching work. Fluorine from the dissociated gas adsorbs on the silicon and forms SiF_x species that are bound to the surface and will not leave on their own at room temperature; the chemistry has done the hard part of breaking Si–Si bonds but has produced a product stuck where it was made. An arriving ion deposits tens to hundreds of electron-volts into a few atomic layers, which is enough to break the remaining bonds and release SiF₄ into the gas phase. Chemistry supplies the selectivity, because which gas reacts with which solid is a chemical fact. Ions supply the direction, because they arrive on a trajectory. Neither half works alone, and the published paper covers Si, SiO₂ and Si₃N₄ against XeF₂, F₂ and Cl₂."
+      },
+      {
+        "heading": "Where the direction comes from: the sheath",
+        "body_md": "The ions arrive vertically because of a self-organising voltage that nobody applies deliberately. Put radio-frequency power across two electrodes in a low-pressure gas and you get a plasma in which electrons, four orders of magnitude lighter than the ions, respond to the field far faster. They reach any surface first and charge it negative. The steady state has the wafer electrode sitting at a negative DC potential — the self-bias — relative to the glowing bulk plasma, with nearly all of that drop falling across a thin, electron-depleted region at the surface called the sheath.\n\nPositive ions that wander into the sheath are accelerated across it and hit the wafer. The condition that matters is pressure: at a few tens of millitorr an ion's mean free path is comparable to or longer than the sheath, so it crosses without colliding and arrives within a few degrees of normal. Raise the pressure, ions scatter on the way in, the angular spread widens and the profile slopes. A commercial parallel-plate tool offers roughly 5–500 mTorr, 0.1–1.5 W/cm² of power density, 5–200 sccm of flow and 30–800 V of bias on the lower electrode — and with one RF source, ion flux and ion energy move together on the same dial."
+      },
+      {
+        "heading": "Selectivity is a polymer you deposit on purpose",
+        "body_md": "The synergy argument says ions should etch only what they hit, but in practice a bare fluorine chemistry still eats sidewalls and chews the photoresist mask faster than you can afford. The production fix is to add a gas that deposits while you etch. Octafluorocyclobutane, C₄F₈, dissociates in the plasma into CF_x fragments that polymerise into a thin fluorocarbon film resembling PTFE. On horizontal surfaces the ion flux removes that film about as fast as it forms, so etching proceeds; on sidewalls, which receive almost no ion flux, the film survives and blocks lateral attack. The mask gets the same protection.\n\nThe numbers are worth seeing because they show how large the effect is. An Applied Materials process patent reports that switching from bromine- and chlorine-based chemistries to SF₆ with C₄F₈ moves silicon-to-photoresist selectivity from about 2.5:1 to between 2.5:1 and 8.0:1, with roughly 8:1 achieved for polysilicon. The window is narrow: 2–20 mTorr, an SF₆-to-C₄F₈ flow ratio between 0.67 and 1.5, source power around 600 W and bias power around 60 W, kept below 150 W because more bias sputters the protective polymer away faster than it deposits. The resulting polysilicon etch rate is 2,000–2,600 Å/min. Every one of those settings is a position on the same trade: more ion energy means faster and straighter, and less selective."
+      },
+      {
+        "heading": "Where this runs out",
+        "body_md": "Reactive ion etching is a steady-state process: neutrals and ions arrive together and material leaves continuously, so the amount removed is rate multiplied by time, and the uniformity of the result is the uniformity of the rate across a 300 mm wafer. That works until the thing you are etching is a hole hundreds of layers deep, where neutrals have trouble reaching the bottom and the sidewall polymer has trouble staying put. Lam Research, whose etch tools do this work in production, now describes NAND flash scaling toward 400 vertically stacked layers and features tens of microns tall, which is an aspect ratio no parallel-plate reactor was designed for.\n\nThe response is to stop running the two halves of the synergy at once. Atomic layer etching separates them in time: a dose of reactant modifies the top layer or two and then stops because the modification is self-limiting, the chamber is purged, and a low-energy ion dose removes exactly the modified material and stops because there is nothing modified left. Removal per cycle becomes a property of the surface chemistry rather than of a rate times a time, which is why vendors quote ångström-scale precision for it. The physics is still Coburn and Winters — chemistry prepares, ions release — just with the two steps no longer overlapping."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Anisotropy (in etching)",
+        "definition": "The extent to which an etch removes material faster in one direction than another, usually quoted as one minus the lateral rate divided by the vertical rate. A wet etch is isotropic (anisotropy zero); a good RIE process approaches one."
+      },
+      {
+        "term": "Plasma sheath",
+        "definition": "The thin, electron-depleted region between the glowing bulk plasma and any surface it touches. Essentially the whole plasma-to-surface voltage drop falls across it, so it is the region that accelerates ions toward the wafer."
+      },
+      {
+        "term": "DC self-bias",
+        "definition": "The negative average potential an RF-driven electrode settles at because electrons reach it faster than ions do. It is not applied by a power supply — it builds up on its own, and it is what sets ion energy at the wafer."
+      },
+      {
+        "term": "Selectivity",
+        "definition": "The ratio of the etch rate of the material you want removed to the etch rate of something you do not — the mask, or an underlying stop layer. A 10:1 selectivity to resist means a 100 nm etch costs 10 nm of mask."
+      },
+      {
+        "term": "Sidewall passivation",
+        "definition": "A thin film, usually a fluorocarbon polymer formed from a deliberately added gas, that deposits everywhere and is removed by ion bombardment only on surfaces facing the ions. It survives on sidewalls, which is what keeps them vertical."
+      },
+      {
+        "term": "sccm",
+        "definition": "Standard cubic centimetres per minute, the unit for gas flow into the chamber. Together with the pump speed it sets chamber pressure, and with the RF power it sets how much of the gas is dissociated into reactive fragments."
+      },
+      {
+        "term": "Atomic layer etching (ALE)",
+        "definition": "Etching split into a self-limiting surface-modification step and a separate low-energy removal step, repeated. Removal per cycle is set by the chemistry rather than by rate × time, which is how ångström-level control is obtained."
+      }
+    ],
+    "try_this": "Take a patterned coupon through the club's etcher twice at the same pressure and gas flow — once at the lowest RF power that still holds a plasma, once near the top of the tool's range — then cleave both and compare the sidewall slope and the undercut under the probe-station microscope. The difference between the two profiles is the sheath voltage doing the directional work, and it is visible at micron scale. While the second run is going, do the arithmetic that makes the point: a purely isotropic etch removes material sideways as fast as downwards, so clearing a 500 nm film costs 500 nm of linewidth on each side. Write down the narrowest line your current mask set has, and decide whether it would survive.",
+    "sources": [
+      {
+        "title": "Ion- and electron-assisted gas-surface chemistry: An important effect in plasma etching",
+        "url": "https://research.ibm.com/publications/ion-and-electron-assisted-gas-surface-chemistry-an-important-effect-in-plasma-etching",
+        "publisher": "IBM Research publication record — J. W. Coburn & H. F. Winters, Journal of Applied Physics 50, 3189 (DOI 10.1063/1.326355)",
+        "date": "1979"
+      },
+      {
+        "title": "History and Legacy of the Coburn and Winters Paper (invited, session PS+SS-TuA)",
+        "url": "https://www2.avs.org/symposium2017/Papers/Paper_PS+SS-TuA1.html",
+        "publisher": "AVS 64th International Symposium — R. M. Sankaran (Case Western Reserve) & M. C. M. van de Sanden (DIFFER)",
+        "date": "2017-10-31"
+      },
+      {
+        "title": "Reactive ion etching — PlasmaPro 100 RIE process envelope",
+        "url": "https://plasma.oxinst.com/technology/reactive-ion-etching",
+        "publisher": "Oxford Instruments Plasma Technology",
+        "date": "2026"
+      },
+      {
+        "title": "US6921723B1 — Etching method having high silicon-to-photoresist selectivity",
+        "url": "https://patents.google.com/patent/US6921723B1/en",
+        "publisher": "USPTO via Google Patents — Applied Materials (Lee & Deshmukh)",
+        "date": "2005-07-26"
+      },
+      {
+        "title": "Etch products overview — RIE, selective etch and atomic layer etch",
+        "url": "https://www.lamresearch.com/products/etch/",
+        "publisher": "Lam Research",
+        "date": "2026"
+      }
+    ]
+  }
+}

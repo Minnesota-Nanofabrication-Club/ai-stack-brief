@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-10-19",
+      "foundations_slug": "reactive-ion-etching",
+      "foundations_topic": "Reactive ion etching",
+      "headline": "A Sandia-led team maps the fast Fourier transform onto charge-trapping flash arrays, taking a 65,536-point transform from the 3.4 × 10¹⁰ memory cells a direct matrix approach would need down to a handful of reused 1024 × 1024 crossbars.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-10-18",
       "foundations_slug": "maskless-lithography",
       "foundations_topic": "Maskless lithography",
@@ -655,6 +668,6 @@
       ]
     }
   ],
-  "generated_at": "2026-10-18T12:46:52Z",
-  "latest": "2026-10-18"
+  "generated_at": "2026-10-19T15:16:26Z",
+  "latest": "2026-10-19"
 }

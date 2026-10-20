@@ -1,0 +1,384 @@
+{
+  "date": "2026-10-20",
+  "generated_at": "2026-10-20T13:14:44Z",
+  "window": "2026-10-19..2026-10-20",
+  "headline": "Lin Chen, Yuchen Mao and Guochuan Zhang cut integer programming's worst-case exponent from quadratic in the number of constraints to linear, answering the open problem Eisenbrand and Weismantel left and settling the parameter's dependence up to lower-order factors.",
+  "pulse": {
+    "read_time_min": 8,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-gate-strain-disorder-2deg",
+            "title": "A metal gate strains the crystal it controls, and the electrons feel it",
+            "dek": "Sambit Mohapatra, Ulf Gennser and colleagues report that the metal gates used to shape electron flow in GaAs/AlGaAs chips also squeeze the crystal as it cools to cryogenic temperatures, laying a 0.29 meV potential ripple on the two-dimensional electron gas 100 nm below — disorder the gate was never meant to add.",
+            "why_it_matters": "A gate is designed as an electrostatic object and simulated as one, and this says it is a mechanical one too: part of the modulation it imposes does not switch off when the bias goes to zero, because the strain was locked in during cooldown and has nowhere to relax to. Film thickness, metal choice and how deep the electron sheet is buried therefore become mobility variables rather than only leakage variables, and the same mismatch applies to any metal left on any chip that is subsequently made cold.",
+            "background_md": "A two-dimensional electron gas is a sheet of electrons trapped at the interface between two semiconductors — classically GaAs and AlGaAs — spatially separated from the dopants that supplied them and so with almost nothing to scatter off. Mobilities above 100 m²V⁻¹s⁻¹ are routine, and that cleanliness is what makes fractional quantum Hall states observable at all. Control comes from metal gates patterned on the surface, tens of nanometres above the sheet, which deplete the electrons underneath when biased. Metals and semiconductors also contract by different amounts on cooling: gold's expansion coefficient is about 9.1×10⁻⁶ K⁻¹ against 2.5×10⁻⁶ K⁻¹ for GaAs.",
+            "deeper_md": "The measurement is a trick. Instead of a plain gate, the group deposited a periodic array of 130 nm-tall Al or Au bars with a lateral period of 241 ± 0.1 nm, which turns whatever strain field the metal produces into a known lateral superlattice. A periodic potential of amplitude V₀ on a 2DEG produces commensurability oscillations in magnetoresistance whose amplitude tracks V₀, so V₀ can be read back: 0.29 ± 0.001 meV at 6 K for the 130 nm bars, roughly 3 % of the Fermi energy, dropping to 0.139 ± 0.003 meV for 60 nm bars. Elasticity simulations of a 300 K to 6 K cooldown reproduce 0.05–0.3 meV.\n\nNone of this is new for patterned gates — Endo and Iye traced the same modulation to strain in 2005. What is new is the extension to an ordinary unpatterned gate, where the film is granular rather than periodic and the argument becomes a model rather than a measurement. Reading V₀ off an oscillation amplitude is theory-dependent too: Mirlin and co-workers showed the amplitude is governed by smooth small-angle disorder rather than by the transport mean free path.",
+            "glossary": [
+              {
+                "term": "2DEG (two-dimensional electron gas)",
+                "definition": "A sheet of electrons confined at a semiconductor interface, free in two directions and quantised in the third; they sit physically away from their donor atoms, which is why mobility gets so high."
+              },
+              {
+                "term": "Commensurability oscillations",
+                "definition": "Wiggles in magnetoresistance that peak when the cyclotron orbit diameter matches a multiple of a periodic potential's wavelength; their amplitude is a read-out of how strong that potential is."
+              },
+              {
+                "term": "meV",
+                "definition": "A millielectronvolt. It is the right unit here because the measured 0.29 meV ripple is about 3 % of this electron sheet's Fermi energy, which is what makes it a disorder source rather than a rounding error."
+              },
+              {
+                "term": "Thermal expansion coefficient",
+                "definition": "The fractional change in length per kelvin. A mismatch between a film and its substrate converts a cooldown into permanent strain, with no way to relax it short of removing the film."
+              }
+            ],
+            "fab_angle": "Film stress from a deposited metal is normally tracked as wafer bow through Stoney's equation; this is the same stress appearing electrically instead of mechanically, which means a gate-metal thickness chosen for sheet resistance is also choosing a disorder level.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Strain-induced disorder from Schottky gates on high mobility 2DEGs",
+                "url": "https://arxiv.org/abs/2610.26607",
+                "publisher": "arXiv",
+                "date": "2026-10-19"
+              },
+              {
+                "title": "Harmonic Content of Strain-induced Potential Modulation in Unidirectional Lateral Superlattices",
+                "url": "https://arxiv.org/abs/cond-mat/0505479",
+                "publisher": "arXiv / J. Phys. Soc. Jpn. 74, 2797",
+                "date": "2005-05-19"
+              },
+              {
+                "title": "Magnetotransport in 2D lateral superlattices with smooth disorder: quasiclassical theory of commensurability oscillations",
+                "url": "https://arxiv.org/abs/cond-mat/0101242",
+                "publisher": "arXiv / Physical Review B 63, 245310",
+                "date": "2001-01-16"
+              }
+            ]
+          },
+          {
+            "id": "silicon-and-gate-bipolar-inner-product",
+            "title": "Swapping XNOR for AND cuts a binary network's energy by a third",
+            "dek": "Oscar Castañeda, Christoph Studer and co-authors released measurements from SIXPPAC, a 0.765 mm² chip in 12 nm FinFET that runs a six-layer binary-weight neural network on radio baseband samples at 105 million samples per second, and that computes its ±1 products with AND gates rather than the XNOR gates everyone else uses.",
+            "why_it_matters": "XNOR is the exact bit-level form of multiplying two ±1 numbers, which is why binary accelerators were built around it; AND reaches the same sum once the input and weight bit-counts are subtracted back out. The difference is switching activity. An AND gate whose weight bit is low holds its output still no matter what the input does, so energy falls as the weight matrix gets sparser instead of staying flat — 32 % below the XNOR version here, bought with 16 % more area.",
+            "background_md": "A binary-weight neural network replaces every multiplication with a one-bit operation: weights are constrained to ±1, so a dot product collapses into counting how often two sign bits agree. In silicon that is attractive because the multiplier is the expensive block — its area and energy both grow roughly with the square of operand width — while a logic gate feeding an adder tree is nearly free. What it costs is accuracy, so binary networks are used where the input is already noisy and the latency budget is tight, such as the baseband path of a radio receiver.",
+            "deeper_md": "The identity is elementary. Write a ±1 value as s = 2b − 1 for a bit b; then s_x·s_w = 4·b_x·b_w − 2b_x − 2b_w + 1, so the inner product is 4·Σ(b_x AND b_w) − 2Σb_x − 2Σb_w + N. XNOR needs no correction terms, which is why it became the default; AND needs two running bit-counts that are cheap to maintain. The payoff is that an AND output with a low weight bit is pinned regardless of the input, so it never charges a node — energy drops a further 33 % when three-quarters of the weights are low rather than half.\n\nMeasured on silicon at 0.8 V: 183 TOPS, 4.18 nJ per inference worst case and 1.9 nJ on average, 87 ns latency, with two on-die 8-bit SAR ADCs delivering 7.30 ENOB (45.7 dB SNDR) for 0.618 mW. Read the efficiency claim as scoped: 0.42 POPS/W is put forward as the leading figure only among designs computing exact bipolar inner products, and the paper's own comparison table lists analog and approximate accelerators above it.",
+            "glossary": [
+              {
+                "term": "XNOR",
+                "definition": "A two-input gate whose output is 1 when the inputs agree. It is the bit-level form of multiplying two ±1 values, which is why binary-weight accelerators were built around it."
+              },
+              {
+                "term": "Switching activity",
+                "definition": "The fraction of gate outputs that actually change state in a cycle. Dynamic power is proportional to it, so a circuit that keeps its nodes still burns less at the same gate count."
+              },
+              {
+                "term": "ENOB / SNDR",
+                "definition": "Effective number of bits: how much resolution a converter really delivers once its own noise and distortion are counted. 7.30 ENOB means a nominal 8-bit converter behaves like a clean 7.3-bit one."
+              },
+              {
+                "term": "TOPS and POPS/W",
+                "definition": "Tera- and peta-operations per second, and operations per joule. Both are normalised here to 1-bit × 1-bit operations, so neither can be compared against an 8-bit accelerator's figures."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "A 105 MS/s 4.18 nJ/inference 0.765 mm² Mixed-Signal Streaming ML Engine for Wireless Baseband in 12LP+ FinFET",
+                "url": "https://arxiv.org/abs/2610.26552",
+                "publisher": "arXiv",
+                "date": "2026-10-19"
+              },
+              {
+                "title": "ESSERC — European Solid-State Electronics Research Conference",
+                "url": "https://www.esserc.org/",
+                "publisher": "ESSERC",
+                "date": "2026"
+              }
+            ]
+          },
+          {
+            "id": "silicon-sidewall-roughness-protocol",
+            "title": "Qubit sidewalls get a measurement protocol, and no link to loss",
+            "dek": "Jørgen Garnæs, Sabbir Khan and co-authors propose an agreed way to measure the sloped edges of superconducting qubit wiring with an atomic force microscope — mounting the chip on a 50° wedge so the tip can reach the sidewall at all — and report 2–5 nm of roughness on junction electrodes against roughly 20 nm on readout resonators.",
+            "why_it_matters": "Sidewalls are where metal, substrate and vacuum all meet, and electric field crowds into exactly those corners, so they are the standing suspect whenever a qubit's lifetime comes in short. Without an agreed definition of how rough and how sharp, two laboratories cannot compare etch recipes at all, and a roughness number quoted without its filter cutoffs is not a measurement. The paper's own data also find no monotonic relation between sidewall roughness and internal quality factor, which is a result about the field's working assumption rather than a gap in the dataset.",
+            "background_md": "A superconducting qubit is a planar aluminium circuit a few hundred micrometres across, patterned on silicon or sapphire, and its stored energy leaks into two-level defects living in the few nanometres of amorphous oxide at every interface. Each interface's contribution scales with its participation ratio — the fraction of the circuit's electric-field energy sitting inside that layer — so geometry sets the loss budget. Field strength goes as the reciprocal of the radius of curvature, which is why a sharp edge counts for more than its area suggests. Patterned edges are never vertical: wet etching and lift-off both leave sloped, rough sidewalls.",
+            "deeper_md": "The protocol is mostly about making a number mean the same thing twice. The chip goes on a 50° wedge so the microscope's z-axis is roughly normal to the sidewall; each profile is band-pass filtered — long-wavelength cutoff λC = 8 µm and short cutoff λS = 25 nm for resonators and pads, λC = 0.25 µm for Josephson-junction electrodes — before an RMS amplitude is averaged over at least 32 profiles. The second descriptor is the new one: a curvature-equivalent radius Rρ, the reciprocal of the RMS curvature along a profile, so a few sharp features dominate it. Measured Rρ runs 35–82 nm on junction electrodes and 51–151 nm on capacitor pads.\n\nThe uncertainty section is the honest part. Every profile is the real sidewall convolved with the tip, whose effective radius they put at 10.9 nm with a standard uncertainty of 6.3 nm; no traceable reference standard exists below roughly 10 nm to calibrate against; and the combined k = 1 uncertainty is 15–30 %. They state plainly that no universal monotonic relation between roughness and quality factor holds across materials and processes.",
+            "glossary": [
+              {
+                "term": "Participation ratio",
+                "definition": "The fraction of a resonator's electric-field energy stored inside one lossy layer. Multiply it by that layer's loss tangent, sum over layers, and you have the circuit's loss — geometry converted into a lifetime."
+              },
+              {
+                "term": "λS and λC (nesting indices)",
+                "definition": "The short- and long-wavelength cutoffs applied to a measured profile before roughness is computed. λS removes probe noise, λC removes form and waviness; change either and the roughness number changes."
+              },
+              {
+                "term": "Tip convolution",
+                "definition": "An atomic force microscope image is the surface dilated by the probe's own shape, so anything narrower than the tip radius is recorded wider and shallower than it really is."
+              },
+              {
+                "term": "k = 1 uncertainty",
+                "definition": "An uncertainty quoted at one standard deviation, covering roughly 68 % of outcomes; metrology labs usually double it to k = 2 when stating a confidence interval."
+              }
+            ],
+            "fab_angle": "Filtering is why two labs quoting \"RMS roughness\" for the same sample can disagree by a large factor: the number is meaningless without its two cutoffs. Any roughness figure written into a teaching cleanroom's AFM log should carry λS and λC beside it.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Sidewall Metrology Protocol for Superconducting Qubit Devices",
+                "url": "https://arxiv.org/abs/2610.26223",
+                "publisher": "arXiv",
+                "date": "2026-10-19"
+              },
+              {
+                "title": "Surface participation and dielectric loss in superconducting qubits",
+                "url": "https://arxiv.org/abs/1509.01854",
+                "publisher": "arXiv / Applied Physics Letters 107, 162601",
+                "date": "2015-09-06"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-elayout-equality-saturation",
+            "title": "Logic restructuring after placement, with e-graphs doing the rewriting",
+            "dek": "Wenji Fang, Zhiyao Xie and colleagues describe E-Layout, a tool that rewrites a digital chip's logic after the standard cells have already been placed — enumerating provably equivalent circuits with e-graphs — and report 6.07 % better total negative slack and 1.07 % less area than a commercial physical-design flow across nine ASAP7 7 nm designs.",
+            "why_it_matters": "Production flows freeze the logic structure at placement and afterwards change only gate sizes and buffer positions, because nobody can prove a rewritten netlist equivalent fast enough to try thousands of candidates inside an optimisation loop. Equality saturation inverts that cost: every alternative it produces is equivalent by construction, so the expensive step becomes choosing among them rather than checking them. What was a fixed input to physical design becomes a variable, and that is where the slack in this result comes from.",
+            "background_md": "Digital design runs in two halves. Synthesis turns a hardware description into a netlist of logic gates; physical design then places those gates and routes wires between them. Timing is only knowable in the second half, because a wire's delay depends on where its two endpoints landed, and at advanced nodes wire delay dominates gate delay. That ordering creates a standing problem: the decisions that set timing are made before timing can be measured. Flows cope with estimated parasitics during synthesis and, afterwards, with gate sizing and buffer insertion — which change drive strength but leave the logic alone.",
+            "deeper_md": "An e-graph stores many equivalent expressions compactly by sharing their subterms, and equality saturation applies rewrite rules until no new equivalences appear; every member of the resulting class is equivalent by construction, so the search runs over implementations instead of over guesses that then need checking. E-Layout runs it on maximum fanout-free cones with standard-cell-aware rewrites — decomposition, complex-to-primitive conversion, Boolean simplification — and only bothers with cones yielding more than five alternatives. A pair of graph transformers retrieves a logic structure and predicts cell sizes and positions inside the cone's bounding box; reinforcement learning then refines those choices against full-chip total negative slack from an incremental timing engine.\n\nAverages over the nine designs: 6.07 % TNS, 2.29 % WNS, 1.07 % area. OpenROAD's restructuring pass, run from the same starting point, degrades TNS by up to 21.54 %. Two things the result rests on: only about 9 % of eligible cones are rewritten at all, and buffering and sizing stay the commercial tool's job, so each loop iteration is expensive. Equivalence is checked by an SMT solver per cone and a commercial formal tool on the full design.",
+            "glossary": [
+              {
+                "term": "WNS and TNS",
+                "definition": "Worst negative slack is how late the single slowest path is; total negative slack sums the lateness of every late path. One says whether the chip runs at a frequency, the other how much work remains."
+              },
+              {
+                "term": "Equality saturation",
+                "definition": "Applying rewrite rules to a circuit held in an e-graph until nothing new is produced, leaving a compact structure containing every variant those rules can reach, each one equivalent by construction."
+              },
+              {
+                "term": "MFFC (maximum fanout-free cone)",
+                "definition": "The largest group of gates whose internal outputs feed nothing outside the group, so it can be replaced wholesale without disturbing the rest of the netlist."
+              },
+              {
+                "term": "ASAP7",
+                "definition": "A free predictive 7 nm FinFET design kit from Arizona State and Arm, with 7.5-track and 6-track cell libraries; it is how academics publish physical-design numbers without a foundry agreement."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "E-Layout: Layout-Stage Logic Restructuring via RL-Optimized Equality-Saturated Graph Retrieval-Augmented Generation",
+                "url": "https://arxiv.org/abs/2610.26432",
+                "publisher": "arXiv",
+                "date": "2026-10-19"
+              },
+              {
+                "title": "ASAP7 predictive 7 nm PDK and standard-cell libraries",
+                "url": "https://github.com/The-OpenROAD-Project/asap7",
+                "publisher": "Arizona State University / Arm, via The OpenROAD Project",
+                "date": "2026"
+              },
+              {
+                "title": "ICCAD — IEEE/ACM International Conference on Computer-Aided Design",
+                "url": "https://www.iccad.com/",
+                "publisher": "IEEE / ACM",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-ip-exponent-linear-dimension",
+            "title": "Integer programming's exponent falls from d² to d",
+            "dek": "Lin Chen, Yuchen Mao and Guochuan Zhang posted an algorithm for integer programs with bounded variables that runs in N^O(d) time, where d is the number of constraints and N bounds the size of the coefficients — replacing the N^O(d²) that has stood since Eisenbrand and Weismantel, and answering the open problem they left behind.",
+            "why_it_matters": "Lower bounds resting on the exponential-time hypothesis already say an exponent of order d is necessary, so this closes the gap: with the number of constraints fixed, difficulty grows with coefficient size at a fixed polynomial rate rather than an accelerating one. Nothing changes for a solver anyone would run today — the factor f(d) is left unspecified and the constants are explicitly unoptimised — but the question of how the worst case scales is no longer open, and the technique is reusable because it avoids the Steinitz machinery everything else in the area is built on.",
+            "background_md": "Integer programming asks for the cheapest integer vector x satisfying Ax = b with every variable between given bounds. It is NP-hard, so the useful question is which parameter the hardness concentrates in. For this standard form the answer is d, the number of rows of A — the number of constraints — together with N, the largest absolute entry of A. Hold those two fixed and the problem becomes tractable in the number of variables, because what makes the search hard is the structure of the column set rather than its size. Running times in this literature are therefore quoted as N raised to some function of d.",
+            "deeper_md": "The prior route went through the Steinitz lemma: reorder a set of vectors summing to zero so that every partial sum stays inside a ball whose radius depends only on the dimension, which turns a solution into a short walk through a bounded box and admits a dynamic program over it. Eisenbrand and Weismantel used exactly that to cut Papadimitriou's (mΔ)^O(m²) bound to (mΔ)^O(m)·‖b‖∞² for variables restricted to the non-negative orthant; with finite upper bounds the exponent stayed quadratic.\n\nThis paper uses neither Steinitz nor Graver bases. It prices the objective with an optimal dual solution π* of the linear relaxation, so each column contributes a non-negative change cost |c_i − π*·a_i| measured against the LP optimum. A structure theorem then puts most columns on shared generalised-arithmetic-progression coordinates and holds back a small reserve whose subset sums fill a box, so an LP vertex can be rounded and the rounding error repaired cheaply. A potential function over lattice mass, volume and rank bounds the recursion to logarithmically many sublattice restrictions. It is a v1 preprint and nobody has refereed the proof.",
+            "glossary": [
+              {
+                "term": "d, the number of constraints",
+                "definition": "The number of rows of the matrix A. It is the parameter the running time is exponential in; the number of variables enters only polynomially, which is why d is the one that gets counted."
+              },
+              {
+                "term": "LP relaxation",
+                "definition": "The same problem with the integrality requirement dropped, which makes it a linear program solvable exactly in polynomial time. Its solution is the reference point integer algorithms round away from."
+              },
+              {
+                "term": "Steinitz lemma",
+                "definition": "A reordering result: vectors in a unit ball that sum to zero can be permuted so every partial sum stays small. It is what bounds how far an integer solution can wander from a fractional one."
+              },
+              {
+                "term": "Exponential-time hypothesis",
+                "definition": "The conjecture that 3-SAT needs time exponential in the number of variables. It is the standard assumption used to prove that an algorithm's exponent cannot be improved further."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Integer Programing: An Algorithm with Exponent Linear in the Dimension",
+                "url": "https://arxiv.org/abs/2610.25955",
+                "publisher": "arXiv",
+                "date": "2026-10-19"
+              },
+              {
+                "title": "Proximity results and faster algorithms for Integer Programming using the Steinitz Lemma",
+                "url": "https://arxiv.org/abs/1707.00481",
+                "publisher": "arXiv",
+                "date": "2017-07-03"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-copy-termination-position-hashing",
+            "title": "Why a model cannot stop copying a long run of the same character",
+            "dek": "Anxin Guo, Chenxiao Yang and Zhiyuan Li prove that a transformer whose only position signal is an attention bias flattening with distance — NoPE, and recursive or windowed ALiBi — must eventually fail to stop when copying a long run of identical tokens, and they catch frontier models doing it: 79,984 characters emitted for a 300-character target.",
+            "why_it_matters": "The failure is not a shortage of training data; it is saturation in finite arithmetic. Past a threshold set by precision and depth, one more identical token leaves every attention logit unchanged, so the model has nothing left distinguishing \"copy one more\" from \"stop\", and making it wider does not help because the bound is width-independent. That turns the choice of positional encoding into a correctness property rather than a length-extrapolation convenience, and the paper hands over a construction — distances stored modulo small coprime periods — that provably escapes it.",
+            "background_md": "A transformer has no built-in notion of order: self-attention is a weighted sum over positions, so permuting the input permutes the output and nothing else. Order is put back either by rotating query and key vectors through an angle proportional to position, as RoPE does, or by adding a distance-dependent bias to each attention score, as ALiBi does — or by nothing at all, letting the causal mask carry order, which is called NoPE. All of that arithmetic runs in finite precision, so two encodings differing by less than one unit in the last place are the same position as far as the model is concerned.",
+            "deeper_md": "The impossibility is a saturation argument. For models whose positional input is an additive attention bias that becomes constant past some index — NoPE, a recursive ALiBi, bounded-window Hard-ALiBi — appending another copy of an already-repeated token stops moving the logits once the run exceeds roughly the sum over layers of that constancy index plus 2^p, where p is the mantissa precision. The bound does not depend on width. If that threshold is o(N), the model fails the all-identical copy task for source lengths between N/3 and N/2: it either miscounts or runs on.\n\nThe construction that escapes it rotates value and output vectors with a different small prime period per head, so each head reports the distance from the nearest delimiter modulo its prime and the Chinese remainder theorem reassembles the true distance — two layers, O(log log N)-bit precision, O(log N / log log N) width. In experiments the primes 5, 7, 11 and 13 give a product of 5005, and accuracy collapses just past 5005 as the theory predicts. The authors flag that value-side rotation is untested where value semantics matter, and that hybrid training was not tried.",
+            "glossary": [
+              {
+                "term": "ALiBi (attention with linear biases)",
+                "definition": "A positional scheme that adds a penalty proportional to the distance between two tokens directly to each attention score, instead of modifying the token vectors themselves."
+              },
+              {
+                "term": "NoPE (no positional encoding)",
+                "definition": "Supplying no explicit position information at all and relying on the causal mask — each token seeing only its predecessors — to let the model infer order from structure."
+              },
+              {
+                "term": "Saturation",
+                "definition": "The point where adding more input stops changing a stored value because the change is smaller than the last representable bit; here extra repeated tokens become literally invisible to the attention logits."
+              },
+              {
+                "term": "Chinese remainder theorem",
+                "definition": "Knowing a number's remainder modulo several pairwise-coprime values pins the number down uniquely up to their product, so heads using periods 5, 7, 11 and 13 can separate 5005 distinct distances."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Copying Under Repetition: From Prefix Matching to Position Hashing",
+                "url": "https://arxiv.org/abs/2610.26722",
+                "publisher": "arXiv",
+                "date": "2026-10-19"
+              },
+              {
+                "title": "Train Short, Test Long: Attention with Linear Biases Enables Input Length Extrapolation",
+                "url": "https://arxiv.org/abs/2108.12409",
+                "publisher": "arXiv",
+                "date": "2021-08-27"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "Digital micromirror devices",
+    "slug": "dmd-micromirror-devices",
+    "subtitle": "A million aluminium mirrors on torsion hinges, and the diffraction problem you inherit the moment you use them as a photomask.",
+    "tldr": "A digital micromirror device is an array of aluminium mirrors a few micrometres wide, each sitting on a torsion hinge above its own memory cell, each able to tilt to one of two mechanical stops. Used as a programmable photomask it replaces a chrome-on-quartz plate with a pattern that can be changed in microseconds. The catch is that an array of tilted mirrors on a regular pitch is also a diffraction grating, and most of the optical engineering is about deciding which order you keep.",
+    "sections": [
+      {
+        "heading": "A latch with a mirror on top",
+        "body_md": "Underneath every mirror is a static memory cell holding one bit, wired to two address electrodes. The mirror and its yoke sit on a torsion hinge — a thin strip of aluminium alloy that twists rather than bends — and are held at a bias potential, typically 12 V, while the address electrodes sit at 0 or 5 V. Electrostatic attraction grows as the gap shrinks, so the side that starts marginally closer wins and the mirror rotates until a tip or the yoke touches a mechanical landing site. That is the property everything else depends on: the stops are mechanical, not electrical, so the tilt angle is set by geometry and is the same across a million mirrors. The bit in the memory cell moves nothing by itself; it only decides which way the mirror will go the next time the bias is released. Writing the array and moving the array are separate operations, and that separation is what makes a DMD fast.",
+        "deeper_md": "The bistability is worth being precise about. With bias applied, both landed states are energy minima and the address voltage alone cannot flip a mirror — the electrostatic torque from a 5 V address electrode is far smaller than the torque holding a landed mirror down. This is why the whole array can be loaded with a new frame while the mirrors stay put, and why the switch happens for every mirror at once when the bias is released. Tilt angles have moved with the generations: Texas Instruments' 1990s patents describe about ±10°, while the parts used in current lithography work are specified at ±12°."
+      },
+      {
+        "heading": "Getting a landed mirror back",
+        "body_md": "Landing is the easy part. A mirror pressed against its stop sticks — the patent literature calls it simply a sticking force at the landing surface and does not commit to a mechanism — and removing the bias is not always enough, because the hinge's restoring torque was deliberately made weak so the device could run at low voltage. The answer is a reset waveform. The bias is switched off for a few microseconds, typically 3–5 µs, and during that window a short train of pulses, each about half a microsecond long and timed to the hinge's mechanical resonance of a few megahertz, pumps energy into the torsional mode until the tip breaks free. A 1998 Texas Instruments patent describes patterns of two to five pulses, with the final impulse driving the total swing to roughly −24 V against a 12 V bias, and notes that the best pattern differs between hidden-hinge and torsion-beam designs. Resonant release is the reason reset times are quoted in microseconds rather than milliseconds.",
+        "deeper_md": "Driving at resonance matters because the available energy per pulse is small. The hinge is a torsional spring with a resonant frequency the patent puts in the 2–5 MHz range for devices of that era, determined by the mirror's moment of inertia and the hinge's torsional stiffness, and found experimentally rather than designed to a number. Pulses arriving in phase with the oscillation add amplitude; pulses out of phase subtract it, which is why the patent is about phase matching rather than about pulse height. The same physics sets the ceiling on frame rate, and it is also why a stiffer hinge — which would release on its own — costs operating voltage the display market will not pay."
+      },
+      {
+        "heading": "A mirror array is a diffraction grating",
+        "body_md": "Here is the thing that catches people building a maskless printer. A DMD is a periodic array — 13.68 µm pitch on Texas Instruments' DLP7000, 17 µm on the older parts used in much of the lithography literature — and a periodic array of reflectors scatters light into discrete orders at angles set by sin θ = mλ/p. At 405 nm on a 13.68 µm pitch, λ/p works out to about 1.7° between adjacent orders, arithmetic you can do for your own wavelength and part. The tilt then does something more interesting than steering the beam: when the specular reflection off a tilted facet lines up with one of those grating orders, nearly all the energy lands in that single order. That is the blaze condition, borrowed from ruled gratings, and it is why the on-state of a DMD is bright at all. TI quotes 86 % array diffraction efficiency and a 92 % fill factor for the DLP7000.",
+        "deeper_md": "Two consequences follow immediately. First, the illumination has to arrive at a specific angle: the blaze condition couples the mirror tilt, the wavelength and the incidence angle, so a DMD optimised for visible projection is not automatically blazed at 405 nm or 365 nm. Second, the off-state is not dark by virtue of pointing away — it is dark because its specular direction misses every order the projection lens collects, which means stray light depends on the lens's numerical aperture. Applied Materials' anti-blazed patent exploits the same physics in reverse: set the geometry so adjacent mirrors differ by 180° of phase rather than 0°, and neighbouring pixels cancel instead of adding, which it claims prints narrower dark lines at roughly twice the resolution. The patent reports no measured data behind that figure."
+      },
+      {
+        "heading": "From mirror to resist",
+        "body_md": "A projection lens demagnifies the mirror array onto the wafer, and the reduction ratio is what converts a 13.68 µm mirror into a printable pixel. At 10:1 that is a 1.368 µm pixel, which is roughly where the first serious DMD lithography results landed: 1.8 µm lines and spaces over an 8.47 mm field at the 435.8 nm g-line in 2003, and 2 µm at 405 nm in 2009. Push the demagnification harder and the field collapses with it — 180 nm linewidths have been reported through a 200× objective, over a field small enough that the stage, not the optics, becomes the hard part. The review collecting these results puts mainstream DMD systems at 180–500 nm resolution and about ten 200 mm wafers an hour at 2 µm, with a stated target above twenty. Throughput, not resolution, is what keeps the technique out of volume logic.",
+        "deeper_md": "The field-versus-resolution trade is pure geometry and it is unforgiving. A 1024 × 768 array at 13.68 µm covers 14.0 × 10.5 mm at the mirror; at 10:1 that is a 1.4 × 1.05 mm exposure field, and at 200× it is 70 × 52 µm. Covering a 200 mm wafer from 70 µm fields means roughly 10⁵ stage moves, which is why every high-resolution DMD system scans rather than steps, and why the data path — the review calls it a bottleneck for high-volume use — has to feed the array at tens of gigabits per second. The DLP7000 is rated at 32,552 binary patterns per second with a 400 MHz input clock, and a system running flat out is limited by that pipe long before it is limited by the resist."
+      },
+      {
+        "heading": "Pixels, stitching and grey",
+        "body_md": "A binary mirror array prints a staircase. The usual fix is to scan the stage continuously at an oblique angle θ = tan⁻¹(1/n) for integer n, so successive mirror rows lay down scan lines offset by a fraction of a pixel and the effective address grid becomes finer than the mirror grid; the review reports that this also suppresses the high-spatial-frequency scattered light the mirror edges produce. Grey levels come from time rather than amplitude: the mirror is binary, so intermediate dose is produced by pulse-width modulation of how long it holds the on state, exactly as a projector produces brightness. Applied Materials' patent adds a third option, parking a mirror at an intermediate angle for a pixel at roughly 6 % of full brightness, and overlapping exposures by about a quarter of a pixel. The registration numbers are the sober part: around 1 µm intra-field, with multi-layer alignment averaging 1.76 µm in x and 0.63 µm in y.",
+        "deeper_md": "Oblique scanning is the DMD answer to a problem that steppers solve with a continuous mask: the address grid is quantised at the mirror pitch divided by the demagnification, and a feature edge can only land on that grid. Tilting the array by tan⁻¹(1/n) means row k of the array is displaced laterally by 1/n of a pixel relative to row k−1, so n passes of the array over a point give an address grid n times finer in the cross-scan direction, at 1/n the throughput. Pulse-width modulation buys the other axis: a dose quantised into 2^b levels moves the resist's edge position by an amount set by the local dose slope, which is where the contrast curve of the resist stops being a curiosity and becomes the thing that sets your edge placement error."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Torsion hinge",
+        "definition": "A thin metal strip that stores restoring torque by twisting rather than bending. It is the entire spring of a micromirror, and making it stiffer costs operating voltage."
+      },
+      {
+        "term": "Blaze condition",
+        "definition": "The geometry in which the specular reflection from a tilted grating facet coincides with one diffraction order, concentrating almost all the light into that order instead of spreading it across many."
+      },
+      {
+        "term": "Fill factor",
+        "definition": "The fraction of a mirror array's area that is actually mirror rather than the gaps and hinge structures between mirrors; light landing in the gaps is lost or scattered into unwanted orders."
+      },
+      {
+        "term": "Demagnification (reduction ratio)",
+        "definition": "How much the projection optics shrink the mask image on the way to the wafer. A 10:1 lens turns a 13.68 µm mirror into a 1.368 µm pixel and shrinks the exposure field by the same factor."
+      },
+      {
+        "term": "Pulse-width modulation",
+        "definition": "Setting an average exposure by switching a binary element on and off for controlled fractions of a frame, rather than varying its brightness — the only way to get grey out of a mirror with two states."
+      },
+      {
+        "term": "Numerical aperture (NA)",
+        "definition": "The sine of the half-angle of light a lens can collect, times the refractive index of the medium. It decides how many diffraction orders reach the wafer, and so how sharp a printed edge can be."
+      }
+    ],
+    "try_this": "Find the DMD part number in the Hacker Fab Lithography Stepper V2 build documentation, look up its mirror pitch on the Texas Instruments product page, and compute λ/p for the exposure wavelength the club actually uses — that is the angular spacing between diffraction orders leaving the array. Then estimate the collection half-angle of the projection lens from its numerical aperture, count how many of those orders it admits, and decide for yourself whether the printed edge is being set by the mirror grid or by the lens.",
+    "sources": [
+      {
+        "title": "The Principle and Development of Optical Maskless Lithography Based on Digital Micromirror Device (DMD)",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12735024/",
+        "publisher": "Micromachines 16(12):1356 (CC BY 4.0)",
+        "date": "2025-11-29"
+      },
+      {
+        "title": "US10983441B2 — Resolution enhanced digital lithography with anti-blazed DMD",
+        "url": "https://patents.google.com/patent/US10983441B2/en",
+        "publisher": "USPTO / Applied Materials",
+        "date": "2021-04-20"
+      },
+      {
+        "title": "US5768007A — Phase matched reset for digital micro-mirror device",
+        "url": "https://patents.google.com/patent/US5768007A/en",
+        "publisher": "USPTO / Texas Instruments",
+        "date": "1998-06-16"
+      },
+      {
+        "title": "DLP7000 — 0.7-inch XGA digital micromirror device",
+        "url": "https://www.ti.com/product/DLP7000",
+        "publisher": "Texas Instruments",
+        "date": "2026"
+      },
+      {
+        "title": "Hacker Fab documentation — fab toolkit and standard operating procedures",
+        "url": "https://docs.hackerfab.org/",
+        "publisher": "Hacker Fab",
+        "date": "2026"
+      }
+    ]
+  }
+}

@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-10-20",
+      "foundations_slug": "dmd-micromirror-devices",
+      "foundations_topic": "Digital micromirror devices",
+      "headline": "Lin Chen, Yuchen Mao and Guochuan Zhang cut integer programming's worst-case exponent from quadratic in the number of constraints to linear, answering the open problem Eisenbrand and Weismantel left and settling the parameter's dependence up to lower-order factors.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-10-19",
       "foundations_slug": "reactive-ion-etching",
       "foundations_topic": "Reactive ion etching",
@@ -668,6 +681,6 @@
       ]
     }
   ],
-  "generated_at": "2026-10-19T15:16:26Z",
-  "latest": "2026-10-19"
+  "generated_at": "2026-10-20T13:18:51Z",
+  "latest": "2026-10-20"
 }

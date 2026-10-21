@@ -1,0 +1,470 @@
+{
+  "date": "2026-10-21",
+  "generated_at": "2026-10-21T13:45:00Z",
+  "window": "2026-10-20..2026-10-21",
+  "headline": "A fifteen-author collaboration led by Tao Yang runs the first 4H silicon-carbide AC-LGAD, pulling about 10 µm of position and 20 ps of timing out of readout pads spaced 500 µm apart, with the gain layer sitting near 4 MV/cm.",
+  "pulse": {
+    "read_time_min": 7,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-sic-ac-lgad-pad-pitch",
+            "title": "Silicon carbide gets an AC-LGAD, and 500 µm pads locate hits to 10 µm",
+            "dek": "Tao Yang and fourteen co-authors report the first 4H silicon-carbide AC-LGAD — an avalanche sensor whose amplifying layer is buried under oxide, so each hit's charge couples capacitively into several metal pads at once — and locate hits to about 10 µm using pads spaced 500 µm apart.",
+            "why_it_matters": "Resolution fifty times finer than the electrode pitch is what makes a large tracking plane affordable: channel count, not sensor area, sets the power and cooling budget, so a 500 µm pitch that behaves like a 10 µm one deletes most of the readout. Doing it in silicon carbide moves the trick into a material whose gain layer here sits near 4 MV/cm, and whose simulated designs are drawn for breakdown above 2.4 kV across 30 µm. The resolution figures, though, come from a 375 nm laser rather than from particles.",
+            "background_md": "A detector that reads one pad per hit knows the crossing point only to the pad size divided by √12. A low-gain avalanche diode adds a thin, moderately doped layer beneath the junction that multiplies the drifting charge, which is what buys sub-nanosecond timing. Separating that structure from the metal pads with an oxide leaves the n-side resistive and the readout capacitive, so one hit induces current on several pads at once and the ratio of their amplitudes interpolates the position between them. Coarse electrodes then behave like fine ones.",
+            "deeper_md": "The devices are 1.0 × 1.0 mm² with four AC-coupled pads of 100 × 100 µm on a 500 µm pitch, separated from the gain layer by 300 nm of oxide, with an outer DC ring contacting the P++ layer. Two variants differ only in gain-layer doping — 4 × 10¹⁷ and 5 × 10¹⁷ cm⁻³ over a 2 × 10¹⁴ cm⁻³ drift layer — and the paper puts the gain-layer field at about 4 MV/cm. Conventional reconstruction, a discrete position centroid plus constant-fraction discrimination, gives roughly 10 µm and 20 ps at 200 V; a transformer trained on scan positions reaches below 5 µm and about 15 ps. The position gain is the larger of the two because the trigger alone contributes about 12 ps of timing jitter.\n\nTwo caveats the abstract does not carry. Charge was injected with a 375 ± 10 nm laser of roughly 25 ps pulse width focused to σ ≈ 24 µm, not by minimum-ionising particles; a beta source and a test beam are listed as future work. And the network is retrained per sensor, per bias and per laser intensity, validated on held-out positions in a chessboard split — that measures interpolation inside one device, not transfer between devices. Radiation tolerance is cited from simulation only.",
+            "glossary": [
+              {
+                "term": "AC-LGAD",
+                "definition": "A low-gain avalanche diode whose readout pads sit on an oxide above a resistive n-side, so amplified charge couples capacitively into several pads and their amplitude ratio gives a position finer than the pad pitch."
+              },
+              {
+                "term": "Gain layer",
+                "definition": "A thin, more heavily doped region under the junction where the field is high enough to multiply drifting carriers by avalanche, trading a little noise for a much faster rising signal edge."
+              },
+              {
+                "term": "4H-SiC",
+                "definition": "The hexagonal polytype of silicon carbide used for power and radiation devices; in this work its gain layer is operated at a field of roughly 4 MV/cm."
+              },
+              {
+                "term": "TCT (transient current technique)",
+                "definition": "Injecting charge with a focused short laser pulse at a known position and recording the current waveform, which maps a sensor's spatial response without needing a particle beam."
+              }
+            ],
+            "fab_angle": "The two knobs that set charge sharing are process numbers rather than layout: the coupling-oxide thickness, 300 nm here, and the resistive n-side implant profile, which the earlier silicon work says have to be tuned together. The sensor paper does not quote the n-side sheet resistance, which is the one number anyone trying to reproduce the 10 µm would need.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Ultra-Fast 4H-SiC AC-LGAD for 4D Tracking Applications",
+                "url": "https://arxiv.org/abs/2610.27535",
+                "publisher": "arXiv",
+                "date": "2026-10-20"
+              },
+              {
+                "title": "Resistive AC-Coupled Silicon Detectors: principles of operation and first results from a combined analysis of beam test and laser data",
+                "url": "https://arxiv.org/abs/2007.09528",
+                "publisher": "arXiv",
+                "date": "2020-07-18"
+              },
+              {
+                "title": "Design and simulation of a 4H-SiC low gain avalanche diode with trench-isolation",
+                "url": "https://arxiv.org/abs/2510.14531",
+                "publisher": "arXiv",
+                "date": "2025-10-16"
+              }
+            ]
+          },
+          {
+            "id": "silicon-cbas-gaas-island-growth",
+            "title": "Boron arsenide grows on GaAs at 360 °C, and stays short of a crystal",
+            "dek": "Matthew Delmont and five co-authors grew cubic boron arsenide — a semiconductor whose bulk crystals have been measured conducting heat above 2100 watts per metre-kelvin — straight onto GaAs(100) wafers between 250 and 400 °C, and got a continuous 16 nm film that came out nanocrystalline rather than single-crystal.",
+            "why_it_matters": "A film you can deposit below 400 °C is a film you can put on a finished device, which is where a heat spreader has to go; bulk boron arsenide crystals a millimetre across cannot be. The result also prices the attempt: a 15.5 % lattice mismatch to GaAs forces island growth, so what lands is columnar grains with a 3.5° rocking-curve spread, and grain boundaries scatter exactly the long-mean-free-path phonons that made the material worth growing. Nobody measured the film's thermal conductivity.",
+            "background_md": "Getting heat out of a device is a materials problem with a temperature ceiling attached: anything added above finished metal and dielectric has to be processed cool, so a high-conductivity spreader is usually a separate slab that gets bonded on. Growing the spreader instead means heteroepitaxy, and heteroepitaxy is governed by lattice mismatch. When film and substrate lattice constants differ by more than a few percent, the film binds itself more strongly than it binds the substrate and nucleates as separated three-dimensional islands rather than a sheet — and the grain boundaries that result are phonon scatterers.",
+            "deeper_md": "Boron came from an elemental source and arsenic from thermally cracked arsine supplying As₂, at a 130:1 As:B flux ratio, base pressure below 10⁻¹⁰ Torr, and a nominal 9 nm/h rate; two hours gave about 16 nm of c-BAs plus about 2 nm of boron oxide by X-ray reflectivity. XPS across 250–400 °C shows a flat, slightly boron-rich plateau — B/As near 1.2 after sputtering the oxide off, against 1.1 to 1.2 on a single-crystal reference — and above roughly 400 °C arsenic leaves and the film trends toward boron subarsenide.\n\nThe structure is the caveat. The substrate's RHEED streak breaks into dots within the first nanometres, the signature of Volmer–Weber islands driven by the 15.5 % mismatch between c-BAs at a = 4.777 Å and GaAs at a = 5.653 Å. GIXRD gives a 3.4° in-plane and 3.5° out-of-plane FWHM and an 18.2° out-of-plane tilt from ideal (100) alignment. HRTEM shows a chemically sharp interface with the gallium signal dropping to baseline, but the authors note that preferential arsenic sputtering and possible amorphous boron may inflate the XPS boron number, and that grain boundaries may limit a thermal conductivity they did not measure.",
+            "glossary": [
+              {
+                "term": "Volmer–Weber growth",
+                "definition": "Island growth: when a film's atoms bind each other more strongly than they bind the substrate, deposition starts as separated three-dimensional mounds instead of a continuous layer."
+              },
+              {
+                "term": "Lattice mismatch",
+                "definition": "The fractional difference between film and substrate lattice constants — 15.5 % here — which sets how much strain a film can hold before relieving it with dislocations or by breaking into islands."
+              },
+              {
+                "term": "RHEED",
+                "definition": "Reflection high-energy electron diffraction: a grazing electron beam watched during growth, where streaks mean a flat surface and discrete dots mean three-dimensional islands."
+              },
+              {
+                "term": "Rocking-curve FWHM",
+                "definition": "The angular width of a diffraction peak as the sample is tilted; 3.5° means the grains' crystal axes are spread over several degrees, which is mosaic texture rather than one crystal."
+              }
+            ],
+            "fab_angle": "The 250–400 °C window is the interesting part for anyone thinking about integration, because it sits under the roughly 400 °C ceiling a finished wiring stack imposes. The 2 nm of boron oxide that forms on top is the part that does not: it would have to be sputtered off or capped before anything else is deposited, and it is the same oxide that makes the XPS stoichiometry argue with itself.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Nanocrystalline cubic boron arsenide growth on GaAs(100) by gas source molecular beam epitaxy",
+                "url": "https://arxiv.org/abs/2610.27460",
+                "publisher": "arXiv",
+                "date": "2026-10-20"
+              },
+              {
+                "title": "Thermal conductivity of boron arsenide above 2100 watts per meter per Kelvin at room temperature",
+                "url": "https://arxiv.org/abs/2505.14434",
+                "publisher": "arXiv",
+                "date": "2025-05-20"
+              },
+              {
+                "title": "Impacts of Point Defects on Shallow Doping in Cubic Boron Arsenide: A First Principles Study",
+                "url": "https://arxiv.org/abs/2403.09013",
+                "publisher": "arXiv",
+                "date": "2024-03-14"
+              }
+            ]
+          },
+          {
+            "id": "silicon-isfet-transconductance-calibration",
+            "title": "ISFET chip-to-chip spread is transconductance, and dividing it out works",
+            "dek": "Utku Noyan, Sahil Shah and Pamela Abshire ran a 128 × 128 array of ion-sensitive transistors — MOSFETs whose gate is exposed to liquid, so charge binding on the surface shifts the threshold voltage — in SkyWater 130 nm CMOS, and cut chip-to-chip spread from ±62 % to ±16 % by dividing each chip's current by its own transconductance.",
+            "why_it_matters": "The useful quantity in a chemical FET is a threshold shift in millivolts, but what comes out is a current, and the conversion factor is the device's transconductance — which differed by a factor of 2.6 between two nominally identical chips here, 14 µA against 36 µA at peak. Measuring that factor once per chip turns an array that needs recalibrating in every experiment into one that can be trimmed at test, and it pushes the remaining error onto the sensing surface rather than the readout path.",
+            "background_md": "A transistor's channel current is set by the potential at its gate. Remove the gate metal, expose the gate dielectric to an electrolyte, and that potential comes from the chemistry at the surface instead of from a wire: bound charge changes the surface potential, the surface potential shifts the threshold voltage, and the drain current follows. The limit is electrostatic screening. Beyond the solution's Debye length, which shrinks as salt concentration rises, counter-ions cancel the charge on a bound molecule and the transistor cannot see it — which is why these sensors are run in diluted buffer.",
+            "deeper_md": "The array is 16,384 PMOS ISFET pixels on a 10 µm pitch, 1.28 × 1.28 mm active, with the foundry's silicon-nitride passivation acting as the gate insulator. Per-pixel sensitivity is 1.13 µA per pH unit with a 14 % coefficient of variation. Uncalibrated chip-to-chip plateau spread was about ±62 %, tracking a peak-transconductance difference of 14 µA against 36 µA and a 16 % saturation-current difference; reporting ΔV_th = ΔI_D/g_m rather than ΔI_D brings it to about ±16 %, and the calibrated cytokine plateaus become 2.94 ± 0.47 µA for IL-6 and 5.40 ± 0.86 µA for IL-10, against ±1.82 and ±3.35 µA uncalibrated.\n\nThe caveats are the authors' own. Detection floors near 0.7 pM for IL-6 and below 100 fM for IL-10 are set by measured baseline reproducibility, not by a thermal noise floor, so they are a property of the chemistry and the reference well rather than of the circuit. Antibody capture holds the analyte 8–15 nm from the gate, comparable to the Debye length in the 1:100-diluted buffer used, so absolute sensitivity is screening-limited; undiluted serum was not attempted, and cross-specificity was checked in one direction only.",
+            "glossary": [
+              {
+                "term": "ISFET",
+                "definition": "A MOSFET whose gate metal is replaced by the electrolyte under test, so charge accumulating on the exposed gate dielectric acts as the gate voltage."
+              },
+              {
+                "term": "g_m (transconductance)",
+                "definition": "The change in a transistor's drain current per volt of gate voltage; it is the conversion factor between the millivolts an ISFET actually generates and the microamps a reader measures."
+              },
+              {
+                "term": "Debye length",
+                "definition": "The distance over which counter-ions in a solution screen out a charge; beyond it a bound molecule is electrically invisible to the transistor underneath."
+              },
+              {
+                "term": "EC₅₀",
+                "definition": "The analyte concentration that produces half of a binding curve's maximum response — about 17 pM for IL-6 and 0.8 pM for IL-10 in this array."
+              }
+            ],
+            "fab_angle": "The sensing film is whatever the foundry already put down: the nitride in SkyWater's standard passivation stack, reached through an ordinary pad opening, with no added post-processing step. That is the reason a shuttle run can carry a chemical sensor at all — and also why the surface chemistry is fixed by the PDK rather than chosen by the designer, which is where the Debye-length limit comes from.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Multiplexed Label-Free Cytokine Sensing Using a 128x128 CMOS ISFET Array with Flexdym Microfluidic Partitioning",
+                "url": "https://arxiv.org/abs/2610.27432",
+                "publisher": "arXiv",
+                "date": "2026-10-20"
+              },
+              {
+                "title": "Ultra-thin ISFET-based sensing systems",
+                "url": "https://eprints.gla.ac.uk/260948/",
+                "publisher": "Electrochemical Science Advances / University of Glasgow Enlighten",
+                "date": "2022"
+              },
+              {
+                "title": "SKY130 PDK — Device Details",
+                "url": "https://skywater-pdk.readthedocs.io/en/main/rules/device-details.html",
+                "publisher": "SkyWater Technology open PDK documentation",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-diffrmst-matrix-tree-gradient",
+            "title": "A placer gets spanning-tree wirelength gradients from a determinant",
+            "dek": "Fuxing Huang and four co-authors made rectilinear-minimum-spanning-tree wirelength differentiable for chip placement by putting a weight on every possible spanning tree of a net and pulling each wire's probability out of a single matrix determinant, then dropped the result into the DREAMPlace placer.",
+            "why_it_matters": "Analytical placement optimises whatever wirelength function it can take a gradient of, and for twenty years that has been half the perimeter of a net's bounding box, which cannot tell a star net from a chain because it only sees the box. Making a tree cost differentiable changes what is actually being minimised, and the benchmark shows the trade running both ways: routed wirelength falls 3.5 % on average against the weighted-average baseline, while half-perimeter rises about 4.7 % and does so on every one of the ten designs.",
+            "background_md": "Placement decides where each of millions of logic cells sits on a die, and it is solved by gradient descent on a smooth cost function rather than by combinatorial search, because the instances are far too large for anything else. That cost has to approximate the length of the wires a later router will actually build. The true quantity — the rectilinear Steiner minimum tree over a net's pins — is NP-complete to compute and not differentiable, so placers substitute half the perimeter of the net's bounding box, which is cheap, smooth, and blind to how the pins connect.",
+            "deeper_md": "Each pin-pair distance is smoothed with φ_γ(d) = d·tanh(d/γ) in x and y, edge affinities are set to exp(−w_ij/β), and the relaxed cost is −β log Z over a distribution on spanning trees. Kirchhoff's matrix-tree theorem makes Z the determinant of a Laplacian minor, so the partition function and the per-edge marginals p_ij = a_ij(M_ii + M_jj − 2M_ij) come out of one inverse rather than an enumeration; the coordinate gradient is then the marginal-weighted sum of the smoothed derivatives. Cost is O(n³) per n-pin net, which is why the GPU kernel assigns subgroup widths of 4 to 32 for nets of 3–32 pins and one 128-thread block per net above that.\n\nOn ISPD 2019 against the weighted-average baseline, RMST length falls 5.0 %, Steiner length 3.2 % and routed wirelength 3.5 %, with the GPU path running 14.7× faster than an eight-thread CPU build. It is not uniform: against the log-sum-exp baseline, routed wirelength is worse on test4 and test5, and the 2–4-pin net group gets worse on five designs. Runtime rises too — 45.81 s against 41.73 s on test10, on an RTX 4090 — and the authors' own approximation bound grows with γ(n−1) and β(n−2)log n, so the proxy can land either side of the true RMST length.",
+            "glossary": [
+              {
+                "term": "HPWL (half-perimeter wirelength)",
+                "definition": "Half the perimeter of the smallest box enclosing a net's pins; the standard placement cost because it is cheap and smooth, and crude because every pin arrangement inside the same box scores identically."
+              },
+              {
+                "term": "RMST and RSMT",
+                "definition": "The rectilinear minimum spanning tree joins a net's pins using only pins as junctions; the Steiner version may add new junction points and is shorter, but computing it is NP-complete."
+              },
+              {
+                "term": "Matrix-tree theorem",
+                "definition": "Kirchhoff's result that the weighted sum over all spanning trees of a graph equals a determinant of its Laplacian with one row and column deleted — how an exponentially large sum becomes one linear-algebra step."
+              },
+              {
+                "term": "Edge marginal",
+                "definition": "The probability that a particular wire appears in a tree drawn from the weighted distribution; it is the coefficient telling the placer how much moving a cell changes expected tree length."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "DiffRMST: A GPU-Accelerated Fully Differentiable Rectilinear Minimum Spanning Tree Wirelength Model for Global Placement",
+                "url": "https://arxiv.org/abs/2610.28246",
+                "publisher": "arXiv",
+                "date": "2026-10-20"
+              },
+              {
+                "title": "DREAMPlace: Deep Learning Toolkit-Enabled GPU Acceleration for Modern VLSI Placement",
+                "url": "https://research.nvidia.com/publication/2020-06_dreamplace-deep-learning-toolkit-enabled-gpu-acceleration-modern-vlsi-placement",
+                "publisher": "NVIDIA Research",
+                "date": "2020-06-22"
+              },
+              {
+                "title": "Initial Detailed Routing Contest at ISPD 2019",
+                "url": "https://ispd.cc/contests/19/",
+                "publisher": "ACM International Symposium on Physical Design",
+                "date": "2019"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-arrival-cube-root-exponent",
+            "title": "ARRIVAL's exponent drops from the square root of n to its cube root",
+            "dek": "Ebrahim Ghorbani, Raul Lopes and Matthias Mnich cut the time needed to decide ARRIVAL — which of two exits a token reaches when every junction it passes flips its switch behind it — from an exponent scaling as √n·log n down to n^(1/3)·log^(2/3) n on an n-vertex network.",
+            "why_it_matters": "ARRIVAL sits in NP ∩ coNP: both answers have short certificates, so it is very unlikely to be NP-hard, and the only open question is whether a polynomial algorithm exists. That makes the exponent the whole scoreboard, and it had not moved since 2021 despite two independent derivations landing on the same √n bound. The improvement comes from a knob nobody had turned — guessing vertices in blocks of k rather than all at once or one at a time — which converts each round into a k-dimensional search.",
+            "background_md": "A rotor-router is the deterministic version of a random walk: instead of choosing an exit at random, each vertex serves its outgoing edges in strict rotation, so a token's whole path is fixed by the starting switch positions. ARRIVAL asks which of two terminals such a token reaches first in a graph where every non-terminal vertex has two out-edges. The problem is easy to verify and hard to solve: a run can take exponentially many steps, so simulation is not an algorithm, yet any answer has a short certificate — a flow on the edges obeying the alternation rule at every vertex.",
+            "deeper_md": "The certificate is a switching flow: a non-negative integer function x on the arcs with x(e₁) = ⌈x⁺(v)/2⌉ and x(e₂) = ⌊x⁺(v)/2⌋ at each vertex, and x⁺(v) = x⁻(v) at every non-terminal. Any real run's arc counts form one, and every switching flow reports the same terminal counts, which is what puts the problem in NP ∩ coNP.\n\nBoth prior algorithms search over how many tokens a chosen set of vertices emits. Gärtner, Haslebacher and Hoang look for a fixed point over all pivot vertices at once; Haslebacher's later recursive framework binary-searches one vertex at a time. Both land at 2^O(√n·log n). The new work takes blocks of k = n^(1/3)/log^(1/3) n vertices and solves each k-dimensional search using ℓ₁-centerpoints — points guaranteed to be 1/(k+1)-deep in any finite set, here computed deterministically from a small sample at (2k·log(N+2))^O(k) per round. The bound covers Multi-Arrival with up to 2ⁿ tokens, and that token cap is the assumption keeping log N at O(n²). It remains subexponential, not polynomial.",
+            "glossary": [
+              {
+                "term": "NP ∩ coNP",
+                "definition": "Decision problems where both a yes and a no answer carry a short checkable certificate; such a problem can only be NP-hard if NP = coNP, so membership is strong evidence it is tractable."
+              },
+              {
+                "term": "Switching flow",
+                "definition": "An arc labelling recording how many times a token would traverse each edge, with every vertex's two out-edges differing by at most one; it certifies ARRIVAL's answer without simulating the walk."
+              },
+              {
+                "term": "ℓ₁-centerpoint",
+                "definition": "A point positioned inside a finite set so that any half-space drawn through it in the ℓ₁ metric still contains a guaranteed fraction — 1/(k+1) in k dimensions — of the set."
+              },
+              {
+                "term": "Subexponential",
+                "definition": "A running time of the form 2^o(n): asymptotically better than brute force but still explosive, so it says the problem is not as hard as it looks rather than that it is solved."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "ARRIVAL in cube-root subexponential time",
+                "url": "https://arxiv.org/abs/2610.28241",
+                "publisher": "arXiv",
+                "date": "2026-10-20"
+              },
+              {
+                "title": "A Subexponential Algorithm for ARRIVAL",
+                "url": "https://arxiv.org/abs/2102.06427",
+                "publisher": "arXiv",
+                "date": "2021-02-12"
+              },
+              {
+                "title": "ARRIVAL: Recursive Framework & ℓ1-Contraction",
+                "url": "https://arxiv.org/abs/2502.06477",
+                "publisher": "arXiv",
+                "date": "2025-02-10"
+              }
+            ]
+          },
+          {
+            "id": "computing-cxl-retained-heap-restore",
+            "title": "Leave the heap in shared memory and a 6 GiB restore takes 0.25 s",
+            "dek": "Haonan Li and three co-authors kept Redis's and Memcached's main heaps in a CXL-attached shared memory region instead of copying them into checkpoint files, and brought combined checkpoint-and-restore time for a 6 GiB dataset down from about 15 seconds to 0.24 seconds under emulation.",
+            "why_it_matters": "Checkpoint and restore of an in-memory service is almost entirely the cost of moving its memory twice, out to an image file and back into fresh pages, and that is what makes migrating a cache a planned outage rather than a scheduling decision. If the bytes never leave a region both machines can map, what is left to serialise is register state, stacks and mapping metadata — small, and roughly independent of dataset size. The measurement does not isolate that claim, though.",
+            "background_md": "Checkpoint/restore in userspace freezes a running process tree and writes its state — registers, stacks, open file descriptors and every anonymous memory page — into image files another machine can read back. For a database or cache holding its working set in RAM, those pages are nearly all of it, so the time scales with the dataset. Compute Express Link changes the premise: a CXL Type 3 device's capacity is mapped into host physical address space through hardware decoders, so the CPU addresses it with ordinary loads and stores, and the same physical bytes can in principle be reachable from more than one host.",
+            "deeper_md": "An LD_PRELOAD shim opens the CXL character device, maps it MAP_SHARED, and registers an aligned window as a mimalloc 2.1.7 arena so application allocations land there; frees are routed by testing whether a pointer falls inside the mapping. A CRIU 3.19 plugin records that mapping as a device mapping — virtual range, backing offset, permissions, sharing attributes — and on restore reopens the device and re-maps it MAP_FIXED at the original virtual address, so raw pointers into the heap stay valid with no translation. Reported combined checkpoint plus restore at a 6 GiB heap: 15.015 s down to 0.242 s for Redis, 19.770 s down to 0.276 s for Memcached, with client-visible GET gaps of 15.540 s against 0.396 s.\n\nThe comparison is confounded, and the authors say so: the baseline uses libc allocation with local ext4 images while the new path uses mimalloc with shared NFS 4.2, so allocator, storage and memory capacity all move at once. Everything runs on two QEMU virtual machines sharing one 8 GiB host-DRAM-backed Type 3 device, which exercises the software path and says nothing about real CXL latency or about surviving power loss. There is no fencing against a second writer, and the panic-triggered path was not measured.",
+            "glossary": [
+              {
+                "term": "CRIU",
+                "definition": "Checkpoint/Restore In Userspace: a Linux tool that freezes a process tree and serialises its registers, mappings and memory pages so another host can resume it. Version 4.3 shipped on 19 October 2026; this work used 3.19."
+              },
+              {
+                "term": "CXL Type 3 device",
+                "definition": "A memory expander on the CXL link whose capacity is mapped into host physical address space by hardware decoders, so the CPU reaches it with loads and stores rather than through a driver."
+              },
+              {
+                "term": "MAP_FIXED",
+                "definition": "The mmap flag demanding a mapping be placed at one exact virtual address; it is what lets a restored process find its old heap where its stored pointers still expect it."
+              },
+              {
+                "term": "Allocator arena",
+                "definition": "A contiguous region handed to a memory allocator up front, from which all later allocations are carved; putting the arena in shared memory is what gets application objects out of the checkpoint."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "CXLResume: Retained-State Checkpoint and Restore for In-Memory Services",
+                "url": "https://arxiv.org/abs/2610.27636",
+                "publisher": "arXiv",
+                "date": "2026-10-20"
+              },
+              {
+                "title": "Compute Express Link driver theory of operation",
+                "url": "https://docs.kernel.org/driver-api/cxl/theory-of-operation.html",
+                "publisher": "The Linux Kernel documentation",
+                "date": "2026"
+              },
+              {
+                "title": "CRIU — Checkpoint/Restore In Userspace",
+                "url": "https://criu.org/Main_Page",
+                "publisher": "CRIU project",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-token-energy-active-bytes",
+            "title": "KV-cache bytes cost half again as much energy as weight bytes",
+            "dek": "Chenxu Niu and three co-authors fitted GPU-board energy per output token on NVIDIA GH200 and GB300 parts to one affine formula — an offset, joules per gigabyte of shared weights read, joules per gigabyte of each request's private key-value cache, and watts times the elapsed time per token — with a worst-case error of 3.73 %.",
+            "why_it_matters": "Separating the two byte terms gives two different levers: the weight term is divided by batch size, so batching is the only thing that touches it, while the key-value term grows with every attended token and cannot be shared between requests at all. The fitted coefficients say the private bytes are the dearer kind, roughly 0.18 joules per gigabyte against 0.12, so a serving policy that doubles context is buying energy at a worse rate than one that doubles batch size.",
+            "background_md": "Generating one token from a transformer means reading every weight the model activates and every cached key and value for the sequence so far, then doing comparatively little arithmetic on them. That makes decoding bandwidth-bound rather than compute-bound, and it means energy per token is mostly the energy of moving bytes out of high-bandwidth memory. The two kinds of bytes behave differently. Weights are identical for every request in a batch and can be read once for all of them, while the key-value cache belongs to one sequence and grows by one entry per token generated.",
+            "deeper_md": "The form is e = c + α·q_w + β·q_KV + P_τ·τ, where q_w is the dense weight footprint divided by useful outputs per iteration, q_KV is bytes per cached token times the mean attended history plus one, and τ is decode seconds per token. Fitted on a GH200 (700 W cap, 144 GB HBM3e) and a GB300 (1,300 W cap) across Qwen2.5-7B, Qwen2.5-14B and Mistral-7B in BF16: α lands at 0.117–0.120 J/GB everywhere, β at 0.180–0.193 J/GB, and P_τ at 138–140 W on Hopper against 199–201 W on Blackwell. Held-out condition-mean error peaks at 3.73 % across 270 static-batch runs. The ablations are what make the case: active bytes alone reach 28–35 % error, time alone 11–29 %, both together stay under 2.2 %.\n\nThe measured trends match the terms. Qwen2.5-7B at batch 12 on the GH200 goes from about 0.323 J/token at a 6,144-token history to 0.638 at 14,336, and the largest batch tested is 33.2–46.8 % cheaper per token than the smallest at matched history. Caveats: GPU board only, no host CPU and no idle subtraction; dense full-history BF16 decode with prefix caching, speculative decoding and chunked prefill all disabled; and prediction needs a separate validated duration model, because the fit uses observed decode time rather than predicting it.",
+            "glossary": [
+              {
+                "term": "KV cache",
+                "definition": "The stored key and value vectors for every token already in a sequence; attention re-reads all of them for each new token, so it grows linearly with context and belongs to one request alone."
+              },
+              {
+                "term": "J/GB (joules per gigabyte)",
+                "definition": "Energy per gigabyte of logical byte demand. Here it is a fitted response that bundles memory reads, interconnect and the compute they feed, not a metered memory-subsystem figure."
+              },
+              {
+                "term": "Affine model",
+                "definition": "A fit that is linear in its inputs plus a constant offset, which is what lets each term be read as an independent cost per unit and the weight and cache terms be compared directly."
+              },
+              {
+                "term": "Prefill vs decode",
+                "definition": "Prefill processes a whole prompt in parallel and is compute-bound; decode emits one token at a time, re-reading weights and cache, and is bandwidth-bound. This work models decode only."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "The Token-Energy Law of LLM Decode: Active Bytes and Realized Time Account for Joules per Token",
+                "url": "https://arxiv.org/abs/2610.28576",
+                "publisher": "arXiv",
+                "date": "2026-10-20"
+              },
+              {
+                "title": "Efficient Memory Management for Large Language Model Serving with PagedAttention",
+                "url": "https://arxiv.org/abs/2309.06180",
+                "publisher": "arXiv (SOSP 2023)",
+                "date": "2023-09-12"
+              },
+              {
+                "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+                "url": "https://arxiv.org/abs/2205.14135",
+                "publisher": "arXiv",
+                "date": "2022-05-27"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "PLLs and clock distribution",
+    "slug": "pll-and-clock-distribution",
+    "subtitle": "Making one clean clock out of a slow reference, then delivering it to a million flip-flops with less mismatch than the clock's own jitter.",
+    "tldr": "Almost no digital chip runs on the clock it receives. A cheap, accurate reference arrives at some tens of megahertz and a feedback loop on the die multiplies it up to the gigahertz the logic wants. That edge then has to reach every register at nearly the same instant, which takes a tree of buffers whose only job is to be deliberately balanced. Both halves fail in the same currency: picoseconds taken away from the time the logic had to compute.",
+    "sections": [
+      {
+        "heading": "Why no chip runs on the clock it receives",
+        "body_md": "Start from the numbers in a real synthesizer. The 65 nm integer-N design published by Mandal, Maj and Deptuch takes a reference of 10 to 50 MHz and produces two independent outputs anywhere from 30 MHz to 3 GHz. That ratio — a reference two orders of magnitude below the output — is the standing shape of on-chip clocking, and it exists because the reference and the clock are asked for different things. The reference has to be accurate and stable across temperature, which is what an off-chip crystal or oscillator module is for, and those are not sold at gigahertz. The clock has to be fast and has to exist inside the die.\n\nSo the chip makes its own and ties it to the reference. SkyWater's open Caravel harness documents the plainest version: the external clock arrives on pin C9, the processor boots running directly from it, and firmware can then switch the core either onto a PLL that multiplies that pin by a feedback divider, or onto a trimmed free-running ring oscillator with no reference behind it at all."
+      },
+      {
+        "heading": "The loop, and the one number that sets its character",
+        "body_md": "A phase-locked loop is a negative-feedback system whose error signal is a *time*, not a voltage. A phase-frequency detector compares the reference edge against the edge coming back from a divider and emits up or down pulses in proportion to how early or late it was. A charge pump turns those pulses into packets of current — 10 µA in the design above — which a loop filter integrates onto a capacitor. That voltage tunes an oscillator whose gain is about 0.6 GHz per volt. The divider closes the loop, and in lock the only self-consistent state is that the divided output edge coincides with the reference edge, so the output frequency becomes the reference times the divide ratio. Nothing in that chain ever measures a frequency; it measures phase, and frequency equality is a consequence.\n\nThe number that decides how the loop behaves is its bandwidth: 230 kHz against a 50 MHz reference in that design, about half a percent of it. Almost everything the loop does well or badly is a statement about where that corner sits.",
+        "deeper_md": "Why the corner has to sit so far below the reference: the phase detector produces information only once per reference cycle, so the loop is a sampled system, and a corrector cannot usefully react faster than it is told anything. Push the bandwidth toward the sampling rate and phase margin disappears; the loop rings, then oscillates. Note also that the published loop filter is a second-order passive RC network optimised jointly for that 50 MHz reference and that 10 µA pump current. That is the honest way to describe the dependency — loop bandwidth is not a free dial but the outcome of pump current, oscillator gain (0.6 GHz/V here), the filter components and the divide ratio together. Change the divide ratio and you have changed the loop gain, which is why a synthesizer that is stable at one output frequency can be marginal at another."
+      },
+      {
+        "heading": "Jitter is the output spec, and it has five definitions",
+        "body_md": "What a clock is actually judged on is jitter, and the word covers at least five distinct measurements. SiTime's application note separates them: period jitter is the spread of a single cycle's length about the ideal; cycle-to-cycle jitter is the change from one cycle to the next, with no ideal-period reference at all; long-term or accumulated jitter is how far an edge has wandered after many cycles; phase jitter is phase noise integrated over a stated band and expressed in seconds; and time interval error is the per-edge deviation from the ideal grid. They are not interchangeable, and a part that looks excellent on one can be unusable on another.\n\nThe band matters as much as the number. SONET OC-48 integrates 12 kHz to 20 MHz, Fibre Channel 637 kHz to 10 MHz, 10-gigabit XAUI from 1.875 MHz to 20 MHz. A jitter figure quoted without its band is not a measurement. Converting RMS to peak-to-peak is likewise a statistical choice, not a fact: the note uses ±3.719 × RMS for a 10,000-sample population, so 3 ps RMS is quoted as ±11.16 ps.",
+        "deeper_md": "Measured output jitter in that 65 nm synthesizer is about 700 fs RMS at 1.92 GHz, and how the authors get there is the lesson. The oscilloscope read roughly 880 fs of TIE standard deviation and its own noise floor is 540 fs, so the published number is what is left after removing the instrument in quadrature. Their simulation predicted 560 fs of random jitter plus 3.13 ps of deterministic jitter at a 40 MHz reference — deterministic jitter being periodic, usually traceable to reference feedthrough or charge-pump current mismatch, and therefore not reducible by averaging more cycles. Simulated VCO phase noise was about −110 dBc/Hz at 1 MHz offset. Worth noticing against the previous paragraph: the paper does not state an integration band for its jitter figures, which makes them hard to compare against anyone else's."
+      },
+      {
+        "heading": "One corner, two opposite transfer functions",
+        "body_md": "Here is the part that makes loop bandwidth a design decision rather than a number to maximise. The oscillator sits *inside* the feedback loop, so its own phase wander is an error the loop can see and correct — but only within the band where the loop still has gain. Below that corner, oscillator noise is suppressed; above it, the loop is too slow to notice and the oscillator's noise passes straight through to the output. The reference and the phase detector are the other way round: their noise is precisely what the loop has been told to follow, so it is tracked faithfully inside the bandwidth and filtered away outside it.\n\nThat is why there is no universally correct answer. Widen the loop and you clean up a noisy ring oscillator, at the cost of letting reference and detector noise through. Narrow it and you keep the reference's junk out, at the cost of living with whatever your oscillator does unaided. Perrott's lecture 16 in MIT's 6.976 derives both curves properly; lecture 11 covers the oscillator they apply to."
+      },
+      {
+        "heading": "Then you still have to deliver it",
+        "body_md": "A generated clock is worthless until every flip-flop sees it, and delivery is the mirror image of generation: generation fights noise in frequency, delivery fights mismatch in space. Two registers at opposite corners of a die are reached through different lengths of resistive metal driving different loads, and the difference in arrival time — skew — comes straight out of the time the logic between them had to settle. Skew in one direction eats setup margin; in the other it eats hold margin, and hold failures cannot be fixed by slowing the clock down.\n\nThe answer is a tree built to be balanced rather than short. OpenROAD's TritonCTS exposes the moving parts: `clock_tree_synthesis` takes candidate buffers with `-buf_list`, a root buffer with `-root_buf`, a wire RC model established beforehand with `set_wire_rc`, and limits on how far apart buffers may sit via `-distance_between_buffers`. Sinks are grouped by a CKMeans clustering pass, each cluster gets its own driving buffer, and an H-tree is built above them.",
+        "deeper_md": "The knobs are worth reading because they show where the tool's judgement ends and yours begins. `-sink_clustering_size` and `-sink_clustering_max_diameter` (in microns) set hard cluster limits; omit them and the tool derives limits from a capacitance budget — ten times the sink buffer's input capacitance — bounded by an internal cap of 30 or the buffer's maximum fanout. `-clustering_exponent` defaults to 4 and `-clustering_unbalance_ratio` to 0.6, so no cluster may absorb more than 60 % of capacity. Characterisation runs on the fly, sweeping slew in 12 steps and capacitance in 34 by default, with the maxima taken from the Liberty values of the buffers you listed. Macros get a separate tree with a 4-sink, 50 µm default. Then `report_cts` tells you how many buffers were inserted, how many clock subnets exist and how many sinks were reached — and notably *not* the skew, which comes from timing analysis afterwards rather than from the clock-tree tool."
+      },
+      {
+        "heading": "Where the picoseconds actually go",
+        "body_md": "Put both halves in the same units and the budget becomes arithmetic. A 1.92 GHz output has a period of about 521 ps, and that synthesizer's 700 fs RMS of jitter is roughly one part in 700 of a cycle. That sounds like nothing until you count what else is spending the same 521 ps: the clock tree's skew between the launching and capturing registers, the setup time of the capturing flip-flop, the clock-to-output delay of the launching one, and the propagation delay of the logic in between. Four of those five come out of the period and only the last does any useful work.\n\nSiTime's note gives the failure shape directly. A 1.5 ns period excursion against a 1 ns setup requirement is a violation; the same excursion with the opposite sign against a 2 ns hold requirement leaves 0.5 ns of hold margin. And since the excursion that breaks you is a tail event, convert RMS to peak-to-peak with their ±3.719 × factor before you believe a margin — it is the tail, not the RMS, that has to fit."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "PLL (phase-locked loop)",
+        "definition": "A feedback loop that drives the phase error between a reference edge and a divided-down copy of its own output toward zero. Because phase equality forces frequency equality, the output settles at the reference times the divide ratio."
+      },
+      {
+        "term": "Charge pump",
+        "definition": "The circuit converting a phase detector's up/down pulses into packets of current — 10 µA in the design cited here — so a capacitor can integrate phase error into a tuning voltage. Mismatch between its up and down currents is a classic source of periodic, non-averageable jitter."
+      },
+      {
+        "term": "K_VCO",
+        "definition": "The oscillator's tuning gain in hertz per volt, about 0.6 GHz/V in the cited 65 nm design. It multiplies both the control signal and any noise riding on the control line, which is why a wide-tuning-range oscillator tends to be a noisy one."
+      },
+      {
+        "term": "Loop bandwidth",
+        "definition": "The frequency corner of the closed loop: 230 kHz against a 50 MHz reference in the cited design. Below it the loop corrects oscillator noise and tracks reference noise; above it, the reverse."
+      },
+      {
+        "term": "Phase noise vs jitter",
+        "definition": "Two views of one thing. Phase noise is the power spectral density of phase fluctuation, in dBc/Hz at an offset from the carrier; jitter is that spectrum integrated over a stated band and expressed in seconds. A jitter number without its band is not comparable to anyone else's."
+      },
+      {
+        "term": "TIE (time interval error)",
+        "definition": "The deviation of each clock edge from where an ideal grid says it should be. It is the time-domain counterpart of phase noise, and it is what an oscilloscope actually records."
+      },
+      {
+        "term": "Clock skew",
+        "definition": "The difference in arrival time of the same clock edge at two different registers. It is static mismatch rather than noise, it subtracts directly from the cycle time available to logic, and in one direction it attacks hold margin — which slowing the clock cannot repair."
+      },
+      {
+        "term": "Insertion delay",
+        "definition": "Total latency from the clock root to a sink through the synthesised tree. TritonCTS can be told to ignore sink insertion delay while balancing, with `-no_insertion_delay`."
+      },
+      {
+        "term": "fs and ps",
+        "definition": "Femtoseconds (10⁻¹⁵ s) and picoseconds (10⁻¹² s). A 1.92 GHz clock has a 521 ps period, so 700 fs of jitter is about one part in 700 of one cycle."
+      }
+    ],
+    "try_this": "Take any SKY130 design you already have in an OpenROAD flow and run `clock_tree_synthesis` twice — once with `-sink_clustering_size 10`, once with 30 — then diff what `report_cts` says about buffer and subnet counts against the setup and hold slack in the timing report that follows. Work out which of the two numbers you just moved is skew and which is insertion delay, then read lecture 16 of MIT 6.976 and check that your explanation of the second one is about the tree rather than about the loop.",
+    "sources": [
+      {
+        "title": "An Integer-N Frequency Synthesizer for Flexible On-Chip Clock Generation",
+        "url": "https://arxiv.org/abs/2411.01552",
+        "publisher": "arXiv",
+        "date": "2024-11-03"
+      },
+      {
+        "title": "6.976 High Speed Communication Circuits and Systems — lecture notes",
+        "url": "https://ocw.mit.edu/courses/6-976-high-speed-communication-circuits-and-systems-spring-2003/pages/lecture-notes/",
+        "publisher": "MIT OpenCourseWare (Michael Perrott)",
+        "date": "2003"
+      },
+      {
+        "title": "AN10007 — Clock Jitter Definitions and Measurement Methods",
+        "url": "https://www.sitime.com/support/resource-library/application-notes/an10007-clock-jitter-definitions-and-measurement-methods",
+        "publisher": "SiTime",
+        "date": "2026"
+      },
+      {
+        "title": "TritonCTS 2.0 — clock tree synthesis in OpenROAD",
+        "url": "https://openroad.readthedocs.io/en/latest/main/src/cts/README.html",
+        "publisher": "The OpenROAD Project",
+        "date": "2026"
+      },
+      {
+        "title": "Efabless Caravel harness SoC — external clock",
+        "url": "https://caravel-harness.readthedocs.io/en/latest/external-clock.html",
+        "publisher": "Efabless Caravel documentation",
+        "date": "2026"
+      }
+    ]
+  }
+}

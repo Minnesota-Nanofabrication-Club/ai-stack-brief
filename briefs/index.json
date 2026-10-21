@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-10-21",
+      "foundations_slug": "pll-and-clock-distribution",
+      "foundations_topic": "PLLs and clock distribution",
+      "headline": "A fifteen-author collaboration led by Tao Yang runs the first 4H silicon-carbide AC-LGAD, pulling about 10 µm of position and 20 ps of timing out of readout pads spaced 500 µm apart, with the gain layer sitting near 4 MV/cm.",
+      "item_count": 7,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-10-20",
       "foundations_slug": "dmd-micromirror-devices",
       "foundations_topic": "Digital micromirror devices",
@@ -681,6 +694,6 @@
       ]
     }
   ],
-  "generated_at": "2026-10-20T13:18:51Z",
-  "latest": "2026-10-20"
+  "generated_at": "2026-10-21T13:37:41Z",
+  "latest": "2026-10-21"
 }

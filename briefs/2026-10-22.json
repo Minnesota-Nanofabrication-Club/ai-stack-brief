@@ -1,0 +1,489 @@
+{
+  "date": "2026-10-22",
+  "generated_at": "2026-10-22T14:45:00Z",
+  "window": "2026-10-21..2026-10-22",
+  "headline": "Micron's chief technology officer told a webinar on Wednesday that the 4F² DRAM cell buys nothing over the 6F² one — capacitor pitch is what defines a DRAM — and put 3D DRAM two nodes out, between the 1ζ and 1η generations.",
+  "pulse": {
+    "read_time_min": 7,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-dry-resist-hbm-volume",
+            "title": "Lam says its dry EUV resist is now running in HBM volume production",
+            "dek": "Lam Research said in Wednesday's earnings call that Aether, its vapour-deposited photoresist — a light-sensitive film grown on the wafer inside a vacuum chamber instead of spun on as a liquid — is ramping in high-volume production of the DRAM that goes into high-bandwidth memory stacks.",
+            "why_it_matters": "Wet development ends with a rinse and a dry, and the surface tension of the retreating liquid pulls tall, narrow features over; that capillary collapse is the reason exposure layers have been held to thin films, which intercept few of the photons passing through them. Take the liquid step away and the force goes with it, so how thick — and therefore how absorbing — a patterning film may be stops being a mechanical question.",
+            "background_md": "Every pattern on a chip begins as a thin film that changes solubility where light strikes it. For decades that film has been applied one way: resist dissolved in solvent, spun out to a few tens of nanometres by centrifugal force, baked, exposed, then flooded with liquid developer and rinsed away. Two things fight each other in that scheme. A thicker film absorbs more of the exposing light, which is what a scarce supply of extreme-ultraviolet photons needs; but a thicker film also means taller, more slender resist features, and a liquid rinse pulls those over.",
+            "deeper_md": "Lam's own account of the mechanism is the part worth reading. The film is grown from the vapour phase under vacuum rather than spun on at atmospheric pressure, out of molecules the company puts at roughly 2.5 Å across, which is the basis for its uniformity claim. A conventional chemically amplified resist works the other way: exposure creates a small quantity of acid, and a post-exposure bake lets each acid molecule drive many deprotection events, which is where its sensitivity comes from. Lam argues the dry film is intrinsically more sensitive to 13.5 nm photons, so scanner dose falls without that chemical gain stage, and that the matching dry development step in its GDX module is \"pattern-collapse-free\" — which is what permits a film thick enough to hold the high-aspect-ratio features vertical memory needs.\n\nEvery figure here is Lam's. Tim Archer's two claims on the call — \"sub-10 nanometer resolution at the highest pattern density\", and a ramp \"in HBM high volume manufacturing with Low-NA EUV\" — name no customer, no pitch, no defect density and no CD uniformity, and Lam sells both the deposition and the development tool. Dylan Patel's 2020 read made the opposite economic bet: the chemical and power savings are \"far outweighed\" by the capital intensity of the new tools, and memory makers would move only once throughput justified it.",
+            "glossary": [
+              {
+                "term": "Chemically amplified resist (CAR)",
+                "definition": "The incumbent resist chemistry: exposure liberates a trace of acid, and a bake lets each acid molecule catalyse many solubility-switching reactions, so a thin film can pattern at a modest dose."
+              },
+              {
+                "term": "Low-NA EUV (0.33 NA)",
+                "definition": "The current generation of 13.5 nm exposure tools, whose 0.33 numerical aperture sets the finest pitch they can resolve; the next generation raises it to 0.55 and halves the printed field."
+              },
+              {
+                "term": "Å (ångström)",
+                "definition": "One tenth of a nanometre. Lam's quoted 2.5 Å precursor molecule is about the span of two bonded atoms, which is the basis of its claim to a smoother film than a dissolved polymer gives."
+              },
+              {
+                "term": "Process of record (POR)",
+                "definition": "The exact tool and recipe a fab has qualified for one production layer. Becoming the POR is the commercial event for an equipment vendor, because changing it afterwards means requalifying the layer."
+              }
+            ],
+            "fab_angle": "The collapse mechanism is visible on club equipment. Spun resist thickness goes roughly as the inverse square root of spin speed, so thinning the film to hold aspect ratio down is a one-knob change; the failure it is dodging happens in the develop–rinse–dry step, where the retreating liquid loads the top of every line. Print a line array at two or three aspect ratios and the collapse threshold appears as a clean boundary across the array — the same boundary a dry develop step is sold to remove.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "What Is Dry Resist?",
+                "url": "https://newsroom.lamresearch.com/what-is-dry-resist-semi-101?blog=true",
+                "publisher": "Lam Research (technical explainer)",
+                "date": "2026-06-18"
+              },
+              {
+                "title": "Earnings call transcript: Lam Research, September-quarter results",
+                "url": "https://ca.investing.com/news/stock-market-news/earnings-call-transcript-lam-research-tops-q1-2026-estimates-shares-fall-93CH-4894811",
+                "publisher": "Investing.com — transcript of Lam Research's 21 October 2026 call",
+                "date": "2026-10-21"
+              },
+              {
+                "title": "Lam Exec Explains How Dry Resist Technology Unlocks AI-Era Memory Scaling",
+                "url": "https://newsroom.lamresearch.com/aether-dry-resist-ai-memory-scaling?blog=true",
+                "publisher": "Lam Research (Rich Wise, VP Patterning Technology)",
+                "date": "2026-02-11"
+              },
+              {
+                "title": "Lam Research (LRCX): Dry Deposit and Resist Could Become a Multi-Billion Dollar Business",
+                "url": "https://newsletter.semianalysis.com/p/lam-research-lrcx-dry-deposit-and",
+                "publisher": "SemiAnalysis (Dylan Patel)",
+                "date": "2020-05-22"
+              },
+              {
+                "title": "Lam Research unveils technology breakthrough for EUV lithography",
+                "url": "https://www.imec-int.com/en/articles/lam-research-unveils-technology-breakthrough-for-euv-lithography",
+                "publisher": "imec",
+                "date": "2020-02-27"
+              }
+            ]
+          },
+          {
+            "id": "silicon-fdtd-sensitivity-truncation",
+            "title": "An FDTD run long enough for S-parameters is too short for the gradients",
+            "dek": "Byungkwan Kim of Chungnam National University shows that in a finite-difference time-domain electromagnetic simulation — the workhorse for designing microwave filters, cavities and antennas — the derivative of a scattering parameter with respect to a design dimension converges about 1.44 times later in simulated time than the scattering parameter itself.",
+            "why_it_matters": "Optimisers and tolerance studies run on those derivatives, while the usual stopping rules watch the response: on one cavity a −30 dB stored-energy criterion left the reflection magnitude within 0.5 dB of a 1.3 dB dip and the sensitivity was 72 percent wrong. Automatic differentiation, a discrete adjoint and a finite difference taken on the same truncated run all inherit the identical error, so agreement between them establishes nothing.",
+            "background_md": "A full-wave electromagnetic solver steps Maxwell's equations forward on a grid, records voltage and current at each port, and Fourier-transforms those time records into scattering parameters — the complex ratios saying how much of an incident wave a structure reflects and transmits. The run has to stop somewhere, and whatever energy is still ringing inside the structure at that moment is simply absent from the transform. A resonator rings for a time set by its quality factor, so the higher the Q, the longer the record has to be before the spectrum can be trusted.",
+            "deeper_md": "The arithmetic is the whole paper. At resonance the S-parameter's truncation error falls as e^(−T/τ), where τ is the field decay time and T the run length, but the sensitivity's falls as (1 + T/τ)e^(−T/τ) — the extra algebraic factor comes from differentiating a pole position, which turns the truncated tail into a term that grows linearly in T before the exponential kills it. One percent on the S-parameter needs about 4.6τ; one percent on its derivative needs 6.64τ.\n\nTested across three solvers — rfx, Meep and openEMS — the single-mode estimate predicted simulated error to within a ratio of 0.98–1.04 at cavity resonances with loaded Q between roughly 1,000 and 7,000. A matrix-pencil extrapolation of the late-time field record recovered 1 percent sensitivity from a run about 66 times shorter on the Q_L = 5,025 cavity. In a two-pole filter loop, optimising on a 1τ run over-couples by Δk ≈ 1.24/Q.\n\nKim states the limits himself: the estimate is quantitative only where one mode dominates, and at low Q measured errors ran 7–69 percent above it; τ has to be extracted from the design run rather than a reference run; and the extrapolation needs wire-port voltage and current, so microstrip ports are out of scope.",
+            "glossary": [
+              {
+                "term": "S-parameters",
+                "definition": "The frequency-domain ratios between waves leaving and entering a structure's ports. S11 is the reflection at port one, and it is the quantity a filter or antenna is specified on."
+              },
+              {
+                "term": "τ (field decay time)",
+                "definition": "The exponential time constant of a resonator's ring-down after the source stops. It rises with loaded Q, and it is what sets how long a time-domain simulation must run."
+              },
+              {
+                "term": "Adjoint method",
+                "definition": "A way to get the derivative of one output with respect to many design parameters from a single extra solve, by propagating the output's sensitivity backwards through the simulation."
+              },
+              {
+                "term": "Matrix-pencil extrapolation",
+                "definition": "Fitting the late part of a recorded time signal to a sum of decaying complex exponentials, so the remaining ring-down is continued analytically instead of being simulated."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Delayed Convergence of S-Parameter Sensitivities to Design Parameters in FDTD Simulations",
+                "url": "https://arxiv.org/abs/2610.28496",
+                "publisher": "arXiv (Byungkwan Kim) — submitted to IEEE Trans. Microwave Theory and Techniques",
+                "date": "2026-10-20"
+              },
+              {
+                "title": "Meep tutorial: Harminv, resonant modes and quality factors from a finite time series",
+                "url": "https://meep.readthedocs.io/en/latest/Python_Tutorials/Basics/",
+                "publisher": "Meep documentation (MIT)",
+                "date": "2026"
+              },
+              {
+                "title": "Forward-Mode Differentiation of Maxwell's Equations",
+                "url": "https://arxiv.org/abs/1908.10507",
+                "publisher": "arXiv / ACS Photonics (Hughes, Williamson, Minkov, Fan)",
+                "date": "2019-08-28"
+              }
+            ]
+          },
+          {
+            "id": "silicon-lcmut-overdamped-bandwidth",
+            "title": "A MEMS ultrasound transmitter is broadband because its air gaps throttle it",
+            "dek": "Anton Melnikov and colleagues mapped the sound field of a micromachined ultrasound transmitter whose 970 µm silicon beams move sideways in air instead of flexing like a drumhead, and traced its flat 10-to-60 kHz response to viscous loss in the gaps between beam and stator rather than to anything in the silicon.",
+            "why_it_matters": "A resonant transducer is efficient at one frequency and useless either side of it, which is why a ranging or imaging sensor usually wants the opposite of a high quality factor. Here the loss that micromechanical designers normally engineer away — air forced through a gap narrow enough that viscosity beats inertia — is what flattens the band, and the measurements say the knob for it is gap geometry rather than the beam's stiffness or mass.",
+            "background_md": "Sound is made in a micromachined transducer by moving a membrane or a beam, and the air immediately around it does not simply get out of the way. In a gap a few micrometres wide, the air's viscosity and its thermal exchange with the walls both matter, because the boundary layers those effects live in are themselves micrometres thick at tens of kilohertz. Pushing air through such a gap costs work, and the work shows up as damping: quality factor drops, the resonance flattens, and usable bandwidth widens at the expense of peak output.",
+            "deeper_md": "The device is 258 electrostatic actuators of 0.188 pF each, beams 970 µm long and 75 µm tall, 48.5 pF total at zero bias rising to 50.2 pF at the 30 V operating bias, with pull-in at 56.6 V and about 1.8 µm of centre deflection there. Bias softens the structure measurably: the mechanical eigenfrequency sits at 51.8 kHz unbiased and 49.4 kHz at 30 V. Centre displacement runs about 190 nm at 10 kHz down to about 60 nm at 60 kHz, and no resonance peak appears anywhere in between — internal levels reach roughly 130 dB at 10 kHz and 135 dB at 30 kHz, with gap flow approaching 0.5 m/s above 30 kHz.\n\nFor contrast, a perforated out-of-plane CMUT array with a 2 µm gap measures Q from 2.44 to 41.75 depending only on how many etch holes each cell has, which is the same lever by a different route.\n\nTwo caveats the authors raise. The model assumes no slip at the walls even though the Knudsen number exceeds 0.01 below about 6.5 µm, so damping may be overestimated in the narrowest regions; and a radiated-power notch measured at 26.7 kHz is not reproduced by the single-cell, half-symmetry model and remains unexplained.",
+            "glossary": [
+              {
+                "term": "CMUT",
+                "definition": "A capacitive micromachined ultrasonic transducer: a silicon element driven by electrostatic force across a narrow gap. In the lateral variant here the element travels in the wafer plane rather than out of it."
+              },
+              {
+                "term": "Quality factor (Q)",
+                "definition": "Energy stored divided by energy lost per cycle. Ring-down time and the narrowness of the frequency response both scale with it, so low Q and wide bandwidth are one statement."
+              },
+              {
+                "term": "Pull-in voltage",
+                "definition": "The bias at which electrostatic attraction across a gap grows faster with deflection than the restoring spring force, so the gap collapses irreversibly; 56.6 V in this device."
+              },
+              {
+                "term": "Knudsen number (Kn)",
+                "definition": "Gas mean free path divided by gap width. Above roughly 0.01 the gas stops acting as a continuum stuck to the wall, and a no-slip model overstates the drag."
+              }
+            ],
+            "fab_angle": "The dimension that decides what this transducer is came out of an etch, not out of a layout. Its band is set by the beam-to-stator gap width, and the authors flag that below about 6.5 µm the gas stops behaving as a continuum — so a few hundred nanometres of etch bias moves the damping model as well as the damping. Anyone building a MEMS resonator in a teaching cleanroom should expect gap tolerance, not beam dimensions, to dominate the spread between dies.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Comprehensive Acoustic Characterization of a Broadband Lateral MEMS Ultrasonic Transducer by Near-Field Acoustic Holography and Coupled Multiphysics Simulation",
+                "url": "https://arxiv.org/abs/2610.28868",
+                "publisher": "arXiv (Melnikov, Alexander, Meisel, Monsalve)",
+                "date": "2026-10-20"
+              },
+              {
+                "title": "Design and Fabrication of Multi-Frequency and Low-Quality-Factor Capacitive Micromachined Ultrasonic Transducers",
+                "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12299860/",
+                "publisher": "Micromachines 16(7):797 (Moshrefi, Ali, Gratuze, Nabki)",
+                "date": "2025-07-08"
+              },
+              {
+                "title": "Thermoviscous Boundary Layer Impedance — Acoustics Module User's Guide",
+                "url": "https://doc.comsol.com/6.3/doc/com.comsol.help.aco/aco_ug_pressure.05.032.html",
+                "publisher": "COMSOL",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-micron-4f2-capacitor-pitch",
+            "title": "Micron's CTO calls the 4F² DRAM cell a myth, and names capacitor pitch",
+            "dek": "At a technology webinar on Wednesday, Micron's chief technology and products officer Scott DeBoer said the company will keep its 6F² DRAM cell and will not adopt the smaller 4F² layout that China's CXMT has been pursuing, after evaluating it for more than two decades.",
+            "why_it_matters": "The two layouts differ in how the access transistor sits — flat beside its storage capacitor, or stood on end beneath it — and standing it up is considerably harder to build, so the trade only pays if cell footprint is the binding limit. DeBoer's argument is that it is not: capacitor pitch is what defines a DRAM, and that pitch is set by how fine a deep hole etch and deposition can make while still filling it.",
+            "background_md": "DRAM stores one bit as charge on a capacitor, guarded by one access transistor. Cell area is quoted in units of F², where F is the smallest feature the process can print, so a 6F² cell occupies six of those squares and a 4F² cell four. Reaching four means turning the transistor's channel vertical, so the bitline can run beneath the cell instead of beside it. The capacitor is the awkward half either way: a hole tens of times deeper than it is wide, lined with dielectric, holding charge that must survive until the next refresh.",
+            "deeper_md": "DeBoer's phrasing was blunt — \"it's a bit of a myth that 4F² actually provides anything versus 6F²\", and \"it's capacitor pitch that defines the DRAM\" — and he noted Micron invented 4F² DRAM and spent two decades deciding against it on complexity and cost. The roadmap behind the claim: 1γ is in high-volume manufacturing now; 1δ ramps in the second half of 2027 for \"mid-20s percentage bit density improvement\" and carries DDR6, LPDDR6, HBM5 and vertical HBM; 1ε \"leverages wafer bonding\"; 1ζ and 1η bring in high-NA EUV and new materials, with Micron saying it is driving a high-NA EUV roadmap for DRAM at Albany. 3D DRAM sits between those last two, developed in parallel with planar. G11 NAND, also second half of 2027, is wafer-on-wafer bonded at more than 400 layers for twice Gen9's bit density.\n\nSomebody disagrees, and with silicon. Yu Liu and 21 co-authors reported a 2F² flipped vertical-channel cell in September — this brief covered it on 15 September — claiming 50 percent less area, 27.5 percent less parasitic load and 11 percent better sense margin against a 4F² vertical-channel baseline at equal mat size. These are roadmap statements on a corporate webinar rather than commitments in a filing, and the cost models behind \"myth\" are not public.",
+            "glossary": [
+              {
+                "term": "F and F²",
+                "definition": "F is the minimum half-pitch a process can print. Quoting cell area in F² separates how efficiently a layout uses area from the lithography generation it happens to be printed at."
+              },
+              {
+                "term": "Vertical channel transistor (VCT)",
+                "definition": "An access transistor whose channel runs perpendicular to the wafer surface, letting the bitline pass under the cell. It is what a 4F² DRAM layout requires, and what makes it hard."
+              },
+              {
+                "term": "1γ / 1δ / 1ε",
+                "definition": "Micron's labels for successive planar DRAM generations. The Greek letter encodes no dimension, so the only comparable number is the bit-density gain each one claims — mid-20s percent for 1δ."
+              },
+              {
+                "term": "Sense margin",
+                "definition": "The voltage a sense amplifier sees once the cell's charge is shared onto the bitline. It shrinks as cell capacitance falls and bitline capacitance rises, and it bounds the refresh interval."
+              }
+            ],
+            "fab_angle": "If capacitor pitch is what sets DRAM density, a roadmap that deliberately leaves the cell architecture alone hands the whole burden to high-aspect-ratio etch, the atomic-layer deposition that lines the hole, and the metrology that has to measure the bottom of it. Micron's own answers two nodes out are wafer bonding at 1ε and high-NA EUV development at Albany — both equipment problems rather than layout problems.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Micron to Host Technology Webinar on Oct. 21",
+                "url": "https://investors.micron.com/news/press-release/2026/Micron-to-Host-Technology-Webinar-on-Oct--21/default.aspx",
+                "publisher": "Micron Technology Investor Relations (event notice and webcast replay)",
+                "date": "2026-10-19"
+              },
+              {
+                "title": "Micron Technology investor update — technology webinar transcript",
+                "url": "https://stockanalysis.com/stocks/mu/transcripts/775493-investor-update/",
+                "publisher": "StockAnalysis — transcript of Micron's 21 October 2026 webinar",
+                "date": "2026-10-21"
+              },
+              {
+                "title": "Technology and products leadership — webinar slide deck",
+                "url": "https://s25.q4cdn.com/621799436/files/doc_downloads/2026/10/MU-TP-Webinar.pdf",
+                "publisher": "Micron Technology (33-slide deck, posted to its IR CDN)",
+                "date": "2026-10-21"
+              },
+              {
+                "title": "First Demonstration of Flip DRAM: 2F2 Self-aligned Flip Vertical Channel Transistor DRAM and Flip WL 3D-DRAM",
+                "url": "https://arxiv.org/abs/2609.14464",
+                "publisher": "arXiv (Yu Liu and 21 co-authors)",
+                "date": "2026-09-13"
+              },
+              {
+                "title": "Micron Reportedly Rules Out 4F² DRAM Scaling, Backs 6F² and 3D DRAM in Next-Gen Memory Roadmap",
+                "url": "https://www.trendforce.com/news/2026/10/22/news-micron-reportedly-rules-out-4f%C2%B2-dram-scaling-backs-6f%C2%B2-and-3d-dram-in-next-gen-memory-roadmap/",
+                "publisher": "TrendForce",
+                "date": "2026-10-22"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-regular-syndrome-decoding-bits",
+            "title": "A sharper algebraic attack drops regular syndrome decoding below target",
+            "dek": "Jiseung Kim, Minkyu Kim, Changmin Lee and Hochang Lee report an attack on regular syndrome decoding — the coding problem whose hardness underwrites the fast correlated-randomness generators inside secure-computation libraries — that puts deployed 128-bit parameter sets well under their claimed security.",
+            "why_it_matters": "The whole appeal of forcing exactly one nonzero entry into each block of the error vector is speed, because it makes the seed cheap to expand. That same structure is what the attack feeds on, since each block becomes a quadratic equation a solver can exploit, and the refined estimates leave at least one parameter choice in Ferret, Wolverine and committed VOLE short of 128 bits — one Wolverine set at 82.78. Parameters, not protocols, are what has to change.",
+            "background_md": "Secure two-party computation consumes enormous quantities of correlated randomness — value pairs that are random individually but linked in a fixed way — and shipping it is the expensive part. A pseudorandom correlation generator replaces the transfer with a short seed each side expands locally, and its security rests on a decoding problem: given a parity-check matrix and a syndrome, recover a sparse error vector. The regular variant fixes the sparsity pattern, splitting the vector into equal blocks with exactly one nonzero entry each, which makes expansion far cheaper and the hardness claim far more specific.",
+            "deeper_md": "The instance is recast as the linear syndrome equations plus one quadratic equation per pair of coordinates sharing a block, since at most one of them is nonzero. The attack then guesses a first batch of coordinates to be zero, Gaussian-eliminates n−k variables, keeps a preprocessed set aside, guesses a second batch, and linearises what is left before verifying candidates against the original instance.\n\nThe new idea is where the guesses go. Spreading removals evenly across blocks, rather than concentrating them, retains slightly fewer equations but raises the probability that every guess is right — an AM–GM argument. For n = 2²⁰, k = 32771, h = 2467 over F₂¹²⁸ the balanced placement succeeds with probability about 2^−40.37 against about 2^−62.18 for the previous attack, which the authors credit with roughly 21.8 of a 29.8-bit improvement. The revised 128-bit parameter sets of Liu et al. are all estimated below 2¹¹¹ field operations.\n\nThree caveats. It is an unrefereed preprint; the cost model assumes a Strassen-type matrix-multiplication exponent near 2.8 and drops a constant-probability invertibility factor (about 0.2889 for the binary case); and the abstract's largest loss, \"approaching 67 bits\", is stated as \"up to 66\" in the introduction. The regular structure was first exploited algebraically by Briaud and Øygarden at Eurocrypt 2023.",
+            "glossary": [
+              {
+                "term": "Syndrome decoding",
+                "definition": "Given a parity-check matrix H and a syndrome s, find a low-weight vector x with Hx = s. Its average-case hardness is the oldest standing assumption in code-based cryptography."
+              },
+              {
+                "term": "Bit security",
+                "definition": "The base-two logarithm of how many elementary operations the cheapest known attack needs. A set \"at 128 bits\" is a claim about today's best algorithm, so it can fall without anything being newly broken."
+              },
+              {
+                "term": "VOLE (vector oblivious linear evaluation)",
+                "definition": "A correlation where one party ends up holding a vector and a scalar and the other a linear combination of them. It is the primitive Wolverine and committed-VOLE protocols expand from a short seed."
+              },
+              {
+                "term": "Linearisation",
+                "definition": "Solving a quadratic system by treating each product of two unknowns as a brand-new unknown, which works only while enough equations survive to pin the enlarged linear system down."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Regular Syndrome Decoding Is Easier Than Previously Estimated",
+                "url": "https://arxiv.org/abs/2610.29175",
+                "publisher": "arXiv (Jiseung Kim, Minkyu Kim, Changmin Lee, Hochang Lee)",
+                "date": "2026-10-21"
+              },
+              {
+                "title": "A New Algebraic Approach to the Regular Syndrome Decoding Problem and Implications for PCG Constructions",
+                "url": "https://eprint.iacr.org/2023/176",
+                "publisher": "IACR Cryptology ePrint Archive / Eurocrypt 2023 (Briaud, Øygarden)",
+                "date": "2023"
+              },
+              {
+                "title": "Ferret: Fast Extension for coRRElated oT with small communication",
+                "url": "https://eprint.iacr.org/2020/924",
+                "publisher": "IACR Cryptology ePrint Archive / ACM CCS 2020 (Yang, Weng, Lan, Zhang, Wang)",
+                "date": "2020"
+              }
+            ]
+          },
+          {
+            "id": "computing-weight-balanced-bst-optimality",
+            "title": "Dynamic optimality falls, for trees made to stay weight-balanced",
+            "dek": "John Iacono and Akash Pareek give a binary search tree, PopTree, whose cost on any long enough sequence of searches is within a constant factor of the best an offline algorithm could achieve while obeying the same 1972 weight-balance condition — a restricted form of a question open since 1985.",
+            "why_it_matters": "Nobody has improved on an O(log log n) competitive ratio for unrestricted rotation-based trees in twenty years, and the obstacle is that the quantity optimality must be measured against is itself unknown. Fixing the balance condition supplies one: the paper derives a closed-form cost for the best offline algorithm in that class and then matches it from above and below, so what an optimal tree does can be read off a formula.",
+            "background_md": "A binary search tree is reshaped by rotations, each costing a constant and changing which keys sit near the root. Because a search costs the depth of the key it finds, a tree that lifts recently used keys can beat a perfectly balanced one on a skewed access sequence — by how much is the open question. The yardstick is an offline algorithm that has seen the whole request sequence in advance and rotated optimally. No formula for that optimum is known, which is why no tree has ever been proved optimal.",
+            "deeper_md": "A BB[α] tree, due to Nievergelt and Reingold in 1972, uses weights w(x) = (subtree size) + 1 and requires α·w(parent) ≤ w(child) ≤ (1−α)·w(parent), so no sibling can outweigh the other by more than a fixed fraction. PopTree holds BB[1/20] after each completed search and the looser BB[1/729] at every instant, including mid-rebalance — the slack is only needed transiently, but holding it always is what lets the lower bound apply to the same class.\n\nThe cost formula has two terms per access. One is a working-set-like quantity: the smallest r such that the previous access within distance n/r of the key was that key itself. The other is log(n / min(x, n − x + 1)), which penalises keys near the extremes of the key space — the opposite of the locality unrestricted trees reward, and the single most surprising thing in the paper.\n\nMechanically, PopTree is a skip-list variant in which a searched key is popped up to the highest level where its bucket is not extreme, conflicting occupants are demoted, and three consecutive vacancies are repaired bottom-up; that structure is then converted into a weight-balanced multiway tree and expanded into a binary tree using single rotations.\n\nLimits: searches only, keys fixed as 1..n, no insertions or deletions, the lower-bound constant depends on α and is not optimised, and dynamic optimality for unrestricted trees stays open.",
+            "glossary": [
+              {
+                "term": "Rotation",
+                "definition": "The one local edit a binary search tree algorithm may make: swap a node with its parent and re-parent one subtree. It costs a constant, which is why the cost model is depth plus rotation count."
+              },
+              {
+                "term": "Competitive ratio",
+                "definition": "The worst-case factor by which an online algorithm's cost can exceed the best offline cost on the same input. Dynamic optimality is the conjecture that some tree achieves O(1)."
+              },
+              {
+                "term": "BB[α]",
+                "definition": "The weight-balance condition: every child's subtree weight lies between α and 1−α of its parent's. Smaller α is a weaker constraint, so the class of permitted trees grows as α shrinks."
+              },
+              {
+                "term": "Working-set bound",
+                "definition": "A cost model in which reaching a key costs the logarithm of how many distinct keys were touched since it was last touched. Splay trees meet it, and this paper's optimum matches it in expectation on a random key order."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Dynamically optimal weight-balanced binary search trees",
+                "url": "https://arxiv.org/abs/2610.29574",
+                "publisher": "arXiv (John Iacono, Université libre de Bruxelles; Akash Pareek, Ashoka University)",
+                "date": "2026-10-21"
+              },
+              {
+                "title": "Dynamic Optimality, Almost",
+                "url": "https://erikdemaine.org/papers/Tango_SICOMP/",
+                "publisher": "SIAM J. Computing 37(1):240–251 (Demaine, Harmon, Iacono, Pǎtraşcu)",
+                "date": "2007"
+              },
+              {
+                "title": "In pursuit of the dynamic optimality conjecture",
+                "url": "https://arxiv.org/abs/1306.0207",
+                "publisher": "arXiv (John Iacono)",
+                "date": "2013-06-02"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-periodic-four-bit-recurrent-state",
+            "title": "Quantise a linear-attention state every eighth token, not every one",
+            "dek": "Patrick Haller, Filipe Laitenberger and Alan Akbik cut the memory a hybrid linear-attention language model holds per sequence by rounding its fixed-size recurrent state to four bits once every eight generated tokens instead of after each one, and buffering the tokens in between.",
+            "why_it_matters": "Rounding error in a recurrent state is not thrown away as it is for a quantised weight — it is carried forward and re-multiplied by the next update, so quantising on every token compounds the damage, which is why earlier work reported four-bit states as unusable without retraining. Rounding eight times less often cuts how often error is injected at all, and on a four-billion-parameter hybrid it takes the per-sequence footprint from 24.00 MiB to 6.75 MiB plus a 1.14 MiB buffer.",
+            "background_md": "A transformer holds its context in a key-value cache that grows with every token. Linear-attention layers replace that with a fixed-size matrix, updated once per token, so memory per sequence stops growing with sequence length. What then bounds how many sequences an accelerator can serve at once is how many copies of that matrix fit in its high-bandwidth memory — which is why the matrix's numeric precision is a serving decision. It is normally kept in 32-bit floating point, and every bit removed is another sequence in the same memory.",
+            "deeper_md": "Two observations carry the method. First, chunked kernels already round once per chunk during prefill — 256 tokens here — so rounding every dP tokens during decode (default 8, also tested at 1 and 32) is not a new mechanism, just the same one applied where nobody had applied it. Second, the large entries of a gated-delta state fall into columns, because certain channels of the per-token update stay large across many tokens; permuting those channels every token destroys the pattern, which is the evidence. PACE therefore shares one scale per column, grouping along the key axis, and keeps the heads whose rounding error persists longest at eight bits.\n\nAt 6.82 resident bits per state value — 0.69 of DAMP's INT8 configuration at 9.90 — averages across six benchmarks land at 87.3 against 87.4 on Qwen3.5-27B and 85.0 against 86.3 on the 35B mixture-of-experts model. A uniform four-bit version at 5.03 bits beats Q-Mamba's decoupled-scale quantiser at identical memory on every backbone, 79.6 to 75.2 on the 4B model.\n\nCaveats: only Qwen3.5 and Qwen3.6 hybrids using the gated delta rule were tested, so the decay and column findings are not shown to transfer; the prefill period was fixed at 256, so its effect is unmeasured; and the throughput measurements cover only a uniform four-bit state, not the mixed-precision configuration that scores best.",
+            "glossary": [
+              {
+                "term": "Gated delta rule",
+                "definition": "A recurrent-state update that both erases broadly, through a per-step decay gate, and edits narrowly, through a rank-one correction. The decay is why rounding error in some channels persists and in others dies out."
+              },
+              {
+                "term": "Resident bits per value",
+                "definition": "The paper's memory metric: every bit actually held per state element, counting the unquantised buffer as well as the quantised state, so a scheme cannot hide its cost in a side structure."
+              },
+              {
+                "term": "MiB",
+                "definition": "A mebibyte, 2²⁰ bytes. Per-sequence state sizes are quoted in these units because the figure that matters operationally is how many copies fit in an accelerator's memory."
+              },
+              {
+                "term": "Mixture of experts (MoE)",
+                "definition": "A layer holding many parameter blocks but routing each token through only a few, so the 35B model tested here activates about 3B parameters per token while storing all of them."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "PACE: Periodic and Channel-Aligned Encoding of Four-Bit Recurrent States",
+                "url": "https://arxiv.org/abs/2610.29545",
+                "publisher": "arXiv (Haller, Laitenberger, Akbik)",
+                "date": "2026-10-21"
+              },
+              {
+                "title": "DAMP: Decay-Aware Mixed-Precision Recurrent-State Quantization",
+                "url": "https://arxiv.org/abs/2608.27513",
+                "publisher": "arXiv (Zhang, Tan, Sun et al.)",
+                "date": "2026-08-27"
+              },
+              {
+                "title": "Gated Delta Networks: Improving Mamba2 with Delta Rule",
+                "url": "https://arxiv.org/abs/2412.06464",
+                "publisher": "arXiv (Songlin Yang, Jan Kautz, Ali Hatamizadeh)",
+                "date": "2024-12-09"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "Nanoimprint lithography",
+    "slug": "nanoimprint-lithography",
+    "subtitle": "Stamping a pattern into resist instead of projecting it: why the resolution comes free, and why the alignment and the particles do not.",
+    "tldr": "Every other way of printing a chip pattern spends money on light — a shorter wavelength, a bigger lens, a brighter source. Nanoimprint skips all of it and presses a mould into liquid resist, so the finest feature it can make is whatever a mask shop can etch into quartz, and the tool needs no exposure optics at all. What it cannot skip is everything downstream of resolution: landing layer twelve on layer eleven, keeping a contact process free of particles, and building a mould that survives thousands of presses.",
+    "sections": [
+      {
+        "heading": "Resolution you do not have to buy",
+        "body_md": "In projection lithography the smallest printable half-pitch is set by the wavelength divided by the numerical aperture, with a process factor in front. Every term in that expression is expensive. Shorter wavelength meant going from 365 nm to 248 to 193 and then to 13.5 nm, where nothing transmits and the whole optical column has to become reflective and sit in vacuum. Bigger aperture means bigger mirrors, and at 0.55 NA the printed field halves.\n\nNanoimprint deletes the expression. There is no optical path between the pattern and the resist, because the pattern *is* pressed into the resist, so there is no diffraction to blur it. Canon's FPA-1200NZ2C is specified at a 14 nm minimum linewidth — which Canon equates to a 5 nm logic node, though the same release also writes that node's linewidth as 15 nm — and the company says 10 nm follows from better masks rather than a better tool. Its technology pages put power consumption at roughly a tenth of an advanced logic exposure, which follows directly from having no light source to run."
+      },
+      {
+        "heading": "Why the resist arrives as droplets",
+        "body_md": "The first thing that breaks if you treat imprint like photolithography is the coating step. A spin coater gives a film of uniform thickness, which is exactly what you want when light is going to pass through it. An imprint mould, however, has cavities whose volume varies from place to place: a dense array of trenches needs far more resist per unit area than a blank field does.\n\nPress a uniform film into a non-uniform mould and both failure modes arrive at once. Where cavities are dense, the film starves them and the features come out short. Where the mould is blank, the displaced resist has nowhere to go and squeezes out past the edge of the field. So the resist is inkjetted instead — Canon describes controlling how much resin is applied and where, so that resin is not squeezed out when the mask is pressed in, with the aim of a uniform remaining layer regardless of the size or number of the mould's indentations. Drop placement becomes a function of the local pattern density, computed per field."
+      },
+      {
+        "heading": "Capillary force fills the mould, then bends it",
+        "body_md": "Once the drops are down and the mould is lowered, nothing pushes the resist into a 10 nm trench except surface tension. That is convenient: capillary action does the filling for free, and it does it faster the narrower the gap. It is also the problem, because the same force acts on the trench walls.\n\nCai and Li model both halves together: a hydrodynamic model for how the resist front advances, and beam-bending mechanics for how the mould's own nanostructures deform under the capillary load, treated separately for wetting and non-wetting surfaces. The output is a critical aspect ratio — above a certain height-to-width ratio, a mould feature bends far enough to ruin the print. The reason it matters more as features shrink is that bending stiffness falls with the cube of the feature's width while the capillary force falls only with its perimeter, so the margin closes from both sides at once. A mould is not a rigid object at these dimensions; it is a forest of slender beams in a liquid."
+      },
+      {
+        "heading": "Overlay is where the technology actually lives or dies",
+        "body_md": "Resolution is the part imprint gets for nothing. Overlay — placing this layer on top of the one beneath it — is the part it has to earn, and Byung Jin Choi of Canon Nanotechnologies told SPIE Advanced Lithography that it is the harder problem, with Canon working to get overlay well below two nanometres.\n\nThe measurement trick is moiré: superpose two gratings of slightly different pitch, one on the mould and one on the wafer, and a nanometre of relative shift becomes a visible movement of a much coarser beat pattern. Canon reads that in real time and corrects, and it also deforms the wafer itself — a laser system, steered by a digital micromirror device, heats the substrate to stretch the lower layers into register.\n\nFor scale, consider the soft-stamp branch of the same family. Cegielski and colleagues, working with substrate conformal imprint lithography, measured roughly 3 µm of pattern distortion across a 6-inch wafer and, with electron-beam alignment on 20 mm and 8 mm cells, got overlay better than 1.2 µm. That is three orders of magnitude from Canon's target, and the gap is the stamp's compliance."
+      },
+      {
+        "heading": "A contact process inherits every particle",
+        "body_md": "In projection printing a particle on the mask sits far from focus if a pellicle is doing its job, and a particle on the wafer ruins one die. In imprint the mould touches the resist, so a particle between them is pressed into both. Canon says plainly that particles between mask and wafer can cause defective devices and damage the mask pattern, and lists its countermeasures as ultra-high-performance filters, airflow design, particle-elimination units, and air curtains separating zones by cleanliness level.\n\nThe word that matters is *damage*. A particle that cracks a quartz protrusion does not cause one bad die; it causes the same bad feature in every field imprinted afterwards, until somebody inspects the mould and notices. That changes the economics of inspection. A projection mask is checked because masks drift and get contaminated; an imprint mould has to be checked because it is a consumable being mechanically worked, and because a single event turns a random defect into a systematic one."
+      },
+      {
+        "heading": "What the skeptics count, and where imprint wins anyway",
+        "body_md": "The case against is quantitative. Writing up a SemiAnalysis assessment, Paul van Gerven reports real-world template lifetimes around 50 wafers against vendor claims more than ten times higher; overlay error about four times larger than leading-edge logic needs, with the fix requiring architectural change to the tool rather than better metrology; throughput near 25 wafers per hour for a single imprint station, roughly 100 clustered, against EUV scanners already at least twice as fast and a vendor target of 400 to 500; and template roughness printing straight through into line-edge roughness.\n\nThe same assessment names where the technology does fit: applications whose overlay and defect requirements are lower — trailing logic and memory, and specialty patterning for micro-optics, MEMS, sensors and metalenses. Canon's own pitch points the same way. Because a mould can carry structure in three dimensions, a single imprint can form a shape that projection printing would need several masked layers to build, which Choi put at savings up to 40 percent, and which is why the first serious volume market for imprint looks like optics rather than logic."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Template (mould)",
+        "definition": "The patterned quartz plate pressed into the resist. Unlike a projection mask it carries its features at 1:1 with the printed pattern, so a defect on it prints at full size rather than being shrunk by the optics."
+      },
+      {
+        "term": "Residual layer",
+        "definition": "The thin film of resist left under the template's protrusions after the imprint. It has to be etched through before the pattern reaches the wafer, which is why its thickness uniformity turns directly into critical-dimension uniformity."
+      },
+      {
+        "term": "Overlay",
+        "definition": "The placement error between a layer and the one below it, measured as a vector field across the wafer. It is quoted in nanometres because a via displaced by more than its own width lands on nothing."
+      },
+      {
+        "term": "Moiré alignment",
+        "definition": "Measuring misalignment by superposing two gratings of slightly different pitch, so a nanometre of relative shift moves a much coarser beat pattern by a visible amount. It is how an imprint tool sees register in real time."
+      },
+      {
+        "term": "Critical aspect ratio",
+        "definition": "The height-to-width ratio above which capillary force bends a template feature or a resist line enough to ruin the pattern. It tightens as features shrink because bending stiffness falls with width cubed."
+      },
+      {
+        "term": "wph (wafers per hour)",
+        "definition": "The throughput unit a lithography tool is bought on. For a contact process it also governs how often the template is loaded, unloaded and inspected, which is a defect-rate term as well as a cost term."
+      },
+      {
+        "term": "SCIL (substrate conformal imprint lithography)",
+        "definition": "A soft-stamp variant whose flexible stamp conforms around particles and wafer bow instead of being damaged by them, and pays for that tolerance with micrometre-class overlay rather than nanometre-class."
+      }
+    ],
+    "try_this": "Do the resist-volume arithmetic, then measure your own. For a 1 cm² imprint field at a 50 nm residual layer, the dispensed resist is 1 cm² × 50 nm = 5 nanolitres — and it has to be placed as thousands of picolitre drops whose local density tracks the mould's cavity volume. Now coat one wafer on the club's spinner, weigh the resist bottle before and after, divide by the resist's density, and compare. Then read the mould-deformation section of Cai and Li (arXiv:1811.05103) and work out, from your own spin curve, what aspect ratio your films would be allowed at.",
+    "sources": [
+      {
+        "title": "News release: FPA-1200NZ2C nanoimprint lithography semiconductor manufacturing system",
+        "url": "https://global.canon/en/news/2023/20231013.html",
+        "publisher": "Canon Inc.",
+        "date": "2023-10-13"
+      },
+      {
+        "title": "Nanoimprint lithography — Canon Technology",
+        "url": "https://global.canon/en/technology/canon-tech/tech/nil/",
+        "publisher": "Canon Inc.",
+        "date": "2026"
+      },
+      {
+        "title": "Hydrodynamic and Solid Mechanics Analysis of Capillary Force-Induced Mold Deformation in Sub-10 nm UV Nanoimprint Lithography",
+        "url": "https://arxiv.org/abs/1811.05103",
+        "publisher": "arXiv (Jingxuan Cai, Wen-Di Li)",
+        "date": "2018-11-13"
+      },
+      {
+        "title": "Overlay Accuracy Limitations of Soft Stamp UV Nanoimprint Lithography and Circumvention Strategies for Device Applications",
+        "url": "https://arxiv.org/abs/1808.01320",
+        "publisher": "arXiv / Microelectronic Engineering (Cegielski, Bolten, Kim et al.)",
+        "date": "2018-06-13"
+      },
+      {
+        "title": "Nanoimprint lithography hopes to make an impact",
+        "url": "https://spie.org/news/nanoimprint-lithography-hopes-to-make-an-impact",
+        "publisher": "SPIE News (Hank Hogan, reporting Byung Jin Choi of Canon Nanotechnologies)",
+        "date": "2022-04-27"
+      },
+      {
+        "title": "Nanoimprint lithography won't compete with EUV anytime soon",
+        "url": "https://bits-chips.com/article/nanoimprint-lithography-wont-compete-with-euv-anytime-soon/",
+        "publisher": "Bits&Chips (Paul van Gerven, on a SemiAnalysis assessment)",
+        "date": "2025-11-04"
+      }
+    ]
+  }
+}

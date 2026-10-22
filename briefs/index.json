@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-10-22",
+      "foundations_slug": "nanoimprint-lithography",
+      "foundations_topic": "Nanoimprint lithography",
+      "headline": "Micron's chief technology officer told a webinar on Wednesday that the 4F² DRAM cell buys nothing over the 6F² one — capacitor pitch is what defines a DRAM — and put 3D DRAM two nodes out, between the 1ζ and 1η generations.",
+      "item_count": 7,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-10-21",
       "foundations_slug": "pll-and-clock-distribution",
       "foundations_topic": "PLLs and clock distribution",
@@ -694,6 +707,6 @@
       ]
     }
   ],
-  "generated_at": "2026-10-21T13:37:41Z",
-  "latest": "2026-10-21"
+  "generated_at": "2026-10-22T13:45:53Z",
+  "latest": "2026-10-22"
 }

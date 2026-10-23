@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-10-23",
+      "foundations_slug": "deep-rie-bosch",
+      "foundations_topic": "Deep reactive ion etching and the Bosch process",
+      "headline": "Merck opened a molybdenum-precursor plant in Eumseong on Thursday and named DRAM and logic as where the metal goes after 3D NAND word lines — the point at which tungsten's barrier film costs more of a narrow wire than the wire can spare.",
+      "item_count": 7,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-10-22",
       "foundations_slug": "nanoimprint-lithography",
       "foundations_topic": "Nanoimprint lithography",
@@ -707,6 +720,6 @@
       ]
     }
   ],
-  "generated_at": "2026-10-22T13:45:53Z",
-  "latest": "2026-10-22"
+  "generated_at": "2026-10-23T13:23:39Z",
+  "latest": "2026-10-23"
 }

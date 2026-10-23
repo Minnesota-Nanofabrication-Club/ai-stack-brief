@@ -1,0 +1,226 @@
+{
+  "date": "2026-10-23",
+  "generated_at": "2026-10-23T13:18:15Z",
+  "window": "2026-10-22..2026-10-23",
+  "headline": "Merck opened a molybdenum-precursor plant in Eumseong on Thursday and named DRAM and logic as where the metal goes after 3D NAND word lines — the point at which tungsten's barrier film costs more of a narrow wire than the wire can spare.",
+  "pulse": {
+    "read_time_min": 8,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-molybdenum-word-lines-beyond-nand",
+            "title": "Molybdenum moves toward DRAM word lines, and the barrier is why",
+            "dek": "Merck, which makes the chemicals chipmakers grow metal films from, opened a plant in Eumseong, South Korea on Thursday producing molybdenum dioxide dichloride, and its thin-film head named DRAM and logic as where the metal goes after 3D NAND word lines.",
+            "why_it_matters": "Tungsten will not sit on a dielectric without a titanium-nitride barrier, and that barrier is a fixed few nanometres thick no matter how narrow the trench gets, so in a scaled wire it takes a share of the cross-section that no bulk resistivity figure shows. Molybdenum barely diffuses into dielectrics, so the liner can be dropped and the whole trench becomes conductor — the switch buys cross-section rather than conductivity, which is why it arrives at a particular dimension rather than at a particular node name.",
+            "background_md": "A wire narrower than its metal's electron mean free path stops obeying bulk resistivity: carriers begin scattering off the trench surfaces and the grain boundaries more often than off the lattice, so resistivity climbs as the cross-section shrinks. That is why the metal with the lower bulk number does not automatically win a small wire. The liner around the conductor matters for the same reason. Barrier films exist to stop metal atoms diffusing into the surrounding insulator, they conduct badly, and they do not thin in proportion to the line, so their share of a narrow trench only grows.",
+            "deeper_md": "Entegris puts the bulk numbers at roughly 1.68 µΩ·cm for copper, 5.6 for tungsten and 5.3 for molybdenum — about 5% between the two refractory metals, which would never justify changing a metal on its own. The case is geometric, and Merck's thin-film head Bing Han made it in exactly those terms: molybdenum removes the need for the high-resistance barrier film, leaving more of the opening free to carry current. Semiconductor Engineering's survey of the interconnect state of play puts numbers on the same effect one metal over, in copper: a 10 nm line carries only about 4–5 nm of actual copper once the tantalum-nitride barrier, cobalt liner and cobalt cap are counted, and the barrier at the bottom of a via alone can reach 60% of that via's resistance.\n\nWhat is not established. Merck declined to give the Eumseong facility's investment or capacity, citing customer confidentiality, and named no DRAM or logic customer; Han put those two as potential future applications rather than committed ones, against 3D NAND as the current adoption. Benjamin Hein, who runs Merck Electronics, said customer supplies are expected to start later this year.",
+            "glossary": [
+              { "term": "Word line", "definition": "The gate wire running across a memory array that turns on one row of cells at a time; in 3D NAND it is one of the stacked horizontal metal layers, so its resistance sets row-select speed." },
+              { "term": "Barrier (liner)", "definition": "A thin film between conductor and insulator — titanium nitride for tungsten, tantalum nitride for copper — that stops metal atoms diffusing out; it conducts badly, so every nanometre of it is wasted cross-section." },
+              { "term": "MoO₂Cl₂", "definition": "Molybdenum dioxide dichloride, the precursor molybdenum films are grown from; it is solid at room temperature and must be sublimed to a vapour, so the delivery line is part of the process." },
+              { "term": "µΩ·cm", "definition": "Microhm-centimetre, the unit of resistivity: bulk copper is about 1.68, tungsten about 5.6, molybdenum about 5.3, and all three measure higher than that once the wire is narrow." }
+            ],
+            "fab_angle": "Solid precursors are a different plumbing problem from liquid ones. MoO₂Cl₂ has to be sublimed and then held at stable temperature and pressure the whole way from the ampoule to the chamber, so the heated delivery system is part of the recipe rather than an accessory — anything a lab adds with a solid-source ALD or CVD chemistry inherits that before it sees a film.",
+            "confidence": "reported",
+            "sources": [
+              { "title": "Interconnects Approach Tipping Point", "url": "https://semiengineering.com/interconnects-approach-tipping-point/", "publisher": "Semiconductor Engineering", "date": "2025-02-20" },
+              { "title": "Merck opens new semiconductor materials facility in Korea", "url": "https://www.koreatimes.co.kr/business/companies/20261022/merck-opens-new-semiconductor-materials-facility-in-korea", "publisher": "The Korea Times", "date": "2026-10-22" },
+              { "title": "Molybdenum's Role in Ultra-Fast Computing: The Metal Behind the Speed", "url": "https://blog.entegris.com/molybdenums-role-in-ultra-fast-computing-the-metal-behind-the-speed", "publisher": "Entegris", "date": "2026-05" }
+            ]
+          },
+          {
+            "id": "silicon-ingan-localization-contrast",
+            "title": "In InGaN, disorder traps holes much harder than electrons",
+            "dek": "Arsineh Apelian and co-authors calculated that in indium gallium nitride, the alloy behind every blue and green LED, randomly placed indium atoms pin holes into far smaller volumes than they pin electrons, and that imbalance alone cuts the radiative transition strength by 46%.",
+            "why_it_matters": "Radiative recombination is set by how well an electron state overlaps a hole state, so a disorder that pins one carrier much harder than the other costs brightness without touching the bandgap or the emission wavelength — and the same disorder is what lets Auger recombination proceed at all, by supplying the momentum components a three-carrier process needs. That makes the contrast in localisation, rather than the indium fraction, the quantity worth engineering, and it says why pushing indium up to reach green has always cost efficiency.",
+            "background_md": "An LED made from indium gallium nitride emits at a wavelength set by how much indium sits on the gallium sites, and those indium atoms land at random. Random substitution is not a small perturbation: the band edges are pulled into local potential wells, and a carrier can sit in one rather than spread through the crystal. Light comes out when an electron and a hole recombine radiatively. It does not when three carriers interact instead and one of them carries the energy away as kinetic energy, which is Auger–Meitner recombination. Which channel wins decides the efficiency.",
+            "deeper_md": "The calculation uses 864-atom supercells with random indium placement, 15 configurations per composition. Going from 13.5% to 22% indium, the participation ratio of the valence-band maximum falls 55% then 63% against pristine GaN, while the conduction-band minimum falls only 19% and 22% — holes localise, electrons largely do not. The configurationally averaged radiative matrix element drops 46% at 22%, which the authors call modest, and tracks the ratio of the two participation ratios with R² = 0.927.\n\nThe Auger side moves far harder. Breaking the primitive cell's translational symmetry gives the states low-momentum components they would not otherwise have, which is exactly what Auger needs to conserve momentum; the bare Auger coupling at 22% indium is more than five orders of magnitude above pristine GaN, and more than four with screening included at the RPA level.\n\nThe limits are stated plainly: Γ-point only, bulk alloy with no quantum-well polarisation field, and the two couplings are proxies rather than rates. The same group's 2024 AlGaN work found that confinement inside a well relaxes momentum conservation further and raises Auger relative to radiative by roughly another order of magnitude, so the bulk figure is a floor.",
+            "glossary": [
+              { "term": "Participation ratio", "definition": "A measure of how much of a crystal a given electronic state occupies; a small value means the carrier is pinned into a small volume instead of extending through the lattice." },
+              { "term": "Auger–Meitner recombination", "definition": "A three-carrier process in which an electron and hole recombine and hand the energy to a third carrier instead of to a photon; it rises as the cube of carrier density, so it dominates at high drive current." },
+              { "term": "Interband optical momentum matrix element", "definition": "The quantity setting how strongly a particular electron state couples to a particular hole state through light; its square is what the radiative rate is proportional to." },
+              { "term": "Supercell", "definition": "A block of crystal repeated periodically in a first-principles calculation; 864 atoms here, which is roughly what it takes before a random alloy's statistics are represented rather than a single arrangement." }
+            ],
+            "confidence": "reported",
+            "sources": [
+              { "title": "Localization Contrast As a Fundamental Limit of Radiative Quantum Efficiency", "url": "https://arxiv.org/abs/2610.30741", "publisher": "arXiv (cond-mat.dis-nn)", "date": "2026-10-22" },
+              { "title": "Carrier confinement and alloy disorder exacerbate Auger-Meitner recombination in AlGaN ultraviolet light-emitting diodes", "url": "https://arxiv.org/abs/2403.11019", "publisher": "arXiv (cond-mat.mtrl-sci)", "date": "2024-03-16" },
+              { "title": "Increased light-emission efficiency in disordered InGaN through the correlated reduction of recombination rates", "url": "https://arxiv.org/abs/2311.03643", "publisher": "arXiv (cond-mat.mtrl-sci)", "date": "2023-11-07" }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-renesas-rx74-mram-22nm",
+            "title": "Renesas ships an MCU whose program store is MRAM, not flash",
+            "dek": "Renesas began selling the RX74M and RX74N microcontrollers on Thursday: the first RX parts on a 22 nm process, and the first to hold their program code in magnetoresistive RAM, a memory written by flipping a magnetic layer with no erase step beforehand.",
+            "why_it_matters": "Embedded flash stops being integrable with the transistor somewhere around 28 nm and costs nine to eighteen extra masks before that, which is a large part of why microcontrollers have sat a node or two behind everything else; a magnetic cell built up in the wiring layers removes both constraints, and that is what lets this core run at 600 MHz on 22 nm. The bill arrives on the read path, because an MRAM bit is a resistance ratio rather than a stored charge, and the margin narrows as the die heats.",
+            "background_md": "A microcontroller keeps its program in non-volatile memory on the same die as the processor, and for thirty years that memory has been embedded flash: a transistor carrying a second, buried gate that holds charge. Writing it means tunnelling charge onto that gate, which needs ten volts or more generated on-chip, and a cell can only be rewritten after a block erase. The structure also costs extra masks over plain CMOS, and the floating gate does not survive the move to fin-shaped transistors, so the node where flash stops is a hard edge rather than a gradual one.",
+            "deeper_md": "The shipping part carries 1 MB of MRAM, 256 KB of zero-wait-state tightly coupled memory and 1.5 MB of SRAM, with an RXv3e core to 600 MHz, a 1.62–3.6 V supply and −40 to +125 °C junction temperature; Renesas puts it above twice the performance of the 240 MHz RX72M and RX72N it replaces, and sells 300 MHz variants it says draw over 20% less power.\n\nThe read problem is where the engineering went, and Renesas has published the arithmetic twice. Its 2022 VLSI Symposium test chip put 32 Mbit of 22 nm MRAM at 5.9 ns random read access at 150 °C junction temperature, using a sense amplifier that capacitively boosts its own differential inputs. Its 2024 ISSCC chip reached 4.2 ns and over 200 MHz random read on a 10.8 Mbit array by centring the reference current per chip against that chip's measured cell-current distribution and cascoding the bitline to cut its parasitic capacitance. Write throughput went from 5.8 to 10.4 MB/s.\n\nThe standing objection, put by Silicon Storage Technology's Vipin Tiwari, is that MRAM lacks flash's magnetic immunity, endurance and accumulated field data. Renesas has published neither endurance nor retention for this part.",
+            "glossary": [
+              { "term": "MRAM", "definition": "Magnetoresistive RAM: a bit is the relative magnetisation of two magnetic layers across a thin insulator, and reading it means measuring the junction's resistance, which differs by a percentage rather than by a full logic level." },
+              { "term": "Read margin", "definition": "The difference a sense amplifier must resolve between a stored one and a stored zero; flash offers a large current difference, a magnetic junction a small resistance difference, and that difference shrinks as the die warms." },
+              { "term": "Tj", "definition": "Junction temperature — the temperature of the silicon itself rather than the air around the package; these parts are rated to 125 °C Tj, which is the industrial and automotive bar." },
+              { "term": "TCM (tightly coupled memory)", "definition": "SRAM wired directly into the core so a fetch completes with no wait states; the RX74 carries 256 KB of it in front of its 1 MB of MRAM." }
+            ],
+            "fab_angle": "A magnetic tunnel junction is built in the back end of line between two existing metal layers, so adding MRAM to a logic process costs metal-level masks rather than front-end ones — the opposite shape of cost from embedded flash, which adds nine to eighteen masks in the front end at 28 nm. The hard step is patterning: etching the stack can redeposit metal on the junction sidewall and short it out, which is why ion beam etching rather than conventional reactive ion etching is what made the cell manufacturable.",
+            "confidence": "confirmed",
+            "sources": [
+              { "title": "Embedded Flash Scaling Limits", "url": "https://semiengineering.com/embedded-flash-scaling-limits/", "publisher": "Semiconductor Engineering", "date": "2018-07-19" },
+              { "title": "Renesas Launches RX74M and RX74N Flagship 32-bit MCUs, First RX Family Built on 22nm Process and Featuring MRAM", "url": "https://www.renesas.com/en/about/newsroom/renesas-launches-rx74m-and-rx74n-flagship-32-bit-mcus-first-rx-family-built-22nm-process-and", "publisher": "Renesas Electronics", "date": "2026-10-22" },
+              { "title": "Renesas Develops Embedded MRAM Macro that Achieves over 200MHz Fast Random Read Access and 10.4 MB/s Fast Write Throughput", "url": "https://www.renesas.com/en/about/newsroom/renesas-develops-embedded-mram-macro-achieves-over-200mhz-fast-random-read-access-and-104-mbs-fast", "publisher": "Renesas Electronics", "date": "2024-02-21" },
+              { "title": "Renesas Develops Circuit Technologies for 22 nm Embedded STT-MRAM with Faster Read and Write Performance for MCUs", "url": "https://www.renesas.com/en/about/newsroom/renesas-develops-circuit-technologies-22-nm-embedded-stt-mram-faster-read-and-write-performance-mcus", "publisher": "Renesas Electronics", "date": "2022-06-16" },
+              { "title": "New Embedded Memories Ahead", "url": "https://semiengineering.com/new-embedded-memories-ahead/", "publisher": "Semiconductor Engineering", "date": "2017-01-25" }
+            ]
+          },
+          {
+            "id": "chips-nn-compact-model-characterisation",
+            "title": "Two small networks stand in for BSIM-CMG in cell characterisation",
+            "dek": "Rodion Novkin and Hussam Amrouch replaced BSIM-CMG — the physics-based transistor equations a SPICE simulator solves at every device on every time step — with two four-layer neural networks, and characterised a 71-cell 3 nm standard-cell library in about seven minutes instead of fifty-five.",
+            "why_it_matters": "Characterising a standard-cell library is a cost paid again every time the PDK, the device model or a voltage corner changes, and what dominates the SPICE runs underneath it is evaluating the compact model over and over. Holding average cell delay error to 0.06% across 18,620 characterisation entries with two networks of sixteen neurons per hidden layer moves that bottleneck off the transistor model, without the device having to be any particular technology.",
+            "background_md": "Before a digital chip can be timed, every cell in its library is characterised: each gate is simulated in SPICE across a grid of input transition times and output loads, and the resulting delay and power numbers are written into a table the static-timing tool reads instead of simulating. Underneath those simulations is a compact model — a closed-form set of equations returning a transistor's current and charges for a given set of terminal voltages, fitted to measured or TCAD data rather than derived from it. BSIM-CMG is the industry-standard one for fin and nanosheet devices.",
+            "deeper_md": "Two multilayer perceptrons per device, one for drain current and one for the charges, two hidden layers of 8 or 16 neurons with tanh activations, trained in PyTorch on data generated by BSIM-CMG v111.2.1 itself for the regular-V_th 3 nm nanosheet device in Georgia Tech's open GT3 PDK, swept in 5 mV steps with first and second derivatives included, then exported to Verilog-A. Over 71 cells × 49 slew/load combinations × two edges — 1,701 post-layout netlists — the 16-neuron model's average cell-delay error is 0.06% and internal-power error 0.33%, and characterisation runs in about 7 minutes against 55 for BSIM-CMG.\n\nThe limits are stated. Accuracy degrades at 0.5–0.6 V because the capacitance behaviour near 0.4 V was not learned well; the 8-neuron network is unstable on pMOS charges; a 1,001-stage ring oscillator drifts from the reference as small errors accumulate over a long transient; and the characterisation speedup is capped by having to recompile Verilog-A for each netlist, which is why the circuit-level figure for that oscillator is about 43× while characterisation is roughly 8×.",
+            "glossary": [
+              { "term": "Compact model", "definition": "The closed-form equations a circuit simulator solves at each transistor at each time step to get its current and charges; it is a fitted approximation, not a device simulation." },
+              { "term": "Slew", "definition": "The time an input signal takes to move between defined voltage levels; a cell's delay depends on it about as strongly as on the load it drives, which is why characterisation sweeps a two-dimensional grid." },
+              { "term": "Verilog-A", "definition": "The behavioural modelling language a new device model is written in so a commercial SPICE tool will accept it; it is compiled per netlist, which is itself a cost in this flow." },
+              { "term": "V_th", "definition": "Threshold voltage, the gate voltage at which a transistor starts conducting appreciably; a library offers several flavours of it, and the device modelled here is the regular-V_th one." }
+            ],
+            "fab_angle": "The design half of a club project hits exactly this wall: on an open PDK, characterisation is the slowest step between a finished cell layout and a timing number anyone trusts. GT3, the 3 nm nanosheet PDK used here, is on GitHub under BSD-3 with 65 cells, LEF, Liberty and HSPICE model cards, so the comparison can be repeated without a foundry agreement.",
+            "confidence": "reported",
+            "sources": [
+              { "title": "NN-Based Transistor Modeling for Ultra-Fast SPICE Simulation and Standard Cell Library Characterization", "url": "https://arxiv.org/abs/2610.31024", "publisher": "arXiv (cs.ET)", "date": "2026-10-22" },
+              { "title": "GT3: an open-source 3 nm GAAFET PDK (repository)", "url": "https://github.com/azadnaeemi/GT3", "publisher": "Georgia Tech / GitHub", "date": "2026" },
+              { "title": "Compact Device Models for FinFET and Beyond", "url": "https://arxiv.org/abs/2005.02580", "publisher": "arXiv (cs.ET)", "date": "2020-05-06" }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-fixed-offset-hash-table-bound",
+            "title": "Every fixed probe sequence pays linear probing's price",
+            "dek": "Yuhao Guo, Seth Pettie and Chengzhang Wan proved that an open-addressing hash table using any fixed sequence of probe offsets — linear probing, quadratic probing, or an arbitrary permutation — costs at most 1 + 2/ε² probes per insertion when the table is a fraction 1 − ε full.",
+            "why_it_matters": "The previous general bound carried a log n factor, so it said nothing useful about a table of fixed size; this one is a pure function of how full the table is, and it sits within about a factor of four of Knuth's exact answer for linear probing. That settles the cost of a fixed probe sequence, and it means anything better — quadratic probing genuinely is better — has to come from a property the fixed-offset argument cannot see.",
+            "background_md": "An open-addressing hash table stores items in the array itself: hash a key to a slot, and if that slot is taken, probe a further sequence of slots until an empty one appears. The sequence is the whole design. Linear probing walks forward one slot at a time, which is kind to a cache line but lets occupied runs merge into longer runs, so each new run makes the next collision worse. Quadratic probing jumps by squares to break those runs apart. Cost is always quoted against how full the table is.",
+            "deeper_md": "The bound is an expected insertion cost of at most 1 + 2ε⁻² for any fixed offset permutation, proved from a recursion on the probability that a key's first k probes are all occupied; the analysis never looks at which permutation it is. Knuth's 1963 figure for linear probing is exactly ½(1 + ε⁻²), so the general bound is tight to within about a factor of four and cannot be improved at this level of generality. It also removes the log n from Or Zamir's July 2026 O(ε⁻² log n), and sits against Zamir's lower bound that no open-addressing scheme without reordering can get locality below Ω(ε⁻²).\n\nWhat it does not explain is quadratic probing, which really is cheaper: Hu, Kuszmaul, Liang, Walzer, Yu and Zhou proved in August 2026 that quadratic probing inserts in ε^−(1+o(1)), close to the long-conjectured O(ε⁻¹). The distance between ε⁻² and ε⁻¹ is exactly what a fixed-offset argument is blind to.\n\nThe assumption to notice is a uniformly random hash function. The authors close by asking how much independence is actually needed: 5-wise suffices for linear probing and 4-wise provably does not.",
+            "glossary": [
+              { "term": "Load factor (1 − ε)", "definition": "The fraction of slots occupied; ε is therefore the fraction still empty, and every cost in this area is written as a function of 1/ε rather than of the table size." },
+              { "term": "Open addressing", "definition": "Resolving a collision by probing other slots of the same array, rather than chaining the colliding items into a list hung off the slot they hashed to." },
+              { "term": "Primary clustering", "definition": "The effect where runs of occupied slots in linear probing join up, so a key hashing anywhere into a run must walk to its end — which is why cost grows faster than occupancy does." },
+              { "term": "k-wise independence", "definition": "The guarantee that any k keys receive hash values that behave as if independent; it is what can be built cheaply, and how much of it a given table needs is a separate question from its probe count." }
+            ],
+            "confidence": "reported",
+            "sources": [
+              { "title": "A Sharp Analysis of Fixed Offset Hash Tables", "url": "https://arxiv.org/abs/2610.31363", "publisher": "arXiv (cs.DS)", "date": "2026-10-22" },
+              { "title": "Locality in Open Addressing Hash Tables", "url": "https://arxiv.org/abs/2607.16390", "publisher": "arXiv (cs.DS)", "date": "2026-07-17" },
+              { "title": "Quadratic Probing Insertions Are ε^{-(1+o(1))} Time", "url": "https://arxiv.org/abs/2608.28512", "publisher": "arXiv (cs.DS)", "date": "2026-08-28" }
+            ]
+          },
+          {
+            "id": "computing-rowhammer-triton-kernel-cache",
+            "title": "One DRAM bit flip in the compiler, and every later kernel is slower",
+            "dek": "Mrityunjay Shukla, Shubham Roy and Biswabandan Panda describe LLVMhammer, an attack in which an unprivileged neighbour on a shared machine uses Rowhammer to flip a single bit inside the Triton GPU compiler's own code in memory, so the kernels it then emits are still correct but slower.",
+            "why_it_matters": "The flipped bit lands in a conditional branch whose x86-64 encoding differs from another valid branch by one bit, so the compiler takes a different path and turns vectorised 128-bit loads and stores into a series of scalar ones: the arithmetic is unchanged and the output is unchanged, only the memory traffic grows. Because Triton writes compiled kernels to a disk cache and reuses them across restarts, one successful flip keeps costing until that artefact is regenerated — a transient hardware fault that becomes a persistent software one.",
+            "background_md": "DRAM stores a bit as charge on a capacitor, and reading a row means driving its word line, which disturbs the charge in the rows physically beside it. Activate one row often enough between refreshes and a neighbouring cell flips. That is Rowhammer, and it has been a property of commodity DRAM for over a decade rather than a defect in one part. The consequence that matters here is that a process sharing a machine can change a bit it was never permitted to write, including a bit inside a shared library that another tenant is executing.",
+            "deeper_md": "Measured on four 7–8B models — Qwen2.5, Llama-3.1, Mistral-7B and DeepSeek — served under vLLM, total inference time rose 4–16% over 1,000 requests: 6.3–16% on an RTX 4090 and 4–8% on an RX 7900 XTX, DeepSeek worst on both. At 10 and 100 requests the effect was not consistently significant; only at 1,000 did all five metrics clear p<0.05 under a Welch's t-test over 30 runs. The flip sites sit in Triton's target-independent stages, which is why the same attack crosses GPU vendors, and a second selection of sites abandons stealth entirely and drives BERTScore to 0.25, with output degenerating into repeated digit strings on AMD and looping phrases on NVIDIA.\n\nWhat is not shown: the test platforms carry DDR3 and DDR4, so DDR5 with per-row activation counting is untested, and the attack still needs memory deduplication or page massaging plus a successful flip at one specific location. The authors' annual-cost figures are their own extrapolation. The cheap defence they name — setting TRITON_ALWAYS_COMPILE and reloading libtriton.so each session — trades the kernel cache for recompilation on every start.",
+            "glossary": [
+              { "term": "Rowhammer", "definition": "Repeatedly activating one DRAM row so charge leaks out of the cells in adjacent rows faster than refresh replaces it, flipping bits the attacker had no permission to write." },
+              { "term": "Triton", "definition": "The compiler that turns Python-level GPU kernel descriptions into PTX for NVIDIA or AMDGCN for AMD by way of MLIR and LLVM; vLLM and most serving stacks depend on it." },
+              { "term": "Memory deduplication", "definition": "The hypervisor or OS collapsing identical physical pages, shared-library code included, into a single copy; it is what lets an attacker place its own hammering rows next to a victim's instructions." },
+              { "term": "PRAC", "definition": "Per-row activation counting, the DDR5 feature that tallies activations per row so the DRAM can act before a disturb; it increments on every activation including refresh, which is where its performance overhead comes from." }
+            ],
+            "fab_angle": "The DRAM half of this is a process problem rather than a software one: the disturbance margin between adjacent rows falls as the cell pitch shrinks, which is why each generation needs a new in-DRAM counting scheme and why those counters cost activation bandwidth rather than just area.",
+            "confidence": "reported",
+            "sources": [
+              { "title": "Amplifying Latency and Cost of LLM Inference via Rowhammer Attack", "url": "https://arxiv.org/abs/2610.30798", "publisher": "arXiv (cs.CR)", "date": "2026-10-22" },
+              { "title": "Triton language and compiler (repository)", "url": "https://github.com/triton-lang/triton", "publisher": "triton-lang / GitHub", "date": "2026" },
+              { "title": "PVAC: A RowHammer Mitigation Architecture Exploiting Per-victim-row Counting", "url": "https://arxiv.org/abs/2604.20576", "publisher": "arXiv (cs.CR)", "date": "2026-04-22" }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-attention-tail-proxy-one-percent",
+            "title": "Summarise the tokens you skip, and 1% of the KV cache is enough",
+            "dek": "Hyunwoo Yu and colleagues report that reading only 1% of a language model's key-value cache — the stored keys and values for every earlier token — keeps 99% of full-attention accuracy on a 32k-token benchmark, provided the skipped remainder is folded into a single summary token rather than sampled.",
+            "why_it_matters": "Sparse attention has been stuck because the unread tail is not noise: dropping it biases the output, and sampling it to estimate that bias is worse still, because at a small budget the uncertainty in the softmax normaliser grows faster than the sample helps. Replacing the tail with one count-weighted mean instead of sampling it is what makes a 1% budget usable at all — the best prior method the paper measures scores 48.2 at that budget against 86.3.",
+            "background_md": "Generating one token with a transformer means comparing the new query against the stored key for every token already in the context, then taking a weighted average of their values. That stored set is the key-value cache; it grows linearly with context length, so at long contexts decoding is bounded by how fast the cache can be read out of memory rather than by arithmetic. Sparse attention tries to fetch only the keys that will matter, which works only if what is left unread contributes little — and the softmax weights are not known until after the comparison has been done.",
+            "deeper_md": "The mechanism is a comparison the paper makes in closed form. Under its unnormalised convention, discarding the unread tail leaves a discrepancy τ; sampling m of N tail tokens leaves 2τ(1 − m/N) in expectation, so for m ≪ N sampling is nearly twice as bad as simply throwing the tail away. A single count-aware mean proxy predicts τ·erf(σ_z/√2), which stays below discarding. On RULER-32K HARD with Llama-3.1-8B-Instruct at a 1% read, the method scores 86.30 against 87.04 for dense attention; at 3% it reports 86.59 against HashAttention's 63.48 and vAttention's 57.15, and the spread widens at 96k context.\n\nCaveats the authors state: the cluster-error estimator keeps only diagonal variance terms, agreeing with the full estimate at Spearman 0.92 but not reproducing it; the split of budget across clusters is a heuristic rather than an optimum; and the index scan is excluded from the read budget for every method, baselines included, which is fair but not free. The 10× decode-attention figure is for their own kernel, and the hardware behind that number is not given beside it.",
+            "glossary": [
+              { "term": "KV cache", "definition": "The per-token keys and values a transformer stores so it does not recompute them; its size grows with context length, and reading it is what bounds decode speed at long contexts." },
+              { "term": "Read budget", "definition": "The fraction of the KV cache a sparse-attention method actually fetches for one decode step; a 1% read means one stored key-value pair in a hundred." },
+              { "term": "Heavy hitter", "definition": "A token whose attention weight is large enough that omitting it changes the output; the difficulty is that which tokens these are depends on the current query and is not known before the comparison." },
+              { "term": "RULER-32K HARD", "definition": "The harder subset of a synthetic long-context benchmark that varies the number and type of retrieval targets and adds multi-hop tracing and aggregation, evaluated at a 32,768-token context." }
+            ],
+            "confidence": "reported",
+            "sources": [
+              { "title": "OpenAttention: One Percent Is Enough with Tail Proxies", "url": "https://arxiv.org/abs/2610.30951", "publisher": "arXiv (cs.LG)", "date": "2026-10-22" },
+              { "title": "OpenAttention — full text, Tables 2–7", "url": "https://arxiv.org/html/2610.30951v1", "publisher": "arXiv", "date": "2026-10-22" },
+              { "title": "RULER: What's the Real Context Size of Your Long-Context Language Models?", "url": "https://arxiv.org/abs/2404.06654", "publisher": "arXiv (cs.CL)", "date": "2024-04-09" }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "Deep reactive ion etching and the Bosch process",
+    "slug": "deep-rie-bosch",
+    "subtitle": "Cutting a vertical slot through a wafer by alternating between etching it and stopping yourself, a few thousand times.",
+    "tldr": "A fluorine plasma eats silicon in every direction at once, so left alone it turns a narrow slot into a round cavern. The Bosch process gets a vertical wall anyway by alternating two steps thousands of times: etch for a second or two, then coat every exposed surface with a thin fluoropolymer, then etch again — the ion bombardment clears the film off the trench floor but not off the walls. The price is a rippled sidewall and an etch rate that depends on how wide the trench is.",
+    "sections": [
+      {
+        "heading": "A fluorine plasma does not know which way is down",
+        "body_md": "Start with a sulphur hexafluoride plasma and a silicon wafer. The plasma cracks SF₆ into fluorine radicals, the radicals react with silicon to make silicon tetrafluoride, and SiF₄ is a gas, so it leaves. That reaction is chemistry, and chemistry has no preferred direction: a radical arriving at a sidewall etches it exactly as happily as one arriving at the floor.\n\nOpen a 5 µm window in a mask and etch 5 µm down, and you have also etched roughly 5 µm sideways under the mask on each side. The window is now about 15 µm across at the bottom and the mask is floating over nothing. That is the whole problem of deep etching, and it is why the useful depth of a purely chemical plasma etch is about the same as the width of the smallest feature you care about. Everything that follows is an attempt to buy back the sideways direction."
+      },
+      {
+        "heading": "Laermer and Schilp separate the two jobs in time",
+        "body_md": "The fix, patented by Franz Laermer and Andrea Schilp at Robert Bosch GmbH — filed in 1993, granted in March 1996 — is to stop trying to do both jobs in one plasma. Earlier schemes mixed an etch gas with a polymer-forming gas, and the patent is explicit about why that fails: the polymer formers recombine with the fluorine radicals and pull the etch rate down, the polymer thins with depth so the trench bows outward, and the same polymer attacks the mask.\n\nSo run them alternately instead. An etch half removes a slice of silicon — the patent puts it at 2 to 3 µm — and then a polymerisation half lays a Teflon-like film roughly 50 nm thick over every exposed surface. Repeat. The patent names a hydrofluorocarbon such as CHF₃ for that half; production tools today use octafluorocyclobutane, C₄F₈. The claimed overall rate is 2 to 20 µm per minute."
+      },
+      {
+        "heading": "Why the floor clears and the walls do not",
+        "body_md": "Nothing about the passivation step is directional. The film goes down on the floor and on the walls alike. What is directional is the ion flux.\n\nA plasma sits at a higher potential than the surfaces inside it, so positive ions are accelerated across the sheath and arrive close to normal incidence — straight down into the trench. They strike the floor and sputter the fluoropolymer off it within the first fraction of a second of the etch half. They graze the walls at a shallow angle and barely disturb the film there. For the rest of that half, fluorine radicals find bare silicon at the bottom and a polymer blanket at the sides, and the etch proceeds downward only.\n\nThe patent keeps ion energy at 1–50 eV during etching and 1–10 eV during passivation, with the bias supplied separately from the plasma source. The point is to clear a film, not to sputter silicon: push the energy higher and you start eating the mask instead."
+      },
+      {
+        "heading": "Scallops are the bill for the trick",
+        "body_md": "The etch half is not instantaneous, and the chemistry is still isotropic while it runs. Between the moment the floor clears and the moment the next passivation arrives, the etch takes a small bite sideways. One cycle, one shallow bite out of the wall; a few thousand cycles leave a sidewall of horizontal ripples.\n\nThese are scallops, typically 50 to 500 nm from crest to trough, and their size is set almost entirely by how long each half of the cycle lasts. Shorter cycles mean smaller scallops and a lower average etch rate, because a larger fraction of the time is spent clearing film rather than removing silicon. That trade is the main process knob on a deep etcher.\n\nFor most MEMS it does not matter — a comb drive is indifferent to a 200 nm ripple. For an optical surface it is serious: one metalens group working with Bosch DRIE described the result as washboard sidewall roughness and compensated for it in the metasurface design rather than trying to remove it."
+      },
+      {
+        "heading": "Narrow trenches etch slower, and designers pay for it",
+        "body_md": "Etch rate in a deep slot is not set at the wafer surface. Radicals have to diffuse down the trench and reaction products have to diffuse back out, and both get harder as the slot deepens relative to its width. The result is aspect-ratio-dependent etching: two features of different widths on the same wafer reach different depths after the same process time.\n\nThat is why a layout mixing 2 µm and 100 µm openings is harder to etch than one with uniform widths, and why the fix is usually process rather than design. Gerlt and colleagues at ETH Zurich brought etch lag below 1.5% by tuning the Bosch cycle, and used a three-step variant to leave 6 µm-wide structures standing at 180 µm depth.\n\nWhere it bites hardest is at an interface. When the wide trenches reach a buried oxide while the narrow ones are still going, positive charge accumulates on the exposed insulator and deflects later ions sideways into the silicon at the bottom. That undercut is notching, and it is the standard way a silicon-on-insulator MEMS release goes wrong."
+      },
+      {
+        "heading": "What it builds, and what gets hard at depth",
+        "body_md": "The structures DRIE makes are ones nothing else can make. Comb drives, accelerometer proof masses and resonator beams need vertical walls through tens of microns of silicon; through-silicon vias need the same through hundreds.\n\nRossi and colleagues pushed it to 500 µm-deep silicon with apertures tens of microns across, filled with gold, to make masks for X-ray phase-contrast imaging above 150 keV — and had to step the DRIE parameters through the etch precisely because the aspect-ratio effects change as the slot deepens.\n\nThe limits that bite at those depths are mundane rather than exotic. The mask has to survive thousands of cycles of ion bombardment. And the wafer has to stay cool: the Bosch patent already specifies helium backside gas against a clamped wafer, because the fluoropolymer film is the entire mechanism and polymer does not tolerate being baked. A deep etch that overheats stops being a Bosch process and goes back to being a round hole."
+      }
+    ],
+    "glossary": [
+      { "term": "Passivation step", "definition": "The half of the Bosch cycle that deposits a fluoropolymer film over every exposed surface, so the next etch half has to remove the film before it can reach silicon." },
+      { "term": "Scalloping", "definition": "The horizontal ripples left on a Bosch sidewall, typically 50–500 nm crest to trough, one per cycle, because each etch half eats a little sideways before the next passivation stops it." },
+      { "term": "ARDE (aspect-ratio-dependent etching)", "definition": "The fact that a narrow trench etches more slowly than a wide one on the same wafer, because getting reactants down a deep slot and products back out is transport-limited." },
+      { "term": "Notching", "definition": "Lateral undercut at the bottom of a trench that lands on buried oxide: positive charge accumulates on the insulator and deflects arriving ions sideways into the silicon." },
+      { "term": "Duty cycle", "definition": "Here, the ratio of etch time to passivation time within one Bosch cycle — the main knob trading sidewall smoothness against average etch rate." },
+      { "term": "Helium backside cooling", "definition": "Flowing helium between the wafer and a clamped chuck so plasma heat conducts away; without it the fluoropolymer film and the resist mask do not survive a long etch." }
+    ],
+    "try_this": "On the club's etcher, pattern one mask with lines at several widths — 2, 5, 20 and 100 µm — run a single SF₆ etch with no passivation step at all, and then step the profilometer across them. Two things fall straight out. The depth difference between the narrow and the wide lines is aspect-ratio-dependent etching measured on your own tool, and the undercut beneath the mask edge is exactly the lateral etch the Bosch passivation half exists to defeat; measure both and you have the budget the cycle has to buy back. Then read claim 1 and the 2–3 µm-per-cycle figure in US 5,501,893 and work out how many cycles the 500 µm masks in Rossi et al. must have taken, and how many scallops that leaves on each wall.",
+    "sources": [
+      { "title": "US 5,501,893 — Method of anisotropically etching silicon", "url": "https://patents.google.com/patent/US5501893A/en", "publisher": "USPTO / Robert Bosch GmbH (Laermer and Schilp)", "date": "1996-03-26" },
+      { "title": "DRIE: Deep Reactive Ion Etching", "url": "https://www.halbleiter.org/en/micromechanics/drie-deep-reactive-ion-etching/", "publisher": "halbleiter.org (Philipp Laube)", "date": "2026-10-22" },
+      { "title": "Reduced etch lag and high aspect ratios by deep reactive ion etching (DRIE)", "url": "https://arxiv.org/abs/2104.02763", "publisher": "arXiv / Micromachines (Gerlt et al., ETH Zurich)", "date": "2021-04-06" },
+      { "title": "Fabrication of Ultra-Thick Masks for X-ray Phase Contrast Imaging at Higher Energy", "url": "https://arxiv.org/abs/2409.11237", "publisher": "arXiv (physics.app-ph)", "date": "2024-09-17" },
+      { "title": "Towards High Throughput Large Area Metalens Fabrication using UV-Nanoimprint lithography and Bosch Deep Reactive Ion Etching", "url": "https://arxiv.org/abs/2004.11133", "publisher": "arXiv (physics.app-ph)", "date": "2020-03-21" }
+    ]
+  }
+}

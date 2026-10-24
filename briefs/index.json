@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-10-24",
+      "foundations_slug": "directed-self-assembly",
+      "foundations_topic": "Directed self-assembly",
+      "headline": "No arXiv listing has gone out since Friday; the window's sharpest result is a numerical bug in cross-entropy itself — Jonathan Barron and co-authors show that in float32 the gradient on the correct class rounds to zero once that logit leads by 16.6.",
+      "item_count": 7,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-10-23",
       "foundations_slug": "deep-rie-bosch",
       "foundations_topic": "Deep reactive ion etching and the Bosch process",
@@ -720,6 +733,6 @@
       ]
     }
   ],
-  "generated_at": "2026-10-23T13:23:39Z",
-  "latest": "2026-10-23"
+  "generated_at": "2026-10-24T12:36:14Z",
+  "latest": "2026-10-24"
 }

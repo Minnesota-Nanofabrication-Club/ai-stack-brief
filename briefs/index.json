@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-10-25",
+      "foundations_slug": "apollo-guidance-computer",
+      "foundations_topic": "The Apollo Guidance Computer",
+      "headline": "No arXiv listing has gone out since Friday, so the weekend's sharpest result is Friday's: a single lithium tantalate chip that makes, modulates and reads signals from 100 GHz to 2.5 THz with optical fibre as its only link to the outside.",
+      "item_count": 8,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-10-24",
       "foundations_slug": "directed-self-assembly",
       "foundations_topic": "Directed self-assembly",
@@ -733,6 +746,6 @@
       ]
     }
   ],
-  "generated_at": "2026-10-24T12:36:14Z",
-  "latest": "2026-10-24"
+  "generated_at": "2026-10-25T13:16:46Z",
+  "latest": "2026-10-25"
 }

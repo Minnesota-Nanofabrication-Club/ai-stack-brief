@@ -1,0 +1,413 @@
+{
+  "date": "2026-10-26",
+  "generated_at": "2026-10-26T15:10:00Z",
+  "window": "2026-10-25..2026-10-26",
+  "headline": "A Science Tokyo, Yokohama and AIST team gets 200 Gb/s out of a 320-micrometre silicon modulator by building the equaliser into the waveguide instead of the receiver.",
+  "pulse": {
+    "read_time_min": 8,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-slowlight-builtin-eo-equalizer",
+            "title": "A silicon modulator puts its equaliser in the waveguide, not the DSP",
+            "dek": "A Science Tokyo, Yokohama National University and AIST team built a 320-micrometre silicon optical modulator — the part that turns an electrical bit stream into light — that reaches 200 gigabits per second by wiring a two-tap equaliser into the optical path itself.",
+            "why_it_matters": "Equalisation normally happens in a receiver's digital signal processor, which costs power and latency on every link in a rack. Moving it into the modulator's own geometry — a delay line and a waveguide crossing — fixes the frequency response in fabricated path lengths rather than trained filter taps, so it consumes nothing to run, needs nothing to converge, and cannot drift.",
+            "background_md": "A Mach–Zehnder modulator splits light into two arms, shifts the phase in one, and recombines them so interference turns phase into intensity. In silicon the phase shift comes from sweeping carriers out of a p–n junction, which moves the refractive index only slightly, so the arms run millimetres long. Slowing the light down in a photonic-crystal waveguide buys that length back, but it also makes the light and the electrical drive signal travel at different speeds along the electrode. That walk-off, rather than the junction, is what has capped slow-light modulator bandwidth.",
+            "deeper_md": "The phase shifter is cut into N segments linked by coplanar transmission lines, with an optical delay line and a waveguide crossing placed ahead of the last one. The crossing inverts that segment's modulation, so the device's own response becomes `(N − 1) − exp(jωT_D)` — a two-tap feedforward equaliser in which N sets the strength and the delay T_D sets the peak frequency. At N = 4 with T_D = 6.8 ps the measured 3 dB bandwidth rose from 23 to 55 GHz; an N = 3 device went from 35 to 80 GHz. The 320 µm part reports 140 Gb/s on-off keying at 26 fJ/bit and 0.6 V peak-to-peak, and 180 Gb/s PAM4 with no equalisation anywhere.\n\nThe caveats sit in the loss column. Insertion loss is 11.7–15.5 dB, compensated in the test setup by an optical amplifier, which the authors say has to come down for co-packaged optics. No CMOS driver was attached. The 80 GHz figure is extrapolated past a 67 GHz instrument limit, and the claim of the smallest Vπ·L in the comparison table is the authors' own.",
+            "glossary": [
+              { "term": "Group index (n_g)", "definition": "How much slower a wave packet travels than light in vacuum; the photonic-crystal waveguide here runs at 20–70, and the phase shift obtained per volt scales with it." },
+              { "term": "Vπ·L", "definition": "Volts times length needed to swing one arm by half a wavelength — the modulator efficiency figure of merit, reported here from 0.51 down to 0.16 V·cm as the group index rises." },
+              { "term": "PAM4", "definition": "Four-level pulse amplitude modulation: two bits per symbol carried as four optical power levels, which doubles the rate at a given symbol clock and quarters the spacing between levels." },
+              { "term": "TDECQ", "definition": "Transmitter and dispersion eye closure for PAM4, in dB — how much extra optical power a real transmitter's eye distortion costs relative to an ideal one." }
+            ],
+            "fab_angle": "The equaliser's peak frequency is set by a 6.8 ps optical delay, so its fabricated length tolerance lands straight on the frequency response. That is a geometry specification policed by lithography and etch, not a circuit trim you can adjust after test.",
+            "confidence": "confirmed",
+            "sources": [
+              {
+                "title": "Reduced-DSP 200G/λ low-voltage slow-light silicon modulator enabled by built-in EO equalizer",
+                "url": "https://www.nature.com/articles/s41467-026-78128-1",
+                "publisher": "Nature Communications",
+                "date": "2026-10-22"
+              },
+              {
+                "title": "Silicon Photonic Modulator Reaches 200 Gb/s PAM4 With Reduced DSP",
+                "url": "https://semiengineering.com/silicon-photonic-modulator-reaches-200-gb-s-pam4-with-reduced-dsp-science-tokyo-yokohama-aist-petra/",
+                "publisher": "Semiconductor Engineering",
+                "date": "2026-10-25"
+              },
+              {
+                "title": "Silicon Photonic Crystal Modulators for High-Speed Transmission and Wavelength Division Multiplexing",
+                "url": "https://ynu.repo.nii.ac.jp/records/11260",
+                "publisher": "IEEE JSTQE (Yokohama National University repository)",
+                "date": "2021"
+              }
+            ]
+          },
+          {
+            "id": "silicon-ga2o3-high-frequency-phonons",
+            "title": "Gallium oxide's lopsided heat flow comes from its fastest phonons",
+            "dek": "Kai Xu and 21 co-authors report that β-gallium oxide — the ultra-wide-bandgap semiconductor being pushed for high-voltage power switches — owes its direction-dependent heat conduction to lattice vibrations above 4 terahertz, not to the sound-speed anisotropy long credited for it.",
+            "why_it_matters": "If the anisotropy lives in high-frequency phonons with short mean free paths, then shrinking a heat source changes which direction conducts best: at a 28-nanometre heat-source period the in-plane anisotropy nearly doubles. A thermal model calibrated on bulk measurements will therefore put the hot spot in the wrong place under a real gate finger, and in the wrong plane.",
+            "background_md": "Gallium oxide holds off a high voltage in a thin layer, which is why it is pushed as a power-switching material, but it carries heat badly — measured thermal conductivities sit between roughly 10 and 27 watts per metre-kelvin, and which figure you get depends on which crystal direction you measure. That directionality follows from the lattice: β-Ga₂O₃ is monoclinic, not cubic, so its three principal axes are not equivalent. Heat in an insulator travels as phonons, quantised lattice vibrations, and every phonon mode has its own velocity and its own mean free path before it scatters.",
+            "deeper_md": "Two earlier thermoreflectance studies set the macroscopic picture and disagreed on the numbers: 27.0 ± 2.0 W/mK along [010] against 10.9 ± 1.0 along [100] in one, 22 ± 2.5 and 9.5 ± 1.8 in the other. The 2014 study attributed the spread to sound-speed differences between directions. Angle-resolved Brillouin light scattering in the new work undercuts that reading — the velocity anisotropy of the low-frequency acoustic phonons is too weak to account for the thermal anisotropy that is measured.\n\nFrequency-resolved ab initio Green–Kubo calculations put the anisotropy in modes above 4 THz, with everything below 3 THz close to isotropic. The experimental consequence is a length-scale effect: shrinking the extreme-ultraviolet transient-grating period to 28 nm raises in-plane anisotropy to nearly twice its macroscopic value, largest in the (001) plane, because short-mean-free-path phonons survive the filtering that suppresses the long ones. This is one collaboration's preprint, and it restates no new absolute tensor, so the claim to check is the mechanism rather than a number.",
+            "glossary": [
+              { "term": "Phonon mean free path", "definition": "The average distance a lattice vibration travels before scattering; in a transient-grating experiment, phonons whose path exceeds the grating period stop contributing, which is how the method sorts heat carriers by range." },
+              { "term": "THz (terahertz)", "definition": "10¹² cycles per second; phonon frequencies in a crystal run from near zero to tens of THz, and the 4 THz line here separates the acoustic branches from the higher modes." },
+              { "term": "Monoclinic", "definition": "A crystal class with one oblique angle between its axes, so the three principal directions are inequivalent and tensor properties such as thermal conductivity differ along each one." },
+              { "term": "Brillouin light scattering", "definition": "Measuring the frequency shift light picks up from acoustic phonons, which yields the speed of sound in a chosen direction without contacting the sample." }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Nanoscale origin of thermal anisotropy in monoclinic β-Ga₂O₃",
+                "url": "https://arxiv.org/abs/2610.31976",
+                "publisher": "arXiv",
+                "date": "2026-10-22"
+              },
+              {
+                "title": "Three-Dimensional Anisotropic Thermal Conductivity Tensor of Single Crystalline β-Ga₂O₃",
+                "url": "https://arxiv.org/abs/1809.04762",
+                "publisher": "arXiv (Applied Physics Letters 113, 232105)",
+                "date": "2018"
+              },
+              {
+                "title": "Anisotropic Thermal Conductivity in Single Crystal beta-Gallium Oxide",
+                "url": "https://arxiv.org/abs/1412.7472",
+                "publisher": "arXiv",
+                "date": "2014-12-23"
+              }
+            ]
+          },
+          {
+            "id": "silicon-skyrmion-vcma-pulse-detuning",
+            "title": "A failed MRAM write can be a mistuned pulse, not a bad bit",
+            "dek": "Prosenjit Das, Md Mahadi Rajib and Jayasimha Atulasimha simulated a 100-nanometre magnetic tunnel junction — the two-magnet sandwich that stores one bit in MRAM — and found that writes failing at 350 kelvin succeed again once the voltage pulse is shortened from about 475 to 450 picoseconds.",
+            "why_it_matters": "Write failures in these devices are usually read as a statement about the material: the grains are too disordered, the barrier too shallow. This separates two causes that look alike in a write-error sweep — a timing offset that retuning removes, and easy-axis disorder that it does not, where the intermediate magnetic texture still forms but the reversal never finishes.",
+            "background_md": "A magnetic tunnel junction stores a bit as the relative orientation of two magnetic layers across a thin magnesium-oxide barrier; parallel and antiparallel differ in resistance, so the bit reads out electrically. Holding that bit for ten years needs an anisotropy energy barrier of roughly 60 k_BT, and a write has to overcome the same barrier, so retention and write cost are one number seen from two sides. Voltage-controlled magnetic anisotropy attacks that from a different direction: it collapses the barrier with an electric field across the oxide instead of driving current through the stack.",
+            "deeper_md": "This is not spin-transfer torque. A voltage pulse across the barrier suppresses the perpendicular anisotropy for a few hundred picoseconds, the free layer relaxes through a transient skyrmion — a whirl whose core points opposite to its rim — and when the pulse ends that texture either expands into a full reversal or collapses back. Pulse width, not current amplitude, becomes the control knob: too short and the texture has not nucleated, too long and it has already unwound.\n\nThe method is stochastic micromagnetics on a 100 nm junction with grain-level spread in the Dzyaloshinskii–Moriya interaction, anisotropy magnitude, easy-axis direction and intergrain exchange. With disorder switched off, 10⁶ trials all switched at room temperature; with moderate disorder, 10⁴ trials all switched at both 300 K and 350 K once the pulse was retuned. Note the ceiling 10⁴ clean trials implies — it bounds the write error rate near 10⁻⁴, the same order a separate VCMA switching study reports, and says nothing below it. And no junction was fabricated: the whole result is simulation.",
+            "glossary": [
+              { "term": "VCMA", "definition": "Voltage-controlled magnetic anisotropy: an electric field across the ferromagnet/oxide interface changes the energy cost of pointing the magnetisation out of plane, so a voltage rather than a current can destabilise a stored bit." },
+              { "term": "Skyrmion", "definition": "A localised whirl of magnetisation whose core points opposite to its surroundings; it is topologically distinct from a uniform state, so it must be created and destroyed rather than smoothly flattened away." },
+              { "term": "Δ (thermal stability factor)", "definition": "The ratio of a bit's anisotropy energy to k_BT; near 60 it corresponds to roughly ten-year retention, and the same quantity sets how hard the bit is to write." },
+              { "term": "Write error rate", "definition": "The fraction of write attempts that leave the wrong value behind; 10⁴ stochastic trials with no failures bounds it near 10⁻⁴ and cannot resolve anything smaller." }
+            ],
+            "fab_angle": "If the optimum write pulse moves about five per cent between 300 K and 350 K, a VCMA write driver needs temperature compensation rather than a single trimmed delay — a decision that belongs in the write path of the IC, not in the magnetic stack.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Robustness of Skyrmion-Mediated Magnetization Switching in Perpendicular Magnetic Tunnel Junctions (p-MTJs) to Material Disorder and Elevated Temperature",
+                "url": "https://arxiv.org/abs/2610.32944",
+                "publisher": "arXiv",
+                "date": "2026-10-23"
+              },
+              {
+                "title": "Dynamic Skyrmion-Mediated Switching of Perpendicular MTJs: Scaling to 20 nm with Thermal Noise",
+                "url": "https://arxiv.org/abs/2003.12904",
+                "publisher": "arXiv (IEEE Transactions on Electron Devices)",
+                "date": "2020-03-28"
+              },
+              {
+                "title": "Current-induced magnetization switching in MgO barrier magnetic tunnel junctions with CoFeB based synthetic ferrimagnetic free layers",
+                "url": "https://arxiv.org/abs/0801.1355",
+                "publisher": "arXiv (IEEE Transactions on Magnetics)",
+                "date": "2008-01-09"
+              },
+              {
+                "title": "Numerical analysis of voltage-controlled magnetization switching operation in magnetic-topological-insulator-based devices",
+                "url": "https://arxiv.org/abs/2309.03043",
+                "publisher": "arXiv (Applied Physics Letters 123, 102404)",
+                "date": "2023-09-06"
+              }
+            ]
+          },
+          {
+            "id": "silicon-nbn-oxygen-plasma-carrier-loss",
+            "title": "A minute of oxygen plasma costs an ALD nitride a seventh of its carriers",
+            "dek": "Mustafa Teke and colleagues exposed 10-nanometre niobium-nitride films — grown one atomic layer at a time, and used to build superconducting photon detectors — to oxygen plasma, then measured the damage with light alone: the effective free-carrier density fell 14 per cent after 60 seconds.",
+            "why_it_matters": "Plasma ashing and oxygen descum are routine cleanup steps nobody times carefully, and on a film this thin a minute of one removes a measurable share of the conduction electrons. The measurement route is the other half of the result: ellipsometry pinned by X-ray reflectivity reads carrier density out of an unpatterned film, with no contacts, no lithography, and nothing consumed.",
+            "background_md": "Atomic layer deposition builds a film one self-limiting surface reaction at a time, which is how a uniform 10-nanometre layer is obtained inside a deep hole or across a whole wafer. Niobium nitride is grown this way because it superconducts at a comparatively high critical temperature and has a high kinetic inductance, which is what lets a nanowire of it register a single 1550-nanometre telecom photon. The catch with any film in the 4-to-30-nanometre range ALD is used for here is that its surface is a large fraction of the whole, so a few nanometres of oxide on top is not a coating; it is part of the device.",
+            "deeper_md": "The films were 10 nm nominal on silicon with an alumina buffer, then given 0, 20, 40 or 60 seconds of oxygen plasma. Thickness came from X-ray reflectivity and was held fixed in the optical model, so the ellipsometric fit across 1.24–6.20 eV and 0.041–0.827 eV had to absorb any change into the dielectric function rather than into a thinner layer. Two things moved. A distinct absorption feature appeared near 4.9 eV, which the authors read as oxidation of the nitride surface. And the free-carrier terms dropped: effective concentration from 1.20 × 10²² to 1.03 × 10²² cm⁻³, a 14 per cent fall on those two figures, and effective mobility from 2.44 to 2.27 cm²V⁻¹s⁻¹.\n\nBoth figures are model outputs rather than Hall measurements, and \"effective\" is carrying weight — a graded oxide sitting on intact nitride can mimic a uniformly depleted film inside a single-layer fit. The abstract reports no change in critical temperature, which is the number a detector builder would want next, and ALD's whole appeal in this material is the film homogeneity that gave near-unity device yield in earlier detector work.",
+            "glossary": [
+              { "term": "Spectroscopic ellipsometry", "definition": "Measuring how reflection alters the polarisation of light across wavelengths and angles, then fitting a layer model to it; it infers thickness and optical constants without touching the film." },
+              { "term": "Free-carrier (Drude) response", "definition": "The part of a conductor's optical behaviour contributed by mobile electrons; it dominates in the infrared, which is why carrier density can be extracted from an infrared spectrum." },
+              { "term": "cm⁻³", "definition": "Carriers per cubic centimetre, the standard unit of carrier density; the 10²² cm⁻³ measured here is a metallic concentration rather than a semiconducting one." },
+              { "term": "X-ray reflectivity (XRR)", "definition": "Measuring X-ray intensity reflected at grazing angles; the interference fringes give film thickness and density, which is what pins the thickness the optical fit then assumes." }
+            ],
+            "fab_angle": "An oxygen descum timed for photoresist residue is also an etch for the top of whatever nitride sits under it. On a 10 nm film, the teaching-lab habit of \"a minute of plasma to be safe\" is a process step with a measurable electrical cost, and it is cheaper to measure than to argue about.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Modification of optical properties in ultrathin ALD-grown NbN layers using oxygen plasma treatment",
+                "url": "https://arxiv.org/abs/2610.32553",
+                "publisher": "arXiv",
+                "date": "2026-10-23"
+              },
+              {
+                "title": "Superconducting nanowire single-photon detectors fabricated from atomic-layer-deposited NbN",
+                "url": "https://arxiv.org/abs/1910.07010",
+                "publisher": "arXiv",
+                "date": "2019-10-15"
+              },
+              {
+                "title": "Atomic Layer Deposition Niobium Nitride Films for High-Q Resonators",
+                "url": "https://arxiv.org/abs/1908.07146",
+                "publisher": "arXiv (Journal of Low Temperature Physics)",
+                "date": "2019"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-sg2044-bandwidth-per-core",
+            "title": "A 64-core RISC-V chip runs out of memory bandwidth at 16 cores",
+            "dek": "Emanuele Venieri and colleagues benchmarked Sophgo's SG2044, a 64-core RISC-V server processor, against Nvidia's Grace superchip and Intel's Xeon Platinum 8480+ on four high-performance-computing kernels, and found it scales near-linearly only as far as 16 cores.",
+            "why_it_matters": "The per-core figures say why: 8.02 gigaflops of double-precision arithmetic against 7.8 gigabytes per second of memory bandwidth, so a core needs roughly one floating-point operation per byte it fetches just to stay busy. Past 16 cores the bandwidth is shared out and the arithmetic units wait, which is also why the chip holds up best on language-model decoding — the workload that was bandwidth-bound to begin with.",
+            "background_md": "A processor's useful speed is set by whichever runs out first, its arithmetic units or the path to memory. The quantity that decides this is arithmetic intensity — floating-point operations performed per byte moved — and it is a property of the workload, not the machine. A dense matrix multiply reuses each loaded value many times and ends up arithmetic-limited; a sparse solve or a single-stream token decode touches each byte once or twice and ends up bandwidth-limited. STREAM exists to measure that second number honestly, which is why it insists its arrays be at least four times the last-level cache.",
+            "deeper_md": "The part is 64 T-Head XuanTie C920v2 cores with a 128-bit RVV 1.0 vector unit, 2 MB of L2 per four-core cluster, 64 MB of shared L3, and 32 memory controllers feeding 32 channels of DDR5-4266 in a single NUMA domain. The preprint reports 8.02 GFLOP/s FP64 and 7.8 GB/s per core, rising to 294 GFLOP/s and 107 GB/s at 64 cores — dividing those gives about 37× the arithmetic for about 14× the bandwidth, and about 1 FLOP/byte per core.\n\nAgainst Grace and the Xeon the shortfall is 8–15× in absolute performance, which the authors attribute to narrower vectors and an older process node. An independent evaluation of the same silicon reaches the same shape from different benchmarks: STREAM copy at 64 cores exceeds 3× the previous SG2042's, while the two chips are indistinguishable up to 8 cores, and NAS kernel gains over the SG2042 run from 1.52× on EP to 4.91× on IS. A separate dual-socket study of that predecessor concluded its memory limits were inherent to the CPU. All three are preprints.",
+            "glossary": [
+              { "term": "Arithmetic intensity", "definition": "Floating-point operations performed per byte moved from memory; comparing a workload's value against a machine's flops-per-byte-of-bandwidth tells you which of the two is the binding limit." },
+              { "term": "GFLOP/s (FP64)", "definition": "Billions of 64-bit floating-point operations per second — the double-precision rate, which is what scientific codes and the HPL benchmark are rated on." },
+              { "term": "RVV 1.0", "definition": "The RISC-V vector extension; this chip implements it 128 bits wide, so one instruction covers two 64-bit values against eight in a 512-bit AVX-512 unit." },
+              { "term": "NUMA domain", "definition": "A region of memory every core reaches at the same cost; one domain across 32 channels means no core sits nearer any channel, and also that all 64 contend for the same aggregate bandwidth." }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Toward Open ISA Supercomputing: A Comparative Study of RISC-V, Arm, and x86 Architectures on HPC Workloads",
+                "url": "https://arxiv.org/abs/2610.32632",
+                "publisher": "arXiv",
+                "date": "2026-10-23"
+              },
+              {
+                "title": "Is RISC-V ready for High Performance Computing? An evaluation of the Sophon SG2044",
+                "url": "https://arxiv.org/html/2508.13840v1",
+                "publisher": "arXiv (EPCC, University of Edinburgh)",
+                "date": "2025-08"
+              },
+              {
+                "title": "Investigations of multi-socket high core count RISC-V for HPC workloads",
+                "url": "https://arxiv.org/abs/2502.10320",
+                "publisher": "arXiv",
+                "date": "2025-02-14"
+              }
+            ]
+          },
+          {
+            "id": "chips-bucketed-dot-product-multiplier-count",
+            "title": "With 4-bit weights, a dot product needs only 16 multiplications",
+            "dek": "Jonathan Tapson points out that a dot product against k-bit quantised neural-network weights needs only 2^k multiplications however long the vector is, because each weight code can address an accumulator instead of first being decoded back into a number.",
+            "why_it_matters": "The multiplier is the expensive cell in an accelerator datapath, and this moves the count from one per element to one per distinct weight value — 16 for 4-bit weights, 8 for 3-bit. The honest result is that it only pays when the one remaining multiplier is time-shared across many processing elements: on FPGA a standalone version of the cell comes out larger than the multiply-accumulate unit it replaces.",
+            "background_md": "Quantisation stores a neural network's weights in one to four bits while activations stay 16 or 32 bits wide, which shrinks the memory traffic that dominates inference cost. The arithmetic does not shrink with it. A conventional pipeline expands each small weight code back into a wide number — dequantisation — and hands it to a multiply-accumulate unit, so the multiplier count still scales with the length of the vector. The observation everything in this corner rests on is that k bits name only 2^k distinct values, so most of those multiplications share a multiplicand.",
+            "deeper_md": "Take a length-n dot product with k-bit weights. Instead of multiplying each activation by its weight, use the weight code as an address: add each activation into one of 2^k accumulators, so the whole vector costs n additions. Then decode and multiply the 2^k bucket sums once each and add them. Total: n + 2^k additions, at most 2^k decodes and 2^k multiplications, exact for integer operands, cutting the multiplier count by n/2^k. Because the decoder only ever sees 2^k values it can be nonlinear, so the scheme extends to non-uniform codebooks, group-wise scales, and matrix and tensor products.\n\nThe hardware proposal is a scatter-accumulate element replacing the MAC in a weight-stationary systolic array, with a small shared multiplier firing 2^k times per tile. The paper is candid about the catch: unshared, the element is bigger than a MAC, and the energy saving is bounded well below n/2^k. It also declines to claim the identity is new — LUT-GEMM reaches the same place from the other side, precomputing activation partial sums and indexing them with weight bits. The low-bit regime is real: ternary weights have been shown to match same-size full-precision transformers.",
+            "glossary": [
+              { "term": "MAC (multiply-accumulate)", "definition": "The cell that multiplies two numbers and adds the product to a running sum; it is the unit a systolic array is tiled out of, and its multiplier dominates its area." },
+              { "term": "Dequantisation", "definition": "Expanding a stored low-bit weight code back into a wide number with a scale and offset before any arithmetic happens; it is the step both this scheme and LUT-GEMM skip." },
+              { "term": "2^k", "definition": "The count of distinct values k bits can name — 16 for k = 4, 8 for k = 3. Here it is simultaneously the number of accumulators needed and the number of multiplications left." },
+              { "term": "Weight-stationary systolic array", "definition": "A grid of MAC cells that holds weights in place while activations stream through, so each weight is loaded once and reused across many inputs." }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Decode Late, Multiply Once: Rethinking the Dot Product for Quantized Weights",
+                "url": "https://arxiv.org/abs/2610.31913",
+                "publisher": "arXiv",
+                "date": "2026-10-22"
+              },
+              {
+                "title": "LUT-GEMM: Quantized Matrix Multiplication based on LUTs for Efficient Inference in Large-Scale Generative Language Models",
+                "url": "https://arxiv.org/html/2206.09557v4",
+                "publisher": "arXiv (ICLR 2024)",
+                "date": "2022"
+              },
+              {
+                "title": "The Era of 1-bit LLMs: All Large Language Models are in 1.58 Bits",
+                "url": "https://arxiv.org/abs/2402.17764",
+                "publisher": "arXiv",
+                "date": "2024-02-27"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-combinatorial-min-cost-flow-dense",
+            "title": "Min-cost flow gets its first combinatorial speedup since 1987",
+            "dek": "Bernhard Haeupler, Yonggang Jiang and Thatchaphol Saranurak give an algorithm that computes an exact minimum-cost flow in n^(2+o(1)) time using only combinatorial steps — no interior-point method — the first such improvement since Goldberg and Tarjan's 1987 result.",
+            "why_it_matters": "The standing record, m^(1+o(1)), comes from continuous optimisation: it solves a sequence of linear systems and never reasons about paths or cycles at all. That makes it fast, and it also makes it opaque, hard to implement and awkward to adapt to a variant problem. A combinatorial algorithm that matches it on dense graphs puts the problem back within reach of techniques an engineer can follow edge by edge.",
+            "background_md": "Minimum-cost flow asks how to push a required quantity through a capacitated network at the least total cost, and it is the problem shortest paths, bipartite matching and transportation all reduce to. Two traditions attack it. Combinatorial algorithms move flow along paths and cancel negative-cost cycles, so every intermediate state is itself a valid flow you can print out and inspect. Continuous algorithms treat the same question as a linear program and take Newton-like steps through the interior of the feasible region, where the intermediate states are not flows at all.",
+            "deeper_md": "Goldberg and Tarjan's 1987 cycle-cancelling algorithm, in its dynamic-trees variant, runs in O(nm log n · min{log(nC), m log n}) on n vertices, m arcs and integer costs bounded in absolute value by C. Chen, Kyng, Liu, Peng, Probst Gutenberg and Sachdeva reached m^(1+o(1)) in 2022, but by repeatedly finding approximate minimum-ratio cycles with a dynamic data structure inside an interior-point framework. The new n^(2+o(1)) bound is weaker on sparse graphs and essentially ties m^(1+o(1)) when m ≈ n², which is what \"nearly optimal for dense graphs\" means here.\n\nThe mechanism is a reduction rather than a new iteration scheme: a black-box map from exact minimum-cost flow on a general directed graph to approximate minimum-cost flow on a directed acyclic graph, at a cost of an n^(o(1)) factor. It rests on a new structural result the authors call a flow-cost-preserving DAG projection, which approximately preserves both congestion and cost. Drop in a plain augmenting-path approximation for DAGs and the bound follows. This is a 101-page preprint, unrefereed, with no implementation claimed.",
+            "glossary": [
+              { "term": "n^(2+o(1))", "definition": "A bound of n² multiplied by a factor growing slower than any fixed power of n; the o(1) hides sub-polynomial overhead that vanishes asymptotically and can still be large at real sizes." },
+              { "term": "Combinatorial algorithm", "definition": "One whose steps are discrete operations on the graph — augment along a path, cancel a cycle — rather than numerical linear algebra, so each intermediate object is itself a flow." },
+              { "term": "Interior-point method", "definition": "An optimisation technique that walks through the strict interior of the feasible region toward the optimum, solving a linear system at each step instead of manipulating the combinatorial object." },
+              { "term": "DAG (directed acyclic graph)", "definition": "A directed graph containing no cycles, which is why flow is easier there: no negative-cost cycle exists to cancel, and a topological order settles every reachability question." }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Combinatorial Minimum Cost Flow in Almost-Linear Time on Dense Graphs",
+                "url": "https://arxiv.org/abs/2610.32556",
+                "publisher": "arXiv",
+                "date": "2026-10-23"
+              },
+              {
+                "title": "Maximum Flow and Minimum-Cost Flow in Almost-Linear Time",
+                "url": "https://arxiv.org/abs/2203.00671",
+                "publisher": "arXiv",
+                "date": "2022-03-01"
+              },
+              {
+                "title": "Finding Minimum-Cost Circulations by Canceling Negative Cycles (TR-107-87)",
+                "url": "https://www.cs.princeton.edu/research/techreps/635",
+                "publisher": "Princeton University Department of Computer Science",
+                "date": "1987-07"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-source-attribution-cached-state",
+            "title": "A model's claim about where its answer came from lives in the KV cache",
+            "dek": "Kirill Afendulev and co-authors show that when a language model reports whether its answer came from a supplied document or from its own weights, that report is decided by the cached state the model built while answering, not by the document on the page.",
+            "why_it_matters": "Asking a model to name its source is widely treated as a cheap audit of a retrieval system. If the report is a function of the cached question-and-answer state, then swapping that state in from another run flips the report while the document stays untouched — so \"did you use the context?\" is reporting something about the model's internal trace, and not about its input at all.",
+            "background_md": "A transformer processes a prompt once and keeps, for every token and every layer, the key and value vectors that attention will need later; that store is the KV cache, and generating text consists of appending to it. Retrieval-augmented systems drop a fetched document into the prompt, which raises a standing question: when the document and the weights disagree, which one wins? The field calls this context-memory conflict, and surveys of it find no consistent rule — models tend to follow whichever source reads as more coherent, more popular or more persuasively written.",
+            "deeper_md": "The experiment is a cache intervention run after the answer has been generated and before the source question is asked. Editing or deleting the document's cache never changed the source report, across four models from 7B to 32B parameters. Transplanting the cached question-and-answer state from a different run — with identical question and answer tokens — moved every eligible report to the donor's. On the two smaller models, nudging the Q+A values along directions fitted before the source question was ever posed reversed 98.9–100% of reports across four document conditions, against at most 1.1% for random directions of matched norm. Copying the key and value components along those directions nearly reproduces the effect; pinning them nearly blocks it.\n\nThe authors state the limitation themselves: none of this shows the reports are accurate. A separate probing study found that the same contributive-attribution signal is linearly decodable from hidden states at 0.94–0.99 accuracy out of domain, concentrated in upper-middle layers — consistent with a representation of source that exists whether or not it happens to be right.",
+            "glossary": [
+              { "term": "KV cache", "definition": "The per-layer key and value vectors a transformer stores for every token already processed, so later tokens can attend to them without recomputation; it is the model's working memory during generation." },
+              { "term": "Parametric vs contextual knowledge", "definition": "Facts absorbed into the weights during training, versus facts supplied in the prompt at inference time; source attribution is the question of which of the two produced a given answer." },
+              { "term": "Steering direction", "definition": "A vector added to a model's internal activations to push its behaviour one way; the control is adding a random vector of the same length, which here flipped at most 1.1% of reports." },
+              { "term": "Context-memory conflict", "definition": "The case where a prompt's document contradicts what a model learned in training; surveys find no fixed rule for which one a model follows." }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Context or Knowledge: How LLMs Attribute Their Own Answers",
+                "url": "https://arxiv.org/abs/2610.32109",
+                "publisher": "arXiv",
+                "date": "2026-10-23"
+              },
+              {
+                "title": "Probing for Knowledge Attribution in Large Language Models",
+                "url": "https://arxiv.org/html/2602.22787v1",
+                "publisher": "arXiv",
+                "date": "2026-02"
+              },
+              {
+                "title": "Knowledge Conflicts for LLMs: A Survey",
+                "url": "https://arxiv.org/html/2403.08319",
+                "publisher": "arXiv",
+                "date": "2024-03"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "MRAM, ReRAM, and phase-change memory",
+    "slug": "emerging-memory",
+    "subtitle": "Three non-volatile memories that keep almost winning — and, as today's magnetic-tunnel-junction item shows, the one physical quantity each of them is genuinely best at.",
+    "tldr": "Embedded flash stops working below about 28 nanometres, and costs up to 18 extra mask layers before it stops, so three replacements have been in development for decades: magnetic, filamentary and phase-change cells. None has replaced flash, because each wins one metric and loses the others. The useful way to read the field is to find, for each technology, the single physical quantity it is best at, and the physical trade that keeps it from being best at anything else.",
+    "sections": [
+      {
+        "heading": "The hole that flash leaves",
+        "body_md": "Start with why anyone is still looking. A flash cell stores charge behind a tunnel oxide, and three constraints meet in that oxide. It has to be thick enough that the charge does not leak away for ten years; a thick oxide needs a high voltage to push charge across; and a high voltage needs enough channel length and drain margin to stand off. Scale the cell and all three bite at once, which is exactly the list — drain voltage, gate length, tunnel oxide — that Semiconductor Engineering's 2018 survey of the problem gives.\n\nThe practical numbers are blunt. Embedded flash works at 40 nm, can be stretched to 28 nm with more complexity, and below that does not work; it cannot be integrated with finFETs at all. Adding it to a logic flow costs 8 to 13 extra masks at 40 nm and 9 to 18 at 28 nm. Meanwhile a flash write needs a byte or sector erase first, so the write is slow and coarse even when it works.",
+        "deeper_md": "Two numbers from the same survey set the bar any replacement has to clear, and they are thermal rather than electrical. Automotive parts want better than twenty years of shelf life, and a Grade 0 part is rated to 150 °C while the package itself adds roughly 15 °C on top of the chip rating. Every candidate below is easy at 25 °C and hard at 150 °C, because every one of them stores its bit in a barrier that temperature helps the bit climb."
+      },
+      {
+        "heading": "MRAM: the barrier you write is the barrier that remembers",
+        "body_md": "A magnetic tunnel junction is two ferromagnetic layers — CoFeB in the standard recipe — separated by a magnesium-oxide barrier about a nanometre thick. Electrons tunnel through more readily when the two magnetisations are parallel than when they are antiparallel, so the stored direction reads out as a resistance. One layer is pinned; the other, the free layer, is the bit.\n\nHere is the trap the whole technology lives inside. Retention is set by the anisotropy energy barrier the free layer must climb to flip itself, expressed as the dimensionless ratio Δ of that energy to k_BT. Hayakawa and co-workers in 2008 reported Δ above 60 for junctions of 100 by 150–300 nm², and that is where the familiar \"ten years\" comes from. But a write has to drive the magnetisation over the same barrier, so the write current climbs with Δ too. Spin-transfer torque in that work got the intrinsic switching current density down to 2–4 × 10⁶ A/cm². Retention and write cost are not two specifications; they are one number read from either end.",
+        "deeper_md": "The geometric escape is worth knowing because it shows what \"the barrier\" is made of. Conventional perpendicular MTJs get their out-of-plane preference from the CoFeB/MgO interface, and the demagnetising energy of a flat disc fights it — which is why Δ collapses as the disc shrinks. Perrissin and colleagues instead made the storage layer thicker than the pillar is wide, so shape anisotropy points out of plane as well and adds to the interfacial term rather than opposing it. They report Δ above 200 at 8 nm diameter and still above 60 at 4 nm. The cost is a tall pillar to etch, which is a lithography and etch problem rather than a magnetics one."
+      },
+      {
+        "heading": "Phase change: the only one where you melt the bit",
+        "body_md": "Phase-change memory stores a bit as the structural state of a chalcogenide, usually Ge₂Sb₂Te₅, exploiting what Burr and colleagues' review calls the large electrical contrast between a highly resistive amorphous state and a highly conductive crystalline one. The asymmetry of the two operations is the whole character of the technology. To write the high-resistance state you melt a volume of the material and quench it fast enough that it cannot crystallise — the RESET, and the most current-hungry step in any memory. To write the low-resistance state you hold the material warm enough to crystallise, which is the slowest step.\n\nMeasured on real line cells 20 nm thick and 70–100 nm wide, amorphisation took 1.5–2.5 V for 50–100 ns at a peak current of 0.4–1.1 mA, amorphising lengths from about 50 to 700 nm. That milliamp is the number that has kept PCM out of dense arrays: a select device has to supply it, and a select device that can is not small.",
+        "deeper_md": "PCM's distinctive prize is that the amorphous resistance is continuously tunable, which is why it is the substrate of choice for multi-level cells and for analogue in-memory compute. Its distinctive disease attacks exactly that prize. The amorphous phase structurally relaxes after quenching, so its resistance drifts upward roughly as a power of elapsed time, R ∝ t^ν. The cryogenic study above measured drift coefficients ν of about 0.02 to 0.1 over an hour, starting within a second of amorphisation, and at the lowest temperatures and highest resistance states some devices swung resistance over periods of seconds. If you are storing one bit per cell you can set a far-away read threshold and ignore this. If you are storing four levels, drift is the budget."
+      },
+      {
+        "heading": "ReRAM: the one whose claim is the process, not the physics",
+        "body_md": "Resistive RAM switches an oxide layer electrically between two stable resistance states. Its argument has never really been a device metric. It is that the cell is two terminals and a couple of oxide films, drops into the back end of an existing logic flow, needs no high-programming-voltage charge pump, and overwrites without an erase step first — so, as Semiconductor Engineering's 2017 survey of embedded candidates put it, the appeal is more endurance than flash at lower power and far less process disruption.\n\nThe counter-argument is in the same survey, from Jim Handy: new materials add cost to the wafer and often hurt yield. And the published numbers come with a qualifier that matters more than the numbers. Weebit Nano's 2019 results, measured by CEA-Leti on silicon-oxide cells, were over ten years of retention at 130–150 °C and over a million cycles — on single cells. An array is priced by its worst bit, and a single-cell figure says nothing about the tail of the distribution.",
+        "deeper_md": "That is why variability, not endurance, is the live research question for oxide ReRAM: the review literature on inorganic-oxide resistive switching devotes itself to the switching mechanism, endurance, fatigue resistance and retention in that order, and the first of those is still contested. Treat any ReRAM specification you are handed with two questions. Was it measured on a cell or an array? And was retention measured before or after cycling — because the same survey work reports both, and the two numbers are not the same number."
+      },
+      {
+        "heading": "Why none of them won",
+        "body_md": "Line the three up and the pattern is clear. MRAM is best at endurance and at write energy, and pays for it in high-temperature retention, because Δ is a ratio with temperature in the denominator. PCM is best at continuous, multi-level resistance and at high-temperature stability, and pays in RESET current and in drift. ReRAM is best at process simplicity and cost of integration, and pays in distribution width.\n\nNone of those is the metric flash actually competes on, which is bits per dollar in volume with a twenty-year warranty. That is why all three show up as embedded replacements for flash at 40, 28 and 22 nm rather than as replacements for DRAM or NAND — the comparison they can win is against a memory that costs 18 extra masks, not against a memory with its own fab.\n\nThe disagreement is still live, and worth watching rather than resolving. In the 2018 survey one supplier argued MRAM is never going to work at high temperature; another said 150 °C is possible and simply needs development spending. Eight years later both positions are still arguable, which is itself the most informative fact in the field.",
+        "deeper_md": "A useful habit when a new emerging-memory result crosses your desk: ask which of the three columns it moves. A paper that lowers RESET current is a PCM paper even if it is about a thermal barrier material. A paper that raises Δ at a fixed diameter is an MRAM paper even if it is about etch profile. A paper that narrows a distribution is a ReRAM paper even if it is about a precursor. Almost nothing moves two columns at once, and a claim that it does is the claim to check first."
+      }
+    ],
+    "glossary": [
+      { "term": "Δ (thermal stability factor)", "definition": "The ratio of a magnetic bit's anisotropy energy to k_BT. Retention grows exponentially in Δ, so Δ ≈ 60 is the usual proxy for ten-year retention — and because k_BT is in the denominator, the same cell has a smaller Δ at 150 °C than at room temperature." },
+      { "term": "MTJ (magnetic tunnel junction)", "definition": "Two ferromagnetic layers separated by a roughly 1 nm magnesium-oxide barrier. Tunnelling conductance depends on whether the two magnetisations are parallel, which is how a magnetic state becomes a readable resistance." },
+      { "term": "Spin-transfer torque", "definition": "Writing an MTJ by passing a spin-polarised current through it so that the electrons' angular momentum pushes the free layer over its barrier; the 2008 work cited here needed 2–4 × 10⁶ A/cm² to do it." },
+      { "term": "RESET (in PCM)", "definition": "The operation that writes the high-resistance state by melting a volume of chalcogenide and quenching it to an amorphous glass. It is the most current-hungry step in the cell, measured at 0.4–1.1 mA in the line cells discussed here." },
+      { "term": "Resistance drift (ν)", "definition": "The slow upward creep of an amorphous chalcogenide's resistance after quenching, following roughly R ∝ t^ν. Measured ν of 0.02–0.1 is harmless for one bit per cell and is the limiting budget for multi-level storage." },
+      { "term": "Mask adder", "definition": "The number of extra photolithography layers a memory costs on top of a plain logic flow — 8 to 13 for embedded flash at 40 nm, 9 to 18 at 28 nm. It is the figure every emerging memory is actually competing against." }
+    ],
+    "try_this": "Do the energy arithmetic that separates two of these technologies, on paper, before the next meeting. Take the PCM amorphisation pulse measured by Talukder and colleagues — 1.5–2.5 V for 50–100 ns at a peak current of 0.4–1.1 mA — and compute the programming energy for one RESET. Then take Hayakawa and colleagues' switching current density of 2–4 × 10⁶ A/cm² on a 100 × 200 nm² junction, work out the current that implies, and estimate an STT-MRAM write at a volt or so for ten nanoseconds. Write both answers in joules per bit. The ratio you get is the entire argument between the two camps, and it is three lines of algebra.",
+    "sources": [
+      {
+        "title": "Phase change memory technology",
+        "url": "https://arxiv.org/abs/1001.1164",
+        "publisher": "arXiv (Journal of Vacuum Science & Technology B 28, 223)",
+        "date": "2010"
+      },
+      {
+        "title": "Resistance Drift in Melt-Quenched Ge2Sb2Te5 Phase Change Memory Line Cells at Cryogenic Temperatures",
+        "url": "https://arxiv.org/abs/2401.04909",
+        "publisher": "arXiv",
+        "date": "2024-01-10"
+      },
+      {
+        "title": "Current-induced magnetization switching in MgO barrier magnetic tunnel junctions with CoFeB based synthetic ferrimagnetic free layers",
+        "url": "https://arxiv.org/abs/0801.1355",
+        "publisher": "arXiv (IEEE Transactions on Magnetics)",
+        "date": "2008-01-09"
+      },
+      {
+        "title": "Highly thermally stable sub-20nm magnetic random-access memory based on perpendicular shape anisotropy",
+        "url": "https://arxiv.org/abs/1803.02663",
+        "publisher": "arXiv",
+        "date": "2018-03-07"
+      },
+      {
+        "title": "Recent advances in inorganic oxides-based resistive random-access memory devices",
+        "url": "https://arxiv.org/abs/2205.05537",
+        "publisher": "arXiv",
+        "date": "2022-05-02"
+      },
+      {
+        "title": "Embedded Flash Scaling Limits",
+        "url": "https://semiengineering.com/embedded-flash-scaling-limits/",
+        "publisher": "Semiconductor Engineering",
+        "date": "2018-07-19"
+      },
+      {
+        "title": "New Embedded Memories Ahead",
+        "url": "https://semiengineering.com/new-embedded-memories-ahead/",
+        "publisher": "Semiconductor Engineering",
+        "date": "2017-01-25"
+      },
+      {
+        "title": "Weebit Nano technical parameters demonstrate results at forefront of ReRAM market",
+        "url": "https://www.weebit-nano.com/news/press-releases/weebit-nano-technical-parameters-demonstrate-results-at-forefront-of-reram-market/",
+        "publisher": "Weebit Nano",
+        "date": "2019-05-01"
+      }
+    ]
+  }
+}

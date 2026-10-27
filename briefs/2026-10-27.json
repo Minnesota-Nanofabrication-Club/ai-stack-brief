@@ -1,0 +1,358 @@
+{
+  "date": "2026-10-27",
+  "generated_at": "2026-10-27T14:40:00Z",
+  "window": "2026-10-26..2026-10-27",
+  "headline": "Giacomo Graziano and colleagues get 106.25 Gb/s out of an 850-nanometre VCSEL with no equalisation at either end, by making the laser's own cavity loss fall as its carrier density rises.",
+  "pulse": {
+    "read_time_min": 8,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-oxygen-selects-tantalum-phase",
+            "title": "A trace of oxygen decides which tantalum phase you sputter",
+            "dek": "Marius Eji and three co-authors sputtered 100-nanometre tantalum films onto sapphire at 300 to 900 °C and found that the oxygen background in the chamber, more than the substrate temperature, decides which of tantalum's two crystal phases grows and which way it points.",
+            "why_it_matters": "The difference is not cosmetic. β-tantalum carries about thirteen times the resistivity of the α form and has roughly half its electronic density of states at the Fermi level, so a deposition recipe that does not pin residual oxygen is not pinning sheet resistance or superconducting behaviour either. The useful part is that the control knob turns out to be a partial pressure four orders of magnitude below the working gas, which is a vacuum-system specification rather than a plasma one.",
+            "background_md": "Tantalum grows in two crystal structures. α-Ta is body-centred cubic, with eight nearest neighbours; β-Ta is a metastable tetragonal phase with four, and that coordination difference shows up directly in its electronic density of states and therefore in how well it conducts. Which structure a sputtered film adopts is not fixed by the target and the working gas alone — background species present at partial pressures far below the discharge pressure can tip the balance. The film is already grown by the time X-ray diffraction says which one you got, so the phase is usually discovered rather than chosen.",
+            "deeper_md": "The films are 100 nm of tantalum sputtered onto c-plane sapphire from 300 to 900 °C, with oxygen admitted deliberately from an ultrahigh-vacuum baseline up to roughly 2 × 10⁻⁴ Torr. The stated control variable is an impingement flux ratio, 2Φ_O₂/Φ_Ta, spanning ≤4.8 × 10⁻⁶ to 19; phase and orientation come from absorption-corrected X-ray diffraction texture coefficients.\n\nWith no added oxygen, α-Ta(110) dominates at every temperature. Admit 2.5 × 10⁻⁹ Torr of O₂ — a flux ratio of 2.2 × 10⁻⁴ — and α-Ta(111) becomes 98–99% of the normalised texture weight from 300 to 700 °C, falling to 65% at 900 °C. β-Ta appears in quantity only at the highest oxygen dose, dominates at 300 °C, and is gone by 900 °C.\n\nThe mechanistic claim rests on one number: an apparent β(001)/α(110) selection energy of 1.07 ± 0.16 eV, which the authors note is comparable to the activation energy for oxygen diffusion in tantalum. That is an inference from an Arrhenius fit, not a measurement of oxygen transport, and this is a single-group preprint with no electrical or superconducting data on these films. The contrast it matters for comes from elsewhere: β-Ta films measure about 170 µΩ·cm against 13.1 µΩ·cm for bulk α-Ta, with 0.557 against 1.032 states/eV/atom at the Fermi level, and α-Ta is the phase superconducting transmon qubits moved to when swapping niobium for tantalum pushed coherence past 0.3 ms across seventeen devices.",
+            "glossary": [
+              { "term": "Texture coefficient", "definition": "The share of a film's diffracted intensity assigned to one crystal orientation after correcting for absorption; it is how a phase map is read off an X-ray scan rather than guessed at." },
+              { "term": "Impingement flux ratio (2Φ_O₂/Φ_Ta)", "definition": "Oxygen atoms arriving at the growing surface per tantalum atom arriving; it replaces partial pressure as the control variable because what matters is the competition at the surface, not the pressure in the chamber." },
+              { "term": "Metastable phase", "definition": "A structure that is not the lowest-energy one at a given temperature but has no cheap path to the stable one, so it survives indefinitely once grown — which is why β-Ta persists in a film at room temperature." },
+              { "term": "Density of states at the Fermi level", "definition": "How many electron states sit at the energy where conduction happens; it sets normal-state conductivity and, through electron–phonon coupling, the superconducting transition." }
+            ],
+            "fab_angle": "A chamber whose base pressure wanders by a decade in the 10⁻⁹ Torr range is, on this evidence, a chamber that changes the orientation of the film it deposits. For a teaching sputterer that puts the residual-gas analyser and the leak check inside process control rather than beside it.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Growth Phase Map of α and β Tantalum as a Function of Growth Temperature and Oxygen Partial Pressure",
+                "url": "https://arxiv.org/abs/2610.35768",
+                "publisher": "arXiv",
+                "date": "2026-10-26"
+              },
+              {
+                "title": "Electronic Structure of Beta-Ta Films from X-ray Photoelectron Spectroscopy and First-principles Calculations",
+                "url": "https://arxiv.org/abs/1811.10482",
+                "publisher": "arXiv",
+                "date": "2018-11-26"
+              },
+              {
+                "title": "New material platform for superconducting transmon qubits with coherence times exceeding 0.3 milliseconds",
+                "url": "https://arxiv.org/abs/2003.00024",
+                "publisher": "arXiv",
+                "date": "2020-02-28"
+              }
+            ]
+          },
+          {
+            "id": "silicon-vcsel-transverse-detuned-loading",
+            "title": "Negative differential loss takes a VCSEL past 100 Gb/s with no DSP",
+            "dek": "Giacomo Graziano and colleagues built an 850-nanometre VCSEL — the surface-emitting laser that drives short optical links inside a datacentre — whose transverse optical mode slides away from its own engineered loss as carriers build up, giving 106.25 gigabits per second with no digital signal processing.",
+            "why_it_matters": "Direct modulation beyond 100 gigabits per second has needed pre-emphasis in the transmitter and equalisation in the receiver, and both spend power on every link in a rack. Putting the bandwidth in the cavity's geometry instead means it costs nothing to run and nothing to train, and because the effect is driven by the index change the injected carriers already produce, it survives from 25 to 75 °C rather than needing a new filter at each temperature.",
+            "background_md": "A directly modulated semiconductor laser is limited by the carrier–photon resonance: injected electrons take time to become photons, and that exchange sets a relaxation frequency past which the modulation response rolls off. Damping usually ends the climb before the resonance itself does. One known escape is to make the cavity's loss fall as carrier density rises, so each added carrier pays twice — once as gain in the active region and once as loss removed from the cavity. In edge-emitting lasers this is arranged by sitting the lasing wavelength on a slope of the mirror reflectivity, and it is called detuned loading.",
+            "deeper_md": "Detuned loading in a distributed-Bragg-reflector laser works longitudinally: the lasing line sits on the long-wavelength flank of the mirror reflectivity spectrum, so a carrier-induced index shift walks the mode along that flank and changes the mirror loss. A VCSEL has essentially one longitudinal mode and nowhere to walk, which is why this work moves the trick into the transverse plane. The cavity is engineered so the mode's field overlaps spatially selective lossy regions; carrier-induced index change reshapes the mode laterally, reducing that overlap as carrier density climbs, and the result is negative differential loss.\n\nThe measured part is single-mode at 850 nm, with a 44 GHz carrier–photon relaxation frequency and a 3 dB electrical modulation bandwidth above 50 GHz, holding from 25 to 75 °C, carrying 106.25 Gb/s with no DSP, no transmitter pre-emphasis and no receiver equalisation. For scale: a 940 nm Zn-diffusion VCSEL with a 4 µm double-oxide aperture measured 34 GHz and reached 100 Gb/s only in PAM4, and a hexagonal transverse-coupled-cavity design reported 45 GHz by coupling cavities rather than by shaping loss.\n\nWhat the abstract does not price is the cost side. Any scheme that buys bandwidth by adding loss pays for it in threshold current and slope efficiency, and no figure is given for either; nor is the link length or the bit-error-rate target behind the 106.25 Gb/s number stated.",
+            "glossary": [
+              { "term": "Carrier–photon relaxation frequency", "definition": "The natural frequency of the exchange between electrons in a laser's active region and photons in its cavity; it sets the peak of the modulation response and, together with damping, the usable bandwidth." },
+              { "term": "Negative differential loss", "definition": "A cavity whose optical loss decreases as carrier density increases, so injection buys gain twice over; it raises modulation bandwidth at the price of a higher threshold current." },
+              { "term": "NRZ (on-off keying)", "definition": "One bit per symbol, sent as light on or light off — the simplest format, and the one that demands the cleanest transmitter because no equaliser is assumed downstream." },
+              { "term": "3 dB modulation bandwidth", "definition": "The frequency at which a laser's small-signal response has fallen to half its low-frequency power; it is the conventional single number for how fast a transmitter can be driven." }
+            ],
+            "fab_angle": "The bandwidth is set by where the lossy regions sit relative to a mode a few micrometres across, which makes it an aperture-lithography and oxidation-depth specification rather than a drive-circuit one.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Transverse detuned loading for modulation bandwidth enhancement in VCSELs",
+                "url": "https://arxiv.org/abs/2610.35578",
+                "publisher": "arXiv",
+                "date": "2026-10-26"
+              },
+              {
+                "title": "High-Bandwidth 940 nm VCSEL with Zn-diffusion for Optical Communications",
+                "url": "https://arxiv.org/abs/2603.16144",
+                "publisher": "arXiv",
+                "date": "2026-03-17"
+              },
+              {
+                "title": "Hexagonal Transverse Coupled Cavity VCSEL Redefining the High-Speed Lasers",
+                "url": "https://arxiv.org/abs/2008.01346",
+                "publisher": "arXiv",
+                "date": "2020-08-04"
+              }
+            ]
+          },
+          {
+            "id": "silicon-ws2-raman-thermometer-encapsulation",
+            "title": "A monolayer's Raman thermometer is recalibrated by its own cap",
+            "dek": "Gyeongjun Lee and co-authors calibrated two contact-free optical thermometers for monolayer tungsten disulfide from 5 to 1273 kelvin, and found that capping the sheet with boron nitride changes how fast its lattice-vibration peak shifts with temperature, from −0.0138 to −0.0121 wavenumbers per kelvin.",
+            "why_it_matters": "Those two slopes differ by about twelve per cent, and a slope is a divisor: the same twelve per cent lands on every self-heating temperature anyone reads off that peak. Encapsulation is not an optional extra in a 2D device, it is how the channel is protected, so the calibration has to be taken on the stack that will be measured. The two indicators also stop working in different places — the Raman shift is linear only above 100 kelvin, while the photoluminescence redshift runs the whole span.",
+            "background_md": "Nothing touches a monolayer without perturbing it, so its temperature has to be read optically, and two spectral features will do it. A Raman peak is a lattice vibration; anharmonicity means the bond softens as the lattice expands, so the peak frequency moves with temperature. Photoluminescence comes from an exciton recombining across the band gap, and the gap itself narrows as temperature rises, through thermal expansion and electron–phonon coupling. The two therefore report different physics, and each needs its own calibration curve, taken on a sample built the same way as the device being measured.",
+            "deeper_md": "The Raman indicator is the out-of-plane A₁g mode, which shifts linearly with temperature above 100 K: −0.0138 cm⁻¹/K on bare WS₂ fitted over 298–1223 K, and −0.0121 cm⁻¹/K on hBN-encapsulated WS₂ fitted over 100–1273 K. The photoluminescence indicator is the neutral exciton, which redshifts continuously across the full 5–1273 K range and is fitted to the semi-empirical Pässler form rather than to a line, because band-gap narrowing has to flatten at low temperature where phonon occupation goes to zero.\n\nNote what the fit windows do to the comparison. The two slopes were extracted over different ranges — 298–1223 K against 100–1273 K — so some of the gap could be the window rather than the cap, and the abstract quotes no uncertainty on either coefficient. No mechanism is offered for the difference either, which leaves it a calibration fact rather than an explanation.\n\nThe cap changes more than the spectrum. Raman thermometry on working monolayer MoS₂ transistors put the interfacial thermal boundary conductance at 14 ± 4 MW m⁻² K⁻¹ — an order of magnitude higher than had been assumed, and still near the low end of solid–solid interfaces — so whatever sits above and below the sheet also decides where its heat goes. Separate work on MoS₂ mono-, bi- and trilayers measured these first-order Raman temperature coefficients to be layer-number dependent, which is the other reason a borrowed calibration is not safe.",
+            "glossary": [
+              { "term": "A₁g mode", "definition": "The Raman-active vibration in which the chalcogen atoms above and below the metal plane move out of plane in opposition; its frequency tracks how far the lattice has expanded, which is what makes it a thermometer." },
+              { "term": "cm⁻¹ (wavenumber)", "definition": "The spectroscopist's frequency unit, one over the wavelength in centimetres; at 0.0138 cm⁻¹ per kelvin, a thousand-degree swing moves the peak by about 14 cm⁻¹." },
+              { "term": "Pässler model", "definition": "A semi-empirical expression for how a semiconductor's band gap shrinks with temperature that flattens correctly as temperature approaches zero, which a straight line does not." },
+              { "term": "hBN encapsulation", "definition": "Sandwiching a monolayer between sheets of hexagonal boron nitride, an insulating crystal with a close lattice match, to shield it from the substrate and the air — standard practice for a 2D device meant to last." }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Optical Thermometry in Monolayer WS2: Raman and Photoluminescence Spectroscopy from 5 K to 1273 K",
+                "url": "https://arxiv.org/abs/2610.35214",
+                "publisher": "arXiv",
+                "date": "2026-10-26"
+              },
+              {
+                "title": "Energy Dissipation in Monolayer MoS2 Electronics",
+                "url": "https://arxiv.org/abs/1704.08270",
+                "publisher": "arXiv (Nano Letters)",
+                "date": "2017-04-26"
+              },
+              {
+                "title": "Layer number and stacking order-dependent thermal transport in molybdenum disulfide with sulfur vacancies",
+                "url": "https://arxiv.org/abs/2307.13311",
+                "publisher": "arXiv (Physical Review B)",
+                "date": "2023-07-25"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-accumulator-safe-bits-undervolting",
+            "title": "At 0.5 V only the top accumulator bits miss timing, so mask them",
+            "dek": "Alexis Maras and colleagues ran a 2-nanometre systolic multiply-accumulate array — the grid of arithmetic cells inside an AI accelerator — at 0.5 volts, found that only the high-order accumulator bits miss their timing deadline, and then trained the network so those bits are never needed.",
+            "why_it_matters": "Undervolting is normally bounded by whichever path fails first, which forces the clock back down and returns the energy saving. If the failures are confined to a known bit range, the bound becomes a numerical constraint on the weights instead of a timing constraint on the circuit — and it is a constraint quantisation-aware training already knows how to express, as a bound on the weight L1 norm. That turns the supply rail into something a compiler can trade against accuracy.",
+            "background_md": "Dynamic power in CMOS scales roughly with the square of supply voltage, which makes lowering the rail the cheapest energy saving available — and also the one that breaks the chip, because gate delay climbs as the supply approaches threshold and the longest paths stop meeting the clock. In a multiply-accumulate array those longest paths are in the accumulator's carry chain: a carry has to ripple from the least significant bit toward the most significant, so the high-order bits settle last and fail first. Threshold-voltage variation across a die moves that boundary further down the word.",
+            "deeper_md": "The design is a 32 × 32 output-stationary array, 8-bit operands into 24-bit accumulators, placed and routed in a 2 nm gate-all-around PDK at a 2 GHz baseline and signed off at 0.7 V. Gate-level simulation on the back-annotated netlist locates the damage: with no threshold-voltage spread the errors stay in the top 7 bits of the accumulator, and at 3σ spread they reach down to bit 12. Injected into ResNet-50 feature maps, those errors take top-1 accuracy to zero, so there is no graceful degradation to lean on.\n\nThe fix is two-sided. In training, the weight L1 norm is held to the bound Colbert and colleagues derived for a given accumulator width, as a penalty with λ = 10⁻³ over 4-bit weights with 8-bit first and last layers, so accumulation never reaches the unsafe bits. In hardware, masking logic truncates them and fine-grained clock gating freezes the flip-flops feeding them, for 1.7% of cell area. At 0.5 V, power falls from 254 mW to about 90 mW, and safe bits can then be traded for frequency — 24 safe bits at 1.0 GHz against 11 at 2.0 GHz, with energy per operation improving the whole way.\n\nTwo things to hold against it. The paper's own headline figures disagree: 23% energy-delay-product gain in the abstract against the 0.7 V baseline, 46% in the conclusion against an always-safe baseline. And one prior work it compares with excluded SRAM power, which it flags itself. Nothing was fabricated.",
+            "glossary": [
+              { "term": "24-bit accumulator", "definition": "The register that sums products inside a multiply-accumulate cell; it is wider than the 8-bit operands because a long dot product grows, and its width sets the carry chain that has to settle each cycle." },
+              { "term": "Weight L1 norm", "definition": "The sum of the absolute values of a layer's weights; it bounds how large a dot product can become, which is why constraining it is equivalent to constraining how many accumulator bits are ever used." },
+              { "term": "σ (threshold-voltage spread)", "definition": "The standard deviation of the gate voltage at which transistors switch on, across a die; characterising a library at 3σ assumes a near-worst-case slow transistor, which is what pushes the failing bits lower." },
+              { "term": "EDP (energy-delay product)", "definition": "Energy per operation multiplied by the time taken, used so that a design cannot claim an energy win it bought purely by running slower." }
+            ],
+            "fab_angle": "The safe-bit boundary is a sign-off output rather than a constant: it moves with the threshold-voltage spread the library was characterised at, so a tighter-variation line would permit a lower rail on the same netlist. That makes an accelerator's minimum voltage a number a design team re-derives per corner instead of inheriting.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Adapting DNNs to Embrace Voltage Scaling Induced Errors via Accumulation-Aware Quantization",
+                "url": "https://arxiv.org/abs/2610.33824",
+                "publisher": "arXiv (accepted, ICCAD 2026)",
+                "date": "2026-10-24"
+              },
+              {
+                "title": "A2Q: Accumulator-Aware Quantization with Guaranteed Overflow Avoidance",
+                "url": "https://arxiv.org/abs/2308.13504",
+                "publisher": "arXiv",
+                "date": "2023-08-25"
+              },
+              {
+                "title": "A2Q+: Improving Accumulator-Aware Weight Quantization",
+                "url": "https://arxiv.org/abs/2401.10432",
+                "publisher": "arXiv",
+                "date": "2024-01-19"
+              }
+            ]
+          },
+          {
+            "id": "chips-bga-bus-crossing-order-planning",
+            "title": "Deciding a DDR3 bus's crossings first removes a third of its vias",
+            "dek": "Andrew Haas routed a DDR3 memory bus between a processor and a DRAM, both in grid-array packages, by solving for every wire crossing and layer change before laying any copper, and finished one board's 45 nets with 70 plated holes against the human designer's 105.",
+            "why_it_matters": "A sequential router commits one net at a time, so an early net placed in the wrong order can leave a later one with nowhere to go — which is why the vendor's own production tool left nets unconnected on four of ten test cases, and a free router finished none of them. Fixing the order globally first makes completion a property of the plan rather than of the sequence nets happened to be handled in, and the hole count falls out of the same decision.",
+            "background_md": "A memory bus is a bundle of lanes that has to get from one package's ball field to another's within a fixed number of copper layers. The pins almost never emerge in the order they are wanted, so some lanes must cross each other, and two lanes can only cross if they are on different layers where they meet — which costs a via, the plated hole that joins one layer to the next. Minimising vias is therefore a question about permutations: how few layer changes realise the required reordering. Routers answer it one net at a time because the joint problem is combinatorial.",
+            "deeper_md": "The model is exact about what a wiring diagram permits. For every triple of lanes i < j < k in launch order the crossing positions must obey an ordering rule — if all three pairs cross, either t_ij < t_ik < t_jk or the reverse; if only ij and ik cross, t_ij < t_ik. The paper proves a linear order of crossings is realisable exactly when that rule holds, which is what lets a constraint solver reason about the whole bus at once. Crossing positions sit on a 0.0504 mm grid, each lane gets up to three layer-change slots, and the number of active changes must match the parity of the two end layers. The objective charges 10⁶ per via and 5 × 10⁶ for each via past two on a net, so a four-via net costs 14 units where a two-via net costs 2.\n\nA lower bound makes the result checkable rather than merely better: with both ends on the top layer, at least 2(K − LIS(π)) vias are needed, where LIS is the longest increasing subsequence of the pin permutation. On two real boards the planner used fewer vias and less copper than the human on every rung — 62 against 100 on one — in 18 to 290 s, while the free router left one to five nets open every time.\n\nWhat it does not do is match lengths, which the author lists as the next step. Optimality holds only inside the model, and the evaluation is two boards whose design constants were tuned on them.",
+            "glossary": [
+              { "term": "Via", "definition": "A plated hole through the board carrying a trace from one copper layer to another; it is the only way two traces can cross without shorting, and each consumes area on every layer it passes through." },
+              { "term": "Longest increasing subsequence (LIS)", "definition": "The longest run of pins already in the right relative order; subtracting it from the lane count gives the irreducible amount of reordering, and so a floor on via count." },
+              { "term": "DRC-clean", "definition": "Passing every design-rule check the fabricator imposes — minimum trace width, clearance, annular ring — which is the difference between a plan and copper somebody will actually build." },
+              { "term": "Constraint programming", "definition": "Stating a problem as variables with allowed combinations and letting a solver search, with the option of proving that no better solution exists inside the stated model." }
+            ],
+            "fab_angle": "The lower bound says the minimum via count is fixed by the pin permutation, not by the router. The cheapest board is therefore bought at pinout definition, in the package's ball assignment, before any layout starts — a decision an IC design team makes and a board team inherits.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Whole-Route Planning of a Memory Bus Between Two BGAs: An Exact Model of Crossings and Layer Changes, Negotiated to DRC-Clean Copper",
+                "url": "https://arxiv.org/abs/2610.35601",
+                "publisher": "arXiv",
+                "date": "2026-10-26"
+              },
+              {
+                "title": "Obstacle-Aware Length-Matching Routing for Any-Direction Traces in Printed Circuit Board",
+                "url": "https://arxiv.org/abs/2407.19195",
+                "publisher": "arXiv",
+                "date": "2024-07-27"
+              },
+              {
+                "title": "Post-Route Alleviation of Dense Meander Segments in High-Performance Printed Circuit Boards",
+                "url": "https://arxiv.org/abs/1705.04983",
+                "publisher": "arXiv (IEEE/ACM ICCAD 2013)",
+                "date": "2017-05-14"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-three-colourable-exponent-drop",
+            "title": "A 3-colourable graph now takes n^0.1537 colours, not n^0.1954",
+            "dek": "Kaisei Deguchi, Ken-ichi Kawarabayashi, Hirotaka Yoneda and Masataka Yoneda give a randomised polynomial-time algorithm that colours any graph known to be 3-colourable with O(n^0.1537) colours, cutting an exponent that the three previous improvements had moved by less than 0.005 between them.",
+            "why_it_matters": "Two decades of progress here came from looking one neighbourhood level deeper for a large independent set — second level, then third — and each level bought a few thousandths of an exponent. This result changes what is extracted rather than where: a large independent set is pulled directly out of the vector-colouring relaxation. The same framework, composed with the 2024 combinatorial algorithm, also yields n^(1/6+o(1)) colours for arbitrary graphs rather than only 3-colourable ones, so the new piece is not specific to three colours.",
+            "background_md": "Deciding whether a graph can be 3-coloured is NP-complete, so no polynomial algorithm will find three colours. The relaxed question is how few colours a polynomial algorithm can guarantee on a graph that is known to be 3-colourable, and since the 1980s the answer has been a power of n, the vertex count. Two families of method attack it. Combinatorial ones exploit the fact that the neighbourhood of any vertex in a 3-colourable graph is itself 2-colourable, so a high-degree vertex hands you a large structure free. Semidefinite relaxations instead place each vertex on a unit sphere, force adjacent vectors at least 120° apart, and hunt for a large independent set among vectors that cluster.",
+            "deeper_md": "The record has moved in very small steps. Kawarabayashi and Thorup reached Õ(n^0.2038) in 2012 and Õ(n^0.19996) in 2017; at STOC 2024 they and Hirotaka Yoneda got Õ(n^0.19747) by composing a combinatorial progress algorithm for minimum degree above √n with an SDP for lower degrees; Bansal, Huang and Lee reached O(n^0.19539) for SODA 2027, which they describe as the first SDP-side progress in nearly two decades, obtained by extending the Arora–Chlamtáč–Charikar and Chlamtáč independent-set analysis from second-level to third-level neighbourhoods with a new vector 5/2-colouring.\n\nThis paper is a different move rather than another level. It gives a framework for extracting a large independent set from a vector-colouring SDP solution; composed with the 2024 combinatorial algorithm that alone yields n^(1/6+o(1)) — about n^0.1667 — for general graphs, and strengthening the SDP step for the 3-colourable case gives O(n^0.1537).\n\nThe caveats are the standing ones for this literature. These are worst-case asymptotic guarantees with hidden constants and an SDP solve inside them, so nothing here is an implementation, and the bound says what is provable rather than what a heuristic achieves on a particular instance. It is also an unrefereed preprint from a group that includes two authors of the 2024 record, so the independent check has not happened yet.",
+            "glossary": [
+              { "term": "O(n^0.1537)", "definition": "A guarantee that the colour count stays below a constant times n raised to 0.1537, with n the vertex count; at a million vertices, moving the exponent from 0.1954 takes that factor from about 15 to about 8." },
+              { "term": "Independent set", "definition": "A set of vertices with no edges between them; in a 3-colourable graph each colour class is a large independent set, so finding one and removing it is the standard way to make progress." },
+              { "term": "Semidefinite program (SDP)", "definition": "A convex optimisation over matrices constrained to be positive semidefinite; it relaxes colouring into geometry by giving each vertex a vector, and is solvable in polynomial time to a chosen precision." },
+              { "term": "Õ (soft-O)", "definition": "Big-O with polylogarithmic factors suppressed, so Õ(n^0.19747) hides factors of log n that a comparison between exponents ignores." }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "An O(n^0.1537)-Coloring Algorithm for 3-Colorable Graphs",
+                "url": "https://arxiv.org/abs/2610.35859",
+                "publisher": "arXiv",
+                "date": "2026-10-26"
+              },
+              {
+                "title": "Improved SDP-Based Algorithm for Coloring 3-Colorable Graphs",
+                "url": "https://arxiv.org/abs/2602.05904",
+                "publisher": "arXiv (to appear, SODA 2027)",
+                "date": "2026-02-05"
+              },
+              {
+                "title": "Better coloring of 3-colorable graphs",
+                "url": "https://arxiv.org/abs/2406.00357",
+                "publisher": "arXiv (STOC 2024)",
+                "date": "2024-06-01"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-two-sided-transport-attention",
+            "title": "Letting every grid tile choose who reads it cuts training compute tenfold",
+            "dek": "Junu Choi and Youngjoon Hong matched GenCast, Google DeepMind's diffusion-based ensemble weather model, on 9.8 per cent of its training compute by letting every tile of the globe choose both where it reads from and where it gets read.",
+            "why_it_matters": "Sparse attention normally lets each destination pick its sources, which leaves some regions never consulted at all — about 38 per cent of tiles at one-degree resolution by this paper's own count. Adding the push direction makes every tile a sender as well as a receiver at full token resolution, and that is what lets a selected-tile scheme stay linear in grid points while still beating a dense one on cost: a 15-day forecast member costs about 1.9 PFLOP against roughly 75 for GenCast's GPU implementation.",
+            "background_md": "Attention lets a model decide, for each piece of its input, which other pieces to look at. Over a grid it costs time quadratic in the number of locations, which is why a model at quarter-degree resolution — roughly a million grid points — cannot afford it densely and uses a sparse approximation instead. The usual approximation is one-sided: each receiving location ranks the others and keeps its top few. That is a decision about reading and says nothing about writing, so a location no receiver happens to rank highly contributes nothing to that layer, however informative it was.",
+            "deeper_md": "Kantorovich Attention gives each tile two top-K selections with K = 8: the tiles it pulls from and the tiles it pushes to, so the union is a transport plan in which every tile has at least eight partners on each side. The paper measures what the push side buys — pull-only selection leaves about 38% of tiles unread at 1°, and the two-sided top-K plan captures 94–98% of the optimal plan's gain over random pairing. Selected-tile attention is then linear in grid points; the routing and pooled terms stay quadratic in tiles but are a small share of the total.\n\nTraining is two-stage: MeanFlow first, then 15,000 steps of a self-featurised CRPS loss that scores ensemble members both on Laplacian-pyramid scale bands and on the representations of a frozen, periodically refreshed copy of the network. The model is 3.0 billion parameters forecasting directly on the 0.25° grid in a five-level W-Net, trained in 2.3 days on one node of eight H200s — 18.7 H200-days against GenCast's 160 TPUv5-days. Inference is about 1.9 PFLOP and 46 s per 15-day member on an RTX 5090 inside 21 GB, fifty members in under 40 minutes. Against ERA5 it beats the ECMWF ensemble on all 600 variable-level-lead combinations and GenCast on 73.5% of them.\n\nTwo honest limits. GenCast still wins at short range — every significant difference in its favour at 0.25° falls inside the first 60 hours — and GenCast's FLOP and timing figures are taken from its released guide rather than from a matched rerun on the same hardware.",
+            "glossary": [
+              { "term": "CRPS (continuous ranked probability score)", "definition": "The standard score for a probabilistic forecast: it penalises an ensemble both for being wrong on average and for being over- or under-confident, and reduces to absolute error for a single deterministic forecast." },
+              { "term": "Top-K routing", "definition": "Keeping only the K highest-scoring partners for each element instead of attending to all of them; K = 8 here, which is what makes the cost linear rather than quadratic in grid points." },
+              { "term": "PFLOP", "definition": "One quadrillion floating-point operations — a count of arithmetic work rather than a rate, so 1.9 PFLOP per forecast member is a total bill, not a speed." },
+              { "term": "Ensemble member", "definition": "One sample from a probabilistic forecast; skill is measured over the spread of many members, which is why the per-member cost multiplies by fifty in practice." }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Efficient probabilistic weather forecasting at quarter-degree resolution with two-sided transport attention",
+                "url": "https://arxiv.org/abs/2610.35545",
+                "publisher": "arXiv",
+                "date": "2026-10-26"
+              },
+              {
+                "title": "GenCast: Diffusion-based ensemble forecasting for medium-range weather",
+                "url": "https://arxiv.org/abs/2312.15796",
+                "publisher": "arXiv",
+                "date": "2023-12-25"
+              },
+              {
+                "title": "WeatherBench 2: A benchmark for the next generation of data-driven global weather models",
+                "url": "https://arxiv.org/abs/2308.15560",
+                "publisher": "arXiv",
+                "date": "2023-08-29"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "Unix, and why it spread",
+    "slug": "unix-history",
+    "subtitle": "A system two people wrote on a cast-off machine, then rewrote in a new language so it could move — what \"everything is a file\" bought, and the three things it could never absorb.",
+    "tldr": "Unix began in 1969 on a PDP-7 nobody else wanted, and its first PDP-11 version ran in 24 kilobytes of core against a 512-kilobyte disk. Almost every decision that made it famous — devices as files, fork separate from exec, pipes — was taken because it was the cheapest code that would work on that machine, not because it was the most general idea available. What made it spread was the one decision that was not about economy: rewriting the kernel in C in 1973, which turned a program for one computer into a text that could be recompiled for another.",
+    "sections": [
+      {
+        "heading": "The constraint was 24 kilobytes",
+        "body_md": "Start with the machine, because the rest follows from it. In early 1970 the group at Bell Labs proposed a PDP-11 at about $65,000; the order went in during May and the processor arrived at the end of summer, with no disk until December. The first PDP-11 Unix ran in 24 kilobytes of core — 16 for the system and 8 for every user program — with a 512-kilobyte disk in 1-kilobyte blocks and a hard ceiling of 64 kilobytes on any single file.\n\nNotice what that budget forbids. Sixteen kilobytes is eight thousand sixteen-bit words, instructions and data together, for the entire operating system. There is no room for a general mechanism that covers every case, because the general mechanism is always larger than the special one. Ritchie's own verdict on that system is that its small size was the most interesting thing about it. So the right way to read Unix's design is not as a set of abstractions chosen on their merits. It is as a set of abstractions each of which was the cheapest code that would do the job — and which turned out, repeatedly, to generalise anyway.",
+        "deeper_md": "The sequence matters for what the group was trying to do, not only for what they could afford. Bell Labs was withdrawing from Multics, which had failed to deliver a usable system, and in 1969 the group lobbied for a medium-scale machine — a DEC PDP-10 or an SDS Sigma 7 — and was refused. Ritchie is explicit that the goal was not minimalism: it was keeping the interactive, communal computing environment Multics had given them, a system around which, in his phrase, a fellowship could form. The economy was a constraint they worked inside, not an aesthetic they picked."
+      },
+      {
+        "heading": "Devices became files because one I/O path was cheaper than three",
+        "body_md": "The file system came first, designed in 1969 by Thompson, Canaday and Ritchie with Thompson doing most of the work. Its shape is an i-list: a flat array of i-nodes, one per file, each recording the file's type, protection mode, size, and the physical disk blocks holding its contents. A directory is not a distinct kind of object in that scheme — it is an ordinary file whose contents happen to be pairs of a name and an i-number. Looking up a path means reading files in order to find files.\n\nDevice files were Ritchie's contribution and were present from the start; on the PDP-7 the device was encoded in the i-number itself rather than in the i-node. The consequence is the part everyone remembers. A tape drive, a terminal and a region of disk all answer the same four calls — `open`, `read`, `write`, `close` — so a program written against one works on the others without being told which it has. That is why a command that prints a file can print to a printer. The economy underneath is that the kernel needed one I/O path instead of three, and 16 kilobytes could not have afforded three.",
+        "deeper_md": "The PDP-7 version lacked things the model is now assumed to include. There were no path names at all: a name was interpreted relative to the current directory, and links were the main way to reach anything else, which made the directory structure a general directed graph rather than a tree. Subdirectories were awkward enough to be rare, and a directory could only be created by rebuilding the file system from paper tape. Full path names arrived with the PDP-11 version. Device code was also spread throughout the kernel rather than isolated, so installing a new device was genuinely hard — the clean driver interface people associate with Unix came later than the idea it serves."
+      },
+      {
+        "heading": "fork and exec were split for convenience, and the gap became the shell",
+        "body_md": "The clearest evidence that Unix's abstractions were cheap before they were general is process control. Systems before it generally combined two operations — make a new process, and run this program inside it — into one call. Unix splits them: `fork` duplicates the calling process, and `exec` replaces a process's program with a different one.\n\nRitchie says process control was designed in a couple of days, and gives the reason for the split plainly. `fork` could be added to the existing system with very small changes, because the kernel ran one program at a time and swapping out a copy of the current process cost almost nothing. A combined call, he writes, would have been considerably more complicated.\n\nWhat that accident bought is everything that happens between the two calls. The child is a full copy of the parent before the new program loads, so the shell can redirect its input, close descriptors it should not inherit, change its working directory and reset its signal handling — all with ordinary system calls, none of which the spawn operation has to know about. Redirection and pipelines live in that gap. A combined call would have needed a parameter for each behaviour, and that list would never have been finished."
+      },
+      {
+        "heading": "Pipes, and the argument that preceded them",
+        "body_md": "Pipes arrived in 1972, in Ritchie's words at the suggestion, or perhaps the insistence, of M. D. McIlroy. McIlroy had been arguing for some time that commands ought to be usable as binary operators with input and output operands, and the group was not initially convinced. The first notation reused the redirection characters — Ritchie's own example is `sort input >pr>opr>` — and within a couple of months it was replaced by a dedicated operator, giving the familiar `sort input | pr | opr`.\n\nWhat makes the mechanism work is that it required almost no new programs. The existing commands already read standard input and wrote standard output, because that was the cheapest convention available, so they could be chained without modification; Ritchie calls that the genius of the idea, and the word *filter* was coined for a program used that way.\n\nThe point worth carrying away is that a pipe is not a shell feature. It is a kernel object with a file descriptor at each end, which is why it inherits the whole file interface for free — and why `fork` had to be separate from `exec` for the shell to be able to wire one up at all. Two economies, each adopted for its own reasons, composed into something neither was designed for."
+      },
+      {
+        "heading": "The rewrite that let it leave the building",
+        "body_md": "None of the above explains why Unix left Bell Labs. The decision that did is the 1973 rewrite of the PDP-11 kernel in C.\n\nThe route to it was a sequence of rejections. B, descended from BCPL, was typeless: one fixed-length bit pattern, memory as a linear array of such cells, pointers as word indices. Its PDP-7 compiler did not emit machine code at all but threaded code — a list of addresses of code fragments executed by a simple stack machine — and the result was slow enough that rewriting the operating system in B was dismissed outright. On the byte-addressed PDP-11 the mismatch got worse: character handling was clumsy, and every pointer dereference needed a run-time scale conversion.\n\nSo in 1971 Ritchie added a character type and rewrote the compiler to generate PDP-11 instructions, aiming for programs fast and small enough to compete with assembly. Adding structures then forced the rule that an array name used in an expression becomes a pointer to its first element, which he calls the crucial jump between typeless BCPL and typed C. By early 1973 the essentials of modern C were in place, and the kernel was recoded over that summer.",
+        "deeper_md": "The payoff arrived four years later, in a form the group had not predicted. Moving to the Interdata 8/32 in 1977 drove the language changes most associated with portability — unsigned types, explicit casts, and stricter rules about mixing pointers and integers — and it taught them that the hard part of a port was not the new hardware but the other system's existing software. Steve Johnson's `lint` was written to catch the interface mismatches the early language still permitted. A VAX-11/780 port followed, and portability is what Ritchie names as the basis of the spread of both Unix and C. An operating system written in assembly is an artefact of one instruction set; one written in C is a text."
+      },
+      {
+        "heading": "Where \"everything is a file\" stops",
+        "body_md": "The file interface is not universal, and the sharpest statement of where it stops comes from the people who pushed it hardest. Plan 9, by Pike, Presotto, Thompson, Trickey and Winterbottom, calls the integration of devices into the hierarchical file system the best idea in Unix, and then represents every resource — local or remote — as a file tree, with each process holding its own name space, assembled using `mount` and `bind` and shared or copied at `rfork`.\n\nEven there, three things refused to become files. Process creation stayed a system call, because creating a process through a control file would mean describing its open files, name space and memory image inside an I/O operation, which the authors call too intricate; `/proc` governs only processes that already exist. Network naming stayed outside, because addressing rules, authentication and connection setup differ per protocol and do not map uniformly onto a hierarchy. Shared memory stayed a system call, because a file representation would imply that memory could be imported from a remote machine.\n\nThose three exceptions are the honest boundary of the slogan. What did generalise is now a standard — IEEE Std 1003.1-2024, in four volumes of base definitions, system interfaces, shell and utilities, and rationale — specifying an interface whose original 16-kilobyte implementation has been gone for decades.",
+        "deeper_md": "Plan 9's name spaces are worth understanding as the thing Unix's model grows into once you take it literally. Mounted trees can be stacked into union directories searched in order, so each architecture's binaries are bound to `/bin` and a script needs no PATH variable. The 8½ window system gives every client its own `/dev/cons` and `/dev/bitblt`, which means no terminal-specific code in the kernel — the paper contrasts this directly with Unix's `/dev/tty` and the special handling it requires. `import` splices a piece of a remote name space into the local one, and `cpu` recreates a terminal's whole name space on a remote machine, so using a faster processor feels like staying put."
+      }
+    ],
+    "glossary": [
+      { "term": "i-node / i-list", "definition": "The i-list is a flat array of i-nodes, one per file; an i-node holds a file's type, permissions, size and the disk blocks holding its data — but not its name. Names live in directories, which is why one file can have several." },
+      { "term": "fork and exec", "definition": "`fork` makes a copy of the running process and returns in both copies; `exec` discards a process's program and loads a different one in its place. Everything a shell does to set up a command happens in the child, between the two." },
+      { "term": "Threaded code", "definition": "A compiled program represented as a list of addresses of code fragments, executed by a small interpreter loop rather than by the hardware directly. Compact, and far slower than native instructions — which is why Unix was not written in B." },
+      { "term": "File descriptor", "definition": "A small integer naming an open file within one process. Because pipes, terminals and disk files all get descriptors, the same read and write calls work on all three, and the shell can rearrange them in the child before it calls exec." },
+      { "term": "Special file (device file)", "definition": "A name in the file system standing for a device rather than for stored bytes, so the driver is reached through open, read and write instead of through system calls of its own." },
+      { "term": "POSIX (IEEE Std 1003.1)", "definition": "The standard that fixed the Unix interface in writing — system interfaces, shell and utilities — so that source code rather than binaries became the portable artefact. The current edition is IEEE Std 1003.1-2024, published as Open Group Base Specifications Issue 8." }
+    ],
+    "try_this": "Open the Unix Heritage Society's Research Unix archive at tuhs.org/Archive/Distributions/Research/, take the Sixth Edition tree under Dennis_v6, and find the kernel's pipe implementation. You are checking one claim from this piece: that a pipe is reached through the same file-descriptor table as a disk file and a terminal, with no separate code path of its own. Then read the process-control section of Ritchie's Evolution of the Unix Time-sharing System and test his claim that a combined create-and-run call would have been considerably more complicated, by writing down every change the shell makes between its fork and its exec. Both fit in an afternoon, and the second needs no machine at all.",
+    "sources": [
+      {
+        "title": "The Evolution of the Unix Time-sharing System",
+        "url": "https://flint.cs.yale.edu/cs422/readings/ritchie79evolution.html",
+        "publisher": "Dennis M. Ritchie, Bell Laboratories (Yale CS422 reprint of AT&T Bell Laboratories Technical Journal 63(6) Part 2)",
+        "date": "1984"
+      },
+      {
+        "title": "The Development of the C Language",
+        "url": "https://csapp.cs.cmu.edu/2e/docs/chistory.html",
+        "publisher": "Dennis M. Ritchie (ACM HOPL-II; Carnegie Mellon CS:APP reprint)",
+        "date": "1993"
+      },
+      {
+        "title": "The Use of Name Spaces in Plan 9",
+        "url": "https://9p.io/sys/doc/names.html",
+        "publisher": "Pike, Presotto, Thompson, Trickey and Winterbottom, Bell Labs (ACM Operating Systems Review 27(2))",
+        "date": "1993-04"
+      },
+      {
+        "title": "Research Unix distributions archive (v0 through v10)",
+        "url": "https://www.tuhs.org/Archive/Distributions/Research/",
+        "publisher": "The Unix Heritage Society",
+        "date": "2026"
+      },
+      {
+        "title": "The Open Group Base Specifications Issue 8, IEEE Std 1003.1-2024 — Chapter 1, Scope",
+        "url": "https://pubs.opengroup.org/onlinepubs/9799919799/basedefs/V1_chap01.html",
+        "publisher": "The Open Group / IEEE",
+        "date": "2024"
+      }
+    ]
+  }
+}

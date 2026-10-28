@@ -1,0 +1,420 @@
+{
+  "date": "2026-10-28",
+  "generated_at": "2026-10-28T14:09:23Z",
+  "window": "2026-10-27..2026-10-28",
+  "headline": "Floorsweeping leaves an H100 with 132 working multiprocessors but only 120 that thread-block clusters can use, and launching for the smaller number is worth up to 5.30% on FlashAttention 4.",
+  "pulse": {
+    "read_time_min": 8,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-hzo-synapse-on-commercial-cmos",
+            "title": "A hotter back-end anneal buys a better synapse, and the transistors live",
+            "dek": "Alexander Flasby and three co-authors grew two-terminal ferroelectric hafnium-zirconium-oxide cells — analog memories whose resistance stores a neural-network weight — directly on finished 180 nm X-FAB CMOS dies, and found the 500 °C anneal that overshoots the back-end thermal budget makes the better synapse.",
+            "why_it_matters": "The 400 °C back-end ceiling is usually quoted as a property of the process; this measures it instead as a property of the transistors underneath, which after the hotter anneal shifted threshold voltage by at most 60 mV and lost under 6% of saturation current. That turns a wall into a budget with a price on each side, because the cooler film needs a wider programming window to cover the same conductance range.",
+            "background_md": "A chip's transistors are built first. Everything added afterwards — the copper wiring, the insulating layers between it, the passivation on top — is the back end of line, and copper and its surrounding low-k dielectric degrade if the wafer is reheated much past 400 °C. So anything you want to stack above the wiring has to be made cold. Hafnium oxide alloyed with zirconium is the usual candidate there: a film a few nanometres thick holds a switchable electrical polarisation that survives with no power, and the polarisation can be set in increments, which is what an analog weight needs. Crystallising it into the polar phase, though, wants heat.",
+            "deeper_md": "The stack built on the die is 20 nm Mo / a five-layer HfO₂–ZrO₂ film 5 nm thick / 2 nm WOx / 3 nm TiN / 20 nm W, every ALD step run at 300–360 °C without breaking vacuum, then crystallised by a 60 s rapid thermal anneal in argon at either 450 °C or 500 °C. PUND measurement gives 2Pr = 22.1 µC/cm², and current density is independent of device area — the test that separates homogeneous ferroelectric switching from a filamentary RRAM.\n\nThe 450 °C film programs over a −1.6 V to 1.2 V window, with cycle-to-cycle spread falling from 5% to 1.5% of the range across 1000 cycles. The 500 °C film needs only −1.2 V to 1.2 V and updates more smoothly: in the authors' hardware-aware simulation, plain SGD on measured device curves reaches 82% on MNIST against 69% for the 450 °C film.\n\nThe caveats are large and the paper states them. The 500 °C result is one second chip, cycle counts run from 4 to 44, retention is two hours of relaxation (7.5% drift in the low state, 9.5% in the high), and no 1T-1R cell was characterised.",
+            "glossary": [
+              {
+                "term": "BEOL (back end of line)",
+                "definition": "The copper wiring and insulator stack built above the transistors; both degrade with heat, so steps added later are normally held below about 400 °C."
+              },
+              {
+                "term": "2Pr (remanent polarisation)",
+                "definition": "The switchable charge per unit area a ferroelectric still holds after the field is removed, counted across both states; 22.1 µC/cm² for this film."
+              },
+              {
+                "term": "PUND",
+                "definition": "A positive-up-negative-down pulse sequence that measures the same switching twice in each direction, so the leakage and capacitive currents can be subtracted off."
+              },
+              {
+                "term": "Cycle-to-cycle variation",
+                "definition": "How much the same programming pulse moves an analog memory differently on successive writes, quoted as a fraction of its full conductance range."
+              }
+            ],
+            "fab_angle": "If you post-process a finished wafer, the real ceiling is the lowest temperature any already-built layer tolerates — and the only way to know it is to probe the same transistor geometries before and after, which is a day of probe-station work rather than an assumption.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Back-End-Of-Line Integration of 2-Terminal Ferroelectric Hafnia Synaptic Weights on Commercial CMOS Process",
+                "url": "https://arxiv.org/abs/2610.37530",
+                "publisher": "arXiv",
+                "date": "2026-10-27"
+              },
+              {
+                "title": "A BEOL Compatible, 2-Terminals, Ferroelectric Analog Non-Volatile Memory",
+                "url": "https://arxiv.org/abs/2309.12061",
+                "publisher": "arXiv",
+                "date": "2023-09-21"
+              },
+              {
+                "title": "20 ps Non-Destructive Read and 1 ns Write Operations at <5 V in Ferroelectric HfO2/ZrO2 Non-Volatile Memories",
+                "url": "https://arxiv.org/abs/2606.03677",
+                "publisher": "arXiv",
+                "date": "2026-06-02"
+              }
+            ]
+          },
+          {
+            "id": "silicon-gan-backbarrier-94ghz-sapphire",
+            "title": "A back barrier takes a GaN-on-sapphire HEMT to 3.75 W/mm at 94 GHz",
+            "dek": "Ruixin Bai and co-authors put an aluminium-gallium-nitride back barrier underneath the channel of a recessed-gate gallium-nitride transistor grown on sapphire, and measured 3.75 watts per millimetre of gate width at 31.8% power-added efficiency under continuous-wave drive at 94 GHz.",
+            "why_it_matters": "The same group's device without that buried layer reached 2.8 W/mm and 26.8%, and its peak transconductance was identical at 0.75 S/mm — so the improvement came from keeping electrons inside the channel rather than from making them faster, and maximum oscillation frequency rose from 203 GHz to above 240 GHz. Confinement is an epitaxy fix rather than a lithography one, so it bought a W-band power transistor a growth step and no gate-length shrink.",
+            "background_md": "A high-electron-mobility transistor carries its current in a two-dimensional sheet of electrons at the junction between two nitride layers, where the step in spontaneous and piezoelectric polarisation supplies the carriers with no dopant atoms for them to scatter off. At millimetre-wave frequencies the binding constraint is not how fast that sheet conducts but how completely the gate can switch it off: electrons that leak through the buffer below the channel keep flowing when the gate says stop, and that current burns DC power which never leaves as radio-frequency power. Sapphire is the cheap substrate on which to try this.",
+            "deeper_md": "The 2025 device from the same authors used a 5.5 nm Al₀.₃₅Ga₀.₆₅N barrier under the gate and 31 nm in the gate access regions, carried no passivation, and delivered 1.8 A/mm drain current, 750 mS/mm peak transconductance, an on/off ratio of 10⁷, f_T of 127 GHz and f_max of 203 GHz, for 2.8 W/mm at 26.8% PAE at 94 GHz. Adding the AlGaN back barrier leaves transconductance unchanged at 0.75 S/mm but lifts f_max past 240 GHz and output power to 3.75 W/mm at 31.8%.\n\nThe mechanism is confinement: a back barrier raises the conduction band beneath the channel, which pins the electron sheet in place and starves the parasitic conduction path through the buffer. f_max depends on output conductance and gate resistance as well as transit time, so cleaner pinch-off shows up there before it shows up in transconductance, and efficiency follows because less current flows in the off state.\n\nThe caveat sits in the subthreshold slope: about 130 mV/dec against a room-temperature floor near 60 mV/decade. This channel still does not shut off cleanly. Both results are the group's own load-pull bench, and both are per millimetre of gate width, which says nothing about behaviour at a periphery large enough to deliver watts.",
+            "glossary": [
+              {
+                "term": "2DEG (two-dimensional electron gas)",
+                "definition": "The electron sheet trapped at a nitride heterojunction by the discontinuity in polarisation charge; it conducts without dopants, which is why nitride transistors have high mobility."
+              },
+              {
+                "term": "W/mm",
+                "definition": "Output power divided by gate width, the standard way power transistors are compared; it is a density, and says nothing about the total watts a finished device delivers."
+              },
+              {
+                "term": "f_max",
+                "definition": "The frequency at which a transistor's power gain falls to unity; it depends on output conductance and gate resistance as well as on carrier transit time."
+              },
+              {
+                "term": "mV/dec (subthreshold slope)",
+                "definition": "The gate voltage swing needed to change drain current tenfold below threshold; thermal statistics put a floor near 60 mV/decade at room temperature."
+              }
+            ],
+            "fab_angle": "The recessed-gate etch sets the barrier thickness under the gate and therefore the threshold voltage: hitting 5.5 nm at the bottom of a 31 nm film is a one-nanometre etch-depth problem, which makes this device a story about etch control and in-line thickness metrology before it is a story about radio.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Demonstration of high output power (3.75 W/mm) with 31.8% PAE in Ga-Polar AlGaN/GaN HEMTs on sapphire at 94 GHz",
+                "url": "https://arxiv.org/abs/2610.36492",
+                "publisher": "arXiv / IEEE Microwave and Wireless Technology Letters",
+                "date": "2026-10-27"
+              },
+              {
+                "title": "Passivation-Free Ga-Polar AlGaN/GaN Recessed-Gate HEMTs on Sapphire with 2.8 W/mm POUT and 26.8% PAE at 94 GHz",
+                "url": "https://arxiv.org/abs/2510.08933",
+                "publisher": "arXiv",
+                "date": "2025-10-10"
+              },
+              {
+                "title": "Crack-free high composition (>35%) thick (>30 nm) barrier AlGaN/AlN/GaN HEMT on sapphire with record low sheet resistance",
+                "url": "https://arxiv.org/abs/2304.05593",
+                "publisher": "arXiv / Crystals",
+                "date": "2023-04-12"
+              }
+            ]
+          },
+          {
+            "id": "silicon-gmid-tables-cut-corner-sims",
+            "title": "gm/I_D tables size the amplifier; the agent only picks the target",
+            "dek": "Yichen Long and Keren Zhu built AnalogScout, a transistor-sizing loop in which a language model only chooses which sub-block to size and toward what target while gm/I_D lookup tables compute the widths, and report 43.3% lower power than an evolutionary search on three open-PDK amplifiers at equal simulation budget.",
+            "why_it_matters": "Sizing by search means every candidate costs nine corner runs, so the compute budget rather than the algorithm decides the answer; swapping the inner loop for an analytic current-to-width map moves 85–96% of those runs off the critical path. The paper's own re-measurement then shows where the saved effort comes back: 29 of its 111 designs fail an independent check, nearly all of them on a margin the loop only ever verified at the typical corner.",
+            "background_md": "Analog design has no synthesis step. A designer picks a topology and then chooses a width and a bias current for every transistor so the circuit meets gain, bandwidth, noise and swing targets at every process corner and across supply voltage and temperature — and the only trustworthy check is a circuit simulation. The classical hand method is the gm/I_D methodology: for a given technology, transconductance efficiency fixes a device's inversion level, and a lookup table turns a required transconductance and current straight into a width. Automated sizing usually searches the space instead, which means simulating every guess.",
+            "deeper_md": "AnalogScout spends a 16k-simulation budget in four phases: 8k exploring from an elite pool of the three best feasible designs, 4k on localised gm/I_D sizing, 2k swapping sub-circuits for family members, the remainder on a CMA-ES refinement and sign-off, with every candidate verified at nine PVT corners. Median typical-corner power on a SKY130 Miller two-stage OTA is 61.4 µW against 124 µW for CMA-ES, 142 µW for Bayesian optimisation and 99.3 µW for a re-implemented LLM flow; on a three-stage nested-Miller amplifier it is 944 µW against 1,561 µW. It matches CMA-ES's final power after 694–1,124 simulations, 7.0% of the budget.\n\nThe honest part is the sign-off section. An independent re-measurement of 156 reference cases found 46 failures, 29 of them among AnalogScout's own 111, and 40 of the 46 miss only a 50 mV all-corner saturation-margin check that the optimisation loop applies at the typical corner alone. The folded-cascode design then fails at 91.4% Monte Carlo yield against a 95% target, and the authors report that the localisation phase shows no significant power gain over an equal-budget restart (p = 0.645).",
+            "glossary": [
+              {
+                "term": "gm/I_D",
+                "definition": "Transconductance divided by drain current; it is set by how strongly a transistor is inverted rather than by its size, so fixing it leaves width as the only unknown to solve for."
+              },
+              {
+                "term": "OTA (operational transconductance amplifier)",
+                "definition": "An amplifier whose output is a current proportional to its input voltage; the workhorse block inside data converters, filters and switched-capacitor circuits."
+              },
+              {
+                "term": "PVT corner",
+                "definition": "One combination of process variation, supply voltage and temperature at which the circuit must still meet specification; this flow checks nine of them per candidate."
+              },
+              {
+                "term": "CMA-ES",
+                "definition": "Covariance matrix adaptation evolution strategy, a derivative-free optimiser that draws candidates from a Gaussian whose shape it updates as it learns the landscape."
+              }
+            ],
+            "fab_angle": "Both PDKs here are open — SKY130 and GF180MCU — so the 50 mV saturation-margin rule and the nine-corner sweep are things a club laying out its own cells can apply to its own schematics rather than take on trust.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "AnalogScout: Simulation-Efficient PVT-Aware Analog Sizing with LLM Agents",
+                "url": "https://arxiv.org/abs/2610.37319",
+                "publisher": "arXiv",
+                "date": "2026-10-27"
+              },
+              {
+                "title": "SKY130 PDK — Device Details",
+                "url": "https://skywater-pdk.readthedocs.io/en/main/rules/device-details.html",
+                "publisher": "SkyWater Technology / Google",
+                "date": "2026-10-28"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-h100-floorswept-cluster-slots",
+            "title": "An H100 shows 132 multiprocessors and gives clusters only 120",
+            "dek": "Supun Kuruppu and four co-authors reverse-engineered how an NVIDIA H100's 132 streaming multiprocessors are grouped after defective units are switched off at test, and found only 120 of them can host the thread-block clusters that let neighbouring blocks read each other's on-chip memory.",
+            "why_it_matters": "A kernel written for 132 slots therefore runs an extra round of work the moment it asks for a cluster, which can cancel the saving from the shorter data path; choosing the cluster size from the arithmetic ⌈blocks/120⌉ − ⌈blocks/132⌉ instead was worth up to 5.30% on FlashAttention 4. The usable number is a property of the part, not of the program, so it has to be re-derived for every bin a kernel is expected to run on.",
+            "background_md": "Large dies are sold with some of their units permanently disabled. A GPU is partitioned into graphics processing clusters, each holding several streaming multiprocessors; a die with a defect in one multiprocessor is binned as a lower part rather than scrapped, a practice called floorsweeping. The software contract says every chip sold under one part number behaves the same. Hopper-generation GPUs then added thread-block clusters: a set of blocks guaranteed to be resident at the same time on multiprocessors inside one graphics processing cluster, so they can address each other's shared memory directly instead of going out through global memory.",
+            "deeper_md": "NVIDIA's own Hopper write-up puts H100 SXM5 at 132 multiprocessors across eight graphics processing clusters — a number that does not divide by eight — states that clusters \"run concurrently across SMs within a GPC\", and measures distributed shared memory at roughly 7× faster than exchanging through global memory. The paper recovers the per-SKU partition from observed multiprocessor ids as 9/9/8/8/8/8/8/4/1/1/1/1 texture processing clusters: two 18-SM groups, five 16-SM groups, one 8-SM group and four 2-SM singletons. Clusters of four or eight cannot be placed in a singleton and strand two multiprocessors in each 18-SM group, so 124 are enabled for clustering and 120 run at once.\n\nThe benefit being traded away is real: HBM reads on a 32768×4096×32768 GEMM fall from 137.67 GB at cluster size 1 to 17.52 GB at size 8, L2 hit rate rising 60.18% → 89.61%, and the power freed by moving less data lets frequency scaling raise mean clock from 1584 to 1667 MHz, with throughput tracking clock at r > 0.9.\n\nCaveats: the partition is inferred rather than documented, four GPUs were tested, and the block counts that benefit are a narrow set, 132(n−1) < B ≤ 120n.",
+            "glossary": [
+              {
+                "term": "SM (streaming multiprocessor)",
+                "definition": "The GPU execution unit a thread block runs on; it owns the register file and the on-chip shared memory that block uses, so blocks on different SMs are normally isolated."
+              },
+              {
+                "term": "Floorsweeping",
+                "definition": "Permanently disabling defective units on a die so it can be sold as a lower-tier part, which turns one physical design into several products instead of scrap."
+              },
+              {
+                "term": "DSMEM (distributed shared memory)",
+                "definition": "The Hopper feature letting blocks in one cluster address each other's shared memory over a direct SM-to-SM network rather than round-tripping through global memory."
+              },
+              {
+                "term": "Wave",
+                "definition": "One full set of thread blocks resident across the GPU at the same time; a kernel needing 133 blocks for 132 slots pays for two waves and leaves most of the second idle."
+              }
+            ],
+            "fab_angle": "Die harvesting is normally described as a yield-recovery trick with no consequence above the datasheet. Here the harvest pattern is visible from software, which means the defect map a fab produces has a performance signature a customer can measure.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Kernel Performance Engineering under Physical Non-Idealities",
+                "url": "https://arxiv.org/abs/2610.37466",
+                "publisher": "arXiv",
+                "date": "2026-10-27"
+              },
+              {
+                "title": "NVIDIA Hopper Architecture In-Depth",
+                "url": "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/",
+                "publisher": "NVIDIA",
+                "date": "2022-03-22"
+              }
+            ]
+          },
+          {
+            "id": "chips-sram-ising-macro-base-die",
+            "title": "A 28 nm SRAM macro anneals an Ising model to pick RAG passages",
+            "dek": "Madhav Vadlamani and five co-authors fabricated a 28 nm SRAM compute-in-memory macro that decides which retrieved passages a language model should read by annealing the choice as an Ising problem, reusing the same multiply-accumulate array both to score similarity and to evaluate each candidate flip.",
+            "why_it_matters": "Doing the selection on a 0.16 mm², 0.41 mW macro meant for the logic base die of a memory stack means only the chosen passage identifiers have to cross the package boundary, so the traffic that normally carries thousands of candidate embeddings up to the host never happens. It also stops the choice being a model call, which is what currently ties its cost to whichever model is being served.",
+            "background_md": "Retrieval-augmented generation hands a language model a set of candidate documents and asks it to answer from them, which leaves open the question of which candidates to hand over. Picking a subset that is both relevant and non-redundant is combinatorial, and it is usually done by running the model itself across every candidate. The alternative is to write the objective as a quadratic unconstrained binary optimisation — a sum of single and pairwise terms over on/off variables — and anneal it: accept uphill moves freely at first, then cool until the configuration stops changing.",
+            "deeper_md": "Because the coefficients of the optimisation are embedding similarities, the macro's multiply-accumulate array can compute them and then be reused to evaluate the energy change of flipping one variable, which is what keeps the data inside the array instead of shuttling it. Annealing temperature is set digitally — by a plane-count setting and by deliberately disturbing bits during an SRAM pseudo-read — rather than by an analog noise source, which is also why the design needs no converters. The chip is 28 nm, 0.16 mm² and 0.41 mW, and the authors propose it for the logic base die of an HBM or high-bandwidth-flash stack inside a GPU package.\n\nThe headline comparison is where to be careful. The selection energy is a normalised estimate more than six orders of magnitude below an LLM reranking baseline, and the end-to-end figure is 67% lower energy per query at comparable token-level F1 on the examples evaluated. The same group's earlier SRAM Ising machine, which stored about 9.1 Mb of quantised coefficients to attack binary-network robustness, labelled its 178× convergence and 1538× efficiency figures \"experimental projections\" rather than measurements.",
+            "glossary": [
+              {
+                "term": "QUBO",
+                "definition": "An objective written as a sum over binary variables and their pairwise products; minimising it is mathematically the same problem as finding an Ising model's ground state."
+              },
+              {
+                "term": "Ising machine",
+                "definition": "Hardware that hunts for the lowest-energy arrangement of coupled two-state variables by perturbing them and cooling, instead of running a search algorithm on a general-purpose core."
+              },
+              {
+                "term": "Pseudo-read",
+                "definition": "An SRAM read driven so that the bitcell is disturbed rather than merely sensed; the resulting bit flips are used here as the randomness the annealing schedule needs."
+              },
+              {
+                "term": "DCIM (digital compute-in-memory)",
+                "definition": "Performing the multiply-accumulate in logic placed beside the bitcells, so operands never travel to a separate datapath and the array itself does the arithmetic."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "p-DCIM: A 28nm Probabilistic SRAM DCIM based Ising Machine for Near-Memory Context Selection in LLM-RAG Pipeline",
+                "url": "https://arxiv.org/abs/2610.37033",
+                "publisher": "arXiv",
+                "date": "2026-10-27"
+              },
+              {
+                "title": "Scalable Digital Compute-in-Memory Ising Machines for Robustness Verification of Binary Neural Networks",
+                "url": "https://arxiv.org/abs/2603.05677",
+                "publisher": "arXiv",
+                "date": "2026-03-05"
+              },
+              {
+                "title": "A detailed algorithmic study on a reuse-aware, near memory, all-digital Ising machine",
+                "url": "https://arxiv.org/abs/2605.12959",
+                "publisher": "arXiv",
+                "date": "2026-05-13"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-tainted-data-stops-the-prefetcher",
+            "title": "Tag the secret and the pointer-chasing prefetcher leaves it alone",
+            "dek": "Jens Sprengers and three co-authors propose SecDMP, a one-bit taint carried with data through the memory system that stops a data memory-dependent prefetcher from ever treating a secret value as an address, at 0.5% chip area and 0.36% average slowdown on a RISC-V core.",
+            "why_it_matters": "Constant-time cryptography rests on the promise that secrets never influence which addresses a processor touches, and a prefetcher that dereferences a value because it looks like a pointer breaks that promise below the instruction set; until now the choices were to turn the feature off entirely or to cover only some of the leakage. Because the marking travels with the data instead of being tracked through the core, everything that is not secret keeps the speedup.",
+            "background_md": "A prefetcher guesses which memory a program will want next and fetches it early. Most guess from the sequence of addresses the program has already touched. A data memory-dependent prefetcher goes further: it inspects the values arriving from memory, and when one looks like a pointer it speculatively dereferences it. That couples data to addresses inside the processor, which is precisely the coupling constant-time code exists to prevent — code whose branches and memory accesses are independent of its secret inputs, so that an observer timing the caches learns nothing about them.",
+            "deeper_md": "The paper sorts the leakage into classes — data the program architecturally loads, adjacent data in the same cache block, data reached through transient misspeculated loads, and data pulled in by recursive prefetching — then maps the Apple, Intel, CDP and IMP prefetcher designs onto them and demonstrates an attack in each class, including a new DMP-Spectre. Measured against that taxonomy, permanently disabling the prefetcher covers every class and forfeits every benefit, while selective disabling covers only the architectural one.\n\nSecDMP adds a taint bit to loaded data plus a prefetcher modification that refuses to train or prefetch on tainted values, so public data keeps its speedup. The cost is 0.5% chip area with no critical-path impact, 0.36% average and 3.3% worst-case slowdown across HACL* and DMP-Bench.\n\nTwo limits the authors name. The security proof assumes a static, coarse-grained split of memory into public and secret regions, and a secret written into a public region counts as declassified and is left unprotected. The evaluation runs on Proteus, a RISC-V research core carrying the authors' own open-source prefetcher implementations rather than commercial silicon, and the mechanism behind the Apple prefetcher's recursive leakage is still unknown and therefore unmodelled.",
+            "glossary": [
+              {
+                "term": "DMP (data memory-dependent prefetcher)",
+                "definition": "A prefetcher that reads the contents of memory rather than only the addresses, and speculatively follows any value whose bit pattern resembles a pointer."
+              },
+              {
+                "term": "Constant-time code",
+                "definition": "Code written so neither its control flow nor its memory addresses depend on secret values, which is how cryptographic libraries defend against timing side channels."
+              },
+              {
+                "term": "Taint bit",
+                "definition": "One extra bit travelling alongside a value through the memory system to mark it secret, letting hardware treat it differently without understanding the program."
+              },
+              {
+                "term": "Declassification",
+                "definition": "The moment a value stops being treated as secret — here, being written into a region marked public, which the proof permits and the defence therefore does not cover."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "SecDMP: Provably Secure Data Memory-Dependent Prefetching (Extended Version)",
+                "url": "https://arxiv.org/abs/2610.37454",
+                "publisher": "arXiv / NDSS 2027",
+                "date": "2026-10-27"
+              },
+              {
+                "title": "GoFetch: Breaking Constant-Time Cryptographic Implementations Using Data Memory-Dependent Prefetchers",
+                "url": "https://gofetch.fail/",
+                "publisher": "USENIX Security 2024",
+                "date": "2024"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-topk-beats-calibrated-channel-threshold",
+            "title": "A threshold calibrated for an 18% read budget actually reads 12.9%",
+            "dek": "Geunhyoung Kim and Sung Ju Hwang show that the calibrated thresholds used to skip most of a mixture-of-experts model's weights during decoding do not control how much actually gets read — one tuned for an 18% budget averages 12.9% — and that plain top-k, needing no calibration data at all, matched or beat them in 40 of 43 comparisons.",
+            "why_it_matters": "Published sparsity figures for this family of methods are therefore quoted against a budget the method never spent, which makes accuracy-versus-traffic curves from different papers incomparable; keeping a fixed count per token pins the read volume by construction and avoided the repetition loops the thresholds triggered on one of the three models. A stated budget is a ceiling rather than a setting, so two methods both labelled 18% may be reading quite different amounts.",
+            "background_md": "A mixture-of-experts model holds many feed-forward blocks and routes each token to only a few of them, so it carries far more parameters than it uses per token. At batch size one — one user, one token at a time — the arithmetic is trivial and the cost is moving the selected experts' weights out of memory, which makes decoding bandwidth-bound rather than compute-bound. Channel selection exploits the fact that most of the intermediate units inside a routed expert contribute almost nothing to any particular token: score them, read only the ones that matter, and the traffic falls.",
+            "deeper_md": "Each intermediate channel of a routed expert owns one row of the gate and up projections and one column of the down projection, so skipping it skips three weight vectors. A calibrated selector keeps whatever scores above a fixed threshold, and the number of channels clearing that threshold varies token by token: across all 72 benchmark runs the calibrated selectors read under budget, 12.9% against an 18% target in the Prox case. Top-k fixes the count, needs no offline data, and at matched 13% and 18% budgets matched or beat the threshold variant in 40 of 43 comparisons, including all 23 generation tasks.\n\nThe authors' own reader is built from the checkpoint alone: it screens candidates with a rotated ternary sketch of the weights (about 7% of the BF16 checkpoint) and recovers skipped channels through a rank-32 low-rank map of the down projections (0.5% more memory). Across three post-trained models it keeps 98.1% of full-model accuracy while reading 17.8% of routed-expert weights, worst pair 95.0%.\n\nStated limits: the kernels were tuned for one budget on one GPU, nothing above 35B parameters was tested, the sketch costs proportionally more on a quantised checkpoint, and a reported \"tie\" means no difference was detected rather than equivalence.",
+            "glossary": [
+              {
+                "term": "MoE (mixture of experts)",
+                "definition": "A layer holding many feed-forward blocks from which a router picks a few per token, so parameter count can grow without the arithmetic per token growing with it."
+              },
+              {
+                "term": "Routed expert",
+                "definition": "One of the feed-forward blocks a mixture-of-experts router may select; Qwen3-30B-A3B has 128 per layer and activates 8, using 3.3B of its 30.5B parameters per token."
+              },
+              {
+                "term": "Channel",
+                "definition": "One intermediate unit inside an expert's feed-forward block, owning a row of the gate and up projection matrices and a column of the down projection."
+              },
+              {
+                "term": "Top-k",
+                "definition": "Keeping the k highest-scoring candidates for each token, which fixes how many weights are read regardless of how the scores happen to be distributed."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Channel Selection for Mixture-of-Experts Decoding Needs No Calibration Data",
+                "url": "https://arxiv.org/abs/2610.37386",
+                "publisher": "arXiv",
+                "date": "2026-10-27"
+              },
+              {
+                "title": "Qwen3-30B-A3B-Thinking-2507 model card",
+                "url": "https://huggingface.co/Qwen/Qwen3-30B-A3B-Thinking-2507",
+                "publisher": "Hugging Face / Qwen",
+                "date": "2026-10-28"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "Electron-beam lithography",
+    "slug": "electron-beam-lithography",
+    "subtitle": "Writing a pattern with a focused beam instead of a mask — and the scattering model everyone corrects with, which is wrong by four orders of magnitude.",
+    "tldr": "Electron-beam lithography draws a pattern straight into resist with a focused beam instead of projecting it through a mask. It resolves features a few nanometres across and needs no mask at all, which is why every photomask in the industry is written this way and why almost nothing else is. The limit is not the beam. It is that most of the dose lands somewhere you did not aim it, and the model used to compensate turns out to be badly wrong over exactly the distances that matter.",
+    "sections": [
+      {
+        "heading": "The beam is the easy part",
+        "body_md": "Start with the thing that does not limit you. An electron accelerated through 100 kV has a de Broglie wavelength around four thousandths of a nanometre, and a field-emission column routinely focuses it to a spot a few nanometres wide. If the beam were the constraint, electron-beam lithography would print atoms.\n\nIt does not, and the reason is the resist. A resist is a polymer film, and a developed edge does not follow the beam profile — it follows the dissolution front where developer has broken enough chains to carry the material away. The film's own granularity therefore sets the floor. Arjmandi, Lagae and Borghs made that argument directly in 2009: by replacing the standard PMMA bake with a short high-temperature step that drives the film into a uniform amorphous state, and then tuning development to match, they patterned holes under 5 nm across and pulled line-edge roughness down to 1 nm with surface roughness around 100 pm. Same beam, same column, better polymer."
+      },
+      {
+        "heading": "Where the dose actually goes",
+        "body_md": "An electron entering resist does not stop there. It scatters forward through the film, broadening the deposited energy over tens of nanometres, then passes into the substrate, where it scatters elastically off nuclei and a large fraction of it comes back out — not where it went in, but spread over a halo that can be tens of micrometres wide. Along the way both the primary and the backscattered electrons generate low-energy secondaries, and those secondaries, not the primary beam, do most of the chemistry.\n\nSo the exposure a point of resist receives is the dose you wrote convolved with a point-spread function describing all of that. The practical consequence is the proximity effect: a feature receives dose from every feature near it, so the same written shape develops wider inside a dense array than it does standing alone, and a pattern that prints perfectly in isolation fails in context. Correction is an inverse problem — find the dose map whose convolution with the point-spread function equals the exposure you wanted."
+      },
+      {
+        "heading": "The double Gaussian, finally measured",
+        "body_md": "For four decades that point-spread function has been modelled as two Gaussians: a narrow one of width α for forward scattering, a broad one of width β for backscattering, and a coefficient η setting how much of the dose arrives in the broad term. Every correction formula in the literature is built on it. It is a model chosen because it is analytically convenient, and until recently nobody had measured the function it approximates over the whole range that matters.\n\nHougs and co-workers did, in 2025, using 180 nm CSAR resist on silicon and on indium phosphide at 150 kV, exposing single points from 1 fC to 10 pC and measuring the resulting holes by electron microscope and optical microscope. On silicon they find η = 0.67 ± 0.05 and β ≈ 59 ± 4 µm. And they find that the double-Gaussian form deviates from the measured function by up to four orders of magnitude between roughly 10 nm and 1 µm — the exact band in which features sit next to their neighbours."
+      },
+      {
+        "heading": "A power law instead",
+        "body_md": "What the measurements fit is not a second Gaussian in the near field but a power law. Replacing the narrow Gaussian with a term going as (r/γ)^−σ, with γ = 15 ± 2 nm and σ = 2.69 ± 0.07 on silicon, and keeping the broad Gaussian for the backscattered halo, gives a function that tracks the data from about 1 nm to 100 µm — five orders of magnitude in distance and ten in dose.\n\nThe scaling behaviour is the useful part. In their Monte Carlo simulations the exponent σ stays between about 2.4 and 2.9 for everything above 50 kV, so the near-field shape barely cares about acceleration voltage. The backscatter range does: β on silicon goes 0.32, 0.81, 2.57, 8.27, 27.7 and 57.2 µm at 5, 10, 25, 50, 100 and 150 kV, growing roughly as the square of the voltage. Higher voltage does not sharpen the core so much as throw the halo further away, which is a different and more correctable problem."
+      },
+      {
+        "heading": "Correcting the pattern, not the physics",
+        "body_md": "You cannot stop the electrons scattering, so you change what you write. Pengcheng Li's review sorts fifty years of proximity-effect correction into two families. Dose modification keeps the geometry and varies the exposure: Parikh's 1978 self-consistent method solves a linear system so every shape receives the same average absorbed dose; Chow's 1983 transform method deconvolves the target exposure with the point-spread function; Abe's 1989 approximation just writes D = D₀(1 − kU) with U a local backscatter term; Murai's 1992 method replaces the whole calculation with a smoothed pattern-density map.\n\nShape modification instead keeps the dose and redraws the geometry, either from measured design tables or by solving the exposure equations for the written width. There is also GHOST, which equalises the background rather than correcting it, by adding a defocused reverse-tone exposure at D_c = D_e·η/(1+η) with blur β/(1+η)^¼. It needs no computation at all, and it costs roughly a factor of two in throughput and visibly softens the resist profile."
+      },
+      {
+        "heading": "The arithmetic that keeps it a research tool",
+        "body_md": "Write time is dose times area divided by beam current, and that one line explains the whole position of this technique. Take Hougs's own numbers: 225 µC/cm² to clear 180 nm CSAR on silicon at 150 kV, and 10 nA, the current they reserve for their largest doses. One square centimetre is then 2.25 × 10⁴ seconds, a little over six hours. A 300 mm wafer is about 707 cm², so roughly 1.6 × 10⁷ seconds — six months of continuous writing, before any stage motion.\n\nDropping the voltage does not rescue it cleanly. Clearing dose scales nearly linearly with voltage, because a 150 kV electron deposits only about 51 eV in the film against 1241 eV at 5 kV, so 5 kV would want perhaps thirty times less charge; but it also collapses β to 0.32 µm, putting the scattered dose right back among the features. And the correction does not travel: indium phosphide under the same resist gives η = 1.16 and β = 23 µm, a shorter halo carrying more dose. A recipe calibrated on silicon is simply wrong on InP."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Clearing dose (D₀)",
+        "definition": "The exposure per unit area at which a positive resist develops all the way through to the substrate. It is the number that sets write time, and it depends on the substrate as well as the resist: 225 µC/cm² for 180 nm CSAR on silicon at 150 kV, 165 µC/cm² on indium phosphide."
+      },
+      {
+        "term": "Point-spread function",
+        "definition": "The deposited-energy distribution produced by a single infinitely narrow exposure. Convolving the written dose map with it gives the exposure the resist actually sees, which is why proximity correction is a deconvolution."
+      },
+      {
+        "term": "η (backscatter coefficient)",
+        "definition": "The parameter setting how much of the deposited dose arrives in the broad backscattered halo relative to the sharp forward-scattered core. On silicon at 150 kV it is about 0.67; on indium phosphide, 1.16 — more dose in the halo than in the core."
+      },
+      {
+        "term": "β (backscatter range)",
+        "definition": "The width of the backscattered halo. It grows roughly as the square of acceleration voltage, from 0.32 µm at 5 kV to 57 µm at 150 kV on silicon, which is why high-voltage correction has to consider everything within tens of microns of a feature."
+      },
+      {
+        "term": "Proximity effect",
+        "definition": "The dependence of a developed feature's size on what was written near it, caused by scattered dose crossing between features. It is worst in dense, nested patterns and nearly absent for isolated ones."
+      },
+      {
+        "term": "GHOST",
+        "definition": "A correction that adds a second defocused exposure of the inverse pattern to flatten the backscattered background rather than compute it away. No computation, about half the throughput, and a softer resist profile."
+      }
+    ],
+    "try_this": "Do the write-time arithmetic yourself, because it is one line and it settles most arguments about this technique. Take 225 µC/cm² and 10 nA from Hougs et al., and compute dose × area ÷ current for one square centimetre: you should land near 2.3 × 10⁴ seconds. Scale it to a 300 mm wafer and then to the area of whatever cell the IC side of the club is laying out, and compare all three against one exposure on the maskless stepper. Then read the point-spread-function measurement and model-comparison figures in that paper and find the band between 10 nm and 1 µm where the double Gaussian comes apart — that gap is the whole reason proximity correction is still an open problem. If you want a tool number to go with the physics, ask the Minnesota Nano Center what its electron-beam system costs per hour.",
+    "sources": [
+      {
+        "title": "Measurements, simulations, and models of the point-spread function of electron-beam lithography",
+        "url": "https://arxiv.org/abs/2506.21236",
+        "publisher": "arXiv",
+        "date": "2025-06-26"
+      },
+      {
+        "title": "A Review of Proximity Effect Correction in Electron-beam Lithography",
+        "url": "https://arxiv.org/abs/1509.05169",
+        "publisher": "arXiv",
+        "date": "2015-09-17"
+      },
+      {
+        "title": "Enhanced Resolution of Poly-(Methyl Methacrylate) Electron Resist by Thermal Processing",
+        "url": "https://arxiv.org/abs/1207.3183",
+        "publisher": "arXiv / Journal of Vacuum Science & Technology B",
+        "date": "2012-07-13"
+      }
+    ]
+  }
+}

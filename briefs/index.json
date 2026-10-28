@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-10-28",
+      "foundations_slug": "electron-beam-lithography",
+      "foundations_topic": "Electron-beam lithography",
+      "headline": "Floorsweeping leaves an H100 with 132 working multiprocessors but only 120 that thread-block clusters can use, and launching for the smaller number is worth up to 5.30% on FlashAttention 4.",
+      "item_count": 7,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-10-27",
       "foundations_slug": "unix-history",
       "foundations_topic": "Unix, and why it spread",
@@ -772,6 +785,6 @@
       ]
     }
   ],
-  "generated_at": "2026-10-27T13:54:35Z",
-  "latest": "2026-10-27"
+  "generated_at": "2026-10-28T14:40:17Z",
+  "latest": "2026-10-28"
 }

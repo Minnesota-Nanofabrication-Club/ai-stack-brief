@@ -1,0 +1,406 @@
+{
+  "date": "2026-10-29",
+  "generated_at": "2026-10-29T14:31:49Z",
+  "window": "2026-10-28..2026-10-29",
+  "headline": "Youcef Bioud and co-authors find bismuth implanted into silicon reaches the same 90% substitutional fraction either way while electrical activation splits 60% against 90%, so the channelling measurement that certifies an implant anneal does not certify the dopant works.",
+  "pulse": {
+    "read_time_min": 7,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-bismuth-substitutional-versus-active",
+            "title": "Bismuth lands on the lattice either way; only one route switches it on",
+            "dek": "Youcef Bioud and four co-authors implanted bismuth into silicon two ways — straight into the crystal, and after deliberately amorphising the surface with a silicon pre-implant first — and found both routes leave about nine atoms in ten sitting on proper lattice sites, while only the pre-amorphised one gets nine in ten to actually donate an electron.",
+            "why_it_matters": "Channelling is the standard proof that an implant anneal has repaired the crystal and put the dopant where it belongs, and here the two processes agree to within their error bars — 91 ± 2% against 89 ± 4% substitutional — while a Hall measurement on the same films disagrees by about thirty percentage points. Occupying a lattice site is therefore not sufficient for a donor to give up its electron, so an anneal recipe signed off on structural metrology alone can ship a dopant that is in exactly the right place and switched off, and the thing that decides which happens is how deep the damage went before you annealed it.",
+            "background_md": "Doping by ion implantation is a controlled act of damage. Donor atoms arrive at keV energies, come to rest between lattice sites, and leave a trail of displaced silicon behind them. Only the anneal that follows rebuilds the crystal and moves dopants onto substitutional sites, where a group-V atom has one electron more than its four bonds can use and hands it to the conduction band. Heavy species amorphise the near-surface silicon outright at modest doses, so that anneal is regrowing a layer from the crystal below rather than repairing scattered point defects.",
+            "deeper_md": "Both routes used 20 keV Bi and a 650 °C, 300 s anneal. Direct implantation left an amorphous layer about 47 nm deep; pre-amorphising with silicon first took it to 177 ± 15 nm. Rutherford backscattering in channelling geometry then put 91 ± 2% of the bismuth on substitutional sites in the direct case and 89 ± 4% in the pre-amorphised one, while Hall-derived electrical activation came out near 60% and near 90% respectively.\n\nThe explanation offered is geometric. Solid-phase epitaxial regrowth runs from the crystalline substrate upward, and the defects it cannot consume collect at the original amorphous/crystalline boundary — the end-of-range band. The authors see a buried bismuth feature at or beyond that boundary and read it as trapping near residual end-of-range defects, so pushing the boundary deeper moves that trap away from the near-surface bismuth a device would use. Bismuth is the species of interest because clock transitions in Bi donors have carried electron spin coherence past a second.\n\nCaveats: activation is inferred from a Hall measurement rather than counted, surface segregation is reported as growing with anneal temperature without numbers, and no device has been operated on either film.",
+            "glossary": [
+              {
+                "term": "Substitutional site",
+                "definition": "A lattice position the dopant occupies in place of a silicon atom; a group-V donor has to sit there and bond to four neighbours before its fifth electron is free to conduct."
+              },
+              {
+                "term": "Solid-phase epitaxial regrowth",
+                "definition": "Recrystallisation of an amorphous implanted layer from the undamaged substrate upward, far below melting; the advancing front sweeps dopants onto lattice sites as it passes."
+              },
+              {
+                "term": "End-of-range defects",
+                "definition": "The band of dislocation loops and interstitial clusters left just beyond the original amorphous/crystalline boundary, where regrowth runs out of amorphous material to consume them into."
+              },
+              {
+                "term": "RBS channelling",
+                "definition": "Rutherford backscattering with the beam aligned to a crystal axis so atoms hidden behind lattice rows barely scatter; what comes back counts the atoms sitting off-site."
+              }
+            ],
+            "fab_angle": "Structural and electrical metrology can disagree by thirty percentage points on the same wafer, which is an argument for pairing a four-point-probe or Hall measurement with any channelling or SIMS result before calling an implant anneal qualified.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Amorphization-Depth-Dependent Bismuth Redistribution and Activation in Silicon for Quantum Devices",
+                "url": "https://arxiv.org/abs/2610.35993",
+                "publisher": "arXiv",
+                "date": "2026-10-26"
+              },
+              {
+                "title": "Atomic clock transitions in silicon-based spin qubits",
+                "url": "https://arxiv.org/abs/1301.6567",
+                "publisher": "arXiv / Nature Nanotechnology",
+                "date": "2013-01-28"
+              }
+            ]
+          },
+          {
+            "id": "silicon-sinx-al-membrane-turning-point",
+            "title": "Aluminium thickness moves a membrane's blind spot off the scale",
+            "dek": "Yanli Shi and nine co-authors varied the aluminium thickness on a 205-nanometre silicon-nitride window — a drumhead held in tension, whose pitch tracks that tension — and moved the temperature at which its pitch stops responding from about 170 K to beyond 300 K, leaving a thermometer good to five thousandths of a kelvin.",
+            "why_it_matters": "A film-stress thermometer only responds where the film's effective thermal expansion differs from the frame's, so every device of this kind carries a dead spot at the temperature where the two coefficients cross, and nothing in the physics fixes where that temperature lands. Setting it with a sputtered metal thickness makes the dead spot a design choice rather than a property of the nitride, and the same effective-expansion arithmetic that moves it is what predicts how much that metal layer will bow a wafer — so the result is as much a statement about film stress as about thermometry.",
+            "background_md": "A thin film stretched over a hole behaves like a drumhead: its resonant frequency is set by the tension in the film divided by its mass per unit area, not by its bending stiffness. Silicon nitride deposited on silicon ends up in tension, which is why nitride membranes ring at high frequency and lose very little energy per cycle. Change the temperature and the mismatch in thermal expansion between film and frame changes that tension, so the frequency moves. The coupling is a nuisance if you want a stable oscillator and it is the signal if you want a thermometer.",
+            "deeper_md": "The films are 205.2 nm of non-stoichiometric SiN_x on a 1.026 mm square window, carrying 24.6, 41.6 or 72.0 nm of aluminium. The bilayer's effective expansion coefficient is the thickness-and-biaxial-modulus weighted average α′ = (h₁M₁α₁ + h₂M₂α₂)/(h₁M₁ + h₂M₂) with M = E/(1−ν), and the turning point — where ∂f/∂T vanishes — sits where α′ equals the substrate's coefficient. Thicker aluminium raises α′, which walks the turning point from about 170 K to about 240 K to beyond 300 K, so the 72 nm sample has a monotonic negative coefficient across the whole 90–300 K span.\n\nSensitivity near the working point is about 200 Hz/K, so 1 Hz of spectral resolution reads as roughly 5 mK. Thermal response settles in under the 1 s acquisition window and tracks a 3 K/min ramp; two runs on the same sample agree to under 30 Hz between 175 K and 260 K, about 150 mK.\n\nThe honest limits: every sample drifts between roughly 150 K and 170 K, which the authors attribute to mounting and did not remove by switching the metal to gold, so below 170 K is unusable; the extracted α′ departs from theory near 150 K; and quality factors are not reported.",
+            "glossary": [
+              {
+                "term": "Biaxial modulus (M = E/(1−ν))",
+                "definition": "The stiffness a film shows when stretched equally in both in-plane directions; it, not Young's modulus alone, is what weights each layer's contribution to a bilayer's tension."
+              },
+              {
+                "term": "CTE (coefficient of thermal expansion)",
+                "definition": "Fractional length change per kelvin. A film and the frame holding it with different values drive the film into tension or compression as temperature changes."
+              },
+              {
+                "term": "Turning point",
+                "definition": "The temperature at which a resonator's frequency stops depending on temperature — here where the bilayer's effective expansion coefficient equals the substrate's, leaving the device blind."
+              },
+              {
+                "term": "Hz/K",
+                "definition": "Frequency shift per kelvin, a resonant thermometer's raw sensitivity; divide the instrument's frequency resolution by it and you get the temperature resolution."
+              }
+            ],
+            "fab_angle": "The whole tuning knob is a metal thickness on a bought nitride window, so an evaporator, a vacuum can and a spectrum analyser are enough to reproduce the turning-point shift — and the same weighted-average arithmetic is what tells you how much a metallisation step will curl a wafer.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Tunable turning point of the frequency–temperature response in suspended bilayer SiN_x/Al nanofilms",
+                "url": "https://arxiv.org/abs/2610.35977",
+                "publisher": "arXiv",
+                "date": "2026-10-26"
+              },
+              {
+                "title": "Fabrication and characterization of high-Q silicon nitride membrane resonators",
+                "url": "https://arxiv.org/abs/2511.02166",
+                "publisher": "arXiv",
+                "date": "2025-11-04"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-skhynix-321-layer-capacity-crossover",
+            "title": "SK hynix moves most of its Korean NAND capacity to 321 layers",
+            "dek": "SK hynix's third-quarter results, published Wednesday, say 321-layer triple-level-cell flash — NAND built as 321 stacked word-line planes with one vertical channel punched through all of them — will take more than half of its Korean production capacity in the fourth quarter, two years after that part first entered mass production.",
+            "why_it_matters": "A NAND generation change is a deposition-and-etch change rather than a lithography shrink, so converting a line means re-qualifying a hole that has to stay straight and the same width through a stack tens of micrometres thick, and two years from first mass production to half of capacity is the size of that bill. The same release names high-bandwidth flash — which moves those dies onto an on-package die-to-die link instead of behind a PCIe controller — as where the extra bits are meant to go, which is a bet that the constraint worth designing against is capacity per package rather than access time.",
+            "background_md": "Flash memory grows upward rather than sideways. A 3D NAND die is a stack of alternating conducting and insulating films with a vertical channel etched through all of them, so every cell strung along that channel shares one hole; capacity per die then scales with how many layers can be deposited and etched through, not with the smallest feature an exposure tool can print. The binding step is the etch, because the hole must hold its diameter and its verticality from top to bottom, which is why layer counts advance by building decks and stacking them rather than by one deeper etch.",
+            "deeper_md": "The technology statements in the release: 321-layer TLC enterprise SSD sales expanded during the quarter, and the 321-layer share of domestic NAND capacity will pass half in the fourth quarter; HBM4 shipments \"began in earnest\" and are expected to overtake HBM3E in both shipment volume and revenue in the fourth quarter; M15X will be ramped to maximum capacity by year end; and the 10 nm-class sixth-generation (1c) DRAM share rises. SK hynix put the same 321-layer part into mass production on 21 November 2024.\n\nThe destination it names for NAND is high-bandwidth flash. The specification SK hynix and Sandisk released through the Open Compute Project on 4 August 2026 covers 8-high and 16-high NAND stacks, capacities up to 512 GB, and three bandwidth grades spanning roughly 0.4 to 3.0 TB/s, with UCIe carrying the link to the host processor. UCIe's own specification index puts per-lane signalling at 32 GT/s for version 2.0 and 48 or 64 GT/s for 3.0, and UCIe-3D bumps at 10–25 µm falling below 1 µm with hybrid bonding — which is why a flash part specified at terabytes per second is an on-package interface and not a board-level one.\n\nCaveat: the release does not say HBF is in production, and a grade in a specification is not a sampled part.",
+            "glossary": [
+              {
+                "term": "TLC (triple-level cell)",
+                "definition": "A flash cell storing three bits by resolving eight distinct stored-charge levels, which triples bits per cell and shrinks the voltage margin separating one state from the next."
+              },
+              {
+                "term": "Word-line layer",
+                "definition": "One of the stacked conducting planes in a 3D NAND die; the vertical channel crosses all of them, so each added plane adds cells without needing a finer printed feature."
+              },
+              {
+                "term": "HBF (high-bandwidth flash)",
+                "definition": "A package stacking NAND dies onto a wide die-to-die link rather than a PCIe controller, trading flash's slow page read for capacity at bandwidths specified up to 3.0 TB/s."
+              },
+              {
+                "term": "GT/s (gigatransfers per second)",
+                "definition": "Signalling rate on one wire, counted in transitions rather than payload bits; a die-to-die standard quotes it per lane, so aggregate bandwidth is this times the lane count."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "SK hynix Announces 3Q26 Financial Results",
+                "url": "https://news.skhynix.com/en/q3-2026-business-results/",
+                "publisher": "SK hynix",
+                "date": "2026-10-28"
+              },
+              {
+                "title": "SK hynix Unveils First HBF Standard Specifications with Sandisk, Presenting AI Memory Solutions at FMS 2026",
+                "url": "https://news.skhynix.com/en/hbf-at-fms-2026/",
+                "publisher": "SK hynix",
+                "date": "2026-08"
+              },
+              {
+                "title": "UCIe Specifications",
+                "url": "https://www.uciexpress.org/specifications",
+                "publisher": "UCIe Consortium",
+                "date": "2026"
+              },
+              {
+                "title": "SK hynix Starts Mass Production of World's First 321-High NAND",
+                "url": "https://news.skhynix.com/en/sk-hynix-starts-mass-production-of-worlds-first-321-high-nand/",
+                "publisher": "SK hynix",
+                "date": "2024-11-21"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-safel4-language-isolation-microkernel",
+            "title": "A microkernel trades page tables for Rust's type system",
+            "dek": "Zheyuan Xu and nine co-authors built safeL4, a microkernel accepted to ASPLOS 2027 in which every component shares one address space and isolation is enforced by Rust's object capabilities rather than by page tables, and measured its kernel primitives 1.91 times faster on average than seL4's on the same Arm core.",
+            "why_it_matters": "Reaching a kernel object on seL4 costs 379 cycles of mode switch, capability lookup and authority check, and taking the protection boundary out of the hardware removes most of that: the reply half of an inter-process call drops from 268 cycles to 12. The bill arrives as trust, because the Rust compiler, its linker and its core libraries now sit inside the trusted computing base — and seL4's proof on Arm and RISC-V extends all the way to the binary precisely so that the compiler does not have to be trusted at all.",
+            "background_md": "An operating system normally keeps components out of each other's memory by giving each its own page table and turning every call between them into a trap to supervisor mode. A microkernel pushes that idea further: drivers, file systems and network stacks become separate user-level components, so a fault in one cannot corrupt another. The price is that an ordinary function call becomes a message, and each message costs a privilege transition and a translation-lookaside-buffer penalty. That cost is the standing reason microkernels lost to monolithic kernels in production, and the alternative is to enforce the same separation in the language instead of the hardware.",
+            "deeper_md": "safeL4 runs every protection domain in one address space, with access control built on Rust's object capabilities rather than page-table entries. On a Cortex-A53 the reimplemented seL4bench suite gives a geometric mean of 1.91×, concentrated exactly where the hardware boundary used to be: kernel entry and return 149 → 44 cycles, an inter-process call 249 → 32, its reply 268 → 12, asynchronous signal delivery 406 → 114. Frame-capability allocation is the one regression, 538 → 949 cycles, which the authors trace to lock and reference-count setup costing 656 cycles on average. SQLite3 under YCSB comes out 14.3% faster than an seL4 library OS and 23.2% faster than Linux.\n\nThe trade is stated plainly. The microkernel is 11,688 lines, 1,765 of them (15.1%) unsafe, and there is no IOMMU support, so DMA-capable devices and their drivers are trusted outright — unrestricted DMA bypasses Rust's guarantees entirely. seL4's own project claims it is the fastest microkernel measured by *cross*-address-space ping-pong, which is the comparison a single-address-space design sidesteps rather than wins, and its machine-checked functional-correctness proof is not claimed here.",
+            "glossary": [
+              {
+                "term": "Microkernel",
+                "definition": "A kernel keeping only scheduling, memory mapping and message passing in supervisor mode and pushing drivers and file systems out to user level, so one failing component cannot corrupt another."
+              },
+              {
+                "term": "Object capability",
+                "definition": "A reference that both names a resource and carries the authority to use it, so holding it is permission; a language whose type system makes such references unforgeable needs no hardware check."
+              },
+              {
+                "term": "Mode switch",
+                "definition": "The processor's transition from user to supervisor privilege taken on every system call; it discards pipeline state and is the irreducible floor under any hardware-isolated kernel call."
+              },
+              {
+                "term": "TCB (trusted computing base)",
+                "definition": "The set of components whose failure voids every security claim the system makes; growing it is the real cost of replacing a hardware mechanism with a software one."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "safeL4: Rethinking Safe-Language-Based Single Address Space Microkernels",
+                "url": "https://arxiv.org/abs/2610.35999",
+                "publisher": "arXiv / ASPLOS 2027",
+                "date": "2026-10-26"
+              },
+              {
+                "title": "seL4 Frequently Asked Questions — verification scope and performance",
+                "url": "https://sel4.systems/About/FAQ.html",
+                "publisher": "seL4 Foundation",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "infrastructure",
+        "items": [
+          {
+            "id": "infrastructure-gpu-cluster-fine-grained-idleness",
+            "title": "Half the jobs on a 319-GPU cluster never pass 5% of a GPU",
+            "dek": "Andrew Sheinberg, Samyak Gupta and Kai Li sampled every GPU on an 89-node, 319-GPU university cluster once every 100 milliseconds for ten days, and found half of the 7,399 jobs averaged under 5% streaming-multiprocessor activity — the fraction of time any thread group at all was resident on a core.",
+            "why_it_matters": "A batch scheduler hands out whole accelerators because that is the allocation unit, which makes an idle GPU inside a running job invisible to it, and this measurement puts the hidden headroom at most of the machine rather than a few percent. It also names the input that produces the gap — about 80% of jobs reserved far more wall-clock time than they used, and the request is what the scheduler packs against — and the activity metric is a generous one, because NVIDIA counts a thread group stalled on memory as active.",
+            "background_md": "A shared GPU cluster allocates whole accelerators. A job asks for n GPUs for h hours, the scheduler reserves them, and nothing else may touch them until the job exits, which makes the scheduler's picture of utilisation binary: allocated or free. What the silicon is actually doing is visible only through counters the driver exposes — what fraction of time a core had work resident, how much memory was committed, how busy the interconnect was. Those two pictures diverge, and the gap between them is the difference between a cluster that is full and a cluster that is working.",
+            "deeper_md": "The instrumentation is the contribution: NVIDIA's Data Center GPU Manager polled at 100 ms across 319 GPUs on 89 nodes, over ten days, covering 7,399 jobs from 150 users in 12 departments. More than 70% of jobs used under 20% of GPU memory, about half averaged under 5% streaming-multiprocessor activity, about 80% showed a large gap between requested and actual runtime, and multi-GPU jobs showed strongly periodic communication.\n\nThe metric's definition is what makes the 5% hard to argue away. NVIDIA defines SM activity as the fraction of time at least one warp was active on a multiprocessor, averaged over all multiprocessors, and says explicitly that a warp waiting on memory still counts — so a job averaging 5% is idle rather than merely bandwidth-bound. The levers the authors name are scheduling against real job durations instead of requests, and running more than one job per device; Multi-Instance GPU is the hardware mechanism for the second, splitting one GPU into instances with their own compute and memory.\n\nTwo caveats, one of them theirs: the authors note the paper was originally written in autumn 2024, so the hardware and the job mix are two years old, and one university cluster is not a production training fleet.",
+            "glossary": [
+              {
+                "term": "SM activity",
+                "definition": "DCGM's measure of the fraction of time at least one warp was resident on a multiprocessor, averaged across them; a warp stalled on memory counts, so the figure flatters the workload."
+              },
+              {
+                "term": "Warp",
+                "definition": "The group of 32 threads an NVIDIA GPU schedules as a single unit; nothing finer is visible to the hardware scheduler, so residency and occupancy are both counted in warps."
+              },
+              {
+                "term": "MIG (Multi-Instance GPU)",
+                "definition": "A partitioning mode that splits one GPU into instances with dedicated compute slices and memory, letting two jobs share a device without sharing its scheduler."
+              },
+              {
+                "term": "Wall-clock request",
+                "definition": "The run time a user declares at submission. The scheduler packs against the request rather than the eventual duration, so an overstated request reserves hardware nobody uses."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Plenty of Room in the Middle: Revealing Opportunities on a GPU Cluster via Fine-Grained Monitoring",
+                "url": "https://arxiv.org/abs/2610.36329",
+                "publisher": "arXiv",
+                "date": "2026-10-26"
+              },
+              {
+                "title": "DCGM Feature Overview — profiling metrics definitions",
+                "url": "https://docs.nvidia.com/datacenter/dcgm/latest/user-guide/feature-overview.html",
+                "publisher": "NVIDIA",
+                "date": "2026"
+              },
+              {
+                "title": "NVIDIA Multi-Instance GPU User Guide",
+                "url": "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/",
+                "publisher": "NVIDIA",
+                "date": "2026"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-embeddinggemma-2-detachable-encoders",
+            "title": "An embedding model you can leave the audio encoder out of",
+            "dek": "Google's EmbeddingGemma 2 report describes a 744-million-parameter model that maps text, images, audio and video into one vector space, and is built so the encoders a deployment is not using need never be loaded: 271 million parameters for text alone, 439 million with vision, and 191 megabytes of phone memory at four-bit weights.",
+            "why_it_matters": "What an embedding model costs in production is set by what has to stay resident to encode a query and by how wide the stored vector is for every document in the index, not by how it was trained, so detachable encoders plus a vector trainable down to 128 dimensions turn one checkpoint into a memory budget chosen at load time. The report's own tables price that flexibility: English text retrieval goes backwards against the smaller model it replaces, 69.67 to 68.46, and two sub-1B competitors score higher on the text boards.",
+            "background_md": "A retrieval system does not compare documents, it compares fixed-length vectors computed from them in advance. An embedding model produces those vectors, and two numbers decide what running it costs: the parameters that must sit in memory to encode an incoming query, and the dimension of the vector that has to be stored and searched for every document in the index. A million documents at 768 dimensions in four-byte floats is roughly 3 GB of index before any search structure is built on top. Shrinking either number has normally meant training a different model.",
+            "deeper_md": "The 744M total splits into a 271M text backbone — 24 bidirectional transformer layers at model dimension 512, mean-pooled, projected and L2-normalised — plus a 167M vision encoder and a 305M audio encoder, so a vision-language deployment runs at 439M and audio-language at 577M. Per-layer embeddings drop the usual lookup table and derive each layer's extra input from a projection of the shared input embedding; the ablation scores that 55.46 against 55.07 on MMEB-v2, so the table was buying nothing. Output is 768-dimensional with Matryoshka training down to 512, 256 and 128, and the report claims its 128-dimensional vectors beat every other sub-1B model on MIEB and MAEB. With int4-per-channel weights, peak memory on a Pixel 11 Pro is 191 MB text-only, 447 MB with vision, 567 MB with audio.\n\nTwo things to hold against it. MTEB English mean regresses from 69.67 to 68.46 versus the 308M predecessor, and Jina Embed v5 Omni Nano and Qwen3 Embedding 0.6B both score higher on the multilingual and English text boards. The baseline table also excludes multi-vector models and anything trained on more than a quarter of the evaluation data — a defensible rule that nonetheless removes competitors.",
+            "glossary": [
+              {
+                "term": "Embedding",
+                "definition": "A fixed-length vector computed from an input so that geometric closeness stands in for similarity of meaning; retrieval compares these vectors instead of re-reading documents."
+              },
+              {
+                "term": "MRL (Matryoshka representation learning)",
+                "definition": "Training so that the leading k components of an embedding are themselves a usable embedding, letting one vector be truncated at query time instead of training a separate smaller model."
+              },
+              {
+                "term": "Per-layer embeddings",
+                "definition": "Extra per-layer inputs alongside the token embedding; here they are projected from the shared input embedding rather than read from their own table, which deletes those parameters."
+              },
+              {
+                "term": "MMEB-v2 / MIEB",
+                "definition": "Multimodal and image embedding benchmark suites. Scores are means over heterogeneous tasks, so a one-point gap is an average and not a guarantee on any single task."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "EmbeddingGemma 2: Unified and Efficient Multimodal Representations",
+                "url": "https://arxiv.org/abs/2610.37364",
+                "publisher": "arXiv / Google DeepMind",
+                "date": "2026-10-27"
+              },
+              {
+                "title": "Matryoshka Representation Learning",
+                "url": "https://arxiv.org/abs/2205.13147",
+                "publisher": "arXiv / NeurIPS 2022",
+                "date": "2022-05-26"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "Atomic layer etching",
+    "slug": "atomic-layer-etching",
+    "subtitle": "Take the etch reaction apart into two steps that each stop by themselves, and depth becomes a number you count instead of a timer you trust.",
+    "tldr": "Ordinary plasma etching removes material continuously, so how deep you go depends on how long the tool ran and how fast it happened to be running that day, in that pattern, on that film. Atomic layer etching splits the job into two steps that each stop on their own — one that chemically weakens the top surface, one that removes only what was weakened — and then repeats the pair. Depth becomes a cycle count rather than an exposure time, surfaces come out smoother than they went in, and the bill is that a cycle removes well under a nanometre.",
+    "sections": [
+      {
+        "heading": "Why a timer is the wrong control knob",
+        "body_md": "Start with the thing continuous etching cannot give you. A conventional plasma etch has a rate, and depth is rate times time, which is fine until the rate stops being a constant. It changes with the aspect ratio of the feature, with how much of the wafer is open, with the condition of the chamber walls, and with the film's own history — the same chemistry that takes thermally grown oxide at 0.58 Å per cycle takes deposited or sputtered oxide at up to 2.38 Å per cycle, four times faster, because the deposited film is less dense.\n\nThen there is what the etch does to the surface it leaves. Lam Research's own blanket-silicon comparison is the clearest statement of it: removing about 400 atomic layers, roughly 50 nm, a continuous etch added about fifteen atomic layers of roughness while the cyclic process added one. When the thing you are etching is a 5 nm fin recess or the last few nanometres above a buried channel, fifteen layers of roughness is the device."
+      },
+      {
+        "heading": "Taking the reaction apart",
+        "body_md": "An etch is two things happening at once: a chemical reaction that converts the surface into something volatile, and an energetic process that carries the product away. Run them together and each feeds the other, which is what makes the rate continuous and pattern-dependent. Atomic layer etching runs them one at a time.\n\nThe canonical example is silicon in chlorine and argon. First, chlorine adsorbs onto the exposed silicon and stops — there is only one surface to cover, so the step saturates. Purge. Then argon ions arrive with just enough energy to knock off the chlorinated layer and not enough to sputter the silicon underneath, and that step stops too, because once the chlorinated layer is gone there is nothing left that cheap ions can remove. Purge again, and the cycle is one pass.\n\nThe entire method lives inside that energy gap: above the threshold for removing the modified layer, below the threshold for damaging the unmodified film. Widening the gap is the design problem, and it is why the plasma is tuned to suppress ions and photons above the etch threshold rather than to maximise flux."
+      },
+      {
+        "heading": "Synergy is the number that says whether you have ALE",
+        "body_md": "Because the claim is about separation, the figure of merit is a test of separation. Run the first half-cycle alone, many times: it should etch nothing. Run the second alone: it should etch nothing. Synergy is the fraction of the observed removal that requires both, and a process reporting 100% synergy is one where neither half-cycle does anything on its own.\n\nTwo oxide recipes make the point from opposite directions. One alternates trimethylaluminium with an argon/hydrogen/sulphur-hexafluoride plasma and reports 100% synergy at up to 0.58 Å per cycle on thermal oxide, along with a 62% reduction in the roughness of a pre-roughened film — and 1–2% of aluminium and fluorine left on the surface afterwards, which an oxygen plasma can reduce further. The other needs no metal precursor at all: sulphur hexafluoride gas, then argon plasma, near room temperature, about 1.4 Å per cycle, also 100% synergy, because neither exposure etches by itself. The second is simpler; the first is more selective. Both are ALE by the same test."
+      },
+      {
+        "heading": "Self-limiting is a claim about a window, not a law",
+        "body_md": "Nothing in the chemistry forces a step to saturate. Saturation is something a process window delivers, and outside the window it quietly stops being true.\n\nTitanium nitride etched with molecular oxygen followed by sulphur-hexafluoride/hydrogen plasma shows this directly: about 1.1 Å per cycle at 150 °C and about 3.2 Å per cycle at 350 °C. Nothing about the sequence changed. The oxygen step converts the surface to an oxide and the plasma step removes the oxide selectively, and that selectivity — which is the only thing making the cycle self-limiting — holds only for certain flow ratios and only at temperatures where the plasma does not simply attack the nitride too. Push the temperature and you are back to a continuous etch with purges in it.\n\nThe name oversells the amount, too. A diamond process alternating oxygen plasma with low-energy krypton bombardment reports 6.85 Å per cycle, several atomic layers, while behaving self-limitingly and leaving the surface smoother than pristine diamond. \"Atomic layer\" names the mechanism, not the quantity."
+      },
+      {
+        "heading": "What the separation actually buys",
+        "body_md": "Two payoffs, and both are about things continuous etching cannot fix by running longer.\n\nThe first is aspect-ratio dependence. In a continuous etch, a narrow gap receives less reactant flux and vents its products more slowly than a wide one, so it etches more slowly — the effect called ARDE, and the reason a dense array and an isolated feature come out at different depths. Separating the steps and letting each saturate removes the flux dependence: a directional process on lithium niobate using an HBr/BCl₃/Ar modification and an argon removal shows no ARDE down to a 150 nm gap at 220 nm of etch depth, where ion milling to the same depth already shows it at 300 nm gaps.\n\nThe second is damage. Because the removal step runs below the sputtering threshold, the subsurface is left alone. Etched titanium nitride loses no more superconducting critical temperature than its thickness loss predicts. And aluminium transmons given a final ALE pass to strip native oxide and fabrication residue, followed by in-situ atomic layer deposition to cap the metal, reach a median quality factor of 3.69 × 10⁶ and a median T₁ of 196 µs, with roughly half the loss attributed to two-level systems."
+      },
+      {
+        "heading": "The arithmetic that keeps it rationed",
+        "body_md": "Write the throughput down and the whole position of the technique falls out. Depth is etch-per-cycle times cycles, and cycle time is dominated by the two purges, because a purge is a pumping problem and pumping is slow.\n\nTake the room-temperature oxide recipe at 1.4 Å per cycle. A 10 nm recess is about 71 cycles. At five seconds a cycle that is six minutes of tool time for 10 nm; at the one-to-five-minute cycle times the early thermal silicon processes needed — etch rates of 0.1 to 0.01 nm per minute — the same recess is between one and six hours. Plasma ALE exists precisely to collapse that, by using a high-flux plasma source for both the radical supply and the ion bombardment in one commercial etch reactor, and it is still per-cycle.\n\nSo ALE is not a replacement for etching. It is the last few nanometres of an etch, after a continuous step has done the bulk: the recess that sets a threshold voltage, the trim that sets a critical dimension, the clean-up pass before a bond or a deposition. Everywhere else, the timer is cheaper and good enough."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "EPC (etch per cycle)",
+        "definition": "The thickness one full modify-plus-remove cycle takes off. It is the unit depth is counted in, and it ranges from well under an ångström to several ångströms depending on material and chemistry — 1.4 Å/cycle for an SF₆/Ar oxide process, 6.85 Å/cycle for an O₂/Kr diamond process."
+      },
+      {
+        "term": "ALE synergy",
+        "definition": "The fraction of the observed removal that requires both half-cycles, measured by running each one alone and checking that neither etches. 100% synergy means the steps are genuinely separated; anything less means one half-cycle is etching continuously underneath the cycling."
+      },
+      {
+        "term": "Ion energy window",
+        "definition": "The band between the energy needed to desorb the chemically modified surface layer and the energy at which ions start sputtering the unmodified film beneath it. Directional ALE works only inside this band, and widening it is the central design problem."
+      },
+      {
+        "term": "ARDE (aspect-ratio dependent etching)",
+        "definition": "The tendency of narrow, deep features to etch more slowly than wide ones, because reactant arrives more slowly and product leaves more slowly. It is a flux effect, so letting each half-cycle saturate removes it — one of ALE's main practical arguments."
+      },
+      {
+        "term": "Self-limiting",
+        "definition": "A step that stops on its own once the surface is consumed or covered, rather than when a timer expires. It is a property of a process window, not of a chemistry: the same titanium-nitride cycle self-limits at 150 °C and runs three times faster at 350 °C."
+      },
+      {
+        "term": "TLS loss (two-level-system loss)",
+        "definition": "Microwave energy absorbed by defect states in the amorphous oxides and residues on a superconducting circuit's surfaces. It dominates the lifetime of planar qubits, which is why a damage-free final etch is worth a process step to them."
+      }
+    ],
+    "try_this": "Measure what a timer actually buys you on the club's own etcher, then price the alternative. Etch three identical oxide coupons for 30, 60 and 90 s in the same recipe, measure each by ellipsometry or as a step height on the profilometer, and plot thickness removed against time: the intercept is your initiation delay and the scatter about the line is the depth uncertainty you inherit when depth is set by a clock. Then take 1.4 Å per cycle from Peng et al. and work out how many cycles a 10 nm recess would need, and multiply by your chamber's realistic pump-and-purge time to get the tool time. Read the chlorine/argon cycle description in Kanarik et al. for where the two steps come from, and pair it with Campbell's plasma-etching chapter for where the ion-energy thresholds that bound the window actually come from.",
+    "sources": [
+      {
+        "title": "Moving atomic layer etch from lab to fab",
+        "url": "https://sst.semiconductor-digest.com/?p=58555",
+        "publisher": "Kanarik et al., Lam Research / Solid State Technology",
+        "date": "2014"
+      },
+      {
+        "title": "Atomic layer etching of SiO2 using sequential exposures of Al(CH3)3 and H2/SF6 plasma",
+        "url": "https://arxiv.org/abs/2405.05491",
+        "publisher": "arXiv",
+        "date": "2024-05-09"
+      },
+      {
+        "title": "Atomic layer etching of SiO2 using sequential exposures of SF6 gas and Ar plasma",
+        "url": "https://arxiv.org/abs/2412.20653",
+        "publisher": "arXiv",
+        "date": "2024-12-30"
+      },
+      {
+        "title": "Isotropic plasma-thermal atomic layer etching of superconducting TiN using sequential exposures of O2 and SF6/H2 plasma",
+        "url": "https://arxiv.org/abs/2307.02821",
+        "publisher": "arXiv",
+        "date": "2023-07-06"
+      },
+      {
+        "title": "Directional atomic layer etching of MgO-doped lithium niobate using Br-based plasma",
+        "url": "https://arxiv.org/abs/2511.01825",
+        "publisher": "arXiv",
+        "date": "2025-11-03"
+      },
+      {
+        "title": "First Plasma Atomic Layer Etching of Diamond via O2/Kr Chemistry",
+        "url": "https://arxiv.org/abs/2603.21159",
+        "publisher": "arXiv",
+        "date": "2026-03-22"
+      },
+      {
+        "title": "Improving the lifetime of aluminum-based superconducting qubits through atomic layer etching and deposition",
+        "url": "https://arxiv.org/abs/2506.17474",
+        "publisher": "arXiv",
+        "date": "2025-06-20"
+      }
+    ]
+  }
+}

@@ -1,6 +1,20 @@
 {
   "editions": [
     {
+      "date": "2026-10-29",
+      "foundations_slug": "atomic-layer-etching",
+      "foundations_topic": "Atomic layer etching",
+      "headline": "Youcef Bioud and co-authors find bismuth implanted into silicon reaches the same 90% substitutional fraction either way while electrical activation splits 60% against 90%, so the channelling measurement that certifies an implant anneal does not certify the dopant works.",
+      "item_count": 6,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "infrastructure",
+        "models"
+      ]
+    },
+    {
       "date": "2026-10-28",
       "foundations_slug": "electron-beam-lithography",
       "foundations_topic": "Electron-beam lithography",
@@ -785,6 +799,6 @@
       ]
     }
   ],
-  "generated_at": "2026-10-28T14:40:17Z",
-  "latest": "2026-10-28"
+  "generated_at": "2026-10-29T14:58:38Z",
+  "latest": "2026-10-29"
 }

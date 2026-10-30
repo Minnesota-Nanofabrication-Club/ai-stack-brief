@@ -1,0 +1,432 @@
+{
+  "date": "2026-10-30",
+  "generated_at": "2026-10-30T16:45:00Z",
+  "window": "2026-10-29..2026-10-30",
+  "headline": "Ken-ichi Kawarabayashi, Mikkel Thorup and four co-authors cut four-colouring a planar graph from O(n log n) to O(n), and say the last obstacle was a data-structure problem rather than new graph theory.",
+  "pulse": {
+    "read_time_min": 8,
+    "layers": [
+      {
+        "layer": "silicon",
+        "items": [
+          {
+            "id": "silicon-algan-digital-alloy-800c",
+            "title": "Layering the AlGaN channel, not mixing it, holds up better at 800 °C",
+            "dek": "Abdullah Al Mamun Mazumder and co-authors ran aluminium-gallium-nitride transistors — a wider-band-gap relative of the gallium nitride in phone chargers — at 800 °C in open air on sapphire, and the devices whose channel was grown as a stack of alternating thin layers lost less drive current than ones grown as a random mix.",
+            "why_it_matters": "Both channels sit at essentially the same aluminium fraction, 62% against 64%, so what the 800 °C data separates is arrangement rather than composition. The layered channel's threshold voltage moves by under ±10% over the sweep against more than ±19% for the mixed one, and that drift, not the raw current, is what decides whether a circuit biased at room temperature still has a usable operating point once the die is glowing.",
+            "background_md": "A semiconductor stops being one when temperature frees more carriers than the doping supplies, and the onset tracks band gap — wider gap, higher ceiling. That is why high-temperature electronics walks up the aluminium-gallium-nitride alloy series, from gallium nitride's roughly 3.4 eV toward aluminium nitride's roughly 6.2 eV. The price is paid twice: adding aluminium makes the material harder to dope and harder to make an ohmic contact to, and it leaves two different metal atoms sharing the same lattice sites, which scatters the electrons that do conduct.",
+            "deeper_md": "This is not a clean single-variable comparison. The digital-alloy device is an Al0.62Ga0.38N short-period superlattice channel under a binary AlN barrier with selectively regrown n++ GaN source/drain; the random-alloy device is an Al0.64Ga0.36N MOSHEMT — it has a gate dielectric — under a doped n+ 85%-Al barrier contacted through an n++ reverse-graded AlGaN layer. Barrier, contacts and gate stack all differ alongside the channel.\n\nFrom room temperature to 800 °C, saturated drain current falls 460 → 172 mA/mm for the digital alloy (62.6%) against 338 → 98 mA/mm for the random alloy (71.0%); subthreshold swing lands at 459 versus 550 mV/dec, and the on/off ratio holds above 10⁴ versus roughly 10³.\n\nThe abstract asserts better thermal stability without proposing a mechanism, and reports no mobility or sheet-charge density — which is what would separate reduced alloy-disorder scattering from a contact or gate-leakage effect. No operating lifetime at 800 °C is quoted. An earlier preprint from an overlapping author group took a 64% Al channel to about 2 kV breakdown at roughly 75 Ω·mm, so these are one group pushing one material system, not independent confirmation.",
+            "glossary": [
+              {
+                "term": "HEMT",
+                "definition": "A transistor whose channel is a sheet of electrons formed where two different crystals meet, created by polarization and band offset rather than by doping, so carriers travel through undoped material."
+              },
+              {
+                "term": "Digital alloy (short-period superlattice)",
+                "definition": "A target composition grown as a stack of alternating near-binary layers a few atomic planes thick, so the two metals occupy ordered layers instead of random lattice sites."
+              },
+              {
+                "term": "mV/dec (subthreshold swing)",
+                "definition": "The gate voltage needed to change drain current tenfold below threshold; it is proportional to absolute temperature, so every device gets worse at this as it heats up."
+              },
+              {
+                "term": "mA/mm",
+                "definition": "Drain current divided by gate width, the unit that lets transistors of different sizes be compared; it says nothing about how long the device survives at that current."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "800 °C Air-Ambient Operation of Extreme-Bandgap AlxGa1-xN (x>0.6) Digital and Random-Alloy Channel HEMTs",
+                "url": "https://arxiv.org/abs/2610.39053",
+                "publisher": "arXiv (physics.app-ph)",
+                "date": "2026-10-28"
+              },
+              {
+                "title": "High Voltage (~2 kV) field-plated Al0.64Ga0.36N-channel HEMTs",
+                "url": "https://arxiv.org/abs/2407.10354",
+                "publisher": "arXiv (physics.app-ph)",
+                "date": "2024-07-14"
+              }
+            ]
+          },
+          {
+            "id": "silicon-ebeam-writer-becomes-cdsem",
+            "title": "A retired e-beam writer becomes the CD-SEM its cleanroom never had",
+            "dek": "Will Gunn and co-authors turned a superseded Raith electron-beam pattern generator into an unattended critical-dimension scanning electron microscope — a tool that measures printed linewidths on its own — by writing software that converts a chip's layout file directly into an overnight list of imaging positions.",
+            "why_it_matters": "Line-width measurement is how you find out whether an exposure dose was right, and done by hand it caps a process characterisation at a handful of structures. At roughly 73 to 144 images an hour the measurement stops being the bottleneck: one run imaged 1,080 sites, which is enough to fit a resist's process blur and isofocal dose rather than estimate them, and enough to train a corrector on the distortion that is left over.",
+            "background_md": "Critical dimension is the printed width of the smallest feature a process has to hold, and most lithography decisions are made by measuring it: a dose is correct when measured width matches drawn width. Optical microscopes cannot resolve a sub-micron line, so the measurement happens in a scanning electron microscope, where the same beam that images the resist is slowly shrinking it. A dedicated CD-SEM answers that with low beam energy, a fixed recipe, and a stage that visits coordinates with no human present — which is also, almost exactly, what an electron-beam lithography tool already is.",
+            "deeper_md": "Nothing was added to the hardware. Imaging runs on the tool's in-lens secondary-electron detector at 10 kV, a 30 µm aperture, about 300 pA and roughly 10 mm working distance, at 2 nm per pixel. The new part is AutoSEM, a single-file web app that reads boxes drawn on GDSII layer 500 and emits a Raith position list; three-point alignment on fiducials, plus a focus measurement at each marker for a tilt-corrected working distance, sets the coordinate system before the unattended run.\n\nEdges come out of ProSEM, which fits a sigmoid to each edge in every pixel row and takes the inflection point; linewidth is the fitted mean and LER is 3σ of the scatter about it. AR-P 6200.09 on SOI fits to an isofocal dose ≈ 256 µC/cm², process blur ≈ 20 nm, bias ≈ 6 nm; ma-N 2403 gives ≈ 330 µC/cm², 32 nm and 2 nm.\n\nTwo honest gaps. There is no repeatability study, and the ±4 nm uncertainty is derived from the 2 nm pixel scale rather than from a reference standard — a precision-limited relative measurement, not a calibrated one. NIST's CD-SEM roughness work also sets a minimum edge length and sampling pitch for a meaningful LER number, which this workflow does not report.",
+            "glossary": [
+              {
+                "term": "CD (critical dimension)",
+                "definition": "The printed width of the smallest feature a process must hold; the gap between measured and drawn width is what a dose or focus correction is computed from."
+              },
+              {
+                "term": "LER (line edge roughness)",
+                "definition": "How far a printed edge wanders along its length, reported here as three times the standard deviation of fitted edge positions; it is invisible in an averaged linewidth."
+              },
+              {
+                "term": "Isofocal dose",
+                "definition": "The exposure dose at which printed width stops depending on focus, so centring a process there makes the result insensitive to small focus errors."
+              },
+              {
+                "term": "Process blur",
+                "definition": "An effective Gaussian smearing in nanometres that lumps beam spot, electron scattering and development diffusion into one fitted number a proximity-effect correction can invert."
+              }
+            ],
+            "fab_angle": "MNF's stepper programme needs dose-to-clear and process-window data for whatever resist is on the shelf, and the measurement half of that is usually what fails to scale. The pattern here transfers directly to a maskless tool: drive the metrology from the same GDSII the exposure came from, and spend the effort on alignment-mark strategy rather than on image analysis, because a maskless writer already owns the stage coordinates.",
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Converting a superseded Raith electron beam pattern generator into an unattended Critical Dimension SEM",
+                "url": "https://arxiv.org/abs/2610.38203",
+                "publisher": "arXiv (physics.app-ph)",
+                "date": "2026-10-28"
+              },
+              {
+                "title": "Determination of Optimal Parameters for CD-SEM Measurement of Line Edge Roughness",
+                "url": "https://www.nist.gov/publications/determination-optimal-parameters-cd-sem-measurement-line-edge-roughness",
+                "publisher": "NIST / Proc. SPIE 5375",
+                "date": "2004-05-01"
+              },
+              {
+                "title": "ProSEM image analysis software (EPFL Center of MicroNanoTechnology equipment page)",
+                "url": "https://www.epfl.ch/research/facilities/cmi/equipment/metrology/prosem-image-analysis-software",
+                "publisher": "EPFL CMi",
+                "date": "2026"
+              }
+            ]
+          },
+          {
+            "id": "silicon-ota-calibrated-negative-conductance",
+            "title": "Cancelling an amplifier's output conductance, then calibrating the cancellation",
+            "dek": "Mayank Aggarwal and Naveen Kadayinti raise a 65-nanometre CMOS amplifier's gain from 18 to 60 decibels by cancelling its output conductance with a cross-coupled transistor pair, then add an on-chip loop that re-tunes the cancellation by watching the amplifier's own settling error instead of a replica circuit.",
+            "why_it_matters": "Cancelling a conductance means subtracting two nearly equal numbers, so the surviving gain is set by how well the subtraction tracks process, voltage and temperature — which is why gain-boosting by positive feedback has historically meant an off-chip trim. Sensing the error at the amplifier's own output removes the replica-to-amplifier mismatch from the loop, but it moves the accuracy requirement onto the comparator: at 60 decibels the residual to be resolved is about 0.6 millivolts.",
+            "background_md": "A single transistor's voltage gain is its transconductance times its output resistance, and short channels wreck the second term: the drain's field reaches into the channel, so current keeps climbing with drain voltage and output resistance falls. Stacking devices into cascodes recovers some of it in exchange for voltage headroom, which a 1.2-volt supply does not have to spare. The other route is to hang a circuit across the load whose conductance is negative, so the two partly cancel and the net conductance dividing into the gain becomes small.",
+            "deeper_md": "The mechanism is one equation: net load conductance is g_O − g_N, and DC gain is G_m divided by that difference. A 4-bit thermometer-coded current DAC — 15 identical sources — sets the tail bias of the cross-coupled pair and so sets g_N. Post-layout in 65 nm at 1.2 V, DC gain goes 18 dB → 60 dB while power goes 0.16 mW → 0.45 mW.\n\nThe calibration is where the work is. With the amplifier in unity-gain feedback and a deliberate ~180 mV input step applied, a strong-arm comparator senses the residual while a counter walks the DAC code until that residual crosses zero. Because 20 dB of gain leaves ~18 mV of error but 50 dB leaves ~0.63 mV, the comparator must be trimmed first: a 6-bit capacitive DAC with a 1.04 fF unit capacitor cuts offset σ from 4.11 mV to 132 µV over 1,000 Monte Carlo samples, worst case 625 µV.\n\nCaveats the title does not advertise. There is no silicon — everything is post-layout simulation. The paper's own error budget implies about 51 dB rather than the 60 dB in its table, and it does not reconcile the two. And no Monte Carlo is reported for the amplifier's gain itself, only for the comparator offset the calibration rests on.",
+            "glossary": [
+              {
+                "term": "OTA (operational transconductance amplifier)",
+                "definition": "An amplifier whose output is a current proportional to input voltage, so its voltage gain is set by whatever conductance that current has to drive."
+              },
+              {
+                "term": "Output conductance (g_O)",
+                "definition": "How much a transistor's drain current rises per volt of drain voltage; it is the leak that caps gain, and it grows as channels get shorter."
+              },
+              {
+                "term": "Negative conductance",
+                "definition": "A circuit whose current falls as its voltage rises, built here from a cross-coupled pair in positive feedback, so placing it across a load subtracts from the load's conductance."
+              },
+              {
+                "term": "CDAC",
+                "definition": "A digital-to-analogue converter built from a binary-weighted capacitor array; here a 1.04 fF unit capacitor gives trim steps fine enough to null a sub-millivolt comparator offset."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Implementation and Validation of Mismatch-Tolerant High-Gain OTA with a Calibrated Negative Conductance Load",
+                "url": "https://arxiv.org/abs/2610.39699",
+                "publisher": "arXiv (eess.SP)",
+                "date": "2026-10-29"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "chips",
+        "items": [
+          {
+            "id": "chips-fenor-dram-timing-window",
+            "title": "A ferroelectric NOR array fast enough to answer on a DRAM bus",
+            "dek": "Zhuoran Li and co-authors built ferroelectric NOR flash arrays up in the wiring layers above a chip — indium-gallium-zinc-oxide channels with hafnium-zirconium-oxide gates, processed at or below 400 °C — and measured sensing under 7.5 nanoseconds, which is the condition for a non-volatile memory to pass as a DRAM rank on an unmodified phone memory bus.",
+            "why_it_matters": "Storage becomes memory when its read latency fits inside the timing contract the memory controller already enforces, not when its peak bandwidth is high enough. An LPDDR6 subchannel streams a 32-byte burst every 1.67 nanoseconds and expects the first column read back inside the programmed row-access-plus-read-latency window, so an array that senses in 7.5 nanoseconds can be hidden behind bank interleaving while a NAND tier whose reads take microseconds cannot be hidden at all.",
+            "background_md": "Everything built above a chip's first transistor layer has to be processed below roughly 400 °C, or the copper wiring and low-k insulator already in place degrade. That ceiling is why memory added in the back end of the line reaches for oxide semiconductors — indium-gallium-zinc-oxide deposits well under it and leaks extremely little when off — and for ferroelectric hafnium oxide, which stores a bit as a switched polarization instead of as charge on a floating gate. What that buys is non-volatility inside the wiring stack; what it costs is a cell that is slow to write.",
+            "deeper_md": "Two cell types are co-fabricated in one back-end flow at 150 nm pitch: a dual-gate single-bit cell and a gate-all-around 3-bit cell, both with ALD indium-gallium-zinc-oxide channels and Hf0.5Zr0.5O2 gate dielectric. Measured: sensing under 7.5 ns for both; single-bit on-current ≈ 2 µA against 10 fA off, an on/off ratio above 10⁸; a 4.6 V memory window across the eight multi-level states; in-place single-bit write of 100 ns with endurance above 10¹¹ cycles; multi-level erase-and-verify of 100 µs at about 10⁸ cycles.\n\nThe bus arithmetic is the argument. One bank senses 96 B in 15 ns — 6.4 GB/s, roughly a third of a subchannel's 19.2 GB/s — so the bridge fires four multi-level banks staggered 5.0 ns apart into a rolling row buffer, then streams 32 B every 1.67 ns. Writes do not fit at all: 100 ns against a controller expecting about 15 ns, hence a 4 KiB posted-write SRAM per subchannel.\n\nCaveats, and they are large. The 25–35 ns full read path is measured array sensing plus modelled peripherals and PHY; no end-to-end read was measured. Retention is not quantified, and multi-level threshold drift accelerates with temperature. Every system-level speedup is simulator output on traces.",
+            "glossary": [
+              {
+                "term": "BEOL (back end of line)",
+                "definition": "The copper wiring stack built above the transistors; copper and the insulator around it degrade with heat, so anything added afterwards must be processed below roughly 400 °C."
+              },
+              {
+                "term": "IGZO",
+                "definition": "An amorphous indium-gallium-zinc-oxide semiconductor that deposits below 400 °C and leaks extremely little when off, which is why it is the usual channel for a transistor built up in the wiring stack."
+              },
+              {
+                "term": "t_CCD",
+                "definition": "The minimum interval a DRAM controller enforces between two column reads on the same bus — 1.67 ns here, which fixes the burst rate any device pretending to be DRAM must sustain."
+              },
+              {
+                "term": "SLC / MLC",
+                "definition": "One bit per cell versus several: here one bit written in place in 100 ns, against three bits in a cell that needs a hundred microseconds to rewrite."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "NORmal: Architecting 3D Ferroelectric NOR Flash as Main Memory — From Co-Fabricated BEOL Arrays to 200B-Class Multi-Agent LLMs in a Smartphone",
+                "url": "https://arxiv.org/abs/2610.40000",
+                "publisher": "arXiv (cs.AR)",
+                "date": "2026-10-29"
+              },
+              {
+                "title": "Back-End-Of-Line Integration of 2-Terminal Ferroelectric Hafnia Synaptic Weights on Commercial CMOS Process",
+                "url": "https://arxiv.org/abs/2610.37530",
+                "publisher": "arXiv (physics.app-ph)",
+                "date": "2026-10-27"
+              }
+            ]
+          },
+          {
+            "id": "chips-mrud-unsigned-redundant-digits",
+            "title": "Dropping negative digits from redundant arithmetic, and keeping carry-free adds",
+            "dek": "Samaneh Rahimi and Ali Azarpeyvand define a high-radix number system whose digits are all non-negative — 0 to 31 in radix 16 — show that it still adds without propagating a carry, and synthesise an 8-by-8-digit multiplier that draws 87% less power than the signed-digit system that is the standard alternative.",
+            "why_it_matters": "Carry propagation is what makes a wide adder slow, and redundant number systems buy it away by letting one value have several representations; the usual version pays for that with digits that can be negative, which forces every partial product in a multiplier through mixed-polarity logic. Removing the negative digits turns the sub-multiplier into a plain AND array, so the saving lands where the gate count is largest — which is why the reported gap widens with operand size instead of shrinking.",
+            "background_md": "Adding two n-digit binary numbers can require a carry to travel the entire width, so a conventional adder's delay grows with n however cleverly the carry is anticipated. Redundant number systems break that chain by allowing more digit values than the radix strictly needs: a value then has several valid encodings, and a digit sum can absorb an incoming carry locally without generating one that travels further. The price is paid at the boundaries — converting in is cheap, and converting back to ordinary binary needs a full carry-propagating adder.",
+            "deeper_md": "The digit set runs 0 to 2(r−1)+1, so radix 16 gives 0…31 in five bits, and carry-free addition follows from the generalised signed-digit criterion — radix above 2 with redundancy at least 3, or redundancy 2 with a side condition. Radix 2 and some radix-4 sets stay carry-limited rather than carry-free, which the paper says plainly.\n\nSynthesised in FreePDK45 against a maximally redundant signed-digit baseline, an 8-by-8-digit redundant-in/redundant-out multiplier runs 1.99 ns versus 2.33 ns, occupies 10,800 versus 14,621 µm², and burns 3,985 versus 31,459 µW — that last pair is the 87% figure. A 32-by-32-bit binary-in/redundant-out multiplier hits 1.64 ns against Dadda's 2.87 ns, with the return trip to binary costing a 13-bit adder, paid once.\n\nThree caveats. It is all synthesis in a predictive kit with no foundry behind it, whose extraction assumes drawn dimensions and no process variation. The multiply-accumulate unit wins on throughput — 152.6 against 93.02 MOPS versus DesignWare — while losing on area (9,366 against 6,514 µm²) and power (4,925 against 3,142 µW), and Dadda beats it on energy per operation. And the text and Table 4 disagree about the binary-in case: the prose claims 26% lower delay where the table implies roughly 60%.",
+            "glossary": [
+              {
+                "term": "Radix 2^h digit",
+                "definition": "A digit standing for h bits at once, so a 32-bit value becomes 8 digits in radix 16 and any carry chain is 8 steps long rather than 32."
+              },
+              {
+                "term": "Redundancy (ρ)",
+                "definition": "How many digit values a number system carries beyond the radix minimum; enough of it lets a digit sum swallow an incoming carry locally, which is what makes addition carry-free."
+              },
+              {
+                "term": "Posibit / negabit",
+                "definition": "A bit weighted positively or negatively. Signed-digit systems need both, so their logic handles mixed polarity; an all-posibit digit set does not."
+              },
+              {
+                "term": "FreePDK45",
+                "definition": "An open 45 nm kit from NC State built on predictive device models rather than a real foundry process, with design rules its own page calls not comprehensive and extraction that ignores process variation."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "MRUD: Maximally Redundant Unsigned Digit Number Systems for High-Performance Arithmetic Units",
+                "url": "https://arxiv.org/abs/2610.39638",
+                "publisher": "arXiv (cs.AR)",
+                "date": "2026-10-29"
+              },
+              {
+                "title": "FreePDK45 — NCSU FreePDK process design kit",
+                "url": "https://eda.ncsu.edu/freepdk/freepdk45/",
+                "publisher": "NC State University EDA",
+                "date": "2011"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "computing",
+        "items": [
+          {
+            "id": "computing-four-colouring-linear-time",
+            "title": "Four-colouring a planar graph drops to linear time",
+            "dek": "Ken-ichi Kawarabayashi, Mikkel Thorup and four co-authors give an algorithm that four-colours any planar graph in time proportional to its number of vertices, closing the gap left by their own near-linear result from March.",
+            "why_it_matters": "A theorem that says a colouring exists does not say how to find one: the 1996 algorithm behind the Four Colour Theorem was quadratic, and this year's near-linear version still paid O(log n) Kempe recolourings, each of which can flip a constant fraction of the vertices and so cost linear time. Getting all of them into O(n) total makes the problem optimal to within the time needed to read the graph, and moves the remaining difficulty out of graph theory and into data structures.",
+            "background_md": "A proper colouring gives each vertex of a graph a colour such that no edge joins two of the same one, and planar graphs — those drawable in the plane with no crossing edges — never need more than four. Knowing a colouring exists is not the same as finding one. The standard move for finding one is the Kempe chain: fix two colours, take a connected component of the vertices wearing only those two, and swap them throughout. The colouring stays proper, so the move shuffles a colouring without breaking it. Both the proof and the algorithms are built around reducible configurations: local patterns that can be removed, coloured recursively, and put back.",
+            "deeper_md": "The lineage matters. The 1996 algorithm of Robertson and co-authors was quadratic because each reduction shrank the graph by an additive constant. The predecessor preprint, whose preliminary version is at FOCS'26, proved a stronger statement — every planar triangulation holds linearly many pairwise non-touching reducible configurations, or pairwise non-crossing obstructing cycles of length at most 5, all of them D-reducible — so a step shrinks the graph by a constant factor and the recursion is only O(log n) deep. That brought the total to O(n log n).\n\nWhat remained was bookkeeping on Kempe chains. Extending a recursive colouring onto those configurations needs O(log n) Kempe changes, and a single chain can span a constant fraction of the vertices, so performing one naively is Θ(n). The new preprint adds an O(n) preprocessing pass after which each useful change is located and simulated in O(n/log n) amortised time, making the O(log n) of them O(n) in total.\n\nCaveats: this does not remove computer assistance from the theorem itself, no constant factor is stated, and nothing is implemented or benchmarked. The claim is asymptotic, and a linear algorithm with a bad constant loses in practice at every size anyone runs.",
+            "glossary": [
+              {
+                "term": "Kempe chain",
+                "definition": "A connected component of the vertices using only two chosen colours; swapping those two throughout the component leaves the colouring proper, which is the only local move these algorithms need."
+              },
+              {
+                "term": "Reducible configuration",
+                "definition": "A local pattern that can be cut out of a planar graph so the remainder is coloured recursively, with a guarantee the hole can then be filled — possibly after some Kempe swaps."
+              },
+              {
+                "term": "Amortised time",
+                "definition": "A per-operation cost averaged over a whole run: one Kempe change may exceed O(n/log n) provided the total across all O(log n) of them stays O(n)."
+              },
+              {
+                "term": "Planar triangulation",
+                "definition": "A planar graph drawn so every face is bounded by exactly three edges; it is the hardest case, because any planar graph can be made into one by adding edges."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Four-Coloring Planar Graphs in Linear Time",
+                "url": "https://arxiv.org/abs/2610.39753",
+                "publisher": "arXiv (cs.DS)",
+                "date": "2026-10-29"
+              },
+              {
+                "title": "The Four Color Theorem with Linearly Many Reducible Configurations and Near-Linear Time Coloring",
+                "url": "https://arxiv.org/abs/2603.24880",
+                "publisher": "arXiv (cs.DS), preliminary version at FOCS'26",
+                "date": "2026-03-25"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "layer": "models",
+        "items": [
+          {
+            "id": "models-moe-draft-routing-overlap",
+            "title": "Draft tokens route to the same experts, so verification is cheaper",
+            "dek": "Ekagra Ranjan and co-authors measured speculative decoding — drafting several tokens with a small model and checking them all in one pass of the large one — across ten sparse mixture-of-experts models from 30 billion to 1 trillion parameters, and found speedups at small batch sizes that the accepted cost model says should not be there.",
+            "why_it_matters": "The accepted model predicted a concave curve peaking at intermediate batch size, reasoning that verifying k drafted tokens activates k times as many expert weight matrices and so k times the weight traffic. That assumes the drafted tokens route independently. They do not: overlapping routing decisions mean the set of distinct experts touched during verification is far smaller than independence predicts, and the repeated reads land in L2 rather than in HBM.",
+            "background_md": "Generating text one token at a time is memory-bound rather than compute-bound: each token needs the whole weight set pulled out of memory to do a modest amount of arithmetic, so the accelerator sits waiting on bandwidth. Speculative decoding exploits that asymmetry by having a small model propose several tokens and the large model score all of them in a single forward pass, costing roughly one pass of weight traffic instead of several. A mixture-of-experts model complicates the accounting, because each token activates only a few of its many expert weight matrices, and which few depends on the token.",
+            "deeper_md": "Ten models, 30 B to 1 T parameters, 8 to 512 experts. Kernel profiling on an H100 breaks the prior cost model in two places. First, mixture-of-experts kernels reach higher bandwidth utilisation than attention kernels, so at low batch size the expert layers take a much smaller share of runtime than they do of weights — the activated-bytes accounting therefore over-charges verification. Second, experts co-routed across drafted tokens are re-read out of L2 rather than out of HBM.\n\nOn top of that sits routing overlap: drafted tokens tend to agree on experts, so the count of distinct experts activated during verification falls below the independence estimate. The authors model that with an iterative-proportional-fitting maximum-entropy fit over routing-overlap statistics and report under 4% error on the distinct-expert count — enough to reproduce the low-batch trend from synthetic routing alone.\n\nThe caveat is scope. The measurements are H100-specific and the L2 argument is a cache-capacity argument, so it should weaken on a part with a different cache-to-expert-size ratio, or once individual experts are large enough to spill. The paper is accepted at NeurIPS 2026, and the agreement is with the authors' own model rather than with an independent replication.",
+            "glossary": [
+              {
+                "term": "Speculative decoding",
+                "definition": "A small draft model proposes several tokens, the large model scores them in one pass, and a sampling rule accepts the prefix matching its own distribution, so the output distribution is unchanged."
+              },
+              {
+                "term": "Mixture of experts (MoE)",
+                "definition": "A layer holding many parallel weight matrices of which a router selects a few per token, so parameter count can grow without the arithmetic per token growing with it."
+              },
+              {
+                "term": "Batch size",
+                "definition": "How many independent sequences are decoded together; raising it spreads one weight read over more tokens, which is why a memory-bound kernel stops being memory-bound as the batch grows."
+              },
+              {
+                "term": "IPF (iterative proportional fitting)",
+                "definition": "A maximum-entropy way of reconstructing a joint distribution from its margins, used here to predict distinct-expert counts from routing-overlap statistics alone."
+              }
+            ],
+            "confidence": "reported",
+            "sources": [
+              {
+                "title": "Why Speculative Decoding Works Better Than Predicted on Sparse MoE Models",
+                "url": "https://arxiv.org/abs/2610.38981",
+                "publisher": "arXiv (cs.LG), NeurIPS 2026",
+                "date": "2026-10-28"
+              },
+              {
+                "title": "Fast Inference from Transformers via Speculative Decoding",
+                "url": "https://arxiv.org/abs/2211.17192",
+                "publisher": "arXiv (cs.LG), ICML 2023",
+                "date": "2022-11-30"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "foundations": {
+    "read_time_min": 5,
+    "topic": "Mask cost and multi-project wafers",
+    "slug": "mask-cost-and-mpw-shuttles",
+    "subtitle": "Why a chip's masks cost the same whether you run ten wafers or ten thousand, and how a student design gets onto silicon anyway.",
+    "tldr": "A mask set is one patterned quartz plate per layer of the chip, and a new part needs fifty to a hundred of them. That cost is fixed: it does not shrink because you only want twenty dies. So the only route to silicon for a small design is to share a plate with other people's designs — which is what a multi-project wafer run is, and the price lists for it are public documents you can do arithmetic on.",
+    "sections": [
+      {
+        "heading": "One plate per layer, and the plate does not care how many wafers you run",
+        "body_md": "Start with the physical object. A photomask is a quartz plate, typically 152 mm square and 6.3 mm thick, carrying the pattern for exactly one layer of the chip. Every layer that gets patterned needs its own plate: each well, each implant, each polysilicon or metal level, each via level. A new chip needs somewhere between 50 and 100 of them.\n\nThe exposure tool then prints that plate's pattern onto wafer after wafer, so the plate is written once and used for the life of the product. Writing it, inspecting it, repairing its defects and covering it with a pellicle all happen before the first wafer is exposed. Divide that effort across ten thousand wafers and it disappears into the cost of a die. Divide it across one wafer and it *is* the project. Everything else in this piece follows from that one asymmetry.",
+        "deeper_md": "The relevant distinction is fixed versus marginal cost, and it is why the question \"what does a chip cost?\" has no answer without a volume. Non-recurring engineering — masks, plus design tools, IP licences and verification — is paid per design. Wafer cost is paid per wafer. A design that will ship in millions is dominated by the second; a design that will ship fifty dies is dominated entirely by the first, which is why the per-die cost of a research chip is absurd and tells you nothing about the process."
+      },
+      {
+        "heading": "Why a plate costs what it does: write time",
+        "body_md": "A mask is not printed. It is written, one feature at a time, with an electron beam. The traditional machine is a variable-shaped-beam writer: it flashes a rectangle of chosen size and position, then moves and flashes again. Write time therefore scales with shot count — how many rectangles your pattern decomposes into.\n\nAn industry survey around 2017 put average variable-shaped-beam write times at 2.5 to 13 hours, with a mean of 6.8 hours, while complex masks ran 14 to 60 hours and mask shops pushed back on anything over 24. You cannot buy your way out with more current: beam current density went from 70 A/cm² in 2006 to about 1,200 A/cm² and sits at its physical limit, because packing more electrons into a spot makes them repel each other and blur it.\n\nThat is the cost. The writer is expensive and its output is roughly one plate per shift.",
+        "deeper_md": "Write time also sets mask *yield*, which compounds the cost. A longer exposure gives resist more time to age and the stage more time to drift, so the probability of a defect grows with the thing you are already paying for. This is why multi-beam writing mattered: a machine with 262,144 programmable beams, each about 10 nm, at 50 keV, rasters the whole plate as pixels and finishes in roughly 10 to 12 hours whatever the pattern is. The crossover against a shaped-beam tool sits near 300 gigashots — below that, shaped beam is still faster, which is why both tool types still exist."
+      },
+      {
+        "heading": "The mask stops looking like the circuit",
+        "body_md": "The second cost driver is that modern mask patterns are not the circuit. Printing below the wavelength means adding shapes that exist only to fix how the real shapes print: sub-resolution assist features, serifs, phase-shifting regions, and the whole output of optical proximity correction. These add area and shot count without adding any circuit, which is a direct multiplier on write time.\n\nThe feature sizes involved are not small on the mask. At the 7 nm node an EUV mask's contact and via features are around 70 nm, dropping to about 55 nm at 5 nm, where assist features reach 30 nm; an optical mask at 7 nm carries 250 nm features. And an EUV mask is not chrome on quartz at all — it is a reflector, 40 to 50 alternating molybdenum and silicon layers, because nothing transmits at 13.5 nm.",
+        "deeper_md": "The compounding effect is worth naming. Average shaped-beam write times rose roughly 25% between 2011 and 2017 without any change in tool capability, purely because resolution-enhancement content grew. Multipatterning multiplies the problem again: a layer split across four plates needs four write-and-inspect cycles, and the usual quoted write time is per plate. So \"one layer\" on a leading-edge flow can mean four masks, and the mask count of 50 to 100 per chip counts plates, not layers."
+      },
+      {
+        "heading": "The shuttle: share the plate, share the schedule",
+        "body_md": "If the mask set is a fixed cost, the obvious move is to put more than one design on it. A multi-project wafer run tiles several customers' designs into one reticle, writes one mask set, runs a small number of wafers, dices them, and ships each customer only their own dies. The mask cost is divided by the number of tenants.\n\nWhat you give up is control. The run date is fixed — on these services the GDS deadline *is* the run, so missing it means waiting for the next slot. The process and its optional modules are fixed, because everyone on the plate shares them. You get a small fixed number of dies: X-FAB's standard offering includes 50, CEA-Leti's photonics block gives 40. And you commit early: most foundries want registration two to four weeks before the GDS deadline, and TSMC's small-block programme wants three months.",
+        "deeper_md": "The schedule constraint is the one that bites academic projects hardest, and it is structural rather than bureaucratic. A shuttle reticle has to be assembled, verified as a whole, and written before any wafer moves, so one late tenant delays everyone. That is why these services run a hard deadline and a frame-level verification charge (TSMC adds a fee once a design has four or more sub-blocks) rather than a negotiable one. Fabrication afterwards is months, not weeks."
+      },
+      {
+        "heading": "Reading a real price list",
+        "body_md": "Europractice publishes its 2026 schedule and prices in the open, and the numbers teach the lesson better than any argument. On the general multi-project runs, GlobalFoundries' 180 nm open-PDK process is €913 per mm² with a 6 mm² minimum; its 22 nm FD-SOI is €17,820 per mm² at a 4 mm² minimum; its 12 nm is €27,500 per mm² at 4 mm².\n\nTSMC's small-block programme shows the same curve from the other end, because it quotes a minimum-area price plus a marginal rate per extra 0.1 mm². At 130 nm you pay €14,054 for the first 6 mm² and €232 per extra 0.1 mm² — about €2,300 per mm². At 16 nm you pay €30,592 for the first 1 mm² and €2,826.96 per extra 0.1 mm² — about €28,000 per mm².\n\nTwelve times the price for the same square millimetre. That ratio, not the absolute figure, is what to carry away.",
+        "deeper_md": "Why area gets dearer at a finer node, given that the wafer is the same size: more masks per plate set, more of them EUV, more multipatterning, more write time per plate, and more inspection. The shuttle price is essentially the mask-set and processing cost divided by reticle area and then by tenants, so every one of those multiplies through. Note also that the quoted rate is per mm² of *reticle* area you reserve, including seal ring — ST's list says so explicitly with a 1.25 mm² minimum charge — so an awkward aspect ratio costs real money."
+      },
+      {
+        "heading": "mini@sic, and the break-even area",
+        "body_md": "Europractice runs a second scheme alongside the general one, called mini@sic, restricted to universities and research institutes. It sells a *smaller minimum* at a *higher rate per mm²*, and the arithmetic of choosing between them is the single most useful thing a student designer can learn here.\n\nTake GlobalFoundries 22 nm FD-SOI. The general run is €17,820 per mm² with a 4 mm² minimum, so the cheapest possible general-run block costs €71,280 however small your design is. The mini@sic run is €23,980 per mm² with a 1 mm² minimum. Solve 23,980 × A = 71,280 and you get A ≈ 2.97 mm²: below about three square millimetres the expensive-per-mm² scheme is the cheap one, and above it the general run wins.\n\nSome mini@sic offerings skip per-mm² pricing entirely and sell a fixed block: UMC's 180 nm option is a 1525 × 1525 µm tile, X-FAB's is 1520 × 1520 µm.",
+        "deeper_md": "The 1 mm² floor is not arbitrary. Below roughly a millimetre on a side a die becomes hard to handle, dice, and probe, and the pad ring starts to dominate the area — so a very small design is mostly bond pads. That is the real limit the fixed-block offerings are built around, and it is why the next tier down abandons the idea of a die per project entirely."
+      },
+      {
+        "heading": "The bottom of the market: a tile, not a chip",
+        "body_md": "Tiny Tapeout pushes the sharing one level further. Instead of giving each project a die, it gives each project a tile on a shared die — about 160 × 100 µm on the runs through TT10 — and puts hundreds of them on one chip. Its own run log shows 547 designs on one IHP shuttle, 289 and 273 on consecutive SkyWater 130 nm runs, 123 on a later IHP run. The processes are open PDKs: SkyWater 130 nm, IHP's SiGe BiCMOS, GlobalFoundries 180 nm.\n\nFive hundred designs cannot each have their own bond pads, so a tile is a tenant inside somebody else's pad ring, reached through on-chip selection logic. You get real silicon that really switches, and you do not get your own pins. The other cost is time: Tiny Tapeout says fabrication alone runs six to nine months, and about a year from submission to a tested board in your hand.",
+        "deeper_md": "Notice what the hierarchy actually measures. General MPW: ~4 mm² minimum, full process options, your own die. mini@sic: ~1 mm² minimum, higher rate, your own die. Fixed block: ~2.3 mm² tile at a flat fee. Tiny Tapeout: 0.016 mm², shared pads, flat fee. Each step down trades autonomy for a smaller share of the same fixed mask cost. Nothing in that chain makes the mask cheaper — it only divides it among more people, which is the only lever that has ever existed."
+      }
+    ],
+    "glossary": [
+      {
+        "term": "Mask set (reticle set)",
+        "definition": "The full collection of patterned plates for one design — one per patterned layer, and more than one per layer where multipatterning splits it. 50 to 100 plates for a modern chip, written once and reused for the product's life."
+      },
+      {
+        "term": "Shot count",
+        "definition": "The number of individual rectangle flashes a variable-shaped-beam writer needs to cover a mask pattern. It is the quantity that sets write time on a shaped-beam tool, and resolution-enhancement shapes inflate it without adding circuit."
+      },
+      {
+        "term": "Multi-beam mask writer",
+        "definition": "A writer that rasters the whole plate as pixels using hundreds of thousands of parallel beams — 262,144 of about 10 nm each, at 50 keV, in the tool that made the approach practical — so write time depends on area and dose rather than on pattern complexity."
+      },
+      {
+        "term": "SRAF (sub-resolution assist feature)",
+        "definition": "A shape placed on the mask that is deliberately too small to print; it exists only to change the diffraction environment so the real feature beside it prints correctly. It costs mask area, shot count and inspection time."
+      },
+      {
+        "term": "MPW (multi-project wafer), or shuttle",
+        "definition": "A run in which several customers' designs are tiled into one reticle so they share a single mask set and a single lot of wafers. Each customer receives only their own dies, typically a few tens of them."
+      },
+      {
+        "term": "mini@sic",
+        "definition": "Europractice's small-block variant of an MPW, open to universities and research institutes: a smaller minimum chargeable area in exchange for a higher price per mm², which makes it the cheaper option only below a break-even area you have to compute."
+      },
+      {
+        "term": "GDS deadline",
+        "definition": "The date the layout file must be delivered. On a shuttle it is not an administrative date but the run itself — the reticle is assembled and written from what arrived, so missing it means waiting for the next slot."
+      }
+    ],
+    "try_this": "Open the Europractice 2026 schedules and prices page and do the break-even arithmetic for a block MNF might actually tape out. GlobalFoundries 22 nm FD-SOI is €17,820 per mm² on the general run with a 4 mm² minimum — a €71,280 floor however small your design is — against €23,980 per mm² on mini@sic with a 1 mm² minimum. Solve 23,980 × A = 71,280 and you get A ≈ 2.97 mm², the area below which the dearer-per-mm² scheme is the cheaper one. Then repeat it on the TSMC rows and compare the marginal rate at 130 nm with the one at 16 nm. Bring both numbers to a meeting alongside the question they force: which of those two nodes does the design the club is drawing actually need?",
+    "sources": [
+      {
+        "title": "Schedules & Prices 2026 — MPW and mini@sic runs",
+        "url": "https://europractice-ic.com/schedules-prices-2026/",
+        "publisher": "Europractice IC Service",
+        "date": "2026"
+      },
+      {
+        "title": "Next-Gen Mask Writer Race Begins",
+        "url": "https://semiengineering.com/next-gen-mask-writer-race-begins",
+        "publisher": "Semiconductor Engineering",
+        "date": "2017-10-19"
+      },
+      {
+        "title": "Multi-Beam Mask Writing Finally Comes Of Age",
+        "url": "https://semiengineering.com/multi-beam-mask-writing-finally-comes-of-age",
+        "publisher": "Semiconductor Engineering",
+        "date": "2018-11-15"
+      },
+      {
+        "title": "Mask Substrate (glossary)",
+        "url": "https://www.lasertec.co.jp/en/products/glossary/3550.html",
+        "publisher": "Lasertec Corporation",
+        "date": "2026"
+      },
+      {
+        "title": "Tiny Tapeout shuttle runs and design counts",
+        "url": "https://tinytapeout.com/runs/",
+        "publisher": "Tiny Tapeout",
+        "date": "2026"
+      },
+      {
+        "title": "Tiny Tapeout FAQ — tile size, processes and lead times",
+        "url": "https://tinytapeout.com/faq/",
+        "publisher": "Tiny Tapeout",
+        "date": "2026"
+      }
+    ]
+  }
+}

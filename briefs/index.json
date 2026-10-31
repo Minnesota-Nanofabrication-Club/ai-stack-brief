@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "date": "2026-10-31",
+      "foundations_slug": "serdes-and-signal-integrity",
+      "foundations_topic": "SerDes and signal integrity",
+      "headline": "Zejian Wang and co-authors measured a default NCCL reduce-scatter slowing a concurrent matrix multiply by 69 per cent, because the collective and the multiply contend for the same GPU multiprocessors — overlapping communication with computation does not make it free.",
+      "item_count": 7,
+      "layers": [
+        "silicon",
+        "chips",
+        "computing",
+        "models"
+      ]
+    },
+    {
       "date": "2026-10-30",
       "foundations_slug": "mask-cost-and-mpw-shuttles",
       "foundations_topic": "Mask cost and multi-project wafers",
@@ -812,6 +825,6 @@
       ]
     }
   ],
-  "generated_at": "2026-10-30T14:51:23Z",
-  "latest": "2026-10-30"
+  "generated_at": "2026-10-31T14:14:42Z",
+  "latest": "2026-10-31"
 }
